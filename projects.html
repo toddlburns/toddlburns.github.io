@@ -120,6 +120,18 @@
             text-decoration: underline;
         }
 
+        .project-img {
+            width: 100%;
+            margin-bottom: 12px;
+            border: 1px solid #00ff4133;
+            filter: grayscale(60%) brightness(0.8) contrast(1.1);
+            transition: filter 0.3s;
+        }
+
+        .project:hover .project-img {
+            filter: grayscale(0%) brightness(1) contrast(1);
+        }
+
         .project-desc {
             font-size: 18px;
             color: #00cc33;
@@ -174,36 +186,42 @@
         <div class="section-label">// Red Bull Music Academy</div>
 
         <div class="project">
+            <img class="project-img" src="images/album-art-iq.png" alt="Album Art IQ">
             <div class="project-name">Album Art IQ</div>
             <div class="project-desc">An online game meant to test your memory of iconic album covers from various genres.</div>
             <span class="project-tag">GAME</span>
         </div>
 
         <div class="project">
+            <img class="project-img" src="images/future-instruments.png" alt="Future Instruments 2214">
             <div class="project-name">Future Instruments 2214</div>
             <div class="project-desc">Various creatives imagine the instruments we'll be using 200 years in the future.</div>
             <span class="project-tag">INTERACTIVE</span>
         </div>
 
         <div class="project">
+            <img class="project-img" src="images/eternal-bliss.png" alt="Eternal Bliss">
             <div class="project-name">Eternal Bliss</div>
             <div class="project-desc">A tongue-in-cheek online guided meditation website where you can change the words and music as you go along.</div>
             <span class="project-tag">SATIRE</span>
         </div>
 
         <div class="project">
+            <img class="project-img" src="images/shattered-streams.png" alt="Shattered Streams">
             <div class="project-name">Shattered Streams</div>
             <div class="project-desc">An experiment in musical ephemerality, presenting original music from 31 artists. Each track was available to stream on a loop for a maximum period of 24 hours, degrading over that time until they simply disappeared.</div>
             <span class="project-tag">EXPERIMENT</span>
         </div>
 
         <div class="project">
+            <img class="project-img" src="images/online-comics.png" alt="Online Comics">
             <div class="project-name">Online Comics</div>
             <div class="project-desc">Four animated works celebrating four different musicians with strong ties to Japan: MF Doom, Isao Tomita, DJ Krush, and Damo Suzuki.</div>
             <span class="project-tag">ANIMATION</span>
         </div>
 
         <div class="project">
+            <img class="project-img" src="images/mixing-board.png" alt="Mixing Board">
             <div class="project-name">Mixing Board</div>
             <div class="project-desc">Control the BPM and volume of separate parts of different tracks in varying styles. Emotional intensity shifts based on musical changes.</div>
             <span class="project-tag">AUDIO</span>
