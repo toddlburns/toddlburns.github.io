@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hats - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #c0c0c0;
+            min-height: 100vh;
+            font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Geneva, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .back {
+            position: fixed;
+            top: 12px;
+            left: 16px;
+            font-size: 12px;
+            color: #000080;
+            text-decoration: underline;
+            z-index: 100;
+        }
+
+        .win95-window {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: 1px 1px 0 0 #000;
+            width: 380px;
+            max-width: 95vw;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 3px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 22px;
+        }
+
+        .title-bar-text {
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .window-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dialog-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            animation: wobble 2s ease-in-out infinite;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(-10deg); }
+            20% { transform: rotate(10deg); }
+            30% { transform: rotate(-6deg); }
+            40% { transform: rotate(0deg); }
+        }
+
+        .dialog-text {
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .filename { font-weight: bold; }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .win-btn {
+            min-width: 90px;
+            height: 26px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            font-family: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0 12px;
+        }
+
+        .win-btn:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+        }
+
+        .win-btn.default {
+            outline: 1px dotted #000;
+            outline-offset: -4px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back">&larr; toddlburns.com</a>
+
+    <div class="win95-window">
+        <div class="title-bar">
+            <span class="title-bar-text"><span>&#129506;</span> hat.exe</span>
+            <div class="title-bar-controls">
+                <button class="title-btn">_</button>
+                <button class="title-btn">&square;</button>
+                <button class="title-btn" onclick="goToHats()">&times;</button>
+            </div>
+        </div>
+        <div class="window-body">
+            <div class="dialog-icon">&#129506;</div>
+            <div class="dialog-text">
+                <p><span class="filename">hat.exe</span> has been detected on this system.</p>
+                <p>Would you like to view hats?</p>
+            </div>
+            <div class="button-row">
+                <button class="win-btn default" onclick="goToHats()">Yes</button>
+                <button class="win-btn" id="also-yes" onclick="goToHats()">Also Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToHats() {
+            window.location.href = 'https://toddlburns.github.io/crambe-repetita-hats/';
+        }
+        const alsoTexts = ['Also Yes', 'Definitely', 'Hats Please', 'Obviously', 'Yes (but louder)', 'Fine, Yes', 'Si', 'Oui', 'Ja'];
+        let idx = 0;
+        setInterval(() => {
+            idx = (idx + 1) % alsoTexts.length;
+            document.getElementById('also-yes').textContent = alsoTexts[idx];
+        }, 3000);
+    </script>
+</body>
+</html>

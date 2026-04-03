@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: #fafafa;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 18px;
+            letter-spacing: 1px;
+            padding: 8px 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, letter-spacing 0.3s;
+        }
+        nav a:hover {
+            border-bottom-color: #222;
+            letter-spacing: 3px;
+        }
+        .email {
+            margin-top: 50px;
+            font-size: 13px;
+            color: #999;
+        }
+        .email a { color: #999; text-decoration: none; }
+        .email a:hover { color: #222; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todd L. Burns</h1>
+        <nav>
+            <a href="/bio.html">Bio</a>
+            <a href="/projects.html">Digital Projects</a>
+            <a href="/print.html">Print Projects</a>
+            <a href="/playlists.html">Playlists</a>
+            <a href="/hats.html">Hats</a>
+            <a href="/contact.html">Contact</a>
+        </nav>
+        <div class="email"><a href="mailto:todd.burns@gmail.com">todd.burns@gmail.com</a></div>
+    </div>
+</body>
+</html>

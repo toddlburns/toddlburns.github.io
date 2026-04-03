@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f0f0;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: 'Georgia', serif;
+        }
+        .back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .back:hover { color: #333; }
+
+        .hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #bbb;
+            font-style: italic;
+            z-index: 100;
+            text-align: center;
+        }
+
+        .email {
+            position: absolute;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            transition: font-size 0.1s;
+            user-select: text;
+            white-space: nowrap;
+        }
+
+        .email:hover {
+            color: #000;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back">&larr; toddlburns.com</a>
+    <a href="mailto:todd.burns@gmail.com" class="email" id="floater">todd.burns@gmail.com</a>
+    <div class="hint">good luck</div>
+
+    <script>
+        const el = document.getElementById('floater');
+        const speed = 1.5;
+        let x, y, dx, dy;
+
+        function init() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            x = w * 0.3 + Math.random() * w * 0.4;
+            y = h * 0.3 + Math.random() * h * 0.4;
+            const angle = Math.random() * Math.PI * 2;
+            dx = Math.cos(angle) * speed;
+            dy = Math.sin(angle) * speed;
+        }
+
+        function animate() {
+            const rect = el.getBoundingClientRect();
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+
+            x += dx;
+            y += dy;
+
+            // Bounce off edges
+            if (x < 0) { x = 0; dx = Math.abs(dx); }
+            if (x + rect.width > w) { x = w - rect.width; dx = -Math.abs(dx); }
+            if (y < 0) { y = 0; dy = Math.abs(dy); }
+            if (y + rect.height > h) { y = h - rect.height; dy = -Math.abs(dy); }
+
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+
+            requestAnimationFrame(animate);
+        }
+
+        // Flee from cursor
+        document.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const dist = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+
+            if (dist < 150) {
+                // Push away from cursor
+                const angle = Math.atan2(centerY - e.clientY, centerX - e.clientX);
+                const force = (150 - dist) / 150 * 4;
+                dx += Math.cos(angle) * force * 0.3;
+                dy += Math.sin(angle) * force * 0.3;
+
+                // Cap speed
+                const maxSpeed = 6;
+                const currentSpeed = Math.hypot(dx, dy);
+                if (currentSpeed > maxSpeed) {
+                    dx = (dx / currentSpeed) * maxSpeed;
+                    dy = (dy / currentSpeed) * maxSpeed;
+                }
+            }
+
+            // Friction to return to normal speed
+            const currentSpeed = Math.hypot(dx, dy);
+            if (currentSpeed > speed) {
+                dx *= 0.99;
+                dy *= 0.99;
+            }
+        });
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            if (x > w - 200) x = w - 200;
+            if (y > h - 50) y = h - 50;
+        });
+    </script>
+</body>
+</html>
