@@ -56,12 +56,12 @@
 
     <script>
         const links = [
-            { text: 'Bio', href: '/bio.html' },
-            { text: 'Digital Projects', href: '/projects.html' },
-            { text: 'Print Projects', href: '/print.html' },
-            { text: 'Playlists', href: '/playlists.html' },
-            { text: 'Hats', href: '/hats.html' },
-            { text: 'Contact', href: '/contact.html' },
+            { text: 'Bio', href: '/bio.html', emoji: '📎' },
+            { text: 'Digital Projects', href: '/projects.html', emoji: '💾' },
+            { text: 'Print Projects', href: '/print.html', emoji: '📰' },
+            { text: 'Playlists', href: '/playlists.html', emoji: '🌍' },
+            { text: 'Hats', href: '/hats.html', emoji: '🧢' },
+            { text: 'Contact', href: '/contact.html', emoji: '✉️' },
         ];
 
         const floaters = [];
@@ -72,7 +72,7 @@
             const el = document.createElement('a');
             el.className = 'float-link';
             el.href = link.href;
-            el.textContent = link.text;
+            el.textContent = link.emoji + ' ' + link.text;
             document.body.appendChild(el);
 
             // Spread them out initially
