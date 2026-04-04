@@ -50,18 +50,44 @@
             line-height: 1.7;
             color: #333;
         }
-        .container {
-            filter: url(#water);
-        }
+        .entry:nth-child(1) p { filter: url(#water1); }
+        .entry:nth-child(2) p { filter: url(#water2); }
+        .entry:nth-child(3) p { filter: url(#water3); }
+        .entry:nth-child(4) p { filter: url(#water4); }
+        .entry:nth-child(5) p { filter: url(#water5); }
     </style>
 </head>
 <body>
     <svg style="position:absolute;width:0;height:0">
-        <filter id="water">
-            <feTurbulence type="turbulence" baseFrequency="0.01 0.04" numOctaves="3" seed="2" result="turbulence">
-                <animate attributeName="baseFrequency" dur="4s" values="0.01 0.04;0.012 0.05;0.01 0.04" repeatCount="indefinite"/>
+        <filter id="water1">
+            <feTurbulence type="turbulence" baseFrequency="0.015 0.03" numOctaves="2" seed="1" result="t">
+                <animate attributeName="baseFrequency" dur="5s" values="0.015 0.03;0.018 0.035;0.015 0.03" repeatCount="indefinite"/>
             </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="water2">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.05" numOctaves="3" seed="7" result="t">
+                <animate attributeName="baseFrequency" dur="7s" values="0.008 0.05;0.01 0.06;0.008 0.05" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="5" xChannelSelector="R" yChannelSelector="B"/>
+        </filter>
+        <filter id="water3">
+            <feTurbulence type="turbulence" baseFrequency="0.02 0.02" numOctaves="1" seed="13" result="t">
+                <animate attributeName="baseFrequency" dur="3s" values="0.02 0.02;0.025 0.025;0.02 0.02" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="3" xChannelSelector="G" yChannelSelector="R"/>
+        </filter>
+        <filter id="water4">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="4" seed="22" result="t">
+                <animate attributeName="baseFrequency" dur="6s" values="0.012 0.04;0.015 0.045;0.012 0.04" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="5" xChannelSelector="B" yChannelSelector="G"/>
+        </filter>
+        <filter id="water5">
+            <feTurbulence type="turbulence" baseFrequency="0.01 0.06" numOctaves="2" seed="31" result="t">
+                <animate attributeName="baseFrequency" dur="8s" values="0.01 0.06;0.013 0.07;0.01 0.06" repeatCount="indefinite"/>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="B"/>
         </filter>
     </svg>
     <div class="container">
@@ -70,27 +96,27 @@
 
         <div class="entry">
             <div class="years">2019 &ndash; 2023</div>
-            <p>I created and edited Music Journalism Insider, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
+            <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
         </div>
 
         <div class="entry">
             <div class="years">2013 &ndash; 2019</div>
-            <p>I was a Vice President at Yadastar, the company responsible for Red Bull Music Academy and Red Bull Radio. Over the years I held a few positions at Yadastar, allowing me the opportunity to commission and create longform features, interviews, podcasts, radio shows, documentary films, and digital projects, in addition to hosting conversations with some of the world's most fascinating musicians and artists.</p>
+            <p>I was a Vice President at Yadastar, the company responsible for <strong>Red Bull Music Academy</strong> and <strong>Red Bull Radio</strong>. Over the years I held a few positions at Yadastar, allowing me the opportunity to commission and create longform features, interviews, podcasts, radio shows, documentary films, and digital projects, in addition to hosting conversations with some of the world's most fascinating musicians and artists.</p>
         </div>
 
         <div class="entry">
             <div class="years">2007 &ndash; 2012</div>
-            <p>I was the editor-in-chief of the world's largest independent online electronic music magazine Resident Advisor. In addition to writing and editing text features and reviews, I also worked on film documentaries and created its interview podcast, the Exchange.</p>
+            <p>I was the editor-in-chief of the world's largest independent online electronic music magazine <strong>Resident Advisor</strong>. In addition to writing and editing text features and reviews, I also worked on film documentaries and created its interview podcast, the Exchange.</p>
         </div>
 
         <div class="entry">
             <div class="years">2006 &ndash; 2008</div>
-            <p>I was the deputy editor at eMusic, where I worked alongside renowned author Michael Azerrad, esteemed editor J. Edward Keyes, and Yancey Strickler, who would later go on to become the CEO of Kickstarter. In addition to working with incredible colleagues on a day-to-day basis, editing experts in genres like blues, jazz, and New Age opened my musical horizons considerably.</p>
+            <p>I was the deputy editor at <strong>eMusic</strong>, where I worked alongside renowned author Michael Azerrad, esteemed editor J. Edward Keyes, and Yancey Strickler, who would later go on to become the CEO of Kickstarter. In addition to working with incredible colleagues on a day-to-day basis, editing experts in genres like blues, jazz, and New Age opened my musical horizons considerably.</p>
         </div>
 
         <div class="entry">
             <div class="years">2002 &ndash; 2007</div>
-            <p>I was the co-founder and editor-in-chief of Stylus Magazine, an online music magazine. Its serious coverage of pop, hip-hop, dance, and country music was unique (in the online space) at the time. I also started a podcast network long before that was a 'thing.' Some of the magazine's alumni have gone on to edit and write for Pitchfork, Billboard, and Rolling Stone.</p>
+            <p>I was the co-founder and editor-in-chief of <strong>Stylus Magazine</strong>, an online music magazine. Its serious coverage of pop, hip-hop, dance, and country music was unique (in the online space) at the time. I also started a podcast network long before that was a 'thing.' Some of the magazine's alumni have gone on to edit and write for Pitchfork, Billboard, and Rolling Stone.</p>
         </div>
     </div>
 </body>
