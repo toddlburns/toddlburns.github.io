@@ -53,33 +53,34 @@
             color: #333;
         }
         .falling-photo {
-            position: fixed;
-            right: calc(50% - 380px);
-            top: -140px;
+            position: absolute;
+            right: -160px;
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            animation: fall 20s linear infinite;
             opacity: 0.85;
             z-index: 10;
+            transition: top 1.2s ease-in-out;
         }
-        @keyframes fall {
-            0% { top: -140px; }
-            100% { top: 110vh; }
-        }
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
             .falling-photo {
-                right: 20px;
+                right: -130px;
+            }
+        }
+        @media (max-width: 700px) {
+            .falling-photo {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <img class="falling-photo" src="images/todd-aging.gif" alt="Todd L. Burns aging">
     <div class="container">
         <a href="/" class="back">&larr; Home</a>
         <h1>Bio</h1>
+
+        <img class="falling-photo" src="images/todd-aging.gif" alt="Todd L. Burns aging">
 
         <div class="entry">
             <div class="years">2002 &ndash; 2007</div>
@@ -106,5 +107,49 @@
             <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
         </div>
     </div>
+    <script>
+        const photo = document.querySelector('.falling-photo');
+        const entries = document.querySelectorAll('.entry');
+
+        function getStops() {
+            return Array.from(entries).map(e => e.offsetTop);
+        }
+
+        let stops = getStops();
+        let step = 0;
+
+        // Start above the first entry
+        photo.style.top = (stops[0] - 120) + 'px';
+        photo.style.transition = 'none';
+
+        setTimeout(() => {
+            photo.style.transition = 'top 1.2s ease-in-out';
+            advance();
+        }, 500);
+
+        function advance() {
+            if (step < stops.length) {
+                photo.style.top = stops[step] + 'px';
+                step++;
+                setTimeout(advance, 2500); // 1.2s travel + 1.3s pause
+            } else {
+                // Fall off the bottom
+                photo.style.transition = 'top 1s ease-in';
+                photo.style.top = (document.body.scrollHeight + 100) + 'px';
+                // Reset and loop
+                setTimeout(() => {
+                    step = 0;
+                    photo.style.transition = 'none';
+                    photo.style.top = (stops[0] - 120) + 'px';
+                    setTimeout(() => {
+                        photo.style.transition = 'top 1.2s ease-in-out';
+                        advance();
+                    }, 500);
+                }, 2000);
+            }
+        }
+
+        window.addEventListener('resize', () => { stops = getStops(); });
+    </script>
 </body>
 </html>
