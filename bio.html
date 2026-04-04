@@ -42,7 +42,7 @@
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #666;
+            color: #8b1a1a;
             margin-bottom: 8px;
         }
         .entry p {
@@ -50,11 +50,48 @@
             line-height: 1.7;
             color: #333;
         }
+
+        /* 1. MJI — underwater ripple */
         .entry:nth-child(1) p { filter: url(#water1); }
-        .entry:nth-child(2) p { filter: url(#water2); }
-        .entry:nth-child(3) p { filter: url(#water3); }
-        .entry:nth-child(4) p { filter: url(#water4); }
-        .entry:nth-child(5) p { filter: url(#water5); }
+
+        /* 2. RBMA — letter-spacing breathe */
+        @keyframes breathe {
+            0%, 100% { letter-spacing: 0px; }
+            50% { letter-spacing: 1.5px; }
+        }
+        .entry:nth-child(2) p {
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        /* 3. RA — slight skew */
+        @keyframes lean {
+            0%, 100% { transform: skewX(0deg); }
+            50% { transform: skewX(-0.8deg); }
+        }
+        .entry:nth-child(3) p {
+            animation: lean 5s ease-in-out infinite;
+            transform-origin: left center;
+        }
+
+        /* 4. eMusic — blur pulse */
+        @keyframes defocus {
+            0%, 100% { filter: blur(0px); }
+            50% { filter: blur(0.6px); }
+        }
+        .entry:nth-child(4) p {
+            animation: defocus 4s ease-in-out infinite;
+        }
+
+        /* 5. Stylus — color shift */
+        @keyframes colorshift {
+            0%, 100% { color: #333; }
+            25% { color: #1a1a3e; }
+            50% { color: #3e1a1a; }
+            75% { color: #1a3e2a; }
+        }
+        .entry:nth-child(5) p {
+            animation: colorshift 10s ease-in-out infinite;
+        }
     </style>
 </head>
 <body>
@@ -64,30 +101,6 @@
                 <animate attributeName="baseFrequency" dur="5s" values="0.015 0.03;0.018 0.035;0.015 0.03" repeatCount="indefinite"/>
             </feTurbulence>
             <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-        <filter id="water2">
-            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.05" numOctaves="3" seed="7" result="t">
-                <animate attributeName="baseFrequency" dur="7s" values="0.008 0.05;0.01 0.06;0.008 0.05" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="t" scale="5" xChannelSelector="R" yChannelSelector="B"/>
-        </filter>
-        <filter id="water3">
-            <feTurbulence type="turbulence" baseFrequency="0.02 0.02" numOctaves="1" seed="13" result="t">
-                <animate attributeName="baseFrequency" dur="3s" values="0.02 0.02;0.025 0.025;0.02 0.02" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="t" scale="3" xChannelSelector="G" yChannelSelector="R"/>
-        </filter>
-        <filter id="water4">
-            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="4" seed="22" result="t">
-                <animate attributeName="baseFrequency" dur="6s" values="0.012 0.04;0.015 0.045;0.012 0.04" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="t" scale="5" xChannelSelector="B" yChannelSelector="G"/>
-        </filter>
-        <filter id="water5">
-            <feTurbulence type="turbulence" baseFrequency="0.01 0.06" numOctaves="2" seed="31" result="t">
-                <animate attributeName="baseFrequency" dur="8s" values="0.01 0.06;0.013 0.07;0.01 0.06" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="B"/>
         </filter>
     </svg>
     <div class="container">
