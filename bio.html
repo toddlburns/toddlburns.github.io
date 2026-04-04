@@ -52,14 +52,14 @@
         }
 
         /* 1. MJI — underwater ripple */
-        .entry:nth-child(1) p { filter: url(#water1); }
+        .entry:nth-of-type(1) p { filter: url(#water1); }
 
         /* 2. RBMA — letter-spacing breathe */
         @keyframes breathe {
             0%, 100% { letter-spacing: 0px; }
             50% { letter-spacing: 1.5px; }
         }
-        .entry:nth-child(2) p {
+        .entry:nth-of-type(2) p {
             animation: breathe 6s ease-in-out infinite;
         }
 
@@ -68,7 +68,7 @@
             0%, 100% { transform: skewX(0deg); }
             50% { transform: skewX(-0.8deg); }
         }
-        .entry:nth-child(3) p {
+        .entry:nth-of-type(3) p {
             animation: lean 5s ease-in-out infinite;
             transform-origin: left center;
         }
@@ -78,7 +78,7 @@
             0%, 100% { filter: blur(0px); }
             50% { filter: blur(0.6px); }
         }
-        .entry:nth-child(4) p {
+        .entry:nth-of-type(4) p {
             animation: defocus 4s ease-in-out infinite;
         }
 
@@ -89,7 +89,7 @@
             50% { color: #3e1a1a; }
             75% { color: #1a3e2a; }
         }
-        .entry:nth-child(5) p {
+        .entry:nth-of-type(5) p {
             animation: colorshift 10s ease-in-out infinite;
         }
     </style>
