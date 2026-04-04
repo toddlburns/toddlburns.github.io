@@ -37,25 +37,32 @@
         .bio-layout {
             display: flex;
             gap: 40px;
+            align-items: flex-start;
         }
         .photo-track {
             width: 120px;
             flex-shrink: 0;
-            position: relative;
+        }
+        .photo-wrapper {
+            position: sticky;
+            top: 40vh;
         }
         .falling-photo {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            position: sticky;
-            top: 60px;
+            display: block;
+            transition: opacity 0.3s ease;
         }
         .entries {
             flex: 1;
         }
         .entry {
-            margin-bottom: 40px;
+            margin-bottom: 50vh;
+        }
+        .entry:last-child {
+            margin-bottom: 40vh;
         }
         .years {
             font-size: 13px;
@@ -80,9 +87,15 @@
                 width: 100%;
                 text-align: center;
             }
-            .falling-photo {
+            .photo-wrapper {
                 position: relative;
                 top: 0;
+            }
+            .entry {
+                margin-bottom: 60px;
+            }
+            .entry:last-child {
+                margin-bottom: 40px;
             }
         }
     </style>
@@ -94,7 +107,9 @@
 
         <div class="bio-layout">
             <div class="photo-track">
-                <img class="falling-photo" src="images/todd-age25.png" alt="Todd L. Burns">
+                <div class="photo-wrapper">
+                    <img class="falling-photo" src="images/todd-age25.png" alt="Todd L. Burns">
+                </div>
             </div>
             <div class="entries">
                 <div class="entry">
@@ -135,24 +150,31 @@
             'images/todd-age45.png'
         ];
 
-        // Preload images
+        // Preload
         ages.forEach(src => { new Image().src = src; });
 
+        let currentAge = 0;
+
         function updatePhoto() {
-            const photoY = photo.getBoundingClientRect().top + photo.offsetHeight / 2;
+            const viewMid = window.innerHeight / 2;
             let closest = 0;
             let minDist = Infinity;
             entries.forEach((entry, i) => {
                 const rect = entry.getBoundingClientRect();
                 const entryMid = rect.top + rect.height / 2;
-                const dist = Math.abs(photoY - entryMid);
+                const dist = Math.abs(viewMid - entryMid);
                 if (dist < minDist) {
                     minDist = dist;
                     closest = i;
                 }
             });
-            if (photo.src !== location.origin + '/' + ages[closest]) {
-                photo.src = ages[closest];
+            if (closest !== currentAge) {
+                photo.style.opacity = 0;
+                setTimeout(() => {
+                    photo.src = ages[closest];
+                    photo.style.opacity = 1;
+                }, 150);
+                currentAge = closest;
             }
         }
 
