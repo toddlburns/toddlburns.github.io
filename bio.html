@@ -16,6 +16,7 @@
         .container {
             max-width: 620px;
             margin: 0 auto;
+            position: relative;
         }
         .back {
             font-size: 13px;
@@ -32,6 +33,26 @@
             text-transform: uppercase;
             color: #000;
             margin-bottom: 50px;
+        }
+        .bio-layout {
+            display: flex;
+            gap: 40px;
+        }
+        .photo-track {
+            width: 120px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .falling-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: sticky;
+            top: 60px;
+        }
+        .entries {
+            flex: 1;
         }
         .entry {
             margin-bottom: 40px;
@@ -50,6 +71,20 @@
             line-height: 1.7;
             color: #333;
         }
+        @media (max-width: 600px) {
+            .bio-layout {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .photo-track {
+                width: 100%;
+                text-align: center;
+            }
+            .falling-photo {
+                position: relative;
+                top: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -57,29 +92,36 @@
         <a href="/" class="back">&larr; Home</a>
         <h1>Bio</h1>
 
-        <div class="entry">
-            <div class="years">2002 &ndash; 2007</div>
-            <p>I was the co-founder and editor-in-chief of <strong>Stylus Magazine</strong>, an online music magazine. Its serious coverage of pop, hip-hop, dance, and country music was unique (in the online space) at the time. I also started a podcast network long before that was a 'thing.' Some of the magazine's alumni have gone on to edit and write for Pitchfork, Billboard, and Rolling Stone.</p>
-        </div>
+        <div class="bio-layout">
+            <div class="photo-track">
+                <img class="falling-photo" src="images/todd-young.jpeg" alt="Todd L. Burns">
+            </div>
+            <div class="entries">
+                <div class="entry">
+                    <div class="years">2002 &ndash; 2007</div>
+                    <p>I was the co-founder and editor-in-chief of <strong>Stylus Magazine</strong>, an online music magazine. Its serious coverage of pop, hip-hop, dance, and country music was unique (in the online space) at the time. I also started a podcast network long before that was a 'thing.' Some of the magazine's alumni have gone on to edit and write for Pitchfork, Billboard, and Rolling Stone.</p>
+                </div>
 
-        <div class="entry">
-            <div class="years">2006 &ndash; 2008</div>
-            <p>I was the deputy editor at <strong>eMusic</strong>, where I worked alongside renowned author Michael Azerrad, esteemed editor J. Edward Keyes, and Yancey Strickler, who would later go on to become the CEO of Kickstarter. In addition to working with incredible colleagues on a day-to-day basis, editing experts in genres like blues, jazz, and New Age opened my musical horizons considerably.</p>
-        </div>
+                <div class="entry">
+                    <div class="years">2006 &ndash; 2008</div>
+                    <p>I was the deputy editor at <strong>eMusic</strong>, where I worked alongside renowned author Michael Azerrad, esteemed editor J. Edward Keyes, and Yancey Strickler, who would later go on to become the CEO of Kickstarter. In addition to working with incredible colleagues on a day-to-day basis, editing experts in genres like blues, jazz, and New Age opened my musical horizons considerably.</p>
+                </div>
 
-        <div class="entry">
-            <div class="years">2007 &ndash; 2012</div>
-            <p>I was the editor-in-chief of the world's largest independent online electronic music magazine <strong>Resident Advisor</strong>. In addition to writing and editing text features and reviews, I also worked on film documentaries and created its interview podcast, the Exchange.</p>
-        </div>
+                <div class="entry">
+                    <div class="years">2007 &ndash; 2012</div>
+                    <p>I was the editor-in-chief of the world's largest independent online electronic music magazine <strong>Resident Advisor</strong>. In addition to writing and editing text features and reviews, I also worked on film documentaries and created its interview podcast, the Exchange.</p>
+                </div>
 
-        <div class="entry">
-            <div class="years">2013 &ndash; 2019</div>
-            <p>I was a Vice President at Yadastar, the company responsible for <strong>Red Bull Music Academy</strong> and <strong>Red Bull Radio</strong>. Over the years I held a few positions at Yadastar, allowing me the opportunity to commission and create longform features, interviews, podcasts, radio shows, documentary films, and digital projects, in addition to hosting conversations with some of the world's most fascinating musicians and artists.</p>
-        </div>
+                <div class="entry">
+                    <div class="years">2013 &ndash; 2019</div>
+                    <p>I was a Vice President at Yadastar, the company responsible for <strong>Red Bull Music Academy</strong> and <strong>Red Bull Radio</strong>. Over the years I held a few positions at Yadastar, allowing me the opportunity to commission and create longform features, interviews, podcasts, radio shows, documentary films, and digital projects, in addition to hosting conversations with some of the world's most fascinating musicians and artists.</p>
+                </div>
 
-        <div class="entry">
-            <div class="years">2019 &ndash; 2023</div>
-            <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
+                <div class="entry">
+                    <div class="years">2019 &ndash; 2023</div>
+                    <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
