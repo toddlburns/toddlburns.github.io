@@ -50,59 +50,9 @@
             line-height: 1.7;
             color: #333;
         }
-
-        /* 1. MJI — underwater ripple */
-        .entry:nth-of-type(1) p { filter: url(#water1); }
-
-        /* 2. RBMA — letter-spacing breathe */
-        @keyframes breathe {
-            0%, 100% { letter-spacing: 0px; }
-            50% { letter-spacing: 1.5px; }
-        }
-        .entry:nth-of-type(2) p {
-            animation: breathe 6s ease-in-out infinite;
-        }
-
-        /* 3. RA — slight skew */
-        @keyframes lean {
-            0%, 100% { transform: skewX(0deg); }
-            50% { transform: skewX(-0.8deg); }
-        }
-        .entry:nth-of-type(3) p {
-            animation: lean 5s ease-in-out infinite;
-            transform-origin: left center;
-        }
-
-        /* 4. eMusic — blur pulse */
-        @keyframes defocus {
-            0%, 100% { filter: blur(0px); }
-            50% { filter: blur(0.6px); }
-        }
-        .entry:nth-of-type(4) p {
-            animation: defocus 4s ease-in-out infinite;
-        }
-
-        /* 5. Stylus — color shift */
-        @keyframes colorshift {
-            0%, 100% { color: #333; }
-            25% { color: #1a1a3e; }
-            50% { color: #3e1a1a; }
-            75% { color: #1a3e2a; }
-        }
-        .entry:nth-of-type(5) p {
-            animation: colorshift 10s ease-in-out infinite;
-        }
     </style>
 </head>
 <body>
-    <svg style="position:absolute;width:0;height:0">
-        <filter id="water1">
-            <feTurbulence type="turbulence" baseFrequency="0.015 0.03" numOctaves="2" seed="1" result="t">
-                <animate attributeName="baseFrequency" dur="5s" values="0.015 0.03;0.018 0.035;0.015 0.03" repeatCount="indefinite"/>
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-    </svg>
     <div class="container">
         <a href="/" class="back">&larr; Home</a>
         <h1>Bio</h1>
