@@ -12,6 +12,7 @@
             color: #111;
             min-height: 100vh;
             padding: 60px 20px;
+            overflow: hidden;
         }
         .container {
             max-width: 620px;
@@ -50,6 +51,28 @@
             color: #333;
             padding-left: 20px;
         }
+        .ball {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        .ball img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .char {
+            display: inline;
+            transition: opacity 0.3s;
+        }
+        .char.hit {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -82,5 +105,140 @@
             <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
         </div>
     </div>
+
+    <script>
+    (function() {
+        // Wrap every character in paragraphs with a span
+        document.querySelectorAll('.entry p').forEach(p => {
+            const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            while (walker.nextNode()) textNodes.push(walker.currentNode);
+            textNodes.forEach(node => {
+                const frag = document.createDocumentFragment();
+                node.textContent.split('').forEach(ch => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = ch;
+                    frag.appendChild(span);
+                });
+                node.parentNode.replaceChild(frag, node);
+            });
+        });
+
+        // Also wrap years
+        document.querySelectorAll('.years').forEach(y => {
+            const text = y.textContent;
+            y.textContent = '';
+            text.split('').forEach(ch => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.textContent = ch;
+                y.appendChild(span);
+            });
+        });
+
+        const allChars = Array.from(document.querySelectorAll('.char'));
+        const totalChars = allChars.length;
+        let charsDestroyed = 0;
+
+        // Create 10 balls
+        const balls = [];
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        for (let i = 0; i < 10; i++) {
+            const el = document.createElement('div');
+            el.className = 'ball';
+            el.innerHTML = '<img src="images/todd-young.jpeg" alt="">';
+            document.body.appendChild(el);
+            balls.push({
+                el,
+                x: Math.random() * (W - 50),
+                y: -60 - Math.random() * 200, // start above viewport
+                vx: (Math.random() - 0.5) * 6,
+                vy: Math.random() * 3 + 2,
+                size: 50,
+            });
+        }
+
+        const START = Date.now();
+        const DESTROY_START = 30 * 1000;  // start destroying at 30s
+        const DESTROY_END = 120 * 1000;   // fully destroyed at 2 min
+        const GRAVITY = 0.15;
+        const BOUNCE = 0.75;
+        const FRICTION = 0.999;
+
+        function frame() {
+            const elapsed = Date.now() - START;
+            const destroyProgress = Math.max(0, Math.min(1,
+                (elapsed - DESTROY_START) / (DESTROY_END - DESTROY_START)));
+
+            // How many chars should be destroyed by now
+            const targetDestroyed = Math.floor(destroyProgress * totalChars);
+
+            balls.forEach(b => {
+                // Gravity
+                b.vy += GRAVITY;
+                b.vx *= FRICTION;
+
+                b.x += b.vx;
+                b.y += b.vy;
+
+                // Bounce off walls
+                if (b.x < 0) { b.x = 0; b.vx = Math.abs(b.vx) * BOUNCE; }
+                if (b.x > W - b.size) { b.x = W - b.size; b.vx = -Math.abs(b.vx) * BOUNCE; }
+                if (b.y > H - b.size) {
+                    b.y = H - b.size;
+                    b.vy = -Math.abs(b.vy) * BOUNCE;
+                    // Add some random horizontal energy on floor bounce
+                    b.vx += (Math.random() - 0.5) * 3;
+                }
+                if (b.y < 0) { b.y = 0; b.vy = Math.abs(b.vy) * BOUNCE; }
+
+                b.el.style.left = b.x + 'px';
+                b.el.style.top = b.y + 'px';
+
+                // Check collision with characters near the ball
+                if (elapsed > DESTROY_START && charsDestroyed < targetDestroyed) {
+                    const bCenterX = b.x + b.size / 2;
+                    const bCenterY = b.y + b.size / 2;
+                    const hitRadius = b.size;
+
+                    // Check nearby chars
+                    for (let i = 0; i < allChars.length && charsDestroyed < targetDestroyed; i++) {
+                        const c = allChars[i];
+                        if (c.classList.contains('hit')) continue;
+                        const rect = c.getBoundingClientRect();
+                        const cx = rect.left + rect.width / 2;
+                        const cy = rect.top + rect.height / 2;
+                        const dx = bCenterX - cx;
+                        const dy = bCenterY - cy;
+                        if (dx * dx + dy * dy < hitRadius * hitRadius) {
+                            c.classList.add('hit');
+                            charsDestroyed++;
+                        }
+                    }
+                }
+            });
+
+            // If we haven't destroyed enough yet, destroy some randomly to keep pace
+            if (elapsed > DESTROY_START) {
+                while (charsDestroyed < targetDestroyed) {
+                    const remaining = allChars.filter(c => !c.classList.contains('hit'));
+                    if (remaining.length === 0) break;
+                    const pick = remaining[Math.floor(Math.random() * remaining.length)];
+                    pick.classList.add('hit');
+                    charsDestroyed++;
+                }
+            }
+
+            if (charsDestroyed < totalChars) {
+                requestAnimationFrame(frame);
+            }
+        }
+
+        requestAnimationFrame(frame);
+    })();
+    </script>
 </body>
 </html>
