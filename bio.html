@@ -153,8 +153,8 @@
                 el,
                 x: Math.random() * (W - 50),
                 y: -60 - Math.random() * 200,
-                vx: (Math.random() - 0.5) * 6,
-                vy: Math.random() * 3 + 2,
+                vx: (Math.random() - 0.5) * 8,
+                vy: (Math.random() + 1) * 4,
                 size: 50,
             });
         }
@@ -162,9 +162,9 @@
         const START = Date.now();
         const DESTROY_START = 30 * 1000;  // start destroying at 30s
         const DESTROY_END = 120 * 1000;   // fully destroyed at 2 min
-        const GRAVITY = 0.15;
-        const BOUNCE = 0.75;
-        const FRICTION = 0.999;
+        const GRAVITY = 0;
+        const BOUNCE = 1;
+        const FRICTION = 1;
 
         function frame() {
             const elapsed = Date.now() - START;
