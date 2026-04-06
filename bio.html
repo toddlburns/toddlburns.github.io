@@ -113,10 +113,11 @@
             const textNodes = [];
             while (walker.nextNode()) textNodes.push(walker.currentNode);
             textNodes.forEach(node => {
+                const inBold = node.parentNode.tagName === 'STRONG';
                 const frag = document.createDocumentFragment();
                 node.textContent.split('').forEach(ch => {
                     const span = document.createElement('span');
-                    span.className = 'char';
+                    span.className = inBold ? 'char safe' : 'char';
                     span.textContent = ch;
                     frag.appendChild(span);
                 });
@@ -124,20 +125,10 @@
             });
         });
 
-        // Also wrap years
-        document.querySelectorAll('.years').forEach(y => {
-            const text = y.textContent;
-            y.textContent = '';
-            text.split('').forEach(ch => {
-                const span = document.createElement('span');
-                span.className = 'char';
-                span.textContent = ch;
-                y.appendChild(span);
-            });
-        });
+        // Don't wrap years — they stay intact
 
         const allChars = Array.from(document.querySelectorAll('.char'));
-        const totalChars = allChars.length;
+        const totalChars = allChars.filter(c => !c.classList.contains('safe')).length;
         let charsDestroyed = 0;
 
         // Create 10 balls
@@ -205,7 +196,7 @@
                     // Check nearby chars
                     for (let i = 0; i < allChars.length && charsDestroyed < targetDestroyed; i++) {
                         const c = allChars[i];
-                        if (c.classList.contains('hit')) continue;
+                        if (c.classList.contains('hit') || c.classList.contains('safe')) continue;
                         const rect = c.getBoundingClientRect();
                         const cx = rect.left + rect.width / 2;
                         const cy = rect.top + window.scrollY + rect.height / 2;
@@ -222,7 +213,7 @@
             // If we haven't destroyed enough yet, destroy some randomly to keep pace
             if (elapsed > DESTROY_START) {
                 while (charsDestroyed < targetDestroyed) {
-                    const remaining = allChars.filter(c => !c.classList.contains('hit'));
+                    const remaining = allChars.filter(c => !c.classList.contains('hit') && !c.classList.contains('safe'));
                     if (remaining.length === 0) break;
                     const pick = remaining[Math.floor(Math.random() * remaining.length)];
                     pick.classList.add('hit');
