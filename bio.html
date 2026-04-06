@@ -144,7 +144,7 @@
         const balls = [];
         const W = window.innerWidth;
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 13; i++) {
             const el = document.createElement('div');
             el.className = 'ball';
             el.innerHTML = '<img src="images/todd-young.jpeg" alt="">';
@@ -153,8 +153,8 @@
                 el,
                 x: Math.random() * (W - 50),
                 y: -60 - Math.random() * 200,
-                vx: (Math.random() - 0.5) * 8,
-                vy: (Math.random() + 1) * 4,
+                vx: (Math.random() - 0.5) * 5,
+                vy: (Math.random() + 1) * 2.5,
                 size: 50,
             });
         }
