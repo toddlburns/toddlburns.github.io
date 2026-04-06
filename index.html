@@ -103,7 +103,7 @@
             transition: left 0.3s;
         }
         .toggle.active .toggle-track {
-            background: #222;
+            background: #34C759;
         }
         .toggle.active .knob {
             left: 20px;
@@ -157,15 +157,16 @@
         });
 
         function startFun() {
+            // Capture positions while still in serious layout
+            const positions = floaters.map(f => f.el.getBoundingClientRect());
+
             document.body.classList.remove('serious');
-            // Move links out of nav-list into body for absolute positioning
+            navList.style.display = 'none';
+
             floaters.forEach((f, i) => {
                 document.body.appendChild(f.el);
-                const w = window.innerWidth;
-                const h = window.innerHeight;
-                const rect = f.el.getBoundingClientRect();
-                f.x = rect.left;
-                f.y = rect.top;
+                f.x = positions[i].left;
+                f.y = positions[i].top;
                 f.el.style.left = f.x + 'px';
                 f.el.style.top = f.y + 'px';
 
@@ -174,7 +175,6 @@
                 f.dx = Math.cos(angle) * speed;
                 f.dy = Math.sin(angle) * speed;
             });
-            navList.style.display = 'none';
             funMode = true;
             animate();
         }
