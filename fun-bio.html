@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+        .container {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 50px;
+        }
+        .entry {
+            margin-bottom: 40px;
+        }
+        .years {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #8b1a1a;
+            margin-bottom: 8px;
+            padding-left: 0;
+        }
+        .entry p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            padding-left: 20px;
+        }
+        .ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        .ball img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .char {
+            display: inline;
+            transition: opacity 0.3s;
+        }
+        .char.hit {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; Home</a>
+        <h1>Bio</h1>
+
+        <div class="entry">
+            <div class="years">2002 &ndash; 2007</div>
+            <p>I was the co-founder and editor-in-chief of <strong>Stylus Magazine</strong>, an online music magazine. Its serious coverage of pop, hip-hop, dance, and country music was unique (in the online space) at the time. I also started a podcast network long before that was a 'thing.' Some of the magazine's alumni have gone on to edit and write for Pitchfork, Billboard, and Rolling Stone.</p>
+        </div>
+
+        <div class="entry">
+            <div class="years">2006 &ndash; 2008</div>
+            <p>I was the deputy editor at <strong>eMusic</strong>, where I worked alongside renowned author Michael Azerrad, esteemed editor J. Edward Keyes, and Yancey Strickler, who would later go on to become the CEO of Kickstarter. In addition to working with incredible colleagues on a day-to-day basis, editing experts in genres like blues, jazz, and New Age opened my musical horizons considerably.</p>
+        </div>
+
+        <div class="entry">
+            <div class="years">2007 &ndash; 2012</div>
+            <p>I was the editor-in-chief of the world's largest independent online electronic music magazine <strong>Resident Advisor</strong>. In addition to writing and editing text features and reviews, I also worked on film documentaries and created its interview podcast, the Exchange.</p>
+        </div>
+
+        <div class="entry">
+            <div class="years">2013 &ndash; 2019</div>
+            <p>I was a Vice President at Yadastar, the company responsible for <strong>Red Bull Music Academy</strong> and <strong>Red Bull Radio</strong>. Over the years I held a few positions at Yadastar, allowing me the opportunity to commission and create longform features, interviews, podcasts, radio shows, documentary films, and digital projects, in addition to hosting conversations with some of the world's most fascinating musicians and artists.</p>
+        </div>
+
+        <div class="entry">
+            <div class="years">2019 &ndash; 2023</div>
+            <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        // Wrap every character in paragraphs with a span
+        document.querySelectorAll('.entry p').forEach(p => {
+            const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            while (walker.nextNode()) textNodes.push(walker.currentNode);
+            textNodes.forEach(node => {
+                const inBold = node.parentNode.tagName === 'STRONG';
+                const frag = document.createDocumentFragment();
+                node.textContent.split('').forEach(ch => {
+                    const span = document.createElement('span');
+                    span.className = inBold ? 'char safe' : 'char';
+                    span.textContent = ch;
+                    frag.appendChild(span);
+                });
+                node.parentNode.replaceChild(frag, node);
+            });
+        });
+
+        // Don't wrap years — they stay intact
+
+        const allChars = Array.from(document.querySelectorAll('.char'));
+        const totalChars = allChars.filter(c => !c.classList.contains('safe')).length;
+        let charsDestroyed = 0;
+
+        // Create 10 balls
+        const balls = [];
+        const W = window.innerWidth;
+
+        for (let i = 0; i < 13; i++) {
+            const el = document.createElement('div');
+            el.className = 'ball';
+            el.innerHTML = '<img src="images/todd-young.jpeg" alt="">';
+            document.body.appendChild(el);
+            balls.push({
+                el,
+                x: Math.random() * (W - 50),
+                y: -60 - Math.random() * 200,
+                vx: (Math.random() - 0.5) * 5,
+                vy: (Math.random() + 1) * 2.5,
+                size: 50,
+            });
+        }
+
+        const START = Date.now();
+        const DESTROY_START = 30 * 1000;  // start destroying at 30s
+        const DESTROY_END = 120 * 1000;   // fully destroyed at 2 min
+        const GRAVITY = 0;
+        const BOUNCE = 1;
+        const FRICTION = 1;
+
+        function frame() {
+            const elapsed = Date.now() - START;
+            const destroyProgress = Math.max(0, Math.min(1,
+                (elapsed - DESTROY_START) / (DESTROY_END - DESTROY_START)));
+
+            // How many chars should be destroyed by now
+            const targetDestroyed = Math.floor(destroyProgress * totalChars);
+
+            balls.forEach(b => {
+                // Gravity
+                b.vy += GRAVITY;
+                b.vx *= FRICTION;
+
+                b.x += b.vx;
+                b.y += b.vy;
+
+                // Bounce off walls
+                if (b.x < 0) { b.x = 0; b.vx = Math.abs(b.vx) * BOUNCE; }
+                if (b.x > W - b.size) { b.x = W - b.size; b.vx = -Math.abs(b.vx) * BOUNCE; }
+                const docH = document.documentElement.scrollHeight;
+                if (b.y > docH - b.size) {
+                    b.y = docH - b.size;
+                    b.vy = -Math.abs(b.vy) * BOUNCE;
+                    b.vx += (Math.random() - 0.5) * 3;
+                }
+                if (b.y < 0) { b.y = 0; b.vy = Math.abs(b.vy) * BOUNCE; }
+
+                b.el.style.left = b.x + 'px';
+                b.el.style.top = b.y + 'px';
+
+                // Check collision with characters near the ball
+                if (elapsed > DESTROY_START && charsDestroyed < targetDestroyed) {
+                    const bCenterX = b.x + b.size / 2;
+                    const bCenterY = b.y + b.size / 2;
+                    const hitRadius = b.size;
+
+                    // Check nearby chars
+                    for (let i = 0; i < allChars.length && charsDestroyed < targetDestroyed; i++) {
+                        const c = allChars[i];
+                        if (c.classList.contains('hit') || c.classList.contains('safe')) continue;
+                        const rect = c.getBoundingClientRect();
+                        const cx = rect.left + rect.width / 2;
+                        const cy = rect.top + window.scrollY + rect.height / 2;
+                        const dx = bCenterX - cx;
+                        const dy = bCenterY - cy;
+                        if (dx * dx + dy * dy < hitRadius * hitRadius) {
+                            c.classList.add('hit');
+                            charsDestroyed++;
+                        }
+                    }
+                }
+            });
+
+            // If we haven't destroyed enough yet, destroy some randomly to keep pace
+            if (elapsed > DESTROY_START) {
+                while (charsDestroyed < targetDestroyed) {
+                    const remaining = allChars.filter(c => !c.classList.contains('hit') && !c.classList.contains('safe'));
+                    if (remaining.length === 0) break;
+                    const pick = remaining[Math.floor(Math.random() * remaining.length)];
+                    pick.classList.add('hit');
+                    charsDestroyed++;
+                }
+            }
+
+            if (charsDestroyed < totalChars) {
+                requestAnimationFrame(frame);
+            }
+        }
+
+        requestAnimationFrame(frame);
+    })();
+    </script>
+</body>
+</html>
