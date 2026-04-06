@@ -115,7 +115,12 @@
         .toggle .toggle-label-left { color: #222; }
         .toggle .toggle-label-right { color: #ccc; }
         .toggle.active .toggle-label-left { color: #ccc; }
-        .toggle.active .toggle-label-right { color: #222; }
+        .toggle.active .toggle-label-right {
+            background: linear-gradient(90deg, #ff0000, #ff8800, #ffdd00, #00cc00, #0066ff, #8800ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 <body class="serious">
