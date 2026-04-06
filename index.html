@@ -25,19 +25,38 @@
             white-space: nowrap;
         }
         .float-link {
-            position: absolute;
             text-decoration: none;
             color: #222;
             font-size: 18px;
             letter-spacing: 1px;
             white-space: nowrap;
-            transition: color 0.2s;
+            transition: color 0.2s, left 0.8s ease, top 0.8s ease;
             cursor: pointer;
+            position: absolute;
         }
         .float-link:hover {
             color: #666;
         }
-        .email {
+
+        /* Serious mode: centered vertical list */
+        .serious .float-link {
+            position: relative;
+            display: block;
+            text-align: center;
+            transition: none;
+        }
+        .nav-list {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 5;
+        }
+
+        .bottom {
             position: fixed;
             bottom: 30px;
             left: 50%;
@@ -45,71 +64,152 @@
             font-size: 13px;
             color: #999;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            white-space: nowrap;
         }
-        .email a { color: #999; text-decoration: none; }
-        .email a:hover { color: #222; }
+        .bottom a { color: #999; text-decoration: none; }
+        .bottom a:hover { color: #222; }
+
+        /* Toggle switch */
+        .toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            font-size: 12px;
+            color: #999;
+            letter-spacing: 1px;
+        }
+        .toggle-track {
+            width: 36px;
+            height: 18px;
+            background: #ccc;
+            border-radius: 9px;
+            position: relative;
+            transition: background 0.3s;
+        }
+        .toggle-track .knob {
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s;
+        }
+        .toggle.active .toggle-track {
+            background: #222;
+        }
+        .toggle.active .knob {
+            left: 20px;
+        }
+        .toggle-label-left,
+        .toggle-label-right {
+            transition: color 0.3s;
+        }
+        .toggle .toggle-label-left { color: #222; }
+        .toggle .toggle-label-right { color: #ccc; }
+        .toggle.active .toggle-label-left { color: #ccc; }
+        .toggle.active .toggle-label-right { color: #222; }
     </style>
 </head>
-<body>
+<body class="serious">
     <h1>Todd L. Burns</h1>
-    <div class="email">Crambe Repetita | Mondrian's Sketchbook</div>
+
+    <nav class="nav-list" id="nav-list"></nav>
+
+    <div class="bottom">
+        <span>Crambe Repetita | Mondrian's Sketchbook</span>
+        <div class="toggle" id="mode-toggle">
+            <span class="toggle-label-left">Serious</span>
+            <div class="toggle-track"><div class="knob"></div></div>
+            <span class="toggle-label-right">Fun</span>
+        </div>
+    </div>
 
     <script>
         const links = [
-            { text: 'Bio', href: '/bio.html', emoji: '📎' },
-            { text: 'Digital Projects', href: '/projects.html', emoji: '💾' },
-            { text: 'Print Projects', href: '/print.html', emoji: '📰' },
-            { text: 'Playlists', href: 'https://toddlburns.github.io/globe-playlists/', emoji: '🌍' },
-            { text: 'Hats', href: 'https://toddlburns.github.io/crambe-repetita-hats/', emoji: '🧢' },
-            { text: 'Contact', href: 'mailto:todd.burns@gmail.com', emoji: '✉️' },
+            { text: 'Bio', href: '/bio.html' },
+            { text: 'Digital Projects', href: '/projects.html' },
+            { text: 'Print Projects', href: '/print.html' },
+            { text: 'Playlists', href: 'https://toddlburns.github.io/globe-playlists/' },
+            { text: 'Hats', href: 'https://toddlburns.github.io/crambe-repetita-hats/' },
+            { text: 'Contact', href: 'mailto:todd.burns@gmail.com' },
         ];
 
+        const navList = document.getElementById('nav-list');
         const floaters = [];
-        const w = window.innerWidth;
-        const h = window.innerHeight;
+        let funMode = false;
+        let animId = null;
 
         links.forEach((link, i) => {
             const el = document.createElement('a');
             el.className = 'float-link';
             el.href = link.href;
             el.textContent = link.text;
-            document.body.appendChild(el);
-
-            // Spread them out initially
-            const startX = 100 + Math.random() * (w - 300);
-            const startY = 120 + ((h - 200) / links.length) * i + Math.random() * 40;
-
-            // Gentle random drift
-            const angle = Math.random() * Math.PI * 2;
-            const speed = 0.15 + Math.random() * 0.2;
-
-            floaters.push({
-                el,
-                x: startX,
-                y: startY,
-                dx: Math.cos(angle) * speed,
-                dy: Math.sin(angle) * speed,
-            });
+            navList.appendChild(el);
+            floaters.push({ el, x: 0, y: 0, dx: 0, dy: 0 });
         });
 
+        function startFun() {
+            document.body.classList.remove('serious');
+            // Move links out of nav-list into body for absolute positioning
+            floaters.forEach((f, i) => {
+                document.body.appendChild(f.el);
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+                const rect = f.el.getBoundingClientRect();
+                f.x = rect.left;
+                f.y = rect.top;
+                f.el.style.left = f.x + 'px';
+                f.el.style.top = f.y + 'px';
+
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 0.15 + Math.random() * 0.2;
+                f.dx = Math.cos(angle) * speed;
+                f.dy = Math.sin(angle) * speed;
+            });
+            navList.style.display = 'none';
+            funMode = true;
+            animate();
+        }
+
+        function stopFun() {
+            funMode = false;
+            if (animId) cancelAnimationFrame(animId);
+            animId = null;
+            document.body.classList.add('serious');
+            navList.style.display = '';
+            floaters.forEach(f => {
+                f.el.style.left = '';
+                f.el.style.top = '';
+                navList.appendChild(f.el);
+            });
+        }
+
         function animate() {
+            if (!funMode) return;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+
             floaters.forEach(f => {
                 f.x += f.dx;
                 f.y += f.dy;
 
                 const rect = f.el.getBoundingClientRect();
 
-                // Soft bounce off edges
                 if (f.x < 20) { f.x = 20; f.dx = Math.abs(f.dx); }
                 if (f.x + rect.width > w - 20) { f.x = w - rect.width - 20; f.dx = -Math.abs(f.dx); }
                 if (f.y < 90) { f.y = 90; f.dy = Math.abs(f.dy); }
                 if (f.y + rect.height > h - 60) { f.y = h - rect.height - 60; f.dy = -Math.abs(f.dy); }
 
-                // Slight wobble
                 f.dx += (Math.random() - 0.5) * 0.005;
                 f.dy += (Math.random() - 0.5) * 0.005;
 
-                // Cap speed to keep it gentle
                 const maxSpeed = 0.4;
                 const spd = Math.hypot(f.dx, f.dy);
                 if (spd > maxSpeed) {
@@ -121,12 +221,21 @@
                 f.el.style.top = f.y + 'px';
             });
 
-            requestAnimationFrame(animate);
+            animId = requestAnimationFrame(animate);
         }
 
-        animate();
+        document.getElementById('mode-toggle').addEventListener('click', () => {
+            const toggle = document.getElementById('mode-toggle');
+            toggle.classList.toggle('active');
+            if (toggle.classList.contains('active')) {
+                startFun();
+            } else {
+                stopFun();
+            }
+        });
 
         window.addEventListener('resize', () => {
+            if (!funMode) return;
             const newW = window.innerWidth;
             const newH = window.innerHeight;
             floaters.forEach(f => {
