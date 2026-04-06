@@ -186,28 +186,21 @@
         }
 
         .covers-spread {
-            position: relative;
-            height: 520px;
-            margin: 20px auto 30px;
-            max-width: 580px;
-            overflow: visible;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0 30px;
         }
         .covers-spread img {
-            position: absolute;
-            width: 180px;
+            width: 130px;
             box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
             border: 1px solid #ccc;
-            transition: transform 0.3s ease, z-index 0s;
+            transition: transform 0.3s ease;
         }
         .covers-spread img:hover {
-            transform: scale(1.4) rotate(0deg) !important;
+            transform: scale(1.3);
             z-index: 10;
         }
-        .cover-detroit { top: 10px; left: 10px; transform: rotate(-4deg); }
-        .cover-atlanta { top: 20px; left: 200px; transform: rotate(2deg); }
-        .cover-soweto { top: 5px; left: 390px; transform: rotate(-3deg); }
-        .cover-australia { top: 260px; left: 110px; transform: rotate(4deg); }
-        .cover-rome { top: 270px; left: 300px; transform: rotate(-2deg); }
         .covers-caption {
             font-family: 'Libre Baskerville', serif;
             font-style: italic;
