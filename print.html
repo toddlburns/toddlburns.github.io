@@ -185,10 +185,52 @@
             font-style: italic;
         }
 
+        .covers-spread {
+            position: relative;
+            height: 420px;
+            margin: 30px 0;
+            overflow: visible;
+        }
+        .covers-spread img {
+            position: absolute;
+            width: 180px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease, z-index 0s;
+        }
+        .covers-spread img:hover {
+            transform: scale(1.4) rotate(0deg) !important;
+            z-index: 10;
+        }
+        .cover-detroit { top: 10px; left: 0; transform: rotate(-4deg); }
+        .cover-soweto { top: 30px; left: 190px; transform: rotate(3deg); }
+        .cover-australia { top: 0; left: 380px; transform: rotate(-2deg); }
+        .cover-rome { top: 200px; left: 100px; transform: rotate(5deg); }
+        .covers-caption {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 8px;
+        }
+
         @media (max-width: 600px) {
             .columns { column-count: 1; }
             .masthead h1 { font-size: 38px; }
             .headline { font-size: 28px; }
+            .covers-spread {
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .covers-spread img {
+                position: static;
+                width: 45%;
+                transform: none !important;
+            }
         }
     </style>
 </head>
@@ -218,6 +260,14 @@
 
             <p>Each edition was tailored to its host city, with local writers and photographers contributing alongside the RBMA editorial team. The result was a series of one-off publications that captured musical moments in Detroit, Atlanta, Chile, Russia, Australia, South Africa, and Brazil.</p>
         </div>
+
+        <div class="covers-spread">
+            <img class="cover-detroit" src="images/note-detroit.jpg" alt="The Note — Live from Detroit">
+            <img class="cover-soweto" src="images/note-soweto.jpg" alt="The Note — Live from Soweto">
+            <img class="cover-australia" src="images/note-australia.jpg" alt="The Note — A Very Australian Edition">
+            <img class="cover-rome" src="images/note-rome.jpg" alt="The Note — Il Cielo Su Roma">
+        </div>
+        <div class="covers-caption">Four editions of The Note: Detroit, Soweto, Australia, and Rome</div>
 
         <hr class="article-divider">
 
