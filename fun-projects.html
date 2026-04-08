@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Projects - Todd L. Burns</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0a;
+            color: #00ff41;
+            font-family: 'VT323', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* CRT scanlines */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,0.15) 0px,
+                rgba(0,0,0,0.15) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            z-index: 1000;
+        }
+
+        /* CRT flicker */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+        }
+
+        .screen {
+            animation: flicker 4s infinite;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back {
+            font-size: 18px;
+            color: #00ff41;
+            text-decoration: none;
+            opacity: 0.5;
+        }
+        .back:hover { opacity: 1; }
+
+        h1 {
+            font-size: 48px;
+            margin: 30px 0;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+            letter-spacing: 4px;
+        }
+
+        .prompt {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .prompt .cursor {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .project {
+            border: 1px solid #00ff4133;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,65,0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .project:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0,255,65,0.15);
+        }
+
+        .project:hover::before {
+            left: 100%;
+        }
+
+        .project-name {
+            font-size: 28px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px #00ff41;
+        }
+
+        .project-name a {
+            color: #00ff41;
+            text-decoration: none;
+        }
+        .project-name a:hover {
+            text-decoration: underline;
+        }
+
+        .project-img {
+            width: 100%;
+            margin-bottom: 12px;
+            border: 1px solid #00ff4133;
+            filter: grayscale(60%) brightness(0.8) contrast(1.1);
+            transition: filter 0.3s;
+        }
+
+        .project:hover .project-img {
+            filter: grayscale(0%) brightness(1) contrast(1);
+        }
+
+        .project-desc {
+            font-size: 18px;
+            color: #00cc33;
+            line-height: 1.5;
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 14px;
+            border: 1px solid #00ff4144;
+            padding: 2px 8px;
+            margin-top: 10px;
+            color: #00ff4188;
+        }
+
+        .section-label {
+            font-size: 16px;
+            color: #00ff4155;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid #00ff4122;
+            padding-bottom: 8px;
+        }
+
+        .project-desc a, .project-tag a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Random glitch on hover */
+        .project:hover .project-name {
+            animation: glitch 0.3s ease;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 1px); }
+            40% { transform: translate(2px, -1px); }
+            60% { transform: translate(-1px, 2px); }
+            80% { transform: translate(1px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .project-name { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <a href="/" class="back">&lt; BACK</a>
+        <h1>DIGITAL PROJECTS</h1>
+
+        <div class="project-desc" style="margin: 20px 0 30px; font-size: 20px; line-height: 1.6;">I've been building things on the web for over two decades now. Whether it's interactive experiments, data visualizations, or archival deep dives, I love finding new ways to bring ideas to life online. Here's a selection of some of that work.</div>
+
+        <div class="project">
+            <img class="project-img" src="images/album-art-iq.png" alt="Album Art IQ">
+            <div class="project-name">Album Art IQ</div>
+            <div class="project-desc">This was an online game meant to test your memory of iconic album covers. Once you started the game, album covers would slowly became less pixelated. The faster you identified the record sleeve, the more points you got.</div>
+            <span class="project-tag">GAME</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/future-instruments.png" alt="Future Instruments 2214">
+            <div class="project-name">Future Instruments 2214</div>
+            <div class="project-desc">For this project, Red Bull Music Academy asked future-inclined artists and thinkers like Tyler, The Creator, Jeff Mills, and Konstantin Grcic to describe what type of musical instruments would exist in 200 years. <a href="https://laughton.kim/">Kim Laughton</a> then brought their descriptions to life.</div>
+            <span class="project-tag">INTERACTIVE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ ANIMADE (<a href="https://www.official.business/">MIKE GUPPY</a> & JAMES CHAMBERS)</span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/eternal-bliss.png" alt="Eternal Bliss">
+            <div class="project-name">Eternal Bliss</div>
+            <div class="project-desc">This was a tongue-in-cheek guided meditation website. Visitors could swap out the soothing narration and background music on the fly, mixing and matching their way to inner peace — or total absurdity.</div>
+            <span class="project-tag">SATIRE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://www.jamespants.com/">JAMES PANTS</a></span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/shattered-streams.png" alt="Shattered Streams">
+            <div class="project-name">Shattered Streams</div>
+            <div class="project-desc">An experiment in musical ephemerality. We presented original music from 31 artists — including William Basinski, Fennesz, and Wolf Eyes — each track available to stream on a loop for a maximum of 24 hours. Over that time, the audio slowly degraded until it simply disappeared. You either caught it or you didn't.</div>
+            <span class="project-tag">EXPERIMENT</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/online-comics.png" alt="Online Comics">
+            <div class="project-name">Online Comics</div>
+            <div class="project-desc">I commissioned four animated comic works celebrating musicians with strong ties to Japan. The lineup: MF DOOM (written by Gabe Soria, art by Dean Haspiel), DJ Krush (by Haruhisa Nakata), Damo Suzuki (written by Zack Soto, art by Connor Willumsen), and Isao Tomita (written by Jordan Ferguson, art by Yuko Ichijo). The project was managed by Marc Weidenbaum. Each comic was then animated for the web.</div>
+            <span class="project-tag">ANIMATION</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ ANIMADE (<a href="https://www.official.business/">MIKE GUPPY</a> & JAMES CHAMBERS)</span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/mixing-board.png" alt="Mixing Board">
+            <div class="project-name">Mixing Board</div>
+            <div class="project-desc">An interactive audio toy that let visitors control the BPM and volume of individual parts within different tracks. As you adjusted the mix, the visual environment shifted in response — the emotional intensity of the page followed the music.</div>
+            <span class="project-tag">AUDIO</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/vinyl-marketwatch.jpg" alt="Vinyl Marketwatch">
+            <div class="project-name">Vinyl Marketwatch</div>
+            <div class="project-desc">A daily data visualization tracking market movers by genre within the Discogs vinyl marketplace — think stock ticker, but for records. Teki Latex anchored the project with regular video commentary on the trends.</div>
+            <span class="project-tag">DATA</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://www.jamespants.com/">JAMES PANTS</a></span>
+        </div>
+
+        <div class="project">
+            <img class="project-img" src="images/endless-80s-nyc.jpg" alt="Endless 80s NYC">
+            <div class="project-name">Endless 80s NYC</div>
+            <div class="project-desc">An infinite scroll through ten of the most influential New York independent record labels of the 1980s. Folder Studio curated over 700 images — album covers, found footage, and original content — to celebrate the vibrant energy and blending of cultures that defined the era.</div>
+            <span class="project-tag">INTERACTIVE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
+        </div>
+
+        <div class="project">
+            <video class="project-img" src="images/rbma-daily.mp4" autoplay loop muted playsinline></video>
+            <div class="project-name">RBMA Daily</div>
+            <div class="project-desc">I worked with <a href="https://www.acolorbright.com/en">A Color Bright</a> to launch RBMA Daily, a music editorial site built to be flexible enough to accommodate ambitious visual storytelling. That meant I could commission illustrators and animators for individual features — like the <a href="https://daily.redbullmusicacademy.com/2017/03/meredith-monk-feature">pigtail illustrations by Megan Bishop for a Meredith Monk profile</a> or the <a href="https://daily.redbullmusicacademy.com/2016/01/jean-michel-jarre-live-feature">animated GIFs by Benedikt Rugar woven through a Jean-Michel Jarre live feature</a> — knowing the platform could handle whatever we threw at it.</div>
+            <span class="project-tag">EDITORIAL</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://www.acolorbright.com/en">A COLOR BRIGHT</a></span>
+        </div>
+
+        <!-- Future: Stylus Magazine Archive -->
+        <!-- Future: Music Journalism Insider Archive -->
+
+    </div>
+</body>
+</html>
