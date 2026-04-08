@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Projects - Todd L. Burns</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5f0e8;
+            color: #1a1a1a;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .newspaper {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .back {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 12px;
+            color: #888;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .back:hover { color: #1a1a1a; }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            border-bottom: 4px double #1a1a1a;
+            padding-bottom: 12px;
+            margin-bottom: 4px;
+        }
+
+        .masthead-date {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .masthead h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 58px;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .masthead-motto {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .thin-rule {
+            border: none;
+            border-top: 1px solid #1a1a1a;
+            margin: 4px 0;
+        }
+
+        .thick-rule {
+            border: none;
+            border-top: 3px solid #1a1a1a;
+            margin: 4px 0 20px;
+        }
+
+        /* Articles */
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.15;
+            text-align: center;
+            margin: 24px 0 6px;
+        }
+
+        .subhead {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 15px;
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .byline {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 11px;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .columns {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid #ccc;
+        }
+
+        .columns p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .columns p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 8px;
+            padding-top: 4px;
+            font-weight: 900;
+        }
+
+        .article-image {
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+
+        .article-divider {
+            border: none;
+            border-top: 1px solid #1a1a1a;
+            margin: 30px 0;
+        }
+
+        .second-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .second-article {
+            margin-top: 16px;
+        }
+
+        .second-article p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        .featured-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-style: italic;
+            text-align: center;
+            margin: 16px 0;
+            color: #444;
+        }
+
+        .footer-rule {
+            border: none;
+            border-top: 4px double #1a1a1a;
+            margin-top: 40px;
+        }
+
+        .footer-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 11px;
+            text-align: center;
+            color: #999;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        .covers-spread {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0 30px;
+        }
+        .covers-spread img {
+            width: 130px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease;
+        }
+        .covers-spread img:hover {
+            transform: scale(1.3);
+            z-index: 10;
+        }
+        .covers-caption {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .columns { column-count: 1; }
+            .masthead h1 { font-size: 38px; }
+            .headline { font-size: 28px; }
+            .covers-spread {
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .covers-spread img {
+                position: static;
+                width: 45%;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <a href="/" class="back">&larr; Home</a>
+
+        <div class="masthead">
+            <div class="masthead-date"></div>
+            <h1>Print Projects</h1>
+        </div>
+        <hr class="thin-rule">
+        <hr class="thick-rule">
+
+        <div class="headline">The Note</div>
+
+        <div class="covers-spread">
+            <img class="cover-detroit" src="images/note-detroit.jpg" alt="The Note — Live from Detroit">
+            <img class="cover-atlanta" src="images/note-atlanta.jpg" alt="The Note — Atlanta">
+            <img class="cover-soweto" src="images/note-soweto.jpg" alt="The Note — Live from Soweto">
+            <img class="cover-rome" src="images/note-rome.jpg" alt="The Note — Il Cielo Su Roma">
+        </div>
+
+        <div class="columns">
+            <p>At Red Bull Music Academy, I worked on various editions of The (Daily) Note, a print newspaper created to support local activations in various cities and countries.</p>
+
+            <p>The newspaper covered local music scenes with the depth and seriousness they deserved, bringing longform journalism, photography, and illustration together in a physical format that felt immediate and vital.</p>
+
+            <p>Each edition was tailored to its host city, with local writers and photographers contributing alongside the RBMA editorial team. The result was a series of one-off publications that captured musical moments in Detroit, Atlanta, Chile, Russia, Australia, South Africa, and Brazil.</p>
+        </div>
+
+        <hr class="article-divider">
+
+        <div class="headline">For The Record</div>
+
+        <img class="article-image" src="images/for-the-record-book-cover.webp" alt="For The Record open book">
+        <img class="article-image" src="images/for-the-record-02.jpg" alt="For The Record typography spread">
+        <img class="article-image" src="images/for-the-record-03.jpg" alt="Lee Scratch Perry at For The Record">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: 10px; color: #999; text-align: right; margin-bottom: 16px;">Photos: <a href="https://doublestandards.net/" style="color: #999;">Double Standards</a>, <a href="https://danwilton.co.uk/" style="color: #999;">Dan Wilton</a>, <a href="https://studioriethmueller.com/projects/rbma" style="color: #999;">Studio Riethm&uuml;ller</a></div>
+
+        <div class="second-article">
+            <p>As part of RBMA's 15th anniversary, I co-edited the book <em>For The Record: Conversations with People Who Have Shaped the Way We Listen to Music</em>, which paired up musicians we thought might have something interesting to say to one another.</p>
+
+            <p>The concept was simple but produced extraordinary results: put two artists who admire each other's work into a room and let them talk. No interviewer, no agenda. What emerged were conversations that revealed the creative process in ways that traditional interviews rarely achieve.</p>
+
+            <div class="featured-names">Featuring Erykah Badu &middot; Nile Rodgers &middot; Cosey Fanni Tutti &middot; Lee "Scratch" Perry</div>
+        </div>
+
+        <hr class="footer-rule">
+    </div>
+</body>
+</html>
