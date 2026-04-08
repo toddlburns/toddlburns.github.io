@@ -138,7 +138,7 @@
 
     <script>
         const links = [
-            { text: 'Bio', href: '/bio.html' },
+            { text: 'Bio', href: '/bio.html', funHref: '/fun-bio.html' },
             { text: 'Digital Projects', href: '/projects.html' },
             { text: 'Print Projects', href: '/print.html' },
             { text: 'Playlists', href: 'https://toddlburns.github.io/globe-playlists/' },
@@ -167,6 +167,11 @@
             document.body.classList.remove('serious');
             navList.style.display = 'none';
 
+            // Swap to fun URLs
+            floaters.forEach((f, i) => {
+                if (links[i].funHref) f.el.href = links[i].funHref;
+            });
+
             floaters.forEach((f, i) => {
                 document.body.appendChild(f.el);
                 f.x = positions[i].left;
@@ -189,9 +194,10 @@
             animId = null;
             document.body.classList.add('serious');
             navList.style.display = '';
-            floaters.forEach(f => {
+            floaters.forEach((f, i) => {
                 f.el.style.left = '';
                 f.el.style.top = '';
+                if (links[i].funHref) f.el.href = links[i].href;
                 navList.appendChild(f.el);
             });
         }
