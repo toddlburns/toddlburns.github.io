@@ -142,7 +142,7 @@
             { text: 'Digital Projects', href: '/projects.html', funHref: '/fun-projects.html' },
             { text: 'Print Projects', href: '/print.html', funHref: '/fun-print.html' },
             { text: 'Playlists', href: '/playlists.html', funHref: 'https://toddlburns.github.io/globe-playlists/' },
-            { text: 'Hats', href: 'https://toddlburns.github.io/crambe-repetita-hats/' },
+            { text: 'Hats', href: 'https://toddlburns.github.io/crambe-repetita-hats/', funOnly: true },
             { text: 'Contact', href: 'mailto:todd.burns@gmail.com' },
         ];
 
@@ -154,8 +154,9 @@
         links.forEach((link, i) => {
             const el = document.createElement('a');
             el.className = 'float-link';
-            el.href = link.href;
+            el.href = link.href || '#';
             el.textContent = link.text;
+            if (link.funOnly) el.style.display = 'none';
             navList.appendChild(el);
             floaters.push({ el, x: 0, y: 0, dx: 0, dy: 0 });
         });
@@ -167,9 +168,10 @@
             document.body.classList.remove('serious');
             navList.style.display = 'none';
 
-            // Swap to fun URLs
+            // Swap to fun URLs and show funOnly links
             floaters.forEach((f, i) => {
                 if (links[i].funHref) f.el.href = links[i].funHref;
+                if (links[i].funOnly) f.el.style.display = '';
             });
 
             floaters.forEach((f, i) => {
@@ -198,6 +200,7 @@
                 f.el.style.left = '';
                 f.el.style.top = '';
                 if (links[i].funHref) f.el.href = links[i].href;
+                if (links[i].funOnly) f.el.style.display = 'none';
                 navList.appendChild(f.el);
             });
         }
