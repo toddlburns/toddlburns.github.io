@@ -326,5 +326,169 @@
         <div class="toggle-track"><div class="knob"></div></div>
         <span class="toggle-label-right">Fun</span>
     </div>
+
+    <style>
+        /* Fold animation: cover folds into a narrow triangle shape */
+        @keyframes fold-to-plane {
+            0% {
+                transform: perspective(800px) rotateY(0) scaleX(1) scaleY(1);
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            30% {
+                transform: perspective(800px) rotateY(15deg) scaleX(0.7) scaleY(0.9);
+                clip-path: polygon(5% 10%, 95% 0%, 95% 100%, 5% 90%);
+            }
+            60% {
+                transform: perspective(600px) rotateY(30deg) scaleX(0.4) scaleY(0.75);
+                clip-path: polygon(15% 20%, 85% 5%, 85% 95%, 15% 80%);
+            }
+            100% {
+                transform: perspective(400px) rotateY(0deg) scaleX(0.15) scaleY(0.6);
+                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 50% 50%);
+                opacity: 0;
+            }
+        }
+
+        .folding {
+            animation: fold-to-plane 1.2s ease-in forwards;
+            transform-origin: center center;
+        }
+
+        .paper-airplane {
+            position: fixed;
+            z-index: 500;
+            font-size: 36px;
+            pointer-events: none;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+    </style>
+
+    <script>
+    (function() {
+        setTimeout(() => {
+            const covers = document.querySelectorAll('.covers-spread img');
+
+            covers.forEach((img, i) => {
+                setTimeout(() => {
+                    const rect = img.getBoundingClientRect();
+                    img.classList.add('folding');
+
+                    // After fold, spawn a paper airplane
+                    img.addEventListener('animationend', () => {
+                        img.style.display = 'none';
+
+                        const plane = document.createElement('div');
+                        plane.className = 'paper-airplane';
+                        plane.textContent = '✈';
+                        plane.style.left = (rect.left + rect.width / 2) + 'px';
+                        plane.style.top = (rect.top + rect.height / 2) + 'px';
+                        document.body.appendChild(plane);
+
+                        // Fly the airplane around the page
+                        const p = {
+                            el: plane,
+                            x: rect.left + rect.width / 2,
+                            y: rect.top + rect.height / 2,
+                            angle: -45 + Math.random() * 90, // initial flight angle in degrees
+                            speed: 1.5 + Math.random() * 1.5,
+                            wobble: 0,
+                            wobbleSpeed: 0.02 + Math.random() * 0.02,
+                            wobbleAmp: 15 + Math.random() * 10,
+                            t: 0,
+                        };
+
+                        function fly() {
+                            p.t++;
+                            p.wobble = Math.sin(p.t * p.wobbleSpeed) * p.wobbleAmp;
+
+                            const rad = (p.angle + p.wobble) * Math.PI / 180;
+                            p.x += Math.cos(rad) * p.speed;
+                            p.y += Math.sin(rad) * p.speed;
+
+                            const W = window.innerWidth;
+                            const H = window.innerHeight;
+
+                            // Bounce off edges by adjusting flight angle
+                            if (p.x < 20) { p.x = 20; p.angle = 180 - p.angle + (Math.random() - 0.5) * 30; }
+                            if (p.x > W - 40) { p.x = W - 40; p.angle = 180 - p.angle + (Math.random() - 0.5) * 30; }
+                            if (p.y < 20) { p.y = 20; p.angle = -p.angle + (Math.random() - 0.5) * 30; }
+                            if (p.y > H - 60) { p.y = H - 60; p.angle = -p.angle + (Math.random() - 0.5) * 30; }
+
+                            // Normalize angle
+                            p.angle = ((p.angle % 360) + 360) % 360;
+
+                            // Slow drift in angle for swooping paths
+                            p.angle += (Math.random() - 0.5) * 0.5;
+
+                            const visualAngle = p.angle + p.wobble;
+                            p.el.style.left = p.x + 'px';
+                            p.el.style.top = p.y + 'px';
+                            p.el.style.transform = `rotate(${visualAngle}deg)`;
+
+                            requestAnimationFrame(fly);
+                        }
+
+                        requestAnimationFrame(fly);
+                    }, { once: true });
+
+                }, i * 1000);
+            });
+
+        }, 4000);
+
+        // Ink smudge: slowly scramble random words in the text
+        setTimeout(() => {
+            const columnPs = document.querySelectorAll('.columns p, .second-article p');
+            const allWords = [];
+
+            columnPs.forEach(p => {
+                const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+                const textNodes = [];
+                while (walker.nextNode()) textNodes.push(walker.currentNode);
+                textNodes.forEach(node => {
+                    if (node.parentNode.tagName === 'STRONG' || node.parentNode.tagName === 'EM') return;
+                    const words = node.textContent.split(/(\s+)/);
+                    const frag = document.createDocumentFragment();
+                    words.forEach(w => {
+                        if (w.trim().length > 3) {
+                            const span = document.createElement('span');
+                            span.textContent = w;
+                            span.dataset.original = w;
+                            frag.appendChild(span);
+                            allWords.push(span);
+                        } else {
+                            frag.appendChild(document.createTextNode(w));
+                        }
+                    });
+                    node.parentNode.replaceChild(frag, node);
+                });
+            });
+
+            setInterval(() => {
+                if (allWords.length === 0) return;
+                const span = allWords[Math.floor(Math.random() * allWords.length)];
+                const orig = span.dataset.original;
+                if (orig.length < 4) return;
+
+                const first = orig[0];
+                const last = orig[orig.length - 1];
+                const middle = orig.slice(1, -1).split('');
+                for (let i = middle.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [middle[i], middle[j]] = [middle[j], middle[i]];
+                }
+                span.textContent = first + middle.join('') + last;
+                span.style.color = '#8b1a1a';
+                span.style.fontStyle = 'italic';
+
+                setTimeout(() => {
+                    span.textContent = span.dataset.original;
+                    span.style.color = '';
+                    span.style.fontStyle = '';
+                }, 4000 + Math.random() * 3000);
+            }, 1200);
+        }, 6000);
+    })();
+    </script>
 </body>
 </html>
