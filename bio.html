@@ -50,6 +50,45 @@
             color: #333;
             padding-left: 20px;
         }
+    
+    .page-toggle {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        user-select: none;
+    }
+    .page-toggle a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .page-toggle .toggle-track {
+        width: 36px;
+        height: 18px;
+        border-radius: 9px;
+        position: relative;
+        cursor: pointer;
+    }
+    .page-toggle .knob {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+    }
+
+    .page-toggle .toggle-label-left { color: #222; }
+    .page-toggle .toggle-label-right { color: #ccc; }
+    .page-toggle .toggle-track { background: #ccc; }
+    .page-toggle .knob { left: 2px; }
+
     </style>
 </head>
 <body>
@@ -81,6 +120,12 @@
             <div class="years">2019 &ndash; 2023</div>
             <p>I created and edited <strong>Music Journalism Insider</strong>, a newsletter / publication. Featuring news, interviews, job listings, and more, it reflected my deep passion for the industry.</p>
         </div>
+    </div>
+
+    <div class="page-toggle" onclick='window.location.href="/fun-bio.html"'>
+        <span class="toggle-label-left">Serious</span>
+        <div class="toggle-track"><div class="knob"></div></div>
+        <span class="toggle-label-right">Fun</span>
     </div>
 </body>
 </html>

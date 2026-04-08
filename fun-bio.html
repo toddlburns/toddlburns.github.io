@@ -72,6 +72,50 @@
         .char.hit {
             opacity: 0;
         }
+    
+    .page-toggle {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        user-select: none;
+    }
+    .page-toggle a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .page-toggle .toggle-track {
+        width: 36px;
+        height: 18px;
+        border-radius: 9px;
+        position: relative;
+        cursor: pointer;
+    }
+    .page-toggle .knob {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+    }
+
+    .page-toggle .toggle-label-left { color: #ccc; }
+    .page-toggle .toggle-label-right {
+        background: linear-gradient(90deg, #ff0000, #ff8800, #ffdd00, #00cc00, #0066ff, #8800ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .page-toggle .toggle-track { background: #34C759; }
+    .page-toggle .knob { left: 20px; }
+
     </style>
 </head>
 <body>
@@ -229,5 +273,11 @@
         requestAnimationFrame(frame);
     })();
     </script>
+
+    <div class="page-toggle" onclick='window.location.href="/bio.html"'>
+        <span class="toggle-label-left">Serious</span>
+        <div class="toggle-track"><div class="knob"></div></div>
+        <span class="toggle-label-right">Fun</span>
+    </div>
 </body>
 </html>

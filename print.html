@@ -88,6 +88,45 @@
             border-top: 1px solid #ddd;
             margin: 40px 0;
         }
+    
+    .page-toggle {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        user-select: none;
+    }
+    .page-toggle a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .page-toggle .toggle-track {
+        width: 36px;
+        height: 18px;
+        border-radius: 9px;
+        position: relative;
+        cursor: pointer;
+    }
+    .page-toggle .knob {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+    }
+
+    .page-toggle .toggle-label-left { color: #222; }
+    .page-toggle .toggle-label-right { color: #ccc; }
+    .page-toggle .toggle-track { background: #ccc; }
+    .page-toggle .knob { left: 2px; }
+
     </style>
 </head>
 <body>
@@ -121,6 +160,12 @@
             <div class="featured-names">Featuring Erykah Badu &middot; Nile Rodgers &middot; Cosey Fanni Tutti &middot; Lee "Scratch" Perry</div>
         </div>
 
+    </div>
+
+    <div class="page-toggle" onclick='window.location.href="/fun-print.html"'>
+        <span class="toggle-label-left">Serious</span>
+        <div class="toggle-track"><div class="knob"></div></div>
+        <span class="toggle-label-right">Fun</span>
     </div>
 </body>
 </html>
