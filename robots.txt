@@ -1,0 +1,5 @@
+# The museum is not public (2026-08-30). It sits behind a password, linked from the links page.
+# This rule has to live here, at the domain root: a robots.txt inside /crambe-repetita-museum/
+# is never read by a crawler, so the copy in that repo is documentation, not enforcement.
+User-agent: *
+Disallow: /crambe-repetita-museum/
