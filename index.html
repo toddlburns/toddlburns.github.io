@@ -142,6 +142,7 @@
             { text: 'Digital Projects', href: '/projects.html', funHref: '/fun-projects.html' },
             { text: 'Print Projects', href: '/print.html', funHref: '/fun-print.html' },
             { text: 'Playlists', href: '/playlists.html', funHref: 'https://toddlburns.github.io/globe-playlists/' },
+            { text: 'Museum', funText: 'Art Roulette', href: 'https://crambe-repetita-museum.pages.dev/', funHref: 'https://crambe-repetita-museum.pages.dev/roulette/' },
             { text: 'Hats', href: 'https://toddlburns.github.io/crambe-repetita-hats/', funOnly: true },
             { text: 'Contact', href: 'mailto:todd.burns@gmail.com' },
         ];
@@ -171,6 +172,7 @@
             // Swap to fun URLs and show funOnly links
             floaters.forEach((f, i) => {
                 if (links[i].funHref) f.el.href = links[i].funHref;
+                if (links[i].funText) f.el.textContent = links[i].funText;
                 if (links[i].funOnly) f.el.style.display = '';
             });
 
@@ -200,6 +202,7 @@
                 f.el.style.left = '';
                 f.el.style.top = '';
                 if (links[i].funHref) f.el.href = links[i].href;
+                if (links[i].funText) f.el.textContent = links[i].text;
                 if (links[i].funOnly) f.el.style.display = 'none';
                 navList.appendChild(f.el);
             });
