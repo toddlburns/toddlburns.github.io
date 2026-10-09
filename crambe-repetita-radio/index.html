@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into ambient music in his own voice. Each piece lasts exactly as long as the album it reviewed.">
+<title>Crambe Repetita Radio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+[hidden]{display:none!important}
+/* Layout: one full-bleed field of light the music paints; quiet fixed type in Times New Roman (as the Crambe Repetita Museum); the station name rides the top; a point of light at the centre; Todd's Serious/Fun switch at the foot. Single dark world by choice. */
+:root{
+  --ink:#05070B; --fg:#EEF0F4; --dim:rgba(238,240,244,.62); --faint:rgba(238,240,244,.38); --line:rgba(238,240,244,.2);
+  --on:#34C759; --track:rgba(238,240,244,.28);
+  --face:"Times New Roman",Times,serif;
+  --site:Georgia,"Times New Roman",serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{background:var(--ink);color:var(--fg);overflow:hidden;font-family:var(--face)}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block}
+.top{position:fixed;left:0;right:0;top:0;z-index:2;padding-inline:16px;padding-top:calc(env(safe-area-inset-top,0px) + 22px);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none}
+h1{font-family:var(--face);font-weight:400;font-size:clamp(1.15rem,3.2vw,2.4rem);line-height:1;letter-spacing:.01em;margin:0;white-space:nowrap}
+.now{margin:0;font-family:var(--face);font-size:.85rem;letter-spacing:.02em;color:var(--dim);text-align:center;max-width:40rem;line-height:1.6;font-variant-numeric:tabular-nums;transition:opacity 1.6s ease}
+.now .np-time{font-size:.75rem;color:var(--faint)}
+
+body.quiet .now{opacity:0}
+/* Play / Pause: just the symbol, floating on the light */
+#play{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;border:0;background:transparent;color:var(--fg);cursor:pointer;padding:24px;display:grid;place-items:center;transition:opacity .6s}
+#play svg{width:clamp(40px,6vw,56px);height:clamp(40px,6vw,56px);fill:currentColor;filter:drop-shadow(0 0 18px rgba(0,0,0,.25))}
+#play[data-state="on"]{opacity:.3}
+#play:hover,#play:focus-visible{opacity:1}
+#play[aria-busy="true"]{opacity:.5}
+.status{position:fixed;left:16px;right:16px;top:calc(50% + 70px);text-align:center;font-size:.7rem;letter-spacing:.08em;color:var(--dim);margin:0;z-index:2}
+/* Serious/Fun: the same switch as toddlburns.com */
+.bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 24px);z-index:2}
+.toggle{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;font-family:var(--site);font-size:12px;letter-spacing:1px;color:var(--faint);text-decoration:none}
+.toggle-track{width:36px;height:18px;background:var(--track);border-radius:9px;position:relative;transition:background .3s}
+.toggle-track .knob{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:left .3s}
+.toggle.active .toggle-track{background:var(--on)}
+.toggle.active .knob{left:20px}
+.toggle-label-left,.toggle-label-right{transition:color .3s}
+.toggle .toggle-label-left{color:var(--fg)}
+.toggle .toggle-label-right{color:var(--faint)}
+.toggle.active .toggle-label-left{color:var(--faint)}
+.toggle.active .toggle-label-right{background:linear-gradient(90deg,#ff0000,#ff8800,#ffdd00,#00cc00,#0066ff,#8800ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){#play{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<div class="top">
+  <h1 id="title">Crambe Repetita Radio</h1>
+  <p class="now" id="now" aria-live="polite">Tuning in…</p>
+</div>
+
+<button id="play" aria-label="Play" data-state="off">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+</button>
+<p class="status" id="status" role="status" hidden></p>
+
+
+<div class="bottom">
+  <a class="toggle active" id="mode" href="https://toddlburns.com/" aria-label="Switch to the serious site, toddlburns.com">
+    <span class="toggle-label-left">Serious</span>
+    <span class="toggle-track"><span class="knob"></span></span>
+    <span class="toggle-label-right">Fun</span>
+  </a>
+</div>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){ return document.getElementById(id); };
+function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+function hash(s){ var h=5381; for(var i=0;i<s.length;i++) h=((h<<5)+h+s.charCodeAt(i))>>>0; return h; }
+function fmt(t){ t=Math.max(0,Math.floor(t)); var h=Math.floor(t/3600), m=Math.floor(t%3600/60), s=t%60; return (h?h+':'+(m<10?'0':''):'')+m+':'+(s<10?'0':'')+s; }
+
+/* ================= the station: every review, in the order written, each as long as its album ================= */
+var ST=null, N=0, START=[], TOTAL=0, EPOCH=0;
+function stationNow(){ return (((Date.now()/1000-EPOCH)%TOTAL)+TOTAL)%TOTAL; }
+function reviewAt(p){ var lo=0, hi=N-1; while(lo<hi){ var m=(lo+hi+1)>>1; if(START[m]<=p) lo=m; else hi=m-1; } return lo; }
+
+/* ================= reading a review: the rules ================= */
+var MODES={A:[0,2,4,6,7,9,11],B:[0,2,4,5,7,9,10],C:[0,2,3,5,7,9,10],D:[0,2,3,5,7,8,10],F:[0,1,3,5,7,8,10]};
+var LETTER_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+var LET={a:['ah','ae','aw'],e:['eh','ee'],i:['ih','ee'],o:['oh','aw'],u:['oo','uh'],y:['ee'],r:['er']};
+var RE=/([A-Za-z0-9\u00C0-\u024F]+(?:[\u2019'][A-Za-z]+)*)|([.,!?;:])|([-\u2013\u2014])/g;
+function gradeLetter(g){ var c=(g||'C').trim().charAt(0).toUpperCase(); return MODES[c]?c:'C'; }
+function warmth(g){ var b={A:1,B:.75,C:.5,D:.25,F:0}[gradeLetter(g)]; g=(g||'').split('/')[0]; return clamp(b+(/\+/.test(g)?.07:/-/.test(g)?-.07:0),0,1); }
+var cache={};
+function prep(ri){
+  if(cache[ri]) return cache[ri];
+  var R=ST[ri], mode=MODES[gradeLetter(R.g)], first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
+  var root=(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, words=[], sum=0;
+  R.x.split(/\n\n/).forEach(function(par,p){
+    var m, last=null; RE.lastIndex=0;
+    while((m=RE.exec(par.replace(/\*/g,'')))){
+      if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),para:p,gap:0,dash:false}; words.push(last); }
+      else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else last.gap+=1.6; }
+    }
+    if(last) last.gap+=4;
+  });
+  words.forEach(function(w){ w.wt=1+.18*Math.min(w.key.length,12)+(w.dash?.5:0); sum+=w.wt+w.gap; });
+  var unit=R.s/Math.max(1,sum), t=0;
+  words.forEach(function(w,i){
+    w.start=t; w.dur=w.wt*unit; t+=(w.wt+w.gap)*unit;
+    w.L=clamp((w.dur+w.gap*unit)*2.6,5,30);
+    var base=48+(root+5*w.para)%12, d=hash(w.key)%7, steps=[d,d+2,d+4].concat(w.key.length>5?[d+7]:[]);
+    w.notes=steps.map(function(s){ return base+12*Math.floor(s/7)+mode[s%7]; });
+    var cols=[]; for(var c=0;c<w.key.length;c++){ (LET[w.key[c]]||[]).forEach(function(v){ if(BYV[v]) cols.push(v); }); }
+    w.cols=cols.length?cols:['uh']; w.closed=/[mn]/.test(w.key); w.h=hash(w.key); w.i=i;
+  });
+  return (cache[ri]={words:words, warm:warmth(R.g)});
+}
+
+/* ================= the sound: Todd's own vowels, held in grains ================= */
+var VOW=null, BYV={}, SPRITE=null, G=.12, IDX=null, IDB=null, STING=null;
+function makeEngine(ctx){
+  var hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=120; hp.Q.value=.6;
+  var comp=ctx.createDynamicsCompressor(); comp.threshold.value=-18; comp.ratio.value=3; comp.attack.value=.05; comp.release.value=.8;
+  var master=ctx.createGain(); master.gain.value=0;
+  var dry=ctx.createGain(); dry.gain.value=.5;
+  var verb=ctx.createConvolver(), wet=ctx.createGain(); wet.gain.value=.85;
+  (function(){ var n=Math.floor(ctx.sampleRate*5), b=ctx.createBuffer(2,n,ctx.sampleRate);
+    for(var c=0;c<2;c++){ var d=b.getChannelData(c); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*1.3)); }
+    verb.buffer=b; })();
+  var duck=ctx.createGain();
+  hp.connect(dry); hp.connect(verb); verb.connect(wet); dry.connect(comp); wet.connect(comp); comp.connect(duck); duck.connect(master); master.connect(ctx.destination);
+  var analyser=ctx.createAnalyser(); analyser.fftSize=1024; master.connect(analyser);
+  /* Todd's announcer voice: never ducked, a touch of the same hall, barely above the music */
+  var vg=ctx.createGain(); vg.gain.value=.9; var vs=ctx.createGain(); vs.gain.value=.1;
+  vg.connect(ctx.destination); vg.connect(analyser); vg.connect(vs); vs.connect(verb);
+  var grains={}, voices=[], bus=null, seed=1, spoken=[];
+  function rnd(){ seed=(seed*1103515245+12345)>>>0; return (seed>>>8)/16777216; }
+  function newBus(){ bus=ctx.createGain(); bus.connect(hp); voices=[]; }
+  function grain(vi,k){
+    var key=vi*4+k; if(grains[key]) return grains[key];
+    var v=VOW[vi], sr=SPRITE.sampleRate, d=SPRITE.getChannelData(0), n=Math.round(G*sr);
+    var lo=v.o+v.n*.3, hi=v.o+v.n*.7-G, at=hi>lo ? lo+(hi-lo)*k/3 : v.o+v.n/2-G/2;
+    var b=ctx.createBuffer(1,n,sr), o=b.getChannelData(0), a=Math.max(0,Math.round(at*sr));
+    for(var i=0;i<n;i++) o[i]=(d[a+i]||0)*(.5-.5*Math.cos(2*Math.PI*i/(n-1)));
+    return (grains[key]=b);
+  }
+  function curve(level,x0){ var c=new Float32Array(48); for(var i=0;i<48;i++){ var x=x0+(1-x0)*i/47; c[i]=level*Math.pow(Math.sin(Math.PI*x),1.5)+1e-5; } return c; }
+  /* one held note: a vowel of Todd's, tuned to the chord, as a stream of overlapping grains */
+  function voice(vi,midi,pan,t0,L,closed,level){
+    var now=ctx.currentTime+.03, from=Math.max(t0,now); if(t0+L<=from+.05) return;
+    var f=440*Math.pow(2,(midi-69)/12), rate=f/VOW[vi].f; while(rate>1.6) rate/=2; while(rate<.7) rate*=2;
+    var g=ctx.createGain(); g.gain.value=0;
+    g.gain.setValueCurveAtTime(curve(level,(from-t0)/L),from,t0+L-from);
+    var out=g;
+    if(closed){ var lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=500; g.connect(lp); var bo=ctx.createGain(); bo.gain.value=2.2; lp.connect(bo); out=bo; }
+    var p=ctx.createStereoPanner?ctx.createStereoPanner():null; if(p){ p.pan.value=pan; out.connect(p); p.connect(bus); } else out.connect(bus);
+    voices.push({vi:vi,rate:rate,g:g,t:from,end:t0+L,hop:G/rate/3});
+  }
+  function word(w,t0){
+    var n=w.notes.length, level=1.2/Math.sqrt(n);
+    w.notes.forEach(function(m,k){
+      var col=w.cols[(k+w.i)%w.cols.length], list=BYV[col];
+      voice(list[(w.h+k)%list.length], m, (k/Math.max(1,n-1))*1.2-.6, t0, w.L, w.closed, level);
+    });
+  }
+  function grainsUntil(H){
+    voices=voices.filter(function(v){
+      while(v.t<H && v.t<v.end){
+        var s=ctx.createBufferSource(); s.buffer=grain(v.vi,Math.floor(rnd()*4)); s.playbackRate.value=v.rate; s.connect(v.g); s.start(v.t);
+        v.t+=v.hop*(.85+.3*rnd());
+      }
+      return v.t<v.end;
+    });
+  }
+  function sting(t){ if(!STING) return 0; var s=ctx.createBufferSource(); s.buffer=STING; var g=ctx.createGain(); g.gain.value=.8; s.connect(g); g.connect(ctx.destination); g.connect(analyser); s.start(t); spoken.push(s); return STING.duration; }
+  function speak(name,t){ var c=IDX&&IDX[name]; if(!c) return 0; var s=ctx.createBufferSource(); s.buffer=IDB; s.connect(vg); s.start(t,c[0],c[1]); spoken.push(s); return c[1]; }
+  function hushVoice(){ var n=ctx.currentTime; spoken.forEach(function(x){ try{x.stop(n+.05);}catch(e){} }); spoken=[]; }
+  function duckFor(t0,t1){ duck.gain.setTargetAtTime(.45,Math.max(ctx.currentTime,t0-.6),.3); duck.gain.setTargetAtTime(1,t1+.4,1.2); }
+  return {ctx:ctx, master:master, analyser:analyser, newBus:newBus, word:word, grainsUntil:grainsUntil, speak:speak, sting:sting, duckFor:duckFor, hushVoice:hushVoice,
+    kill:function(){ var b=bus, n=ctx.currentTime; spoken.forEach(function(x){ try{x.stop(n+.3);}catch(e){} }); spoken=[]; duck.gain.cancelScheduledValues(n); duck.gain.setTargetAtTime(1,n,.2); if(!b) return; voices=[]; b.gain.setValueAtTime(b.gain.value,n); b.gain.linearRampToValueAtTime(0,n+.6); setTimeout(function(){ try{b.disconnect();}catch(e){} },900); bus=null; }};
+}
+
+/* ================= transport: you tune in to wherever the station is now ================= */
+var ctx=null, eng=null, playing=false, starting=false, anchorCtx=0, anchorPos=0, cur=null, timer=null, lock=null, hush=null;
+var identUntil=0, lastBoundary=0, stingAt=0, events=[];
+var SEQ={welcome:['welcome'], top:['open_00',.9,'conceit'], half:['open_30'], sting:['STING']};
+function ident(kind,t){
+  var tt=t; SEQ[kind].forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
+  eng.duckFor(t,tt); identUntil=tt; events.push({k:kind==='sting'?'sting':'voice', t:t, L:tt-t}); return tt;
+}
+function posAt(T){ return anchorPos+(T-anchorCtx); }                    /* unwrapped station seconds */
+function cursorAt(P){                                                    /* first word whose wash is still sounding at P */
+  var loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), base=loop+START[ri], ws=prep(ri).words, wi=0;
+  while(wi<ws.length && base+ws[wi].start+ws[wi].L<P) wi++;
+  return {ri:ri,wi:wi,base:base};
+}
+function tick(){
+  var H=ctx.currentTime+2, HP=posAt(H);
+  for(var guard=0;guard<400;guard++){
+    var ws=prep(cur.ri).words;
+    if(cur.wi>=ws.length){
+      var hand=anchorCtx+(cur.base+ST[cur.ri].s-anchorPos);         /* this review hands off to the next */
+      if(hand>ctx.currentTime+.2){ if(hand<identUntil+.5) hand=identUntil+.5; ident('sting',hand); stingAt=hand; }
+      cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue;
+    }
+    var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break;
+    eng.word(w, anchorCtx+(gs-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
+  }
+  eng.grainsUntil(H);
+  var ms=Date.now(), next=Math.ceil(ms/1800000)*1800000, tB=ctx.currentTime+(next-ms)/1000;
+  if(tB<H && next!==lastBoundary){ lastBoundary=next; if(tB>identUntil+20) ident(new Date(next).getMinutes()===0?'top':'half',tB); }
+}
+function unlock(){
+  try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+  try{
+    if(!hush){
+      var n=4000, b=new Uint8Array(44+n), v=new DataView(b.buffer);
+      [0x52494646,36+n,0x57415645,0x666d7420].forEach(function(x,i){ if(i===1) v.setUint32(4,x,true); else v.setUint32(i*4,x,false); });
+      v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,8000,true); v.setUint32(28,8000,true);
+      v.setUint16(32,1,true); v.setUint16(34,8,true); v.setUint32(36,0x64617461,false); v.setUint32(40,n,true);
+      for(var i=44;i<b.length;i++) b[i]=128;
+      var bin=''; for(var j=0;j<b.length;j++) bin+=String.fromCharCode(b[j]);
+      hush=new Audio('data:audio/wav;base64,'+btoa(bin)); hush.loop=true; hush.setAttribute('playsinline','');
+    }
+    var pr=hush.play(); if(pr&&pr.catch) pr.catch(function(){});
+  }catch(e){}
+}
+function say(m){ $('status').textContent=m; $('status').hidden=!m; }
+var loading=null;
+function loadSound(c){
+  if(loading) return loading;
+  var dec=function(u){ return fetch(u).then(function(r){ return r.arrayBuffer(); }).then(function(b){ return new Promise(function(ok,no){ c.decodeAudioData(b,ok,no); }); }); };
+  loading=Promise.all([fetch('vowels.json').then(function(r){ return r.json(); }), dec('vowels.mp3'),
+    fetch('idents.json').then(function(r){ return r.json(); }), dec('idents.mp3'), dec('sting.mp3')])
+  .then(function(r){ VOW=r[0]; SPRITE=r[1]; IDX=r[2]; IDB=r[3]; STING=r[4]; BYV={}; VOW.forEach(function(v,i){ (BYV[v.v]=BYV[v.v]||[]).push(i); }); cache={}; });
+  return loading;
+}
+function play(){
+  if(starting||playing||!ST) return;
+  if(!ctx){ ctx=new (window.AudioContext||window.webkitAudioContext)(); eng=makeEngine(ctx); }
+  unlock(); starting=true; $('play').setAttribute('aria-busy','true');
+  var go=function(){
+    if(ctx.state!=='running'){ starting=false; $('play').removeAttribute('aria-busy'); say('Your browser is blocking sound. Tap Play again.'); return; }
+    if(!SPRITE) say('Tuning in…');
+    loadSound(ctx).then(function(){
+      starting=false; $('play').removeAttribute('aria-busy'); say('');
+      eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorPos=stationNow();
+      cur=cursorAt(anchorPos);
+      eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(.9,ctx.currentTime+3);
+      playing=true; tick(); timer=setInterval(tick,250);
+      ident('welcome',ctx.currentTime+1.5);
+      $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
+      try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
+    },function(){ starting=false; $('play').removeAttribute('aria-busy'); say('The sound files did not load. Reload the page and try again.'); });
+  };
+  ctx.resume().then(go,go);
+}
+function pause(){
+  if(!playing) return; playing=false; clearInterval(timer);
+  eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill();
+  $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0;
+  try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
+}
+$('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
+
+/* ================= what's on ================= */
+var shown=-1;
+function nowLine(){
+  if(!ST) return;
+  var P=playing?posAt(ctx.currentTime):stationNow(), loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), R=ST[ri], into=P-loop-START[ri];
+  var nx=ST[(ri+1)%N];
+  if(ri!==shown){ shown=ri; tempTarget=warmth(R.g); }
+  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span><br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+/* ================= the picture: B · Light, painted by the music ================= */
+var cv=$('gl'), gl=cv.getContext('webgl2',{antialias:false,alpha:false}), tempTarget=.5, temp=.5, energy=0, time=0, last=performance.now();
+var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches, NB=8;
+var FS='#version 300 es\nprecision highp float;out vec4 o;uniform vec2 res;uniform float time,temp,energy,dim,rise;uniform vec4 bl[8];\n'+
+'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}\n'+
+'float n2(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1,0)),u.x),mix(h21(i+vec2(0,1)),h21(i+vec2(1,1)),u.x),u.y);}\n'+
+'float fbm(vec2 p){float v=0.,a=.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<5;i++){v+=a*n2(p);p=m*p;a*=.5;}return v;}\n'+
+'vec3 g3(vec3 a,vec3 b,vec3 c,float t){t=clamp(t,0.,1.);return t<.5?mix(a,b,t*2.):mix(b,c,t*2.-1.);}\n'+
+'vec3 pal(float t,float k){vec3 cold=g3(vec3(.02,.04,.12),vec3(.26,.48,.78),vec3(.78,.84,.98),t);'+
+'vec3 mid=g3(vec3(.01,.09,.11),vec3(.16,.5,.52),vec3(.93,.74,.78),t);'+
+'vec3 warm=g3(vec3(.11,.02,.07),vec3(.93,.42,.33),vec3(1.,.84,.55),t);'+
+'return k<.5?mix(cold,mid,k*2.):mix(mid,warm,k*2.-1.);}\n'+
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float t=time*.05;'+
+/* each sounding word bends the field toward itself and lights it from within */
+'vec2 w=vec2(0.);vec3 glow=vec3(0.);'+
+'for(int i=0;i<8;i++){vec2 d=p-bl[i].xy;float s=bl[i].z;float r=.16+.22*s;float g=exp(-dot(d,d)/(r*r))*s;w+=d*g*.35;glow+=pal(bl[i].w,temp)*g;}'+
+'vec2 q=vec2(fbm(p*1.1+w+vec2(0.,t)),fbm(p*1.1-w+vec2(5.2,1.3)-t));'+
+'vec2 r=vec2(fbm(p*1.3+2.2*q+vec2(1.7,9.2)+t*1.3),fbm(p*1.3+2.2*q+vec2(8.3,2.8)-t*1.1));'+
+'float f=fbm(p*.9+2.4*r);vec3 c=pal(clamp(f*1.3-.12+.18*r.x,0.,1.),temp);'+
+'c*=.28+.9*smoothstep(.2,.95,f)+.25*energy;'+
+'c+=glow*(.3+.5*f);'+
+'c+=pal(.96,temp)*.13*smoothstep(.55,1.,fbm(vec2(p.x*.5+t*.6,p.y*3.2+q.x)));'+
+/* the sting: a slow sunrise from below; Todd speaking: the lights go down a little */
+'c+=pal(.97,temp)*rise*(.55*smoothstep(.55,-.6,p.y)+.25);c*=1.-.28*dim;'+
+'c*=1.-.32*dot(p,p);'+
+/* dither twice the grain of an 8-bit step, so big gradients never band */
+'c+=(h21(gl_FragCoord.xy+fract(time*7.)*91.)-.5)*.03+(h21(gl_FragCoord.yx*1.7+fract(time*3.)*37.)-.5)/255.;o=vec4(c,1);}';
+var prog=null, uni={};
+if(gl){
+  var sh=function(t,src){ var x=gl.createShader(t); gl.shaderSource(x,src); gl.compileShader(x); if(!gl.getShaderParameter(x,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; };
+  try{
+    prog=gl.createProgram();
+    gl.attachShader(prog,sh(gl.VERTEX_SHADER,'#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}'));
+    gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS)); gl.bindAttribLocation(prog,0,'a'); gl.linkProgram(prog); gl.useProgram(prog);
+    ['res','time','temp','energy','dim','rise','bl'].forEach(function(n){ uni[n]=gl.getUniformLocation(prog,n); });
+    var vb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vb); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+  }catch(e){ console.error(e); prog=null; }
+}
+function resize(){ var d=Math.min(window.devicePixelRatio||1,1.5)*.7; cv.width=Math.max(2,Math.round(innerWidth*d)); cv.height=Math.max(2,Math.round(innerHeight*d)); }
+window.addEventListener('resize',resize); resize();
+
+/* each sounding word becomes a light in the field */
+var buf=new Float32Array(1024), BLV=new Float32Array(NB*4);
+function place(w){ var h=w.h>>>0, a=innerWidth/Math.max(1,innerHeight); return {x:((h%997)/997-.5)*a*.7, y:(((h>>>10)%991)/991-.5)*.6}; }
+function frame(now){
+  var dt=Math.min(.05,(now-last)/1000); last=now; time+=dt*(calm?.35:1);
+  temp+=(tempTarget-temp)*Math.min(1,dt*.15);
+  var T=playing&&ctx?ctx.currentTime:0, dim=0, rise=0;
+  if(playing&&eng){
+    eng.analyser.getFloatTimeDomainData(buf); var s=0; for(var i=0;i<buf.length;i++) s+=buf[i]*buf[i];
+    energy+=(Math.min(1,Math.sqrt(s/buf.length)*6)-energy)*Math.min(1,dt*1.5);
+    for(var e=events.length-1;e>=0;e--){
+      var ev=events[e], age=(T-ev.t)/ev.L;
+      if(age>1){ events.splice(e,1); continue; }
+      if(age<0) continue;
+      var env=Math.pow(Math.sin(Math.PI*age),1.5);
+      if(ev.k==='voice') dim=Math.max(dim,Math.min(1,Math.min(age*ev.L,(1-age)*ev.L)/.6));
+      else if(ev.k==='sting') rise=Math.max(rise,Math.pow(Math.sin(Math.PI*Math.min(1,age*1.15)),1.2));
+      else {
+        ev.env=env; if(!ev.pos) ev.pos=place(ev.w);
+      }
+    }
+  } else energy*=Math.exp(-dt*.8);
+  /* the brightest few sounding words become lights in the field */
+  var ws=events.filter(function(ev){ return ev.k==='w' && ev.env>0 && T>=ev.t; }).sort(function(a,b){ return b.env-a.env; }).slice(0,NB);
+  for(var k=0;k<NB;k++){ var ev2=ws[k]; if(ev2){ var p=ev2.pos||place(ev2.w); BLV.set([p.x,p.y,ev2.env,.45+(ev2.w.h%7)/7*.5],k*4); } else BLV.set([9,9,0,0],k*4); }
+  if(now-lastLine>500){ lastLine=now; nowLine(); }
+  if(prog){
+    gl.uniform2f(uni.res,cv.width,cv.height); gl.uniform1f(uni.time,time); gl.uniform1f(uni.temp,temp); gl.uniform1f(uni.energy,energy);
+    gl.uniform1f(uni.dim,dim); gl.uniform1f(uni.rise,rise); gl.uniform4fv(uni.bl,BLV);
+    gl.viewport(0,0,cv.width,cv.height); gl.drawArrays(gl.TRIANGLES,0,3);
+  }
+  requestAnimationFrame(frame);
+}
+var lastLine=0;
+
+/* the information keeps out of the way: it fades while you listen and comes back when you move */
+var quietTimer=null;
+function poke(){ document.body.classList.remove('quiet'); clearTimeout(quietTimer); if(playing) quietTimer=setTimeout(function(){ if(playing) document.body.classList.add('quiet'); },5000); }
+['pointermove','pointerdown','keydown','touchstart'].forEach(function(n){ window.addEventListener(n,poke,{passive:true}); });
+
+/* Serious/Fun, as on toddlburns.com: the knob slides to Serious, then the serious site opens */
+$('mode').addEventListener('click',function(e){ e.preventDefault(); var a=this; a.classList.remove('active'); setTimeout(function(){ location.href=a.href; },350); });
+
+fetch('station.json').then(function(r){ return r.json(); }).then(function(d){
+  ST=d.reviews; N=ST.length; EPOCH=Date.parse(d.epoch)/1000; var t=0; START=ST.map(function(R){ var s=t; t+=R.s; return s; }); TOTAL=t;
+  var ri=reviewAt(stationNow()); temp=tempTarget=warmth(ST[ri].g); nowLine();
+}).catch(function(){ $('now').textContent='The station schedule did not load. Reload the page.'; });
+requestAnimationFrame(function(t){ last=t; frame(t); });
+
+/* for checking levels without listening: render the station offline from any position */
+window.CRR={
+  render:function(at,secs){
+    var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
+    return loadSound(oc).then(function(){
+      e.newBus(); e.master.gain.value=.9; anchorCtx=0; anchorPos=at; var c=cursorAt(at), saved=cur; cur=c;
+      var save=eng; eng=e; var H=secs; var HP=at+secs;
+      for(var g=0;g<4000;g++){ var ws=prep(cur.ri).words; if(cur.wi>=ws.length){ cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue; }
+        var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break; var t0=gs-at; if(t0+w.L>0) e.word(w,t0); cur.wi++; }
+      e.grainsUntil(H); eng=save; cur=saved;
+      return oc.startRendering();
+    });
+  },
+  stingAt:function(){ return stingAt&&ctx ? stingAt-ctx.currentTime : null; },
+  now:function(){ var P=stationNow(), ri=reviewAt(P); return {review:ST[ri], into:P-START[ri], total:TOTAL}; }
+};
+})();
+</script>
+</body>
+</html>
