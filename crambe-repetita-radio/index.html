@@ -24,6 +24,8 @@ body{background:var(--ink);color:var(--fg);overflow:hidden;font-family:var(--fac
 h1{font-family:var(--face);font-weight:400;font-size:clamp(1.15rem,3.2vw,2.4rem);line-height:1;letter-spacing:.01em;margin:0;white-space:nowrap}
 .now{margin:0;font-family:var(--face);font-size:.85rem;letter-spacing:.02em;color:var(--dim);text-align:center;max-width:40rem;line-height:1.6;font-variant-numeric:tabular-nums;transition:opacity 1.6s ease}
 .now .np-time{font-size:.75rem;color:var(--faint)}
+.now .np-word{font-size:.8rem;color:var(--dim)}
+.now .np-word i{color:var(--fg)}
 
 body.quiet .now{opacity:0}
 /* Play / Pause: just the symbol, floating on the light */
@@ -99,7 +101,7 @@ function prep(ri){
   R.x.split(/\n\n/).forEach(function(par,p){
     var m, last=null; RE.lastIndex=0;
     while((m=RE.exec(par.replace(/\*/g,'')))){
-      if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),para:p,gap:0,dash:false}; words.push(last); }
+      if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),text:m[1],para:p,gap:0,dash:false}; words.push(last); }
       else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else last.gap+=1.6; }
     }
     if(last) last.gap+=4;
@@ -183,7 +185,7 @@ function makeEngine(ctx){
 
 /* ================= transport: you tune in to wherever the station is now ================= */
 var ctx=null, eng=null, playing=false, starting=false, anchorCtx=0, anchorPos=0, cur=null, timer=null, lock=null, hush=null;
-var identUntil=0, lastBoundary=0, stingAt=0, events=[];
+var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null;
 var SEQ={welcome:['welcome'], top:['open_00',.9,'conceit'], half:['open_30'], sting:['STING']};
 function ident(kind,t){
   var tt=t; SEQ[kind].forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
@@ -259,7 +261,7 @@ function play(){
 function pause(){
   if(!playing) return; playing=false; clearInterval(timer);
   eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill();
-  $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0;
+  $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
 }
 $('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
@@ -271,7 +273,7 @@ function nowLine(){
   var P=playing?posAt(ctx.currentTime):stationNow(), loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), R=ST[ri], into=P-loop-START[ri];
   var nx=ST[(ri+1)%N];
   if(ri!==shown){ shown=ri; tempTarget=warmth(R.g); }
-  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span><br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
+  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span><br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>'+(playing&&nowWord?'<br><span class="np-word">You are currently listening to the word: <i>'+esc(nowWord.text)+'</i></span>':'');
 }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
@@ -340,6 +342,7 @@ function frame(now){
     }
   } else energy*=Math.exp(-dt*.8);
   /* the brightest few sounding words become lights in the field */
+  var lw=null; events.forEach(function(ev){ if(ev.k==='w' && T>=ev.t && (!lw || ev.t>lw.t)) lw=ev; }); if(lw && lw.w!==nowWord){ nowWord=lw.w; nowLine(); }
   var ws=events.filter(function(ev){ return ev.k==='w' && ev.env>0 && T>=ev.t; }).sort(function(a,b){ return b.env-a.env; }).slice(0,NB);
   for(var k=0;k<NB;k++){ var ev2=ws[k]; if(ev2){ var p=ev2.pos||place(ev2.w); BLV.set([p.x,p.y,ev2.env,.45+(ev2.w.h%7)/7*.5],k*4); } else BLV.set([9,9,0,0],k*4); }
   if(now-lastLine>500){ lastLine=now; nowLine(); }
