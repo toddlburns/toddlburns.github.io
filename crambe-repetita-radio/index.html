@@ -273,7 +273,7 @@ function nowLine(){
   var P=playing?posAt(ctx.currentTime):stationNow(), loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), R=ST[ri], into=P-loop-START[ri];
   var nx=ST[(ri+1)%N];
   if(ri!==shown){ shown=ri; tempTarget=warmth(R.g); }
-  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span><br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>'+(playing&&nowWord?'<br><span class="np-word">You are currently listening to the word: <i>'+esc(nowWord.text)+'</i></span>':'');
+  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span>'+(playing&&nowWord?'<br><span class="np-word">You are currently listening to the word: <i>'+esc(nowWord.text)+'</i></span>':'')+'<br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
 }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
