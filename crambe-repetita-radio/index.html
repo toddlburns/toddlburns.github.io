@@ -7,7 +7,7 @@
 <title>Crambe Repetita Radio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
 <style>
 *{box-sizing:border-box}
 body{margin:0}
@@ -52,16 +52,15 @@ body.quiet .now{opacity:0}
 .toggle.active .toggle-label-left{color:var(--faint)}
 .toggle.active .toggle-label-right{background:linear-gradient(90deg,#ff0000,#ff8800,#ffdd00,#00cc00,#0066ff,#8800ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
-/* two ornate lines that surface inside the light and sink back: the one flourish against the plain Times */
-#phrases{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-#phrases span{position:absolute;left:0;top:0;white-space:nowrap;font-family:"Monsieur La Doulaise","Snell Roundhand","Apple Chancery",cursive;font-size:clamp(3.4rem,10vw,9rem);line-height:1.2;color:#fff;
-  mix-blend-mode:soft-light;opacity:0;filter:blur(.4px);transition:opacity 7s ease-in-out;will-change:opacity,transform}
+/* two lines in a hand-written cursive, written letter by letter onto a line that waves like the light */
+#phrases{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:soft-light}
+#phrases text{font-family:"Sacramento","Snell Roundhand","Apple Chancery",cursive;font-size:clamp(1.7rem,3.4vw,2.9rem);fill:#fff}
 @media (prefers-reduced-motion: reduce){#play{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
-<div id="phrases" aria-hidden="true"><span>Cut my reviews into pieces</span><span>This is my last retort</span></div>
+<svg id="phrases" aria-hidden="true"><defs><path id="wv" d="M0 0"/></defs><text id="ph"><textPath href="#wv" id="phtp"></textPath></text><text id="phm" opacity="0"></text></svg>
 
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
@@ -233,10 +232,13 @@ function makeEngine(ctx){
 
 /* ================= transport: you tune in to wherever the station is now ================= */
 var ctx=null, eng=null, playing=false, starting=false, anchorCtx=0, anchorPos=0, cur=null, timer=null, lock=null, hush=null;
-var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null;
+var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null, factsDone={};
+/* one fun fact per piece: Todd's intro, "Fun fact about this one", then a fact. Which fact and when both follow the clock, so every listener hears the same one */
+var NFACT=13;
+function factFor(ri,base){ return {at:base+ST[ri].s*(.2+.6*((hash(ST[ri].a+'~'+ST[ri].t)%1000)/1000)), seq:['ff_intro',.7,'ff_lead',.35,'ff_'+('0'+((ri*5)%NFACT+1)).slice(-2)]}; }
 var SEQ={welcome:['welcome'], top:['open_00',.9,'conceit'], half:['open_30'], sting:['STING']};
-function ident(kind,t){
-  var tt=t; SEQ[kind].forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
+function ident(kind,t,seq){
+  var tt=t; (seq||SEQ[kind]).forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
   eng.duckFor(t,tt); identUntil=tt; events.push({k:kind==='sting'?'sting':'voice', t:t, L:tt-t}); return tt;
 }
 function posAt(T){ return anchorPos+(T-anchorCtx); }                    /* unwrapped station seconds */
@@ -258,6 +260,8 @@ function tick(){
     eng.word(w, anchorCtx+(gs-anchorPos), cur.ri, cur.base, anchorCtx+(cur.base+ST[cur.ri].s-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
   }
   eng.grainsUntil(H);
+  var P0=posAt(ctx.currentTime), loop=Math.floor(P0/TOTAL)*TOTAL, rn=reviewAt(P0-loop), bn=loop+START[rn], F=factFor(rn,bn);
+  if(!factsDone[bn] && F.at>P0+.5 && F.at<=HP){ factsDone[bn]=1; var tf=anchorCtx+(F.at-anchorPos); if(tf<identUntil+3) tf=identUntil+3; ident('fact',tf,F.seq); }
   var ms=Date.now(), next=Math.ceil(ms/1800000)*1800000, tB=ctx.currentTime+(next-ms)/1000;
   if(tB<H && next!==lastBoundary){ lastBoundary=next; if(tB>identUntil+20) ident(new Date(next).getMinutes()===0?'top':'half',tB); }
 }
@@ -403,20 +407,36 @@ function frame(now){
 }
 var lastLine=0;
 
-/* the two phrases take turns: surface somewhere in the light, hold, sink back, rest */
+/* the two phrases take turns: written in letter by letter on a wave that keeps moving, held, then unwritten */
 (function(){
-  var els=[].slice.call(document.querySelectorAll('#phrases span')), k=0, calmP=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function drift(el,x,y,t0,sc){ (function step(){ if(el.style.opacity==='0'&&performance.now()-t0>9000) return; var a=(performance.now()-t0)/1000;
-    el.style.transform='translate('+(x+a*4).toFixed(1)+'px,'+(y-a*3).toFixed(1)+'px) translate(-50%,-50%) rotate(-4deg) scale('+sc+')'; requestAnimationFrame(step); })(); }
+  var LINES=['Cut my reviews into pieces','This is my last retort'], k=0, NS='http://www.w3.org/2000/svg';
+  var path=$('wv'), tp=$('phtp'), meas=$('phm'), calmP=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur=null;
+  function wave(now){
+    if(cur){
+      var t=now/1000, len=cur.len, y0=cur.y, x0=cur.x, pts=[];
+      for(var x=0;x<=len+24;x+=12){ var y=y0+(calmP?0:11*Math.sin(2*Math.PI*x/280+t*.55)+5*Math.sin(2*Math.PI*x/130-t*.8)); pts.push((x0+x).toFixed(1)+' '+y.toFixed(1)); }
+      path.setAttribute('d','M'+pts.join(' L'));
+      var a=(now-cur.t0)/1000, n=cur.spans.length;
+      cur.spans.forEach(function(sp,i){
+        var on=a-.35-i*.09, off=a-cur.hold-i*.05;                        /* written in at ~11 letters a second, unwritten a little faster */
+        var o=Math.max(0,Math.min(1,on/.35))*(1-Math.max(0,Math.min(1,off/.5)));
+        sp.setAttribute('opacity',(o*.75).toFixed(3));
+      });
+      if(a>cur.hold+n*.05+1) cur=null;
+    }
+    requestAnimationFrame(wave);
+  }
+  requestAnimationFrame(wave);
   function next(){
-    var el=els[k++%els.length], W=innerWidth, H=innerHeight;
-    var w=el.offsetWidth, sc=Math.min(1,(W*.78)/Math.max(1,w)), half=w*sc/2+24;             /* fit the whole phrase on screen, drift included */
-    var x=half>=W/2 ? W/2 : half+(W-2*half)*Math.random(), y=H*(Math.random()<.5 ? .26+.1*Math.random() : .64+.1*Math.random());
-    if(x+half+60>W) x=Math.max(W/2,W-half-60);
-    el.style.opacity='0'; var t0=performance.now(); if(!calmP) drift(el,x,y,t0,sc); else el.style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) rotate(-4deg) scale('+sc+')';
-    setTimeout(function(){ el.style.opacity='.55'; },50);
-    setTimeout(function(){ el.style.opacity='0'; },13000);
-    setTimeout(next,24000+Math.random()*16000);
+    var line=LINES[k++%LINES.length], W=innerWidth, H=innerHeight;
+    meas.textContent=line; var L=meas.getComputedTextLength()*1.08+8, len=Math.min(L,W-40);
+    var x=20+(W-40-len)*Math.random(), y=H*(Math.random()<.5 ? .27+.1*Math.random() : .64+.1*Math.random());
+    while(tp.firstChild) tp.removeChild(tp.firstChild);
+    var spans=line.split('').map(function(ch){ var sp=document.createElementNS(NS,'tspan'); sp.textContent=ch; sp.setAttribute('opacity','0'); tp.appendChild(sp); return sp; });
+    if(L>W-40) $('ph').setAttribute('textLength',String(len-8)), $('ph').setAttribute('lengthAdjust','spacingAndGlyphs'); else { $('ph').removeAttribute('textLength'); }
+    cur={spans:spans,len:len,x:x,y:y,t0:performance.now(),hold:.35+spans.length*.09+9};
+    setTimeout(next,cur.hold*1000+16000+Math.random()*14000);
   }
   setTimeout(next,4000);
 })();
@@ -448,6 +468,8 @@ window.CRR={
       return oc.startRendering();
     });
   },
+  factIn:function(){ var P=stationNow(), ri=reviewAt(P); return factFor(ri,START[ri]).at-P; },
+  factsScheduled:function(){ return Object.keys(factsDone).length; },
   stingAt:function(){ return stingAt&&ctx ? stingAt-ctx.currentTime : null; },
   now:function(){ var P=stationNow(), ri=reviewAt(P); return {review:ST[ri], into:P-START[ri], total:TOTAL}; }
 };
