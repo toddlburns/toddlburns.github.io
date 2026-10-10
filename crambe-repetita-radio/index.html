@@ -60,7 +60,7 @@ body.quiet .now{opacity:0}
 </head>
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
-<svg id="phrases" aria-hidden="true"><defs><path id="wv" d="M0 0"/></defs><text id="ph"><textPath href="#wv" id="phtp"></textPath></text><text id="phm" opacity="0"></text></svg>
+<svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
@@ -407,38 +407,41 @@ function frame(now){
 }
 var lastLine=0;
 
-/* the two phrases take turns: written in letter by letter on a wave that keeps moving, held, then unwritten */
+/* both lines, written slowly letter by letter on a moving wave (about 8 s), a short pause, a slow fade to nothing, 15 s of nothing, again */
 (function(){
-  var LINES=['Cut my reviews into pieces','This is my last retort'], k=0, NS='http://www.w3.org/2000/svg';
-  var path=$('wv'), tp=$('phtp'), meas=$('phm'), calmP=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cur=null;
-  function wave(now){
+  var LINES=['Cut my reviews into pieces','This is my last retort'], NS='http://www.w3.org/2000/svg';
+  var WRITE=8, EASE=.7, HOLD=1.5, FADE=6, REST=15;
+  var paths=[$('wv0'),$('wv1')], tps=[$('phtp0'),$('phtp1')], txts=[$('ph0'),$('ph1')], grp=$('phg'), meas=$('phm');
+  var calmP=window.matchMedia('(prefers-reduced-motion: reduce)').matches, cur=null;
+  function begin(){
+    var W=innerWidth, H=innerHeight, lens=LINES.map(function(l){ meas.textContent=l; return meas.getComputedTextLength()*1.08+8; });
+    var len=Math.min(Math.max(lens[0],lens[1]),W-40), lh=parseFloat(getComputedStyle(txts[0]).fontSize)*1.15;
+    var x=20+(W-40-len)*Math.random(), y=H*(Math.random()<.5 ? .25+.08*Math.random() : .62+.08*Math.random());
+    var spans=[];
+    LINES.forEach(function(line,j){
+      var tp=tps[j]; while(tp.firstChild) tp.removeChild(tp.firstChild);
+      line.split('').forEach(function(ch){ var sp=document.createElementNS(NS,'tspan'); sp.textContent=ch; sp.setAttribute('opacity','0'); tp.appendChild(sp); spans.push(sp); });
+      if(lens[j]>W-40){ txts[j].setAttribute('textLength',String(len-8)); txts[j].setAttribute('lengthAdjust','spacingAndGlyphs'); } else txts[j].removeAttribute('textLength');
+    });
+    grp.setAttribute('opacity','1');
+    cur={spans:spans,len:len,x:x,y:y,lh:lh,t0:performance.now()};
+  }
+  function frame(now){
     if(cur){
-      var t=now/1000, len=cur.len, y0=cur.y, x0=cur.x, pts=[];
-      for(var x=0;x<=len+24;x+=12){ var y=y0+(calmP?0:11*Math.sin(2*Math.PI*x/280+t*.55)+5*Math.sin(2*Math.PI*x/130-t*.8)); pts.push((x0+x).toFixed(1)+' '+y.toFixed(1)); }
-      path.setAttribute('d','M'+pts.join(' L'));
-      var a=(now-cur.t0)/1000, n=cur.spans.length;
-      cur.spans.forEach(function(sp,i){
-        var on=a-.35-i*.09, off=a-cur.hold-i*.05;                        /* written in at ~11 letters a second, unwritten a little faster */
-        var o=Math.max(0,Math.min(1,on/.35))*(1-Math.max(0,Math.min(1,off/.5)));
-        sp.setAttribute('opacity',(o*.75).toFixed(3));
+      var t=now/1000, a=(now-cur.t0)/1000, n=cur.spans.length, step=(WRITE-EASE)/Math.max(1,n-1);
+      [0,1].forEach(function(j){
+        var pts=[], y0=cur.y+j*cur.lh;
+        for(var x=0;x<=cur.len+24;x+=12){ var y=y0+(calmP?0:10*Math.sin(2*Math.PI*x/300+t*.5+j*.9)+4*Math.sin(2*Math.PI*x/140-t*.75)); pts.push((cur.x+x).toFixed(1)+' '+y.toFixed(1)); }
+        paths[j].setAttribute('d','M'+pts.join(' L'));
       });
-      if(a>cur.hold+n*.05+1) cur=null;
+      cur.spans.forEach(function(sp,i){ var o=Math.max(0,Math.min(1,(a-i*step)/EASE)); sp.setAttribute('opacity',(o*o*(3-2*o)*.8).toFixed(3)); });
+      var f=a-WRITE-HOLD; if(f>0) grp.setAttribute('opacity',Math.max(0,1-f/FADE).toFixed(3));
+      if(f>FADE){ cur=null; setTimeout(begin,REST*1000); }
     }
-    requestAnimationFrame(wave);
+    requestAnimationFrame(frame);
   }
-  requestAnimationFrame(wave);
-  function next(){
-    var line=LINES[k++%LINES.length], W=innerWidth, H=innerHeight;
-    meas.textContent=line; var L=meas.getComputedTextLength()*1.08+8, len=Math.min(L,W-40);
-    var x=20+(W-40-len)*Math.random(), y=H*(Math.random()<.5 ? .27+.1*Math.random() : .64+.1*Math.random());
-    while(tp.firstChild) tp.removeChild(tp.firstChild);
-    var spans=line.split('').map(function(ch){ var sp=document.createElementNS(NS,'tspan'); sp.textContent=ch; sp.setAttribute('opacity','0'); tp.appendChild(sp); return sp; });
-    if(L>W-40) $('ph').setAttribute('textLength',String(len-8)), $('ph').setAttribute('lengthAdjust','spacingAndGlyphs'); else { $('ph').removeAttribute('textLength'); }
-    cur={spans:spans,len:len,x:x,y:y,t0:performance.now(),hold:.35+spans.length*.09+9};
-    setTimeout(next,cur.hold*1000+16000+Math.random()*14000);
-  }
-  setTimeout(next,4000);
+  requestAnimationFrame(frame);
+  setTimeout(begin,3000);
 })();
 
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
