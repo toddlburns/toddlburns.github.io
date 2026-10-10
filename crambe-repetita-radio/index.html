@@ -25,7 +25,8 @@ h1{font-family:var(--face);font-weight:400;font-size:clamp(1.15rem,3.2vw,2.4rem)
 .now{margin:0;font-family:var(--face);font-size:.85rem;letter-spacing:.02em;color:var(--dim);text-align:center;max-width:40rem;line-height:1.6;font-variant-numeric:tabular-nums;transition:opacity 1.6s ease}
 .now .np-time{font-size:.75rem;color:var(--faint)}
 .now .np-word{font-size:.8rem;color:var(--dim)}
-.now .np-word i{color:var(--fg)}
+.now .np-label{font-size:.7rem;letter-spacing:.14em;color:var(--faint)}
+.now .np-the{font-size:1.05rem;font-style:italic;color:var(--fg)}
 
 body.quiet .now{opacity:0}
 /* Play / Pause: just the symbol, floating on the light */
@@ -273,7 +274,7 @@ function nowLine(){
   var P=playing?posAt(ctx.currentTime):stationNow(), loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), R=ST[ri], into=P-loop-START[ri];
   var nx=ST[(ri+1)%N];
   if(ri!==shown){ shown=ri; tempTarget=warmth(R.g); }
-  $('now').innerHTML='<span class="np-title">Now Playing: My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span>'+(playing&&nowWord?'<br><span class="np-word">You are currently listening to the word: <i>'+esc(nowWord.text)+'</i></span>':'')+'<br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
+  $('now').innerHTML='<span class="np-label">NOW PLAYING</span><br><span class="np-title">My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span>'+(playing&&nowWord?'<br><span class="np-word">You are now listening to the word:</span><br><span class="np-the">'+esc(nowWord.text)+'</span>':'')+'<br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
 }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
