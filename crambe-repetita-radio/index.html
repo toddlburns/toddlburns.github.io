@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into ambient music in his own voice. Each piece lasts exactly as long as the album it reviewed.">
 <title>Crambe Repetita Radio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap">
 <style>
 *{box-sizing:border-box}
 body{margin:0}
@@ -49,11 +52,16 @@ body.quiet .now{opacity:0}
 .toggle.active .toggle-label-left{color:var(--faint)}
 .toggle.active .toggle-label-right{background:linear-gradient(90deg,#ff0000,#ff8800,#ffdd00,#00cc00,#0066ff,#8800ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+/* two ornate lines that surface inside the light and sink back: the one flourish against the plain Times */
+#phrases{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+#phrases span{position:absolute;left:0;top:0;white-space:nowrap;font-family:"Monsieur La Doulaise","Snell Roundhand","Apple Chancery",cursive;font-size:clamp(3.4rem,10vw,9rem);line-height:1.2;color:#fff;
+  mix-blend-mode:soft-light;opacity:0;filter:blur(.4px);transition:opacity 7s ease-in-out;will-change:opacity,transform}
 @media (prefers-reduced-motion: reduce){#play{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
+<div id="phrases" aria-hidden="true"><span>Cut my reviews into pieces</span><span>This is my last retort</span></div>
 
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
@@ -103,9 +111,9 @@ function prep(ri){
     var m, last=null; RE.lastIndex=0;
     while((m=RE.exec(par.replace(/\*/g,'')))){
       if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),text:m[1],para:p,gap:0,dash:false}; words.push(last); }
-      else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else last.gap+=1.6; }
+      else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else { last.gap+=1.6; last.stop=true; if(ch==='?') last.ask=true; } }
     }
-    if(last) last.gap+=4;
+    if(last){ last.gap+=4; last.stop=true; }
   });
   words.forEach(function(w){ w.wt=1+.18*Math.min(w.key.length,12)+(w.dash?.5:0); sum+=w.wt+w.gap; });
   var unit=R.s/Math.max(1,sum), t=0;
@@ -113,11 +121,22 @@ function prep(ri){
     w.start=t; w.dur=w.wt*unit; t+=(w.wt+w.gap)*unit;
     w.L=clamp((w.dur+w.gap*unit)*2.6,5,30);
     var base=48+(root+5*w.para)%12, d=hash(w.key)%7, steps=[d,d+2,d+4].concat(w.key.length>5?[d+7]:[]);
+    if(w.ask) steps.push(d+8);                      /* a question leaves a note hanging */
     w.notes=steps.map(function(s){ return base+12*Math.floor(s/7)+mode[s%7]; });
+    w.layer=[0,12,-12][w.para%3];                  /* each paragraph changes the layering: none, an octave up, an octave down */
     var cols=[]; for(var c=0;c<w.key.length;c++){ (LET[w.key[c]]||[]).forEach(function(v){ if(BYV[v]) cols.push(v); }); }
     w.cols=cols.length?cols:['uh']; w.closed=/[mn]/.test(w.key); w.h=hash(w.key); w.i=i;
   });
-  return (cache[ri]={words:words, warm:warmth(R.g)});
+  /* sentences: a phrase with a shape, and a hum underneath */
+  var sents=[], s0=0;
+  words.forEach(function(w,i){ if(w.stop||i===words.length-1){ sents.push({a:s0,b:i}); s0=i+1; } });
+  sents.forEach(function(S,k){ for(var i=S.a;i<=S.b;i++){ var w=words[i]; w.sent=k; w.arc=S.b>S.a?(i-S.a)/(S.b-S.a):.5; }
+    var a=words[S.a], b=words[S.b]; S.root=a.notes[0]; S.t=a.start; S.dur=b.start+b.dur-a.start; a.sfirst=S; });
+  /* the review's own setting: room from the album's year, texture from the review, brightness from the grade, pulse from its pace */
+  var room=clamp((R.y-1999)/7,0,1), wpm=words.length/Math.max(1,R.s/60);
+  var set={fam:['breath','shimmer','low','pulse'][ri%4], decay:.8+4.5*room, wet:.5+.45*room,
+           cut:1100+2900*warmth(R.g), prate:clamp(wpm/40,.08,.3)};
+  return (cache[ri]={words:words, warm:warmth(R.g), set:set, sents:sents});
 }
 
 /* ================= the sound: Todd's own vowels, held in grains ================= */
@@ -132,16 +151,33 @@ function makeEngine(ctx){
     for(var c=0;c<2;c++){ var d=b.getChannelData(c); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*1.3)); }
     verb.buffer=b; })();
   var duck=ctx.createGain();
-  hp.connect(dry); hp.connect(verb); verb.connect(wet); dry.connect(comp); wet.connect(comp); comp.connect(duck); duck.connect(master); master.connect(ctx.destination);
-  var analyser=ctx.createAnalyser(); analyser.fftSize=1024; master.connect(analyser);
+  verb.connect(wet); wet.connect(comp); comp.connect(duck); duck.connect(master);
+  var lim=ctx.createDynamicsCompressor(); lim.threshold.value=-4; lim.knee.value=2; lim.ratio.value=20; lim.attack.value=.002; lim.release.value=.25; master.connect(lim); lim.connect(ctx.destination);
+  var analyser=ctx.createAnalyser(); analyser.fftSize=1024; lim.connect(analyser);
   /* Todd's announcer voice: never ducked, a touch of the same hall, barely above the music */
   var vg=ctx.createGain(); vg.gain.value=.9; var vs=ctx.createGain(); vs.gain.value=.1;
   vg.connect(ctx.destination); vg.connect(analyser); vg.connect(vs); vs.connect(verb);
-  var grains={}, voices=[], bus=null, seed=1, spoken=[];
+  var grains={}, voices=[], bus=null, seed=1, spoken=[], rooms={};
   function rnd(){ seed=(seed*1103515245+12345)>>>0; return (seed>>>8)/16777216; }
-  function newBus(){ bus=ctx.createGain(); bus.connect(hp); voices=[]; }
-  function grain(vi,k){
-    var key=vi*4+k; if(grains[key]) return grains[key];
+  function newBus(){ bus=ctx.createGain(); bus.connect(comp); voices=[]; rooms={}; }
+  /* each review plays in its own room: its own reverb, its own texture */
+  function room(key,set,until){
+    if(rooms[key]) return rooms[key];
+    var inp=ctx.createGain(), h=ctx.createBiquadFilter(); h.type='highpass'; h.frequency.value=120; h.Q.value=.6;
+    var d=ctx.createGain(); d.gain.value=.5; var c=ctx.createConvolver(), w=ctx.createGain(); w.gain.value=set.wet*1.2;
+    var n=Math.floor(ctx.sampleRate*set.decay*2.2), b=ctx.createBuffer(2,n,ctx.sampleRate);
+    for(var ch=0;ch<2;ch++){ var x=b.getChannelData(ch); for(var i=0;i<n;i++) x[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*set.decay*.45)); }
+    c.buffer=b; c.normalize=true;
+    var head=inp;
+    if(set.fam==='pulse'){                                  /* slow breathing pulses, at the review's own pace */
+      var pg=ctx.createGain(); pg.gain.value=.55; var lfo=ctx.createOscillator(); lfo.frequency.value=set.prate; var lg=ctx.createGain(); lg.gain.value=.45;
+      lfo.connect(lg); lg.connect(pg.gain); lfo.start(); lfo.stop(until+40); inp.connect(pg); head=pg;
+    }
+    head.connect(h); h.connect(d); h.connect(c); c.connect(w); d.connect(bus); w.connect(bus);
+    return (rooms[key]=inp);
+  }
+  function grain(vi,k,G){
+    var key=vi*4+k+'_'+G; if(grains[key]) return grains[key];
     var v=VOW[vi], sr=SPRITE.sampleRate, d=SPRITE.getChannelData(0), n=Math.round(G*sr);
     var lo=v.o+v.n*.3, hi=v.o+v.n*.7-G, at=hi>lo ? lo+(hi-lo)*k/3 : v.o+v.n/2-G/2;
     var b=ctx.createBuffer(1,n,sr), o=b.getChannelData(0), a=Math.max(0,Math.round(at*sr));
@@ -150,27 +186,38 @@ function makeEngine(ctx){
   }
   function curve(level,x0){ var c=new Float32Array(48); for(var i=0;i<48;i++){ var x=x0+(1-x0)*i/47; c[i]=level*Math.pow(Math.sin(Math.PI*x),1.5)+1e-5; } return c; }
   /* one held note: a vowel of Todd's, tuned to the chord, as a stream of overlapping grains */
-  function voice(vi,midi,pan,t0,L,closed,level){
+  function voice(vi,midi,pan,t0,L,closed,level,o){
     var now=ctx.currentTime+.03, from=Math.max(t0,now); if(t0+L<=from+.05) return;
-    var f=440*Math.pow(2,(midi-69)/12), rate=f/VOW[vi].f; while(rate>1.6) rate/=2; while(rate<.7) rate*=2;
+    var f=440*Math.pow(2,(midi-69)/12), rate=f/VOW[vi].f; while(rate>o.hi) rate/=2; while(rate<o.lo) rate*=2;
     var g=ctx.createGain(); g.gain.value=0;
     g.gain.setValueCurveAtTime(curve(level,(from-t0)/L),from,t0+L-from);
-    var out=g;
-    if(closed){ var lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=500; g.connect(lp); var bo=ctx.createGain(); bo.gain.value=2.2; lp.connect(bo); out=bo; }
-    var p=ctx.createStereoPanner?ctx.createStereoPanner():null; if(p){ p.pan.value=pan; out.connect(p); p.connect(bus); } else out.connect(bus);
-    voices.push({vi:vi,rate:rate,g:g,t:from,end:t0+L,hop:G/rate/3});
+    var lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=closed?500:o.cut; lp.Q.value=.5; g.connect(lp);
+    var out=lp; if(closed){ var bo=ctx.createGain(); bo.gain.value=2.2; lp.connect(bo); out=bo; }
+    var p=ctx.createStereoPanner?ctx.createStereoPanner():null; if(p){ p.pan.value=pan; out.connect(p); p.connect(o.dest); } else out.connect(o.dest);
+    voices.push({vi:vi,rate:rate,g:g,t:from,end:t0+L,G:o.G,hop:o.G/rate/o.ov});
   }
-  function word(w,t0){
-    var n=w.notes.length, level=1.2/Math.sqrt(n);
-    w.notes.forEach(function(m,k){
+  var FAM={breath:{G:.22,ov:2,lo:.7,hi:1.6,cut:.6,shift:0}, shimmer:{G:.12,ov:3,lo:.7,hi:1.6,cut:1.4,shift:0},
+           low:{G:.14,ov:3,lo:.45,hi:1.1,cut:.7,shift:-12}, pulse:{G:.1,ov:3,lo:.7,hi:1.6,cut:1,shift:0}};
+  function word(w,t0,ri,key,until){
+    var P=prep(ri), set=P.set, F=FAM[set.fam], dest=room(key,set,until);
+    var arc=.55+.9*Math.sin(Math.PI*(w.arc==null?.5:w.arc));          /* the tone opens toward the middle of the sentence */
+    var o={dest:dest,G:F.G,ov:F.ov,lo:F.lo,hi:F.hi,cut:set.cut*F.cut*arc};
+    var notes=w.notes.slice(0, set.fam==='breath'?3:5), n=notes.length, level=2.1/Math.sqrt(n);
+    notes.forEach(function(m,k){
       var col=w.cols[(k+w.i)%w.cols.length], list=BYV[col];
-      voice(list[(w.h+k)%list.length], m, (k/Math.max(1,n-1))*1.2-.6, t0, w.L, w.closed, level);
+      voice(list[(w.h+k)%list.length], m+F.shift, (k/Math.max(1,n-1))*1.2-.6, t0, w.L, w.closed, level, o);
     });
+    var top=notes[n-1]+F.shift, l2=BYV[w.cols[0]];
+    if(set.fam==='shimmer') voice(l2[(w.h+3)%l2.length], top+12, .3, t0+.4, w.L, false, level*.4, {dest:dest,G:.1,ov:3,lo:.9,hi:2.2,cut:9000});
+    if(w.layer) voice(l2[(w.h+5)%l2.length], top+w.layer, -.3, t0+.2, w.L, false, level*.32, {dest:dest,G:F.G,ov:F.ov,lo:w.layer>0?.9:.45,hi:w.layer>0?2.2:1.1,cut:o.cut});
+    /* the first word of a sentence lays a hum under the whole sentence */
+    if(w.sfirst){ var S=w.sfirst, r=S.root; while(r>50) r-=12; while(r<38) r+=12; var hl=BYV.oo||BYV.oh||l2;
+      voice(hl[(w.h+7)%hl.length], r, 0, t0, Math.max(6,S.dur+4), true, .5, {dest:dest,G:.2,ov:2,lo:.4,hi:1.1,cut:500}); }
   }
   function grainsUntil(H){
     voices=voices.filter(function(v){
       while(v.t<H && v.t<v.end){
-        var s=ctx.createBufferSource(); s.buffer=grain(v.vi,Math.floor(rnd()*4)); s.playbackRate.value=v.rate; s.connect(v.g); s.start(v.t);
+        var s=ctx.createBufferSource(); s.buffer=grain(v.vi,Math.floor(rnd()*4),v.G); s.playbackRate.value=v.rate; s.connect(v.g); s.start(v.t);
         v.t+=v.hop*(.85+.3*rnd());
       }
       return v.t<v.end;
@@ -208,7 +255,7 @@ function tick(){
       cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue;
     }
     var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break;
-    eng.word(w, anchorCtx+(gs-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
+    eng.word(w, anchorCtx+(gs-anchorPos), cur.ri, cur.base, anchorCtx+(cur.base+ST[cur.ri].s-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
   }
   eng.grainsUntil(H);
   var ms=Date.now(), next=Math.ceil(ms/1800000)*1800000, tB=ctx.currentTime+(next-ms)/1000;
@@ -356,6 +403,24 @@ function frame(now){
 }
 var lastLine=0;
 
+/* the two phrases take turns: surface somewhere in the light, hold, sink back, rest */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('#phrases span')), k=0, calmP=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function drift(el,x,y,t0,sc){ (function step(){ if(el.style.opacity==='0'&&performance.now()-t0>9000) return; var a=(performance.now()-t0)/1000;
+    el.style.transform='translate('+(x+a*4).toFixed(1)+'px,'+(y-a*3).toFixed(1)+'px) translate(-50%,-50%) rotate(-4deg) scale('+sc+')'; requestAnimationFrame(step); })(); }
+  function next(){
+    var el=els[k++%els.length], W=innerWidth, H=innerHeight;
+    var w=el.offsetWidth, sc=Math.min(1,(W*.78)/Math.max(1,w)), half=w*sc/2+24;             /* fit the whole phrase on screen, drift included */
+    var x=half>=W/2 ? W/2 : half+(W-2*half)*Math.random(), y=H*(Math.random()<.5 ? .26+.1*Math.random() : .64+.1*Math.random());
+    if(x+half+60>W) x=Math.max(W/2,W-half-60);
+    el.style.opacity='0'; var t0=performance.now(); if(!calmP) drift(el,x,y,t0,sc); else el.style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) rotate(-4deg) scale('+sc+')';
+    setTimeout(function(){ el.style.opacity='.55'; },50);
+    setTimeout(function(){ el.style.opacity='0'; },13000);
+    setTimeout(next,24000+Math.random()*16000);
+  }
+  setTimeout(next,4000);
+})();
+
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
 var quietTimer=null;
 function poke(){ document.body.classList.remove('quiet'); clearTimeout(quietTimer); if(playing) quietTimer=setTimeout(function(){ if(playing) document.body.classList.add('quiet'); },5000); }
@@ -378,7 +443,7 @@ window.CRR={
       e.newBus(); e.master.gain.value=.9; anchorCtx=0; anchorPos=at; var c=cursorAt(at), saved=cur; cur=c;
       var save=eng; eng=e; var H=secs; var HP=at+secs;
       for(var g=0;g<4000;g++){ var ws=prep(cur.ri).words; if(cur.wi>=ws.length){ cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue; }
-        var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break; var t0=gs-at; if(t0+w.L>0) e.word(w,t0); cur.wi++; }
+        var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break; var t0=gs-at; if(t0+w.L>0) e.word(w,t0,cur.ri,cur.base,cur.base+ST[cur.ri].s-at); cur.wi++; }
       e.grainsUntil(H); eng=save; cur=saved;
       return oc.startRendering();
     });
