@@ -190,7 +190,7 @@ function makeEngine(ctx){
     for(var i=0;i<n;i++) o[i]=(d[a+i]||0)*(.5-.5*Math.cos(2*Math.PI*i/(n-1)));
     return (grains[key]=b);
   }
-  function curve(level,x0){ var c=new Float32Array(48); for(var i=0;i<48;i++){ var x=x0+(1-x0)*i/47; c[i]=level*Math.pow(Math.sin(Math.PI*x),1.5)+1e-5; } return c; }
+  function curve(level,x0){ var c=new Float32Array(48); for(var i=0;i<48;i++){ var x=Math.min(1,x0+(1-x0)*i/47); c[i]=level*Math.pow(Math.max(0,Math.sin(Math.PI*x)),1.5)+1e-5;   /* rounding can push x past 1 */ } return c; }
   /* one held note: a vowel of Todd's, tuned to the chord, as a stream of overlapping grains */
   function voice(vi,midi,pan,t0,L,closed,level,o){
     var now=ctx.currentTime+.03, from=Math.max(t0,now); if(t0+L<=from+.05) return;
