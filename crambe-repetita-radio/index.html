@@ -95,7 +95,13 @@ function stationNow(){ return (((Date.now()/1000-EPOCH)%TOTAL)+TOTAL)%TOTAL; }
 function reviewAt(p){ var lo=0, hi=N-1; while(lo<hi){ var m=(lo+hi+1)>>1; if(START[m]<=p) lo=m; else hi=m-1; } return lo; }
 
 /* ================= reading a review: the rules ================= */
-var MODES={A:[0,2,4,6,7,9,11],B:[0,2,4,5,7,9,10],C:[0,2,3,5,7,9,10],D:[0,2,3,5,7,8,10],F:[0,1,3,5,7,8,10]};
+var MODES={A:[0,2,4,6,7,9,11],B:[0,2,4,5,7,9,10],C:[0,2,3,5,7,9,10],D:[0,2,3,5,7,8,10],F:[0,1,3,5,7,8,10]};   /* the grade letter alone: used by gradeLetter() */
+/* 2026-10-11 (tuning desk, Todd): plus and minus count. 15 grades -> scale. Pentatonics have five notes, so degree maths uses the scale's own length. */
+var SCALES={Lydian:[0,2,4,6,7,9,11],Ionian:[0,2,4,5,7,9,11],Mixolydian:[0,2,4,5,7,9,10],Dorian:[0,2,3,5,7,9,10],Aeolian:[0,2,3,5,7,8,10],
+  Phrygian:[0,1,3,5,7,8,10],'Harmonic minor':[0,2,3,5,7,8,11],'Major pentatonic':[0,2,4,7,9],'Minor pentatonic':[0,3,5,7,10],'Whole tone':[0,2,4,6,8,10]};
+var GRADE15={'A+':'Lydian','A':'Lydian','A-':'Ionian','B+':'Ionian','B':'Mixolydian','B-':'Major pentatonic','C+':'Dorian','C':'Minor pentatonic',
+  'C-':'Aeolian','D+':'Aeolian','D':'Harmonic minor','D-':'Phrygian','F+':'Phrygian','F':'Phrygian','F-':'Whole tone'};
+function scaleFor(g){ var m=(g||'C').split('/')[0].trim().toUpperCase().match(/^[ABCDF][+-]?/); return SCALES[GRADE15[m?m[0]:'C']||'Dorian']; }
 var LETTER_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 var LET={a:['ah','ae','aw'],e:['eh','ee'],i:['ih','ee'],o:['oh','aw'],u:['oo','uh'],y:['ee'],r:['er']};
 var RE=/([A-Za-z0-9\u00C0-\u024F]+(?:[\u2019'][A-Za-z]+)*)|([.,!?;:])|([-\u2013\u2014])/g;
@@ -104,7 +110,7 @@ function warmth(g){ var b={A:1,B:.75,C:.5,D:.25,F:0}[gradeLetter(g)]; g=(g||'').
 var cache={};
 function prep(ri){
   if(cache[ri]) return cache[ri];
-  var R=ST[ri], mode=MODES[gradeLetter(R.g)], first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
+  var R=ST[ri], mode=scaleFor(R.g), NS=mode.length, first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
   var root=(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, words=[], sum=0;
   R.x.split(/\n\n/).forEach(function(par,p){
     var m, last=null; RE.lastIndex=0;
@@ -119,9 +125,9 @@ function prep(ri){
   words.forEach(function(w,i){
     w.start=t; w.dur=w.wt*unit; t+=(w.wt+w.gap)*unit;
     w.L=clamp((w.dur+w.gap*unit)*2.6,5,30);
-    var base=48+(root+5*w.para)%12, d=hash(w.key)%7, steps=[d,d+2,d+4].concat(w.key.length>5?[d+7]:[]);
-    if(w.ask) steps.push(d+8);                      /* a question leaves a note hanging */
-    w.notes=steps.map(function(s){ return base+12*Math.floor(s/7)+mode[s%7]; });
+    var base=48+(root+5*w.para)%12, d=hash(w.key)%NS, steps=[d,d+2,d+4].concat(w.key.length>5?[d+NS]:[]);   /* long words double the root an octave up */
+    if(w.ask) steps.push(d+NS+1);                   /* a question leaves a note hanging */
+    w.notes=steps.map(function(s){ return base+12*Math.floor(s/NS)+mode[s%NS]; });
     w.layer=[0,12,-12][w.para%3];                  /* each paragraph changes the layering: none, an octave up, an octave down */
     var cols=[]; for(var c=0;c<w.key.length;c++){ (LET[w.key[c]]||[]).forEach(function(v){ if(BYV[v]) cols.push(v); }); }
     w.cols=cols.length?cols:['uh']; w.closed=/[mn]/.test(w.key); w.h=hash(w.key); w.i=i;
@@ -139,6 +145,7 @@ function prep(ri){
 }
 
 /* ================= the sound: Todd's own vowels, held in grains ================= */
+var MASTER=.74;   /* 2026-10-11: was .9; trimmed 1.7 dB because the denser grains, shimmer and hum made it louder */
 var VOW=null, BYV={}, SPRITE=null, G=.12, IDX=null, IDB=null, STING=null;
 function makeEngine(ctx){
   var hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=120; hp.Q.value=.6;
@@ -195,23 +202,25 @@ function makeEngine(ctx){
     var p=ctx.createStereoPanner?ctx.createStereoPanner():null; if(p){ p.pan.value=pan; out.connect(p); p.connect(o.dest); } else out.connect(o.dest);
     voices.push({vi:vi,rate:rate,g:g,t:from,end:t0+L,G:o.G,hop:o.G/rate/o.ov});
   }
+  /* 2026-10-11 tuning-desk settings (Todd's preset): grains overlap twice as densely, an octave shimmer on every texture, a louder sentence hum (was .5) */
+  var DENS=2, SHIMMER=.5, HUM=1.35;
   var FAM={breath:{G:.22,ov:2,lo:.7,hi:1.6,cut:.6,shift:0}, shimmer:{G:.12,ov:3,lo:.7,hi:1.6,cut:1.4,shift:0},
            low:{G:.14,ov:3,lo:.45,hi:1.1,cut:.7,shift:-12}, pulse:{G:.1,ov:3,lo:.7,hi:1.6,cut:1,shift:0}};
   function word(w,t0,ri,key,until){
     var P=prep(ri), set=P.set, F=FAM[set.fam], dest=room(key,set,until);
     var arc=.55+.9*Math.sin(Math.PI*(w.arc==null?.5:w.arc));          /* the tone opens toward the middle of the sentence */
-    var o={dest:dest,G:F.G,ov:F.ov,lo:F.lo,hi:F.hi,cut:set.cut*F.cut*arc};
+    var o={dest:dest,G:F.G,ov:F.ov*DENS,lo:F.lo,hi:F.hi,cut:set.cut*F.cut*arc};
     var notes=w.notes.slice(0, set.fam==='breath'?3:5), n=notes.length, level=2.1/Math.sqrt(n);
     notes.forEach(function(m,k){
       var col=w.cols[(k+w.i)%w.cols.length], list=BYV[col];
       voice(list[(w.h+k)%list.length], m+F.shift, (k/Math.max(1,n-1))*1.2-.6, t0, w.L, w.closed, level, o);
     });
     var top=notes[n-1]+F.shift, l2=BYV[w.cols[0]];
-    if(set.fam==='shimmer') voice(l2[(w.h+3)%l2.length], top+12, .3, t0+.4, w.L, false, level*.4, {dest:dest,G:.1,ov:3,lo:.9,hi:2.2,cut:9000});
-    if(w.layer) voice(l2[(w.h+5)%l2.length], top+w.layer, -.3, t0+.2, w.L, false, level*.32, {dest:dest,G:F.G,ov:F.ov,lo:w.layer>0?.9:.45,hi:w.layer>0?2.2:1.1,cut:o.cut});
+    voice(l2[(w.h+3)%l2.length], top+12, .3, t0+.4, w.L, false, level*SHIMMER, {dest:dest,G:.1,ov:3*DENS,lo:.9,hi:2.2,cut:9000});   /* every texture now (was shimmer only, at .4) */
+    if(w.layer) voice(l2[(w.h+5)%l2.length], top+w.layer, -.3, t0+.2, w.L, false, level*.32, {dest:dest,G:F.G,ov:F.ov*DENS,lo:w.layer>0?.9:.45,hi:w.layer>0?2.2:1.1,cut:o.cut});
     /* the first word of a sentence lays a hum under the whole sentence */
     if(w.sfirst){ var S=w.sfirst, r=S.root; while(r>50) r-=12; while(r<38) r+=12; var hl=BYV.oo||BYV.oh||l2;
-      voice(hl[(w.h+7)%hl.length], r, 0, t0, Math.max(6,S.dur+4), true, .5, {dest:dest,G:.2,ov:2,lo:.4,hi:1.1,cut:500}); }
+      voice(hl[(w.h+7)%hl.length], r, 0, t0, Math.max(6,S.dur+4), true, HUM, {dest:dest,G:.2,ov:2*DENS,lo:.4,hi:1.1,cut:500}); }
   }
   function grainsUntil(H){
     voices=voices.filter(function(v){
@@ -301,7 +310,7 @@ function play(){
       starting=false; $('play').removeAttribute('aria-busy'); say('');
       eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorPos=stationNow();
       cur=cursorAt(anchorPos);
-      eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(.9,ctx.currentTime+3);
+      eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+3);
       playing=true; tick(); timer=setInterval(tick,250);
       ident('welcome',ctx.currentTime+1.5);
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
@@ -463,7 +472,7 @@ window.CRR={
   render:function(at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
     return loadSound(oc).then(function(){
-      e.newBus(); e.master.gain.value=.9; anchorCtx=0; anchorPos=at; var c=cursorAt(at), saved=cur; cur=c;
+      e.newBus(); e.master.gain.value=MASTER; anchorCtx=0; anchorPos=at; var c=cursorAt(at), saved=cur; cur=c;
       var save=eng; eng=e; var H=secs; var HP=at+secs;
       for(var g=0;g<4000;g++){ var ws=prep(cur.ri).words; if(cur.wi>=ws.length){ cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue; }
         var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break; var t0=gs-at; if(t0+w.L>0) e.word(w,t0,cur.ri,cur.base,cur.base+ST[cur.ri].s-at); cur.wi++; }
