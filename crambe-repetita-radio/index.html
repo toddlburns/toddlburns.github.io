@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into ambient music in his own voice. Each piece lasts exactly as long as the album it reviewed.">
+<meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into music on three stations: ambient in his own voice, 303 acid, and jazz fusion. Each piece lasts exactly as long as the album it reviewed.">
 <title>Crambe Repetita Radio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,12 @@ h1{font-family:var(--face);font-weight:400;font-size:clamp(1.15rem,3.2vw,2.4rem)
 .now .np-label{font-size:.7rem;letter-spacing:.14em;color:var(--faint)}
 .now .np-the{font-size:1.05rem;font-style:italic;color:var(--fg)}
 
-body.quiet .now{opacity:0}
+body.quiet .now,body.quiet .stations{opacity:0}
+/* the three stations: same review, same moment, three ways of playing it */
+.stations{display:flex;gap:18px;pointer-events:auto;transition:opacity 1.6s ease}
+.stations button{border:0;background:transparent;color:var(--faint);font-family:var(--face);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 2px;cursor:pointer;border-bottom:1px solid transparent}
+.stations button:hover{color:var(--dim)}
+.stations button[aria-pressed="true"]{color:var(--fg);border-bottom-color:var(--line)}
 /* Play / Pause: just the symbol, floating on the light */
 #play{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;border:0;background:transparent;color:var(--fg);cursor:pointer;padding:24px;display:grid;place-items:center;transition:opacity .6s}
 #play svg{width:clamp(40px,6vw,56px);height:clamp(40px,6vw,56px);fill:currentColor;filter:drop-shadow(0 0 18px rgba(0,0,0,.25))}
@@ -55,15 +60,24 @@ body.quiet .now{opacity:0}
 /* two lines in a hand-written cursive, written letter by letter onto a line that waves like the light */
 #phrases{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:soft-light}
 #phrases text{font-family:"Sacramento","Snell Roundhand","Apple Chancery",cursive;font-size:clamp(1.7rem,3.4vw,2.9rem);fill:#fff}
+/* Fusion: the two lines as cut-out paper shards in two rings, turning with the kaleidoscope */
+#shards{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;overflow:hidden}
+body[data-station="fusion"] #shards{display:block}
+body[data-station="fusion"] #phrases{display:none}
+#shardring{position:absolute;left:50%;top:50%;width:0;height:0}
+#shardpulse{position:absolute;left:0;top:0;width:0;height:0}
+.shard{position:absolute;left:0;top:0;font-family:var(--face);line-height:1;padding:.14em .2em .1em;white-space:pre;filter:drop-shadow(0 0 1.2px rgba(0,0,0,.85));opacity:0;transition:opacity .18s ease,transform .25s cubic-bezier(.2,1.6,.4,1)}
 @media (prefers-reduced-motion: reduce){#play{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
+<div id="shards" aria-hidden="true"><div id="shardring"><div id="shardpulse"></div></div></div>
 <svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
+  <nav class="stations" id="stations" aria-label="Station"><button type="button" data-s="ambient">Ambient</button><button type="button" data-s="303">303</button><button type="button" data-s="fusion">Fusion</button></nav>
   <p class="now" id="now" aria-live="polite">Tuning in…</p>
 </div>
 
@@ -235,12 +249,214 @@ function makeEngine(ctx){
   function speak(name,t){ var c=IDX&&IDX[name]; if(!c) return 0; var s=ctx.createBufferSource(); s.buffer=IDB; s.connect(vg); s.start(t,c[0],c[1]); spoken.push(s); return c[1]; }
   function hushVoice(){ var n=ctx.currentTime; spoken.forEach(function(x){ try{x.stop(n+.05);}catch(e){} }); spoken=[]; }
   function duckFor(t0,t1){ duck.gain.setTargetAtTime(.45,Math.max(ctx.currentTime,t0-.6),.3); duck.gain.setTargetAtTime(1,t1+.4,1.2); }
-  return {ctx:ctx, master:master, analyser:analyser, newBus:newBus, word:word, grainsUntil:grainsUntil, speak:speak, sting:sting, duckFor:duckFor, hushVoice:hushVoice,
+  return {ctx:ctx, master:master, analyser:analyser, comp:comp, newBus:newBus, word:word, grainsUntil:grainsUntil, speak:speak, sting:sting, duckFor:duckFor, hushVoice:hushVoice,
     kill:function(){ var b=bus, n=ctx.currentTime; spoken.forEach(function(x){ try{x.stop(n+.3);}catch(e){} }); spoken=[]; duck.gain.cancelScheduledValues(n); duck.gain.setTargetAtTime(1,n,.2); if(!b) return; voices=[]; b.gain.setValueAtTime(b.gain.value,n); b.gain.linearRampToValueAtTime(0,n+.6); setTimeout(function(){ try{b.disconnect();}catch(e){} },900); bus=null; }};
 }
 
+/* ================= the beat stations (2026-10-13): 303 + drums, and jazz fusion =================
+   Both read the same review at the same moment as the ambient station. Time runs on one 100 BPM grid of
+   16th notes counted from the station's epoch, and every sound is worked out from the grid step and the text
+   at that moment, so everyone hears the same thing and nothing depends on when Play was pressed.
+   303 = Euclidean (sketch A, Todd 2026-10-13); fusion = smallest move (sketch A, Todd 2026-10-13). */
+var BPM=100, BEAT=60/BPM, S16=BEAT/4, BAR=BEAT*4;
+var STATIONS=['ambient','303','fusion'], STATION='ambient';
+var MINPENT=[0,3,5,7,10];
+function mtof(m){ return 440*Math.pow(2,(m-69)/12); }
+function euclid(k,n,rot){ var a=[]; rot=((rot%n)+n)%n; for(var i=0;i<n;i++) a.push(((i+rot)*k)%n<k); return a; }
+function ih(n){ n=(n^61)^(n>>>16); n=n+(n<<3); n^=n>>>4; n=Math.imul(n,0x27d4eb2d); n^=n>>>15; return (n>>>0)/4294967296; }   /* the same dice for every listener */
+var TANH=(function(){ var n=2048, c=new Float32Array(n); for(var i=0;i<n;i++){ var x=i/(n-1)*2-1; c[i]=Math.tanh(x*1.6)/Math.tanh(1.6); } return c; })();
+var PERM4=(function(){ var out=[]; (function go(a,p){ if(!a.length){ out.push(p); return; } a.forEach(function(x,i){ go(a.slice(0,i).concat(a.slice(i+1)),p.concat([x])); }); })([0,1,2,3],[]); return out; })();
+
+/* paragraphs and sentences in review seconds */
+var beatCache={};
+function beatPrep(ri){
+  if(beatCache[ri]) return beatCache[ri];
+  var P=prep(ri), ws=P.words, R=ST[ri], pmap={}, order=[];
+  ws.forEach(function(w){ if(!pmap[w.para]){ pmap[w.para]={t0:w.start}; order.push(pmap[w.para]); } });
+  order.forEach(function(p,k){ p.t1=k+1<order.length?order[k+1].t0:R.s; p.k=k; });
+  P.sents.forEach(function(S,k){ S.t1=k+1<P.sents.length?P.sents[k+1].t:R.s; S.k=k; S.para=ws[S.a].para; S.first=(k===0||P.sents[k-1].para!==S.para); });
+  var first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
+  return (beatCache[ri]={P:P, ws:ws, pmap:pmap, root:(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, h:hash(R.a+'~'+R.t), warm:warmth(R.g)});
+}
+/* what the station is reading at absolute station second A */
+function where(A){
+  var loop=Math.floor(A/TOTAL), p=A-loop*TOTAL, ri=reviewAt(p), off=p-START[ri], B=beatPrep(ri), ws=B.ws, lo=0, hi=ws.length-1;
+  while(lo<hi){ var m=(lo+hi+1)>>1; if(ws[m].start<=off) lo=m; else hi=m-1; }
+  var w=ws[lo], S=B.P.sents[w.sent];
+  return {ri:ri, loop:loop, off:off, B:B, wi:lo, w:w, S:S, pa:B.pmap[w.para]};
+}
+
+function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
+  var bus=c.createGain(); bus.gain.value=kind==='fusion'?.85:1.2; bus.connect(dest);   /* level-matched to the ambient station on the same moment */
+  var room=c.createConvolver(), rg=c.createGain(); rg.gain.value=kind==='fusion'?.28:.12;
+  (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
+    for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
+    room.buffer=b; room.normalize=true; })();
+  var send=c.createGain(); send.connect(room); room.connect(rg); rg.connect(bus);
+  var noise=c.createBuffer(1,c.sampleRate,c.sampleRate), nd=noise.getChannelData(0); for(var i=0;i<nd.length;i++) nd[i]=Math.random()*2-1;
+  var live=[], nextG=null;
+  function absAt(T){ return aAbs+(T-aCtx); }
+  function ctxAt(A){ return aCtx+(A-aAbs); }
+
+  /* ---- drums (Noise Lab voices, plus a jazz snare and ride) ---- */
+  function nh(t,type,freq,v,dec){ var n=c.createBufferSource(); n.buffer=noise; var f=c.createBiquadFilter(); f.type=type; f.frequency.value=freq;
+    var g=c.createGain(); g.gain.setValueAtTime(v,t); g.gain.exponentialRampToValueAtTime(.001,t+dec); n.connect(f); f.connect(g); g.connect(bus); n.start(t,Math.random()*.5); n.stop(t+dec+.02); }
+  function tone(t,f0,f1,v,dec,type){ var o=c.createOscillator(), g=c.createGain(); o.type=type||'sine';
+    o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(f1,t+.08);
+    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.001,t+dec); o.connect(g); g.connect(bus); o.start(t); o.stop(t+dec+.02); }
+  var D={
+    kick:function(t,v){ v=v||1; var o=c.createOscillator(), g=c.createGain(); o.frequency.setValueAtTime(170,t); o.frequency.exponentialRampToValueAtTime(45,t+.09);
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.001,t+.45); o.connect(g); g.connect(bus); o.start(t); o.stop(t+.48); },
+    clap:function(t){ for(var k=0;k<3;k++) nh(t+k*.011,'bandpass',1300,.8,.012); nh(t+.033,'bandpass',1300,.7,.18); },
+    hat:function(t,v){ nh(t,'highpass',8000,v||.28,.04); },
+    open:function(t){ nh(t,'highpass',7000,.3,.26); },
+    clave:function(t){ tone(t,2500,2500,.5,.05); nh(t,'bandpass',3500,.15,.008); },
+    conga:function(t,hi){ tone(t,hi?330:210,hi?260:165,.5,.3); },
+    snare:function(t,v){ v=v==null?.7:v; nh(t,'bandpass',1900,v*.7,.16); tone(t,200,170,v*.5,.09,'triangle'); if(vis) vis.push({t:t,k:'n',v:v}); },
+    ride:function(t,v){ v=v||.2; var g=c.createGain(), hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=6500;
+      g.gain.setValueAtTime(v,t); g.gain.exponentialRampToValueAtTime(.001,t+.9);
+      [205.3,304.4,369.6,522.7,540,800].forEach(function(f){ var o=c.createOscillator(); o.type='square'; o.frequency.value=f*1.7; o.connect(hp); o.start(t); o.stop(t+.92); });
+      hp.connect(g); g.connect(bus); nh(t,'highpass',9000,v*.4,.05); }
+  };
+
+  /* ---- the 303: square -> two lowpasses -> VCA -> drive, as in Noise Lab ---- */
+  function acid(){
+    var p={res:.72,env:.55,decay:.35,accent:.6,drive:.3};
+    var osc=c.createOscillator(); osc.type='square'; live.push(osc);
+    var f1=c.createBiquadFilter(), f2=c.createBiquadFilter(); f1.type=f2.type='lowpass'; f1.Q.value=0; f2.Q.value=p.res*26;
+    var vca=c.createGain(); vca.gain.value=0; var pre=c.createGain(); pre.gain.value=1+p.drive*p.drive*30;
+    var shp=c.createWaveShaper(); shp.curve=TANH; shp.oversample='2x'; var post=c.createGain(); post.gain.value=.32;
+    var dly=c.createDelay(2), fb=c.createGain(), wet=c.createGain(); dly.delayTime.value=BEAT*.75; fb.gain.value=.45; wet.gain.value=.12;
+    osc.connect(f1); f1.connect(f2); f2.connect(vca); vca.connect(pre); pre.connect(shp); shp.connect(post); post.connect(bus);
+    post.connect(wet); wet.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(bus);
+    osc.start(); var sliding=false;
+    return {
+      cutoff:function(v,t){ var hz=40*Math.pow(2,v*8.5); f1.frequency.setTargetAtTime(hz,t,.05); f2.frequency.setTargetAtTime(hz,t,.05); },
+      step:function(st,t,base){
+        var g=vca.gain;
+        if(!st||!st.on){ if(sliding) g.setTargetAtTime(0,t,.008); sliding=false; return; }
+        var acc=st.acc?p.accent:0, f=mtof(base+st.note+12*st.oct);
+        if(sliding) osc.frequency.setTargetAtTime(f,t,.022);
+        else { osc.frequency.setValueAtTime(f,t); g.cancelScheduledValues(t); g.setTargetAtTime(.5+acc*.45,t,.002);
+          var cents=p.env*4200+acc*2400, tau=(.02+p.decay*p.decay*.6)*(1-acc*.5);
+          [f1,f2].forEach(function(fl){ fl.detune.cancelScheduledValues(t); fl.detune.setValueAtTime(cents,t); fl.detune.setTargetAtTime(0,t+.003,tau); }); }
+        if(st.slide) sliding=true; else { sliding=false; g.setTargetAtTime(0,t+S16*.55,.008); }
+      }
+    };
+  }
+
+  /* ---- fusion instruments ---- */
+  function rhodes(t,m,dur,v){ v=v||.16; var f=mtof(m), car=c.createOscillator(), mo=c.createOscillator(), mg=c.createGain(), g=c.createGain();
+    car.frequency.value=f; mo.frequency.value=f; mg.gain.setValueAtTime(f*2.2,t); mg.gain.exponentialRampToValueAtTime(f*.25,t+.35); mo.connect(mg); mg.connect(car.frequency);
+    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.setTargetAtTime(v*.35,t+.01,.5); g.gain.setTargetAtTime(0,t+dur,.12);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=((m%7)-3)/8; g.connect(pn); out=pn; }
+    car.connect(g); out.connect(bus); out.connect(send); car.start(t); mo.start(t); car.stop(t+dur+.8); mo.stop(t+dur+.8); }
+  function fbass(t,m,dur,v){ v=v||.42; var o=c.createOscillator(), s=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain(), f=mtof(m);
+    o.type='sawtooth'; o.frequency.setValueAtTime(f*.985,t); o.frequency.exponentialRampToValueAtTime(f,t+.05); s.frequency.value=f;
+    lp.type='lowpass'; lp.Q.value=3; lp.frequency.setValueAtTime(900,t); lp.frequency.exponentialRampToValueAtTime(320,t+.25);
+    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.01); g.gain.setTargetAtTime(0,t+dur,.05);
+    o.connect(lp); s.connect(lp); lp.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.4); s.stop(t+dur+.4); if(vis) vis.push({t:t,k:'b',m:m}); }
+  function lead(t,m,dur,v){ v=v||.09; var lp=c.createBiquadFilter(), g=c.createGain(), vib=c.createOscillator(), vg=c.createGain();
+    lp.type='lowpass'; lp.Q.value=4; lp.frequency.setValueAtTime(4200,t); lp.frequency.setTargetAtTime(1800,t+.02,.15);
+    vib.frequency.value=5.8; vg.gain.setValueAtTime(0,t); vg.gain.linearRampToValueAtTime(dur>.4?9:0,t+dur); vib.connect(vg);
+    [-8,8].forEach(function(d){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=mtof(m); o.detune.value=d; vg.connect(o.detune); o.connect(lp); o.start(t); o.stop(t+dur+.3); });
+    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.008); g.gain.setTargetAtTime(0,t+dur*.92,.04);
+    lp.connect(g); g.connect(bus); g.connect(send); vib.start(t); vib.stop(t+dur+.3); if(vis) vis.push({t:t,k:'l',m:m,dur:dur}); }
+
+  /* ================= 303 + drums: Euclidean =================
+     A paragraph is a tune. Every part spreads k hits as evenly as it can over 16 steps; each sentence turns
+     the patterns to a new rotation. The tune's own k values come from the review and paragraph. Parts enter
+     one by one, the filter opens across the tune, and its last four bars break down. */
+  var A303=kind==='303'?acid():null;
+  function step303(g,t,A){
+    var W=where(A), B=W.B, w=W.w, S=W.S, pa=W.pa, s=g&15, sent=S.k;
+    var nb=(pa.t1-pa.t0)/BAR, pbar=(W.off-pa.t0)/BAR, left=(pa.t1-W.off)/BAR, prog=clamp(pbar/Math.max(1,nb),0,1);
+    var sp=clamp((W.off-S.t)/Math.max(1,S.t1-S.t),0,1), f=clamp(nb/48,.25,1), brk=nb>=24&&left<4;
+    var hp=(B.h+7919*pa.k)>>>0, kH=9+hp%5, kA=5+(hp>>>3)%7, kC=3+(hp>>>6)%5, stride=[3,2,4,5,7][((hp>>>9)+sent)%5];
+    var base=40+(((B.root+5*pa.k-4)%12)+12)%12;
+    if(s%4===0) A303.cutoff(clamp(.18+.36*Math.sin(Math.PI*prog)+.06*Math.sin(Math.PI*sp),.12,.66),t);
+    if(!brk && s%4===0) D.kick(t);
+    if(euclid(kH,16,sent)[s]) D.hat(t,s%2?.3:.16);
+    if(!brk && pbar>=8*f && (s===4||s===12)) D.clap(t);
+    if(pbar>=12*f && euclid(kC,16,sent+(pbar>>1))[s]) D.clave(t);
+    if(!brk && pbar>=16*f && euclid(3,8,sent>>1)[s%8]) D.conga(t,s>7);
+    if(w.gap===.5 && s===14) D.open(t);                                   /* a comma opens the hat */
+    var on=pbar>=4*f && euclid(kA,16,sent*3)[s], wordStart=w.start>W.off-S16;
+    var ask=B.ws[S.b].ask && (S.t1-W.off)<BAR;                             /* a question slides through its last bar */
+    if(vis){ var pG=!brk&&pbar>=16*f?euclid(3,8,sent>>1):null;
+      vis.push({t:t,k:'s',s:s,pats:[pbar>=4*f?euclid(kA,16,sent*3):null, pG?pG.concat(pG):null, pbar>=12*f?euclid(kC,16,sent+(pbar>>1)):null, euclid(kH,16,sent)],
+        kick:!brk&&s%4===0, clap:!brk&&pbar>=8*f&&(s===4||s===12), cut:clamp(.18+.36*Math.sin(Math.PI*prog),0,1),
+        acid:on?{n:(MINPENT[(s*stride+sent)%5]+12*(euclid(2,16,w.key.length)[s]?1:0))/22, acc:!!(wordStart||euclid(3,16,1)[s])}:null}); }
+    A303.step({on:on, note:MINPENT[(s*stride+sent)%5], oct:euclid(2,16,w.key.length)[s]?1:0, acc:wordStart||euclid(3,16,1)[s], slide:ask||euclid(4,16,3)[s]},t,base);
+  }
+
+  /* ================= jazz fusion: smallest move =================
+     One chord per beat. Each sentence starts on the paragraph's home chord (the artist's letter, up a fourth
+     per paragraph, major for A and B grades). On every beat the letter being read picks a neo-Riemannian move
+     (P, L or R: change one note) and every voice goes to the nearest note of the new chord. The bass walks into
+     each root from a half step away. The first sentence of a paragraph is the head (the lead plays the top
+     voice); after that it solos: long words are flurries, middle words eighths, short words rest. */
+  var fz={key:null,b:0,snap:null};
+  function letterAt(b){ var W=where(b*BEAT), L=W.w.key.replace(/[^a-z]/g,'')||'a', k=Math.floor((W.off-W.w.start)/BEAT+1e-6); return L.charAt(((k%L.length)+L.length)%L.length); }
+  function voice(prev,pcs){
+    var best=null, bc=1e9;
+    PERM4.forEach(function(p){ var v=prev.map(function(n,i){ var x=n+((((pcs[p[i]]-n)%12)+18)%12)-6; while(x<52) x+=12; while(x>79) x-=12; return x; });
+      var cost=0; for(var i=0;i<4;i++) cost+=Math.abs(v[i]-prev[i]); if(cost<bc){ bc=cost; best=v; } });
+    return best.sort(function(a,b){ return a-b; });
+  }
+  function pcsOf(r,maj){ return [r,r+(maj?4:3),r+7,r+(maj?11:10)].map(function(x){ return x%12; }); }
+  function move(st,op){ var r=st.root, maj=st.maj;
+    if(op==='P') maj=!maj; else if(op==='R'){ r=maj?r+9:r+3; maj=!maj; } else { r=maj?r+4:r+8; maj=!maj; }
+    return {root:r%12, maj:maj}; }
+  function chordAt(b){
+    if(fz.snap&&fz.b===b) return fz.snap;
+    var A=b*BEAT, W=where(A), S=W.S, As=A-(W.off-S.t), b0=Math.ceil(As/BEAT-1e-6), key=W.loop+':'+W.ri+':'+S.k, st;
+    if(fz.key===key && fz.b<=b) st=fz.st;
+    else { var home={root:(W.B.root+5*W.pa.k)%12, maj:W.B.warm>=.6}; st={root:home.root, maj:home.maj, v:voice([55,59,62,66],pcsOf(home.root,home.maj)), op:'', c:letterAt(b0)}; fz.b=b0; }
+    for(var x=fz.b+1;x<=b;x++){ var ch=letterAt(x), op='PLR'[(ch.charCodeAt(0)-97+26)%3]; if(op==='P'&&st.op==='P') op='R';
+      var nx=move(st,op); st={root:nx.root, maj:nx.maj, v:voice(st.v,pcsOf(nx.root,nx.maj)), op:op, c:ch}; }
+    fz.key=key; fz.b=b; fz.st=st; fz.snap=st; return st;
+  }
+  var lastBass=40;
+  function stepFusion(g,t,A){
+    var b=Math.floor(g/4), sb=g&3, s=g&15, C=chordAt(b), W=where(A), w=W.w, S=W.S, L=w.key.length;
+    if(sb===0){
+      C.v.forEach(function(m){ rhodes(t,m,BEAT*.8); }); if(vis) vis.push({t:t,k:'c',v:C.v.slice()});
+      var bn=36+C.root; if(bn-lastBass>6) bn-=12; if(bn<31) bn+=12; lastBass=bn; fbass(t,bn,S16*1.7);
+      if(S.first && b%2===0) lead(t,C.v[3]+12,BEAT*1.8,.08);               /* the head: the top voice, sung */
+    }
+    if(sb===2){ var vow='aeiou'.indexOf(C.c)>=0, nr=move(C,'PLR'[(letterAt(b+1).charCodeAt(0)-97+26)%3]).root, nb2=36+nr; if(nb2-lastBass>6) nb2-=12; if(nb2<31) nb2+=12;
+      fbass(t,vow?lastBass+7:nb2-1,S16*1.6,.34); }
+    if(!S.first){                                                          /* the solo: the word's length sets how busy */
+      var tones=C.v.concat(C.v.map(function(x){ return x+12; }));
+      if(L>=8) lead(t,tones[(s+(b%3))%tones.length]+12,S16*.9);
+      else if(L>=5 && s%2===0) lead(t,tones[(s/2+b)%tones.length]+12,S16*1.8);
+      else if(B_ask(S,W) && sb===0) lead(t,C.v[3]+12,BEAT*.95,.07);
+    }
+    var toEnd=S.t1-W.off;
+    if(s===0||s===10) D.kick(t,.8);
+    if(toEnd<BEAT*2 && toEnd>0) D.snare(t,.25+.5*(1-toEnd/(BEAT*2)));       /* a fill into the next sentence */
+    else if(s===4||s===12) D.snare(t); else if(ih(g)<.22) D.snare(t,.12);
+    if(s%2===0) D.ride(t,s%4===0?.22:.14);
+  }
+  function B_ask(S,W){ return !!W.B.ws[S.b].ask; }
+
+  return {
+    until:function(H){
+      if(nextG===null) nextG=Math.ceil(absAt(c.currentTime+.05)/S16);
+      for(var guard=0;guard<400;guard++){
+        var A=nextG*S16, t=ctxAt(A); if(t>H) break;
+        if(t>=c.currentTime) (kind==='303'?step303:stepFusion)(nextG,t,A);
+        nextG++;
+      }
+    },
+    kill:function(){ var n=c.currentTime; bus.gain.setValueAtTime(bus.gain.value,n); bus.gain.linearRampToValueAtTime(0,n+.5);
+      live.forEach(function(o){ try{ o.stop(n+.6); }catch(e){} }); setTimeout(function(){ try{ bus.disconnect(); }catch(e){} },900); }
+  };
+}
+
 /* ================= transport: you tune in to wherever the station is now ================= */
-var ctx=null, eng=null, playing=false, starting=false, anchorCtx=0, anchorPos=0, cur=null, timer=null, lock=null, hush=null;
+var ctx=null, eng=null, beat=null, anchorAbs=0, playing=false, starting=false, anchorCtx=0, anchorPos=0, cur=null, timer=null, lock=null, hush=null;
 var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null, factsDone={};
 /* one fun fact per piece: Todd's intro, "Fun fact about this one", then a fact. Which fact and when both follow the clock, so every listener hears the same one */
 var NFACT=13;
@@ -266,9 +482,9 @@ function tick(){
       cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue;
     }
     var w=ws[cur.wi], gs=cur.base+w.start; if(gs>HP) break;
-    eng.word(w, anchorCtx+(gs-anchorPos), cur.ri, cur.base, anchorCtx+(cur.base+ST[cur.ri].s-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
+    if(STATION==='ambient') eng.word(w, anchorCtx+(gs-anchorPos), cur.ri, cur.base, anchorCtx+(cur.base+ST[cur.ri].s-anchorPos)); events.push({k:'w', t:anchorCtx+(gs-anchorPos), L:w.L, w:w}); cur.wi++;
   }
-  eng.grainsUntil(H);
+  eng.grainsUntil(H); if(beat) beat.until(H);
   var P0=posAt(ctx.currentTime), loop=Math.floor(P0/TOTAL)*TOTAL, rn=reviewAt(P0-loop), bn=loop+START[rn], F=factFor(rn,bn);
   if(!factsDone[bn] && F.at>P0+.5 && F.at<=HP){ factsDone[bn]=1; var tf=anchorCtx+(F.at-anchorPos); if(tf<identUntil+3) tf=identUntil+3; ident('fact',tf,F.seq); }
   var ms=Date.now(), next=Math.ceil(ms/1800000)*1800000, tB=ctx.currentTime+(next-ms)/1000;
@@ -299,7 +515,7 @@ function loadSound(c){
   .then(function(r){ VOW=r[0]; SPRITE=r[1]; IDX=r[2]; IDB=r[3]; STING=r[4]; BYV={}; VOW.forEach(function(v,i){ (BYV[v.v]=BYV[v.v]||[]).push(i); }); cache={}; });
   return loading;
 }
-function play(){
+function play(quick){
   if(starting||playing||!ST) return;
   if(!ctx){ ctx=new (window.AudioContext||window.webkitAudioContext)(); eng=makeEngine(ctx); }
   unlock(); starting=true; $('play').setAttribute('aria-busy','true');
@@ -308,11 +524,12 @@ function play(){
     if(!SPRITE) say('Tuning in…');
     loadSound(ctx).then(function(){
       starting=false; $('play').removeAttribute('aria-busy'); say('');
-      eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorPos=stationNow();
+      eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorAbs=Date.now()/1000-EPOCH; anchorPos=((anchorAbs%TOTAL)+TOTAL)%TOTAL;
+      VIS.length=0; if(STATION!=='ambient') beat=makeBeat(ctx,eng.comp,STATION,anchorCtx,anchorAbs,VIS);
       cur=cursorAt(anchorPos);
-      eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+3);
+      eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
-      ident('welcome',ctx.currentTime+1.5);
+      if(!quick) ident('welcome',ctx.currentTime+1.5);
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
       try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
     },function(){ starting=false; $('play').removeAttribute('aria-busy'); say('The sound files did not load. Reload the page and try again.'); });
@@ -321,11 +538,24 @@ function play(){
 }
 function pause(){
   if(!playing) return; playing=false; clearInterval(timer);
-  eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill();
+  eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill(); if(beat){ beat.kill(); beat=null; }
   $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
 }
 $('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
+
+/* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
+function showStation(){ document.body.dataset.station=STATION; [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); }
+function setStation(st){
+  if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation();
+  try{ localStorage.setItem('crr-station',st); }catch(e){}
+  if(playing){ pause(); play(true); }
+}
+(function(){ var h=location.hash.replace('#',''), st=STATIONS.indexOf(h)>=0?h:null;
+  if(!st){ try{ st=localStorage.getItem('crr-station'); }catch(e){} }
+  if(STATIONS.indexOf(st)>=0) STATION=st; showStation(); })();
+window.addEventListener('hashchange',function(){ var h=location.hash.replace('#',''); if(STATIONS.indexOf(h)>=0) setStation(h); });
+$('stations').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) setStation(b.dataset.s); });
 
 /* ================= what's on ================= */
 var shown=-1;
@@ -341,6 +571,79 @@ function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&a
 /* ================= the picture: B · Light, painted by the music ================= */
 var cv=$('gl'), gl=cv.getContext('webgl2',{antialias:false,alpha:false}), tempTarget=.5, temp=.5, energy=0, time=0, last=performance.now();
 var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches, NB=8;
+
+/* ================= the pictures of the beat stations (2026-10-13) =================
+   Of a piece with the ambient light: the same palette (the grade's temperature), dark ground, grain and dither,
+   the same dimming under Todd's voice and sunrise at the sting. Different in form. 303: the Euclidean patterns
+   themselves, four rings of 16 lights with a hand going round, the kick blooming from the centre, the 303 an orbit.
+   Fusion: stage light. The chord's four voices are four beams that glide as the voices move, pooling on a floor
+   the bass lights; lead notes are sparks rising through the haze. */
+var VIS=[];
+var GLCOMMON='float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}\n'+
+'float n2(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1,0)),u.x),mix(h21(i+vec2(0,1)),h21(i+vec2(1,1)),u.x),u.y);}\n'+
+'float fbm(vec2 p){float v=0.,a=.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<5;i++){v+=a*n2(p);p=m*p;a*=.5;}return v;}\n'+
+'vec3 g3(vec3 a,vec3 b,vec3 c,float t){t=clamp(t,0.,1.);return t<.5?mix(a,b,t*2.):mix(b,c,t*2.-1.);}\n'+
+'vec3 pal(float t,float k){vec3 cold=g3(vec3(.02,.04,.12),vec3(.26,.48,.78),vec3(.78,.84,.98),t);'+
+'vec3 mid=g3(vec3(.01,.09,.11),vec3(.16,.5,.52),vec3(.93,.74,.78),t);'+
+'vec3 warm=g3(vec3(.11,.02,.07),vec3(.93,.42,.33),vec3(1.,.84,.55),t);'+
+'return k<.5?mix(cold,mid,k*2.):mix(mid,warm,k*2.-1.);}\n';
+var GLFINISH='c+=pal(.97,temp)*rise*(.55*smoothstep(.55,-.6,p.y)+.25);c*=1.-.28*dim;c*=1.-.32*dot(p,p);'+
+'c+=(h21(gl_FragCoord.xy+fract(time*7.)*91.)-.5)*.03+(h21(gl_FragCoord.yx*1.7+fract(time*3.)*37.)-.5)/255.;o=vec4(c,1);}';
+var GLHEAD='#version 300 es\nprecision highp float;out vec4 o;uniform vec2 res;uniform float time,temp,energy,dim,rise;\n';
+/* 303 pictures: three candidates on the preview (Todd hated the rings, 2026-10-13). H[0] = the step just played, H[31] = 31 steps ago:
+   x = 303 note 0..1 (-1 = rest), y = accent, z = kick, w = hat + 2*clap. */
+var GL303=GLHEAD+'uniform vec4 H[32];uniform float ph,sc,kick,cut,roll;uniform float wave[128];\n'+GLCOMMON;
+var FS303S=GL303+   /* Scope: the 303's own waveform as a phosphor trace */
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float x=gl_FragCoord.x/res.x*127.;int i=int(x);float y=mix(wave[i],wave[min(i+1,127)],fract(x))*(1.3+.4*kick);'+
+'vec3 c=pal(.08,temp)*.6;float g=max(smoothstep(.003,0.,abs(fract(p.x*10.+.5)-.5)/10.),smoothstep(.003,0.,abs(fract(p.y*10.+.5)-.5)/10.));c+=pal(.5,temp)*.06*g;'+
+'float sl=(wave[min(i+1,127)]-wave[i])*(1.3+.4*kick)*127./(res.x/res.y);float d=abs(p.y-y)/sqrt(1.+sl*sl);c+=pal(.75+.22*cut,temp)*(exp(-d*d/.00003)*1.3+exp(-d*d/.0016)*.45)*(.55+.6*cut+.3*H[0].y);'+
+'c*=.86+.14*sin(gl_FragCoord.y*2.2);c*=1.+.12*step(.5,H[0].w);c+=pal(.85,temp)*kick*.1*exp(-dot(p,p)*2.);'+
+GLFINISH;
+var FS303F=GL303+'uniform vec4 F[16];\n'+   /* Floor, v4 (Todd 2026-10-13: "I liked the grid lines coming at you… the topographical lines too. Much sharper edges"):
+   a wireframe landscape. The grid rushes at you on the 16ths and is drawn ON the terrain, with its contour lines; faces are near-black.
+   Down the middle, the 303 line as hard-edged peaks: F[0] = the step sounding now, F[1..15] = the steps already scheduled.
+   Sharp-crested hills either side. No glow, no bounce; dark fog swallows the distance. */
+'float D=.55;'+
+'float nh(vec4 a){return a.x<0.?.02:(.12+.42*a.x)*(1.+.3*a.y);}'+
+'float note(float k){k=clamp(k+.5,0.,15.);int i=int(floor(k));return nh(F[i])*(1.-abs(fract(k)-.5)*2.);}'+   /* each note a pyramid peak */
+'float ridgeAt(vec2 q){float k=q.y/D+ph;float w=.26+.12*(1.-cut);return note(k)*smoothstep(15.,9.,k)*max(0.,1.-abs(q.x)/w);}'+
+'float crest(vec2 p){return 1.-abs(2.*n2(p)-1.);}'+
+'float hgt(vec2 q){float tr=(sc+ph)*D;vec2 wq=vec2(q.x,q.y+tr);float side=(.42*crest(wq*.38)+.2*crest(wq*.9+3.1))*smoothstep(.4,1.8,abs(q.x));'+
+'return ridgeAt(q)+side;}'+
+'float ln(float u,float w){return smoothstep(.5-w*fwidth(u),.5,abs(fract(u)-.5));}'+
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float cr=cos(roll),sr=sin(roll);p=mat2(cr,-sr,sr,cr)*p;'+
+'vec3 ro=vec3(0.,1.35,-.6);vec3 rd=normalize(vec3(p.x,p.y-.42,1.));vec3 sky=pal(.04,temp)*.45;vec3 c=sky;'+
+'float t=.15;bool hit=false;for(int i=0;i<150;i++){vec3 q=ro+rd*t;float d=q.y-hgt(q.xz);if(d<.0015*t){hit=true;break;}t+=max(.006,d*.26);if(t>14.)break;}'+
+'if(hit){vec3 q=ro+rd*t;float h=hgt(q.xz);float tr=(sc+ph)*D;float rg=ridgeAt(q.xz);'+
+'float gz=ln((q.z+tr)/D*.5,1.3);float gx=ln(q.x*2.,1.3);float co=ln(h*14.,1.1);'+
+'c=pal(.1,temp)*.35;'+
+'c+=pal(.66,temp)*max(gz,gx);c+=pal(.8,temp)*co*.7;'+
+'c+=pal(.93+.05*cut,temp)*clamp(rg*3.,0.,1.)*max(max(gz,gx),co)*.9;'+
+'c=mix(c,sky,1.-exp(-t*.22));}'+
+GLFINISH;
+
+
+var FS303L=GL303+   /* Lights: an LED wall scrolling the 303's notes (rows = pitch) and the drums (bottom rows) */
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float cell=min(.034,(res.x/res.y)/34.);vec2 g=p/cell;vec2 id=floor(g);vec2 f=fract(g)-.5;'+
+'float col=floor(16.-id.x+ph);float row=id.y+14.;vec3 c=pal(.05,temp)*.5;float on=0.;float hue=.7;'+
+'if(col>=0.&&col<32.&&row>=0.&&row<28.){vec4 h=H[int(col)];float age=1.-col/34.;'+
+'if(row>=4.){if(h.x>=0.&&abs(row-4.-floor(h.x*22.+.5))<.5){on=(.55+.45*h.y)*age;hue=.75+.2*cut;}}'+
+'else if(row==0.){on=h.z*age;hue=.9;}else if(row==1.){on=step(1.5,h.w)*age;hue=.6;}else if(row==2.){on=mod(h.w,2.)*.7*age;hue=.5;}'+
+'float led=smoothstep(.36,.3,length(f));c+=pal(.4,temp)*.07*led+pal(hue,temp)*on*(led*1.3+.3*exp(-dot(f,f)*3.));}'+
+'c+=pal(.85,temp)*kick*.07;'+
+GLFINISH;
+var FSFZ=GLHEAD+'uniform vec4 bm[4];uniform vec4 bs;uniform vec4 sp[8];uniform float sn,rot;\n'+GLCOMMON+
+/* fusion: a kaleidoscope of hard-edged shards. Six mirrored wedges; inside each, the glass is cut by the chord's four voices
+   (and the lead's flying sparks). Flat colour, crisp dark seams, heavier grain: nothing like the ambient light. */
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;vec2 pz=p*1.28;float r=length(pz);float seg=1.0471976;float a=mod(atan(pz.y,pz.x)+rot,seg);a=abs(a-seg*.5);'+
+'vec2 q=vec2(cos(a),sin(a))*r;float d1=9.,d2=9.;vec3 col=vec3(0.);'+
+'for(int j=0;j<8;j++){int i=j%4;float o=j<4?0.:1.;vec2 s=vec2(cos(bm[i].y+o*.26),sin(bm[i].y+o*.26))*(bm[i].x+o*(.32+.1*float(i)));float d=length(q-s);vec3 k=pal(fract(bm[i].z+o*.37)*.55+.42,temp)*(.5+.65*bm[i].w);k=max(vec3(0.),mix(vec3(dot(k,vec3(.3,.59,.11))),k,2.1));'+
+'if(d<d1){d2=d1;d1=d;col=k;}else if(d<d2)d2=d;}'+
+'for(int i=0;i<8;i++){if(sp[i].z<=0.)continue;float d=length(q-sp[i].xy)*1.6;vec3 k=pal(.99,temp)*(.7+.6*sp[i].z);if(d<d1){d2=d1;d1=d;col=k;}else if(d<d2)d2=d;}'+
+'float edge=smoothstep(.0,.007,d2-d1);vec3 c=col*mix(.06,1.,edge)*(.92+.2*sn);'+
+'c=mix(c,pal(bs.x,temp)*(.35+.8*bs.y),smoothstep(.072,.066,r));c=mix(c,vec3(.02),smoothstep(.006,.0,abs(r-.069)));'+
+'c+=(h21(gl_FragCoord.xy*.5+fract(time*5.)*17.)-.5)*.07;'+
+GLFINISH;
 var FS='#version 300 es\nprecision highp float;out vec4 o;uniform vec2 res;uniform float time,temp,energy,dim,rise;uniform vec4 bl[8];\n'+
 'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}\n'+
 'float n2(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1,0)),u.x),mix(h21(i+vec2(0,1)),h21(i+vec2(1,1)),u.x),u.y);}\n'+
@@ -365,7 +668,7 @@ var FS='#version 300 es\nprecision highp float;out vec4 o;uniform vec2 res;unifo
 'c*=1.-.32*dot(p,p);'+
 /* dither twice the grain of an 8-bit step, so big gradients never band */
 'c+=(h21(gl_FragCoord.xy+fract(time*7.)*91.)-.5)*.03+(h21(gl_FragCoord.yx*1.7+fract(time*3.)*37.)-.5)/255.;o=vec4(c,1);}';
-var prog=null, uni={};
+var prog=null, uni={}, VP={};
 if(gl){
   var sh=function(t,src){ var x=gl.createShader(t); gl.shaderSource(x,src); gl.compileShader(x); if(!gl.getShaderParameter(x,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; };
   try{
@@ -376,6 +679,12 @@ if(gl){
     var vb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vb); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   }catch(e){ console.error(e); prog=null; }
+  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']]].forEach(function(d){
+    try{ var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}'));
+      gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,d[1])); gl.bindAttribLocation(pr,0,'a'); gl.linkProgram(pr);
+      if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
+      var u={}; ['res','time','temp','energy','dim','rise'].concat(d[2]).forEach(function(n){ u[n]=gl.getUniformLocation(pr,n); }); VP[d[0]]={p:pr,u:u};
+    }catch(e){ console.error(e); } });
 }
 function resize(){ var d=Math.min(window.devicePixelRatio||1,1.5)*.7; cv.width=Math.max(2,Math.round(innerWidth*d)); cv.height=Math.max(2,Math.round(innerHeight*d)); }
 window.addEventListener('resize',resize); resize();
@@ -407,14 +716,57 @@ function frame(now){
   var ws=events.filter(function(ev){ return ev.k==='w' && ev.env>0 && T>=ev.t; }).sort(function(a,b){ return b.env-a.env; }).slice(0,NB);
   for(var k=0;k<NB;k++){ var ev2=ws[k]; if(ev2){ var p=ev2.pos||place(ev2.w); BLV.set([p.x,p.y,ev2.env,.45+(ev2.w.h%7)/7*.5],k*4); } else BLV.set([9,9,0,0],k*4); }
   if(now-lastLine>500){ lastLine=now; nowLine(); }
-  if(prog){
-    gl.uniform2f(uni.res,cv.width,cv.height); gl.uniform1f(uni.time,time); gl.uniform1f(uni.temp,temp); gl.uniform1f(uni.energy,energy);
+  var PR=STATION==='ambient'?null:VP[STATION==='303'?'303'+PIC303:STATION];
+  if(PR) drawBeat(PR,T,dim,rise);
+  else if(prog){
+    gl.useProgram(prog); gl.uniform2f(uni.res,cv.width,cv.height); gl.uniform1f(uni.time,time); gl.uniform1f(uni.temp,temp); gl.uniform1f(uni.energy,energy);
     gl.uniform1f(uni.dim,dim); gl.uniform1f(uni.rise,rise); gl.uniform4fv(uni.bl,BLV);
     gl.viewport(0,0,cv.width,cv.height); gl.drawArrays(gl.TRIANGLES,0,3);
   }
   requestAnimationFrame(frame);
 }
 var lastLine=0;
+
+/* the beat stations' pictures, fed by what the beat engine scheduled (VIS), applied as each moment arrives */
+var FZ_CHORD=null, PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
+var PV={hist:[], steps:0, roll:0,pat:[[],[],[],[]], fl:new Float32Array(64).fill(-9), kickT:-9, clapT:-9, step:0, stepT:0, acid:null, acidT:-9, cut:.3,
+        beams:[0,1,2,3].map(function(i){ return {r:.1+.1*i, tr:.1+.1*i, a:.13*i, ta:.13*i, h:.5+.15*i, t:-9}; }), rot:0, trot:0, bassT:-9, bassM:40, sparks:[], snT:-9, snV:0};
+var LU=new Float32Array(64), BMU=new Float32Array(16), SPU=new Float32Array(32);
+function pitchX(m){ return ((m-50)/30-.5)*Math.min(1.6,innerWidth/Math.max(1,innerHeight))*.85; }
+function pitchH(m){ return .5+.45*(((m%12)*7)%12)/11; }
+function applyVis(e){
+  if(e.k==='s'){ PV.step=e.s; PV.stepT=e.t; PV.cut=e.cut;
+    e.pats.forEach(function(pt,r){ PV.pat[r]=pt||[]; });
+    [e.acid,(e.pats[1]||[])[e.s],(e.pats[2]||[])[e.s],(e.pats[3]||[])[e.s]].forEach(function(h,r){ if(h) PV.fl[r*16+e.s]=e.t; });
+    if(e.kick) PV.kickT=e.t; if(e.clap) PV.clapT=e.t; if(e.acid){ PV.acid=e.acid; PV.acidT=e.t; }
+    PV.hist.unshift([e.acid?e.acid.n:-1, e.acid&&e.acid.acc?1:0, e.kick?1:0, ((e.pats[3]||[])[e.s]?1:0)+(e.clap?2:0)]); if(PV.hist.length>32) PV.hist.pop(); PV.steps++; }
+  else if(e.k==='c'){ if(FZ_CHORD) FZ_CHORD(); e.v.forEach(function(m,i){ var B=PV.beams[i]; B.tr=.07+.42*clamp((m-52)/27,0,1); B.ta=.5236*(((m%12)*7)%12)/11; B.h=pitchH(m); B.t=e.t; }); PV.trot+=.35+.25*((e.v[0]%5)/4); }
+  else if(e.k==='b'){ PV.bassT=e.t; PV.bassM=e.m; }
+  else if(e.k==='l'){ PV.sparks.push({a:Math.random()*.5236, t:e.t, dur:e.dur, r0:.08+.2*clamp((e.m-60)/30,0,1)}); if(PV.sparks.length>8) PV.sparks.shift(); }
+  else if(e.k==='n'){ PV.snT=e.t; PV.snV=e.v; PV.trot+=.03*e.v; }
+}
+function drawBeat(PR,T,dim,rise){
+  var u=PR.u, ex=function(t0,k){ var a=T-t0; return a<0?0:Math.exp(-a/k); };
+  while(VIS.length && VIS[0].t<=T) applyVis(VIS.shift());
+  gl.useProgram(PR.p); gl.uniform2f(u.res,cv.width,cv.height); gl.uniform1f(u.time,time); gl.uniform1f(u.temp,temp); gl.uniform1f(u.energy,energy);
+  gl.uniform1f(u.dim,dim); gl.uniform1f(u.rise,rise);
+  if(STATION==='303'){
+    HU.fill(0); for(var i=0;i<32;i++){ var h=PV.hist[i]; HU.set(h?h:[-1,0,0,0],i*4); }
+    if(eng&&playing){ var z=0; for(var j=1;j<512;j++){ if(buf[j-1]<0&&buf[j]>=0){ z=j; break; } } for(var q=0;q<128;q++) WV[q]=buf[z+q*4]||0; } else WV.fill(0);
+    gl.uniform4fv(u.H,HU); gl.uniform1f(u.ph,playing?Math.min(1,(T-PV.stepT)/S16):0); gl.uniform1f(u.sc,PIC303==='f'?PV.steps%8192:PV.steps%64);
+    gl.uniform1f(u.kick,ex(PV.kickT,.16)); gl.uniform1f(u.cut,PV.cut); gl.uniform1fv(u.wave,WV);
+    var nn=PV.acid?PV.acid.n:.5; PV.roll+=((nn-.5)*.2-PV.roll)*.03; gl.uniform1f(u.roll,PV.roll);
+    if(u.F){ FU.fill(0); FU.set(PV.hist[0]||[-1,0,0,0],0); var fk=1; for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k==='s'){ FU.set([ve.acid?ve.acid.n:-1, ve.acid&&ve.acid.acc?1:0,0,0],fk*4); fk++; } }
+      for(;fk<16;fk++) FU.set([-1,0,0,0],fk*4); gl.uniform4fv(u.F,FU); }
+  } else {
+    var k=1-Math.exp(-(1/60)/.05); PV.rot+=(PV.trot-PV.rot)*(1-Math.exp(-(1/60)/.09));
+    PV.beams.forEach(function(B,i){ B.r+=(B.tr-B.r)*k; B.a+=(B.ta-B.a)*k; BMU.set([B.r,B.a,B.h,playing?.35+.65*ex(B.t,.3):.25],i*4); });
+    PV.sparks=PV.sparks.filter(function(s){ return T-s.t<s.dur+1.4; });
+    for(var j=0;j<8;j++){ var s=PV.sparks[j]; if(s&&T>=s.t){ var a=T-s.t, rr=s.r0+.5*Math.min(1,a/1.4); SPU.set([Math.cos(s.a)*rr,Math.sin(s.a)*rr,Math.exp(-a/(s.dur+.35)),0],j*4); } else SPU.set([9,9,0,0],j*4); }
+    gl.uniform4fv(u.bm,BMU); gl.uniform4f(u.bs,pitchH(PV.bassM),.15+.85*ex(PV.bassT,.3),0,0); gl.uniform4fv(u.sp,SPU); gl.uniform1f(u.sn,PV.snV*ex(PV.snT,.15)); gl.uniform1f(u.rot,PV.rot);
+  }
+  gl.viewport(0,0,cv.width,cv.height); gl.drawArrays(gl.TRIANGLES,0,3);
+}
 
 /* both lines, written slowly letter by letter on a moving wave (about 8 s), a short pause, a slow fade to nothing, 15 s of nothing, again */
 (function(){
@@ -453,6 +805,56 @@ var lastLine=0;
   setTimeout(begin,3000);
 })();
 
+/* Fusion's version of the two lines: every letter cut out on its own shard of paper, in the kaleidoscope's palette,
+   laid in two rings that turn with the glass. Each chord change slaps down the next letters and jolts the rest;
+   then the pieces fly apart, 15 s of nothing, again. Paused, letters land on a timer instead. */
+(function(){
+  var LINES=['Cut my reviews into pieces','This is my last retort'], ring=$('shardring'), pulse=$('shardpulse');
+  var HOLD=6, SCATTER=6, REST=15, cur=null, spin=0;
+  function g3(a,b,c,t){ t=clamp(t,0,1); var x=t<.5?t*2:t*2-1, u=t<.5?a:b, v=t<.5?b:c; return [0,1,2].map(function(i){ return u[i]+(v[i]-u[i])*x; }); }
+  function palJS(t,k){   /* the shaders' palette, so the paper matches the glass */
+    var cold=g3([.02,.04,.12],[.26,.48,.78],[.78,.84,.98],t), mid=g3([.01,.09,.11],[.16,.5,.52],[.93,.74,.78],t), warm=g3([.11,.02,.07],[.93,.42,.33],[1,.84,.55],t);
+    var a=k<.5?cold:mid, b=k<.5?mid:warm, x=k<.5?k*2:k*2-1; return [0,1,2].map(function(i){ return Math.round(255*clamp(a[i]+(b[i]-a[i])*x,0,1)); });
+  }
+  function cutShape(){ var pts=[[0,0],[100,0],[100,100],[0,100]].map(function(q){ return (q[0]+(q[0]?-1:1)*Math.random()*14).toFixed(0)+'% '+(q[1]+(q[1]?-1:1)*Math.random()*14).toFixed(0)+'%'; }); return 'polygon('+pts.join(',')+')'; }
+  function begin(){
+    while(pulse.firstChild) pulse.removeChild(pulse.firstChild);
+    var R0=Math.min(innerWidth,innerHeight)*.4, items=[];
+    LINES.forEach(function(line,j){
+      var R=j?R0*.78:R0, size=clamp(R0/5.5,18,40)*(j?.9:1), step=size*.66/R, a0=-step*(line.length-1)/2;
+      line.split('').forEach(function(ch,i){
+        var el=document.createElement('span'); el.className='shard'; el.textContent=ch;
+        var t=.45+.5*Math.random(), col=palJS(t,temp);
+        el.style.background=ch===' '?'transparent':'rgb('+col.join(',')+')'; if(ch===' ') el.style.filter='none';
+        el.style.color=t>.62?'#05070B':'#EEF0F4';
+        el.style.fontSize=(size*(.8+.45*Math.random())).toFixed(1)+'px'; el.style.fontStyle=Math.random()<.35?'italic':'normal'; el.style.fontWeight=Math.random()<.3?'700':'400';
+        el.style.clipPath=cutShape();
+        var a=a0+i*step, tilt=(Math.random()-.5)*22;
+        el._home='translate(-50%,-50%) rotate('+a+'rad) translateY('+(-R)+'px) rotate('+tilt+'deg)';
+        el.style.transform=el._home+' scale(1.9)';
+        pulse.appendChild(el); items.push(el);
+      });
+    });
+    cur={items:items, n:0, done:0, t0:performance.now()};
+  }
+  function land(k){
+    if(!cur||cur.done) return;
+    for(var i=0;i<k && cur.n<cur.items.length;i++){ var el=cur.items[cur.n++]; el.style.opacity='1'; el.style.transform=el._home+' scale(1)'; if(el.textContent===' ') i--; }
+    if(cur.n>=cur.items.length){ cur.done=performance.now(); setTimeout(scatter,HOLD*1000); }
+  }
+  function scatter(){
+    if(!cur) return; var c=cur;
+    c.items.forEach(function(el){ el.style.transition='opacity '+SCATTER+'s ease-in,transform '+SCATTER+'s cubic-bezier(.15,.6,.3,1)';
+      el.style.opacity='0'; el.style.transform=el._home+' translateY('+(-60-200*Math.random())+'px) rotate('+((Math.random()-.5)*160)+'deg) scale(.8)'; });
+    setTimeout(function(){ if(cur===c){ cur=null; setTimeout(begin,REST*1000); } },SCATTER*1000);
+  }
+  FZ_CHORD=function(){ if(STATION!=='fusion') return; land(2);
+    if(pulse.animate) pulse.animate([{transform:'scale(1.05)'},{transform:'scale(1)'}],{duration:220,easing:'ease-out'}); };
+  setInterval(function(){ if(STATION==='fusion' && !playing) land(1); },350);
+  (function frame(){ if(STATION==='fusion'){ spin=PV.rot; ring.style.transform='rotate('+spin+'rad)'; } requestAnimationFrame(frame); })();
+  setTimeout(begin,2000);
+})();
+
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
 var quietTimer=null;
 function poke(){ document.body.classList.remove('quiet'); clearTimeout(quietTimer); if(playing) quietTimer=setTimeout(function(){ if(playing) document.body.classList.add('quiet'); },5000); }
@@ -479,6 +881,10 @@ window.CRR={
       e.grainsUntil(H); eng=save; cur=saved;
       return oc.startRendering();
     });
+  },
+  renderBeat:function(kind,at,secs){
+    var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
+    return loadSound(oc).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); b.until(secs); return oc.startRendering(); });
   },
   factIn:function(){ var P=stationNow(), ri=reviewAt(P); return factFor(ri,START[ri]).at-P; },
   factsScheduled:function(){ return Object.keys(factsDone).length; },
