@@ -368,6 +368,12 @@ function recFz(B){
   (B.R.t.toLowerCase().match(/[a-z]+/g)||['la']).some(function(word){
     for(var i=0;i<word.length&&slot<slots;i++){ var cc=word.charCodeAt(i), len='aeiou'.indexOf(word[i])>=0?3:1; x.motif.push({at:slot, deg:cc%4, oct:(cc>>2)&1, len:len}); slot+=len; }
     slot++; return slot>=slots; });
+  /* v3 (Todd 2026-10-14: "the main theme bassline… sounds the same across all songs"): each song gets its own bass style, bass sound and drum groove */
+  x.bass=pick(['approach','walk','funk','pedal','twofeel','ostinato'],r(50)); x.btone=pick(['fretless','round','synth'],r(51));
+  x.groove=m.g[0]===6?pick(['swing','half','latin'],r(52)):pick(['swing','funk','latin','half'],r(52));
+  x.bk=5+Math.floor(r(53)*4); x.brot=Math.floor(r(54)*x.n); x.bint=[[0,0,12,10,7,0],[0,7,0,12,5,0],[0,0,3,5,7,10],[0,12,0,10,0,7]][Math.floor(r(55)*4)];
+  x.kk=3+Math.floor(r(56)*3); x.krot=Math.floor(r(57)*x.n);
+  x.riff=[]; for(var ri2=0, at=0; at<x.n && ri2<6; ri2++){ x.riff.push({at:at, iv:pick([0,0,7,12,10,5,3,-2],r(60+ri2)), len:pick([1,2,2,3,4],r(70+ri2))}); at+=x.riff[ri2].len+(r(80+ri2)<.35?1:0); }
   x.ost=[0,7,12,10].map(function(iv,k){ return {at:[0,6,10,14][k]%x.n, iv:iv}; }).filter(function(o,k){ return k===0||r(40+k)<.7; });
   return (B.rf=x);
 }
@@ -446,9 +452,12 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.setTargetAtTime(v*.35,t+.01,.5); g.gain.setTargetAtTime(0,t+dur,.12);
     var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=((m%7)-3)/8; g.connect(pn); out=pn; }
     car.connect(g); out.connect(bus); out.connect(send); car.start(t); mo.start(t); car.stop(t+dur+.8); mo.stop(t+dur+.8); }
+  var BASSV='fretless';
   function fbass(t,m,dur,v){ v=v||.42; var o=c.createOscillator(), s=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain(), f=mtof(m);
-    o.type='sawtooth'; o.frequency.setValueAtTime(f*.985,t); o.frequency.exponentialRampToValueAtTime(f,t+.05); s.frequency.value=f;
-    lp.type='lowpass'; lp.Q.value=3; lp.frequency.setValueAtTime(900,t); lp.frequency.exponentialRampToValueAtTime(320,t+.25);
+    if(BASSV==='round'){ o.type='triangle'; o.frequency.value=f; s.frequency.value=f; lp.type='lowpass'; lp.Q.value=.7; lp.frequency.setValueAtTime(1400,t); lp.frequency.exponentialRampToValueAtTime(500,t+.12); v*=1.15; }   /* round, like an upright */
+    else if(BASSV==='synth'){ o.type='square'; o.frequency.value=f; s.frequency.value=f/2; lp.type='lowpass'; lp.Q.value=8; lp.frequency.setValueAtTime(2400,t); lp.frequency.exponentialRampToValueAtTime(260,t+.16); v*=.8; }   /* a synth bass with a quack */
+    else { o.type='sawtooth'; o.frequency.setValueAtTime(f*.985,t); o.frequency.exponentialRampToValueAtTime(f,t+.05); s.frequency.value=f;
+    lp.type='lowpass'; lp.Q.value=3; lp.frequency.setValueAtTime(900,t); lp.frequency.exponentialRampToValueAtTime(320,t+.25); }
     g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.01); g.gain.setTargetAtTime(0,t+dur,.05);
     o.connect(lp); s.connect(lp); lp.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.4); s.stop(t+dur+.4); if(vis) vis.push({t:t,k:'b',m:m}); }
   var LEADV='saw';
@@ -575,7 +584,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     var B=Gi.B, x=recFz(B), Ar=Gi.Ar, j=Gi.j, nG=x.g.length, bar=Math.floor(j/x.n), s=j-bar*x.n, gi=x.gmap[s], sb=s-x.gs[gi], glen=x.g[gi], b=bar*nG+gi;
     var W=where(A), w=W.w, S=W.S, L=w.key.length, sec=secFz(x,W), E=arcAt(W.off/B.R.s), s16=x.s16, gdur=glen*s16;
     var M=moment(W,A,s16,gdur), C=chordAt(Ar,x,b), pbar=bar-Math.floor(W.pa.t0/x.bar);
-    LEADV=x.lead;
+    LEADV=x.lead; BASSV=x.btone;
     if(glen===4 && sb===2) t+=x.swing*s16;                                /* swing the "and" */
     if(M.stop) return;
     if(M.hit){ if(M.hit1){ C.v.forEach(function(m){ rhodes(t,m,gdur*.6,.22); }); if(vis) vis.push({t:t,k:'c',v:C.v.slice()});
@@ -595,6 +604,18 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     else if(sec==='break'){ if(s===0){ lastBass=bassNote(C.root); fbass(t,lastBass,gdur*.5,.45); } }
     else if(bassSolo){ if(s%2===0){ var tn=[0,C.maj?4:3,7,C.maj?11:10,12,14], bn2=36+C.root+tn[(s/2+L+bar)%6]; if(sb===glen-2 && gi===nG-1) bn2=36+chordAt(Ar,x,b+1).root+11;
         while(bn2>55) bn2-=12; fbass(t,bn2,s16*1.7,.38); lastBass=bn2; } }
+    else if(x.bass==='walk'){                                              /* walking: a note on every beat, stepping into the next chord */
+      if(sb===0){ var Cw=chordAt(Ar,x,b+1), tw=[0,C.maj?4:3,7,C.maj?9:10], bw;
+        if(gi===0) bw=bassNote(C.root); else if(Cw.root!==C.root) bw=bassNote(Cw.root)+((b+L)%2?1:-1); else bw=36+C.root+tw[(gi+L)%4];
+        while(bw>52) bw-=12; while(bw<31) bw+=12; lastBass=bw; fbass(t,bw,gdur*.92,.36); } }
+    else if(x.bass==='funk'){                                              /* funk: syncopated sixteenths, octaves and sevenths */
+      if(euclid(x.bk,x.n,x.brot)[s]||s===0){ var bf=bassNote(C.root)+x.bint[(s+bar)%x.bint.length]; if(s===0) lastBass=bassNote(C.root); fbass(t,bf,s16*(s%4===0?1.5:.75),s%4===0?.42:.3); } }
+    else if(x.bass==='pedal'){                                             /* pedal: the home note pulses while the chords move above it */
+      if(s%2===0){ var pd=36+((B.root+5*W.pa.k)%12); if(pd>45) pd-=12; fbass(t,pd+(s%8===6?12:0),s16*1.6,s===0?.42:.28); } }
+    else if(x.bass==='twofeel'){                                           /* two feel: root and fifth, long notes */
+      var half=x.gs[Math.floor(nG/2)]; if(s===0||s===half){ var bt=bassNote(C.root)+(s===half?7:0); if(s===0) lastBass=bt; fbass(t,bt,(s===0?half:x.n-half)*s16*.9,.4); } }
+    else if(x.bass==='ostinato'){                                          /* a riff of the song's own, moved to each chord */
+      x.riff.forEach(function(o){ if(o.at===s){ var bo=bassNote(C.root)+o.iv; if(o.at===0) lastBass=bassNote(C.root); fbass(t,bo,s16*o.len*.9,.38); } }); }
     else {
       if(sb===0){ lastBass=bassNote(C.root); fbass(t,lastBass,s16*1.7); }
       if(sb===glen-2){ var Cn=chordAt(Ar,x,b+1), vow='aeiou'.indexOf(C.c)>=0, nb2=bassNote(Cn.root);
@@ -620,12 +641,19 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       if(gi===nG-1 && bar%2===1) D.tom(t,[180,150,125,105,95,85][sb]||90,.4);
       if(s%2===0) D.ride(t,.12); return;
     }
-    if(s===0||s===mid) D.kick(t,.8);
+    var gv=x.groove, last=x.gs[nG-1], half2=x.gs[Math.floor(nG/2)];
+    if(gv==='funk'){ if(s===0||euclid(x.kk,x.n,x.krot)[s]) D.kick(t,.8); }
+    else if(gv==='latin'){ if(s===0||s===(x.gs[1]||0)+2||s===last+2) D.kick(t,.75); }
+    else if(gv==='half'){ if(s===0||(E>.6&&s===half2+2)) D.kick(t,.85); }
+    else if(s===0||s===mid) D.kick(t,.8);
     if(toEnd<gdur*2 && toEnd>0) D.snare(t,.25+.5*(1-toEnd/(gdur*2)));    /* a fill into the next sentence */
-    else if(sb===0 && gi%2===1) D.snare(t);
+    else if(gv==='half'? (s===half2) : gv==='latin' ? euclid(3,8,2)[(s>>1)%8]&&s%2===0 : (sb===0 && gi%2===1)) D.snare(t,gv==='latin'?.35:.7);
     else if(pbar%4===3 && gi===nG-1 && E>.45) D.tom(t,[170,150,130,110,100,90][sb]||90,.35);   /* a fill every four bars */
-    else if(ih(j+B.h)<.1+.2*E) D.snare(t,.12);
-    if(s%2===0) D.ride(t,sb===0?.22:.14); else if(sec==='burn') D.ride(t,.07);
+    else if(ih(j+B.h)<(gv==='funk'?.18:.1)+.2*E) D.snare(t,.12);
+    if(gv==='funk'){ D.hat(t,s%4===0?.2:s%2===0?.13:.07); if(s===last+2) D.open(t,.18); }   /* funk: closed hat sixteenths */
+    else if(gv==='latin'){ if(s%2===0&&euclid(5,8,0)[(s>>1)%8]) D.ride(t,.18); else if(s%2===0) D.hat(t,.08); }   /* a cascara on the ride */
+    else if(gv==='half'){ if(s%2===0) D.ride(t,sb===0?.18:.1); }
+    else { if(s%2===0) D.ride(t,sb===0?.22:.14); else if(sec==='burn') D.ride(t,.07); }
   }
 
 
