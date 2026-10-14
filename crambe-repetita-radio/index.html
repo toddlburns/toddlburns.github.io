@@ -322,7 +322,7 @@ function recCl(B){   /* v2: tintinnabuli. The key is the artist's letter and nev
   if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(52+14*r(1)), set=r(2)<.42?'spiegel':r(2)<.72?'cantus':'alina';
   var tonic=48+B.root%12;
   var x={bpm:bpm, s16:15/bpm, n:set==='spiegel'&&r(3)<.5?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,10], set:set, tonic:tonic,
-    cC:tonic+12, vC:tonic+24, pC:tonic+24, cCr:tonic, vCr:tonic+(B.root%12<5?24:12), pCr:tonic+12, tup:r(4)<.5, arp:r(5)<.5?3:6};
+    cC:tonic+12, vC:tonic+24, pC:tonic+24, cCr:tonic, vCr:tonic+(B.root%12<5?24:12), pCr:tonic+12, tup:r(4)<.5, arp:r(5)<.5?3:6, per:r(6)<.5?2:3};
   x.bar=x.n*x.s16; return (B.rc=x);
 }
 function recWb(B){   /* v2 (Todd 2026-10-14: "a bit too busy… more contemplative… more ringing chords"): slower, sparser, rings much longer */
@@ -379,7 +379,7 @@ function recFz(B){
 }
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:9,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:10,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
   var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
@@ -750,19 +750,23 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t && !CLS) bowedS(t,tonic+24,Math.max(2,Math.min(30,S.t1-S.t))+.5,.01+.006*E,.7);
     if(x.set==='cantus' && CLS && W.off>=S.t && (W.off-S.t)%6<dur16 && S.t1-W.off>1.5) bowed(t,tonic-12,7.5,.006+.004*E,.6);   /* the recorded drone: a fresh low bow every 6 s, overlapping */
     /* the melody voice: one note per word */
-    var wordStart=w.start>W.off-dur16 && w.start<=W.off;
-    if(wordStart){
-      var i=W.wi-S.a, n=S.b-S.a+1, span=1+(kp%7), dir=kp%2?1:-1, d=span-(i%(span+1));
+    var wordStart=w.start>W.off-dur16 && w.start<=W.off, i=W.wi-S.a, n=S.b-S.a+1, per=x.per;
+    /* long phrases (Todd 2026-10-14: "elongate phrases"): only every second or third word moves the melody, plus the
+       sentence's last word; each note is held, legato, until the next one, and the last is held across the breath */
+    var sounds=wordStart && (i%per===0 || i===n-1);
+    if(sounds){
+      var si=Math.floor((i+per-1)/per), span=1+(kp%7), dir=kp%2?1:-1, d=span-(si%(span+1));
       if(i===n-1) d=M.ask?1:0;                                               /* the end of the sentence lands home; a question stops one step short */
-      var m=centre+deg(-dir*d), gap=W.wi+1<ws.length?ws[W.wi+1].start-w.start:4, len=clamp(gap*.97,1.1,8);
+      var nx=i===n-1?S.b+1:S.a+Math.min(i+per,n-1), gap=nx<ws.length?ws[nx].start-w.start:6;
+      var m=centre+deg(-dir*d), len=clamp(gap*1.04+(i===n-1?1.5:0),2,14);
       var t2=tv(m,x.tup!==(kp%3===2));
       if(string){ bowed(t,m,len,.022+.012*E,.8+.5*E); if(x.set==='cantus') bowed(t,t2-12,len,.012+.008*E,.7); else piano(t,t2-12,.045+.02*E,true);
         if(x.set==='cantus') piano(t,t2+12,.018,true); }
       else { piano(t,m,(.06+.025*E)*1.0,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.0,false,1.8); }   /* the piano alone: level-matched to the other two settings */
       if(i===0 && x.set!=='cantus') piano(t,tonic+(x.set==='alina'?12:0),x.set==="alina"?.05:.035,false,x.set==='alina'?2.2:1);   /* the sentence's tonic, soft; Alina keeps the pedal down */
     }
-    /* Spiegel: the piano breaks the triad, one note a beat, rising */
-    if(x.set==='spiegel' && s%4===0){ var b=Math.floor(j/4), up=[0,1,2,1,2,3][b%x.arp], nn=tonic+24+(up<3?triad[up]:12); piano(t,nn,.016+.008*E,false); }
+    /* Spiegel: the piano breaks the triad, one note every two beats, rising */
+    if(x.set==='spiegel' && j%8===0){ var b=Math.floor(j/8), up=[0,1,2,1,2,3][b%x.arp], nn=tonic+24+(up<3?triad[up]:12); piano(t,nn,.016+.008*E,false); }
     if(M.hit1) bell(t,tonic+60,.025);                                        /* ! : a high bell */
     if(M.title && wordStart) bell(t+.02,tonic+55,.016);                       /* the album title: a bell on the fifth */
   }
