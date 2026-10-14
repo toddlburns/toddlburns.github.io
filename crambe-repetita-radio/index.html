@@ -322,7 +322,7 @@ function recCl(B){   /* v2: tintinnabuli. The key is the artist's letter and nev
   if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(52+14*r(1)), set=r(2)<.42?'spiegel':r(2)<.72?'cantus':'alina';
   var tonic=48+B.root%12;
   var x={bpm:bpm, s16:15/bpm, n:set==='spiegel'&&r(3)<.5?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,10], set:set, tonic:tonic,
-    cC:tonic+12, vC:tonic+24, pC:tonic+24, tup:r(4)<.5, arp:r(5)<.5?3:6};
+    cC:tonic+12, vC:tonic+24, pC:tonic+24, cCr:tonic, vCr:tonic+(B.root%12<5?24:12), pCr:tonic+12, tup:r(4)<.5, arp:r(5)<.5?3:6};
   x.bar=x.n*x.s16; return (B.rc=x);
 }
 function recWb(B){   /* v2 (Todd 2026-10-14: "a bit too busy… more contemplative… more ringing chords"): slower, sparser, rings much longer */
@@ -697,40 +697,58 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
   /* v5 instruments (Todd 2026-10-14: still "synthy", so only sounds synthesis does well): bowed() is a glass
      harmonica, two pure tones a hair apart so it beats slowly, with a breath of friction as it starts; piano() is a
      music box, a steel tine (its partials at 1 and 6.27) with a small click, each pitch a few cents off true. */
-  function bowed(t,m,dur,v,bright){ v=v||.03; var f=mtof(m), g=c.createGain(), end=t+dur, rel=.7;
+  function bowedS(t,m,dur,v,bright){ v=v||.03; var f=mtof(m), g=c.createGain(), end=t+dur, rel=.7;
     [[1,1],[1.0018,.8],[2.001,.07],[3.002,.015]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.frequency.value=f*p[0]; og.gain.value=p[1]*.45; o.connect(og); og.connect(g); o.start(t); o.stop(end+rel*5); });
     var n=c.createBufferSource(); n.buffer=noise; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=Math.min(9000,f*3); bp.Q.value=4;
     var ng=c.createGain(); ng.gain.setValueAtTime(.0001,t); ng.gain.exponentialRampToValueAtTime(.05,t+.08); ng.gain.exponentialRampToValueAtTime(.0001,t+.5); n.connect(bp); bp.connect(ng); ng.connect(g); n.start(t,ih(Math.round(t*100)>>>0)*.4); n.stop(t+.55);   /* the wet finger on the glass */
     g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.35,dur*.3)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,rel);
     var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-72)/30,-.5,.5); g.connect(pn); out=pn; }
     out.connect(bus); out.connect(send); }
-  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m)*Math.pow(2,(ih((m*7919)>>>0)-.5)*6/1200), g=c.createGain(), dec=clamp(3.4-(m-60)*.05,1.2,3.6)*(sus||1);
+  function pianoS(t,m,v,fw,sus){ v=v||.05; var f=mtof(m)*Math.pow(2,(ih((m*7919)>>>0)-.5)*6/1200), g=c.createGain(), dec=clamp(3.4-(m-60)*.05,1.2,3.6)*(sus||1);
     [[1,1,dec],[6.27,.22,.09],[17.55,.05,.02]].forEach(function(p){ if(f*p[0]>16000) return; var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
       pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.002); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
     var n=c.createBufferSource(); n.buffer=noise; var hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=5000; var ng=c.createGain();
     ng.gain.setValueAtTime(.12,t); ng.gain.exponentialRampToValueAtTime(.001,t+.012); n.connect(hp); hp.connect(ng); ng.connect(g); n.start(t,ih(m*31>>>0)*.5); n.stop(t+.02);   /* the pin plucking the tine */
     g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-72)/36,-.4,.4); g.connect(pn); out=pn; }
     out.connect(bus); out.connect(send); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
-  function bell(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a small glass bell */
+  function bellS(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a small glass bell */
     [[1,1,5],[2.76,.18,1.6],[5.4,.05,.6]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
       pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.01); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
     var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=(ih(Math.round(t*10)>>>0)-.5)*.8; g.connect(pn); out=pn; }
     out.connect(bus); out.connect(send); if(vis) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  /* v6 (Todd 2026-10-14: the synthesised instruments never stopped sounding synthetic; he chose real recordings):
+     soft-layer samples from VSCO 2 Community Edition (CC0): upright piano pp, solo violin p, cello section, glockenspiel.
+     They load only when Classical is chosen (classical.mp3, about 3 MB); until then the glass-and-music-box
+     versions above stand in. */
+  function samp(inst,t,m,v,dur,att,rel,pan){ var L=CLS.map[inst], n=L[0]; L.forEach(function(q){ if(Math.abs(q[0]-m)<Math.abs(n[0]-m)) n=q; });
+    var rate=Math.pow(2,(m-n[0])/12), len=Math.min(n[2]/rate,dur+rel), src=c.createBufferSource(), g=c.createGain(), end=t+Math.max(.05,len-rel);
+    src.buffer=CLS.buf; src.playbackRate.value=rate;
+    g.gain.setValueAtTime(att?.0001:v,t); if(att) g.gain.linearRampToValueAtTime(v,t+att); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,rel/3);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=pan; g.connect(pn); out=pn; }
+    src.connect(g); out.connect(bus); out.connect(send); src.start(t,n[1],Math.min(n[2],len*rate+.05)); src.stop(t+len+.1); }
+  var CLV=1;   /* each setting's recorded level */
+  function bowed(t,m,dur,v,bright){ if(!CLS) return bowedS(t,m,dur,v,bright); v*=CLV;
+    samp(m<60?'cello':'violin',t,m,v*5.5,dur,.35,1.4,clamp((m-62)/30,-.45,.45)); }
+  function piano(t,m,v,fw,sus){ if(!CLS) return pianoS(t,m,v,fw,sus); v*=CLV;
+    samp('piano',t,m,v*5.5,9*(sus||1),0,1.2,clamp((m-64)/36,-.4,.4)); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  function bell(t,m,v){ if(!CLS) return bellS(t,m,v); while(m>96) m-=12;
+    samp('glock',t,m,v*4,4,0,1,(ih(Math.round(t*10)>>>0)-.5)*.7); if(vis) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
   function stepClassical(Gi,A,t){
     var B=Gi.B, x=recCl(B), j=Gi.j, s=j%x.n, W=where(A), w=W.w, S=W.S, pa=W.pa, nP=B.paras.length, ws=B.ws, sc=x.scale;
-    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4);
+    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4); CLV={spiegel:1,alina:.68,cantus:.5}[x.set];
     if(M.stop) return;                                                       /* a dash: silence */
     if(pa.s0===undefined){ for(var q=0;q<B.P.sents.length;q++) if(B.P.sents[q].para===S.para){ pa.s0=q; break; } }
     var kp=S.k-pa.s0, tonic=x.tonic, triad=[0,sc[2],sc[4]];
     function deg(d){ return sc[((d%7)+7)%7]+12*Math.floor(d/7); }
     function tv(m,up){ for(var k=1;k<13;k++){ var n=up?m+k:m-k, pc=(((n-tonic)%12)+12)%12; if(triad.indexOf(pc)>=0) return n; } return m; }   /* the nearest note of the triad */
-    var string=x.set!=='alina', vln=pa.k%2===1||pa.k===nP-1, centre=string?(vln?x.vC:x.cC):x.pC;
+    var string=x.set!=='alina', vln=pa.k%2===1||pa.k===nP-1, centre=CLS?(string?(vln?x.vCr:x.cCr):x.pCr):(string?(vln?x.vC:x.cC):x.pC);
     if(M.quote) centre+=12;                                                 /* quotes: an octave up, lighter */
     var dur16=x.s16;
     /* a paragraph opens with a bell, low and far off */
     if(S.first && W.off-S.t<dur16 && W.off>=S.t) bell(t,tonic+48,.025+.01*E);
     /* the drone: Cantus holds the tonic under each sentence */
-    if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t) bowed(t,tonic+24,Math.max(2,Math.min(30,S.t1-S.t))+.5,.01+.006*E,.7);
+    if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t && !CLS) bowedS(t,tonic+24,Math.max(2,Math.min(30,S.t1-S.t))+.5,.01+.006*E,.7);
+    if(x.set==='cantus' && CLS && W.off>=S.t && (W.off-S.t)%6<dur16 && S.t1-W.off>1.5) bowed(t,tonic-12,7.5,.006+.004*E,.6);   /* the recorded drone: a fresh low bow every 6 s, overlapping */
     /* the melody voice: one note per word */
     var wordStart=w.start>W.off-dur16 && w.start<=W.off;
     if(wordStart){
@@ -862,6 +880,13 @@ function unlock(){
 }
 function say(m){ $('status').textContent=m; $('status').hidden=!m; }
 var loading=null;
+var CLS=null, clsLoading=null;   /* the classical station's recorded instruments */
+function loadClassical(){
+  if(!clsLoading) clsLoading=Promise.all([fetch('classical.json').then(function(r){ return r.json(); }), fetch('classical.mp3').then(function(r){ return r.arrayBuffer(); })])
+    .then(function(r){ var oc=new OfflineAudioContext(1,1,44100); return new Promise(function(ok,no){ oc.decodeAudioData(r[1],ok,no); }).then(function(b){ CLS={map:r[0],buf:b}; }); })
+    .catch(function(){ clsLoading=null; });
+  return clsLoading;
+}
 function loadSound(c){
   if(loading) return loading;
   var dec=function(u){ return fetch(u).then(function(r){ return r.arrayBuffer(); }).then(function(b){ return new Promise(function(ok,no){ c.decodeAudioData(b,ok,no); }); }); };
@@ -900,7 +925,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; if(STATION==='classical') loadClassical(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -1432,7 +1457,7 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
   },
   renderBeat:function(kind,at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
-    return loadSound(oc).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); b.until(secs); return oc.startRendering(); });
+    return Promise.all([loadSound(oc), kind==='classical'?loadClassical():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); b.until(secs); return oc.startRendering(); });
   },
   factIn:function(){ var P=stationNow(), ri=reviewAt(P); return factFor(ri,START[ri]).at-P; },
   factsScheduled:function(){ return Object.keys(factsDone).length; },
