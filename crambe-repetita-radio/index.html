@@ -379,7 +379,7 @@ function recFz(B){
 }
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value={fusion:.85,'303':1.2,classical:12,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:12,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
   var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
@@ -452,14 +452,43 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.setTargetAtTime(v*.35,t+.01,.5); g.gain.setTargetAtTime(0,t+dur,.12);
     var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=((m%7)-3)/8; g.connect(pn); out=pn; }
     car.connect(g); out.connect(bus); out.connect(send); car.start(t); mo.start(t); car.stop(t+dur+.8); mo.stop(t+dur+.8); }
-  var BASSV='fretless';
-  function fbass(t,m,dur,v){ v=v||.42; var o=c.createOscillator(), s=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain(), f=mtof(m);
-    if(BASSV==='round'){ o.type='triangle'; o.frequency.value=f; s.frequency.value=f; lp.type='lowpass'; lp.Q.value=.7; lp.frequency.setValueAtTime(1400,t); lp.frequency.exponentialRampToValueAtTime(500,t+.12); v*=1.15; }   /* round, like an upright */
-    else if(BASSV==='synth'){ o.type='square'; o.frequency.value=f; s.frequency.value=f/2; lp.type='lowpass'; lp.Q.value=8; lp.frequency.setValueAtTime(2400,t); lp.frequency.exponentialRampToValueAtTime(260,t+.16); v*=.8; }   /* a synth bass with a quack */
-    else { o.type='sawtooth'; o.frequency.setValueAtTime(f*.985,t); o.frequency.exponentialRampToValueAtTime(f,t+.05); s.frequency.value=f;
-    lp.type='lowpass'; lp.Q.value=3; lp.frequency.setValueAtTime(900,t); lp.frequency.exponentialRampToValueAtTime(320,t+.25); }
-    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.01); g.gain.setTargetAtTime(0,t+dur,.05);
-    o.connect(lp); s.connect(lp); lp.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.4); s.stop(t+dur+.4); if(vis) vis.push({t:t,k:'b',m:m}); }
+  /* the bass, v2 (Todd 2026-10-14: "very same-y as it goes up and down. No expressiveness"): a player's touch.
+     Every note has its own weight (harder = brighter), lands a hair early or late and lasts a little more or less.
+     Fretless slides into close notes, scoops into the rest, sings a vowel ("mwah") and gets vibrato on long notes;
+     the round bass has a finger pluck and a woody decay; the synth's filter snaps harder on harder notes.
+     The dice come from station time, so every listener hears the same performance. */
+  var BASSV='fretless', bPrevF=0, bPrevEnd=-9;
+  function fbass(t,m,dur,v){ v=v||.42; var A=Math.round(absAt(t)*100), hv=ih(A>>>0), hv2=ih((A+7)>>>0), f=mtof(m);
+    var vel=clamp(v*(.72+.5*hv),.05,.62), br=vel/.42;
+    t+=(hv2-.5)*.014; dur*=.75+.5*hv2; if(t<c.currentTime) t=c.currentTime;
+    var o=c.createOscillator(), s=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain(), head=lp, rel=.05;
+    var legato=bPrevF>0 && t-bPrevEnd<.1 && Math.abs(12*Math.log(f/bPrevF)/Math.LN2)<=7;
+    lp.type='lowpass';
+    if(BASSV==='round'){                                                   /* like an upright: a pluck, then a woody bloom and decay */
+      o.type='triangle'; o.frequency.setValueAtTime(f*1.012,t); o.frequency.exponentialRampToValueAtTime(f,t+.03); s.frequency.value=f;
+      lp.Q.value=.8; lp.frequency.setValueAtTime(700+1600*br,t); lp.frequency.exponentialRampToValueAtTime(380+120*br,t+.18);
+      var n=c.createBufferSource(); n.buffer=noise; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=900+600*br; bp.Q.value=2;
+      var ng=c.createGain(); ng.gain.setValueAtTime(.35*br,t); ng.gain.exponentialRampToValueAtTime(.001,t+.025); n.connect(bp); bp.connect(ng); ng.connect(g); n.start(t,hv*.5); n.stop(t+.04);
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(vel*1.15,t+.005); g.gain.setTargetAtTime(vel*.45,t+.02,.18+.2*hv); rel=.07;
+    } else if(BASSV==='synth'){                                            /* a synth bass: the filter quacks harder on harder notes */
+      o.type='square'; o.frequency.value=f; s.type='sawtooth'; s.frequency.value=f*1.004;
+      lp.Q.value=5+7*br; lp.frequency.setValueAtTime(500+3200*br*br,t); lp.frequency.exponentialRampToValueAtTime(230,t+.07+.14*br);
+      if(legato && hv<.35){ o.frequency.setValueAtTime(bPrevF,t); o.frequency.exponentialRampToValueAtTime(f,t+.06); }
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(vel*.8,t+.004); g.gain.setTargetAtTime(vel*.6,t+.02,.2); rel=.03;
+    } else {                                                               /* fretless: slides, scoops, a vowel, vibrato */
+      o.type='sawtooth'; s.type='sine';
+      var from=legato&&hv<.75?bPrevF:f*(.955+.02*hv), glide=legato?.05+.07*hv2:.035+.03*hv2;
+      [o,s].forEach(function(x){ x.frequency.setValueAtTime(from,t); x.frequency.exponentialRampToValueAtTime(f,t+glide); });
+      lp.Q.value=2.5; lp.frequency.setValueAtTime(450+1100*br,t); lp.frequency.exponentialRampToValueAtTime(300+80*br,t+.3+.2*hv);
+      var pk=c.createBiquadFilter(); pk.type='peaking'; pk.frequency.setValueAtTime(520,t); pk.frequency.linearRampToValueAtTime(800,t+Math.max(.12,dur*.7)); pk.Q.value=2.2;
+      pk.gain.setValueAtTime(10*br,t); pk.gain.linearRampToValueAtTime(0,t+Math.max(.12,dur*.8)); lp.connect(pk); head=pk;   /* "mwah" */
+      if(dur>.3){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=4.6+hv; lg.gain.setValueAtTime(0,t); lg.gain.setValueAtTime(0,t+.18); lg.gain.linearRampToValueAtTime(f*.009,t+dur);
+        lf.connect(lg); lg.connect(o.frequency); lg.connect(s.frequency); lf.start(t); lf.stop(t+dur+.4); }
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(vel,t+.012); g.gain.setTargetAtTime(vel*.75,t+.03,.4);
+    }
+    g.gain.setTargetAtTime(0,t+dur,rel);
+    o.connect(lp); s.connect(lp); head.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.5); s.stop(t+dur+.5);
+    bPrevF=f; bPrevEnd=t+dur; if(vis) vis.push({t:t,k:'b',m:m}); }
   var LEADV='saw';
   function lead(t,m,dur,v){ v=v||.09; var g=c.createGain(), f=mtof(m);
     if(LEADV==='vibes'){   /* struck bars: a sine with a bell partial, shimmering */
