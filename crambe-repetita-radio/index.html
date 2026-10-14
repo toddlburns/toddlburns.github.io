@@ -318,13 +318,13 @@ function where(A){
 function sec303(x,W){ var c=x.sec[W.pa.k]; return (c==='groove'||c==='deep')&&W.S.k%4===3?'break':c; }
 function secFz(x,W){ var c=x.sec[W.pa.k]; return (c==='solo'||c==='trade'||c==='vamp')&&W.S.k%5===4?'break':c; }
 /* the new stations' recipes (their engines live in makeBeat) */
-var CL_PROGS=[[0,5,3,4],[0,3,4,0],[0,4,5,2,3,0,3,4],[0,3,6,2,5,1,4,0],[0,5,1,4],[0,1,4,0,3,4,0,0]];
-function recCl(B){
-  if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(64+16*r(1)), three=r(2)<.4;
-  var x={bpm:bpm, s16:15/bpm, n:three?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,11], fig:three?'waltz':pick(['alberti','broken','alberti'],r(3))};
+function recCl(B){   /* v2: tintinnabuli. The key is the artist's letter and never moves; minor unless the grade is warm */
+  if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(52+14*r(1)), set=r(2)<.42?'spiegel':r(2)<.72?'cantus':'alina';
+  var tonic=48+B.root%12;
+  var x={bpm:bpm, s16:15/bpm, n:set==='spiegel'&&r(3)<.5?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,10], set:set, tonic:tonic,
+    cC:tonic, vC:tonic+(B.root%12<5?24:12), pC:tonic+12+(B.root%12<5?12:0), tup:r(4)<.5, arp:r(5)<.5?3:6};
   x.bar=x.n*x.s16; return (B.rc=x);
 }
-function clChord(x,deg,root){ var sc=x.scale; return [0,2,4].map(function(k){ var d=deg+k; return root+sc[d%7]+12*Math.floor(d/7); }); }
 function recWb(B){   /* v2 (Todd 2026-10-14: "a bit too busy… more contemplative… more ringing chords"): slower, sparser, rings much longer */
   if(B.rw) return B.rw; var r=function(k){ return rnd(B,k); };
   var x={bpm:Math.round(64+20*r(1)), pool:POOL[gradeLetter(B.R.g)], k:[2,3,2,3].map(function(k0,i){ return k0+Math.floor(r(2+i)*2); }),
@@ -379,7 +379,7 @@ function recFz(B){
 }
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:12,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:6,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
   var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
@@ -686,43 +686,62 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
   }
 
 
-  /* ================= classical: a music box in the next room (2026-10-14) =================
-     Meant for low volume and half-listening. A harp breaks each chord into an Alberti or waltz figure; a celesta
-     sings the words, one soft note per word (two or three for long words), slowly. Each sentence walks a classical
-     progression one chord per bar and ends on a cadence its punctuation chooses: . home, ? hangs on the dominant,
-     ! home with a little run up. Paragraphs move to a neighbouring key and the last one comes home. */
-  function harp(t,m,dur,v){ v=v||.05; var f=mtof(m), o=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain();
-    o.type='triangle'; o.frequency.value=f; lp.type='lowpass'; lp.frequency.setValueAtTime(f*6,t); lp.frequency.exponentialRampToValueAtTime(f*1.5,t+.6);
-    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.006); g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.8,dur*1.6));
-    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-60)/30,-.6,.6); g.connect(pn); out=pn; }
-    o.connect(lp); lp.connect(g); out.connect(bus); out.connect(send); o.start(t); o.stop(t+Math.max(.8,dur*1.6)+.05); }   /* the harp makes no fireworks (Todd 2026-10-14: too many) */
-  function celesta(t,m,v){ v=v||.05; var f=mtof(m), o=c.createOscillator(), o2=c.createOscillator(), g=c.createGain(), g2=c.createGain();
-    o.frequency.value=f; o2.frequency.value=f*4.01; g2.gain.setValueAtTime(.35,t); g2.gain.exponentialRampToValueAtTime(.001,t+.18);
-    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+2.4);
-    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-76)/24,-.5,.5); g.connect(pn); out=pn; }
-    o.connect(g); o2.connect(g2); g2.connect(g); out.connect(bus); out.connect(send); o.start(t); o2.start(t); o.stop(t+2.5); o2.stop(t+.3);
-    if(vis) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  /* ================= classical v2: tintinnabuli, after Arvo Pärt (Todd 2026-10-14: "sounding a bit too much like the
+     woodblock… different instruments… more of an Arvo Pärt vibe") =================
+     Two voices and one chord. The melody voice (a bowed string, or the piano) sings one long note per word, walking
+     by step toward a centre note and landing on it; each sentence in a paragraph starts one step further out,
+     alternately from above and from below, as in Spiegel im Spiegel. The tintinnabuli voice answers every melody
+     note with the nearest note of the home triad. The key never moves. Each review picks a setting: Spiegel
+     (string melody, piano breaking the triad slowly), Alina (piano alone, very sparse) or Cantus (strings over a
+     drone, a deep bell). A paragraph begins with a bell; ! rings one; a question is left one step short of home. */
+  function bowed(t,m,dur,v,bright){ v=v||.03; bright=bright||1; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), vib=c.createOscillator(), vd=c.createGain(), end=t+dur;
+    lp.type='lowpass'; lp.frequency.value=Math.min(7000,f*3.2*bright); lp.Q.value=.6;
+    vib.frequency.value=4.6+.6*ih((m*37+Math.round(t*10))>>>0); vd.gain.setValueAtTime(0,t); vd.gain.linearRampToValueAtTime(0,t+Math.min(.9,dur*.4)); vd.gain.linearRampToValueAtTime(f*.0035,t+Math.min(1.8,dur*.7)); vib.connect(vd);
+    [-4,4].forEach(function(cts){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=f*Math.pow(2,cts/1200); vd.connect(o.frequency); o.connect(lp); o.start(t); o.stop(end+1.3); });
+    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.45,dur*.3)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,.35);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-60)/30,-.5,.5); g.connect(pn); out=pn; }
+    lp.connect(g); out.connect(bus); out.connect(send); vib.start(t); vib.stop(end+1.3); }
+  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), dec=clamp(7-(m-36)*.09,1.6,6.5)*(sus||1);
+    lp.type='lowpass'; lp.frequency.setValueAtTime(Math.min(9000,f*7),t); lp.frequency.exponentialRampToValueAtTime(Math.min(9000,f*2),t+dec*.5);   /* felt: the brightness falls away */
+    [[1,1,1],[2.001,.4,.6],[3.004,.16,.4],[4.01,.07,.3]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
+      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.008); pg.gain.exponentialRampToValueAtTime(.0001,t+dec*p[2]); o.connect(pg); pg.connect(lp); o.start(t); o.stop(t+dec*p[2]+.05); });
+    g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-64)/36,-.45,.45); g.connect(pn); out=pn; }
+    lp.connect(g); out.connect(bus); out.connect(send); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  function bell(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a tubular bell, far off */
+    [[.5,.5,9],[1,1,7],[1.19,.45,5],[1.56,.35,4],[2,.3,3.5],[2.51,.2,2.5],[2.98,.12,2]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
+      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.004); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
+    g.connect(bus); g.connect(send); if(vis) vis.push({t:t,k:'p',m:m+12,v:v*10,big:true}); }
   function stepClassical(Gi,A,t){
-    var B=Gi.B, x=recCl(B), j=Gi.j, bar=Math.floor(j/x.n), s=j-bar*x.n, W=where(A), w=W.w, S=W.S, pa=W.pa, nP=B.paras.length;
+    var B=Gi.B, x=recCl(B), j=Gi.j, s=j%x.n, W=where(A), w=W.w, S=W.S, pa=W.pa, nP=B.paras.length, ws=B.ws, sc=x.scale;
     var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4);
-    if(M.stop) return;                                                       /* a dash: the music box pauses */
-    var shift=pa.k===0||pa.k===nP-1?0:[7,x.maj?9:3,5][pa.k%3];               /* paragraphs visit the dominant, the relative, the subdominant */
-    var root=48+(B.root+shift)%12;
-    var sBar=Math.floor((W.off-S.t)/x.bar+1e-6), left=Math.floor((S.t1-W.off)/x.bar);
-    var prog=CL_PROGS[(S.k+(B.h>>>5))%CL_PROGS.length], deg=prog[sBar%prog.length];
-    if(left<=1) deg=left===1?4:(M.ask?4:0);                                  /* the cadence: V then I, or a question left on V */
-    var ch=clChord(x,deg,root), bass=ch[0]-12;
-    /* harp: the left hand */
-    var eighth=s%2===0, q=s%4===0, busy=E>.55;
-    if(x.fig==='waltz'){ if(s===0) harp(t,bass,x.s16*4,.055); else if(s===4||s===8) [ch[1],ch[2]].forEach(function(m,i){ harp(t+i*.012,m,x.s16*4,.03); }); else if(busy&&s===10) harp(t,ch[0]+12,x.s16*2,.02); }
-    else if(x.fig==='alberti'){ if(busy?eighth:q){ var seq=[ch[0],ch[2],ch[1],ch[2]], k=busy?(s/2)%4:(s/4)%4; harp(t,k===0&&s===0?bass:seq[k],x.s16*2,.04); } }
-    else { if(busy?eighth:q){ var up=[ch[0],ch[1],ch[2],ch[0]+12,ch[2],ch[1],ch[0],ch[1]], k2=(busy?s/2:s/4)%8; harp(t,up[k2],x.s16*2,.038); } }
-    /* celesta: the words, softly, an octave or two up */
-    var wordStart=w.start>W.off-x.s16 && w.start<=W.off, oct=M.quote?24:12, tones=ch.map(function(m){ return m+oct+12; });
-    if(wordStart){ var n=w.key.length>7?3:w.key.length>4?2:1, hn=w.h>>>0;
-      for(var i=0;i<n;i++){ var m2=tones[(hn>>>(i*3))%3]+(i&&(hn>>>9)%2?x.scale[(deg+1)%7]-x.scale[deg%7]:0); celesta(t+i*x.s16*2,m2,.045+.02*E); } }
-    if(M.hit1) [0,1,2,3,4].forEach(function(i){ celesta(t+i*x.s16,ch[i%3]+24+12*Math.floor(i/3),.035); });   /* ! : a little run up */
-    if(M.title && s===0) celesta(t,ch[2]+36,.03);                            /* the album title: a high bell on every bar */
+    if(M.stop) return;                                                       /* a dash: silence */
+    if(pa.s0===undefined){ for(var q=0;q<B.P.sents.length;q++) if(B.P.sents[q].para===S.para){ pa.s0=q; break; } }
+    var kp=S.k-pa.s0, tonic=x.tonic, triad=[0,sc[2],sc[4]];
+    function deg(d){ return sc[((d%7)+7)%7]+12*Math.floor(d/7); }
+    function tv(m,up){ for(var k=1;k<13;k++){ var n=up?m+k:m-k, pc=(((n-tonic)%12)+12)%12; if(triad.indexOf(pc)>=0) return n; } return m; }   /* the nearest note of the triad */
+    var string=x.set!=='alina', vln=pa.k%2===1||pa.k===nP-1, centre=string?(vln?x.vC:x.cC):x.pC;
+    if(M.quote) centre+=12;                                                 /* quotes: an octave up, lighter */
+    var dur16=x.s16;
+    /* a paragraph opens with a bell, low and far off */
+    if(S.first && W.off-S.t<dur16 && W.off>=S.t) bell(t,tonic+36-12*(x.set==='cantus'),.03+.015*E);
+    /* the drone: Cantus holds the tonic under each sentence */
+    if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t) bowed(t,tonic+12,Math.max(2,Math.min(30,S.t1-S.t))+.5,.018+.012*E,.6);
+    /* the melody voice: one note per word */
+    var wordStart=w.start>W.off-dur16 && w.start<=W.off;
+    if(wordStart){
+      var i=W.wi-S.a, n=S.b-S.a+1, span=1+(kp%7), dir=kp%2?1:-1, d=span-(i%(span+1));
+      if(i===n-1) d=M.ask?1:0;                                               /* the end of the sentence lands home; a question stops one step short */
+      var m=centre+deg(-dir*d), gap=W.wi+1<ws.length?ws[W.wi+1].start-w.start:4, len=clamp(gap*.97,1.1,8);
+      var t2=tv(m,x.tup!==(kp%3===2));
+      if(string){ bowed(t,m,len,.022+.012*E,.8+.5*E); if(x.set==='cantus') bowed(t,t2-12,len,.012+.008*E,.7); else piano(t,t2-12,.045+.02*E,true);
+        if(x.set==='cantus') piano(t,t2+12,.018,true); }
+      else { piano(t,m,(.06+.025*E)*1.7,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.7,false,1.8); }   /* the piano alone: level-matched to the other two settings */
+      if(i===0 && x.set!=='cantus') piano(t,tonic-12+(x.set==='alina'?12:0),x.set==="alina"?.1:.05,false,x.set==='alina'?2.2:1);   /* Alina keeps the pedal down */   /* the sentence's low tonic */
+    }
+    /* Spiegel: the piano breaks the triad, one note a beat, rising */
+    if(x.set==='spiegel' && s%4===0){ var b=Math.floor(j/4), up=[0,1,2,1,2,3][b%x.arp], nn=tonic+12+(up<3?triad[up]:12); piano(t,nn,.022+.012*E,false); }
+    if(M.hit1) bell(t,tonic+48,.035);                                        /* ! : a high bell */
+    if(M.title && wordStart) bell(t+.02,tonic+43,.02);                       /* the album title: a bell on the fifth */
   }
 
   /* ================= woodblock: tuned blocks ringing chords (2026-10-14) =================
@@ -1394,7 +1413,7 @@ fetch('station.json').then(function(r){ return r.json(); }).then(function(d){
 requestAnimationFrame(function(t){ last=t; frame(t); });
 
 /* for checking levels without listening: render the station offline from any position */
-window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, recipe:function(i,k){ var B=beatPrep(i); return k==="303"?rec303(B):recFz(B); },
+window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, recipe:function(i,k){ var B=beatPrep(i); return k==="303"?rec303(B):k==="classical"?recCl(B):k==="woodblock"?recWb(B):recFz(B); },
   render:function(at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
     return loadSound(oc).then(function(){
