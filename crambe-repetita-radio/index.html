@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into music on three stations: ambient in his own voice, 303 acid, and jazz fusion. Each piece lasts exactly as long as the album it reviewed.">
+<meta name="description" content="Todd L. Burns's Stylus Magazine record reviews, turned into music on five stations: ambient in his own voice, 303 acid, jazz fusion, quiet classical and woodblock. Each piece lasts exactly as long as the album it reviewed.">
 <title>Crambe Repetita Radio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,9 +31,12 @@ h1{font-family:var(--face);font-weight:400;font-size:clamp(1.15rem,3.2vw,2.4rem)
 .now .np-label{font-size:.7rem;letter-spacing:.14em;color:var(--faint)}
 .now .np-the{font-size:1.05rem;font-style:italic;color:var(--fg)}
 
-body.quiet .now,body.quiet .stations{opacity:0}
-/* the three stations: same review, same moment, three ways of playing it */
-.stations{display:flex;gap:18px;pointer-events:auto;transition:opacity 1.6s ease}
+body.quiet .now,body.quiet .stations,body.quiet .how{opacity:0}
+/* the stations: same review, same moment, five ways of playing it; then the notes on how */
+.stations{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 18px;pointer-events:auto;transition:opacity 1.6s ease;max-width:100%}
+.how{margin-top:-4px;pointer-events:auto;font-family:var(--site);font-style:italic;font-size:.8rem;letter-spacing:.02em;color:#D9B26F;text-decoration:none;border-bottom:1px solid rgba(217,178,111,.35);padding:2px 0 1px;transition:opacity 1.6s ease}
+.how:hover{color:#F0CD8E}
+@media (max-width:520px){.stations{gap:2px 12px}}
 .stations button{border:0;background:transparent;color:var(--faint);font-family:var(--face);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 2px;cursor:pointer;border-bottom:1px solid transparent}
 .stations button:hover{color:var(--dim)}
 .stations button[aria-pressed="true"]{color:var(--fg);border-bottom-color:var(--line)}
@@ -58,6 +61,9 @@ body.quiet .now,body.quiet .stations{opacity:0}
 .toggle.active .toggle-label-right{background:linear-gradient(90deg,#ff0000,#ff8800,#ffdd00,#00cc00,#0066ff,#8800ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 /* two lines in a hand-written cursive, written letter by letter onto a line that waves like the light */
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:none}
+body[data-station="classical"] #fx,body[data-station="woodblock"] #fx{display:block}
+body[data-station="woodblock"] #phrases,body[data-station="classical"] #phrases{display:none}
 #phrases{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:soft-light}
 #phrases text{font-family:"Sacramento","Snell Roundhand","Apple Chancery",cursive;font-size:clamp(1.7rem,3.4vw,2.9rem);fill:#fff}
 /* Fusion: the two lines as cut-out paper shards in two rings, turning with the kaleidoscope */
@@ -81,14 +87,16 @@ body[data-station="303"] #phrases{display:none}
 </head>
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
 <div id="shards" aria-hidden="true"><div id="shardring"><div id="shardpulse"></div></div></div>
 <div id="typed" aria-hidden="true"><div id="tyrows"><div></div><div></div></div></div>
 <svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
-  <nav class="stations" id="stations" aria-label="Station"><button type="button" data-s="ambient">Ambient</button><button type="button" data-s="303">303</button><button type="button" data-s="fusion">Fusion</button></nav>
+  <nav class="stations" id="stations" aria-label="Station"><button type="button" data-s="ambient">Ambient</button><button type="button" data-s="303">303</button><button type="button" data-s="fusion">Fusion</button><button type="button" data-s="classical">Classical</button><button type="button" data-s="woodblock">Woodblock</button></nav>
   <p class="now" id="now" aria-live="polite">Tuning in…</p>
+  <a class="how" id="how" href="how.html#ambient" target="_blank" rel="noopener">how this works</a>
 </div>
 
 <button id="play" aria-label="Play" data-state="off">
@@ -128,7 +136,7 @@ var GRADE15={'A+':'Lydian','A':'Lydian','A-':'Ionian','B+':'Ionian','B':'Mixolyd
 function scaleFor(g){ var m=(g||'C').split('/')[0].trim().toUpperCase().match(/^[ABCDF][+-]?/); return SCALES[GRADE15[m?m[0]:'C']||'Dorian']; }
 var LETTER_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 var LET={a:['ah','ae','aw'],e:['eh','ee'],i:['ih','ee'],o:['oh','aw'],u:['oo','uh'],y:['ee'],r:['er']};
-var RE=/([A-Za-z0-9\u00C0-\u024F]+(?:[\u2019'][A-Za-z]+)*)|([.,!?;:])|([-\u2013\u2014])/g;
+var RE=/([A-Za-z0-9\u00C0-\u024F]+(?:[\u2019'][A-Za-z]+)*)|([.,!?;:])|([-\u2013\u2014])|(\*)|([\u201C\u201D"])/g;   /* groups 4-5 (group 4 never matches now; group 5 = quotes) mark words for the beat stations only */
 function gradeLetter(g){ var c=(g||'C').trim().charAt(0).toUpperCase(); return MODES[c]?c:'C'; }
 function warmth(g){ var b={A:1,B:.75,C:.5,D:.25,F:0}[gradeLetter(g)]; g=(g||'').split('/')[0]; return clamp(b+(/\+/.test(g)?.07:/-/.test(g)?-.07:0),0,1); }
 var cache={};
@@ -137,10 +145,12 @@ function prep(ri){
   var R=ST[ri], mode=scaleFor(R.g), NS=mode.length, first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
   var root=(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, words=[], sum=0;
   R.x.split(/\n\n/).forEach(function(par,p){
-    var m, last=null; RE.lastIndex=0;
-    while((m=RE.exec(par.replace(/\*/g,'')))){
-      if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),text:m[1],para:p,gap:0,dash:false}; words.push(last); }
-      else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else { last.gap+=1.6; last.stop=true; if(ch==='?') last.ask=true; } }
+    var m, last=null, ital=false, quo=false, pl='', itf=[]; RE.lastIndex=0;
+    for(var ci=0;ci<par.length;ci++){ if(par[ci]==='*') ital=!ital; else { pl+=par[ci]; itf.push(ital); } }   /* asterisks out first, as before; remember which letters were italic */
+    while((m=RE.exec(pl))){
+      ital=itf[m.index]; if(m[5]){ quo=m[0]==='\u201C'?true:m[0]==='\u201D'?false:!quo; continue; }
+      if(m[1]){ last={key:m[1].toLowerCase().replace(/\u2019/g,"'"),text:m[1],para:p,gap:0,dash:false,it:ital,q:quo}; words.push(last); }
+      else if(last){ var ch=m[0]; if(m[3]) last.dash=true; else if(ch===','||ch===';'||ch===':') last.gap+=.5; else { last.gap+=1.6; last.stop=true; if(ch==='?') last.ask=true; if(ch==='!') last.excl=true; } }
     }
     if(last){ last.gap+=4; last.stop=true; }
   });
@@ -264,16 +274,24 @@ function makeEngine(ctx){
 }
 
 /* ================= the beat stations (2026-10-13): 303 + drums, and jazz fusion =================
-   Both read the same review at the same moment as the ambient station. Time runs on one 100 BPM grid of
-   16th notes counted from the station's epoch, and every sound is worked out from the grid step and the text
-   at that moment, so everyone hears the same thing and nothing depends on when Play was pressed.
-   303 = Euclidean (sketch A, Todd 2026-10-13); fusion = smallest move (sketch A, Todd 2026-10-13). */
+   Both read the same review at the same moment as the ambient station. Every sound is worked out from the
+   review's own grid of 16th notes and the text at that moment, so everyone hears the same thing and nothing
+   depends on when Play was pressed. Each review starts on beat one of its own grid.
+   303 = Euclidean (sketch A, Todd 2026-10-13); fusion = smallest move (sketch A, Todd 2026-10-13).
+   v2 (2026-10-14, Todd: "the music feels relatively static"). Four layers of change:
+     the recipe   each review has its own scale (from the grade), sound, kit, riff length and swing;
+                  fusion also its own tempo (84-132 BPM), metre, chord pace, lead voice and comping.
+     the shape    one rise to a peak about two-thirds in, then a comedown; every paragraph is a section.
+     the phrase   8-bar root moves, fills on the 8th bar, a filter ridden over 16 bars.
+     the text     ! = a hit, ? = a riser, quotes drop the drums, a dash stops the band, the italic title is the hook. */
 var BPM=100, BEAT=60/BPM, S16=BEAT/4, BAR=BEAT*4;
-var STATIONS=['ambient','303','fusion'], STATION='ambient';
-var MINPENT=[0,3,5,7,10];
+var STATIONS=['ambient','303','fusion','classical','woodblock'], STATION='ambient';
 function mtof(m){ return 440*Math.pow(2,(m-69)/12); }
 function euclid(k,n,rot){ var a=[]; rot=((rot%n)+n)%n; for(var i=0;i<n;i++) a.push(((i+rot)*k)%n<k); return a; }
 function ih(n){ n=(n^61)^(n>>>16); n=n+(n<<3); n^=n>>>4; n=Math.imul(n,0x27d4eb2d); n^=n>>>15; return (n>>>0)/4294967296; }   /* the same dice for every listener */
+function rnd(B,k){ return ih((B.h+Math.imul(k+1,0x9E3779B1))>>>0); }
+function pick(a,x){ return a[Math.min(a.length-1,Math.floor(x*a.length))]; }
+function arcAt(x){ return x<.65 ? .25+.75*Math.pow(x/.65,1.4) : 1-.6*(function(u){ return u*u*(3-2*u); })(clamp((x-.65)/.35,0,1)); }   /* the song's shape */
 var TANH=(function(){ var n=2048, c=new Float32Array(n); for(var i=0;i<n;i++){ var x=i/(n-1)*2-1; c[i]=Math.tanh(x*1.6)/Math.tanh(1.6); } return c; })();
 var PERM4=(function(){ var out=[]; (function go(a,p){ if(!a.length){ out.push(p); return; } a.forEach(function(x,i){ go(a.slice(0,i).concat(a.slice(i+1)),p.concat([x])); }); })([0,1,2,3],[]); return out; })();
 
@@ -286,7 +304,7 @@ function beatPrep(ri){
   order.forEach(function(p,k){ p.t1=k+1<order.length?order[k+1].t0:R.s; p.k=k; });
   P.sents.forEach(function(S,k){ S.t1=k+1<P.sents.length?P.sents[k+1].t:R.s; S.k=k; S.para=ws[S.a].para; S.first=(k===0||P.sents[k-1].para!==S.para); });
   var first=(R.a.replace(/^the\s+/i,'').charAt(0)||'C').toUpperCase();
-  return (beatCache[ri]={P:P, ws:ws, pmap:pmap, root:(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, h:hash(R.a+'~'+R.t), warm:warmth(R.g)});
+  return (beatCache[ri]={P:P, ws:ws, pmap:pmap, paras:order, R:R, ri:ri, root:(first in LETTER_PC)?LETTER_PC[first]:hash(R.a)%12, h:hash(R.a+'~'+R.t), warm:warmth(R.g)});
 }
 /* what the station is reading at absolute station second A */
 function where(A){
@@ -295,16 +313,74 @@ function where(A){
   var w=ws[lo], S=B.P.sents[w.sent];
   return {ri:ri, loop:loop, off:off, B:B, wi:lo, w:w, S:S, pa:B.pmap[w.para]};
 }
+/* the paragraph nearest two-thirds of the way in is the peak */
+/* a paragraph lasts minutes, so inside the long sections every fourth sentence (303) or fifth (fusion) is a break */
+function sec303(x,W){ var c=x.sec[W.pa.k]; return (c==='groove'||c==='deep')&&W.S.k%4===3?'break':c; }
+function secFz(x,W){ var c=x.sec[W.pa.k]; return (c==='solo'||c==='trade'||c==='vamp')&&W.S.k%5===4?'break':c; }
+/* the new stations' recipes (their engines live in makeBeat) */
+var CL_PROGS=[[0,5,3,4],[0,3,4,0],[0,4,5,2,3,0,3,4],[0,3,6,2,5,1,4,0],[0,5,1,4],[0,1,4,0,3,4,0,0]];
+function recCl(B){
+  if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(64+16*r(1)), three=r(2)<.4;
+  var x={bpm:bpm, s16:15/bpm, n:three?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,11], fig:three?'waltz':pick(['alberti','broken','alberti'],r(3))};
+  x.bar=x.n*x.s16; return (B.rc=x);
+}
+function clChord(x,deg,root){ var sc=x.scale; return [0,2,4].map(function(k){ var d=deg+k; return root+sc[d%7]+12*Math.floor(d/7); }); }
+function recWb(B){   /* v2 (Todd 2026-10-14: "a bit too busy… more contemplative… more ringing chords"): slower, sparser, rings much longer */
+  if(B.rw) return B.rw; var r=function(k){ return rnd(B,k); };
+  var x={bpm:Math.round(64+20*r(1)), pool:POOL[gradeLetter(B.R.g)], k:[2,3,2,3].map(function(k0,i){ return k0+Math.floor(r(2+i)*2); }),
+    rot:[0,3,6,9].map(function(r0,i){ return r0+Math.floor(r(6+i)*4); }), drift:pick([4,8,8,16],r(10)), ring:1.3+1.2*r(11), n:16, chorale:2+Math.floor(r(12)*2)};
+  x.s16=15/x.bpm; x.bar=x.n*x.s16; return (B.rw=x);
+}
+var RECIPE={'303':function(B){ return rec303(B); }, fusion:function(B){ return recFz(B); }, classical:function(B){ return recCl(B); }, woodblock:function(B){ return recWb(B); }};
+function peakPara(B){ var pk=0; B.paras.forEach(function(p,k){ if(p.t0<=.65*B.R.s) pk=k; }); return pk; }
+
+/* ---- 303 recipe: the grade picks the notes, the hash picks the sound ---- */
+var POOL={A:[0,4,6,7,11],B:[0,4,5,7,10],C:[0,3,7,9,10],D:[0,3,5,7,10],F:[0,1,3,7,8]};
+var PROGS=[[0,0,5,0],[0,0,-2,0],[0,3,5,3],[0,0,7,5],[0,-2,-4,-2],[0,5,0,7],[0,0,1,0]];   /* root moves, two bars each, over 8 bars */
+function rec303(B){
+  if(B.r3) return B.r3; var r=function(k){ return rnd(B,k); }, P=B.paras, nP=P.length, pk=peakPara(B);
+  var x={pool:POOL[gradeLetter(B.R.g)], wave:r(1)<.5?'square':'sawtooth', res:.6+.28*r(2), env:.35+.45*r(3), decay:.15+.4*r(4),
+    drive:.1+.5*(1-B.warm)*(.5+.5*r(5)), L:pick([16,16,16,12,14,10,7,13],r(6)), kit:r(7)<.5?909:808, dly:pick([.75,.5,.375],r(8))*BEAT,
+    swing:r(9)<.55?0:.1+.12*r(10), prog:pick(PROGS,r(11)), kA:5+Math.floor(r(12)*6), kH:9+Math.floor(r(13)*5), kC:3+Math.floor(r(14)*5), s16:S16, n:16};
+  x.sec=P.map(function(p,k){ var nb=(p.t1-p.t0)/BAR;
+    if(k===0) return 'build'; if(k===nP-1&&nP>2) return 'outro'; if(k===pk) return 'peak';
+    if(nb<14) return 'break'; return r(20+k)<.6?'groove':'deep'; });
+  var th=hash(B.R.t); x.hook=[];   /* the title's own riff, the same every time the review names it */
+  for(var i=0;i<16;i++){ var hh=ih((th+i*977)>>>0); x.hook.push(hh<.38?null:{n:Math.floor(hh*997)%5, oct:hh>.85?1:0, acc:i%4===0, slide:hh>.7&&hh<.8}); }
+  return (B.r3=x);
+}
+
+/* ---- fusion recipe: tempo, metre (in 16ths per beat-group), chord pace, voices ---- */
+var METERS=[{g:[4,4,4,4],p:.55},{g:[6,6],p:.2},{g:[4,4,6],p:.15},{g:[4,4,4,4,4],p:.1}];   /* 4/4, 12/8, 7/8, 5/4 */
+function recFz(B){
+  if(B.rf) return B.rf; var r=function(k){ return rnd(B,k); }, P=B.paras, nP=P.length, pk=peakPara(B), u=r(1), acc=0, m=METERS[0];
+  METERS.some(function(M){ acc+=M.p; if(u<acc){ m=M; return true; } return false; });
+  var bpm=Math.round(84+48*(.55*r(2)+.45*B.warm)), x={bpm:bpm, s16:15/bpm, g:m.g, n:0, gs:[], gmap:[],
+    swing:m.g[0]===6||r(3)<.35?0:.12+.2*r(4), hr:pick([1,1,2,2,4],r(5)), lead:pick(['saw','vibes','flute'],r(6)), comp:pick(['block','stab','arp'],r(7))};
+  m.g.forEach(function(len,gi){ x.gs.push(x.n); for(var i=0;i<len;i++) x.gmap.push(gi); x.n+=len; });
+  x.bar=x.n*x.s16;
+  var prev=null; x.sec=P.map(function(p,k){ var nb=(p.t1-p.t0)/x.bar, c;
+    if(k===0) c='head'; else if(k===nP-1&&nP>2) c='out'; else if(k===pk) c='burn'; else if(nb<10) c='break';
+    else { c=pick(['solo','trade','vamp'],r(30+k)); if(c===prev) c=c==='solo'?'vamp':'solo'; }
+    prev=c; return c; });
+  /* the head: a two-bar melody spelled from the album title, sung on whatever chord is sounding */
+  x.motif=[]; var slot=0, slots=x.n;   /* 8th-note slots over two bars */
+  (B.R.t.toLowerCase().match(/[a-z]+/g)||['la']).some(function(word){
+    for(var i=0;i<word.length&&slot<slots;i++){ var cc=word.charCodeAt(i), len='aeiou'.indexOf(word[i])>=0?3:1; x.motif.push({at:slot, deg:cc%4, oct:(cc>>2)&1, len:len}); slot+=len; }
+    slot++; return slot>=slots; });
+  x.ost=[0,7,12,10].map(function(iv,k){ return {at:[0,6,10,14][k]%x.n, iv:iv}; }).filter(function(o,k){ return k===0||r(40+k)<.7; });
+  return (B.rf=x);
+}
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value=kind==='fusion'?.85:1.2; bus.connect(dest);   /* level-matched to the ambient station on the same moment */
-  var room=c.createConvolver(), rg=c.createGain(); rg.gain.value=kind==='fusion'?.28:.12;
+  var bus=c.createGain(); bus.gain.value={fusion:.85,'303':1.2,classical:12,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
     room.buffer=b; room.normalize=true; })();
   var send=c.createGain(); send.connect(room); room.connect(rg); rg.connect(bus);
   var noise=c.createBuffer(1,c.sampleRate,c.sampleRate), nd=noise.getChannelData(0); for(var i=0;i<nd.length;i++) nd[i]=Math.random()*2-1;
-  var live=[], nextG=null;
+  var live=[], G=null, KIT=909;
   function absAt(T){ return aAbs+(T-aCtx); }
   function ctxAt(A){ return aCtx+(A-aAbs); }
 
@@ -315,13 +391,18 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(f1,t+.08);
     g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.001,t+dec); o.connect(g); g.connect(bus); o.start(t); o.stop(t+dec+.02); }
   var D={
-    kick:function(t,v){ v=v||1; var o=c.createOscillator(), g=c.createGain(); o.frequency.setValueAtTime(170,t); o.frequency.exponentialRampToValueAtTime(45,t+.09);
-      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.001,t+.45); o.connect(g); g.connect(bus); o.start(t); o.stop(t+.48); },
-    clap:function(t){ for(var k=0;k<3;k++) nh(t+k*.011,'bandpass',1300,.8,.012); nh(t+.033,'bandpass',1300,.7,.18); },
-    hat:function(t,v){ nh(t,'highpass',8000,v||.28,.04); },
-    open:function(t){ nh(t,'highpass',7000,.3,.26); },
+    kick:function(t,v){ v=v||1; var k8=KIT===808, o=c.createOscillator(), g=c.createGain(), dec=k8?.8:.45; o.frequency.setValueAtTime(k8?125:170,t); o.frequency.exponentialRampToValueAtTime(k8?41:45,t+(k8?.14:.09));
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.001,t+dec); o.connect(g); g.connect(bus); o.start(t); o.stop(t+dec+.03); },
+    clap:function(t,v){ v=v||1; for(var k=0;k<3;k++) nh(t+k*.011,'bandpass',KIT===808?1100:1300,.8*v,.012); nh(t+.033,'bandpass',KIT===808?1100:1300,.7*v,.18); },
+    hat:function(t,v){ nh(t,'highpass',KIT===808?9000:8000,v||.28,KIT===808?.03:.04); },
+    open:function(t,v){ nh(t,'highpass',7000,v||.3,.26); },
     clave:function(t){ tone(t,2500,2500,.5,.05); nh(t,'bandpass',3500,.15,.008); },
     conga:function(t,hi){ tone(t,hi?330:210,hi?260:165,.5,.3); },
+    tom:function(t,f,v){ tone(t,f*1.5,f,v||.45,.32); },
+    crash:function(t,v){ nh(t,'highpass',5200,v||.3,1.5); nh(t,'bandpass',3200,(v||.3)*.4,.4); },
+    riser:function(t,dur,v){ var n=c.createBufferSource(); n.buffer=noise; n.loop=true; var f=c.createBiquadFilter(); f.type='bandpass'; f.Q.value=4;
+      f.frequency.setValueAtTime(300,t); f.frequency.exponentialRampToValueAtTime(7000,t+dur); var g=c.createGain(); g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v||.22,t+dur); g.gain.setTargetAtTime(0,t+dur,.02);
+      n.connect(f); f.connect(g); g.connect(bus); g.connect(send); n.start(t); n.stop(t+dur+.2); },
     snare:function(t,v){ v=v==null?.7:v; nh(t,'bandpass',1900,v*.7,.16); tone(t,200,170,v*.5,.09,'triangle'); if(vis) vis.push({t:t,k:'n',v:v}); },
     ride:function(t,v){ v=v||.2; var g=c.createGain(), hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=6500;
       g.gain.setValueAtTime(v,t); g.gain.exponentialRampToValueAtTime(.001,t+.9);
@@ -329,7 +410,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       hp.connect(g); g.connect(bus); nh(t,'highpass',9000,v*.4,.05); }
   };
 
-  /* ---- the 303: square -> two lowpasses -> VCA -> drive, as in Noise Lab ---- */
+  /* ---- the 303: oscillator -> two lowpasses -> VCA -> drive, as in Noise Lab; each review re-patches it ---- */
   function acid(){
     var p={res:.72,env:.55,decay:.35,accent:.6,drive:.3};
     var osc=c.createOscillator(); osc.type='square'; live.push(osc);
@@ -341,6 +422,10 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     post.connect(wet); wet.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(bus);
     osc.start(); var sliding=false;
     return {
+      patch:function(x,t){ osc.type=x.wave; p.res=x.res; p.env=x.env; p.decay=x.decay; p.drive=x.drive;
+        f2.Q.setTargetAtTime(x.res*26,t,.3); pre.gain.setTargetAtTime(1+x.drive*x.drive*30,t,.3); post.gain.setTargetAtTime(x.wave==='sawtooth'?.27:.32,t,.3); dly.delayTime.setValueAtTime(x.dly,t); },
+      res:function(v,t){ f2.Q.setTargetAtTime(clamp(v,.3,.95)*26,t,.4); },
+      echo:function(v,t){ wet.gain.setTargetAtTime(v,t,.3); },
       cutoff:function(v,t){ var hz=40*Math.pow(2,v*8.5); f1.frequency.setTargetAtTime(hz,t,.05); f2.frequency.setTargetAtTime(hz,t,.05); },
       step:function(st,t,base){
         var g=vca.gain;
@@ -348,7 +433,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
         var acc=st.acc?p.accent:0, f=mtof(base+st.note+12*st.oct);
         if(sliding) osc.frequency.setTargetAtTime(f,t,.022);
         else { osc.frequency.setValueAtTime(f,t); g.cancelScheduledValues(t); g.setTargetAtTime(.5+acc*.45,t,.002);
-          var cents=p.env*4200+acc*2400, tau=(.02+p.decay*p.decay*.6)*(1-acc*.5);
+          var cents=p.env*(st.env||1)*4200+acc*2400, tau=(.02+p.decay*p.decay*.6)*(1-acc*.5);
           [f1,f2].forEach(function(fl){ fl.detune.cancelScheduledValues(t); fl.detune.setValueAtTime(cents,t); fl.detune.setTargetAtTime(0,t+.003,tau); }); }
         if(st.slide) sliding=true; else { sliding=false; g.setTargetAtTime(0,t+S16*.55,.008); }
       }
@@ -366,98 +451,277 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     lp.type='lowpass'; lp.Q.value=3; lp.frequency.setValueAtTime(900,t); lp.frequency.exponentialRampToValueAtTime(320,t+.25);
     g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.01); g.gain.setTargetAtTime(0,t+dur,.05);
     o.connect(lp); s.connect(lp); lp.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.4); s.stop(t+dur+.4); if(vis) vis.push({t:t,k:'b',m:m}); }
-  function lead(t,m,dur,v){ v=v||.09; var lp=c.createBiquadFilter(), g=c.createGain(), vib=c.createOscillator(), vg=c.createGain();
-    lp.type='lowpass'; lp.Q.value=4; lp.frequency.setValueAtTime(4200,t); lp.frequency.setTargetAtTime(1800,t+.02,.15);
-    vib.frequency.value=5.8; vg.gain.setValueAtTime(0,t); vg.gain.linearRampToValueAtTime(dur>.4?9:0,t+dur); vib.connect(vg);
-    [-8,8].forEach(function(d){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=mtof(m); o.detune.value=d; vg.connect(o.detune); o.connect(lp); o.start(t); o.stop(t+dur+.3); });
-    g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.008); g.gain.setTargetAtTime(0,t+dur*.92,.04);
-    lp.connect(g); g.connect(bus); g.connect(send); vib.start(t); vib.stop(t+dur+.3); if(vis) vis.push({t:t,k:'l',m:m,dur:dur}); }
+  var LEADV='saw';
+  function lead(t,m,dur,v){ v=v||.09; var g=c.createGain(), f=mtof(m);
+    if(LEADV==='vibes'){   /* struck bars: a sine with a bell partial, shimmering */
+      var o=c.createOscillator(), o2=c.createOscillator(), g2=c.createGain(), tr=c.createOscillator(), tg=c.createGain();
+      o.frequency.value=f; o2.frequency.value=f*4; g2.gain.setValueAtTime(.25,t); g2.gain.exponentialRampToValueAtTime(.001,t+.25);
+      tr.frequency.value=5.5; tg.gain.value=.25*v; tr.connect(tg); tg.connect(g.gain);
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v*1.5,t+.004); g.gain.setTargetAtTime(0,t+.01,.25+Math.min(dur,1.2)*.5);
+      o.connect(g); o2.connect(g2); g2.connect(g); [o,o2,tr].forEach(function(x){ x.start(t); x.stop(t+dur+1.6); });
+    } else if(LEADV==='flute'){   /* breathy: a triangle with a little noise and late vibrato */
+      var o3=c.createOscillator(), vib=c.createOscillator(), vg=c.createGain(); o3.type='triangle'; o3.frequency.value=f;
+      vib.frequency.value=5.2; vg.gain.setValueAtTime(0,t); vg.gain.linearRampToValueAtTime(dur>.35?12:0,t+dur); vib.connect(vg); vg.connect(o3.detune);
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v*1.3,t+.05); g.gain.setTargetAtTime(0,t+dur*.92,.05);
+      o3.connect(g); nh(t,'bandpass',f*2,v*.25,Math.min(.2,dur)); o3.start(t); vib.start(t); o3.stop(t+dur+.4); vib.stop(t+dur+.4);
+    } else {
+      var lp=c.createBiquadFilter(), vib2=c.createOscillator(), vg2=c.createGain();
+      lp.type='lowpass'; lp.Q.value=4; lp.frequency.setValueAtTime(4200,t); lp.frequency.setTargetAtTime(1800,t+.02,.15);
+      vib2.frequency.value=5.8; vg2.gain.setValueAtTime(0,t); vg2.gain.linearRampToValueAtTime(dur>.4?9:0,t+dur); vib2.connect(vg2);
+      [-8,8].forEach(function(d){ var o4=c.createOscillator(); o4.type='sawtooth'; o4.frequency.value=f; o4.detune.value=d; vg2.connect(o4.detune); o4.connect(lp); o4.start(t); o4.stop(t+dur+.3); });
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.008); g.gain.setTargetAtTime(0,t+dur*.92,.04);
+      lp.connect(g); vib2.start(t); vib2.stop(t+dur+.3);
+    }
+    g.connect(bus); g.connect(send); if(vis) vis.push({t:t,k:'l',m:m,dur:dur}); }
+
+  /* the text moments, shared: where the word under the step stands */
+  function moment(W,A,s16,win){
+    var w=W.w, end=w.start+w.dur, o=W.off;
+    return {stop:w.dash && o>end-win && o<end+s16,                       /* a dash: the band stops for a beat */
+            hit:w.excl && o>=end && o<end+win, hit1:w.excl && o>=end && o-s16<end,   /* ! : a hit, then the hit rings */
+            quote:!!w.q, title:!!w.it, ask:!!W.B.ws[W.S.b].ask, toEnd:W.S.t1-o};
+  }
 
   /* ================= 303 + drums: Euclidean =================
-     A paragraph is a tune. Every part spreads k hits as evenly as it can over 16 steps; each sentence turns
-     the patterns to a new rotation. The tune's own k values come from the review and paragraph. Parts enter
-     one by one, the filter opens across the tune, and its last four bars break down. */
-  var A303=kind==='303'?acid():null;
-  function step303(g,t,A){
-    var W=where(A), B=W.B, w=W.w, S=W.S, pa=W.pa, s=g&15, sent=S.k;
-    var nb=(pa.t1-pa.t0)/BAR, pbar=(W.off-pa.t0)/BAR, left=(pa.t1-W.off)/BAR, prog=clamp(pbar/Math.max(1,nb),0,1);
+     A paragraph is a section: build, groove, deep, break, peak or outro. Every part spreads k hits as evenly as
+     it can over its length; each sentence turns the patterns to a new rotation, every 16 bars the riff mutates.
+     The 303's riff can be shorter than the bar (7, 10, 12, 13, 14 steps), so it slides against the kick. */
+  var A303=kind==='303'?acid():null, patchRi=-1;
+  function step303(Gi,A,t){
+    var W=where(A), B=W.B, x=rec303(B), w=W.w, S=W.S, pa=W.pa, j=Gi.j, s=j&15, bar=j>>4, sent=S.k;
+    if(Gi.ri!==patchRi){ patchRi=Gi.ri; A303.patch(x,t); KIT=x.kit; }
+    if(j&1) t+=x.swing*S16;
+    var sec=sec303(x,W), E=arcAt(W.off/B.R.s), M=moment(W,A,S16,BEAT);
+    var nb=(pa.t1-pa.t0)/BAR, pbar=bar-Math.floor(pa.t0/BAR), left=(pa.t1-W.off)/BAR, prog=clamp(pbar/Math.max(1,nb),0,1);
     var sp=clamp((W.off-S.t)/Math.max(1,S.t1-S.t),0,1), f=clamp(nb/48,.25,1), brk=nb>=24&&left<4;
-    var hp=(B.h+7919*pa.k)>>>0, kH=9+hp%5, kA=5+(hp>>>3)%7, kC=3+(hp>>>6)%5, stride=[3,2,4,5,7][((hp>>>9)+sent)%5];
-    var base=40+(((B.root+5*pa.k-4)%12)+12)%12;
-    if(s%4===0) A303.cutoff(clamp(.18+.36*Math.sin(Math.PI*prog)+.06*Math.sin(Math.PI*sp),.12,.66),t);
-    if(!brk && s%4===0) D.kick(t);
-    if(euclid(kH,16,sent)[s]) D.hat(t,s%2?.3:.16);
-    if(!brk && pbar>=8*f && (s===4||s===12)) D.clap(t);
-    if(pbar>=12*f && euclid(kC,16,sent+(pbar>>1))[s]) D.clave(t);
-    if(!brk && pbar>=16*f && euclid(3,8,sent>>1)[s%8]) D.conga(t,s>7);
+    var lvl=sec==='build'?Math.floor(pbar/(4*f)):sec==='outro'?Math.floor(left/(4*f)):4;
+    if(M.stop){ A303.step(null,t,0); if(vis) vis.push({t:t,k:'s',s:s,pats:[],kick:false,clap:false,cut:.1,acid:null}); return; }
+    var drums=!M.quote, kickOn=drums&&!brk&&sec!=='break', moves=sec==='groove'||sec==='peak'||sec==='deep';
+    var base=40+(((B.root+5*pa.k-4)%12)+12)%12+(moves?x.prog[(pbar>>1)&3]:0);
+    if(base>47) base-=12;
+    if(s%4===0){
+      var knob=Math.sin(2*Math.PI*(pbar+s/16)/16+(B.h%7));             /* the filter, ridden over 16 bars */
+      A303.cutoff(clamp(.12+.3*E+(.06+.16*E)*knob+.06*Math.sin(Math.PI*sp)+(M.title?.1:0)+(sec==='deep'?-.08:0)+(M.hit?.25:0),.1,.74),t);
+      if(s===0){ A303.res(x.res+(sec==='peak'?.08:0)+.06*E,t); A303.echo(M.quote||sec==='break'||sec==='deep'?.26:.12,t); }
+    }
+    if(s===0 && pbar===0 && pa.k>0) D.crash(t,.28);                    /* a new section */
+    if(kickOn && s%4===0) D.kick(t);
+    else if(sec==='break' && !brk && pbar%2===1 && s===0) D.kick(t,.6);
+    var kH=x.kH+(sec==='peak'?2:0);
+    if(euclid(kH,16,sent)[s]) D.hat(t,s%2?.3:.16); else if(sec==='peak' && E>.7) D.hat(t,.08);
+    if(sec==='deep' && s%4===2) D.open(t,.2);
     if(w.gap===.5 && s===14) D.open(t);                                   /* a comma opens the hat */
-    var on=pbar>=4*f && euclid(kA,16,sent*3)[s], wordStart=w.start>W.off-S16;
-    var ask=B.ws[S.b].ask && (S.t1-W.off)<BAR;                             /* a question slides through its last bar */
-    if(vis){ var pG=!brk&&pbar>=16*f?euclid(3,8,sent>>1):null;
-      vis.push({t:t,k:'s',s:s,pats:[pbar>=4*f?euclid(kA,16,sent*3):null, pG?pG.concat(pG):null, pbar>=12*f?euclid(kC,16,sent+(pbar>>1)):null, euclid(kH,16,sent)],
-        kick:!brk&&s%4===0, clap:!brk&&pbar>=8*f&&(s===4||s===12), cut:clamp(.18+.36*Math.sin(Math.PI*prog),0,1),
-        acid:on?{n:(MINPENT[(s*stride+sent)%5]+12*(euclid(2,16,w.key.length)[s]?1:0))/22, acc:!!(wordStart||euclid(3,16,1)[s])}:null}); }
-    A303.step({on:on, note:MINPENT[(s*stride+sent)%5], oct:euclid(2,16,w.key.length)[s]?1:0, acc:wordStart||euclid(3,16,1)[s], slide:ask||euclid(4,16,3)[s]},t,base);
+    var fill=pbar%8===7 && s>=12 && drums && sec!=='break';
+    if(fill){ if(sec==='deep') D.tom(t,[150,130,110,95][s-12]); else D.clap(t,.45+.15*(s-12)); }
+    var clapOn=drums&&!brk&&lvl>=2&&sec!=='deep'&&sec!=='break'&&(s===4||s===12)&&!fill;
+    if(clapOn) D.clap(t);
+    var claveOn=drums&&lvl>=3&&sec!=='deep'&&euclid(x.kC,16,sent+(pbar>>1))[s];
+    if(claveOn) D.clave(t);
+    if(drums&&!brk&&lvl>=4&&sec!=='groove'&&euclid(3,8,sent>>1)[s%8]) D.conga(t,s>7);
+    if(M.ask && M.toEnd<BAR && M.toEnd+S16>=BAR) D.riser(t,Math.max(.3,M.toEnd),.18);   /* a question rises into the next sentence */
+    if(brk && left<2 && left+S16/BAR>=2) D.riser(t,left*BAR,.14);
+    if(M.hit1){ D.crash(t,.4); D.open(t,.35); }
+    /* the riff */
+    var L=x.L, rot=sent*3+(pbar>>4)*5, kA=clamp(x.kA+(sec==='peak'?3:0)+(sec==='deep'?-2:0)+Math.round(2*E)-1,3,L-1);
+    var stride=[3,2,4,5,7][((B.h>>>9)+sent+(sec==='peak'&&(pbar>>3)%2?1:0))%5], st, wordStart=w.start>W.off-S16;
+    if(M.hit){ var hk=Math.floor((W.off-w.start-w.dur)/S16); st={on:true, note:x.pool[(hk*2)%5], oct:hk>1?1:0, acc:true, slide:false, env:1.4}; }
+    else if(M.title && lvl>=1){ var hn=x.hook[s]; st=hn?{on:true, note:x.pool[hn.n], oct:hn.oct, acc:hn.acc||wordStart, slide:hn.slide, env:1.1}:{on:false}; }
+    else { var on=lvl>=1 && euclid(kA,L,rot)[j%L];
+      st={on:on, note:x.pool[((j%L)*stride+sent)%5], oct:euclid(2,16,w.key.length)[s]?1:0, acc:wordStart||euclid(3,16,1)[s], slide:(M.ask&&M.toEnd<BAR)||euclid(4,16,3)[s], env:.7+.5*E}; }
+    if(vis){ vis.push({t:t,k:'s',s:s,pats:[null,null,null,euclid(kH,16,sent)], kick:kickOn&&s%4===0, clap:clapOn, cut:clamp(.15+.5*E,0,1),
+        acid:st.on?{n:(st.note+12*st.oct)/23, acc:!!st.acc}:null}); }
+    A303.step(st,t,base);
   }
 
   /* ================= jazz fusion: smallest move =================
-     One chord per beat. Each sentence starts on the paragraph's home chord (the artist's letter, up a fourth
-     per paragraph, major for A and B grades). On every beat the letter being read picks a neo-Riemannian move
-     (P, L or R: change one note) and every voice goes to the nearest note of the new chord. The bass walks into
-     each root from a half step away. The first sentence of a paragraph is the head (the lead plays the top
-     voice); after that it solos: long words are flurries, middle words eighths, short words rest. */
-  var fz={key:null,b:0,snap:null};
-  function letterAt(b){ var W=where(b*BEAT), L=W.w.key.replace(/[^a-z]/g,'')||'a', k=Math.floor((W.off-W.w.start)/BEAT+1e-6); return L.charAt(((k%L.length)+L.length)%L.length); }
+     A chord moves by one note (P, L or R, picked by the letter being read) and every voice goes to the nearest
+     note of the new chord. How often it moves depends on the section. The bass walks into each root from a half
+     step away. Sections: the head (the title's melody), solo (long words are flurries, short words rest),
+     trade (four bars lead, four bars bass), vamp (two chords, a bass riff, stabs), break (drums), burn (the peak). */
+  var fz={key:null,b:0,st:null};
+  function beatOff(x,b){ var nG=x.g.length; return (Math.floor(b/nG)*x.n+x.gs[((b%nG)+nG)%nG])*x.s16; }
+  function beatAtOrAfter(x,off){ var js=Math.ceil(off/x.s16-1e-6), bar=Math.floor(js/x.n), wi=js-bar*x.n, gi=0; while(gi<x.g.length&&x.gs[gi]<wi) gi++; if(gi===x.g.length){ bar++; gi=0; } return bar*x.g.length+gi; }
+  function letterAt(Ar,x,b){ var W=where(Ar+beatOff(x,b)), L=W.w.key.replace(/[^a-z]/g,'')||'a', k=b-beatAtOrAfter(x,W.w.start); return L.charAt(((k%L.length)+L.length)%L.length); }
   function voice(prev,pcs){
     var best=null, bc=1e9;
-    PERM4.forEach(function(p){ var v=prev.map(function(n,i){ var x=n+((((pcs[p[i]]-n)%12)+18)%12)-6; while(x<52) x+=12; while(x>79) x-=12; return x; });
+    PERM4.forEach(function(p){ var v=prev.map(function(n,i){ var y=n+((((pcs[p[i]]-n)%12)+18)%12)-6; while(y<52) y+=12; while(y>79) y-=12; return y; });
       var cost=0; for(var i=0;i<4;i++) cost+=Math.abs(v[i]-prev[i]); if(cost<bc){ bc=cost; best=v; } });
     return best.sort(function(a,b){ return a-b; });
   }
-  function pcsOf(r,maj){ return [r,r+(maj?4:3),r+7,r+(maj?11:10)].map(function(x){ return x%12; }); }
+  function pcsOf(r,maj){ return [r,r+(maj?4:3),r+7,r+(maj?11:10)].map(function(y){ return y%12; }); }
   function move(st,op){ var r=st.root, maj=st.maj;
     if(op==='P') maj=!maj; else if(op==='R'){ r=maj?r+9:r+3; maj=!maj; } else { r=maj?r+4:r+8; maj=!maj; }
     return {root:r%12, maj:maj}; }
-  function chordAt(b){
-    if(fz.snap&&fz.b===b) return fz.snap;
-    var A=b*BEAT, W=where(A), S=W.S, As=A-(W.off-S.t), b0=Math.ceil(As/BEAT-1e-6), key=W.loop+':'+W.ri+':'+S.k, st;
+  function opOf(ch){ return 'PLR'[(ch.charCodeAt(0)-97+26)%3]; }
+  var RATE={head:2,out:2,trade:2,burn:1,'break':4,vamp:0};
+  function chordAt(Ar,x,b){
+    var W=where(Ar+beatOff(x,b)), S=W.S, sec=secFz(x,W), rate=RATE[sec]===undefined?x.hr:RATE[sec];
+    var home={root:(W.B.root+5*W.pa.k)%12, maj:W.B.warm>=.6};
+    if(sec==='vamp'){   /* two chords, two bars each */
+      var alt=move(home,W.B.h%2?'R':'L'), bar=Math.floor(b/x.g.length), useAlt=Math.floor(bar/2)%2===1, cc=useAlt?alt:home;
+      var key0=Ar+':v:'+W.pa.k+':'+useAlt; if(fz.key===key0) return fz.st;
+      var vv=voice(fz.st?fz.st.v:[55,59,62,66],pcsOf(cc.root,cc.maj)); fz.key=key0; fz.st={root:cc.root,maj:cc.maj,v:vv,op:'',c:'a'}; fz.b=b; return fz.st;
+    }
+    var b0=Math.min(b,beatAtOrAfter(x,S.t)), key=Ar+':'+S.k, st;
     if(fz.key===key && fz.b<=b) st=fz.st;
-    else { var home={root:(W.B.root+5*W.pa.k)%12, maj:W.B.warm>=.6}; st={root:home.root, maj:home.maj, v:voice([55,59,62,66],pcsOf(home.root,home.maj)), op:'', c:letterAt(b0)}; fz.b=b0; }
-    for(var x=fz.b+1;x<=b;x++){ var ch=letterAt(x), op='PLR'[(ch.charCodeAt(0)-97+26)%3]; if(op==='P'&&st.op==='P') op='R';
+    else { st={root:home.root, maj:home.maj, v:voice(fz.st?fz.st.v:[55,59,62,66],pcsOf(home.root,home.maj)), op:'', c:letterAt(Ar,x,b0)}; fz.b=b0; }
+    for(var y=fz.b+1;y<=b;y++){ if((y-b0)%rate) continue; var ch=letterAt(Ar,x,y), op=opOf(ch); if(op==='P'&&st.op==='P') op='R';
       var nx=move(st,op); st={root:nx.root, maj:nx.maj, v:voice(st.v,pcsOf(nx.root,nx.maj)), op:op, c:ch}; }
-    fz.key=key; fz.b=b; fz.st=st; fz.snap=st; return st;
+    fz.key=key; fz.b=b; fz.st=st; return st;
   }
   var lastBass=40;
-  function stepFusion(g,t,A){
-    var b=Math.floor(g/4), sb=g&3, s=g&15, C=chordAt(b), W=where(A), w=W.w, S=W.S, L=w.key.length;
-    if(sb===0){
-      C.v.forEach(function(m){ rhodes(t,m,BEAT*.8); }); if(vis) vis.push({t:t,k:'c',v:C.v.slice()});
-      var bn=36+C.root; if(bn-lastBass>6) bn-=12; if(bn<31) bn+=12; lastBass=bn; fbass(t,bn,S16*1.7);
-      if(S.first && b%2===0) lead(t,C.v[3]+12,BEAT*1.8,.08);               /* the head: the top voice, sung */
+  function bassNote(r){ var bn=36+r; if(bn-lastBass>6) bn-=12; if(bn<31) bn+=12; return bn; }
+  function stepFusion(Gi,A,t){
+    var B=Gi.B, x=recFz(B), Ar=Gi.Ar, j=Gi.j, nG=x.g.length, bar=Math.floor(j/x.n), s=j-bar*x.n, gi=x.gmap[s], sb=s-x.gs[gi], glen=x.g[gi], b=bar*nG+gi;
+    var W=where(A), w=W.w, S=W.S, L=w.key.length, sec=secFz(x,W), E=arcAt(W.off/B.R.s), s16=x.s16, gdur=glen*s16;
+    var M=moment(W,A,s16,gdur), C=chordAt(Ar,x,b), pbar=bar-Math.floor(W.pa.t0/x.bar);
+    LEADV=x.lead;
+    if(glen===4 && sb===2) t+=x.swing*s16;                                /* swing the "and" */
+    if(M.stop) return;
+    if(M.hit){ if(M.hit1){ C.v.forEach(function(m){ rhodes(t,m,gdur*.6,.22); }); if(vis) vis.push({t:t,k:'c',v:C.v.slice()});
+        fbass(t,bassNote(C.root),gdur*.6,.5); D.kick(t); D.crash(t,.35); D.snare(t,.6); } return; }   /* ! : the band hits together, then holds its breath */
+    var v=C.v; if(M.ask && M.toEnd<gdur*1.01){ v=v.slice(); v[1]+=C.maj?1:2; }   /* a question hangs on a suspended chord */
+    var chg=sb===0 && (b===0 || C!==chordAt(Ar,x,b-1) || s===0); if(chg) C=chordAt(Ar,x,b);
+    /* keys */
+    var comp=sec==='vamp'?'stab':sec==='break'?'hits':x.comp, kv=M.quote?.1:.16;
+    if(comp==='hits'){ if(s===0){ v.forEach(function(m){ rhodes(t,m,gdur*.5,.18); }); if(vis) vis.push({t:t,k:'c',v:v.slice()}); } }
+    else if(comp==='block'){ if(sb===0){ v.forEach(function(m){ rhodes(t,m,gdur*.8,kv); }); if(vis) vis.push({t:t,k:'c',v:v.slice()}); }
+      else if(E>.6 && glen===4 && sb===3 && gi===nG-1) v.forEach(function(m){ rhodes(t,m,s16*1.5,kv*.7); }); }
+    else if(comp==='stab'){ if(euclid(sec==='vamp'?5:4,x.n,bar+1)[s]){ v.forEach(function(m){ rhodes(t,m,s16*1.6,kv*.95); }); if(vis) vis.push({t:t,k:'c',v:v.slice()}); } }
+    else { if(s%2===0) rhodes(t,v[(s/2+bar)%4]+(s%8===6?12:0),s16*2.4,kv*1.1); if(sb===0&&vis) vis.push({t:t,k:'c',v:v.slice()}); if(s===0) v.forEach(function(m){ rhodes(t,m,gdur,kv*.6); }); }
+    /* bass */
+    var bassSolo=sec==='trade' && pbar%8>=4;
+    if(sec==='vamp'){ x.ost.forEach(function(o){ if(o.at===s){ var bn=36+C.root+o.iv; while(bn>52) bn-=12; fbass(t,bn,s16*1.8,.4); lastBass=bn; } }); }
+    else if(sec==='break'){ if(s===0){ lastBass=bassNote(C.root); fbass(t,lastBass,gdur*.5,.45); } }
+    else if(bassSolo){ if(s%2===0){ var tn=[0,C.maj?4:3,7,C.maj?11:10,12,14], bn2=36+C.root+tn[(s/2+L+bar)%6]; if(sb===glen-2 && gi===nG-1) bn2=36+chordAt(Ar,x,b+1).root+11;
+        while(bn2>55) bn2-=12; fbass(t,bn2,s16*1.7,.38); lastBass=bn2; } }
+    else {
+      if(sb===0){ lastBass=bassNote(C.root); fbass(t,lastBass,s16*1.7); }
+      if(sb===glen-2){ var Cn=chordAt(Ar,x,b+1), vow='aeiou'.indexOf(C.c)>=0, nb2=bassNote(Cn.root);
+        fbass(t,Cn.root===C.root||vow?lastBass+7:nb2-1,s16*1.6,.34); }
     }
-    if(sb===2){ var vow='aeiou'.indexOf(C.c)>=0, nr=move(C,'PLR'[(letterAt(b+1).charCodeAt(0)-97+26)%3]).root, nb2=36+nr; if(nb2-lastBass>6) nb2-=12; if(nb2<31) nb2+=12;
-      fbass(t,vow?lastBass+7:nb2-1,S16*1.6,.34); }
-    if(!S.first){                                                          /* the solo: the word's length sets how busy */
-      var tones=C.v.concat(C.v.map(function(x){ return x+12; }));
-      if(L>=8) lead(t,tones[(s+(b%3))%tones.length]+12,S16*.9);
-      else if(L>=5 && s%2===0) lead(t,tones[(s/2+b)%tones.length]+12,S16*1.8);
-      else if(B_ask(S,W) && sb===0) lead(t,C.v[3]+12,BEAT*.95,.07);
+    /* lead */
+    var tones=v.concat(v.map(function(y){ return y+12; })), up=sec==='burn'?12:0;
+    if(sec==='head'||sec==='out'||M.title){                                 /* the head: the title's melody */
+      var slot=(bar%2)*(x.n/2)+s/2; if(s%2===0) x.motif.forEach(function(n){ if(n.at===slot) lead(t,v[n.deg]+12+12*n.oct,s16*2*n.len*.95,.085); });
+    } else if(sec==='solo'||sec==='burn'||(sec==='trade'&&!bassSolo)){
+      var busy=sec==='burn'?1:0;
+      if(L>=8-2*busy) lead(t,tones[(s+(b%3))%tones.length]+12+up,s16*.9);
+      else if(L>=5-busy && s%2===0) lead(t,tones[(s/2+b)%tones.length]+12+up,s16*1.8);
+      else if(M.ask && sb===0) lead(t,v[3]+12,gdur*.95,.07);
+    } else if(sec==='vamp' && L>=8 && sb===0 && gi%2===0) lead(t,v[(b>>1)%4]+12,gdur*1.8,.07);
+    /* drums */
+    var mid=x.gs[Math.floor(nG/2)]+(nG===4?2:0), toEnd=M.toEnd;
+    if(s===0 && pbar===0 && W.pa.k>0) D.crash(t,.3);
+    if(sec==='burn' && s===0 && pbar%4===0) D.crash(t,.22);
+    if(M.quote){ if(s%2===0) D.ride(t,.1); return; }                      /* a quote: the drums lay out, the ride keeps time */
+    if(sec==='break'){
+      if(euclid(5,x.n,bar)[s]) D.kick(t,.8); if(euclid(3,x.n,bar+2)[s]) D.snare(t,.55); else if(ih(j+B.h)<.3) D.snare(t,.12);
+      if(gi===nG-1 && bar%2===1) D.tom(t,[180,150,125,105,95,85][sb]||90,.4);
+      if(s%2===0) D.ride(t,.12); return;
     }
-    var toEnd=S.t1-W.off;
-    if(s===0||s===10) D.kick(t,.8);
-    if(toEnd<BEAT*2 && toEnd>0) D.snare(t,.25+.5*(1-toEnd/(BEAT*2)));       /* a fill into the next sentence */
-    else if(s===4||s===12) D.snare(t); else if(ih(g)<.22) D.snare(t,.12);
-    if(s%2===0) D.ride(t,s%4===0?.22:.14);
+    if(s===0||s===mid) D.kick(t,.8);
+    if(toEnd<gdur*2 && toEnd>0) D.snare(t,.25+.5*(1-toEnd/(gdur*2)));    /* a fill into the next sentence */
+    else if(sb===0 && gi%2===1) D.snare(t);
+    else if(pbar%4===3 && gi===nG-1 && E>.45) D.tom(t,[170,150,130,110,100,90][sb]||90,.35);   /* a fill every four bars */
+    else if(ih(j+B.h)<.1+.2*E) D.snare(t,.12);
+    if(s%2===0) D.ride(t,sb===0?.22:.14); else if(sec==='burn') D.ride(t,.07);
   }
-  function B_ask(S,W){ return !!W.B.ws[S.b].ask; }
 
+
+  /* ================= classical: a music box in the next room (2026-10-14) =================
+     Meant for low volume and half-listening. A harp breaks each chord into an Alberti or waltz figure; a celesta
+     sings the words, one soft note per word (two or three for long words), slowly. Each sentence walks a classical
+     progression one chord per bar and ends on a cadence its punctuation chooses: . home, ? hangs on the dominant,
+     ! home with a little run up. Paragraphs move to a neighbouring key and the last one comes home. */
+  function harp(t,m,dur,v){ v=v||.05; var f=mtof(m), o=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain();
+    o.type='triangle'; o.frequency.value=f; lp.type='lowpass'; lp.frequency.setValueAtTime(f*6,t); lp.frequency.exponentialRampToValueAtTime(f*1.5,t+.6);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.006); g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.8,dur*1.6));
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-60)/30,-.6,.6); g.connect(pn); out=pn; }
+    o.connect(lp); lp.connect(g); out.connect(bus); out.connect(send); o.start(t); o.stop(t+Math.max(.8,dur*1.6)+.05); }   /* the harp makes no fireworks (Todd 2026-10-14: too many) */
+  function celesta(t,m,v){ v=v||.05; var f=mtof(m), o=c.createOscillator(), o2=c.createOscillator(), g=c.createGain(), g2=c.createGain();
+    o.frequency.value=f; o2.frequency.value=f*4.01; g2.gain.setValueAtTime(.35,t); g2.gain.exponentialRampToValueAtTime(.001,t+.18);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+2.4);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-76)/24,-.5,.5); g.connect(pn); out=pn; }
+    o.connect(g); o2.connect(g2); g2.connect(g); out.connect(bus); out.connect(send); o.start(t); o2.start(t); o.stop(t+2.5); o2.stop(t+.3);
+    if(vis) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  function stepClassical(Gi,A,t){
+    var B=Gi.B, x=recCl(B), j=Gi.j, bar=Math.floor(j/x.n), s=j-bar*x.n, W=where(A), w=W.w, S=W.S, pa=W.pa, nP=B.paras.length;
+    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4);
+    if(M.stop) return;                                                       /* a dash: the music box pauses */
+    var shift=pa.k===0||pa.k===nP-1?0:[7,x.maj?9:3,5][pa.k%3];               /* paragraphs visit the dominant, the relative, the subdominant */
+    var root=48+(B.root+shift)%12;
+    var sBar=Math.floor((W.off-S.t)/x.bar+1e-6), left=Math.floor((S.t1-W.off)/x.bar);
+    var prog=CL_PROGS[(S.k+(B.h>>>5))%CL_PROGS.length], deg=prog[sBar%prog.length];
+    if(left<=1) deg=left===1?4:(M.ask?4:0);                                  /* the cadence: V then I, or a question left on V */
+    var ch=clChord(x,deg,root), bass=ch[0]-12;
+    /* harp: the left hand */
+    var eighth=s%2===0, q=s%4===0, busy=E>.55;
+    if(x.fig==='waltz'){ if(s===0) harp(t,bass,x.s16*4,.055); else if(s===4||s===8) [ch[1],ch[2]].forEach(function(m,i){ harp(t+i*.012,m,x.s16*4,.03); }); else if(busy&&s===10) harp(t,ch[0]+12,x.s16*2,.02); }
+    else if(x.fig==='alberti'){ if(busy?eighth:q){ var seq=[ch[0],ch[2],ch[1],ch[2]], k=busy?(s/2)%4:(s/4)%4; harp(t,k===0&&s===0?bass:seq[k],x.s16*2,.04); } }
+    else { if(busy?eighth:q){ var up=[ch[0],ch[1],ch[2],ch[0]+12,ch[2],ch[1],ch[0],ch[1]], k2=(busy?s/2:s/4)%8; harp(t,up[k2],x.s16*2,.038); } }
+    /* celesta: the words, softly, an octave or two up */
+    var wordStart=w.start>W.off-x.s16 && w.start<=W.off, oct=M.quote?24:12, tones=ch.map(function(m){ return m+oct+12; });
+    if(wordStart){ var n=w.key.length>7?3:w.key.length>4?2:1, hn=w.h>>>0;
+      for(var i=0;i<n;i++){ var m2=tones[(hn>>>(i*3))%3]+(i&&(hn>>>9)%2?x.scale[(deg+1)%7]-x.scale[deg%7]:0); celesta(t+i*x.s16*2,m2,.045+.02*E); } }
+    if(M.hit1) [0,1,2,3,4].forEach(function(i){ celesta(t+i*x.s16,ch[i%3]+24+12*Math.floor(i/3),.035); });   /* ! : a little run up */
+    if(M.title && s===0) celesta(t,ch[2]+36,.03);                            /* the album title: a high bell on every bar */
+  }
+
+  /* ================= woodblock: tuned blocks ringing chords (2026-10-14) =================
+     Four tuned woodblocks, each with its own even (Euclidean) pattern, so the chord rings out of the gaps between
+     them. One block slowly drifts a sixteenth at a time against the others (phasing, after Reich's Music for Pieces
+     of Wood), coming back into line at each new sentence. A log drum keeps the root; a shaker joins near the peak.
+     The grade picks the five notes; sentences step through chords built from them; paragraphs change key. */
+  function block(t,m,v,ring){ v=v||.2; ring=ring||.5; var f=mtof(m), out=c.createGain(); out.gain.value=v;
+    [[1,1,1],[2.76,.32,.3],[5.4,.12,.12]].forEach(function(md){ var o=c.createOscillator(), g=c.createGain(); o.frequency.setValueAtTime(f*md[0]*1.012,t); o.frequency.exponentialRampToValueAtTime(f*md[0],t+.012);
+      g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(md[1],t+.002); g.gain.exponentialRampToValueAtTime(.0001,t+ring*md[2]+.03); o.connect(g); g.connect(out); o.start(t); o.stop(t+ring*md[2]+.06); });
+    var n=c.createBufferSource(); n.buffer=noise; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=Math.min(9000,f*3.1); bp.Q.value=6;
+    var ng=c.createGain(); ng.gain.setValueAtTime(.5,t); ng.gain.exponentialRampToValueAtTime(.001,t+.02); n.connect(bp); bp.connect(ng); ng.connect(out); n.start(t,Math.random()*.5); n.stop(t+.03);
+    var o2=out; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-67)/20,-.7,.7); out.connect(pn); o2=pn; }
+    o2.connect(bus); o2.connect(send); if(vis) vis.push({t:t,k:'w',m:m,v:v}); }
+  function logdrum(t,m,v){ var f=mtof(m), o=c.createOscillator(), g=c.createGain(); o.frequency.setValueAtTime(f*1.25,t); o.frequency.exponentialRampToValueAtTime(f,t+.03);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v||.4,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.7); o.connect(g); g.connect(bus); o.start(t); o.stop(t+.75); if(vis) vis.push({t:t,k:'g',m:m}); }
+  function stepWoodblock(Gi,A,t){
+    var B=Gi.B, x=recWb(B), j=Gi.j, bar=j>>4, s=j&15, W=where(A), w=W.w, S=W.S, pa=W.pa;
+    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4);
+    if(M.stop) return;
+    var root=55+((B.root+5*pa.k)%12), P=x.pool, sBar=Math.floor((W.off-S.t)/x.bar+1e-6);
+    var cdeg=[0,2,3,1][(Math.floor(sBar/2)+S.k)%4];                         /* the chord: two bars each */
+    if(M.ask && M.toEnd<x.bar*2) cdeg=4;                                     /* a question rings an unresolved stack */
+    var voices=[0,1,2,3].map(function(i){ var d=cdeg+[0,1,2,4][i]; return root+P[d%5]+12*Math.floor(d/5); });
+    var ring=x.ring*(.85+.35*E), chorale=S.k%x.chorale===x.chorale-1;      /* some sentences are only chords, left to ring */
+    var newChord=s===0 && sBar%2===0;
+    if(newChord) voices.forEach(function(m,i){ block(t+i*(.05+.03*(1-E)),m,.12,ring*1.5); });   /* each chord rolled slowly and left to ring */
+    if(chorale){ if(s===8 && sBar%2===1 && E>.5) voices.forEach(function(m,i){ block(t+i*.07,m,.08,ring*1.5); }); }
+    else {
+      var nV=M.quote?1:clamp(1+Math.round(E*2),1,3), phase=Math.floor(sBar/x.drift);   /* one block drifts against the others */
+      voices.forEach(function(m,i){ if(i>=nV || newChord&&s===0) return; var vi=nV===1?3:i, rot=x.rot[vi]+(vi===3?phase:0);
+        if(euclid(clamp(x.k[vi],1,5),16,rot)[s]) block(t,voices[vi]+(M.quote?12:0),.1+.04*E,ring); });
+    }
+    var wordStart=w.start>W.off-x.s16 && w.start<=W.off;
+    if(wordStart && w.key.length>7 && s%4===0) block(t+.01,voices[(w.h>>>0)%4]+12,.07,ring*1.2);   /* a long word: one high block */
+    if(M.hit1) voices.concat([voices[0]+12]).forEach(function(m,i){ block(t+i*.06,m,.14,ring*1.8); });   /* ! : a full roll */
+    if(M.title && s===8) block(t,voices[3]+12,.08,ring*1.4);
+    if(!M.quote && newChord) logdrum(t,root-24+P[cdeg%5],.28);              /* the log drum only marks the chord */
+  }
+
+
+  /* each review has its own grid, starting on beat one at the review's first second */
+  function gridAt(A){
+    var loop=Math.floor(A/TOTAL), p=A-loop*TOTAL, ri=reviewAt(p), B=beatPrep(ri), x=RECIPE[kind](B), Ar=loop*TOTAL+START[ri];
+    return {ri:ri, loop:loop, Ar:Ar, B:B, s16:x.s16, len:ST[ri].s, j:Math.ceil((A-Ar)/x.s16-1e-9)};
+  }
+  var STEP={'303':step303,fusion:stepFusion,classical:stepClassical,woodblock:stepWoodblock}[kind];
   return {
     until:function(H){
-      if(nextG===null) nextG=Math.ceil(absAt(c.currentTime+.05)/S16);
-      for(var guard=0;guard<400;guard++){
-        var A=nextG*S16, t=ctxAt(A); if(t>H) break;
-        if(t>=c.currentTime) (kind==='303'?step303:stepFusion)(nextG,t,A);
-        nextG++;
+      if(!G) G=gridAt(absAt(c.currentTime+.05));
+      for(var guard=0;guard<600;guard++){
+        var A=G.Ar+G.j*G.s16;
+        if(A>=G.Ar+G.len-1e-6){ G=gridAt(G.Ar+G.len+1e-6); G.j=0; continue; }
+        var t=ctxAt(A); if(t>H) break;
+        if(t>=c.currentTime) STEP(G,A,t);
+        G.j++;
       }
     },
     kill:function(){ var n=c.currentTime; bus.gain.setValueAtTime(bus.gain.value,n); bus.gain.linearRampToValueAtTime(0,n+.5);
@@ -555,7 +819,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); }
+function showStation(){ document.body.dataset.station=STATION; [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -647,6 +911,20 @@ var FS303L=GL303+   /* Lights: an LED wall scrolling the 303's notes (rows = pit
 'float led=smoothstep(.36,.3,length(f));c+=pal(.4,temp)*.07*led+pal(hue,temp)*on*(led*1.3+.3*exp(-dot(f,f)*3.));}'+
 'c+=pal(.85,temp)*kick*.07;'+
 GLFINISH;
+/* classical: a night sky, nearly nothing, so the fireworks (a 2D canvas on top) carry the picture */
+var FSCL=GLHEAD+GLCOMMON+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;vec3 c=mix(pal(.07,temp)*.5,pal(.02,temp)*.25,smoothstep(-.5,.5,p.y));'+
+'vec2 id=floor(gl_FragCoord.xy/2.5);float h=h21(id);c+=vec3(.75,.78,.9)*step(.997,h)*(.15+.2*(.5+.5*sin(time*(.2+h*.6)+h*50.)));'+GLFINISH;
+/* woodblock: digital sawgrass at dusk, a little vaporwave. v2 (Todd 2026-10-14: lighter on phones, grass moves less):
+   the shader only paints the sky, the slatted sun and the ground grid (the log drum pulses it); the grass is drawn
+   on the 2D canvas on top (GR, below), a few hundred filled blades, which costs a phone far less than raymarching them. */
+var FSWB=GLHEAD+'uniform float gnd;\n'+GLCOMMON+
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float px=1.5/res.y;float hy=-.08;'+
+'vec3 c=mix(vec3(.36,.13,.30),vec3(.03,.025,.09),smoothstep(hy-.05,.5,p.y));'+
+'vec2 sp=p-vec2(0.,hy+.02);float sd=length(sp);float slat=sp.y>.03?1.:step(.42,fract(sp.y*30.));'+
+'c=mix(c,mix(vec3(.98,.62,.45),vec3(.9,.3,.55),smoothstep(.22,-.02,sp.y)),smoothstep(.205,.2,sd)*slat*.5);'+
+'if(p.y<hy){float z=.08/(hy-p.y+.002);float gx=abs(fract(p.x*z*2.)-.5)/(z*2.);float gz=abs(fract(z*.8-time*.06)-.5)/(z*.8);'+
+'c=vec3(.04,.02,.07)+vec3(.55,.25,.7)*(.12+.2*gnd)*max(smoothstep(px*1.2,0.,gx*.25),smoothstep(px*2.,0.,gz*.12))*smoothstep(-.6,hy,p.y);}'+
+'c*=.92+.08*sin(gl_FragCoord.y*2.1);'+GLFINISH;
 var FSFZ=GLHEAD+'uniform vec4 bm[4];uniform vec4 bs;uniform vec4 sp[8];uniform float sn,rot;\n'+GLCOMMON+
 /* fusion: a kaleidoscope of hard-edged shards. Six mirrored wedges; inside each, the glass is cut by the chord's four voices
    (and the lead's flying sparks). Flat colour, crisp dark seams, heavier grain: nothing like the ambient light. */
@@ -694,7 +972,7 @@ if(gl){
     var vb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vb); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   }catch(e){ console.error(e); prog=null; }
-  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F','sounding']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']]].forEach(function(d){
+  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F','sounding']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']],['classical',FSCL,[]],['woodblock',FSWB,['gnd']]].forEach(function(d){
     try{ var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}'));
       gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,d[1])); gl.bindAttribLocation(pr,0,'a'); gl.linkProgram(pr);
       if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
@@ -743,13 +1021,16 @@ function frame(now){
 var lastLine=0;
 
 /* the beat stations' pictures, fed by what the beat engine scheduled (VIS), applied as each moment arrives */
-var FZ_CHORD=null, T303=null, PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
-var PV={hist:[], steps:0, roll:0,pat:[[],[],[],[]], fl:new Float32Array(64).fill(-9), kickT:-9, clapT:-9, step:0, stepT:0, acid:null, acidT:-9, cut:.3,
+var FZ_CHORD=null, T303=null, FW=null, GR=null, PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
+var PV={wind:0, wh:[], lastHit:-9, gT:-9, hist:[], steps:0, roll:0,pat:[[],[],[],[]], fl:new Float32Array(64).fill(-9), kickT:-9, clapT:-9, step:0, stepT:0, acid:null, acidT:-9, cut:.3,
         beams:[0,1,2,3].map(function(i){ return {r:.1+.1*i, tr:.1+.1*i, a:.13*i, ta:.13*i, h:.5+.15*i, t:-9}; }), rot:0, trot:0, bassT:-9, bassM:40, sparks:[], snT:-9, snV:0};
-var LU=new Float32Array(64), BMU=new Float32Array(16), SPU=new Float32Array(32);
+var WBU=new Float32Array(32), LU=new Float32Array(64), BMU=new Float32Array(16), SPU=new Float32Array(32);
 function pitchX(m){ return ((m-50)/30-.5)*Math.min(1.6,innerWidth/Math.max(1,innerHeight))*.85; }
 function pitchH(m){ return .5+.45*(((m%12)*7)%12)/11; }
 function applyVis(e){
+  if(e.k==='w'){ PV.wh.push({t:e.t, x:pitchX(e.m)*1.1, a:.35+e.v}); if(PV.wh.length>16) PV.wh.shift(); PV.lastHit=e.t; return; }
+  if(e.k==='g'){ PV.gT=e.t; return; }
+  if(e.k==='p'){ if(FW) FW.burst(e); return; }
   if(e.k==='s'){ PV.step=e.s; PV.stepT=e.t; PV.cut=e.cut;
     e.pats.forEach(function(pt,r){ PV.pat[r]=pt||[]; });
     [e.acid,(e.pats[1]||[])[e.s],(e.pats[2]||[])[e.s],(e.pats[3]||[])[e.s]].forEach(function(h,r){ if(h) PV.fl[r*16+e.s]=e.t; });
@@ -775,7 +1056,10 @@ function drawBeat(PR,T,dim,rise){
       var fk=4; for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k==='s'){ if(T303) T303.assign(ve); FU.set([ve.acid?ve.acid.n:-1, ve.acid&&ve.acid.acc?1:0,0,0],fk*4); fk++; } }
       for(;fk<16;fk++) FU.set([-1,0,0,0],fk*4); gl.uniform4fv(u.F,FU);
       gl.uniform1f(u.sounding,playing&&PV.hist[0]&&PV.hist[0][0]>=0?ex(PV.stepT,.22):0); if(T303) T303.frame(T); }
-  } else {
+  } else if(STATION==='woodblock'){
+    PV.wh=PV.wh.filter(function(h){ return T-h.t<6; }); if(GR) GR.draw(T);
+    gl.uniform1f(u.gnd,ex(PV.gT,.5));
+  } else if(STATION==='fusion'){
     var k=1-Math.exp(-(1/60)/.05); PV.rot+=(PV.trot-PV.rot)*(1-Math.exp(-(1/60)/.09));
     PV.beams.forEach(function(B,i){ B.r+=(B.tr-B.r)*k; B.a+=(B.ta-B.a)*k; BMU.set([B.r,B.a,B.h,playing?.35+.65*ex(B.t,.3):.25],i*4); });
     PV.sparks=PV.sparks.filter(function(s){ return T-s.t<s.dur+1.4; });
@@ -916,6 +1200,91 @@ T303=(function(){
   };
 })();
 
+/* classical's picture: every celesta note a tiny firework. It bursts small, sprays far, and fades slowly.
+   v2 (Todd 2026-10-14: "too many fireworks on the screen for too long"): the harp makes none, fewer sparks, shorter lives.
+   The two lines are written by the fireworks: each burst sends its sparks out to form the next word, which holds, then
+   fades like embers. After both lines, 15 s of plain fireworks, then again. */
+FW=(function(){
+  var cv2=$('fx'), g2=cv2.getContext('2d'), P=[], last=performance.now(), W=0, H=0, lastSt=null;
+  var WORDS=[], wi=0, restUntil=0, REST=15000, laid=-1;
+  function size(){ var d=Math.min(window.devicePixelRatio||1,1.5); W=cv2.width=Math.round(innerWidth*d); H=cv2.height=Math.round(innerHeight*d); laid=-1; }
+  window.addEventListener('resize',size); size();
+  function layout(){   /* where every word sits, and the points that draw it */
+    var lines=[['Cut','my','reviews','into','pieces'],['This','is','my','last','retort']], fs=Math.round(clamp(W*.06,22*(W/innerWidth),58*(W/innerWidth)));
+    var oc=document.createElement('canvas'), o=oc.getContext('2d'), font='italic '+fs+'px Georgia, "Times New Roman", serif'; o.font=font;
+    var sp=o.measureText(' ').width, step=Math.max(2,Math.round(fs/17)); WORDS=[];
+    lines.forEach(function(ln,li){ var tw=ln.reduce(function(a,w){ return a+o.measureText(w).width; },0)+sp*(ln.length-1), x=(W-tw)/2, y=H*(.27+.11*li);
+      ln.forEach(function(w){ var ww=Math.ceil(o.measureText(w).width)+4, hh=Math.ceil(fs*1.3); oc.width=ww; oc.height=hh; o.font=font; o.fillStyle='#fff'; o.textBaseline='middle'; o.fillText(w,2,hh/2);
+        var px=o.getImageData(0,0,ww,hh).data, pts=[];
+        for(var yy=0;yy<hh;yy+=step) for(var xx=0;xx<ww;xx+=step) if(px[(yy*ww+xx)*4+3]>128) pts.push([x+xx,y-hh/2+yy]);
+        WORDS.push(pts); x+=o.measureText(w).width+sp; }); });
+    laid=W*10000+H;
+  }
+  function burst(e){
+    if(STATION!=='classical') return; if(laid!==W*10000+H) layout();
+    var d=W/innerWidth, hx=ih(Math.round(e.t*1000)), hy=ih(Math.round(e.t*1000)+77);
+    var x=W*(.12+.76*clamp((e.m-36)/60,0,1))+(hx-.5)*W*.12, y=H*(.16+.55*hy), n=22, sp=220*d, col=palJS(.62+.36*hx,temp);
+    var now=performance.now();
+    if(now>=restUntil && wi<WORDS.length){   /* this burst writes the next word */
+      var pts=WORDS[wi++], wc=palJS(.9,temp);
+      pts.forEach(function(q,k){ P.push({x:x,y:y,sx:x,sy:y,tx:q[0]+(Math.random()-.5)*d,ty:q[1]+(Math.random()-.5)*d,t:0,fly:.7+.5*Math.random(),life:34+4*Math.random(),c:wc,r:.9*d,word:true}); });
+      if(wi>=WORDS.length){ wi=0; restUntil=now+38000+REST; }
+    }
+    for(var i=0;i<n;i++){ var a=Math.PI*2*i/n+hx*6, v=sp*(.35+.65*Math.random());
+      P.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,t:0,life:4.5+2.5*Math.random(),c:col,r:1.1*d}); }
+    P.push({x:x,y:y,vx:0,vy:0,t:0,life:.45,c:[255,250,240],r:2.6*d,core:true});
+    if(P.length>3500) P.splice(0,P.length-3500);
+  }
+  (function frame(now){
+    var dt=Math.min(.05,(now-last)/1000); last=now;
+    if(cv2.width!==W||cv2.height!==H){ W=cv2.width; H=cv2.height; laid=-1; }   /* the grass may have resized the shared canvas */
+    if(lastSt!==STATION){ lastSt=STATION; g2.globalCompositeOperation='source-over'; g2.clearRect(0,0,cv2.width,cv2.height); P=[]; }
+    if(STATION==='classical'){
+      g2.globalCompositeOperation='destination-out'; g2.fillStyle='rgba(0,0,0,'+(1-Math.exp(-dt*2.6)).toFixed(4)+')'; g2.fillRect(0,0,W,H);
+      g2.globalCompositeOperation='lighter';
+      var drag=Math.exp(-dt*.7), grav=4*(W/innerWidth);
+      P=P.filter(function(q){ q.t+=dt; if(q.t>q.life) return false; var al;
+        if(q.word){ var u=Math.min(1,q.t/q.fly), e=1-Math.pow(1-u,3); q.x=q.sx+(q.tx-q.sx)*e; q.y=q.sy+(q.ty-q.sy)*e;
+          if(u>=1){ var age=q.t-q.fly; q.ty+=age>24?grav*.25*dt:0; q.y=q.ty; }           /* after a while the embers start to sink */
+          al=(u<1?.9:.75)*Math.min(1,(q.life-q.t)/10); }
+        else { q.vx*=drag; q.vy=q.vy*drag+grav*dt; q.x+=q.vx*dt; q.y+=q.vy*dt; var f=1-q.t/q.life; al=q.core?f*f:Math.pow(f,1.8)*.8*Math.min(1,q.t*8); }
+        g2.fillStyle='rgba('+q.c[0]+','+q.c[1]+','+q.c[2]+','+al.toFixed(3)+')'; g2.beginPath(); g2.arc(q.x,q.y,q.r*(q.core?1+2*q.t:1),0,6.283); g2.fill(); return true; });
+    } else if(P.length){ P=[]; }
+    requestAnimationFrame(frame);
+  })(last);
+  return {burst:burst};
+})();
+
+/* woodblock's grass: five rows of filled blades on the 2D canvas, back to front. They lean in a slow, small wind;
+   each ringing block sends a gentle lean outward from where its pitch sits. Colours as the v1 shader. */
+GR=(function(){
+  var cv2=$('fx'), g2=cv2.getContext('2d'), rows=[], W=0, H=0, d=1, built=-1;
+  function build(){
+    d=Math.min(window.devicePixelRatio||1,1.5); W=cv2.width=Math.round(innerWidth*d); H=cv2.height=Math.round(innerHeight*d); rows=[];
+    var hor=H*.5+.08*H;                                                   /* the horizon, as in the shader (p.y = -.08) */
+    for(var L=0;L<5;L++){ var sp=(6+7*L)*d, yb=hor+H*(.02+.1*L+.015*L*L), bh=H*(.07+.085*L), bl=[];
+      for(var x=-sp, i=0; x<W+sp; x+=sp, i++){ var r=ih(i*131+L*7919), r2=ih(i*977+L*31);
+        bl.push({x:x+(r-.5)*sp*.8, h:bh*(.55+.9*r2), lean:(ih(i*53+L*3)-.5)*.36, w:sp*(.18+.1*r), ph:r*6.28, tip:r<.5?[77,242,230]:[255,115,204], base:[13,89,102]}); }
+      rows.push({L:L, yb:yb, bl:bl}); }
+    built=innerWidth*10000+innerHeight;
+  }
+  function lean(xp,T){ var g=0; PV.wh.forEach(function(h){ var a=T-h.t; if(a<0) return; var dx=xp-h.x; g+=(dx<0?-1:1)*h.a*Math.exp(-a*.9)*Math.exp(-Math.pow(Math.abs(dx)-a*.35,2)/.02); }); return g; }
+  function draw(T){
+    if(built!==innerWidth*10000+innerHeight) build();
+    g2.globalCompositeOperation='source-over'; g2.clearRect(0,0,W,H);
+    var tt=performance.now()/1000, asp=W/H;
+    rows.forEach(function(R){ var k=.35+.65*R.L/4;
+      R.bl.forEach(function(b){ var xp=(b.x/W-.5)*asp, bend=(b.lean+.05*Math.sin(tt*.45+b.x*.004+R.L)+.03*Math.sin(tt*.21+b.x*.0013)+.08*lean(xp,T))*b.h;
+        var x0=b.x, y0=R.yb, tx=x0+bend, ty=y0-b.h, cx=x0+bend*.25, cy=y0-b.h*.55;
+        g2.fillStyle='rgba('+Math.round(b.base[0]*k)+','+Math.round(b.base[1]*k)+','+Math.round(b.base[2]*k)+','+(.55+.45*k).toFixed(2)+')';
+        g2.beginPath(); g2.moveTo(x0-b.w,y0); g2.quadraticCurveTo(cx,cy,tx,ty); g2.quadraticCurveTo(cx,cy,x0+b.w,y0); g2.fill();
+        var m=.62, mx=x0+(tx-x0)*m*m+(cx-x0)*2*m*(1-m), my=y0+(ty-y0)*m*m+(cy-y0)*2*m*(1-m);   /* the bright upper part: the "digital" tip */
+        g2.strokeStyle='rgba('+b.tip[0]+','+b.tip[1]+','+b.tip[2]+','+(.18+.42*k).toFixed(2)+')'; g2.lineWidth=Math.max(1,b.w*.5);
+        g2.beginPath(); g2.moveTo(mx,my); g2.quadraticCurveTo((mx+tx)/2+(cx-x0)*.1,(my+ty)/2,tx,ty); g2.stroke(); }); });
+  }
+  return {draw:draw, clear:function(){ g2.clearRect(0,0,W,H); }};
+})();
+
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
 var quietTimer=null;
 function poke(){ document.body.classList.remove('quiet'); clearTimeout(quietTimer); if(playing) quietTimer=setTimeout(function(){ if(playing) document.body.classList.add('quiet'); },5000); }
@@ -931,7 +1300,7 @@ fetch('station.json').then(function(r){ return r.json(); }).then(function(d){
 requestAnimationFrame(function(t){ last=t; frame(t); });
 
 /* for checking levels without listening: render the station offline from any position */
-window.CRR={
+window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, recipe:function(i,k){ var B=beatPrep(i); return k==="303"?rec303(B):recFz(B); },
   render:function(at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
     return loadSound(oc).then(function(){
