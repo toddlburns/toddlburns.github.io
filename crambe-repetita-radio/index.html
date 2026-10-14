@@ -322,7 +322,7 @@ function recCl(B){   /* v2: tintinnabuli. The key is the artist's letter and nev
   if(B.rc) return B.rc; var r=function(k){ return rnd(B,k); }, maj=B.warm>=.6, bpm=Math.round(52+14*r(1)), set=r(2)<.42?'spiegel':r(2)<.72?'cantus':'alina';
   var tonic=48+B.root%12;
   var x={bpm:bpm, s16:15/bpm, n:set==='spiegel'&&r(3)<.5?12:16, maj:maj, scale:maj?[0,2,4,5,7,9,11]:[0,2,3,5,7,8,10], set:set, tonic:tonic,
-    cC:tonic, vC:tonic+(B.root%12<5?24:12), pC:tonic+12+(B.root%12<5?12:0), tup:r(4)<.5, arp:r(5)<.5?3:6};
+    cC:tonic+12, vC:tonic+24, pC:tonic+24, tup:r(4)<.5, arp:r(5)<.5?3:6};
   x.bar=x.n*x.s16; return (B.rc=x);
 }
 function recWb(B){   /* v2 (Todd 2026-10-14: "a bit too busy… more contemplative… more ringing chords"): slower, sparser, rings much longer */
@@ -694,23 +694,28 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
      note with the nearest note of the home triad. The key never moves. Each review picks a setting: Spiegel
      (string melody, piano breaking the triad slowly), Alina (piano alone, very sparse) or Cantus (strings over a
      drone, a deep bell). A paragraph begins with a bell; ! rings one; a question is left one step short of home. */
-  function bowed(t,m,dur,v,bright){ v=v||.03; bright=bright||1; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), vib=c.createOscillator(), vd=c.createGain(), end=t+dur;
-    lp.type='lowpass'; lp.frequency.value=Math.min(7000,f*3.2*bright); lp.Q.value=.6;
-    vib.frequency.value=4.6+.6*ih((m*37+Math.round(t*10))>>>0); vd.gain.setValueAtTime(0,t); vd.gain.linearRampToValueAtTime(0,t+Math.min(.9,dur*.4)); vd.gain.linearRampToValueAtTime(f*.0035,t+Math.min(1.8,dur*.7)); vib.connect(vd);
-    [-4,4].forEach(function(cts){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=f*Math.pow(2,cts/1200); vd.connect(o.frequency); o.connect(lp); o.start(t); o.stop(end+1.3); });
-    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.45,dur*.3)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,.35);
-    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-60)/30,-.5,.5); g.connect(pn); out=pn; }
-    lp.connect(g); out.connect(bus); out.connect(send); vib.start(t); vib.stop(end+1.3); }
-  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), dec=clamp(7-(m-36)*.09,1.6,6.5)*(sus||1);
-    lp.type='lowpass'; lp.frequency.setValueAtTime(Math.min(9000,f*7),t); lp.frequency.exponentialRampToValueAtTime(Math.min(9000,f*2),t+dec*.5);   /* felt: the brightness falls away */
-    [[1,1,1],[2.001,.4,.6],[3.004,.16,.4],[4.01,.07,.3]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
-      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.008); pg.gain.exponentialRampToValueAtTime(.0001,t+dec*p[2]); o.connect(pg); pg.connect(lp); o.start(t); o.stop(t+dec*p[2]+.05); });
-    g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-64)/36,-.45,.45); g.connect(pn); out=pn; }
+  /* v4 instruments (Todd 2026-10-14: "more delicate, fragile"): a string played flautando, airy and nearly
+     pure; a felt piano with the soft pedal down; small glass bells. All high, all quiet, slow to speak. */
+  function bowed(t,m,dur,v,bright){ v=v||.03; bright=bright||1; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), vib=c.createOscillator(), vd=c.createGain(), end=t+dur, rel=.9;
+    lp.type='lowpass'; lp.frequency.value=Math.min(5000,f*1.8*bright); lp.Q.value=.3;
+    vib.frequency.value=4.2+.8*ih((m*37+Math.round(t*10))>>>0); vd.gain.setValueAtTime(0,t); vd.gain.linearRampToValueAtTime(f*.0018,t+Math.min(2,dur*.8)); vib.connect(vd);   /* a faint, late waver */
+    [['triangle',1,1],['sine',2.003,.12]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.type=p[0]; o.frequency.value=f*p[1]; og.gain.value=p[2]; vd.connect(o.frequency); o.connect(og); og.connect(lp); o.start(t); o.stop(end+rel*4); });
+    var n=c.createBufferSource(); n.buffer=noise; n.loop=true; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=Math.min(8000,f*2); bp.Q.value=2.5;
+    var ng=c.createGain(); ng.gain.value=.06; n.connect(bp); bp.connect(ng); ng.connect(g); n.start(t,ih(Math.round(t*100)>>>0)*.5); n.stop(end+rel*4);   /* the air of the bow */
+    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.9,dur*.45)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,rel);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-66)/30,-.5,.5); g.connect(pn); out=pn; }
+    lp.connect(g); out.connect(bus); out.connect(send); vib.start(t); vib.stop(end+rel*4); }
+  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), dec=clamp(6-(m-48)*.08,1.8,5.5)*(sus||1);
+    lp.type='lowpass'; lp.frequency.setValueAtTime(Math.min(6000,f*3.2),t); lp.frequency.exponentialRampToValueAtTime(Math.min(6000,f*1.3),t+dec*.4);   /* felt and the soft pedal: no edge */
+    [[1,1,1],[2.002,.18,.5],[3.006,.04,.3]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
+      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.02); pg.gain.exponentialRampToValueAtTime(.0001,t+dec*p[2]); o.connect(pg); pg.connect(lp); o.start(t); o.stop(t+dec*p[2]+.05); });
+    g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-70)/36,-.45,.45); g.connect(pn); out=pn; }
     lp.connect(g); out.connect(bus); out.connect(send); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
-  function bell(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a tubular bell, far off */
-    [[.5,.5,9],[1,1,7],[1.19,.45,5],[1.56,.35,4],[2,.3,3.5],[2.51,.2,2.5],[2.98,.12,2]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
-      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.004); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
-    g.connect(bus); g.connect(send); if(vis) vis.push({t:t,k:'p',m:m+12,v:v*10,big:true}); }
+  function bell(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a small glass bell */
+    [[1,1,5],[2.76,.18,1.6],[5.4,.05,.6]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
+      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.01); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=(ih(Math.round(t*10)>>>0)-.5)*.8; g.connect(pn); out=pn; }
+    out.connect(bus); out.connect(send); if(vis) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
   function stepClassical(Gi,A,t){
     var B=Gi.B, x=recCl(B), j=Gi.j, s=j%x.n, W=where(A), w=W.w, S=W.S, pa=W.pa, nP=B.paras.length, ws=B.ws, sc=x.scale;
     var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4);
@@ -723,9 +728,9 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(M.quote) centre+=12;                                                 /* quotes: an octave up, lighter */
     var dur16=x.s16;
     /* a paragraph opens with a bell, low and far off */
-    if(S.first && W.off-S.t<dur16 && W.off>=S.t) bell(t,tonic+36-12*(x.set==='cantus'),.03+.015*E);
+    if(S.first && W.off-S.t<dur16 && W.off>=S.t) bell(t,tonic+48,.025+.01*E);
     /* the drone: Cantus holds the tonic under each sentence */
-    if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t) bowed(t,tonic+12,Math.max(2,Math.min(30,S.t1-S.t))+.5,.018+.012*E,.6);
+    if(x.set==='cantus' && W.off-S.t<dur16 && W.off>=S.t) bowed(t,tonic+24,Math.max(2,Math.min(30,S.t1-S.t))+.5,.01+.006*E,.7);
     /* the melody voice: one note per word */
     var wordStart=w.start>W.off-dur16 && w.start<=W.off;
     if(wordStart){
@@ -735,13 +740,13 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       var t2=tv(m,x.tup!==(kp%3===2));
       if(string){ bowed(t,m,len,.022+.012*E,.8+.5*E); if(x.set==='cantus') bowed(t,t2-12,len,.012+.008*E,.7); else piano(t,t2-12,.045+.02*E,true);
         if(x.set==='cantus') piano(t,t2+12,.018,true); }
-      else { piano(t,m,(.06+.025*E)*1.7,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.7,false,1.8); }   /* the piano alone: level-matched to the other two settings */
-      if(i===0 && x.set!=='cantus') piano(t,tonic-12+(x.set==='alina'?12:0),x.set==="alina"?.1:.05,false,x.set==='alina'?2.2:1);   /* Alina keeps the pedal down */   /* the sentence's low tonic */
+      else { piano(t,m,(.06+.025*E)*1.25,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.25,false,1.8); }   /* the piano alone: level-matched to the other two settings */
+      if(i===0 && x.set!=='cantus') piano(t,tonic+(x.set==='alina'?12:0),x.set==="alina"?.05:.035,false,x.set==='alina'?2.2:1);   /* the sentence's tonic, soft; Alina keeps the pedal down */
     }
     /* Spiegel: the piano breaks the triad, one note a beat, rising */
-    if(x.set==='spiegel' && s%4===0){ var b=Math.floor(j/4), up=[0,1,2,1,2,3][b%x.arp], nn=tonic+12+(up<3?triad[up]:12); piano(t,nn,.022+.012*E,false); }
-    if(M.hit1) bell(t,tonic+48,.035);                                        /* ! : a high bell */
-    if(M.title && wordStart) bell(t+.02,tonic+43,.02);                       /* the album title: a bell on the fifth */
+    if(x.set==='spiegel' && s%4===0){ var b=Math.floor(j/4), up=[0,1,2,1,2,3][b%x.arp], nn=tonic+24+(up<3?triad[up]:12); piano(t,nn,.016+.008*E,false); }
+    if(M.hit1) bell(t,tonic+60,.025);                                        /* ! : a high bell */
+    if(M.title && wordStart) bell(t+.02,tonic+55,.016);                       /* the album title: a bell on the fifth */
   }
 
   /* ================= woodblock: tuned blocks ringing chords (2026-10-14) =================
