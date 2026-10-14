@@ -457,10 +457,10 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
      Fretless slides into close notes, scoops into the rest, sings a vowel ("mwah") and gets vibrato on long notes;
      the round bass has a finger pluck and a woody decay; the synth's filter snaps harder on harder notes.
      The dice come from station time, so every listener hears the same performance. */
-  var BASSV='fretless', bPrevF=0, bPrevEnd=-9;
+  var BASSV='fretless', bPrevF=0, bPrevEnd=-9, BEAT_F=BEAT;
   function fbass(t,m,dur,v){ v=v||.42; var A=Math.round(absAt(t)*100), hv=ih(A>>>0), hv2=ih((A+7)>>>0), f=mtof(m);
     var vel=clamp(v*(.72+.5*hv),.05,.62), br=vel/.42;
-    t+=(hv2-.5)*.014; dur*=.75+.5*hv2; if(t<c.currentTime) t=c.currentTime;
+    t+=(hv2-.5)*.014; dur=Math.min(dur*(.85+.25*hv2),BEAT_F*.95); if(t<c.currentTime) t=c.currentTime;   /* v3 (Todd: the ends were too long): never longer than a beat */
     var o=c.createOscillator(), s=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain(), head=lp, rel=.05;
     var legato=bPrevF>0 && t-bPrevEnd<.1 && Math.abs(12*Math.log(f/bPrevF)/Math.LN2)<=7;
     lp.type='lowpass';
@@ -481,12 +481,12 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       [o,s].forEach(function(x){ x.frequency.setValueAtTime(from,t); x.frequency.exponentialRampToValueAtTime(f,t+glide); });
       lp.Q.value=2.5; lp.frequency.setValueAtTime(450+1100*br,t); lp.frequency.exponentialRampToValueAtTime(300+80*br,t+.3+.2*hv);
       var pk=c.createBiquadFilter(); pk.type='peaking'; pk.frequency.setValueAtTime(520,t); pk.frequency.linearRampToValueAtTime(800,t+Math.max(.12,dur*.7)); pk.Q.value=2.2;
-      pk.gain.setValueAtTime(10*br,t); pk.gain.linearRampToValueAtTime(0,t+Math.max(.12,dur*.8)); lp.connect(pk); head=pk;   /* "mwah" */
-      if(dur>.3){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=4.6+hv; lg.gain.setValueAtTime(0,t); lg.gain.setValueAtTime(0,t+.18); lg.gain.linearRampToValueAtTime(f*.009,t+dur);
+      pk.gain.setValueAtTime(7*br,t); pk.gain.linearRampToValueAtTime(0,t+Math.min(.25,Math.max(.1,dur*.5))); lp.connect(pk); head=pk;   /* "mwah" */
+      if(dur>.55){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=4.6+hv; lg.gain.setValueAtTime(0,t); lg.gain.setValueAtTime(0,t+.35); lg.gain.linearRampToValueAtTime(f*.0025,t+dur);
         lf.connect(lg); lg.connect(o.frequency); lg.connect(s.frequency); lf.start(t); lf.stop(t+dur+.4); }
-      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(vel,t+.012); g.gain.setTargetAtTime(vel*.75,t+.03,.4);
+      g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(vel,t+.012); g.gain.setTargetAtTime(vel*.5,t+.03,.22);
     }
-    g.gain.setTargetAtTime(0,t+dur,rel);
+    g.gain.setTargetAtTime(0,t+dur,rel*.7);
     o.connect(lp); s.connect(lp); head.connect(g); g.connect(bus); o.start(t); s.start(t); o.stop(t+dur+.5); s.stop(t+dur+.5);
     bPrevF=f; bPrevEnd=t+dur; if(vis) vis.push({t:t,k:'b',m:m}); }
   var LEADV='saw';
@@ -499,13 +499,13 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       o.connect(g); o2.connect(g2); g2.connect(g); [o,o2,tr].forEach(function(x){ x.start(t); x.stop(t+dur+1.6); });
     } else if(LEADV==='flute'){   /* breathy: a triangle with a little noise and late vibrato */
       var o3=c.createOscillator(), vib=c.createOscillator(), vg=c.createGain(); o3.type='triangle'; o3.frequency.value=f;
-      vib.frequency.value=5.2; vg.gain.setValueAtTime(0,t); vg.gain.linearRampToValueAtTime(dur>.35?12:0,t+dur); vib.connect(vg); vg.connect(o3.detune);
+      vib.frequency.value=5.2; vg.gain.setValueAtTime(0,t); vg.gain.linearRampToValueAtTime(dur>.5?6:0,t+dur); vib.connect(vg); vg.connect(o3.detune);
       g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v*1.3,t+.05); g.gain.setTargetAtTime(0,t+dur*.92,.05);
       o3.connect(g); nh(t,'bandpass',f*2,v*.25,Math.min(.2,dur)); o3.start(t); vib.start(t); o3.stop(t+dur+.4); vib.stop(t+dur+.4);
     } else {
       var lp=c.createBiquadFilter(), vib2=c.createOscillator(), vg2=c.createGain();
       lp.type='lowpass'; lp.Q.value=4; lp.frequency.setValueAtTime(4200,t); lp.frequency.setTargetAtTime(1800,t+.02,.15);
-      vib2.frequency.value=5.8; vg2.gain.setValueAtTime(0,t); vg2.gain.linearRampToValueAtTime(dur>.4?9:0,t+dur); vib2.connect(vg2);
+      vib2.frequency.value=5.8; vg2.gain.setValueAtTime(0,t); vg2.gain.linearRampToValueAtTime(dur>.5?5:0,t+dur); vib2.connect(vg2);
       [-8,8].forEach(function(d){ var o4=c.createOscillator(); o4.type='sawtooth'; o4.frequency.value=f; o4.detune.value=d; vg2.connect(o4.detune); o4.connect(lp); o4.start(t); o4.stop(t+dur+.3); });
       g.gain.setValueAtTime(.001,t); g.gain.exponentialRampToValueAtTime(v,t+.008); g.gain.setTargetAtTime(0,t+dur*.92,.04);
       lp.connect(g); vib2.start(t); vib2.stop(t+dur+.3);
@@ -613,7 +613,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     var B=Gi.B, x=recFz(B), Ar=Gi.Ar, j=Gi.j, nG=x.g.length, bar=Math.floor(j/x.n), s=j-bar*x.n, gi=x.gmap[s], sb=s-x.gs[gi], glen=x.g[gi], b=bar*nG+gi;
     var W=where(A), w=W.w, S=W.S, L=w.key.length, sec=secFz(x,W), E=arcAt(W.off/B.R.s), s16=x.s16, gdur=glen*s16;
     var M=moment(W,A,s16,gdur), C=chordAt(Ar,x,b), pbar=bar-Math.floor(W.pa.t0/x.bar);
-    LEADV=x.lead; BASSV=x.btone;
+    LEADV=x.lead; BASSV=x.btone; BEAT_F=4*x.s16;
     if(glen===4 && sb===2) t+=x.swing*s16;                                /* swing the "and" */
     if(M.stop) return;
     if(M.hit){ if(M.hit1){ C.v.forEach(function(m){ rhodes(t,m,gdur*.6,.22); }); if(vis) vis.push({t:t,k:'c',v:C.v.slice()});
@@ -642,7 +642,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     else if(x.bass==='pedal'){                                             /* pedal: the home note pulses while the chords move above it */
       if(s%2===0){ var pd=36+((B.root+5*W.pa.k)%12); if(pd>45) pd-=12; fbass(t,pd+(s%8===6?12:0),s16*1.6,s===0?.42:.28); } }
     else if(x.bass==='twofeel'){                                           /* two feel: root and fifth, long notes */
-      var half=x.gs[Math.floor(nG/2)]; if(s===0||s===half){ var bt=bassNote(C.root)+(s===half?7:0); if(s===0) lastBass=bt; fbass(t,bt,(s===0?half:x.n-half)*s16*.9,.4); } }
+      var half=x.gs[Math.floor(nG/2)]; if(s===0||s===half){ var bt=bassNote(C.root)+(s===half?7:0); if(s===0) lastBass=bt; fbass(t,bt,(s===0?half:x.n-half)*s16*.6,.4); } }
     else if(x.bass==='ostinato'){                                          /* a riff of the song's own, moved to each chord */
       x.riff.forEach(function(o){ if(o.at===s){ var bo=bassNote(C.root)+o.iv; if(o.at===0) lastBass=bassNote(C.root); fbass(t,bo,s16*o.len*.9,.38); } }); }
     else {
