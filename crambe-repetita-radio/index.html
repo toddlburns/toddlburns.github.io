@@ -946,17 +946,20 @@ var FS303F=GL303+'uniform vec4 F[16];\n'+   /* Floor, v4 (Todd 2026-10-13: "I li
 'return ridgeAt(q)+side;}'+
 'float ln(float u,float w){return smoothstep(.5-w*fwidth(u),.5,abs(fract(u)-.5));}'+
 /* v6 (Todd 2026-10-14): lines coloured by height in the fusion kaleidoscope's colours (same palette range, same saturation) */
-'vec3 fzc(float h){h=clamp(h,0.,1.);vec3 k=pal(.12+.88*h,temp);return max(vec3(0.),mix(vec3(dot(k,vec3(.3,.59,.11))),k,2.4))*(.3+1.15*h);}'+
+/* v7 (Todd 2026-10-14: "unbounded from the color palettes… full cybernetic purples reds and blues only"): fixed colours, not the grade's.
+   Low = deep blue, then electric blue, violet, magenta, red at the crests. */
+'vec3 fzc(float h){h=clamp(h,0.,1.);vec3 a=vec3(.04,.05,.42),b=vec3(.12,.32,1.),d=vec3(.55,.12,1.),e=vec3(1.,.08,.55),f=vec3(1.,.12,.12);'+
+'vec3 k=h<.3?mix(a,b,h/.3):h<.55?mix(b,d,(h-.3)/.25):h<.8?mix(d,e,(h-.55)/.25):mix(e,f,(h-.8)/.2);return k*(.4+1.*h);}'+
 'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float cr=cos(roll),sr=sin(roll);p=mat2(cr,-sr,sr,cr)*p;'+
-'vec3 ro=vec3(0.,1.35,-.6);vec3 rd=normalize(vec3(p.x,p.y-.42,1.));vec3 sky=pal(.04,temp)*.45;vec3 c=sky;'+
+'vec3 ro=vec3(0.,1.35,-.6);vec3 rd=normalize(vec3(p.x,p.y-.42,1.));vec3 sky=vec3(.025,.01,.07);vec3 c=sky;'+
 'float t=.15;bool hit=false;for(int i=0;i<150;i++){vec3 q=ro+rd*t;float d=q.y-hgt(q.xz);if(d<.0015*t){hit=true;break;}t+=max(.006,d*.26);if(t>14.)break;}'+
 'if(hit){vec3 q=ro+rd*t;float h=hgt(q.xz);float tr=(sc+ph)*D;float rg=ridgeAt(q.xz);'+
 'float gz=ln((q.z+tr)/D*.5,1.3);float gx=ln(q.x*2.,1.3);float co=ln(h*14.,1.1);'+
-'c=pal(.1,temp)*.35;'+
+'c=vec3(.02,.01,.05);'+
 'vec3 hc=fzc(pow(clamp(h/.45,0.,1.),.75));c+=hc*.8*max(gz,gx);c+=hc*co;'+
 'float ki=floor(q.z/D+ph+.5);float on=(ki==3.)?sounding:0.;float lit=(ki<3.)?.4:.9;'+
 'c+=mix(fzc(.45+rg*1.1)*1.5,vec3(1.),on*.5)*clamp(rg*3.,0.,1.)*max(max(gz,gx),co)*(lit+1.4*on);'+
-'c=mix(c,pal(.95,temp)*1.15,smoothstep(2.4*fwidth(q.z),.6*fwidth(q.z),abs(q.z-3.*D)));'+
+'c=mix(c,vec3(.75,.35,1.),smoothstep(2.4*fwidth(q.z),.6*fwidth(q.z),abs(q.z-3.*D)));'+
 'c=mix(c,sky,1.-exp(-t*.22));}'+
 GLFINISH;
 
@@ -1231,7 +1234,7 @@ T303=(function(){
     return {x:innerWidth/2+(cr*px-sr*py)*H, y:H/2-(sr*px+cr*py)*H, s:1/vz};
   }
   function chOf(k){ return cells[seq[k]].textContent; }
-  function begin(){ cells.forEach(function(c){ c.className=''; c.style.color=''; }); rows.className=''; var c=palJS(.93,temp); col='rgb('+c.join(',')+')'; pos=landed=0; state='type'; }
+  function begin(){ cells.forEach(function(c){ c.className=''; c.style.color=''; }); rows.className=''; col='#D7A6FF';   /* the 303's own violet, not the grade's palette */ pos=landed=0; state='type'; }
   return {
     reset:function(){ pos=landed; pool.forEach(function(el){ el.style.opacity='0'; }); },
     assign:function(ve){ if(ve.ch!==undefined) return; ve.ch=(ve.acid&&state==='type'&&pos<seq.length)?pos++:-1; },
