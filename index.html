@@ -144,7 +144,7 @@
             { text: 'Playlists', href: '/playlists.html', funHref: 'https://toddlburns.github.io/globe-playlists/' },
             { text: 'Museum', funText: 'Fun Museum', href: 'https://museum.toddlburns.com/', funHref: 'https://museum.toddlburns.com/fun/' },
             { text: 'Hats', href: 'https://toddlburns.com/crambe-repetita-hats/', funHref: 'https://toddlburns.com/crambe-repetita-hats/tv/' },
-            { text: 'Radio', href: '/crambe-repetita-radio/', funOnly: true },
+            { text: 'Radio', href: '/crambe-repetita-radio/', funOnly: true, enter: 'top-right' },
             { text: 'Known Pleasures', href: '/known-pleasures/', funOnly: true },
             { text: 'Contact', href: 'mailto:todd.burns@gmail.com' },
         ];
@@ -182,6 +182,8 @@
                 document.body.appendChild(f.el);
                 f.x = positions[i].left;
                 f.y = positions[i].top;
+                // fun-only links had no place in the serious layout; Radio comes in from the top right
+                if (links[i].enter === 'top-right') { f.x = window.innerWidth - f.el.getBoundingClientRect().width - 20; f.y = 90; }
                 f.el.style.left = f.x + 'px';
                 f.el.style.top = f.y + 'px';
 
