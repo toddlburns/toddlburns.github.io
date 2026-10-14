@@ -379,7 +379,7 @@ function recFz(B){
 }
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:6,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:9,woodblock:5}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
   var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
@@ -694,23 +694,23 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
      note with the nearest note of the home triad. The key never moves. Each review picks a setting: Spiegel
      (string melody, piano breaking the triad slowly), Alina (piano alone, very sparse) or Cantus (strings over a
      drone, a deep bell). A paragraph begins with a bell; ! rings one; a question is left one step short of home. */
-  /* v4 instruments (Todd 2026-10-14: "more delicate, fragile"): a string played flautando, airy and nearly
-     pure; a felt piano with the soft pedal down; small glass bells. All high, all quiet, slow to speak. */
-  function bowed(t,m,dur,v,bright){ v=v||.03; bright=bright||1; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), vib=c.createOscillator(), vd=c.createGain(), end=t+dur, rel=.9;
-    lp.type='lowpass'; lp.frequency.value=Math.min(5000,f*1.8*bright); lp.Q.value=.3;
-    vib.frequency.value=4.2+.8*ih((m*37+Math.round(t*10))>>>0); vd.gain.setValueAtTime(0,t); vd.gain.linearRampToValueAtTime(f*.0018,t+Math.min(2,dur*.8)); vib.connect(vd);   /* a faint, late waver */
-    [['triangle',1,1],['sine',2.003,.12]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.type=p[0]; o.frequency.value=f*p[1]; og.gain.value=p[2]; vd.connect(o.frequency); o.connect(og); og.connect(lp); o.start(t); o.stop(end+rel*4); });
-    var n=c.createBufferSource(); n.buffer=noise; n.loop=true; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=Math.min(8000,f*2); bp.Q.value=2.5;
-    var ng=c.createGain(); ng.gain.value=.06; n.connect(bp); bp.connect(ng); ng.connect(g); n.start(t,ih(Math.round(t*100)>>>0)*.5); n.stop(end+rel*4);   /* the air of the bow */
-    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.9,dur*.45)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,rel);
-    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-66)/30,-.5,.5); g.connect(pn); out=pn; }
-    lp.connect(g); out.connect(bus); out.connect(send); vib.start(t); vib.stop(end+rel*4); }
-  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m), g=c.createGain(), lp=c.createBiquadFilter(), dec=clamp(6-(m-48)*.08,1.8,5.5)*(sus||1);
-    lp.type='lowpass'; lp.frequency.setValueAtTime(Math.min(6000,f*3.2),t); lp.frequency.exponentialRampToValueAtTime(Math.min(6000,f*1.3),t+dec*.4);   /* felt and the soft pedal: no edge */
-    [[1,1,1],[2.002,.18,.5],[3.006,.04,.3]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
-      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.02); pg.gain.exponentialRampToValueAtTime(.0001,t+dec*p[2]); o.connect(pg); pg.connect(lp); o.start(t); o.stop(t+dec*p[2]+.05); });
-    g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-70)/36,-.45,.45); g.connect(pn); out=pn; }
-    lp.connect(g); out.connect(bus); out.connect(send); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
+  /* v5 instruments (Todd 2026-10-14: still "synthy", so only sounds synthesis does well): bowed() is a glass
+     harmonica, two pure tones a hair apart so it beats slowly, with a breath of friction as it starts; piano() is a
+     music box, a steel tine (its partials at 1 and 6.27) with a small click, each pitch a few cents off true. */
+  function bowed(t,m,dur,v,bright){ v=v||.03; var f=mtof(m), g=c.createGain(), end=t+dur, rel=.7;
+    [[1,1],[1.0018,.8],[2.001,.07],[3.002,.015]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.frequency.value=f*p[0]; og.gain.value=p[1]*.45; o.connect(og); og.connect(g); o.start(t); o.stop(end+rel*5); });
+    var n=c.createBufferSource(); n.buffer=noise; var bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=Math.min(9000,f*3); bp.Q.value=4;
+    var ng=c.createGain(); ng.gain.setValueAtTime(.0001,t); ng.gain.exponentialRampToValueAtTime(.05,t+.08); ng.gain.exponentialRampToValueAtTime(.0001,t+.5); n.connect(bp); bp.connect(ng); ng.connect(g); n.start(t,ih(Math.round(t*100)>>>0)*.4); n.stop(t+.55);   /* the wet finger on the glass */
+    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.35,dur*.3)); g.gain.setValueAtTime(v,end); g.gain.setTargetAtTime(.0001,end,rel);
+    var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-72)/30,-.5,.5); g.connect(pn); out=pn; }
+    out.connect(bus); out.connect(send); }
+  function piano(t,m,v,fw,sus){ v=v||.05; var f=mtof(m)*Math.pow(2,(ih((m*7919)>>>0)-.5)*6/1200), g=c.createGain(), dec=clamp(3.4-(m-60)*.05,1.2,3.6)*(sus||1);
+    [[1,1,dec],[6.27,.22,.09],[17.55,.05,.02]].forEach(function(p){ if(f*p[0]>16000) return; var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
+      pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.002); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
+    var n=c.createBufferSource(); n.buffer=noise; var hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=5000; var ng=c.createGain();
+    ng.gain.setValueAtTime(.12,t); ng.gain.exponentialRampToValueAtTime(.001,t+.012); n.connect(hp); hp.connect(ng); ng.connect(g); n.start(t,ih(m*31>>>0)*.5); n.stop(t+.02);   /* the pin plucking the tine */
+    g.gain.value=v; var out=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-72)/36,-.4,.4); g.connect(pn); out=pn; }
+    out.connect(bus); out.connect(send); if(vis&&fw) vis.push({t:t,k:'p',m:m,v:v*10,big:true}); }
   function bell(t,m,v){ v=v||.04; var f=mtof(m), g=c.createGain(); g.gain.value=v;   /* a small glass bell */
     [[1,1,5],[2.76,.18,1.6],[5.4,.05,.6]].forEach(function(p){ var o=c.createOscillator(), pg=c.createGain(); o.frequency.value=f*p[0];
       pg.gain.setValueAtTime(.0001,t); pg.gain.exponentialRampToValueAtTime(p[1],t+.01); pg.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(pg); pg.connect(g); o.start(t); o.stop(t+p[2]+.05); });
@@ -740,7 +740,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       var t2=tv(m,x.tup!==(kp%3===2));
       if(string){ bowed(t,m,len,.022+.012*E,.8+.5*E); if(x.set==='cantus') bowed(t,t2-12,len,.012+.008*E,.7); else piano(t,t2-12,.045+.02*E,true);
         if(x.set==='cantus') piano(t,t2+12,.018,true); }
-      else { piano(t,m,(.06+.025*E)*1.25,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.25,false,1.8); }   /* the piano alone: level-matched to the other two settings */
+      else { piano(t,m,(.06+.025*E)*1.0,true,1.8); piano(t+.004,t2-12,(.04+.015*E)*1.0,false,1.8); }   /* the piano alone: level-matched to the other two settings */
       if(i===0 && x.set!=='cantus') piano(t,tonic+(x.set==='alina'?12:0),x.set==="alina"?.05:.035,false,x.set==='alina'?2.2:1);   /* the sentence's tonic, soft; Alina keeps the pedal down */
     }
     /* Spiegel: the piano breaks the triad, one note a beat, rising */
