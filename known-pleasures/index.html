@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Every T-shirt we could find that did something funny to the Unknown Pleasures cover.">
+<title>Known Pleasures</title>
+<style>
+/* One dark world by choice, like the record. Times New Roman as on the rest of toddlburns.com. */
+:root{--bg:#0a0a0a;--fg:#f2f2f2;--dim:#8a8a8a;--faint:#555;--track:#333;--on:#2a2a2a;--site:"Times New Roman",Times,serif}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--site);-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+a{color:inherit}
+
+/* header: the pulsar, alive */
+header{position:relative;height:min(78vh,720px);min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 16px 40px;overflow:hidden}
+#pulsar{position:absolute;inset:0;width:100%;height:100%}
+.title{position:relative;text-align:center}
+h1{margin:0;font-weight:normal;font-size:clamp(1.5rem,4.4vw,2.6rem);letter-spacing:.42em;text-transform:uppercase;padding-left:.42em}
+.count{margin:18px 0 0;font-size:clamp(1rem,2.2vw,1.2rem);color:var(--dim);letter-spacing:.04em}
+.count b{font-weight:normal;color:var(--fg);font-variant-numeric:tabular-nums;display:inline-block;min-width:2.2ch;text-align:right}
+
+/* the wall */
+main{padding:8px 16px 140px}
+#wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:4px 0;max-width:1500px;margin:0 auto}
+.shirt{all:unset;cursor:pointer;display:block;aspect-ratio:1;position:relative;transform:rotate(var(--r)) translateY(26px) scale(.9);opacity:0;transition:transform .5s cubic-bezier(.2,.8,.2,1.2),opacity .35s}
+.shirt.in{opacity:1;transform:rotate(var(--r))}
+.shirt.in:hover,.shirt:focus-visible{transform:rotate(0) scale(1.12);z-index:2}
+.shirt:focus-visible{outline:1px solid var(--dim);outline-offset:2px}
+.shirt svg{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.55))}
+.shirt .cap{position:absolute;left:0;right:0;bottom:-2px;text-align:center;font-size:12px;color:var(--dim);opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.shirt:hover .cap,.shirt:focus-visible .cap{opacity:1}
+.tools{text-align:center;margin:0 0 26px}
+.tools button{all:unset;cursor:pointer;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--faint);padding-bottom:2px}
+.tools button:hover,.tools button:focus-visible{color:var(--fg)}
+.note{max-width:34em;margin:70px auto 0;text-align:center;color:var(--faint);font-size:13px;line-height:1.6}
+
+/* one shirt, up close */
+#look{position:fixed;inset:0;z-index:5;background:rgba(5,5,5,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .25s}
+#look.on{opacity:1}
+#look svg{width:min(78vw,62vh,560px);height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7))}
+#look h2{margin:10px 0 4px;font-weight:normal;font-size:clamp(1.1rem,2.6vw,1.5rem);text-align:center}
+#look p{margin:0;color:var(--dim);font-size:14px;text-align:center}
+#look button{all:unset;cursor:pointer;color:var(--dim);position:absolute}
+#look .nav{font-size:44px;line-height:1;padding:20px;top:calc(50% - 60px)}
+#look #prev{left:4px}
+#look #next{right:4px}
+#look #close{top:10px;right:14px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:10px}
+#look button:hover,#look button:focus-visible{color:var(--fg)}
+
+/* Serious/Fun: the same switch as toddlburns.com */
+.bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 22px);z-index:4;background:rgba(10,10,10,.8);padding:6px 10px;border-radius:14px}
+.toggle{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;font-family:var(--site);font-size:12px;letter-spacing:1px;color:var(--faint);text-decoration:none}
+.toggle-track{width:36px;height:18px;background:var(--track);border-radius:9px;position:relative;transition:background .3s}
+.toggle-track .knob{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:left .3s}
+.toggle.active .toggle-track{background:var(--on)}
+.toggle.active .knob{left:20px}
+.toggle .toggle-label-left{color:var(--fg)}
+.toggle .toggle-label-right{color:var(--faint)}
+.toggle.active .toggle-label-left{color:var(--faint)}
+.toggle.active .toggle-label-right{background:linear-gradient(90deg,#ff0000,#ff8800,#ffdd00,#00cc00,#0066ff,#8800ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+@media (max-width:520px){#wall{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}.shirt .cap{display:none}}
+@media (prefers-reduced-motion: reduce){.shirt{transition:none}#look{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <canvas id="pulsar" aria-hidden="true"></canvas>
+  <div class="title">
+    <h1>Known Pleasures</h1>
+    <p class="count"><b id="n">0</b> T-shirts that did something to the Unknown Pleasures cover</p>
+  </div>
+</header>
+
+<main>
+  <div class="tools"><button id="shuffle" type="button">Shuffle</button></div>
+  <div id="wall" role="list"></div>
+  <p class="note">Joy Division, <i>Unknown Pleasures</i> (Factory, 1979). Cover by Peter Saville, from Harold Craft's 1970 plot of pulsar CP 1919. Every shirt here is someone else's design, found on TeePublic and Redbubble; click one to see it up close and go to where it is sold. More on the way.</p>
+</main>
+
+<div id="look" hidden role="dialog" aria-modal="true" aria-labelledby="lt">
+  <button id="close" type="button">Close</button>
+  <button id="prev" class="nav" type="button" aria-label="Previous shirt">‹</button>
+  <div id="lshirt"></div>
+  <h2 id="lt"></h2>
+  <p id="lby"></p>
+  <button id="next" class="nav" type="button" aria-label="Next shirt">›</button>
+</div>
+
+<div class="bottom">
+  <a class="toggle active" href="https://toddlburns.com/" aria-label="Switch to the serious site, toddlburns.com">
+    <span class="toggle-label-left">Serious</span>
+    <span class="toggle-track"><span class="knob"></span></span>
+    <span class="toggle-label-right">Fun</span>
+  </a>
+</div>
+
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- the pulsar: stacked pulse profiles, each hiding the ones behind ---------- */
+var cv=$('pulsar'),cx=cv.getContext('2d'),W=0,H=0,DPR=1,t0=performance.now();
+function rnd(s){ return function(){ s=(s*16807)%2147483647; return (s-1)/2147483646; }; }
+var R=rnd(1919),LINES=80,P=[];
+for(var i=0;i<LINES;i++){ var bumps=[];
+  for(var k=0;k<6;k++) bumps.push({x:.5+(R()-.5)*.22,w:.012+R()*.03,a:R()*R(),f:.2+R()*.6,ph:R()*6.28});
+  P.push(bumps); }
+function size(){ DPR=Math.min(2,window.devicePixelRatio||1); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; cx.setTransform(DPR,0,0,DPR,0,0); }
+function draw(now){
+  var t=(now-t0)/1000; cx.fillStyle='#0a0a0a'; cx.fillRect(0,0,W,H);
+  var n=Math.min(LINES,Math.round(H/7.5)), w=Math.min(W*.62,460), x0=(W-w)/2, top=H*.12, gap=(H*.66)/n, amp=gap*9;
+  cx.lineWidth=1.15; cx.strokeStyle='#f2f2f2'; cx.lineJoin='round';
+  for(var i=0;i<n;i++){ var y0=top+i*gap, b=P[i%LINES];
+    cx.beginPath(); cx.moveTo(x0,y0);
+    for(var s=0;s<=120;s++){ var u=s/120, h=0;
+      for(var k=0;k<b.length;k++){ var q=b[k], d=(u-q.x)/q.w; h+=q.a*(.65+.35*Math.sin(t*q.f+q.ph))*Math.exp(-d*d); }
+      h+=.018*Math.sin(u*90+i*1.7+t*1.3)*Math.exp(-Math.pow((u-.5)/.2,2));
+      cx.lineTo(x0+u*w, y0-h*amp); }
+    cx.lineTo(x0+w,y0+2); cx.lineTo(x0,y0+2); cx.closePath(); cx.fillStyle='#0a0a0a'; cx.fill(); cx.stroke(); }
+}
+function loop(now){ draw(now); if(!reduce) requestAnimationFrame(loop); }
+size(); window.addEventListener('resize',function(){ size(); if(reduce) draw(performance.now()); });
+requestAnimationFrame(loop);
+
+/* ---------- the shirts ---------- */
+var TEE='M62 20 L82 11 Q100 27 118 11 L138 20 L189 47 L172 86 L150 76 L150 191 L50 191 L50 76 L28 86 L11 47 Z';
+function lum(hex){ var n=parseInt(hex.slice(1),16); return ((n>>16)*.3+((n>>8)&255)*.59+(n&255)*.11)/255; }
+function teeSVG(it,big){
+  var light=lum(it.c)>.5, edge=light?'rgba(0,0,0,.18)':'rgba(255,255,255,.07)', id='g'+it.i+(big?'b':'');
+  return '<svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".05"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient></defs>'+
+    '<path d="'+TEE+'" fill="'+it.c+'"/>'+
+    '<mask id="m'+id+'"><rect x="57" y="36" width="86" height="86" fill="#fff" filter="url(#f'+id+')"/></mask><filter id="f'+id+'" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.6"/></filter>'+
+    '<image href="img/'+it.i+'.webp" x="57" y="36" width="86" height="86" preserveAspectRatio="xMidYMid slice" mask="url(#m'+id+')"/>'+
+    '<path d="'+TEE+'" fill="url(#'+id+')" stroke="'+edge+'" stroke-width="1"/>'+
+    '<path d="M82 11 Q100 27 118 11" fill="none" stroke="'+edge+'" stroke-width="2.4"/>'+
+    '<path d="M50 76 L50 104 M150 76 L150 104" stroke="'+edge+'" stroke-width=".8"/></svg>';
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
+var S=[],order=[],timers=[];
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), x=a[i]; a[i]=a[j]; a[j]=x; } return a; }
+function lay(){
+  timers.forEach(clearTimeout); timers=[];
+  var wall=$('wall'); wall.innerHTML=''; $('n').textContent='0';
+  order=shuffle(S.map(function(_,i){return i}));
+  order.forEach(function(si,k){
+    var it=S[si], b=document.createElement('button');
+    b.className='shirt'; b.type='button'; b.setAttribute('role','listitem');
+    b.style.setProperty('--r',((Math.random()-.5)*7).toFixed(1)+'deg');
+    b.setAttribute('aria-label',it.t);
+    b.innerHTML=teeSVG(it)+'<span class="cap">'+esc(it.t)+'</span>';
+    b.addEventListener('click',function(){ open(k); });
+    wall.appendChild(b);
+    // they arrive fast, then faster: the pile builds while the count runs up
+    var at=reduce?0:Math.round(260+1100*Math.pow(k/order.length,.55)*Math.sqrt(order.length/40));
+    timers.push(setTimeout(function(){ b.classList.add('in'); $('n').textContent=k+1; },at));
+  });
+  if(reduce){ $('n').textContent=S.length; }
+}
+
+/* ---------- up close ---------- */
+var cur=0,last=null;
+function show(k){
+  cur=(k+order.length)%order.length; var it=S[order[cur]];
+  $('lshirt').innerHTML=teeSVG(it,true); $('lt').textContent=it.t;
+  $('lby').innerHTML=(it.b?'by '+esc(it.b)+' · ':'')+'<a href="'+esc(it.u)+'" target="_blank" rel="noopener">'+esc(it.s)+'</a> · '+(cur+1)+' of '+order.length;
+}
+function open(k){ last=document.activeElement; show(k); var l=$('look'); l.hidden=false; requestAnimationFrame(function(){ l.classList.add('on'); }); $('close').focus(); }
+function close(){ var l=$('look'); l.classList.remove('on'); l.hidden=true; if(last) last.focus(); }
+$('close').onclick=close; $('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
+$('look').addEventListener('click',function(e){ if(e.target===this) close(); });
+document.addEventListener('keydown',function(e){ if($('look').hidden) return;
+  if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1); });
+var sx=null; $('look').addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+$('look').addEventListener('touchend',function(e){ if(sx===null) return; var d=e.changedTouches[0].clientX-sx; if(Math.abs(d)>50) show(cur+(d<0?1:-1)); sx=null; });
+
+$('shuffle').onclick=lay;
+fetch('shirts.json').then(function(r){return r.json()}).then(function(d){ S=d; lay(); });
+})();
+</script>
+</body>
+</html>
