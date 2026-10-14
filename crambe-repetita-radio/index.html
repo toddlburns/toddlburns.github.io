@@ -64,6 +64,15 @@ body.quiet .now,body.quiet .stations{opacity:0}
 #shards{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;overflow:hidden}
 body[data-station="fusion"] #shards{display:block}
 body[data-station="fusion"] #phrases{display:none}
+/* 303: the acid line types the two lines. Each note carries a letter on its peak; when it sounds, the letter drops into the readout */
+#typed{position:fixed;inset:0;z-index:1;pointer-events:none;display:none;overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;text-transform:uppercase}
+body[data-station="303"] #typed{display:block}
+body[data-station="303"] #phrases{display:none}
+#tyrows{position:absolute;left:16px;right:16px;top:76%;text-align:center;font-size:clamp(14px,2.3vw,24px);letter-spacing:.22em;line-height:1.55;transition:opacity 3s ease;text-shadow:0 0 6px #000,0 0 2px #000}
+#tyrows.gone{opacity:0}
+#tyrows span{opacity:0;transition:color .6s ease}
+#tyrows span.on{opacity:1}
+.tyl{position:absolute;left:0;top:0;font-weight:700;white-space:pre;line-height:1;text-shadow:0 0 5px #000;will-change:transform,opacity}
 #shardring{position:absolute;left:50%;top:50%;width:0;height:0}
 #shardpulse{position:absolute;left:0;top:0;width:0;height:0}
 .shard{position:absolute;left:0;top:0;font-family:var(--face);line-height:1;padding:.14em .2em .1em;white-space:pre;filter:drop-shadow(0 0 1.2px rgba(0,0,0,.85));opacity:0;transition:opacity .18s ease,transform .25s cubic-bezier(.2,1.6,.4,1)}
@@ -73,6 +82,7 @@ body[data-station="fusion"] #phrases{display:none}
 <body>
 <canvas id="gl" aria-hidden="true"></canvas>
 <div id="shards" aria-hidden="true"><div id="shardring"><div id="shardpulse"></div></div></div>
+<div id="typed" aria-hidden="true"><div id="tyrows"><div></div><div></div></div></div>
 <svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
 <div class="top">
@@ -525,7 +535,7 @@ function play(quick){
     loadSound(ctx).then(function(){
       starting=false; $('play').removeAttribute('aria-busy'); say('');
       eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorAbs=Date.now()/1000-EPOCH; anchorPos=((anchorAbs%TOTAL)+TOTAL)%TOTAL;
-      VIS.length=0; if(STATION!=='ambient') beat=makeBeat(ctx,eng.comp,STATION,anchorCtx,anchorAbs,VIS);
+      VIS.length=0; if(T303) T303.reset(); if(STATION!=='ambient') beat=makeBeat(ctx,eng.comp,STATION,anchorCtx,anchorAbs,VIS);
       cur=cursorAt(anchorPos);
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
@@ -602,8 +612,11 @@ GLFINISH;
 var FS303F=GL303+'uniform vec4 F[16];\n'+   /* Floor, v4 (Todd 2026-10-13: "I liked the grid lines coming at you… the topographical lines too. Much sharper edges"):
    a wireframe landscape. The grid rushes at you on the 16ths and is drawn ON the terrain, with its contour lines; faces are near-black.
    Down the middle, the 303 line as hard-edged peaks: F[0] = the step sounding now, F[1..15] = the steps already scheduled.
-   Sharp-crested hills either side. No glow, no bounce; dark fog swallows the distance. */
-'float D=.55;'+
+   Sharp-crested hills either side. No glow, no bounce; dark fog swallows the distance.
+   v5 (2026-10-14, "not exactly clear that those are matching the music"): the sounding note used to sit below the frame.
+   Now F[3] is the note you hear, standing on a fixed line across the floor (z = 3D) as it sounds; its lines light (sounding)
+   and the notes already played (F[0..2]) dim as they pass under you. F[4..15] = scheduled steps. */
+'float D=.55;uniform float sounding;'+
 'float nh(vec4 a){return a.x<0.?.02:(.12+.42*a.x)*(1.+.3*a.y);}'+
 'float note(float k){k=clamp(k+.5,0.,15.);int i=int(floor(k));return nh(F[i])*(1.-abs(fract(k)-.5)*2.);}'+   /* each note a pyramid peak */
 'float ridgeAt(vec2 q){float k=q.y/D+ph;float w=.26+.12*(1.-cut);return note(k)*smoothstep(15.,9.,k)*max(0.,1.-abs(q.x)/w);}'+
@@ -618,7 +631,9 @@ var FS303F=GL303+'uniform vec4 F[16];\n'+   /* Floor, v4 (Todd 2026-10-13: "I li
 'float gz=ln((q.z+tr)/D*.5,1.3);float gx=ln(q.x*2.,1.3);float co=ln(h*14.,1.1);'+
 'c=pal(.1,temp)*.35;'+
 'c+=pal(.66,temp)*max(gz,gx);c+=pal(.8,temp)*co*.7;'+
-'c+=pal(.93+.05*cut,temp)*clamp(rg*3.,0.,1.)*max(max(gz,gx),co)*.9;'+
+'float ki=floor(q.z/D+ph+.5);float on=(ki==3.)?sounding:0.;float lit=(ki<3.)?.4:.9;'+
+'c+=mix(pal(.93+.05*cut,temp),vec3(1.),on*.5)*clamp(rg*3.,0.,1.)*max(max(gz,gx),co)*(lit+1.4*on);'+
+'c=mix(c,pal(.95,temp)*1.15,smoothstep(2.4*fwidth(q.z),.6*fwidth(q.z),abs(q.z-3.*D)));'+
 'c=mix(c,sky,1.-exp(-t*.22));}'+
 GLFINISH;
 
@@ -679,7 +694,7 @@ if(gl){
     var vb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vb); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   }catch(e){ console.error(e); prog=null; }
-  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']]].forEach(function(d){
+  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F','sounding']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']]].forEach(function(d){
     try{ var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}'));
       gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,d[1])); gl.bindAttribLocation(pr,0,'a'); gl.linkProgram(pr);
       if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
@@ -728,7 +743,7 @@ function frame(now){
 var lastLine=0;
 
 /* the beat stations' pictures, fed by what the beat engine scheduled (VIS), applied as each moment arrives */
-var FZ_CHORD=null, PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
+var FZ_CHORD=null, T303=null, PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
 var PV={hist:[], steps:0, roll:0,pat:[[],[],[],[]], fl:new Float32Array(64).fill(-9), kickT:-9, clapT:-9, step:0, stepT:0, acid:null, acidT:-9, cut:.3,
         beams:[0,1,2,3].map(function(i){ return {r:.1+.1*i, tr:.1+.1*i, a:.13*i, ta:.13*i, h:.5+.15*i, t:-9}; }), rot:0, trot:0, bassT:-9, bassM:40, sparks:[], snT:-9, snV:0};
 var LU=new Float32Array(64), BMU=new Float32Array(16), SPU=new Float32Array(32);
@@ -738,7 +753,7 @@ function applyVis(e){
   if(e.k==='s'){ PV.step=e.s; PV.stepT=e.t; PV.cut=e.cut;
     e.pats.forEach(function(pt,r){ PV.pat[r]=pt||[]; });
     [e.acid,(e.pats[1]||[])[e.s],(e.pats[2]||[])[e.s],(e.pats[3]||[])[e.s]].forEach(function(h,r){ if(h) PV.fl[r*16+e.s]=e.t; });
-    if(e.kick) PV.kickT=e.t; if(e.clap) PV.clapT=e.t; if(e.acid){ PV.acid=e.acid; PV.acidT=e.t; }
+    if(e.kick) PV.kickT=e.t; if(e.clap) PV.clapT=e.t; if(e.acid){ PV.acid=e.acid; PV.acidT=e.t; if(T303&&STATION==='303') T303.land(e); }
     PV.hist.unshift([e.acid?e.acid.n:-1, e.acid&&e.acid.acc?1:0, e.kick?1:0, ((e.pats[3]||[])[e.s]?1:0)+(e.clap?2:0)]); if(PV.hist.length>32) PV.hist.pop(); PV.steps++; }
   else if(e.k==='c'){ if(FZ_CHORD) FZ_CHORD(); e.v.forEach(function(m,i){ var B=PV.beams[i]; B.tr=.07+.42*clamp((m-52)/27,0,1); B.ta=.5236*(((m%12)*7)%12)/11; B.h=pitchH(m); B.t=e.t; }); PV.trot+=.35+.25*((e.v[0]%5)/4); }
   else if(e.k==='b'){ PV.bassT=e.t; PV.bassM=e.m; }
@@ -756,8 +771,10 @@ function drawBeat(PR,T,dim,rise){
     gl.uniform4fv(u.H,HU); gl.uniform1f(u.ph,playing?Math.min(1,(T-PV.stepT)/S16):0); gl.uniform1f(u.sc,PIC303==='f'?PV.steps%8192:PV.steps%64);
     gl.uniform1f(u.kick,ex(PV.kickT,.16)); gl.uniform1f(u.cut,PV.cut); gl.uniform1fv(u.wave,WV);
     var nn=PV.acid?PV.acid.n:.5; PV.roll+=((nn-.5)*.2-PV.roll)*.03; gl.uniform1f(u.roll,PV.roll);
-    if(u.F){ FU.fill(0); FU.set(PV.hist[0]||[-1,0,0,0],0); var fk=1; for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k==='s'){ FU.set([ve.acid?ve.acid.n:-1, ve.acid&&ve.acid.acc?1:0,0,0],fk*4); fk++; } }
-      for(;fk<16;fk++) FU.set([-1,0,0,0],fk*4); gl.uniform4fv(u.F,FU); }
+    if(u.F){ FU.fill(0); for(var hk=0;hk<4;hk++){ var hh=PV.hist[3-hk]; FU.set(hh?[hh[0],hh[1],0,0]:[-1,0,0,0],hk*4); }
+      var fk=4; for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k==='s'){ if(T303) T303.assign(ve); FU.set([ve.acid?ve.acid.n:-1, ve.acid&&ve.acid.acc?1:0,0,0],fk*4); fk++; } }
+      for(;fk<16;fk++) FU.set([-1,0,0,0],fk*4); gl.uniform4fv(u.F,FU);
+      gl.uniform1f(u.sounding,playing&&PV.hist[0]&&PV.hist[0][0]>=0?ex(PV.stepT,.22):0); if(T303) T303.frame(T); }
   } else {
     var k=1-Math.exp(-(1/60)/.05); PV.rot+=(PV.trot-PV.rot)*(1-Math.exp(-(1/60)/.09));
     PV.beams.forEach(function(B,i){ B.r+=(B.tr-B.r)*k; B.a+=(B.ta-B.a)*k; BMU.set([B.r,B.a,B.h,playing?.35+.65*ex(B.t,.3):.25],i*4); });
@@ -805,17 +822,18 @@ function drawBeat(PR,T,dim,rise){
   setTimeout(begin,3000);
 })();
 
+function g3(a,b,c,t){ t=clamp(t,0,1); var x=t<.5?t*2:t*2-1, u=t<.5?a:b, v=t<.5?b:c; return [0,1,2].map(function(i){ return u[i]+(v[i]-u[i])*x; }); }
+function palJS(t,k){   /* the shaders' palette, so the paper matches the glass */
+  var cold=g3([.02,.04,.12],[.26,.48,.78],[.78,.84,.98],t), mid=g3([.01,.09,.11],[.16,.5,.52],[.93,.74,.78],t), warm=g3([.11,.02,.07],[.93,.42,.33],[1,.84,.55],t);
+  var a=k<.5?cold:mid, b=k<.5?mid:warm, x=k<.5?k*2:k*2-1; return [0,1,2].map(function(i){ return Math.round(255*clamp(a[i]+(b[i]-a[i])*x,0,1)); });
+  }
+
 /* Fusion's version of the two lines: every letter cut out on its own shard of paper, in the kaleidoscope's palette,
    laid in two rings that turn with the glass. Each chord change slaps down the next letters and jolts the rest;
    then the pieces fly apart, 15 s of nothing, again. Paused, letters land on a timer instead. */
 (function(){
   var LINES=['Cut my reviews into pieces','This is my last retort'], ring=$('shardring'), pulse=$('shardpulse');
   var HOLD=6, SCATTER=6, REST=15, cur=null, spin=0;
-  function g3(a,b,c,t){ t=clamp(t,0,1); var x=t<.5?t*2:t*2-1, u=t<.5?a:b, v=t<.5?b:c; return [0,1,2].map(function(i){ return u[i]+(v[i]-u[i])*x; }); }
-  function palJS(t,k){   /* the shaders' palette, so the paper matches the glass */
-    var cold=g3([.02,.04,.12],[.26,.48,.78],[.78,.84,.98],t), mid=g3([.01,.09,.11],[.16,.5,.52],[.93,.74,.78],t), warm=g3([.11,.02,.07],[.93,.42,.33],[1,.84,.55],t);
-    var a=k<.5?cold:mid, b=k<.5?mid:warm, x=k<.5?k*2:k*2-1; return [0,1,2].map(function(i){ return Math.round(255*clamp(a[i]+(b[i]-a[i])*x,0,1)); });
-  }
   function cutShape(){ var pts=[[0,0],[100,0],[100,100],[0,100]].map(function(q){ return (q[0]+(q[0]?-1:1)*Math.random()*14).toFixed(0)+'% '+(q[1]+(q[1]?-1:1)*Math.random()*14).toFixed(0)+'%'; }); return 'polygon('+pts.join(',')+')'; }
   function begin(){
     while(pulse.firstChild) pulse.removeChild(pulse.firstChild);
@@ -853,6 +871,49 @@ function drawBeat(PR,T,dim,rise){
   setInterval(function(){ if(STATION==='fusion' && !playing) land(1); },350);
   (function frame(){ if(STATION==='fusion'){ spin=PV.rot; ring.style.transform='rotate('+spin+'rad)'; } requestAnimationFrame(frame); })();
   setTimeout(begin,2000);
+})();
+
+/* 303's version of the two lines: the acid line types them. Every note the 303 is about to play carries the next letter
+   on its peak; the moment it sounds on the line across the floor, that letter drops into the readout below.
+   Rests type nothing. When both lines are down: hold 6 s, fade 3 s, 15 s of nothing, again. */
+T303=(function(){
+  var LINES=['Cut my reviews into pieces','This is my last retort'], HOLD=6, FADE=3, REST=15, D=.55;
+  var box=$('typed'), rows=$('tyrows'), cells=[], seq=[], pool=[], pos=0, landed=0, state='wait', nextAt=performance.now()+2500, col='#fff';
+  LINES.forEach(function(line,j){ line.split('').forEach(function(ch,i){ var sp=document.createElement('span'); sp.textContent=ch===' '?' ':ch; rows.children[j].appendChild(sp);
+    if(ch!==' ') seq.push(cells.length); cells.push(sp); }); });
+  for(var i=0;i<12;i++){ var el=document.createElement('span'); el.className='tyl'; el.style.opacity='0'; box.appendChild(el); pool.push(el); }
+  function nh(a){ return a.n<0?.02:(.12+.42*a.n)*(1+.3*(a.acc?1:0)); }
+  function proj(x,y,z){   /* the shader's camera, so a letter sits on its peak */
+    var vz=z+.6; if(vz<.05) return null; var px=x/vz, py=(y-1.35)/vz+.42, cr=Math.cos(PV.roll), sr=Math.sin(PV.roll), H=innerHeight;
+    return {x:innerWidth/2+(cr*px-sr*py)*H, y:H/2-(sr*px+cr*py)*H, s:1/vz};
+  }
+  function chOf(k){ return cells[seq[k]].textContent; }
+  function begin(){ cells.forEach(function(c){ c.className=''; c.style.color=''; }); rows.className=''; var c=palJS(.93,temp); col='rgb('+c.join(',')+')'; pos=landed=0; state='type'; }
+  return {
+    reset:function(){ pos=landed; pool.forEach(function(el){ el.style.opacity='0'; }); },
+    assign:function(ve){ if(ve.ch!==undefined) return; ve.ch=(ve.acid&&state==='type'&&pos<seq.length)?pos++:-1; },
+    land:function(e){
+      if(e.ch===undefined||e.ch<0) return; var cell=cells[seq[e.ch]], from=proj(0,nh(e.acid)+.05,3*D), r=cell.getBoundingClientRect();
+      landed++; cell.style.color='#fff';
+      if(from && cell.animate){ var fl=document.createElement('span'); fl.className='tyl'; fl.textContent=chOf(e.ch); fl.style.color='#fff'; fl.style.fontSize=getComputedStyle(cell).fontSize; box.appendChild(fl);
+        var a=fl.animate([{transform:'translate('+from.x+'px,'+from.y+'px) translate(-50%,-100%) scale(1.6)'},{transform:'translate('+(r.left+r.width*.5)+'px,'+(r.top+r.height*.5)+'px) translate(-50%,-50%) scale(1)'}],{duration:170,easing:'cubic-bezier(.5,0,.9,.4)'});
+        a.onfinish=function(){ fl.remove(); cell.className='on'; setTimeout(function(){ cell.style.color=col; },120); };
+      } else { cell.className='on'; cell.style.color=col; }
+      if(landed>=seq.length){ state='hold'; setTimeout(function(){ rows.className='gone'; setTimeout(function(){ state='wait'; nextAt=performance.now()+REST*1000; },FADE*1000); },HOLD*1000); }
+    },
+    frame:function(T){
+      if(state==='wait' && playing && performance.now()>=nextAt) begin();
+      var ph=playing?Math.min(1,(T-PV.stepT)/S16):0, fk=4, pi=0;
+      if(playing) for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k!=='s') continue;
+        if(ve.ch>=0 && pi<pool.length){ var z=(fk-ph)*D, pt=proj(0,nh(ve.acid)+.05,z), el=pool[pi++];
+          if(pt){ var far=Math.min(1,Math.max(0,(15-(fk-ph))/4)), fog=Math.exp(-(z+.6)*.22);
+            if(el._c!==ve.ch){ el._c=ve.ch; el.textContent=chOf(ve.ch); }
+            el.style.color=col; el.style.fontSize=(.11*pt.s*innerHeight).toFixed(1)+'px';
+            el.style.transform='translate('+pt.x.toFixed(1)+'px,'+pt.y.toFixed(1)+'px) translate(-50%,-100%)'; el.style.opacity=(far*Math.min(1,fog*1.6)).toFixed(3); } }
+        fk++; }
+      for(;pi<pool.length;pi++) pool[pi].style.opacity='0';
+    }
+  };
 })();
 
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
