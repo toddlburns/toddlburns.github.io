@@ -1314,11 +1314,18 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     ns.forEach(function(m){ [-7,7].forEach(function(dt){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=mtof(m); o.detune.value=dt; o.connect(lp); o.start(t); o.stop(t+.6); }); });
     g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.03); g.gain.setTargetAtTime(.0001,t+.2,.08); lp.connect(g); g.connect(bus); g.connect(send); }
   function vibes(t,m,v,dur){ fmv(t,m,v,Math.min(dur,2.5),{r:4,i0:1.6,i1:.05,id:.25,rel:1.2,sus:.5,pan:-.25,dl:.15}); }
-  var lbRk='', lbRiff=null, lbTheme=null, lbThemeRi=-1, lbLast=0;
+  var lbRk='', lbRiff=null, lbTheme=null, lbThemeRi=-1, lbLast=0, lbSigRi=-1, lbSigWi=0;
   function stepLibrary(Gi,A,t){
     var B=Gi.B, x=recLb(B), j=Gi.j, bar=j>>4, s=j&15, W=where(A), w=W.w, S=W.S, ws=B.ws, pa=W.pa;
     if(j&1) t+=x.swing*x.s16; echoFor(Gi,x.s16*3,t);
-    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4), left=B.R.s-W.off; if(M.stop) return;
+    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4), left=B.R.s-W.off;
+    /* the signs (Todd 2026-10-15: "people should be able to read the review via the road signs straight through, with no punctuation"):
+       every word gets a sign, put up five beats down the road so it passes overhead as the word's whistle sounds. Words in a
+       review's first five beats (or just after you tune in) get theirs as early as they can, so none is skipped */
+    var signs=[], Df=20*x.s16; if(lbSigRi!==Gi.ri+':'+Gi.loop){ lbSigRi=Gi.ri+':'+Gi.loop; lbSigWi=0; while(lbSigWi<ws.length && ws[lbSigWi].start<W.off-1e-6) lbSigWi++; }
+    while(lbSigWi<ws.length && ws[lbSigWi].start<=W.off+Df+1e-6){ var sw=ws[lbSigWi++], st=sw.text.replace(/[^A-Za-z0-9\u00C0-\u024F'’&-]/g,'').replace(/^['’-]+|['’-]+$/g,'');
+      if(st) signs.push({text:st, ahead:Math.max(0,(sw.start-W.off)/(4*x.s16))}); }
+    if(M.stop){ if(vis && signs.length) vis.push({t:t,k:'lb',signs:signs}); return; }
     var key=x.tonic+[0,5,-2,3][pa.k%4], ci=(bar>>1)%2, root=key+x.vamp[ci], q=x.qual[ci], ch=q.map(function(iv){ return root+iv; });
     var brk=M.quote || S.k%6===5, last=M.toEnd<x.bar/4+1e-3, drums=W.off>x.bar*2 && left>x.bar;
     /* the bass riff, from this sentence's words */
@@ -1338,18 +1345,13 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(!brk && E>.3 && x.clav[s]) clav(t,[ch[1]+12,ch[2]+12,ch[3]+12],.03+.012*E);
     if(s===0 && bar%2===0) fmv(t,ch[0]+12,.05,x.bar*2-.2,{r:1,i0:1.8,i1:.3,id:.5,rel:.6,sus:.5,pan:-.3}), [1,2,3,4].forEach(function(k){ if(ch[k]!=null) fmv(t+k*.012,ch[k]+12,.04,x.bar*2-.2,{r:1,i0:1.8,i1:.3,id:.5,rel:.6,sus:.5,pan:-.3+.15*k}); });
     if(S.first && W.wi===S.a && w.start>W.off-x.s16 && w.start<=W.off){ strings(t,[ch[0]+24,ch[1]+24,ch[2]+24],.02,x.bar*4,2400); D.crash(t,.18); }
-    /* the melody: the title is the theme; otherwise vibes (or flute) on the longer words */
     var wordStart=w.start>W.off-x.s16 && w.start<=W.off;
-    if(M.title){ lbTheme.forEach(function(th){ if(th.at===s){ var m=key+24+[0,2,3,5,7,9,10,12][th.d%8]; if(x.lead==='flute') flute(t,m,.08,x.s16*2); else vibes(t,m,.07,x.s16*3); } }); }
-    else if(wordStart && w.key.length>3 && W.off>x.bar*2){ var m2=ch[(w.h>>>0)%ch.length]+24+((w.h>>>6)%3===0?2:0), d2=clamp(nextGap(W)*.6,.3,2.5);
-      if(x.lead==='flute') flute(t,m2,.07,d2); else vibes(t,m2,.065,d2); lbLast=m2; }
+    /* the melody (Todd 2026-10-15): the title's theme on vibes; the whistle is kept for the words, one long held note on each, as its sign passes */
+    if(M.title){ lbTheme.forEach(function(th){ if(th.at===s) vibes(t,key+24+[0,2,3,5,7,9,10,12][th.d%8],.07,x.s16*3); }); }
+    var m2=null; if(wordStart){ m2=ch[(w.h>>>0)%ch.length]+24+((w.h>>>6)%3===0?2:0); flute(t,m2,M.title?.05:.065,clamp(nextGap(W)*.85,.5,3)); lbLast=m2; }
     if(M.hit1) brass(t,[ch[0]+12,ch[1]+12,ch[2]+12,ch[3]+12],.09);
     if(M.ask && M.toEnd<x.bar*2 && s===0) D.riser(t,M.toEnd,.1);
-    /* the signs (Todd 2026-10-15: the whistle sounds only when a word is on a sign, and the sign passes you as it sounds):
-       look five beats ahead; if the lead will sing a word there, put its sign up now, five beats down the road */
-    var sign=null, Df=20*x.s16;
-    if(A+Df<Gi.Ar+Gi.len-1e-6){ var Wf=where(A+Df), wf=Wf.w; if(wf.start>Wf.off-x.s16 && wf.start<=Wf.off && wf.key.length>3 && Wf.off>x.bar*2 && !wf.it && !moment(Wf,A+Df,x.s16,x.s16*4).stop) sign=wf.text; }
-    if(vis) vis.push({t:t,k:'lb',beat:s%4===0,word:wordStart?w.text:null,sign:sign,para:wordStart&&S.first&&W.wi===S.a,kick:drums&&!M.quote&&x.kick.indexOf(s)>=0,sn:drums&&!M.quote&&(s===4||s===12)&&(!brk||s===12),clav:!brk&&E>.3&&!!x.clav[s],bass:b?root-12+b.iv:null,lead:wordStart&&!M.title&&w.key.length>3?m2:null});
+    if(vis) vis.push({t:t,k:'lb',beat:s%4===0,word:wordStart?w.text:null,signs:signs,para:wordStart&&S.first&&W.wi===S.a,kick:drums&&!M.quote&&x.kick.indexOf(s)>=0,sn:drums&&!M.quote&&(s===4||s===12)&&(!brk||s===12),clav:!brk&&E>.3&&!!x.clav[s],bass:b?root-12+b.iv:null,lead:m2});
   }
   /* the catalogue rows for the picture: the sentence before, this one, the next, as library cues */
   var LB_MOOD={A:'bright, optimistic',B:'warm, easy-going',C:'pastoral, reflective',D:'tense, urban',F:'menacing, dark'};
@@ -1855,10 +1857,14 @@ window.addEventListener('resize',resize); resize();
 /* each sounding word becomes a light in the field */
 var buf=new Float32Array(1024), BLV=new Float32Array(NB*4);
 function place(w){ var h=w.h>>>0, a=innerWidth/Math.max(1,innerHeight); return {x:((h%997)/997-.5)*a*.7, y:(((h>>>10)%991)/991-.5)*.6}; }
+/* how far behind the audio clock the sound is heard. Safari reports little or none, so on a phone that reports under
+   50 ms assume a quarter second (Todd 2026-10-15: Soundtrack signs a quarter second early on his phone) */
+var COARSE=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+function heardLag(){ var l=(ctx.outputLatency||0)+(ctx.baseLatency||0); if(COARSE&&l<.05) l=.25; return clamp(l,0,.5); }
 function frame(now){
   var dt=Math.min(.05,(now-last)/1000); last=now; time+=dt*(calm?.35:1);
   temp+=(tempTarget-temp)*Math.min(1,dt*.15);
-  var T=playing&&ctx?ctx.currentTime:0, dim=0, rise=0;
+  var T=playing&&ctx?ctx.currentTime-heardLag():0, dim=0, rise=0;   /* the picture follows what is HEARD: phones and Bluetooth play the sound 0.1-0.3 s after the audio clock (2026-10-15) */
   if(playing&&eng){
     eng.analyser.getFloatTimeDomainData(buf); var s=0; for(var i=0;i<buf.length;i++) s+=buf[i]*buf[i];
     energy+=(Math.min(1,Math.sqrt(s/buf.length)*6)-energy)*Math.min(1,dt*1.5);
@@ -2517,7 +2523,7 @@ SL=(function(){
     if(e.beat){ beats++; beatT=now; }
     if(e.kick) kT=now; if(e.clav) clT=now;
     if(e.para) signs.push({z:travel+SP*7.5, l:['CUT MY REVIEWS','INTO PIECES','THIS IS MY LAST RETORT'], big:true});
-    if(e.sign) signs.push({z:travel+SP*5+PASS, l:[e.sign.toUpperCase()], over:true}); }   /* five beats out: overhead as the whistle sounds */
+    if(e.signs) e.signs.forEach(function(sg){ signs.push({z:travel+SP*sg.ahead+PASS, l:[sg.text.toUpperCase()], over:true}); }); }   /* overhead as the word's whistle sounds */
   function uni(){ var now=performance.now()/1000; travel=(beats+clamp((now-beatT)/bdur,0,1))*SP;   /* a pole passes on every beat */
     bump=.004*Math.exp(-(now-kT)*12)*Math.sin((now-kT)*40); return {travel:travel, bump:bump}; }
   function draw(){ var F=fxCanvas(), g=F.g, W=F.W, H=F.H, d=F.d, now=performance.now()/1000;
@@ -2534,7 +2540,7 @@ SL=(function(){
     var fl=Math.exp(-(now-clT)*7), r0=SP/2-(travel%(SP/2));
     for(var z2=r0;z2<70;z2+=SP/2){ if(z2<1.5) continue; [-3.3,3.3].forEach(function(X){ var q=P(X,.5,z2), sz=Math.max(1,.12*f/z2); g.fillStyle='rgba(255,'+(X<0?170:120)+',80,'+(.25+.75*fl).toFixed(3)+')'; g.fillRect(q[0]-sz/2,q[1]-sz,sz,sz*1.6); }); }
     /* the signs: each sized to its words */
-    signs=signs.filter(function(sg){ return sg.z-travel>1.2; }); if(signs.length>8) signs.splice(0,signs.length-8);
+    signs=signs.filter(function(sg){ return sg.z-travel>1.2; }); if(signs.length>16) signs.splice(0,signs.length-16);
     signs.slice().sort(function(a,b){ return b.z-a.z; }).forEach(function(sg){ var z=sg.z-travel, n=sg.l.length, longest=Math.max.apply(null,sg.l.map(function(t){ return t.length; }));
       var wv=clamp(1.4+longest*.42,2.6,sg.big?8.5:7), hv=sg.big?2.9:1.4, X=sg.over?0:3.6+wv/2, yb=sg.big?3.4:sg.over?4.6:2.6;
       if(sg.over){ wv=clamp(1.6+longest*.62,3.2,8); }
