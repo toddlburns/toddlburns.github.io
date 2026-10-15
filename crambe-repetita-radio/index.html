@@ -1617,20 +1617,21 @@ var FS303F=GL303+'uniform vec4 F[16];\n'+   /* Floor, v4 (Todd 2026-10-13: "I li
 'float note(float k){k=clamp(k+.5,0.,15.);int i=int(floor(k));return nh(F[i])*(1.-abs(fract(k)-.5)*2.);}'+   /* each note a pyramid peak */
 'float ridgeAt(vec2 q){float k=q.y/D+ph;float w=.26+.12*(1.-cut);return note(k)*smoothstep(15.,9.,k)*max(0.,1.-abs(q.x)/w);}'+
 'float crest(vec2 p){return 1.-abs(2.*n2(p)-1.);}'+
-'float hgt(vec2 q){float tr=(sc+ph)*D;vec2 wq=vec2(q.x,q.y+tr);float side=(.42*crest(wq*.38)+.2*crest(wq*.9+3.1))*smoothstep(.4,1.8,abs(q.x));'+
+'uniform vec3 sway;'+   /* the land either side slides left and right and heaves a little; the 303's peaks hold the middle (Todd 2026-10-15) */
+'float hgt(vec2 q){float tr=(sc+ph)*D;float sx=q.x-sway.x;vec2 wq=vec2(sx,q.y+tr);float side=(.42*crest(wq*.38)+.2*crest(wq*.9+3.1))*smoothstep(.4,1.8,abs(sx))*(1.+sway.y);'+
 'return ridgeAt(q)+side;}'+
 'float ln(float u,float w){return smoothstep(.5-w*fwidth(u),.5,abs(fract(u)-.5));}'+
 /* v6 (Todd 2026-10-14): lines coloured by height in the fusion kaleidoscope's colours (same palette range, same saturation) */
 /* v7 (Todd 2026-10-14: "unbounded from the color palettes… full cybernetic purples reds and blues only"): fixed colours, not the grade's.
    Low = deep blue, then electric blue, violet, magenta, red at the crests. */
-'uniform vec3 cam;uniform vec3 sway;'+
+'uniform vec3 cam;'+
 'uniform vec2 flash;'+
 'vec3 fzc(float h){h=clamp(h,0.,1.);vec3 mono=vec3(.22,1.,.32)*(.3+1.05*h);vec3 k=.5+.5*cos(6.2832*(h*.85+vec3(.62,.29,.0)+flash.y));k=mix(vec3(dot(k,vec3(.33))),k,1.4);return mix(mono,max(vec3(0.),k)*(.35+1.2*h),flash.x);}'+
 'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;float cr=cos(roll),sr=sin(roll);p=mat2(cr,-sr,sr,cr)*p;'+
-'vec3 ro=vec3(sway.x,cam.x+sway.y,cam.y);vec3 rd=normalize(vec3(p.x+sway.z,p.y-cam.z,1.));vec3 sky=vec3(.006,.016,.01);vec3 c=sky;'+
+'vec3 ro=vec3(0.,cam.x,cam.y);vec3 rd=normalize(vec3(p.x,p.y-cam.z,1.));vec3 sky=vec3(.006,.016,.01);vec3 c=sky;'+
 'float t=.15;bool hit=false;for(int i=0;i<150;i++){vec3 q=ro+rd*t;float d=q.y-hgt(q.xz);if(d<.0015*t){hit=true;break;}t+=max(.006,d*.26);if(t>14.)break;}'+
 'if(hit){vec3 q=ro+rd*t;float h=hgt(q.xz);float tr=(sc+ph)*D;float rg=ridgeAt(q.xz);'+
-'float gz=ln((q.z+tr)/D*.5,1.3);float gx=ln(q.x*2.,1.3);float co=ln(h*14.,1.1);'+
+'float gz=ln((q.z+tr)/D*.5,1.3);float gx=ln((q.x-sway.x)*2.,1.3);float co=ln(h*14.,1.1);'+
 'c=vec3(.005,.013,.008);'+
 'vec3 hc=fzc(pow(clamp(h/.45,0.,1.),.75));c+=hc*.8*max(gz,gx);c+=hc*co;'+
 'float ki=floor(q.z/D+ph+.5);float on=(ki==3.)?sounding:0.;float lit=(ki<3.)?.4:.9;'+
@@ -1696,7 +1697,11 @@ var FSDB=GLHEAD+'uniform vec4 rg[24];uniform float kk;\n'+GLCOMMON+
 'ink+=r.w*smoothstep(1.,.15,dd)*(.5+.5*fbm(wq*14.+a*.2))*fade;rim+=r.w*exp(-pow((dd-1.)*4.,2.))*fade*.5;}'+
 'vec3 c=mix(w,vec3(.01,.012,.025),clamp(ink*1.6,0.,.97));c+=vec3(.2,.4,.42)*clamp(rim,0.,1.)*.35;c*=1.+.1*kk;'+GLFINISH;
 /* electro v2: chrome spheres on a checkerboard, raytraced. SP[i] = x, y (centre height), z, radius */
-var FSEL=GLHEAD+'uniform vec4 SP[4];uniform float fl,zap,hue;\n'+GLCOMMON+
+var FSEL=GLHEAD+'uniform vec4 SP[4];uniform float fl,zap,hue;uniform sampler2D tx;\n'+GLCOMMON+
+/* the two lines hang in front of you, so the chrome shows them back to front (Todd 2026-10-15: "reflected in the bouncing balls…
+   backwards to show the reflecting nature of things"): a pane just behind the camera, carrying the caption as typed (CS's RC canvas) */
+'vec3 pane(vec3 pos,vec3 rr,vec3 c,float tf){if(rr.z>=0.)return c;float t=(-2.4-pos.z)/rr.z;if(t>tf)return c;vec3 q=pos+rr*t;vec2 uv=vec2(.5-q.x/22.,.5-(q.y-1.)/5.5);'+
+'if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.)return c;vec4 k=texture(tx,uv);return mix(c,k.rgb*1.15,k.a);}'+
 'vec3 hs(float h){return .5+.5*cos(6.2832*(h+vec3(0.,.33,.67)));}'+
 'vec3 sky(vec3 rd){float y=rd.y;vec3 c=mix(vec3(1.,.32,.55),vec3(.38,.1,.55),smoothstep(0.,.25,y));c=mix(c,vec3(.03,.01,.08),smoothstep(.2,.6,y));return c;}'+
 'vec3 flo(vec3 pos,float t){vec2 q=floor(pos.xz*.8);float ck=mod(q.x+q.y,2.);vec3 tile=mix(vec3(.04,.02,.07),hs(hue)*.9,ck)*(1.+fl*.8);'+
@@ -1707,7 +1712,7 @@ var FSEL=GLHEAD+'uniform vec4 SP[4];uniform float fl,zap,hue;\n'+GLCOMMON+
 'for(int i=0;i<4;i++){vec3 oc=ro-SP[i].xyz;float b=dot(oc,rd),cc=dot(oc,oc)-SP[i].w*SP[i].w,h=b*b-cc;if(h>0.){float tt=-b-sqrt(h);if(tt>0.&&tt<tm){tm=tt;hi=i;}}}'+
 'float tp=rd.y<0.?-ro.y/rd.y:1e9;'+
 'if(hi>=0&&tm<tp){vec3 pos=ro+rd*tm,n=vec3(0.);for(int i=0;i<4;i++){if(i==hi)n=normalize(pos-SP[i].xyz);}vec3 rr=reflect(rd,n);'+
-'vec3 rc=rr.y<0.?flo(pos+rr*(-pos.y/rr.y),-pos.y/rr.y):sky(rr);float fr=.55+.45*pow(1.-max(0.,dot(-rd,n)),3.);'+
+'float tf=rr.y<0.?-pos.y/rr.y:1e9;vec3 rc=pane(pos,rr,rr.y<0.?flo(pos+rr*tf,tf):sky(rr),tf);float fr=.55+.45*pow(1.-max(0.,dot(-rd,n)),3.);'+
 'c=rc*fr*1.1+vec3(1.)*pow(max(0.,dot(rr,normalize(vec3(-.4,.6,-.6)))),60.)*1.2;}'+
 'else if(tp<1e8){vec3 pos=ro+rd*tp;c=flo(pos,tp);}'+
 'c+=vec3(1.,.25,.4)*zap*exp(-pow((p.y-.18-.04*sin(p.x*6.))*80.,2.))*1.5;'+
@@ -1844,7 +1849,7 @@ if(gl){
     var vb=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,vb); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   }catch(e){ console.error(e); prog=null; }
-  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F','sounding','cam','sway','flash']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']],['classical',FSCL,['D','DS','tx','ta','ipal']],['woodblock',FSWB,['gnd']],['dub',FSDB,['rg','kk']],['electro',FSEL,['SP','fl','zap','hue']],['idm',FSID,['kk']],['remix',FSRX,['kk','wm']],['soundtrack',FSLB,['travel','bump']],['italo',FSIT,['rot','ar','kk','sn','hue']],['newage',FSNA,['sp','rot','fl','bl','hue']],['berlin',FSBE,['neb','fl','ph','cz','G','ta','td','tx']]].forEach(function(d){
+  [['303s',FS303S,['H','ph','sc','kick','cut','wave','roll']],['303f',FS303F,['H','ph','sc','kick','cut','wave','roll','F','sounding','cam','sway','flash']],['303l',FS303L,['H','ph','sc','kick','cut','wave','roll']],['fusion',FSFZ,['bm','bs','sp','sn','rot']],['classical',FSCL,['D','DS','tx','ta','ipal']],['woodblock',FSWB,['gnd']],['dub',FSDB,['rg','kk']],['electro',FSEL,['SP','fl','zap','hue','tx']],['idm',FSID,['kk']],['remix',FSRX,['kk','wm']],['soundtrack',FSLB,['travel','bump']],['italo',FSIT,['rot','ar','kk','sn','hue']],['newage',FSNA,['sp','rot','fl','bl','hue']],['berlin',FSBE,['neb','fl','ph','cz','G','ta','td','tx']]].forEach(function(d){
     try{ var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,'#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0,1);}'));
       gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,d[1])); gl.bindAttribLocation(pr,0,'a'); gl.linkProgram(pr);
       if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
@@ -1897,10 +1902,10 @@ function frame(now){
 var lastLine=0;
 
 /* the beat stations' pictures, fed by what the beat engine scheduled (VIS), applied as each moment arrives */
-var CAM303=[.8,-1.05,.22], SW303=[0,0,0],   /* the ride (Todd 2026-10-15: "a bit more of a wobbly ride… more left and right and a tiny bit more up and down"):
-   x = drift across, y = bob, z = the camera turning into the drift */
+var CAM303=[.8,-1.05,.22], SW303=[0,0,0],   /* the ride (Todd 2026-10-15: "a bit more of a wobbly ride… more left and right and a tiny bit more up and down",
+   then "the peaks stay in the middle… the landscape around it moves"): x = the land sliding across, y = the hills heaving */
 FZ_CHORD=null,   /* the 303 floor's camera: height, z, tilt (Todd 2026-10-14: "try the angle"; was 1.35, -.6, .42) */
-   T303=null, FW=null, GR=null, DB=null, EP=null, CS=null, MB=null, NA=null, SL=null, TK=null, OR=null, BETEX=null, LQ=null, CLTEX=null, RGU=new Float32Array(96), PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
+   T303=null, FW=null, GR=null, DB=null, EP=null, CS=null, MB=null, NA=null, SL=null, TK=null, OR=null, BETEX=null, ELTEX=null, LQ=null, CLTEX=null, RGU=new Float32Array(96), PIC303='f',   /* Floor chosen 2026-10-13; Scope and Lights shaders kept, unused */ FU=new Float32Array(64), HU=new Float32Array(128), WV=new Float32Array(128);
 var PV={wind:0, wh:[], lastHit:-9, gT:-9, hist:[], steps:0, roll:0,pat:[[],[],[],[]], fl:new Float32Array(64).fill(-9), kickT:-9, clapT:-9, step:0, stepT:0, acid:null, acidT:-9, cut:.3,
         beams:[0,1,2,3].map(function(i){ return {r:.1+.1*i, tr:.1+.1*i, a:.13*i, ta:.13*i, h:.5+.15*i, t:-9}; }), rot:0, trot:0, bassT:-9, bassM:40, sparks:[], snT:-9, snV:0, rings:[], flT:-9, flA:0, flH:0, kT:-9, bz:0, lT:-9, lV:0, hue:0, thue:0};
 var WBU=new Float32Array(32), LU=new Float32Array(64), BMU=new Float32Array(16), SPU=new Float32Array(32);
@@ -1948,8 +1953,7 @@ function drawBeat(PR,T,dim,rise){
     if(u.F){ FU.fill(0); for(var hk=0;hk<4;hk++){ var hh=PV.hist[3-hk]; FU.set(hh?[hh[0],hh[1],0,0]:[-1,0,0,0],hk*4); }
       var fk=4; for(var vi=0;vi<VIS.length&&fk<16;vi++){ var ve=VIS[vi]; if(ve.k==='s'){ if(T303) T303.assign(ve); FU.set([ve.acid?ve.acid.n:-1, ve.acid&&ve.acid.acc?1:0,0,0],fk*4); fk++; } }
       for(;fk<16;fk++) FU.set([-1,0,0,0],fk*4); gl.uniform4fv(u.F,FU);
-      var wt=performance.now()/1000; SW303[0]=.2*Math.sin(wt*.31)+.09*Math.sin(wt*.83+1.3); SW303[1]=.045*Math.sin(wt*.57+.7)+.02*Math.sin(wt*1.37+2.1)+.012*ex(PV.kickT,.25);
-      SW303[2]=.18*(.2*.31*Math.cos(wt*.31)+.09*.83*Math.cos(wt*.83+1.3));
+      var wt=performance.now()/1000; SW303[0]=.2*Math.sin(wt*.31)+.09*Math.sin(wt*.83+1.3); SW303[1]=.14*Math.sin(wt*.57+.7)+.06*Math.sin(wt*1.37+2.1)+.08*ex(PV.kickT,.25);
       if(u.cam) gl.uniform3f(u.cam,CAM303[0],CAM303[1],CAM303[2]); if(u.sway) gl.uniform3f(u.sway,SW303[0],SW303[1],SW303[2]); if(u.flash) gl.uniform2f(u.flash,PV.flA*ex(PV.flT,.7),PV.flH); gl.uniform1f(u.sounding,playing&&PV.hist[0]&&PV.hist[0][0]>=0?ex(PV.stepT,.22):0); if(T303) T303.frame(T); }
   } else if(STATION==='woodblock'){
     PV.wh=PV.wh.filter(function(h){ return T-h.t<6; }); if(GR) GR.draw(T);
@@ -1976,7 +1980,9 @@ function drawBeat(PR,T,dim,rise){
   } else if(STATION==='idm'){
     gl.uniform1f(u.kk,ex(PV.kT,.2)); if(TK) TK.draw();
   } else if(STATION==='electro'){
-    if(CS){ var cu=CS.uni(); gl.uniform4fv(u.SP,cu.S); gl.uniform1f(u.fl,cu.fl); gl.uniform1f(u.zap,cu.zap); gl.uniform1f(u.hue,cu.hue); CS.draw(); }
+    if(CS){ var cu=CS.uni(); if(!ELTEX){ ELTEX=gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,ELTEX); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE); }
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D,ELTEX); gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,CS.rc()); gl.uniform1i(u.tx,0);
+      gl.uniform4fv(u.SP,cu.S); gl.uniform1f(u.fl,cu.fl); gl.uniform1f(u.zap,cu.zap); gl.uniform1f(u.hue,cu.hue); CS.draw(); }
   } else if(STATION==='fusion'){
     var k=1-Math.exp(-(1/60)/.05); PV.rot+=(PV.trot-PV.rot)*(1-Math.exp(-(1/60)/.09));
     PV.beams.forEach(function(B,i){ B.r+=(B.tr-B.r)*k; B.a+=(B.ta-B.a)*k; BMU.set([B.r,B.a,B.h,playing?.35+.65*ex(B.t,.3):.25],i*4); });
@@ -2086,7 +2092,7 @@ T303=(function(){
   for(var i=0;i<12;i++){ var el=document.createElement('span'); el.className='tyl'; el.style.opacity='0'; box.appendChild(el); pool.push(el); }
   function nh(a){ return a.n<0?.02:(.12+.42*a.n)*(1+.3*(a.acc?1:0)); }
   function proj(x,y,z){   /* the shader's camera, so a letter sits on its peak */
-    var vz=z-CAM303[1]; if(vz<.05) return null; var px=(x-SW303[0])/vz-SW303[2], py=(y-CAM303[0]-SW303[1])/vz+CAM303[2], cr=Math.cos(PV.roll), sr=Math.sin(PV.roll), H=innerHeight;
+    var vz=z-CAM303[1]; if(vz<.05) return null; var px=x/vz, py=(y-CAM303[0])/vz+CAM303[2], cr=Math.cos(PV.roll), sr=Math.sin(PV.roll), H=innerHeight;
     return {x:innerWidth/2+(cr*px-sr*py)*H, y:H/2-(sr*px+cr*py)*H, s:1/vz};
   }
   function chOf(k){ return cells[seq[k]].textContent; }
@@ -2448,6 +2454,11 @@ LQ=(function(){
 CS=(function(){
   var S=[0,1,2,3].map(function(i){ return {y:0,v:0}; }), nk=0, last=performance.now()/1000, clapT=-9, zapT=-9, hue=.6, thue=.6, SU=new Float32Array(16);
   var cap=Cap(false,function(fs){ return 'italic 800 '+fs+'px "Helvetica Neue", Helvetica, Arial, sans-serif'; },['Cut my reviews into pieces','This is my last retort']);
+  var RC=document.createElement('canvas'); RC.width=1024; RC.height=256; var rg=RC.getContext('2d');
+  /* the caption again, as the chrome sees it: lit letters on a clear pane, redrawn each frame from the same typing state */
+  function pane(now,W,H,fs,A){ rg.clearRect(0,0,1024,256); if(A<=0) return; var k=900/W, y0=128-fs*k*.675;
+    rg.font='italic 800 '+(fs*k).toFixed(1)+'px "Helvetica Neue", Helvetica, Arial, sans-serif'; rg.textBaseline='middle'; rg.shadowColor='rgba(255,90,170,.9)'; rg.shadowBlur=10; rg.fillStyle='#fff4e6';
+    cap.U().forEach(function(u){ if(u.t0<0) return; rg.globalAlpha=Math.min(1,(now-u.t0)*6)*A; rg.fillText(u.s,62+u.x*k,y0+(u.y-H*.79)*k); }); rg.globalAlpha=1; rg.shadowBlur=0; }
   function step(e){ if(STATION!=='electro') return; var now=performance.now()/1000;
     if(e.kick){ var sp=S[nk++%4]; sp.v=Math.max(sp.v,3.6+1.2*Math.random()); }
     if(e.clap) clapT=now; if(e.zap) zapT=now; if(e.bass){ thue=(e.bass*.13)%1; cap.next(now); } }
@@ -2457,14 +2468,14 @@ CS=(function(){
     return {S:SU, fl:Math.exp(-(now-clapT)*8), zap:clamp(1-(now-zapT)/.35,0,1), hue:hue}; }
   function draw(){ var F=fxCanvas(), g=F.g, W=F.W, H=F.H, d=F.d, now=performance.now()/1000;
     g.globalAlpha=document.body.classList.contains('quiet')||!playing?1:.5;
-    var fs=cap.fit(g,W,H,H*.79,Math.round(clamp(W*.058,22*d,58*d))), A=cap.tick(now,6,5,15);
+    var fs=cap.fit(g,W,H,H*.79,Math.round(clamp(W*.058,22*d,58*d))), A=cap.tick(now,6,5,15); pane(now,W,H,fs,A);
     if(A>0){ var band=g.createLinearGradient(0,H*.79-fs*1.4,0,H*.79+fs*2.8); band.addColorStop(0,'rgba(8,4,20,0)'); band.addColorStop(.3,'rgba(8,4,20,.62)'); band.addColorStop(.75,'rgba(8,4,20,.62)'); band.addColorStop(1,'rgba(8,4,20,0)'); g.fillStyle=band; g.fillRect(0,H*.79-fs*1.4,W,fs*4.2);
       var gr=g.createLinearGradient(0,H*.79-fs*.55,0,H*.79+fs*1.9); gr.addColorStop(0,'#eef6ff'); gr.addColorStop(.2,'#7fb2ff'); gr.addColorStop(.31,'#1a1838'); gr.addColorStop(.36,'#ffcf8a'); gr.addColorStop(.5,'#fff4e0');
       gr.addColorStop(.55,'#eef6ff'); gr.addColorStop(.72,'#7fb2ff'); gr.addColorStop(.8,'#1a1838'); gr.addColorStop(.84,'#ffcf8a'); gr.addColorStop(1,'#fff4e0');
       g.textBaseline='middle'; g.lineWidth=Math.max(2,d*3); g.lineJoin='round'; g.strokeStyle='rgba(10,4,24,.95)'; g.shadowColor='rgba(255,90,170,.55)'; g.shadowBlur=14*d;
       cap.U().forEach(function(u){ if(u.t0<0) return; var a=Math.min(1,(now-u.t0)*6)*A; g.globalAlpha=a*(document.body.classList.contains('quiet')||!playing?1:.5); g.strokeText(u.s,u.x,u.y); g.shadowBlur=0; g.fillStyle=gr; g.fillText(u.s,u.x,u.y); g.shadowBlur=14*d; }); g.shadowBlur=0; }
     g.globalAlpha=1; }
-  return {step:step, uni:uni, draw:draw};
+  return {step:step, uni:uni, draw:draw, rc:function(){ return RC; }};
 })();
 /* italo (Todd 2026-10-14 chose the idea): a mirror ball turning in a dark room. Every arpeggio note flares spots of light
    on the walls; the chord sets their colour; the kick lifts the room. The two lines scroll along an LED strip. */
