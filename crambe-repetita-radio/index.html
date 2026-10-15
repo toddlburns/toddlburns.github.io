@@ -7,7 +7,7 @@
 <title>Crambe Repetita Radio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Caveat:wght@600&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Caveat:wght@600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
 *{box-sizing:border-box}
 body{margin:0}
@@ -96,29 +96,28 @@ body[data-station="303"] #phrases{display:none}
 body[data-station="remix"] #rx{display:block}
 /* remix v2 (Todd 2026-10-15: "needs more style"; chose the editor's proof): a desk under a lamp; the faders are boxwood rulers
    with a red marker for a cap; under them, the review as a proof page with the copy editor's marks in red pen */
-.rx-desk{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);display:flex;align-items:stretch;gap:10px}
-body[data-station="remix"] #play{top:40%}
-.rx-gap{width:96px}
-@media (max-width:420px){.rx-gap{width:72px}.rx-desk{gap:6px}}
-.fd{width:66px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:auto}
-@media (max-width:420px){.fd{width:58px}}
-.fd-end{font-family:"Special Elite","Courier New",monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#a89c84;white-space:nowrap}
-.fd-name{font-family:"Special Elite","Courier New",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#e6dcc6;margin-top:4px;white-space:nowrap}
-.fd-track{position:relative;width:28px;height:clamp(140px,30vh,270px);cursor:ns-resize;touch-action:none;outline:none;border-radius:2px;
-  background:linear-gradient(90deg,#b9a882,#e9dcbc 30%,#efe4c6 60%,#c9b894);box-shadow:0 3px 10px rgba(0,0,0,.55),inset 0 0 0 1px rgba(60,40,10,.25)}
-.fd-track::before{content:"";position:absolute;left:0;width:9px;top:0;bottom:0;background:repeating-linear-gradient(180deg,rgba(40,28,10,.75) 0 1px,transparent 1px 25%);opacity:.9}
-.fd-track::after{content:"";position:absolute;left:0;width:5px;top:0;bottom:0;background:repeating-linear-gradient(180deg,rgba(40,28,10,.6) 0 1px,transparent 1px 5%)}
-.fd-mark{position:absolute;right:0;width:12px;height:2px;margin-top:-1px;background:#2a2016}
-.fd-fill{position:absolute;left:50%;width:3px;margin-left:-1.5px;background:#c3221c;opacity:.75;border-radius:2px}
-.fd-cap{position:absolute;left:50%;width:40px;height:20px;margin:-10px 0 0 -20px;border-radius:3px;background:linear-gradient(180deg,#d8302a,#a91a15);color:#fff6ea;font-family:Caveat,cursive;font-size:1.05rem;line-height:20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.5);transition:box-shadow .45s ease,filter .45s ease;z-index:2}
-.fd-cap.hit{box-shadow:0 0 16px rgba(255,90,70,.95),0 2px 5px rgba(0,0,0,.5);filter:brightness(1.35);transition:none}
-.fd-track:focus-visible .fd-cap{outline:1px solid #f3ecdc;outline-offset:3px}
-.rx-reset{position:absolute;left:50%;transform:translateX(-50%);top:calc(40% + clamp(140px,30vh,270px)/2 + 66px);pointer-events:auto;border:0;background:transparent;font-family:"Special Elite","Courier New",monospace;font-size:.7rem;letter-spacing:.06em;color:#a89c84;cursor:pointer;padding:6px}
-.rx-reset b{font-family:Caveat,cursive;font-weight:600;font-size:1.05rem;color:#d23a30;letter-spacing:0;margin-right:.35em}
-.rx-reset:hover{color:#e6dcc6}
-.rx-page{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);margin:0 auto;max-width:36rem;box-sizing:border-box;padding:22px 22px 12px;
+/* v3 (Todd 2026-10-15: horizontal sliders, no grade, names on top, the end words appear as you near them, no stet, a new style
+   with the same red as the marks): a paper slip above the proof page; each slider is a fine printed rule, the handle is the
+   red pen circle (the same circle that rings the grade), the red line from the middle is the pen's stroke */
+.rx-stack{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);margin:0 auto;max-width:36rem;display:flex;flex-direction:column;gap:16px}
+body[data-station="remix"] #play{top:24%}
+.rx-desk{box-sizing:border-box;padding:14px 26px 6px;background:#efe6d2;background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(120,90,40,.08));transform:rotate(.4deg);box-shadow:0 8px 22px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:4px}
+.sl{pointer-events:auto}
+.sl-name{font-family:"EB Garamond",Georgia,serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#3a3229;text-align:center}
+.sl-track{position:relative;height:30px;cursor:ew-resize;touch-action:none;outline:none}
+.sl-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#2b241c}
+.sl-mid{position:absolute;left:50%;top:50%;width:1px;height:12px;margin:-6px 0 0 0;background:#2b241c}
+.sl-track::after{content:"";position:absolute;left:0;right:0;top:50%;height:7px;margin-top:-3px;background:linear-gradient(90deg,#2b241c 0 1px,transparent 1px calc(100% - 1px),#2b241c calc(100% - 1px))}
+.sl-fill{position:absolute;top:50%;height:3px;margin-top:-1px;background:#c3221c;border-radius:2px;transform:rotate(-.4deg)}
+.sl-thumb{position:absolute;top:50%;width:26px;height:22px;margin:-11px 0 0 -13px;border:2px solid #c3221c;border-radius:50%;box-sizing:border-box;transform:rotate(-8deg);background:rgba(239,230,210,.35);transition:box-shadow .5s ease}
+.sl-thumb.hit{box-shadow:0 0 0 3px rgba(195,34,28,.25),0 0 14px rgba(195,34,28,.55);transition:none}
+.sl-track:focus-visible .sl-thumb{outline:1px dotted #c3221c;outline-offset:4px}
+.sl-ends{display:flex;justify-content:space-between;height:1.3rem;margin-top:-4px;font-family:Caveat,cursive;font-weight:600;font-size:1.15rem;line-height:1;color:#c3221c}
+.sl-ends span{opacity:0;transition:opacity .15s}
+.rx-page{position:relative;pointer-events:none;box-sizing:border-box;padding:20px 24px 10px;
   background:#f2ead8;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),linear-gradient(180deg,rgba(120,90,40,.05),rgba(120,90,40,.12));
-  color:#1f1b16;font-family:Georgia,"Times New Roman",serif;font-size:1rem;line-height:2.5;text-align:left;transform:rotate(-.5deg);box-shadow:0 10px 28px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.2);min-height:5.5em}
+  color:#1f1b16;font-family:"EB Garamond",Georgia,serif;font-size:1.06rem;line-height:2.4;text-align:left;transform:rotate(-.5deg);box-shadow:0 10px 28px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.2)}
+.rx-lines{height:calc(4 * 2.4em + .5em);padding-top:.5em;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - .7em),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - .7em),transparent)}
 .rx-page .cur{background:linear-gradient(180deg,transparent 52%,rgba(255,214,60,.75) 52%,rgba(255,214,60,.75) 92%,transparent 92%)}
 .rx-page .mk{display:inline-grid;justify-items:center;align-items:end;line-height:1.2;vertical-align:baseline}
 .rx-page .mk>*{grid-area:1/1}
@@ -127,9 +126,9 @@ body[data-station="remix"] #play{top:40%}
 .rx-page .mk i.cur{background:linear-gradient(180deg,transparent 45%,rgba(255,214,60,.75) 45%)}
 .rx-page .car{color:#c3221c;font-family:Caveat,cursive;font-weight:600;margin:0 -.1em;position:relative;top:.35em}
 .rx-page .el{color:#7a7064}
-.rx-grade{position:absolute;right:8px;top:-34px;white-space:nowrap;font-family:Caveat,cursive;font-weight:600;font-size:1.7rem;line-height:1;color:#c3221c;transform:rotate(8deg);padding:5px 14px 7px;border:2px solid #c3221c;border-radius:50%;background:#f2ead8}
+.rx-grade{position:absolute;right:-10px;bottom:-18px;white-space:nowrap;font-family:Caveat,cursive;font-weight:600;font-size:1.7rem;line-height:1;color:#c3221c;transform:rotate(8deg);padding:5px 14px 7px;border:2px solid #c3221c;border-radius:50%;background:#f2ead8}
 .rx-grade s{text-decoration:none;background:linear-gradient(#c3221c,#c3221c) 0 55%/100% 2px no-repeat;color:#8a7e70;font-size:.7em;margin-right:.3em}
-@media (max-height:600px){.rx-page{display:none}}
+@media (max-height:700px){.rx-stack{gap:10px}.rx-desk{padding:8px 22px 2px}.sl-track{height:24px}.rx-page{line-height:2.1}.rx-lines{height:calc(4 * 2.1em + .5em)}}
 </style>
 </head>
 <body>
@@ -139,7 +138,7 @@ body[data-station="remix"] #play{top:40%}
 <div id="typed" aria-hidden="true"><div id="tyrows"><div></div><div></div></div></div>
 <svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
-<div id="rx"><div class="rx-desk" id="rxDesk"></div><button type="button" class="rx-reset" id="rxReset"><b>stet</b>as written</button><div class="rx-page" id="rxText" aria-live="off"></div></div>
+<div id="rx"><div class="rx-stack"><div class="rx-desk" id="rxDesk"></div><div class="rx-page" id="rxText" aria-live="off"></div></div></div>
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
   <div class="tuner"><button type="button" class="arrow" id="tunePrev" aria-label="Previous station">‹</button><div class="dial" id="dial"><nav class="stations" id="stations" aria-label="Station"><button type="button" data-s="classical">Classical</button><button type="button" data-s="ambient">Ambient</button><button type="button" data-s="newage">New Age</button><button type="button" data-s="berlin">Berlin School</button><button type="button" data-s="woodblock">Woodblock</button><button type="button" data-s="fusion">Fusion</button><button type="button" data-s="soundtrack">Soundtrack</button><button type="button" data-s="idm">IDM</button><button type="button" data-s="dub">Dub</button><button type="button" data-s="303">303</button><button type="button" data-s="electro">Electro</button><button type="button" data-s="italo">Italo</button><button type="button" data-s="remix">Remix</button></nav></div><button type="button" class="arrow" id="tuneNext" aria-label="Next station">›</button></div>
@@ -371,7 +370,7 @@ function beatCore(P,R,ri){
    paragraph keeps its slot on the clock; inside it the new words share out the time. */
 var RX_GRADES=['F','D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+'];
 var REMIX={lang:0,grade:null,temper:0,sent:0}, RXLEX=null, RXC={}, rxLoading=null;
-try{ var rxs=JSON.parse(localStorage.getItem('crr-remix')||'null'); if(rxs) ['lang','temper','sent'].forEach(function(k){ if(typeof rxs[k]==='number') REMIX[k]=clamp(rxs[k],-1,1); }), REMIX.grade=RX_GRADES.indexOf(rxs.grade)>=0?rxs.grade:null; }catch(e){}
+try{ var rxs=JSON.parse(localStorage.getItem('crr-remix')||'null'); if(rxs) ['lang','temper','sent'].forEach(function(k){ if(typeof rxs[k]==='number') REMIX[k]=clamp(rxs[k],-1,1); }), REMIX.grade=null; }catch(e){}   /* the grade is no longer yours to change (Todd 2026-10-15) */
 function loadRemix(){ if(!rxLoading) rxLoading=fetch('remix.json').then(function(r){ return r.json(); }).then(function(d){ RXLEX=d.w; RXC={}; }).catch(function(){}); return rxLoading; }
 function remixSig(){ return [REMIX.lang,REMIX.grade,REMIX.temper,REMIX.sent,!!RXLEX].join('|'); }
 var RX_FUNC=/^(the|a|an|it|its|this|that|these|those|there|then|he|she|they|we|you|i|his|her|their|our|my|your|and|but|or|nor|so|in|on|at|of|for|with|to|from|by|as|if|when|while|what|which|who|how|why|where|one|all|some|any|no|not|is|was|are|were|be|been|being|has|have|had|do|does|did|can|could|would|should|will|may|might|must|than|into|onto|about|over|out|up|just|also|even|still)$/;
@@ -2609,38 +2608,33 @@ SL=(function(){
 })();
 
 
-/* remix: the desk. Four faders (drag, arrow keys; double-click puts one back as written); each cap lights with what it
-   changed in the music: Language on every word, Grade on every chord, Temper on hits and builds, Sentences on each new one */
+/* remix: the desk. Three sliders (drag, arrow keys; double-click puts one back as written); each handle lights with what it
+   changes in the music: Style on every word, Vibe on hits and builds, Sentence length on each new sentence. The word at each
+   end is blank at the middle and inks in as you push toward it. (The grade slider went 2026-10-15: the grade is the review's.) */
 var RX=(function(){
-  var F=[{k:'lang',name:'Language',top:'Flowery',bot:'Functional'},{k:'grade',name:'Grade',top:'A+',bot:'F'},{k:'temper',name:'Temper',top:'Excitable',bot:'Calm'},{k:'sent',name:'Sentences',top:'Run-on',bot:'Terse'}];
+  var F=[{k:'temper',name:'Vibe',lo:'Calm',hi:'Excitable'},{k:'lang',name:'Style',lo:'Functional',hi:'Flowery'},{k:'sent',name:'Sentence length',lo:'Terse',hi:'Run-on'}];
   var desk=$('rxDesk'), el={}, shownWi=-1, shownKey='', warmNow=.5;
-  function own(){ var i=Math.floor(posAt?0:0); return null; }
   function origGrade(){ if(!ST) return 'C'; var P=playing&&ctx?posAt(ctx.currentTime):stationNow(), ri=reviewAt(P-Math.floor(P/TOTAL)*TOTAL), g=(ST[ri].g||'C').split('/')[0].trim().toUpperCase(); return RX_GRADES.indexOf(g)>=0?g:g.charAt(0)==='F'?'F':'C'; }
-  function frac(f){ if(f.k==='grade'){ var g=REMIX.grade||origGrade(); return RX_GRADES.indexOf(g)/(RX_GRADES.length-1); } return (REMIX[f.k]+1)/2; }
-  function markFrac(f){ return f.k==='grade' ? RX_GRADES.indexOf(origGrade())/(RX_GRADES.length-1) : .5; }
-  function paint(){ F.forEach(function(f){ var e=el[f.k], fr=frac(f), mk=markFrac(f), y=function(x){ return (1-x)*100+'%'; };
-      e.cap.style.top=y(fr); e.mark.style.top=y(mk); e.fill.style.top=y(Math.max(fr,mk)); e.fill.style.height=Math.abs(fr-mk)*100+'%';
-      e.cap.textContent=f.k==='grade'?(REMIX.grade||origGrade()):''; e.tr.setAttribute('aria-valuenow',f.k==='grade'?RX_GRADES.indexOf(REMIX.grade||origGrade()):Math.round(REMIX[f.k]*100));
-      e.tr.setAttribute('aria-valuetext',f.k==='grade'?(REMIX.grade||origGrade()):REMIX[f.k]===0?'as written':(REMIX[f.k]>0?f.top:f.bot)+' '+Math.round(Math.abs(REMIX[f.k])*100)+'%'); }); }
-  function set(k,v){
-    if(k==='grade'){ var g=RX_GRADES[clamp(Math.round(v*(RX_GRADES.length-1)),0,RX_GRADES.length-1)]; v=g===origGrade()?null:g; if(REMIX.grade===v) return; REMIX.grade=v; }
-    else { v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.08) v=0; if(REMIX[k]===v) return; REMIX[k]=v; }
-    RXC={}; paint(); shownKey=''; try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){}
-  }
+  function frac(f){ return (REMIX[f.k]+1)/2; }
+  function paint(){ F.forEach(function(f){ var e=el[f.k], v=REMIX[f.k], fr=frac(f);
+      e.thumb.style.left=fr*100+'%'; e.fill.style.left=Math.min(fr,.5)*100+'%'; e.fill.style.width=Math.abs(fr-.5)*100+'%';
+      e.lo.style.opacity=Math.pow(Math.max(0,-v),.8).toFixed(3); e.hi.style.opacity=Math.pow(Math.max(0,v),.8).toFixed(3);
+      e.tr.setAttribute('aria-valuenow',Math.round(v*100)); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
+  function set(k,v){ v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; if(REMIX[k]===v) return; REMIX[k]=v;
+    RXC={}; paint(); shownKey=''; try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
-    var d=document.createElement('div'); d.className='fd';
-    d.innerHTML='<span class="fd-end">'+f.top+'</span><div class="fd-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-orientation="vertical"><i class="fd-mark"></i><i class="fd-fill"></i><b class="fd-cap"></b></div><span class="fd-end">'+f.bot+'</span><span class="fd-name">'+f.name+'</span>';
-    if(f.k==='temper') desk.appendChild(Object.assign(document.createElement('div'),{className:'rx-gap'}));
-    desk.appendChild(d); var tr=d.querySelector('.fd-track'); el[f.k]={tr:tr,cap:d.querySelector('.fd-cap'),mark:d.querySelector('.fd-mark'),fill:d.querySelector('.fd-fill')};
-    var drag=function(e){ var r=tr.getBoundingClientRect(); set(f.k,clamp(1-(e.clientY-r.top)/r.height,0,1)); };
+    var d=document.createElement('div'); d.className='sl';
+    d.innerHTML='<div class="sl-name">'+f.name+'</div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div><div class="sl-ends"><span>'+f.lo+'</span><span>'+f.hi+'</span></div>';
+    desk.appendChild(d); var tr=d.querySelector('.sl-track'), ends=d.querySelectorAll('.sl-ends span');
+    el[f.k]={tr:tr,cap:d.querySelector('.sl-thumb'),thumb:d.querySelector('.sl-thumb'),fill:d.querySelector('.sl-fill'),lo:ends[0],hi:ends[1]};
+    var drag=function(e){ var r=tr.getBoundingClientRect(); set(f.k,clamp((e.clientX-r.left)/r.width,0,1)); };
     tr.addEventListener('pointerdown',function(e){ tr.setPointerCapture(e.pointerId); drag(e); e.preventDefault(); });
     tr.addEventListener('pointermove',function(e){ if(tr.hasPointerCapture(e.pointerId)) drag(e); });
-    tr.addEventListener('dblclick',function(){ if(f.k==='grade'){ REMIX.grade=null; RXC={}; paint(); } else set(f.k,.5); });
-    tr.addEventListener('keydown',function(e){ var st=f.k==='grade'?1/(RX_GRADES.length-1):.05, cur=frac(f);
-      if(e.key==='ArrowUp'||e.key==='ArrowRight'){ set(f.k,cur+st); e.preventDefault(); e.stopPropagation(); }
-      else if(e.key==='ArrowDown'||e.key==='ArrowLeft'){ set(f.k,cur-st); e.preventDefault(); e.stopPropagation(); } });
+    tr.addEventListener('dblclick',function(){ set(f.k,.5); });
+    tr.addEventListener('keydown',function(e){ var cur=frac(f);
+      if(e.key==='ArrowUp'||e.key==='ArrowRight'){ set(f.k,cur+.05); e.preventDefault(); e.stopPropagation(); }
+      else if(e.key==='ArrowDown'||e.key==='ArrowLeft'){ set(f.k,cur-.05); e.preventDefault(); e.stopPropagation(); } });
   });
-  $('rxReset').addEventListener('click',function(){ REMIX={lang:0,grade:null,temper:0,sent:0}; RXC={}; paint(); shownKey=''; try{ localStorage.removeItem('crr-remix'); }catch(e){} });
   function flash(k){ var c=el[k].cap; c.classList.remove('hit'); void c.offsetWidth; c.classList.add('hit'); setTimeout(function(){ c.classList.remove('hit'); },60); }
   /* the proof page: the paragraph as written against the paragraph as remixed, word by word (longest common run), drawn with a
      copy editor's marks: a changed word struck through with the new one written above, a cut word struck out (the dele), an added
@@ -2663,19 +2657,19 @@ var RX=(function(){
     if(!pn) return '<span class="mk"><s>'+esc(po)+'</s><i>δ</i></span>'; return '<span class="mk"><s>'+esc(po)+'</s><i>'+esc(show)+'</i></span>'; }
   function text(B,wi){ var w=B.ws[wi], ops=align(B,w.para), at=0;
     for(var q=0;q<ops.length;q++) if(ops[q].ni===wi){ at=q; break; }
-    var a=Math.max(0,at-9), z=Math.min(ops.length-1,at+11), out=[];
+    var a=Math.max(0,at-14), z=Math.min(ops.length-1,at+40), out=[];
     for(q=a;q<=z;q++){ var op=ops[q], now=op.ni===wi, h;
       if(op.t==='eq') h='<span'+(now?' class="cur"':'')+'>'+wordHTML(op.n,op.n.text)+'</span>'+pmark(punc(op.o),punc(op.n));
       else if(op.t==='rep') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark(punc(op.o),punc(op.n));
       else if(op.t==='del') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i>δ</i></span>'+(punc(op.o)?'<span class="mk"><s>'+esc(punc(op.o))+'</s></span>':'');
       else h='<span class="mk"><span class="car">‸</span><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark('',punc(op.n));
       out.push(h); }
-    var og=origGrade(), gr=REMIX.grade&&REMIX.grade!==og?'<s>'+esc(og)+'</s>'+esc(REMIX.grade):esc(og);
-    $('rxText').innerHTML='<span class="rx-grade">'+gr+'</span>'+(a>0?'<span class="el">… </span>':'')+out.join(' ')+(z<ops.length-1?'<span class="el"> …</span>':''); }
+    var gr=esc(origGrade());
+    $('rxText').innerHTML='<span class="rx-grade">'+gr+'</span><div class="rx-lines">'+(a>0?'<span class="el">… </span>':'')+out.join(' ')+(z<ops.length-1?'<span class="el"> …</span>':'')+'</div>'; }
   function ev(e){ if(STATION!=='remix') return; warmNow=e.B.warm;
-    if(e.word) flash('lang'); if(e.chord) flash('grade'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
+    if(e.word) flash('lang'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
     if(e.wi!==shownWi||e.B.key!==shownKey){ shownWi=e.wi; shownKey=e.B.key; text(e.B,e.wi); } }
-  paint(); setInterval(function(){ if(STATION==='remix' && !REMIX.grade) paint(); },5000);   /* the grade mark follows the review on air */
+  paint();
   return {ev:ev, paint:paint, warm:function(){ return warmNow; }};
 })();
 
