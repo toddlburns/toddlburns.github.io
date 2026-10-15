@@ -99,24 +99,25 @@ body[data-station="remix"] #rx{display:block}
 /* v3 (Todd 2026-10-15: horizontal sliders, no grade, names on top, the end words appear as you near them, no stet, a new style
    with the same red as the marks): a paper slip above the proof page; each slider is a fine printed rule, the handle is the
    red pen circle (the same circle that rings the grade), the red line from the middle is the pen's stroke */
-.rx-stack{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);margin:0 auto;max-width:36rem;display:flex;flex-direction:column;gap:16px}
+.rx-stack{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 66px);margin:0 auto;max-width:48rem;display:flex;flex-direction:column;gap:18px;font-size:clamp(16px,.9vw + 8px,19px)}
 body[data-station="remix"] #play{top:24%}
-.rx-desk{box-sizing:border-box;padding:14px 26px 6px;background:#efe6d2;background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(120,90,40,.08));transform:rotate(.4deg);box-shadow:0 8px 22px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:4px}
+.rx-desk{box-sizing:border-box;padding:.7em 1.6em .4em;background:#efe6d2;background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(120,90,40,.08));transform:rotate(.4deg);box-shadow:0 8px 22px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:4px}
 .sl{pointer-events:auto}
-.sl-name{font-family:"EB Garamond",Georgia,serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#3a3229;text-align:center}
-.sl-track{position:relative;height:30px;cursor:ew-resize;touch-action:none;outline:none}
+.sl-head{display:flex;align-items:baseline}
+.sl-name{font-family:"EB Garamond",Georgia,serif;font-size:.85em;letter-spacing:.16em;text-transform:uppercase;color:#3a3229;text-align:center;white-space:nowrap;padding:0 .6em}
+.sl-track{position:relative;height:1.9em;margin-top:-.15em;cursor:ew-resize;touch-action:none;outline:none}
 .sl-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#2b241c}
 .sl-mid{position:absolute;left:50%;top:50%;width:1px;height:12px;margin:-6px 0 0 0;background:#2b241c}
 .sl-track::after{content:"";position:absolute;left:0;right:0;top:50%;height:7px;margin-top:-3px;background:linear-gradient(90deg,#2b241c 0 1px,transparent 1px calc(100% - 1px),#2b241c calc(100% - 1px))}
 .sl-fill{position:absolute;top:50%;height:3px;margin-top:-1px;background:#c3221c;border-radius:2px;transform:rotate(-.4deg)}
-.sl-thumb{position:absolute;top:50%;width:26px;height:22px;margin:-11px 0 0 -13px;border:2px solid #c3221c;border-radius:50%;box-sizing:border-box;transform:rotate(-8deg);background:rgba(239,230,210,.35);transition:box-shadow .5s ease}
+.sl-thumb{position:absolute;top:50%;width:1.7em;height:1.4em;margin:-.7em 0 0 -.85em;border:2px solid #c3221c;border-radius:50%;box-sizing:border-box;transform:rotate(-8deg);background:rgba(239,230,210,.35);transition:box-shadow .5s ease}
 .sl-thumb.hit{box-shadow:0 0 0 3px rgba(195,34,28,.25),0 0 14px rgba(195,34,28,.55);transition:none}
 .sl-track:focus-visible .sl-thumb{outline:1px dotted #c3221c;outline-offset:4px}
-.sl-ends{display:flex;justify-content:space-between;height:1.3rem;margin-top:-4px;font-family:Caveat,cursive;font-weight:600;font-size:1.15rem;line-height:1;color:#c3221c}
-.sl-ends span{opacity:0;transition:opacity .15s}
-.rx-page{position:relative;pointer-events:none;box-sizing:border-box;padding:20px 24px 10px;
+.sl-end{flex:1;font-family:Caveat,cursive;font-weight:600;font-size:1.25em;line-height:1.2;color:#c3221c;opacity:0;transition:opacity .15s}
+.sl-end+.sl-name+.sl-end{text-align:right}
+.rx-page{position:relative;pointer-events:none;box-sizing:border-box;padding:1.1em 1.4em .5em;
   background:#f2ead8;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),linear-gradient(180deg,rgba(120,90,40,.05),rgba(120,90,40,.12));
-  color:#1f1b16;font-family:"EB Garamond",Georgia,serif;font-size:1.06rem;line-height:2.4;text-align:left;transform:rotate(-.5deg);box-shadow:0 10px 28px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.2)}
+  color:#1f1b16;font-family:"EB Garamond",Georgia,serif;font-size:1.12em;line-height:2.4;text-align:left;transform:rotate(-.5deg);box-shadow:0 10px 28px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.2)}
 .rx-lines{height:calc(4 * 2.4em + .5em);padding-top:.5em;box-sizing:border-box;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - .7em),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - .7em),transparent)}
 .rx-page .cur{background:linear-gradient(180deg,transparent 52%,rgba(255,214,60,.75) 52%,rgba(255,214,60,.75) 92%,transparent 92%)}
 .rx-page .mk{display:inline-grid;justify-items:center;align-items:end;line-height:1.2;vertical-align:baseline}
@@ -126,9 +127,10 @@ body[data-station="remix"] #play{top:24%}
 .rx-page .mk i.cur{background:linear-gradient(180deg,transparent 45%,rgba(255,214,60,.75) 45%)}
 .rx-page .car{color:#c3221c;font-family:Caveat,cursive;font-weight:600;margin:0 -.1em;position:relative;top:.35em}
 .rx-page .el{color:#7a7064}
+.rx-page .pil{font-family:Caveat,cursive;font-weight:600;font-size:1.3em;color:#c3221c;margin:0 .15em}
 .rx-grade{position:absolute;right:-10px;bottom:-18px;white-space:nowrap;font-family:Caveat,cursive;font-weight:600;font-size:1.7rem;line-height:1;color:#c3221c;transform:rotate(8deg);padding:5px 14px 7px;border:2px solid #c3221c;border-radius:50%;background:#f2ead8}
 .rx-grade s{text-decoration:none;background:linear-gradient(#c3221c,#c3221c) 0 55%/100% 2px no-repeat;color:#8a7e70;font-size:.7em;margin-right:.3em}
-@media (max-height:700px){.rx-stack{gap:10px}.rx-desk{padding:8px 22px 2px}.sl-track{height:24px}.rx-page{line-height:2.1}.rx-lines{height:calc(4 * 2.1em + .5em)}}
+@media (max-height:760px){.rx-stack{gap:10px;font-size:16px}.rx-desk{padding:8px 22px 2px}.sl-track{height:24px}.rx-page{line-height:2.1}.rx-lines{height:calc(4 * 2.1em + .5em)}}
 </style>
 </head>
 <body>
@@ -2624,8 +2626,8 @@ var RX=(function(){
     RXC={}; paint(); shownKey=''; try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
     var d=document.createElement('div'); d.className='sl';
-    d.innerHTML='<div class="sl-name">'+f.name+'</div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div><div class="sl-ends"><span>'+f.lo+'</span><span>'+f.hi+'</span></div>';
-    desk.appendChild(d); var tr=d.querySelector('.sl-track'), ends=d.querySelectorAll('.sl-ends span');
+    d.innerHTML='<div class="sl-head"><span class="sl-end">'+f.lo+'</span><span class="sl-name">'+f.name+'</span><span class="sl-end">'+f.hi+'</span></div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div>';
+    desk.appendChild(d); var tr=d.querySelector('.sl-track'), ends=d.querySelectorAll('.sl-end');
     el[f.k]={tr:tr,cap:d.querySelector('.sl-thumb'),thumb:d.querySelector('.sl-thumb'),fill:d.querySelector('.sl-fill'),lo:ends[0],hi:ends[1]};
     var drag=function(e){ var r=tr.getBoundingClientRect(); set(f.k,clamp((e.clientX-r.left)/r.width,0,1)); };
     tr.addEventListener('pointerdown',function(e){ tr.setPointerCapture(e.pointerId); drag(e); e.preventDefault(); });
@@ -2657,15 +2659,17 @@ var RX=(function(){
     if(!pn) return '<span class="mk"><s>'+esc(po)+'</s><i>δ</i></span>'; return '<span class="mk"><s>'+esc(po)+'</s><i>'+esc(show)+'</i></span>'; }
   function text(B,wi){ var w=B.ws[wi], ops=align(B,w.para), at=0;
     for(var q=0;q<ops.length;q++) if(ops[q].ni===wi){ at=q; break; }
+    if(ops.length-at<40){ var nx=align(B,w.para+1); if(nx.length) ops=ops.concat([{t:'par'}],nx); }   /* the page runs on into the next paragraph (the ¶ mark), so it is always full */
     var a=Math.max(0,at-14), z=Math.min(ops.length-1,at+40), out=[];
     for(q=a;q<=z;q++){ var op=ops[q], now=op.ni===wi, h;
-      if(op.t==='eq') h='<span'+(now?' class="cur"':'')+'>'+wordHTML(op.n,op.n.text)+'</span>'+pmark(punc(op.o),punc(op.n));
+      if(op.t==='par') h='<span class="pil">¶</span>';
+      else if(op.t==='eq') h='<span'+(now?' class="cur"':'')+'>'+wordHTML(op.n,op.n.text)+'</span>'+pmark(punc(op.o),punc(op.n));
       else if(op.t==='rep') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark(punc(op.o),punc(op.n));
       else if(op.t==='del') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i>δ</i></span>'+(punc(op.o)?'<span class="mk"><s>'+esc(punc(op.o))+'</s></span>':'');
       else h='<span class="mk"><span class="car">‸</span><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark('',punc(op.n));
       out.push(h); }
-    var gr=esc(origGrade());
-    $('rxText').innerHTML='<span class="rx-grade">'+gr+'</span><div class="rx-lines">'+(a>0?'<span class="el">… </span>':'')+out.join(' ')+(z<ops.length-1?'<span class="el"> …</span>':'')+'</div>'; }
+    
+    $('rxText').innerHTML='<div class="rx-lines">'+(a>0?'<span class="el">… </span>':'')+out.join(' ')+(z<ops.length-1?'<span class="el"> …</span>':'')+'</div>'; }
   function ev(e){ if(STATION!=='remix') return; warmNow=e.B.warm;
     if(e.word) flash('lang'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
     if(e.wi!==shownWi||e.B.key!==shownKey){ shownWi=e.wi; shownKey=e.B.key; text(e.B,e.wi); } }
