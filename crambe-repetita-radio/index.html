@@ -7,7 +7,7 @@
 <title>Crambe Repetita Radio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Caveat:wght@600&family=Special+Elite&display=swap">
 <style>
 *{box-sizing:border-box}
 body{margin:0}
@@ -94,26 +94,42 @@ body[data-station="303"] #phrases{display:none}
 /* remix (Todd 2026-10-15): four faders rewrite the review; the faders are the picture */
 #rx{position:fixed;inset:0;z-index:2;pointer-events:none;display:none}
 body[data-station="remix"] #rx{display:block}
-.rx-desk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:stretch;gap:10px}
+/* remix v2 (Todd 2026-10-15: "needs more style"; chose the editor's proof): a desk under a lamp; the faders are boxwood rulers
+   with a red marker for a cap; under them, the review as a proof page with the copy editor's marks in red pen */
+.rx-desk{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);display:flex;align-items:stretch;gap:10px}
+body[data-station="remix"] #play{top:40%}
 .rx-gap{width:96px}
 @media (max-width:420px){.rx-gap{width:72px}.rx-desk{gap:6px}}
 .fd{width:66px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:auto}
 @media (max-width:420px){.fd{width:58px}}
-.fd-end{font-family:var(--face);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
-.fd-name{font-family:var(--face);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:4px;white-space:nowrap}
-.fd-track{position:relative;width:34px;height:clamp(150px,34vh,300px);cursor:ns-resize;touch-action:none;outline:none}
-.fd-track::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--faint);opacity:.6}
-.fd-track::after{content:"";position:absolute;left:4px;right:4px;top:0;bottom:0;background:repeating-linear-gradient(180deg,var(--faint) 0 1px,transparent 1px 8.33%);opacity:.25;-webkit-mask-image:linear-gradient(90deg,#000 0 25%,transparent 25% 75%,#000 75%);mask-image:linear-gradient(90deg,#000 0 25%,transparent 25% 75%,#000 75%)}
-.fd-mark{position:absolute;left:50%;width:18px;height:1px;margin-left:-9px;background:var(--fg);opacity:.45}
-.fd-fill{position:absolute;left:50%;width:3px;margin-left:-1.5px;background:var(--fg);opacity:.35;transition:opacity .3s}
-.fd-cap{position:absolute;left:50%;width:34px;height:16px;margin:-8px 0 0 -17px;border-radius:2px;background:#d9d6cf;color:#111;font-family:var(--face);font-size:.7rem;line-height:16px;text-align:center;box-shadow:0 0 0 rgba(255,255,255,0);transition:box-shadow .45s ease,background .45s ease}
-.fd-cap.hit{box-shadow:0 0 18px rgba(255,236,200,.9);background:#fff;transition:none}
-.fd-track:focus-visible .fd-cap{outline:1px solid var(--fg);outline-offset:3px}
-.rx-reset{position:absolute;left:50%;transform:translateX(-50%);top:calc(50% + clamp(150px,34vh,300px)/2 + 64px);pointer-events:auto;border:0;background:transparent;font-family:var(--face);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);cursor:pointer;padding:6px}
-.rx-reset:hover{color:var(--dim)}
-.rx-text{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 72px);margin:0 auto;max-width:38rem;text-align:center;font-family:var(--face);font-size:.95rem;line-height:1.5;color:var(--faint);min-height:3em}
-.rx-text b{font-weight:400;color:var(--fg)}
-@media (max-height:640px){.rx-text{display:none}}
+.fd-end{font-family:"Special Elite","Courier New",monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#a89c84;white-space:nowrap}
+.fd-name{font-family:"Special Elite","Courier New",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#e6dcc6;margin-top:4px;white-space:nowrap}
+.fd-track{position:relative;width:28px;height:clamp(140px,30vh,270px);cursor:ns-resize;touch-action:none;outline:none;border-radius:2px;
+  background:linear-gradient(90deg,#b9a882,#e9dcbc 30%,#efe4c6 60%,#c9b894);box-shadow:0 3px 10px rgba(0,0,0,.55),inset 0 0 0 1px rgba(60,40,10,.25)}
+.fd-track::before{content:"";position:absolute;left:0;width:9px;top:0;bottom:0;background:repeating-linear-gradient(180deg,rgba(40,28,10,.75) 0 1px,transparent 1px 25%);opacity:.9}
+.fd-track::after{content:"";position:absolute;left:0;width:5px;top:0;bottom:0;background:repeating-linear-gradient(180deg,rgba(40,28,10,.6) 0 1px,transparent 1px 5%)}
+.fd-mark{position:absolute;right:0;width:12px;height:2px;margin-top:-1px;background:#2a2016}
+.fd-fill{position:absolute;left:50%;width:3px;margin-left:-1.5px;background:#c3221c;opacity:.75;border-radius:2px}
+.fd-cap{position:absolute;left:50%;width:40px;height:20px;margin:-10px 0 0 -20px;border-radius:3px;background:linear-gradient(180deg,#d8302a,#a91a15);color:#fff6ea;font-family:Caveat,cursive;font-size:1.05rem;line-height:20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.5);transition:box-shadow .45s ease,filter .45s ease;z-index:2}
+.fd-cap.hit{box-shadow:0 0 16px rgba(255,90,70,.95),0 2px 5px rgba(0,0,0,.5);filter:brightness(1.35);transition:none}
+.fd-track:focus-visible .fd-cap{outline:1px solid #f3ecdc;outline-offset:3px}
+.rx-reset{position:absolute;left:50%;transform:translateX(-50%);top:calc(40% + clamp(140px,30vh,270px)/2 + 66px);pointer-events:auto;border:0;background:transparent;font-family:"Special Elite","Courier New",monospace;font-size:.7rem;letter-spacing:.06em;color:#a89c84;cursor:pointer;padding:6px}
+.rx-reset b{font-family:Caveat,cursive;font-weight:600;font-size:1.05rem;color:#d23a30;letter-spacing:0;margin-right:.35em}
+.rx-reset:hover{color:#e6dcc6}
+.rx-page{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);margin:0 auto;max-width:36rem;box-sizing:border-box;padding:22px 22px 12px;
+  background:#f2ead8;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),linear-gradient(180deg,rgba(120,90,40,.05),rgba(120,90,40,.12));
+  color:#1f1b16;font-family:Georgia,"Times New Roman",serif;font-size:1rem;line-height:2.5;text-align:left;transform:rotate(-.5deg);box-shadow:0 10px 28px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.2);min-height:5.5em}
+.rx-page .cur{background:linear-gradient(180deg,transparent 52%,rgba(255,214,60,.75) 52%,rgba(255,214,60,.75) 92%,transparent 92%)}
+.rx-page .mk{display:inline-grid;justify-items:center;align-items:end;line-height:1.2;vertical-align:baseline}
+.rx-page .mk>*{grid-area:1/1}
+.rx-page .mk s{text-decoration:none;background:linear-gradient(#c3221c,#c3221c) 0 55%/100% 1.5px no-repeat;color:#6f665a}
+.rx-page .mk i{display:block;transform:translateY(-1.05em) rotate(-2deg);font-family:Caveat,cursive;font-style:normal;font-weight:600;font-size:1.2em;color:#c3221c;white-space:nowrap;line-height:1}
+.rx-page .mk i.cur{background:linear-gradient(180deg,transparent 45%,rgba(255,214,60,.75) 45%)}
+.rx-page .car{color:#c3221c;font-family:Caveat,cursive;font-weight:600;margin:0 -.1em;position:relative;top:.35em}
+.rx-page .el{color:#7a7064}
+.rx-grade{position:absolute;right:8px;top:-34px;white-space:nowrap;font-family:Caveat,cursive;font-weight:600;font-size:1.7rem;line-height:1;color:#c3221c;transform:rotate(8deg);padding:5px 14px 7px;border:2px solid #c3221c;border-radius:50%;background:#f2ead8}
+.rx-grade s{text-decoration:none;background:linear-gradient(#c3221c,#c3221c) 0 55%/100% 2px no-repeat;color:#8a7e70;font-size:.7em;margin-right:.3em}
+@media (max-height:600px){.rx-page{display:none}}
 </style>
 </head>
 <body>
@@ -123,7 +139,7 @@ body[data-station="remix"] #rx{display:block}
 <div id="typed" aria-hidden="true"><div id="tyrows"><div></div><div></div></div></div>
 <svg id="phrases" aria-hidden="true"><defs><path id="wv0" d="M0 0"/><path id="wv1" d="M0 0"/></defs><g id="phg"><text id="ph0"><textPath href="#wv0" id="phtp0"></textPath></text><text id="ph1"><textPath href="#wv1" id="phtp1"></textPath></text></g><text id="phm" opacity="0"></text></svg>
 
-<div id="rx"><div class="rx-desk" id="rxDesk"></div><button type="button" class="rx-reset" id="rxReset">As written</button><p class="rx-text" id="rxText" aria-live="off"></p></div>
+<div id="rx"><div class="rx-desk" id="rxDesk"></div><button type="button" class="rx-reset" id="rxReset"><b>stet</b>as written</button><div class="rx-page" id="rxText" aria-live="off"></div></div>
 <div class="top">
   <h1 id="title">Crambe Repetita Radio</h1>
   <div class="tuner"><button type="button" class="arrow" id="tunePrev" aria-label="Previous station">‹</button><div class="dial" id="dial"><nav class="stations" id="stations" aria-label="Station"><button type="button" data-s="classical">Classical</button><button type="button" data-s="ambient">Ambient</button><button type="button" data-s="newage">New Age</button><button type="button" data-s="berlin">Berlin School</button><button type="button" data-s="woodblock">Woodblock</button><button type="button" data-s="fusion">Fusion</button><button type="button" data-s="soundtrack">Soundtrack</button><button type="button" data-s="idm">IDM</button><button type="button" data-s="dub">Dub</button><button type="button" data-s="303">303</button><button type="button" data-s="electro">Electro</button><button type="button" data-s="italo">Italo</button><button type="button" data-s="remix">Remix</button></nav></div><button type="button" class="arrow" id="tuneNext" aria-label="Next station">›</button></div>
@@ -1723,8 +1739,11 @@ var FSID=GLHEAD+'uniform float kk;\n'+GLCOMMON+
 'c*=.9+.1*sin(gl_FragCoord.y*2.6);c+=vec3(.05,.12,.16)*.25*kk*exp(-dot(p,p)*2.);'+GLFINISH;
 /* remix: a dark room; a soft light behind the desk, amber for a warm grade, blue for a cold one; the kick lifts it */
 var FSRX=GLHEAD+'uniform float kk,wm;\n'+GLCOMMON+
-'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;vec2 q=p*vec2(.75,1.3);vec3 tint=mix(vec3(.10,.16,.32),vec3(.40,.22,.07),wm);'+
-'vec3 c=vec3(.018,.018,.024)+tint*(.30+.35*kk)*exp(-dot(q,q)*3.2);c*=.92+.08*sin(gl_FragCoord.y*2.6);'+GLFINISH;
+'void main(){vec2 p=(gl_FragCoord.xy-.5*res)/res.y;'+   /* v2: a dark wooden desk under a lamp; the lamp's light is warm for a good grade, cold for a bad one */
+'vec2 g=vec2(p.x*1.2+.15*fbm(p*vec2(1.5,6.)),p.y*16.+3.*fbm(p*vec2(3.,.8)));float grain=.55+.45*sin(g.y+4.*fbm(vec2(g.x*.6,g.y*.08)));'+
+'vec3 wood=mix(vec3(.07,.035,.018),vec3(.16,.085,.04),grain)*(.85+.3*fbm(p*vec2(8.,40.)));'+
+'vec3 lamp=mix(vec3(.75,.9,1.05),vec3(1.25,.95,.62),wm);vec2 lq=(p-vec2(-.35,.32))*vec2(.8,1.);float pool=exp(-dot(lq,lq)*2.2);'+
+'vec3 c=wood*(.18+1.6*pool*(1.+.25*kk))*lamp;'+GLFINISH;
 /* berlin school v3: a slow glide through hills in dawn mist, raymarched. Terrain = terrH(), camera = beCam() (both in JS too) */
 var FSBE=GLHEAD+'uniform float neb,fl,ph,cz,ta,td;uniform vec4 G[20];uniform sampler2D tx;\n'+GLCOMMON+
 'float th(vec2 q){float r=1.-abs(sin(q.x*.23+ph)*cos(q.y*.19+ph*.6));return 1.4*r*r+.5*sin(q.x*.61+q.y*.37+ph*1.3)+.25*sin(q.y*.97-q.x*.53)+.12*sin(q.x*1.9+q.y*1.4)-1.2;}'+
@@ -2623,9 +2642,36 @@ var RX=(function(){
   });
   $('rxReset').addEventListener('click',function(){ REMIX={lang:0,grade:null,temper:0,sent:0}; RXC={}; paint(); shownKey=''; try{ localStorage.removeItem('crr-remix'); }catch(e){} });
   function flash(k){ var c=el[k].cap; c.classList.remove('hit'); void c.offsetWidth; c.classList.add('hit'); setTimeout(function(){ c.classList.remove('hit'); },60); }
-  function text(B,wi){ var w=B.ws[wi], S=B.P.sents[w.sent], a=Math.max(S.a,wi-14), z=Math.min(S.b,a+26), out=[];
-    for(var i=a;i<=z;i++){ var t=esc(B.ws[i].text); out.push(i===wi?'<b>'+t+'</b>':t); }
-    $('rxText').innerHTML=(a>S.a?'… ':'')+out.join(' ')+(z<S.b?' …':''); }
+  /* the proof page: the paragraph as written against the paragraph as remixed, word by word (longest common run), drawn with a
+     copy editor's marks: a changed word struck through with the new one written above, a cut word struck out (the dele), an added
+     word over a caret, changed punctuation likewise, a new full stop as the circled point. The word being sung is highlighted. */
+  var PF={}, origK='';
+  function punc(w){ return w.dash?'—':w.excl?'!':w.ask?'?':w.stop?'.':w.gap>=.5?',':''; }
+  function align(B,para){ var k=B.key+'/'+para; if(PF[k]) return PF[k];
+    var O=prep(B.ri).words.filter(function(w){ return w.para===para; }), N=[], ni=[];
+    B.ws.forEach(function(w,i){ if(w.para===para){ N.push(w); ni.push(i); } });
+    var n=O.length, m=N.length, L=[]; for(var a=0;a<=n;a++){ L.push(new Uint16Array(m+1)); }
+    for(a=n-1;a>=0;a--) for(var b=m-1;b>=0;b--) L[a][b]=O[a].key===N[b].key?L[a+1][b+1]+1:Math.max(L[a+1][b],L[a][b+1]);
+    var ops=[], dl=[], il=[]; a=0; b=0;
+    function flush(){ var k2=Math.min(dl.length,il.length); for(var q=0;q<k2;q++) ops.push({t:'rep',o:dl[q],n:il[q].w,ni:il[q].i}); for(q=k2;q<dl.length;q++) ops.push({t:'del',o:dl[q]}); for(q=k2;q<il.length;q++) ops.push({t:'ins',n:il[q].w,ni:il[q].i}); dl=[]; il=[]; }
+    while(a<n||b<m){ if(a<n&&b<m&&O[a].key===N[b].key){ flush(); ops.push({t:'eq',o:O[a],n:N[b],ni:ni[b]}); a++; b++; }
+      else if(b<m&&(a>=n||L[a][b+1]>=L[a+1][b])){ il.push({w:N[b],i:ni[b]}); b++; } else { dl.push(O[a]); a++; } }
+    flush(); if(Object.keys(PF).length>20) PF={}; return (PF[k]=ops); }
+  function wordHTML(w,t){ var x=esc(t); return w.it?'<em>'+x+'</em>':x; }
+  function pmark(po,pn){ if(po===pn) return esc(pn);
+    var show=pn==='.'?'⊙':pn==='—'?'—':pn; if(!po) return '<span class="mk"><span class="car">‸</span><i>'+esc(show)+'</i></span>';
+    if(!pn) return '<span class="mk"><s>'+esc(po)+'</s><i>δ</i></span>'; return '<span class="mk"><s>'+esc(po)+'</s><i>'+esc(show)+'</i></span>'; }
+  function text(B,wi){ var w=B.ws[wi], ops=align(B,w.para), at=0;
+    for(var q=0;q<ops.length;q++) if(ops[q].ni===wi){ at=q; break; }
+    var a=Math.max(0,at-9), z=Math.min(ops.length-1,at+11), out=[];
+    for(q=a;q<=z;q++){ var op=ops[q], now=op.ni===wi, h;
+      if(op.t==='eq') h='<span'+(now?' class="cur"':'')+'>'+wordHTML(op.n,op.n.text)+'</span>'+pmark(punc(op.o),punc(op.n));
+      else if(op.t==='rep') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark(punc(op.o),punc(op.n));
+      else if(op.t==='del') h='<span class="mk"><s>'+wordHTML(op.o,op.o.text)+'</s><i>δ</i></span>'+(punc(op.o)?'<span class="mk"><s>'+esc(punc(op.o))+'</s></span>':'');
+      else h='<span class="mk"><span class="car">‸</span><i'+(now?' class="cur"':'')+'>'+esc(op.n.text)+'</i></span>'+pmark('',punc(op.n));
+      out.push(h); }
+    var og=origGrade(), gr=REMIX.grade&&REMIX.grade!==og?'<s>'+esc(og)+'</s>'+esc(REMIX.grade):esc(og);
+    $('rxText').innerHTML='<span class="rx-grade">'+gr+'</span>'+(a>0?'<span class="el">… </span>':'')+out.join(' ')+(z<ops.length-1?'<span class="el"> …</span>':''); }
   function ev(e){ if(STATION!=='remix') return; warmNow=e.B.warm;
     if(e.word) flash('lang'); if(e.chord) flash('grade'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
     if(e.wi!==shownWi||e.B.key!==shownKey){ shownWi=e.wi; shownKey=e.B.key; text(e.B,e.wi); } }
