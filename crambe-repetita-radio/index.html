@@ -1236,7 +1236,11 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       if(x.lead==='flute') flute(t,m2,.07,d2); else vibes(t,m2,.065,d2); lbLast=m2; }
     if(M.hit1) brass(t,[ch[0]+12,ch[1]+12,ch[2]+12,ch[3]+12],.09);
     if(M.ask && M.toEnd<x.bar*2 && s===0) D.riser(t,M.toEnd,.1);
-    if(vis) vis.push({t:t,k:'lb',beat:s%4===0,word:wordStart?w.text:null,para:wordStart&&S.first&&W.wi===S.a,kick:drums&&!M.quote&&x.kick.indexOf(s)>=0,sn:drums&&!M.quote&&(s===4||s===12)&&(!brk||s===12),clav:!brk&&E>.3&&!!x.clav[s],bass:b?root-12+b.iv:null,lead:wordStart&&!M.title&&w.key.length>3?m2:null});
+    /* the signs (Todd 2026-10-15: the whistle sounds only when a word is on a sign, and the sign passes you as it sounds):
+       look five beats ahead; if the lead will sing a word there, put its sign up now, five beats down the road */
+    var sign=null, Df=20*x.s16;
+    if(A+Df<Gi.Ar+Gi.len-1e-6){ var Wf=where(A+Df), wf=Wf.w; if(wf.start>Wf.off-x.s16 && wf.start<=Wf.off && wf.key.length>3 && Wf.off>x.bar*2 && !wf.it && !moment(Wf,A+Df,x.s16,x.s16*4).stop) sign=wf.text; }
+    if(vis) vis.push({t:t,k:'lb',beat:s%4===0,word:wordStart?w.text:null,sign:sign,para:wordStart&&S.first&&W.wi===S.a,kick:drums&&!M.quote&&x.kick.indexOf(s)>=0,sn:drums&&!M.quote&&(s===4||s===12)&&(!brk||s===12),clav:!brk&&E>.3&&!!x.clav[s],bass:b?root-12+b.iv:null,lead:wordStart&&!M.title&&w.key.length>3?m2:null});
   }
   /* the catalogue rows for the picture: the sentence before, this one, the next, as library cues */
   var LB_MOOD={A:'bright, optimistic',B:'warm, easy-going',C:'pastoral, reflective',D:'tense, urban',F:'menacing, dark'};
@@ -2349,13 +2353,13 @@ NA=(function(){
    passes exactly on every beat (the car's speed is locked to the tempo); each word of the review rides in on its own
    green sign; a new paragraph brings a sign with the two lines. Reflectors flash on the clavinet; the kick bumps the car. */
 SL=(function(){
-  var SP=8, beats=0, beatT=-9, bdur=.6, travel=0, kT=-9, clT=-9, bpm=100, signs=[], bump=0;
+  var PASS=5, SP=8, beats=0, beatT=-9, bdur=.6, travel=0, kT=-9, clT=-9, bpm=100, signs=[], bump=0;
   function ev(e){ if(STATION!=='soundtrack') return; var now=performance.now()/1000;
     if(e.k==='lbs'){ if(e.bpm){ bpm=e.bpm; bdur=60/bpm; } return; }
     if(e.beat){ beats++; beatT=now; }
     if(e.kick) kT=now; if(e.clav) clT=now;
     if(e.para) signs.push({z:travel+SP*7.5, l:['CUT MY REVIEWS','INTO PIECES','THIS IS MY LAST RETORT'], big:true});
-    else if(e.word) signs.push({z:travel+SP*5.5, l:[e.word.toUpperCase()], over:true}); }
+    if(e.sign) signs.push({z:travel+SP*5+PASS, l:[e.sign.toUpperCase()], over:true}); }   /* five beats out: overhead as the whistle sounds */
   function uni(){ var now=performance.now()/1000; travel=(beats+clamp((now-beatT)/bdur,0,1))*SP;   /* a pole passes on every beat */
     bump=.004*Math.exp(-(now-kT)*12)*Math.sin((now-kT)*40); return {travel:travel, bump:bump}; }
   function draw(){ var F=fxCanvas(), g=F.g, W=F.W, H=F.H, d=F.d, now=performance.now()/1000;
@@ -2419,6 +2423,10 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
   renderBeat:function(kind,at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
     return Promise.all([loadSound(oc), kind==='classical'?loadClassical():(kind==='electro'||kind==='italo')?loadVox():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz)); return oc.startRendering(); });
+  },
+  visBeat:function(kind,at,secs){   /* what the picture is told, for checking (no sound) */
+    var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc), out=[];
+    return loadSound(oc).then(function(){ beatCache={}; var b=makeBeat(oc,e.comp,kind,0,at,out); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz)); return out; });
   },
   factIn:function(){ var P=stationNow(), ri=reviewAt(P); return factFor(ri,START[ri]).at-P; },
   factsScheduled:function(){ return Object.keys(factsDone).length; },
