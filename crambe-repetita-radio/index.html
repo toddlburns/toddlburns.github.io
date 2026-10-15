@@ -2485,12 +2485,12 @@ MB=(function(){
   function build(){ var oc=document.createElement('canvas'), o=oc.getContext('2d'); o.font='bold 13px "Helvetica Neue", Arial, sans-serif'; var w=Math.ceil(o.measureText(TXT).width); oc.width=w; oc.height=13;
     o.font='bold 13px "Helvetica Neue", Arial, sans-serif'; o.fillStyle='#fff'; o.textBaseline='top'; o.fillText(TXT,0,0); var d=o.getImageData(0,0,w,13).data; bits=[];
     for(var x=0;x<w;x++){ var col=[]; for(var y=0;y<13;y++) col.push(d[(y*w+x)*4+3]>120); bits.push(col); } cols=w; }
-  /* the lead (Todd 2026-10-15: "the long lines more concretely depicted visually as they happen"): each held lead note is a pair
-     of laser beams fanning up from a projector on the stage (just above the LED strip, in front of the ball), lit for exactly as long as the note; the pitch sets how high they aim, and they swing
-     from the last note's angle as the lead glides into this one */
-  var beams=[], bHue=0;
+  /* the lead (Todd 2026-10-15: "the long lines more concretely depicted visually as they happen"; the lasers didn't land, he chose
+     the follow-spot): each held lead note is a wide spotlight that comes on as the note starts, sweeps slowly across the room
+     for exactly the note's length, and goes out as it ends. Higher notes ride higher; each new note sweeps the other way */
+  var beams=[], bDir=1;
   function aim(m){ return clamp((m-60)/30,0,1); }
-  function step(e){ if(STATION!=='italo') return; var now=performance.now()/1000; if(e.ld){ beams.push({t:now,dur:e.ld.dur,a0:aim(e.ld.from||e.ld.m),a1:aim(e.ld.m),m:e.ld.m}); if(beams.length>4) beams.shift(); }
+  function step(e){ if(STATION!=='italo') return; var now=performance.now()/1000; if(e.ld){ bDir=-bDir; beams.push({t:now,dur:e.ld.dur,lv:aim(e.ld.m),dir:bDir,m:e.ld.m}); if(beams.length>3) beams.shift(); }
     if(e.arp>=0) arT=now; if(e.kick) kT=now; if(e.sn) snT=now; if(e.hue!=null) thue=e.hue; if(e.bpm) bpm=e.bpm; }
   function uni(){ var now=performance.now()/1000, dt=Math.min(.05,now-last); last=now; rot+=dt*.09*(calm?.4:1); hue+=(thue-hue)*Math.min(1,dt*1.5); scroll+=dt*bpm/60*6;
     return {rot:rot, ar:Math.exp(-(now-arT)*6), kk:Math.exp(-(now-kT)*7), sn:Math.exp(-(now-snT)*9), hue:hue}; }
@@ -2499,13 +2499,15 @@ MB=(function(){
     g.globalAlpha=document.body.classList.contains('quiet')||!playing?1:.5;
     var lit='rgb('+[255,120,190].join(',')+')', now=performance.now()/1000, cx=W/2, cy=y0-ds*2.5, L=Math.hypot(W,H);
     beams=beams.filter(function(b){ return now-b.t<b.dur+.6; });
-    if(beams.length){ g.save(); g.globalCompositeOperation='lighter'; g.lineCap='round';
-      beams.forEach(function(b){ var a=now-b.t, on=a<0?0:a<b.dur?Math.min(1,a/.04):Math.exp(-(a-b.dur)*7), k=clamp(a/.07,0,1), lv=b.a0+(b.a1-b.a0)*k,
-          ang=.3+lv*1.05, reach=clamp(a/.06,0,1), hue=(300+(b.m*23)%120)%360, al=on*(document.body.classList.contains('quiet')||!playing?1:.7);
+    if(beams.length){ g.save(); g.globalCompositeOperation='lighter'; var R=.3*Math.min(W,H*1.3), sw=Math.min(W*.45,R*2.4);
+      beams.forEach(function(b){ var a=now-b.t, on=a<0?0:a<b.dur?Math.min(1,a/.08):Math.exp(-(a-b.dur)*9), k=clamp(a/Math.max(.3,b.dur),0,1), e=k*k*(3-2*k),
+          x=W/2+b.dir*sw*(e-.5), y=H*(.6-.28*b.lv), al=on*(document.body.classList.contains('quiet')||!playing?1:.7), hue=(330+(b.m*17)%60)%360;
         if(al<.01) return;
-        [-1,1].forEach(function(sd){ var dx=sd*Math.cos(ang), dy=-Math.sin(ang), x0=cx, y0=cy, x1=x0+dx*L*reach, y1=y0+dy*L*reach;
-          [[22,55,.25],[9,58,.6],[3.5,70,1],[1.4,96,1]].forEach(function(q){ g.strokeStyle='hsla('+hue+',100%,'+q[1]+'%,'+(q[2]*al).toFixed(3)+')'; g.lineWidth=q[0]*d; g.beginPath(); g.moveTo(x0,y0); g.lineTo(x1,y1); g.stroke(); });
-          var sp=g.createRadialGradient(x0,y0,0,x0,y0,30*d); sp.addColorStop(0,'hsla('+hue+',100%,90%,'+al.toFixed(3)+')'); sp.addColorStop(1,'hsla('+hue+',100%,60%,0)'); g.fillStyle=sp; g.beginPath(); g.arc(x0,y0,30*d,0,6.283); g.fill(); }); });
+        /* the house dims around the pool, as when a follow-spot picks someone out */
+        g.globalCompositeOperation='source-over'; var dk=g.createRadialGradient(x,y,R*.98,x,y,R*1.35); dk.addColorStop(0,'rgba(4,2,8,0)'); dk.addColorStop(1,'rgba(4,2,8,'+(.62*al).toFixed(3)+')'); g.fillStyle=dk; g.fillRect(0,0,W,H);
+        g.globalCompositeOperation='lighter';
+        var sp=g.createRadialGradient(x,y,0,x,y,R); sp.addColorStop(0,'hsla('+hue+',55%,90%,'+(.62*al).toFixed(3)+')'); sp.addColorStop(.9,'hsla('+hue+',55%,84%,'+(.5*al).toFixed(3)+')');
+        sp.addColorStop(.96,'hsla('+hue+',70%,72%,'+(.18*al).toFixed(3)+')'); sp.addColorStop(1,'hsla('+hue+',70%,60%,0)'); g.fillStyle=sp; g.beginPath(); g.arc(x,y,R,0,6.283); g.fill(); });
       g.restore(); }
     g.fillStyle='rgba(10,6,14,.85)'; g.fillRect(x0-ds,y0-ds,n*ds+ds*2,ds*15);
     for(var i=0;i<n;i++){ var col=bits[(off+i)%cols]; for(var y=0;y<13;y++){ var on=col[y]; g.fillStyle=on?'rgba(255,'+Math.round(110+60*Math.sin(i*.08+scroll*.05))+',190,.95)':'rgba(255,120,190,.07)'; g.beginPath(); g.arc(x0+i*ds+ds/2,y0+y*ds+ds/2,ds*.36,0,6.283); g.fill(); } }
@@ -2664,6 +2666,7 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
   },
   remix:function(o){ if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; return loadRemix().then(function(){ return REMIX; }); },
   remixText:function(ri,o){ var keep=JSON.stringify(REMIX); if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; var st=STATION; STATION='remix'; var B=beatPrep(ri); STATION=st; REMIX=JSON.parse(keep); RXC={}; return {text:B.text, words:B.ws.length, g:B.R.g}; },
+  vis:function(e){ applyVis(e); },   /* feed the picture one event by hand, for checking */
   visBeat:function(kind,at,secs){   /* what the picture is told, for checking (no sound) */
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc), out=[];
     return loadSound(oc).then(function(){ beatCache={}; var b=makeBeat(oc,e.comp,kind,0,at,out); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz)); return out; });
