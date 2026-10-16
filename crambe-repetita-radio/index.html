@@ -124,6 +124,8 @@ body[data-station="remix"] #play{top:24%}
 .rx-page .mk>*{grid-area:1/1}
 .rx-page .mk s{text-decoration:none;background:linear-gradient(#c3221c,#c3221c) 0 55%/100% 1.5px no-repeat;color:#6f665a}
 .rx-page .mk i{display:block;transform:translateY(-1.05em) rotate(-2deg);font-family:Caveat,cursive;font-style:normal;font-weight:600;font-size:1.2em;color:#c3221c;white-space:nowrap;line-height:1}
+.rx-page .snt.on{background:linear-gradient(180deg,transparent 58%,rgba(255,214,60,.45) 58%,rgba(255,214,60,.45) 92%,transparent 92%)}
+.rx-page .gr-hd{font-variant:small-caps;letter-spacing:.06em;opacity:.6;margin-right:.4em}
 .rx-page .mk i.cur{background:linear-gradient(180deg,transparent 45%,rgba(255,214,60,.75) 45%)}
 .rx-page .car{color:#c3221c;font-family:Caveat,cursive;font-weight:600;margin:0 -.1em;position:relative;top:.35em}
 .rx-page .el{color:#7a7064}
@@ -371,8 +373,8 @@ function beatCore(P,R,ri){
    Which words change is decided by the same dice for everyone, so a fader position always reads the same way. Each
    paragraph keeps its slot on the clock; inside it the new words share out the time. */
 var RX_GRADES=['F','D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+'];
-var RXSTYLE=(location.search.match(/[?&]rxs=(\w+)/)||[])[1]||'voice';   /* the Remix: voice (the review read aloud, RV), or the trial bands desk (typewriter, piano, cello) and late (brushes, vibes, upright bass) */
-var REMIX={lang:0,grade:null,temper:0,sent:0}, RXLEX=null, RXC={}, rxLoading=null;
+var RXSTYLE=(location.search.match(/[?&]rxs=(\w+)/)||[])[1]||'grade';   /* the Remix: grade (four reviews, one Grade slider, GR), voice (the review read aloud, RV), or the trial bands desk (typewriter, piano, cello) and late (brushes, vibes, upright bass) */
+var REMIX={lang:0,grade:null,temper:0,sent:0,g5:0}, RXLEX=null, RXC={}, rxLoading=null;
 try{ var rxs=JSON.parse(localStorage.getItem('crr-remix')||'null'); if(rxs) ['lang','temper','sent'].forEach(function(k){ if(typeof rxs[k]==='number') REMIX[k]=clamp(rxs[k],-1,1); }), REMIX.grade=null; }catch(e){}   /* the grade is no longer yours to change (Todd 2026-10-15) */
 function loadRemix(){ if(!rxLoading) rxLoading=fetch('remix.json').then(function(r){ return r.json(); }).then(function(d){ RXLEX=d.w; RXC={}; }).catch(function(){}); return rxLoading; }
 function remixSig(){ return [REMIX.lang,REMIX.grade,REMIX.temper,REMIX.sent,!!RXLEX].join('|'); }
@@ -1610,6 +1612,7 @@ function play(quick){
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
       if(!quick) ident('welcome',ctx.currentTime+1.5);
+      if(STATION==='remix'&&RXSTYLE==='grade'&&GR) GR.start();
       if(STATION==='remix'&&RXSTYLE==='voice'&&RV){ if(RXV) RV2.start(); else { RV.start(); loadRxVoice(ctx).then(function(){ if(playing&&STATION==='remix'&&RV.on()){ RV.stop(); RV2.start(); } }); } }
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
       try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
@@ -1618,7 +1621,7 @@ function play(quick){
   ctx.resume().then(go,go);
 }
 function pause(){
-  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop(); if(RV2) RV2.stop();
+  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop(); if(RV2) RV2.stop(); if(GR) GR.stop();
   eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill(); if(beat){ beat.kill(); beat=null; }
   $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
@@ -1626,7 +1629,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GR) GR.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -2020,7 +2023,7 @@ function applyVis(e){
   if(e.k==='o'){ if(EP) EP.orch(); return; }
   if(e.k==='ip'){ if(TK) TK.pat(e); return; }
   if(e.k==='it'){ if(MB) MB.step(e); return; }
-  if(e.k==='rx'){ if(e.kick) PV.kT=e.t; if(RX) RX.ev(e); return; }
+  if(e.k==='rx'){ if(RXSTYLE==='grade') return; if(e.kick) PV.kT=e.t; if(RX) RX.ev(e); return; }
   if(e.k==='lb'||e.k==='lbs'){ if(e.kick) PV.kT=e.t; if(SL) SL.ev(e); return; }
   if(e.k==='na'||e.k==='nf'||e.k==='nb'||e.k==='nc'){ if(NA) NA.ev(e); return; }
   if(e.k==='bs'){ if(OR) OR.seq(e); return; }
@@ -2691,28 +2694,28 @@ SL=(function(){
    changes in the music: Style on every word, Vibe on hits and builds, Sentence length on each new sentence. The word at each
    end is blank at the middle and inks in as you push toward it. (The grade slider went 2026-10-15: the grade is the review's.) */
 var RX=(function(){
-  var F=[{k:'temper',name:'Vibe',lo:'Calm',hi:'Excitable'},{k:'lang',name:'Style',lo:'Functional',hi:'Flowery'},{k:'sent',name:'Sentence length',lo:'Terse',hi:'Run-on'}];
+  var F=RXSTYLE==='grade'?[{k:'g5',name:'Grade',lo:'F',hi:'A'}]:[{k:'temper',name:'Vibe',lo:'Calm',hi:'Excitable'},{k:'lang',name:'Style',lo:'Functional',hi:'Flowery'},{k:'sent',name:'Sentence length',lo:'Terse',hi:'Run-on'}];
   var desk=$('rxDesk'), el={}, shownWi=-1, shownKey='', warmNow=.5;
   function origGrade(){ if(!ST) return 'C'; var P=playing&&ctx?posAt(ctx.currentTime):stationNow(), ri=reviewAt(P-Math.floor(P/TOTAL)*TOTAL), g=(ST[ri].g||'C').split('/')[0].trim().toUpperCase(); return RX_GRADES.indexOf(g)>=0?g:g.charAt(0)==='F'?'F':'C'; }
   function frac(f){ return (REMIX[f.k]+1)/2; }
   function paint(){ F.forEach(function(f){ var e=el[f.k], v=REMIX[f.k], fr=frac(f);
       e.thumb.style.left=fr*100+'%'; e.fill.style.left=Math.min(fr,.5)*100+'%'; e.fill.style.width=Math.abs(fr-.5)*100+'%';
       e.lo.style.opacity=Math.pow(Math.max(0,-v),.8).toFixed(3); e.hi.style.opacity=Math.pow(Math.max(0,v),.8).toFixed(3);
-      e.tr.setAttribute('aria-valuenow',Math.round(v*100)); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
-  function set(k,v){ v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; if(REMIX[k]===v) return; REMIX[k]=v;
+      e.tr.setAttribute('aria-valuenow',Math.round(v*100)); if(f.k==='g5') e.name.textContent='Grade: '+'FDCBA'.charAt(Math.round((v+1)*2)); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
+  function set(k,v){ if(k==='g5') v=Math.round(clamp(v,0,1)*4)/2-1; else { v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; } if(REMIX[k]===v) return; REMIX[k]=v; if(k==='g5'){ paint(); if(GR) GR.change(); return; }
     RXC={}; paint(); shownKey=''; if(beat&&beat.live&&STATION==='remix') beat.live(); if(RV&&STATION==='remix'){ RV.change(); RV2.change(); } try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
     var d=document.createElement('div'); d.className='sl';
     d.innerHTML='<div class="sl-head"><span class="sl-end">'+f.lo+'</span><span class="sl-name">'+f.name+'</span><span class="sl-end">'+f.hi+'</span></div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div>';
     desk.appendChild(d); var tr=d.querySelector('.sl-track'), ends=d.querySelectorAll('.sl-end');
-    el[f.k]={tr:tr,cap:d.querySelector('.sl-thumb'),thumb:d.querySelector('.sl-thumb'),fill:d.querySelector('.sl-fill'),lo:ends[0],hi:ends[1]};
+    el[f.k]={name:d.querySelector('.sl-name'),tr:tr,cap:d.querySelector('.sl-thumb'),thumb:d.querySelector('.sl-thumb'),fill:d.querySelector('.sl-fill'),lo:ends[0],hi:ends[1]};
     var drag=function(e){ var r=tr.getBoundingClientRect(); set(f.k,clamp((e.clientX-r.left)/r.width,0,1)); };
     tr.addEventListener('pointerdown',function(e){ tr.setPointerCapture(e.pointerId); drag(e); e.preventDefault(); });
     tr.addEventListener('pointermove',function(e){ if(tr.hasPointerCapture(e.pointerId)) drag(e); });
     tr.addEventListener('dblclick',function(){ set(f.k,.5); });
     tr.addEventListener('keydown',function(e){ var cur=frac(f);
-      if(e.key==='ArrowUp'||e.key==='ArrowRight'){ set(f.k,cur+.05); e.preventDefault(); e.stopPropagation(); }
-      else if(e.key==='ArrowDown'||e.key==='ArrowLeft'){ set(f.k,cur-.05); e.preventDefault(); e.stopPropagation(); } });
+      if(e.key==='ArrowUp'||e.key==='ArrowRight'){ set(f.k,cur+(f.k==='g5'?.25:.05)); e.preventDefault(); e.stopPropagation(); }
+      else if(e.key==='ArrowDown'||e.key==='ArrowLeft'){ set(f.k,cur-(f.k==='g5'?.25:.05)); e.preventDefault(); e.stopPropagation(); } });
   });
   function flash(k){ var c=el[k].cap; c.classList.remove('hit'); void c.offsetWidth; c.classList.add('hit'); setTimeout(function(){ c.classList.remove('hit'); },60); }
   /* the proof page: the paragraph as written against the paragraph as remixed, word by word (longest common run), drawn with a
@@ -2751,7 +2754,7 @@ var RX=(function(){
     if(e.word) flash('lang'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
     if(e.wi!==shownWi||e.B.key!==shownKey){ shownWi=e.wi; shownKey=e.B.key; text(e.B,e.wi); } }
   paint();
-  return {ev:ev, paint:paint, warm:function(){ return warmNow; }};
+  return {ev:ev, paint:paint, warm:function(){ return RXSTYLE==='grade'&&GR?GR.warm():warmNow; }};
 })();
 /* ================= Remix, spoken (Todd 2026-10-15: "not actually have music but… speaking the review and then you get
    the edits in real time… an insane sound poem"). The browser's own voice reads the review as the listener has rewritten
@@ -2843,6 +2846,61 @@ var RV2=(function(){
     on:function(){ return on; }, said:function(){ return said.join(' '); }
   };
 })();
+/* ================= Remix v5, the grade slider (Todd 2026-10-16: "tighten this to be simply a change the grade slider…
+   generic positive and negative language… decoupled from the station and only does like four reviews ever"). Four
+   reviews, read by Todd's voice (Chatterbox, cloned from his ElevenLabs voice; build/grade/), each sentence recorded at
+   all five grades. The verdict words come from one graded bank (or a line written for that spot), stock critic lines
+   drop in at paragraph ends the further you push from my real grade, and every review ends "And so, my grade for this
+   album is clearly…". Move the slider mid-sentence and the voice jumps to the same point in that sentence at the new
+   grade. Each listener starts at the first review; the station clock plays no part. ---- */
+var GRD=null, grdLoading=null, GRBUF={};
+function loadGrade(){ if(!grdLoading) grdLoading=fetch('grade.json').then(function(r){ return r.json(); }).then(function(d){ GRD=d; }).catch(function(){ grdLoading=null; }); return grdLoading; }
+function grSprite(n){ if(!GRBUF[n]) GRBUF[n]=fetch('grade/'+n+'.mp3').then(function(r){ return r.arrayBuffer(); })
+  .then(function(b){ return new Promise(function(ok,no){ (new OfflineAudioContext(1,1,44100)).decodeAudioData(b,ok,no); }); }).catch(function(){ delete GRBUF[n]; });
+  return GRBUF[n]; }
+var GR=(function(){
+  var on=false, ri=0, pi=0, ii=-1, gen=0, src=null, srcT0=0, srcLen=0, item=null, tm=null, out=null, BUF={}, shownG=-1;
+  function g(){ return Math.round((REMIX.g5+1)*2); }                     /* 0 F .. 4 A */
+  function L(){ return GRD.G.charAt(g()); }
+  function rv(){ return GRD.reviews[ri]; }
+  function clipOf(it){ return it.close?GRD.close[L()]:it.stock?it.c:it.c[L()]; }
+  function active(it){ return !it.stock || it.stock===L(); }
+  function setGrade(G){ REMIX.g5=GRD.G.indexOf(G)/2-1; if(RX) RX.paint(); }
+  function playClip(id,frac){ var c=GRD.clips[id], b=BUF[c[0]]; if(!b) return 0; var off=c[1]+frac*c[2], len=c[2]*(1-frac);
+    var s=ctx.createBufferSource(), gn=ctx.createGain(), t=ctx.currentTime+.03; s.buffer=b; s.connect(gn); gn.connect(out);
+    gn.gain.setValueAtTime(0,t); gn.gain.linearRampToValueAtTime(1,t+.015); s.start(t,off,len+.02); src=s; srcT0=t-frac*c[2]; srcLen=c[2]; return t+len; }
+  function hush(){ if(src){ try{ var g2=ctx.currentTime; src.stop(g2+.02); }catch(e){} src=null; } clearTimeout(tm); }
+  function next(){ if(!on) return; var R=rv(), P=R.paras;
+    for(;;){ ii++; if(pi<P.length && ii<P[pi].length){ if(active(P[pi][ii])) break; continue; }
+      if(pi<P.length){ pi++; ii=-1; if(pi<P.length){ return wait(.8); } item={close:1}; ii=0; return say(); }
+      ri=(ri+1)%GRD.reviews.length; pi=0; ii=-1; return begin(); }
+    say(); }
+  function wait(s){ var gg=gen; tm=setTimeout(function(){ if(gg===gen) next(); },s*1000); }
+  function begin(){ var R=rv(), gg=gen; setGrade(R.g); paint();
+    Promise.all([grSprite('r'+ri),grSprite('common')]).then(function(b){ if(gg!==gen) return; BUF['r'+ri]=b[0]; BUF.common=b[1]; grSprite('r'+((ri+1)%GRD.reviews.length)); wait(Math.max(1.2,identUntil-ctx.currentTime+.5)); }); }
+  function say(frac){ var gg=gen; if(!item||!item.close) item=rv().paras[pi][ii]; var end=playClip(clipOf(item),frac||0); PV.kT=ctx.currentTime-heardLag(); paint();
+    var after=item.close?2.5:item.stock?.45:.28; clearTimeout(tm); tm=setTimeout(function(){ if(gg!==gen) return; if(item.close){ item=null; ri=(ri+1)%GRD.reviews.length; pi=0; ii=-1; begin(); } else next(); },Math.max(0,(end-ctx.currentTime+after)*1000)); }
+  /* the proof page: the paragraph as I wrote it, with this grade's swaps in red pen and its stock lines over a caret */
+  function esc2(s){ return esc(s); }
+  function paint(){ if(!GRD||STATION!=='remix') return; var R=rv(), G=L(), og=R.g, P=R.paras, p=Math.min(pi,P.length-1), out2=[];
+    if(item&&item.close){ out2.push('<span class="snt on">And so, my grade for this album is clearly… <span class="mk"><s>'+og+'</s><i>'+G+'</i></span></span>'); }
+    else P[p].forEach(function(it,k){ var on2=k===ii&&p===pi, h;
+      if(it.stock){ if(it.stock!==G) return; h='<span class="mk"><span class="car">‸</span><i class="'+(on2?'cur':'')+'">'+esc2(GRD.stock[it.stock][it.k])+'</i></span>'; }
+      else { h=esc2(it.tx[og]); (it.mk[G]||[]).forEach(function(m){ h=h.replace(esc2(m[0]),'<span class="mk"><s>'+esc2(m[0])+'</s><i>'+esc2(m[1])+'</i></span>'); }); h='<span class="snt'+(on2?' on':'')+'">'+h+'</span>'; }
+      out2.push(h); });
+    var el=$('rxText'); el.innerHTML='<div class="rx-lines"><span class="gr-hd">'+esc2(R.a)+', <i>'+esc2(R.t)+'</i></span> '+out2.join(' ')+'</div>';
+    var cur=el.querySelector('.snt.on, i.cur'); if(cur){ var box=el.querySelector('.rx-lines'); box.scrollTop=Math.max(0,cur.offsetTop-box.offsetTop-box.clientHeight*.25); } }
+  return {
+    start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=0; pi=0; ii=-1; item=null;
+      say0(); function say0(){ loadGrade().then(function(){ if(on) begin(); }); } },
+    stop:function(){ on=false; gen++; hush(); out=null; },
+    change:function(){ paint(); if(!on||!item||!src) return; var frac=clamp((ctx.currentTime-srcT0)/srcLen,0,.98), gg=++gen;
+      if(item.stock && !active(item)){ hush(); next(); return; }   /* a stock line from another grade is cut off */
+      hush(); say(Math.max(0,frac-.04)); },
+    paint:paint, warm:function(){ return GRD?g()/4:.5; }, on:function(){ return on; }
+  };
+})();
+
 
 
 
