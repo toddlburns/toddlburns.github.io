@@ -371,6 +371,7 @@ function beatCore(P,R,ri){
    Which words change is decided by the same dice for everyone, so a fader position always reads the same way. Each
    paragraph keeps its slot on the clock; inside it the new words share out the time. */
 var RX_GRADES=['F','D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+'];
+var RXSTYLE=(location.search.match(/[?&]rxs=(\w+)/)||[])[1]||'voice';   /* the Remix: voice (the review read aloud, RV), or the trial bands desk (typewriter, piano, cello) and late (brushes, vibes, upright bass) */
 var REMIX={lang:0,grade:null,temper:0,sent:0}, RXLEX=null, RXC={}, rxLoading=null;
 try{ var rxs=JSON.parse(localStorage.getItem('crr-remix')||'null'); if(rxs) ['lang','temper','sent'].forEach(function(k){ if(typeof rxs[k]==='number') REMIX[k]=clamp(rxs[k],-1,1); }), REMIX.grade=null; }catch(e){}   /* the grade is no longer yours to change (Todd 2026-10-15) */
 function loadRemix(){ if(!rxLoading) rxLoading=fetch('remix.json').then(function(r){ return r.json(); }).then(function(d){ RXLEX=d.w; RXC={}; }).catch(function(){}); return rxLoading; }
@@ -434,10 +435,9 @@ function remixPrep(ri){
   var B=beatCore(prepCore(Rr,ri,slots),Rr,ri); B.key=key; B.text=text;
   if(Object.keys(RXC).length>6) RXC={}; return (RXC[key]=B);
 }
-function recRx(B){   /* the Remix band's fixed parts per review: tempo, swing, kick, the bass rhythm (the faders never move these) */
-  if(B.rx) return B.rx; var r=function(k){ return rnd(B,k); }, bpm=Math.round(92+22*r(1));
-  return (B.rx={bpm:bpm, s16:15/bpm, bar:240/bpm, swing:r(2)<.5?0:.08+.12*r(3), kick:pick([[0,8],[0,6,8],[0,8,10],[0,3,8,11]],r(4)),
-    ghost:[3,7,11,15].filter(function(q,i){ return r(5+i)<.4; }), brh:euclid(5+Math.floor(r(9)*4),16,Math.floor(r(10)*16)), tonic:45+B.root%12});
+function recRx(B){   /* v3 (Todd 2026-10-15: "three elements only… each slider concretely changes one"): a trio, slow; two sets, see RXSTYLE */
+  var key=RXSTYLE; B.rx=B.rx||{}; if(B.rx[key]) return B.rx[key]; var r=function(k){ return rnd(B,k); }, late=key==='late', bpm=Math.round(late?80+12*r(1):72+12*r(1));
+  return (B.rx[key]={bpm:bpm, s16:15/bpm, bar:240/bpm, swing:late?.55:0, prog:pick([[0,5,3,4],[0,3,4,3],[5,3,0,4],[0,4,5,3],[1,4,0,5]],r(11)), tonic:48+B.root%12});
 }
 /* what the station is reading at absolute station second A */
 function where(A){
@@ -566,12 +566,28 @@ function recFz(B){
 }
 
 function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture reads (null offline) */
-  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:10,woodblock:5,dub:.75,electro:.7,italo:1.25,berlin:1.6,newage:1.1,idm:1.4,soundtrack:1.25,remix:1.2}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
+  var bus=c.createGain(); bus.gain.value={fusion:.97,'303':1.2,classical:10,woodblock:5,dub:.75,electro:.7,italo:1.25,berlin:1.6,newage:1.1,idm:1.4,soundtrack:1.25,remix:2.2}[kind]; bus.connect(dest);   /* level-matched to the ambient station on the same moment (classical sits lower on purpose) */
   var room=c.createConvolver(), rg=c.createGain(); rg.gain.value={fusion:.28,'303':.12,classical:.5,woodblock:.42,dub:.3,electro:.14,italo:.2,berlin:.25,newage:.4,idm:.2,soundtrack:.18,remix:.2}[kind];
   (function(){ var n=Math.floor(c.sampleRate*1.6), b=c.createBuffer(2,n,c.sampleRate);
     for(var ch=0;ch<2;ch++){ var d=b.getChannelData(ch); for(var i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.35)); }
     room.buffer=b; room.normalize=true; })();
   var send=c.createGain(); send.connect(room); room.connect(rg); rg.connect(bus);
+  /* Remix v3 (Todd 2026-10-15: "each slider should concretely change one specific element of the song and the song
+     should probably be made up of three elements only"): three instruments, one per slider. Each is always played in
+     both of its versions, into two layers (three for the rhythm), and a slider only sets those layers' levels, so a
+     move is heard at once (the notes are queued two seconds ahead, the levels are not).
+       Vibe = the rhythm (r0 always, r1 and r2 come in toward Excitable)   Style = the chords (hf Functional, hl Flowery)
+       Sentence length = the words' melody (ms Terse, ml Run-on) */
+  var RXL=null, RXTRIM={desk:{r0:2.4,r1:2.4,r2:2.4,hf:4.2,hl:3.9,ms:.8,ml:5.6}, late:{r0:1.5,r1:1.5,r2:1.5,hf:6,hl:5,ms:.45,ml:.25}};   /* each instrument's level, measured */
+  if(kind==='remix') (function(){
+    var L={}, Lw={}; ['r0','r1','r2','hf','hl','ms','ml'].forEach(function(n){ L[n]=c.createGain(); L[n].connect(bus); Lw[n]=c.createGain(); Lw[n].connect(send); });
+    RXL={L:L, Lw:Lw,
+      set:function(now){ var e=(REMIX.temper+1)/2, l=(REMIX.lang+1)/2, sl=(REMIX.sent+1)/2, T=RXTRIM[RXSTYLE]||RXTRIM.desk, k=function(n,v,wet){ v*=T[n]; [L[n].gain,Lw[n].gain].forEach(function(p,i){ p.cancelScheduledValues(now); p.setTargetAtTime((i?v*wet:v)*(window.RXSOLO?(RXSOLO.indexOf(n)>=0?1:0):1),now,.03); }); };
+        k('r0',1,.5); k('r1',clamp((e-.25)/.3,0,1),.5); k('r2',clamp((e-.6)/.3,0,1),.5);
+        k('hf',Math.cos(l*Math.PI/2),.25); k('hl',Math.sin(l*Math.PI/2),2.2);
+        k('ms',Math.cos(sl*Math.PI/2),.6); k('ml',Math.sin(sl*Math.PI/2),1.2); }
+    };
+  })();
   var noise=c.createBuffer(1,c.sampleRate,c.sampleRate), nd=noise.getChannelData(0); for(var i=0;i<nd.length;i++) nd[i]=Math.random()*2-1;
   var live=[], G=null, KIT=909;
   function absAt(T){ return aAbs+(T-aCtx); }
@@ -1173,12 +1189,12 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     ns.forEach(function(m,i){ [-4,4].forEach(function(dt,k){ var o=c.createOscillator(); o.type=k?'triangle':'sine'; o.frequency.value=mtof(m); o.detune.value=dt+i; lg.connect(o.detune); o.connect(lp); o.start(t); o.stop(end); }); });
     g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+1.6); g.gain.setValueAtTime(v,t+dur); g.gain.setTargetAtTime(.0001,t+dur,.8); lp.connect(g); g.connect(bus); g.connect(send); lfo.start(t); lfo.stop(end); }
   var ECHO=null;
-  if(['italo','berlin','newage','idm','soundtrack','remix'].indexOf(kind)>=0) (function(){   /* a stereo echo, its time set by the review */
+  if(['italo','berlin','newage','idm','soundtrack'].indexOf(kind)>=0) (function(){   /* a stereo echo, its time set by the review */
     var inp=c.createGain(), dL=c.createDelay(3), dR=c.createDelay(3), a=c.createGain(), lp=c.createBiquadFilter(), out=c.createGain();
     lp.type='lowpass'; lp.frequency.value=3200; a.gain.value=.42; out.gain.value=.8;
     var pL=out, pR=out; if(c.createStereoPanner){ pL=c.createStereoPanner(); pR=c.createStereoPanner(); pL.pan.value=-.6; pR.pan.value=.6; pL.connect(out); pR.connect(out); }
     inp.connect(dL); dL.connect(lp); lp.connect(pL); lp.connect(dR); dR.connect(pR); dR.connect(a); a.connect(dL); out.connect(bus); out.connect(send);
-    ECHO=inp; ECHO.time=function(s,t){ dL.delayTime.setTargetAtTime(s,t,.05); dR.delayTime.setTargetAtTime(s,t,.05); };
+    ECHO=inp; ECHO.fb=a; ECHO.wet=out; ECHO.time=function(s,t){ dL.delayTime.setTargetAtTime(s,t,.05); dR.delayTime.setTargetAtTime(s,t,.05); };
   })();
   var echoRi=-1;
 
@@ -1382,44 +1398,101 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
 
 
 
-  /* ---- Remix: a band that plays whatever the listener has made of the review. Each sentence is a chord (terse = the
-     chords change constantly, run-on = long vamps) and its own bass riff; every word is a run of notes, one per
-     syllable (flowery = ornate runs, functional = single notes); the grade picks the scale, the drums and the lead
-     (bright grades vibes, dark grades a breathy flute, F half-time); ! is a brass hit, ? a build, a dash stops the band. ---- */
-  var rxRk='', rxRiff=null;
+  /* ---- Remix v3 (2026-10-15): a trio, three instruments and nothing else, one per slider (the rig is RXL, above).
+     RXSTYLE 'desk', the Writer's Desk: a typewriter (Vibe: hunt-and-peck up to touch-typing, a bell and a carriage
+     return at each full stop), a piano (Style: a bare two-note chord, or rolled chords, an arpeggio and the pedal) and a
+     cello on the words, one note a word (Sentence length: pizzicato, or one bowed line that slides word to word).
+     RXSTYLE 'late', late night: brushes (Vibe: a slow swirl, then slaps on 2 and 4, then the ride), vibes (Style: two
+     dampened notes, or the full chord with the motor on and fills) and an upright bass (Sentence length: one short pluck a
+     word, or a legato walking line that never stops). A dash stops the trio; ! rings the bell or the ride. ---- */
+  var rxPrev=0, rxPrevEnd=-9, rxBass=0;
+  function into(n,f){ var b=bus, sd=send; bus=RXL.L[n]; send=RXL.Lw[n]; try{ f(); } finally{ bus=b; send=sd; } }
+  function near(prev,h,ch,lo,hi){   /* the chord tone nearest a small step from the last note */
+    var tgt=(prev||(lo+hi)/2)+[-5,-3,-2,2,3,5,0][h%7], best=lo, bd=99;
+    for(var m=lo;m<=hi;m++){ if(ch.some(function(q){ return ((m-q)%12+12)%12===0; }) && Math.abs(m-tgt)<bd){ bd=Math.abs(m-tgt); best=m; } }
+    return best; }
+  /* the typewriter */
+  function tkey(t,v,h){ nh(t,'bandpass',3000+1600*ih(h>>>0),v,.014); nh(t+.006,'bandpass',1300+300*ih((h+1)>>>0),v*.6,.03); tone(t,320,210,v*.22,.035,'triangle'); }
+  function tspace(t,v){ nh(t,'lowpass',650,v,.08); tone(t,150,105,v*.55,.08,'sine'); nh(t+.012,'bandpass',2200,v*.3,.02); }
+  function tbell(t,v){ var g=c.createGain(); g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.0001,t+1.8);
+    [[2093,1],[5235,.35],[8100,.12]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.frequency.value=p[0]; og.gain.value=p[1]; o.connect(og); og.connect(g); o.start(t); o.stop(t+1.9); });
+    g.connect(bus); g.connect(send); }
+  function tret(t,v){ for(var k=0;k<11;k++) nh(t+k*.03,'bandpass',1700+k*70,v*(.45+.05*k),.012); nh(t+.36,'lowpass',900,v*1.5,.1); tone(t+.36,150,90,v*.9,.12,'sine'); }
+  /* the piano (the recorded upright when it has loaded) and the cello */
+  function pno(t,m,v,dur){ if(CLS) samp('piano',t,m,v*5.5,dur,0,1,clamp((m-64)/36,-.4,.4)); else pianoS(t,m,v); }
+  function pizz(t,m,v){ var f=mtof(m), o=c.createOscillator(), o2=c.createOscillator(), lp=c.createBiquadFilter(), g=c.createGain();
+    o.type='triangle'; o.frequency.value=f; o2.type='sawtooth'; o2.frequency.value=f*1.003; lp.type='lowpass'; lp.Q.value=1.5;
+    lp.frequency.setValueAtTime(Math.min(5000,f*9),t); lp.frequency.exponentialRampToValueAtTime(f*1.6,t+.12);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.45);
+    o.connect(lp); o2.connect(lp); lp.connect(g); g.connect(bus); g.connect(send); nh(t,'bandpass',f*4,v*.5,.015); o.start(t); o2.start(t); o.stop(t+.5); o2.stop(t+.5); }
+  function cello(t,m,v,dur,from){ if(!CLS) return bowedS(t,m,dur,v*.6,.5);
+    var Lc=CLS.map.cello, n=Lc[0]; Lc.forEach(function(q){ if(Math.abs(q[0]-m)<Math.abs(n[0]-m)) n=q; });
+    var rate=Math.pow(2,(m-n[0])/12), len=Math.min(n[2]/rate-.2,dur), src=c.createBufferSource(), g=c.createGain(), rel=.45;
+    src.buffer=CLS.buf; if(from){ src.playbackRate.setValueAtTime(rate*Math.pow(2,(from-m)/12),t); src.playbackRate.linearRampToValueAtTime(rate,t+.14); } else src.playbackRate.value=rate;   /* slides from the last word */
+    g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v*5.5,t+(from?.06:.18)); g.gain.setValueAtTime(v*5.5,t+len); g.gain.setTargetAtTime(.0001,t+len,rel/3);
+    src.connect(g); g.connect(bus); g.connect(send); src.start(t,n[1]+(from?.25:0)); src.stop(t+len+rel*2); }
+  /* the brushes, the vibes */
+  function swish(t,v,dur,pan){ var n=c.createBufferSource(); n.buffer=noise; n.loop=true; var f=c.createBiquadFilter(); f.type='bandpass'; f.Q.value=.8;
+    f.frequency.setValueAtTime(2400,t); f.frequency.linearRampToValueAtTime(3800,t+dur); var g=c.createGain(); g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(v,t+dur*.4); g.gain.linearRampToValueAtTime(.0001,t+dur);
+    var o=g; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=pan; g.connect(pn); o=pn; } n.connect(f); f.connect(g); o.connect(bus); o.connect(send); n.start(t,ih(Math.round(t*50)>>>0)*.5); n.stop(t+dur+.05); }
+  function vib(t,m,v,dur,motor){ var f=mtof(m), g=c.createGain(), tg=c.createGain(), end=t+dur+1.2;
+    [[1,1,dur+1],[4,.22,.25],[9.9,.06,.05]].forEach(function(p){ var o=c.createOscillator(), og=c.createGain(); o.frequency.value=f*p[0]; og.gain.setValueAtTime(.0001,t); og.gain.exponentialRampToValueAtTime(p[1],t+.003); og.gain.exponentialRampToValueAtTime(.0001,t+p[2]); o.connect(og); og.connect(g); o.start(t); o.stop(t+p[2]+.05); });
+    g.gain.setValueAtTime(v,t); g.gain.setTargetAtTime(0,t+dur,.1);
+    if(motor){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=5.2; lg.gain.value=.35; tg.gain.value=.7; lf.connect(lg); lg.connect(tg.gain); lf.start(t); lf.stop(end); }   /* the motor's tremolo */
+    var o2=tg; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-70)/24,-.5,.5); tg.connect(pn); o2=pn; } g.connect(tg); o2.connect(bus); o2.connect(send); }
   function stepRemix(Gi,A,t){
-    var j=Gi.j, bar=j>>4, s=j&15, W=where(A), B=W.B, x=recRx(B), w=W.w, S=W.S, ws=B.ws;
-    if(j&1) t+=x.swing*x.s16; echoFor(Gi,x.s16*3,t);
-    var E=arcAt(W.off/B.R.s), M=moment(W,A,x.s16,x.s16*4), left=B.R.s-W.off;
+    if(RXSTYLE==='voice') return;                                                     /* the voice reads instead (RV) */
+    var j=Gi.j, bar=j>>4, s=j&15, W=where(A), B=W.B, x=recRx(B), w=W.w, S=W.S, ws=B.ws, late=RXSTYLE==='late';
+    var M=moment(W,A,x.s16,x.s16*4);
     if(M.stop){ if(vis) vis.push({t:t,k:'rx',B:B,wi:W.wi,stop:1}); return; }
-    var warm=B.warm, sc=scaleFor(B.R.g), NS=sc.length, deg=[0,5,3,4,1,5,6,4][S.k%8]%NS;
+    if(late && s%4===2) t+=x.swing*x.s16;                                            /* swung eighths */
+    var sc=scaleFor(B.R.g), NS=sc.length, deg=x.prog[(bar>>1)%4], beat=x.s16*4;
     var nt=function(d){ return x.tonic+12*Math.floor(d/NS)+sc[((d%NS)+NS)%NS]; };
-    var ch=[nt(deg),nt(deg+2),nt(deg+4),nt(deg+6)]; if(warm>.7) ch.push(nt(deg+8));
-    var wordStart=w.start>W.off-x.s16 && w.start<=W.off, sentStart=wordStart && W.wi===S.a, chordNow=sentStart||(s===0&&bar%2===0);
-    /* the bass riff, from this sentence's words */
-    var rk=B.key+':'+S.k; if(rk!==rxRk){ rxRk=rk; rxRiff=[]; var wi=0, n=S.b-S.a+1;
-      for(var i=0;i<16;i++){ if(!x.brh[i]){ rxRiff.push(null); continue; } var hh=ws[S.a+(wi++%n)].h>>>0; rxRiff.push({d:[0,0,4,7,2,-3,5,7][hh%8], acc:(hh>>>8)%3===0, len:x.brh[(i+1)%16]?1:2}); } }
-    var b=rxRiff[s]; if(b && W.off>x.bar) moog(t,nt(deg+b.d)-12,x.s16*(b.len+.4),.17+.05*E,b.acc);
-    /* the drums: the grade sets the feel */
-    var drums=!M.quote && W.off>x.bar*2 && left>x.bar, half=warm<.3, kick=false, sn=false;
-    if(drums){
-      if(half ? s===0 : x.kick.indexOf(s)>=0){ D.kick(t,.8); kick=true; }
-      if(half ? s===8 : (s===4||s===12)){ D.snare(t,.55); sn=true; } else if(!half && x.ghost.indexOf(s)>=0) D.snare(t,.08+.04*E);
-      if(warm>.75 || s%2===0) D.hat(t,(s%4===2?.13:s%2?.05:.09)*(.7+.5*E)); if(warm>.85 && s===14) D.open(t,.1);
+    var ch=[nt(deg),nt(deg+2),nt(deg+4),nt(deg+6)];
+    var wordStart=w.start>W.off-x.s16 && w.start<=W.off, sentStart=wordStart && W.wi===S.a, sentEnd=wordStart && W.wi===S.b, chordNow=s===0&&bar%2===0, h=(j*7919+Gi.ri*104729)>>>0;
+    if(!late){
+      /* Vibe: the typewriter */
+      if(s%4===0) into('r0',function(){ tkey(t+(ih(h)-.5)*x.s16*.5,.42,h); });
+      if(wordStart) into('r0',function(){ tspace(t,.4); });
+      if(sentEnd){ var tb=t+Math.min(w.dur,1)+.15; into('r0',function(){ tbell(tb,.07); tret(tb+.25,.32); }); }
+      if(s%4===2) into('r1',function(){ tkey(t+(ih(h+3)-.5)*x.s16*.25,.34,h+1); });
+      if(s%2===1 && ih(h+5)>.22) into('r2',function(){ tkey(t+(ih(h+9)-.5)*x.s16*.15,.26+.08*ih(h+2),h+2); });
+      if(M.hit1) into('r0',function(){ tbell(t,.12); });
+      /* Style: the piano */
+      if(s===0) into('hf',function(){ pno(t,ch[0],.05,beat*3); pno(t+.004,ch[2],.04,beat*3); });
+      into('hl',function(){
+        if(chordNow) [ch[0]-12,ch[0],ch[2],ch[3],ch[1]+12,ch[2]+12,nt(deg+8)+12].forEach(function(m,k){ pno(t+k*.035,m,.032-.002*k,x.bar*2); });
+        else if(s===0){ pno(t-.07,ch[3]+14,.018,.3); pno(t,ch[2]+12,.03,x.bar); }     /* a grace note into the top */
+        if(s%2===0 && !(s===0)){ var lad=[ch[0],ch[1],ch[2],ch[3],nt(deg+8),ch[1]+12,ch[2]+12,ch[3]+12], q=((bar%2)*8+(s>>1))%14; pno(t,lad[q<8?q:14-q]+12,.02,beat*2); } });
+      /* Sentence length: the cello, one note a word */
+      if(wordStart){ var m=near(rxPrev,w.h>>>0,ch,45,62); if(M.title) m=near(m+12,0,ch,52,69);
+        var from=t-rxPrevEnd<.35&&rxPrev?rxPrev:0, dur=clamp(nextGap(W)+.3,.7,6);
+        into('ms',function(){ pizz(t,m,.32); });
+        into('ml',function(){ cello(t,m,.032,dur,from); });
+        rxPrev=m; rxPrevEnd=t+dur; }
+    } else {
+      /* Vibe: the brushes */
+      if(s%4===0) into('r0',function(){ swish(t,.05,beat*.95,(s>>2)%2?.35:-.35); if(s===0) tone(t,90,50,.22,.3); });
+      if(s===4||s===12) into('r1',function(){ nh(t,'bandpass',2600,.22,.15); nh(t,'highpass',5500,.08,.09); nh(t+.005,'bandpass',800,.1,.03); nh(t+.005,'highpass',7500,.06,.03); });
+      if([0,4,6,8,12,14].indexOf(s)>=0) into('r2',function(){ D.ride(t,s===6||s===14?.03:.045); });
+      if(s%4===2 && s!==6 && s!==14) into('r2',function(){ nh(t,'bandpass',2800,.06,.06); });
+      if(s%4===0 && s) into('r2',function(){ tone(t,85,50,.13,.25); });
+      if(M.hit1) into('r0',function(){ D.ride(t,.12); });
+      /* Style: the vibes */
+      if(s===0) into('hf',function(){ vib(t,ch[1]+12,.05,beat*1.4,false); vib(t+.005,ch[3]+12,.04,beat*1.4,false); });
+      into('hl',function(){
+        if(chordNow) [ch[0],ch[1],ch[3],nt(deg+8),ch[2]+12].forEach(function(m,k){ vib(t+k*.04,m+12,.03,x.bar*2-.2,true); });
+        if(s>=8 && s%2===0){ var lad=[nt(deg+8)+12,ch[3]+12,ch[2]+12,ch[1]+12,ch[0]+12,nt(deg+8),ch[3]], q=((bar%2)*4+((s-8)>>1))%7; vib(t,lad[q]+(bar%4<2?0:-12)+12,.026,beat*1.2,true); } });
+      /* Sentence length: the upright bass */
+      BASSV='round'; BEAT_F=beat;
+      if(wordStart){ var mb=near(rxBass,w.h>>>0,ch,33,50); rxBass=mb; into('ms',function(){ fbass(t,mb,.13,.42); }); }
+      if(s%4===0) into('ml',function(){ var b=s>>2, nx=x.prog[((bar+1)>>1)%4], nroot=nt(nx)-12;
+        while(nroot<36) nroot+=12; while(nroot>47) nroot-=12;
+        var root=ch[0]-12; while(root<36) root+=12; while(root>47) root-=12;
+        var m=b===0?root : b===3&&bar%2===1 ? nroot+((ws[W.wi].h>>>4)%2?1:-1) : near(root,(ws[W.wi].h>>>(b*3))>>>0,ch,33,50);   /* the root, two chord tones, a half step into the next root */
+        fbass(t,m,beat*.98,.4); });
     }
-    /* the chord: Rhodes, brighter with the grade; strings under the dark grades */
-    if(chordNow){ ch.forEach(function(m,k){ fmv(t+k*.01,m+12,.04,x.bar*(sentStart?1.5:2)-.2,{r:1,i0:.5+2.2*warm,i1:.2,id:.5,rel:.7,sus:.5,pan:-.3+.2*k}); });
-      if(warm<.5 && sentStart) strings(t,[ch[0]+12,ch[1]+12,ch[2]+12],.016,x.bar*2,1200+1600*warm); }
-    /* the words: a run of notes, one per syllable */
-    if(wordStart && !M.title && W.off>x.bar){ var syl=clamp((w.key.match(/[aeiouy]+/g)||[1]).length,1,6), span=clamp(Math.min(w.dur,nextGap(W)),.14,2.4), per=span/syl, d0=deg+7+(w.h>>>0)%4, stp=1+((w.h>>>3)&1);
-      for(var k=0;k<syl;k++){ var m=nt(d0+k*stp), v=(k?.05:.065)*(w.excl?1.3:1);
-        if(warm>=.5) vibes(t+k*per,m,v,per*(k===syl-1?3:1.4)); else flute(t+k*per,m,v*1.1,per*(k===syl-1?2.5:1.2)); }
-      if(w.key.length>=9) strings(t,[ch[1]+24,ch[2]+24],.012,span+1,3200); }
-    if(M.title && s%4===0) vibes(t,nt(deg+7+(s>>2)%4*2)+12,.06,x.s16*3);
-    /* temper */
-    if(M.hit1){ brass(t,[ch[0]+12,ch[1]+12,ch[2]+12,ch[3]+12],.085); D.crash(t,.2); }
-    var build=M.ask && M.toEnd<x.bar*2 && s===0; if(build) D.riser(t,M.toEnd,.1);
-    if(vis) vis.push({t:t,k:'rx',B:B,wi:W.wi,beat:s%4===0,kick:kick,sn:sn,word:wordStart&&!M.title,sent:sentStart,chord:chordNow,hit:!!M.hit1,ask:build});
+    if(vis) vis.push({t:t,k:'rx',B:B,wi:W.wi,beat:s%4===0,kick:s===0,sn:s===4||s===12,word:wordStart,sent:sentStart,chord:chordNow,hit:!!M.hit1,ask:false});
   }
 
   /* each review has its own grid, starting on beat one at the review's first second */
@@ -1428,7 +1501,9 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     return {ri:ri, loop:loop, Ar:Ar, B:B, s16:x.s16, len:ST[ri].s, j:Math.ceil((A-Ar)/x.s16-1e-9)};
   }
   var STEP={'303':step303,fusion:stepFusion,classical:stepClassical,woodblock:stepWoodblock,dub:stepDub,electro:stepElectro,italo:stepItalo,berlin:stepBerlin,newage:stepNewAge,idm:stepIdm,soundtrack:stepLibrary,remix:stepRemix}[kind];
+  if(RXL) RXL.set(c.currentTime);
   return {
+    live:function(){ if(RXL) RXL.set(c.currentTime); },
     until:function(H){
       if(!G) G=gridAt(absAt(c.currentTime+.05));
       for(var guard=0;guard<600;guard++){
@@ -1533,6 +1608,7 @@ function play(quick){
       cur=cursorAt(anchorPos);
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
+      if(STATION==='remix'&&RXSTYLE==='voice'&&RV) RV.start();
       if(!quick) ident('welcome',ctx.currentTime+1.5);
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
       try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
@@ -1541,17 +1617,17 @@ function play(quick){
   ctx.resume().then(go,go);
 }
 function pause(){
-  if(!playing) return; playing=false; clearInterval(timer);
+  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop();
   eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill(); if(beat){ beat.kill(); beat=null; }
   $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
 }
-$('play').addEventListener('click',function(){ if(playing) pause(); else play(); });
+$('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
-  if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation();
+  if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
   if(playing){ pause(); play(true); }
 }
@@ -2623,7 +2699,7 @@ var RX=(function(){
       e.lo.style.opacity=Math.pow(Math.max(0,-v),.8).toFixed(3); e.hi.style.opacity=Math.pow(Math.max(0,v),.8).toFixed(3);
       e.tr.setAttribute('aria-valuenow',Math.round(v*100)); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
   function set(k,v){ v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; if(REMIX[k]===v) return; REMIX[k]=v;
-    RXC={}; paint(); shownKey=''; try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
+    RXC={}; paint(); shownKey=''; if(beat&&beat.live&&STATION==='remix') beat.live(); if(RV&&STATION==='remix') RV.change(); try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
     var d=document.createElement('div'); d.className='sl';
     d.innerHTML='<div class="sl-head"><span class="sl-end">'+f.lo+'</span><span class="sl-name">'+f.name+'</span><span class="sl-end">'+f.hi+'</span></div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div>';
@@ -2676,6 +2752,53 @@ var RX=(function(){
   paint();
   return {ev:ev, paint:paint, warm:function(){ return warmNow; }};
 })();
+/* ================= Remix, spoken (Todd 2026-10-15: "not actually have music but… speaking the review and then you get
+   the edits in real time… an insane sound poem"). The browser's own voice reads the review as the listener has rewritten
+   it, a phrase at a time. A slider move cuts the voice off and it carries on from the same place in the new text, so
+   the edit is heard at once: Style swaps the words, Sentence length adds or takes away the stops (and so the pauses),
+   Vibe the ! ? and dashes, and the voice itself (slower and lower toward Calm, faster and higher toward Excitable).
+   It starts where the station clock is and reads at its own pace; at the end of the review it starts it again (the
+   cabbage reheated) until the clock reaches the next one. The proof page follows the voice. ---- */
+var RV=(function(){
+  var SS=window.speechSynthesis, on=false, B=null, wi=0, gen=0, voice=null, tmo=[], deb=null, gotB=false;
+  function pickVoice(){ if(!SS) return null; var best=null, bs=-1;
+    SS.getVoices().forEach(function(v){ if(!/^en/i.test(v.lang)) return; var s=(/premium|enhanced|natural|neural/i.test(v.name)?8:0)+(v.localService?2:0)+(/en[-_]GB/i.test(v.lang)?1:0)+(/^(Daniel|Serena|Kate|Arthur|Samantha|Karen|Moira|Ava|Evan|Zoe)/.test(v.name)?3:0)+(/Google/.test(v.name)?1:0);
+      if(s>bs){ bs=s; best=v; } });
+    return best; }
+  if(SS){ voice=pickVoice(); SS.onvoiceschanged=function(){ voice=pickVoice(); }; }
+  function punc(w){ return w.dash?' —':w.excl?'!':w.ask?'?':w.stop?'.':w.gap>=.5?',':''; }
+  function clock(){ var P=playing&&ctx?posAt(ctx.currentTime):stationNow(); return where(P); }
+  function show(i){ wi=i; if(!B||!B.ws[i]) return; var w=B.ws[i], S=B.P.sents[w.sent];
+    applyVis({k:'rx',t:ctx?ctx.currentTime-heardLag():0,B:B,wi:i,kick:true,word:true,sent:!!S&&S.a===i,hit:!!w.excl,ask:!!w.ask}); }
+  function clear(){ tmo.forEach(clearTimeout); tmo=[]; }
+  function next(i){   /* past the end: the clock's review, from its own place if the clock has moved on, else from the top */
+    var W=clock(); if(W.ri!==B.ri){ B=W.B; return W.wi; } B=beatPrep(B.ri); return i<B.ws.length?i:0; }
+  function speak(i){ if(!on||!SS) return; var g=++gen; clear(); B=beatPrep(B.ri); if(i>=B.ws.length) i=next(i);
+    var ws=B.ws, txt='', offs=[], j=i;
+    for(;j<ws.length;j++){ offs.push(txt.length); txt+=(j>i?' ':'')+ws[j].text+punc(ws[j]); var p=punc(ws[j]);
+      if((p&&p!==',')||j-i>=9||(j+1<ws.length&&ws[j+1].para!==ws[j].para)||(p===','&&j-i>=3)) break; }
+    for(var q=0;q<offs.length;q++) if(q) offs[q]++;   /* the space */
+    var last=Math.min(j,ws.length-1), u=new SpeechSynthesisUtterance(txt), t=REMIX.temper;
+    if(voice) u.voice=voice; u.lang=voice?voice.lang:'en-GB'; u.rate=clamp(1+.32*t,.6,1.5); u.pitch=clamp(1+.4*t,.5,1.6); u.volume=1;
+    u.onboundary=function(e){ if(g!==gen||e.name&&e.name!=='word') return; gotB=true; clear(); var k=0; while(k+1<offs.length&&offs[k+1]<=e.charIndex) k++; show(i+k); };
+    u.onend=function(){ if(g!==gen||!on) return; var parEnd=last+1>=ws.length||ws[last+1].para!==ws[last].para, wait=parEnd?700:ws[last].stop?120:0;
+      tmo.push(setTimeout(function(){ if(g===gen) speak(last+1); },wait)); };
+    u.onerror=function(e){ if(g!==gen||!on||e.error==='interrupted'||e.error==='canceled') return; tmo.push(setTimeout(function(){ if(g===gen) speak(last+1); },400)); };
+    show(i);
+    if(!gotB){ var per=60/(170*u.rate); for(var k=1;k<offs.length;k++) (function(k){ tmo.push(setTimeout(function(){ if(g===gen&&!gotB) show(i+k); },k*per*1000)); })(k); }   /* no word events from this voice: guess */
+    SS.speak(u); }
+  return {
+    prime:function(){ if(SS){ try{ SS.cancel(); var u=new SpeechSynthesisUtterance(' '); u.volume=0; SS.speak(u); }catch(e){} } },   /* phones only let a tap start the voice */
+    start:function(){ if(!SS) return; on=true; var W=clock(); B=W.B; gen++; SS.cancel(); setTimeout(function(){ speak(W.wi); },60); },
+    stop:function(){ on=false; gen++; clear(); clearTimeout(deb); if(SS) SS.cancel(); },
+    change:function(){ if(!on) return; clearTimeout(deb); deb=setTimeout(function(){   /* the same place in the rewritten paragraph */
+      var w=B.ws[wi]||B.ws[0], para=w.para, ows=B.ws.filter(function(x){ return x.para===para; }), fr=ows.indexOf(w)/Math.max(1,ows.length);
+      B=beatPrep(B.ri); var ni=-1, cnt=0; B.ws.forEach(function(x,k){ if(x.para===para){ if(ni<0) ni=k; cnt++; } });
+      gen++; clear(); SS.cancel(); var to=ni<0?0:ni+Math.min(cnt-1,Math.round(fr*cnt)); setTimeout(function(){ speak(to); },40); },90); },
+    on:function(){ return on; }
+  };
+})();
+
 
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
 var quietTimer=null;
@@ -2704,12 +2827,15 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
       return oc.startRendering();
     });
   },
-  renderBeat:function(kind,at,secs){
+  renderBeat:function(kind,at,secs,moves){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
-    return Promise.all([loadSound(oc), kind==='classical'?loadClassical():(kind==='electro'||kind==='italo')?loadVox():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz)); return oc.startRendering(); });
+    return Promise.all([loadSound(oc), kind==='classical'||(kind==='remix'&&RXSTYLE==='desk')?loadClassical():(kind==='electro'||kind==='italo')?loadVox():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz));
+      (moves||[]).forEach(function(mv){ oc.suspend(mv.at).then(function(){ Object.keys(mv.set).forEach(function(k){ REMIX[k]=mv.set[k]; }); b.live(); oc.resume(); }); });   /* slider moves mid-render (Remix), to hear that they land at once */
+      return oc.startRendering(); });
   },
   remix:function(o){ if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; return loadRemix().then(function(){ return REMIX; }); },
   remixText:function(ri,o){ var keep=JSON.stringify(REMIX); if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; var st=STATION; STATION='remix'; var B=beatPrep(ri); STATION=st; REMIX=JSON.parse(keep); RXC={}; return {text:B.text, words:B.ws.length, g:B.R.g}; },
+  rxStyle:function(k){ RXSTYLE=k; },
   vis:function(e){ applyVis(e); },   /* feed the picture one event by hand, for checking */
   visBeat:function(kind,at,secs){   /* what the picture is told, for checking (no sound) */
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc), out=[];
