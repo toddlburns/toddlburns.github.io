@@ -2862,7 +2862,7 @@ var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "ti
      right where the last one ends (a timer only wakes it up early), and the page moves on when the take is HEARD, which on a
      phone is a quarter second or more after it is played (heardLag) */
   var on=false, ri=0, pi=0, ii=-1, gen=0, srcs=[], src=null, srcT0=0, srcLen=0, item=null, tm=null, out=null, BUF={}, nextAt=0, S={pi:0,ii:-1,item:null};
-  var ORD=[3,1,2,0];   /* Envy, Squarepusher, Q And Not U, Exhaust (Todd 2026-10-16: Exhaust fourth) */
+  var ORD=[1,2,0];   /* Squarepusher, Q And Not U, Exhaust (Todd 2026-10-16: Envy out, its opening is not OK; Exhaust last) */
   function nri(){ return ORD[(ORD.indexOf(ri)+1)%ORD.length]; }
   function g(){ return Math.round((REMIX.g5+1)*2.5); }                   /* 0 F .. 4 A, 5 A+ */
   function L(){ return GRD.G.charAt(Math.min(4,g())); }                 /* A+ says what A says (Todd: "don't change anything about the hyperbole") */
