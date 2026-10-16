@@ -2858,44 +2858,50 @@ function loadGrade(){ if(!grdLoading) grdLoading=fetch('grade.json').then(functi
 function grSprite(n){ if(!GRBUF[n]) GRBUF[n]=fetch('grade/'+n+'.mp3').then(function(r){ return r.arrayBuffer(); })
   .then(function(b){ return new Promise(function(ok,no){ (new OfflineAudioContext(1,1,44100)).decodeAudioData(b,ok,no); }); }).catch(function(){ delete GRBUF[n]; });
   return GRBUF[n]; }
-var GR=(function(){
-  var on=false, ri=0, pi=0, ii=-1, gen=0, src=null, srcT0=0, srcLen=0, item=null, tm=null, out=null, BUF={}, shownG=-1;
+var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "timing wise"): each take is started on the audio clock
+     right where the last one ends (a timer only wakes it up early), and the page moves on when the take is HEARD, which on a
+     phone is a quarter second or more after it is played (heardLag) */
+  var on=false, ri=0, pi=0, ii=-1, gen=0, srcs=[], src=null, srcT0=0, srcLen=0, item=null, tm=null, out=null, BUF={}, nextAt=0, S={pi:0,ii:-1,item:null};
   function g(){ return Math.round((REMIX.g5+1)*2); }                     /* 0 F .. 4 A */
   function L(){ return GRD.G.charAt(g()); }
   function rv(){ return GRD.reviews[ri]; }
   function clipOf(it){ return it.close?GRD.close[L()]:it.stock?it.c:it.c[L()]; }
   function active(it){ return !it.stock || it.stock===L(); }
   function setGrade(G){ REMIX.g5=GRD.G.indexOf(G)/2-1; if(RX) RX.paint(); }
-  function playClip(id,frac){ var c=GRD.clips[id], b=BUF[c[0]]; if(!b) return 0; var off=c[1]+frac*c[2], len=c[2]*(1-frac);
-    var s=ctx.createBufferSource(), gn=ctx.createGain(), t=ctx.currentTime+.03; s.buffer=b; s.connect(gn); gn.connect(out);
-    gn.gain.setValueAtTime(0,t); gn.gain.linearRampToValueAtTime(1,t+.015); s.start(t,off,len+.02); src=s; srcT0=t-frac*c[2]; srcLen=c[2]; return t+len; }
-  function hush(){ if(src){ try{ var g2=ctx.currentTime; src.stop(g2+.02); }catch(e){} src=null; } clearTimeout(tm); }
+  function playClip(id,frac,at){ var c=GRD.clips[id], b=BUF[c[0]], t=Math.max(at||0,ctx.currentTime+.03); if(!b) return [t,t]; var off=c[1]+frac*c[2], len=c[2]*(1-frac);
+    var s=ctx.createBufferSource(), gn=ctx.createGain(); s.buffer=b; s.connect(gn); gn.connect(out);
+    gn.gain.setValueAtTime(0,t); gn.gain.linearRampToValueAtTime(1,t+.015); s.start(t,off,len+.02); s._end=t+len+.05; srcs.push(s); src=s; srcT0=t-frac*c[2]; srcLen=c[2]; return [t,t+len]; }
+  function hush(){ var now=ctx.currentTime; srcs.forEach(function(s){ try{ s.stop(now+.02); }catch(e){} }); srcs=[]; src=null; clearTimeout(tm); }
   function next(){ if(!on) return; var R=rv(), P=R.paras;
     for(;;){ ii++; if(pi<P.length && ii<P[pi].length){ if(active(P[pi][ii])) break; continue; }
-      if(pi<P.length){ pi++; ii=-1; if(pi<P.length){ return wait(.8); } item={close:1}; ii=0; return say(); }
+      if(pi<P.length){ pi++; ii=-1; if(pi<P.length){ nextAt+=.8; continue; } item={close:1}; ii=0; return say(0,nextAt); }
       ri=(ri+1)%GRD.reviews.length; pi=0; ii=-1; return begin(); }
-    say(); }
-  function wait(s){ var gg=gen; tm=setTimeout(function(){ if(gg===gen) next(); },s*1000); }
-  function begin(){ var R=rv(), gg=gen; setGrade(R.g); paint();
-    Promise.all([grSprite('r'+ri),grSprite('common')]).then(function(b){ if(gg!==gen) return; BUF['r'+ri]=b[0]; BUF.common=b[1]; grSprite('r'+((ri+1)%GRD.reviews.length)); wait(Math.max(1.2,identUntil-ctx.currentTime+.5)); }); }
-  function say(frac){ var gg=gen; if(!item||!item.close) item=rv().paras[pi][ii]; var end=playClip(clipOf(item),frac||0); PV.kT=ctx.currentTime-heardLag(); paint();
-    var after=item.close?2.5:item.stock?.45:.28; clearTimeout(tm); tm=setTimeout(function(){ if(gg!==gen) return; if(item.close){ item=null; ri=(ri+1)%GRD.reviews.length; pi=0; ii=-1; begin(); } else next(); },Math.max(0,(end-ctx.currentTime+after)*1000)); }
+    item=null; say(0,nextAt); }
+  function begin(){ var R=rv(), gg=gen; setGrade(R.g); S={pi:0,ii:-1,item:null}; paint();
+    Promise.all([grSprite('r'+ri),grSprite('common')]).then(function(b){ if(gg!==gen) return; BUF['r'+ri]=b[0]; BUF.common=b[1]; grSprite('r'+((ri+1)%GRD.reviews.length));
+      nextAt=ctx.currentTime+Math.max(1.2,identUntil-ctx.currentTime+.5); next(); }); }
+  function say(frac,at){ var gg=gen; if(!item||!item.close) item=rv().paras[pi][ii]; var it=item, snap={pi:pi,ii:ii,item:it}, te=playClip(clipOf(it),frac||0,at);
+    var now=ctx.currentTime, nowT=Date.now(); srcs=srcs.filter(function(x){ return x._end>now; });
+    setTimeout(function(){ if(gg!==gen) return; S=snap; PV.kT=ctx.currentTime-heardLag(); paint(); },Math.max(0,(te[0]-now+heardLag())*1000));   /* when it is heard */
+    nextAt=te[1]+(it.close?2.5:it.stock?.45:.28); clearTimeout(tm);
+    tm=setTimeout(function(){ if(gg!==gen) return; if(it.close){ item=null; ri=(ri+1)%GRD.reviews.length; pi=0; ii=-1; begin(); } else next(); },Math.max(0,(nextAt-ctx.currentTime-.4)*1000)); }
   /* the proof page: the paragraph as I wrote it, with this grade's swaps in red pen and its stock lines over a caret */
   function esc2(s){ return esc(s); }
-  function paint(){ if(!GRD||STATION!=='remix') return; var R=rv(), G=L(), og=R.g, P=R.paras, p=Math.min(pi,P.length-1), out2=[];
-    if(item&&item.close){ out2.push('<span class="snt on">And so, my grade for this album is clearly… <span class="mk"><s>'+og+'</s><i>'+G+'</i></span></span>'); }
-    else P[p].forEach(function(it,k){ var on2=k===ii&&p===pi, h;
+  function paint(){ if(!GRD||STATION!=='remix') return; var R=rv(), G=L(), og=R.g, P=R.paras, p=Math.min(S.pi,P.length-1), out2=[];
+    if(S.item&&S.item.close){ out2.push('<span class="snt on">And so, my grade for this album is clearly… <span class="mk"><s>'+og+'</s><i>'+G+'</i></span></span>'); }
+    else P[p].forEach(function(it,k){ var on2=k===S.ii&&p===S.pi, h;
       if(it.stock){ if(it.stock!==G) return; h='<span class="mk"><span class="car">‸</span><i class="'+(on2?'cur':'')+'">'+esc2(GRD.stock[it.stock][it.k])+'</i></span>'; }
       else { h=esc2(it.tx[og]); (it.mk[G]||[]).forEach(function(m){ h=h.replace(esc2(m[0]),'<span class="mk"><s>'+esc2(m[0])+'</s><i>'+esc2(m[1])+'</i></span>'); }); h='<span class="snt'+(on2?' on':'')+'">'+h+'</span>'; }
       out2.push(h); });
     var el=$('rxText'); el.innerHTML='<div class="rx-lines"><span class="gr-hd">'+esc2(R.a)+', <i>'+esc2(R.t)+'</i></span> '+out2.join(' ')+'</div>';
     var cur=el.querySelector('.snt.on, i.cur'); if(cur){ var box=el.querySelector('.rx-lines'); box.scrollTop=Math.max(0,cur.offsetTop-box.offsetTop-box.clientHeight*.25); } }
   return {
-    start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=0; pi=0; ii=-1; item=null;
+    start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=0; pi=0; ii=-1; item=null; srcs=[];
       say0(); function say0(){ loadGrade().then(function(){ if(on) begin(); }); } },
     stop:function(){ on=false; gen++; hush(); out=null; },
     change:function(){ paint(); if(!on||!item||!src) return; var frac=clamp((ctx.currentTime-srcT0)/srcLen,0,.98), gg=++gen;
-      if(item.stock && !active(item)){ hush(); next(); return; }   /* a stock line from another grade is cut off */
+      if(srcT0>ctx.currentTime){ var q=src, t0=srcT0; try{ q.stop(); }catch(e){} srcs=srcs.filter(function(x){ return x!==q; }); clearTimeout(tm); say(0,t0); return; }      /* the next take was queued but hasn't started: queue it again at the new grade */
+      if(item.stock && !active(item)){ hush(); nextAt=ctx.currentTime+.05; next(); return; }   /* a stock line from another grade is cut off */
       hush(); say(Math.max(0,frac-.04)); },
     paint:paint, warm:function(){ return GRD?g()/4:.5; }, on:function(){ return on; }
   };
