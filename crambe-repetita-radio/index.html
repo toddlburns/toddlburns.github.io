@@ -1526,8 +1526,8 @@ var ctx=null, eng=null, beat=null, anchorAbs=0, playing=false, starting=false, a
 var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null, factsDone={};
 /* one fun fact per piece: Todd's intro, "Fun fact about this one", then a fact. Which fact and when both follow the clock, so every listener hears the same one */
 var NFACT=13;
-function factFor(ri,base){ return {at:base+ST[ri].s*(.2+.6*((hash(ST[ri].a+'~'+ST[ri].t)%1000)/1000)), seq:['ff_intro',.7,'ff_lead',.35,'ff_'+('0'+((ri*5)%NFACT+1)).slice(-2)]}; }
-var SEQ={welcome:['ff_intro'],   /* Todd 2026-10-16: the fun-fact intro is the welcome now ("I'm Todd L. Burns and this is Crambe Repetita Radio…"); the facts are gone */
+function factFor(ri,base){ return {at:base+ST[ri].s*(.2+.6*((hash(ST[ri].a+'~'+ST[ri].t)%1000)/1000)), seq:['ff_lead',.35,'ff_'+('0'+((ri*5)%NFACT+1)).slice(-2)]}; }
+var SEQ={welcome:['ff_intro'],   /* Todd 2026-10-16: the fun-fact intro is the welcome now ("I'm Todd L. Burns and this is Crambe Repetita Radio…"); the facts themselves still play, without it */
   top:['open_00',.9,'conceit'], half:['open_30'], sting:['STING']};
 function ident(kind,t,seq){
   var tt=t; (seq||SEQ[kind]).forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
@@ -1553,7 +1553,7 @@ function tick(){
   }
   eng.grainsUntil(H); if(beat) beat.until(H);
   var P0=posAt(ctx.currentTime), loop=Math.floor(P0/TOTAL)*TOTAL, rn=reviewAt(P0-loop), bn=loop+START[rn], F=factFor(rn,bn);
-  if(false && !factsDone[bn] && F.at>P0+.5 && F.at<=HP){ factsDone[bn]=1; var tf=anchorCtx+(F.at-anchorPos); if(tf<identUntil+3) tf=identUntil+3; ident('fact',tf,F.seq); }
+  if(STATION!=="remix" && !factsDone[bn] && F.at>P0+.5 && F.at<=HP){ factsDone[bn]=1; var tf=anchorCtx+(F.at-anchorPos); if(tf<identUntil+3) tf=identUntil+3; ident('fact',tf,F.seq); }
   var ms=Date.now(), next=Math.ceil(ms/1800000)*1800000, tB=ctx.currentTime+(next-ms)/1000;
   if(tB<H && next!==lastBoundary){ lastBoundary=next; if(tB>identUntil+20 && STATION!=='remix') ident(new Date(next).getMinutes()===0?'top':'half',tB); }
 }
