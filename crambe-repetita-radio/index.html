@@ -1608,7 +1608,7 @@ function play(quick){
       cur=cursorAt(anchorPos);
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
-      if(STATION==='remix'&&RXSTYLE==='voice'&&RV) RV.start();
+      if(STATION==='remix'&&RXSTYLE==='voice'&&RV){ if(RXV) RV2.start(); else { RV.start(); loadRxVoice(ctx).then(function(){ if(playing&&STATION==='remix'&&RV.on()){ RV.stop(); RV2.start(); } }); } }
       if(!quick) ident('welcome',ctx.currentTime+1.5);
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
       try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
@@ -1617,7 +1617,7 @@ function play(quick){
   ctx.resume().then(go,go);
 }
 function pause(){
-  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop();
+  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop(); if(RV2) RV2.stop();
   eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill(); if(beat){ beat.kill(); beat=null; }
   $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
@@ -1625,7 +1625,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -2699,7 +2699,7 @@ var RX=(function(){
       e.lo.style.opacity=Math.pow(Math.max(0,-v),.8).toFixed(3); e.hi.style.opacity=Math.pow(Math.max(0,v),.8).toFixed(3);
       e.tr.setAttribute('aria-valuenow',Math.round(v*100)); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
   function set(k,v){ v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; if(REMIX[k]===v) return; REMIX[k]=v;
-    RXC={}; paint(); shownKey=''; if(beat&&beat.live&&STATION==='remix') beat.live(); if(RV&&STATION==='remix') RV.change(); try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
+    RXC={}; paint(); shownKey=''; if(beat&&beat.live&&STATION==='remix') beat.live(); if(RV&&STATION==='remix'){ RV.change(); RV2.change(); } try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
     var d=document.createElement('div'); d.className='sl';
     d.innerHTML='<div class="sl-head"><span class="sl-end">'+f.lo+'</span><span class="sl-name">'+f.name+'</span><span class="sl-end">'+f.hi+'</span></div><div class="sl-track" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="-100" aria-valuemax="100"><i class="sl-mid"></i><i class="sl-fill"></i><b class="sl-thumb"></b></div>';
@@ -2798,6 +2798,51 @@ var RV=(function(){
     on:function(){ return on; }
   };
 })();
+/* ---- the voice, v2 (Todd 2026-10-16: "it needs to be my voice"; "happy for it to be uncanny if it's funny"): Todd's
+   ElevenLabs clone read 80 sentences of his reviews once (rxvoice.mp3, five minutes); build/phon_align.py found every
+   phoneme in it and build/phon_words.py made each of the 17,000 words the Remix can say from the longest runs of
+   phonemes the take has (rxvoice.json: word -> cuts in ms). Words are scheduled one at a time, so a slider move is
+   heard on the next word. Vibe also plays the take slower and lower, or faster and higher. ---- */
+var RXV=null, rxvLoading=null;
+function loadRxVoice(c){ c=c||new OfflineAudioContext(1,1,44100); if(!rxvLoading) rxvLoading=Promise.all([fetch('rxvoice.json').then(function(r){ return r.json(); }), fetch('rxvoice.mp3').then(function(r){ return r.arrayBuffer(); })])
+  .then(function(r){ return new Promise(function(ok,no){ c.decodeAudioData(r[1],ok,no); }).then(function(b){ RXV={map:r[0],buf:b}; }); }).catch(function(){ rxvLoading=null; });
+  return rxvLoading; }
+var RV2=(function(){
+  var on=false, B=null, wi=0, curB=null, gen=0, srcs=[], tm=null, out=null, deb=null, said=[];
+  function key(w){ return w.text.toLowerCase().replace(/’/g,"'").replace(/[^a-z0-9']/g,''); }
+  function clock(){ return where(playing&&ctx?posAt(ctx.currentTime):stationNow()); }
+  function show(i,at){ var d=Math.max(0,(at-ctx.currentTime)*1000), g=gen; setTimeout(function(){ if(g!==gen||!B||!B.ws[i]) return; wi=i; curB=B; var w=B.ws[i], S=B.P.sents[w.sent];
+    applyVis({k:'rx',t:ctx.currentTime-heardLag(),B:B,wi:i,kick:true,word:true,sent:!!S&&S.a===i,hit:!!w.excl,ask:!!w.ask}); },d); }
+  function sayWord(w,t,rate){   /* the cuts, end to end, 8 ms crossfades; returns when it ends */
+    var segs=RXV.map[key(w)]||RXV.map[key(w).replace(/'s$/,'')], f=.008;
+    if(!segs) return t+.12;
+    segs.forEach(function(sg){ var s=sg[0]/1000, d=(sg[1]-sg[0])/1000; if(d<.02) return; var len=d/rate, src=c2().createBufferSource(), g=c2().createGain();
+      src.buffer=RXV.buf; src.playbackRate.value=rate; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(1,t+f); g.gain.setValueAtTime(1,t+len-f); g.gain.linearRampToValueAtTime(0,t+len);
+      src.connect(g); g.connect(out); src.start(t,s,d+.01); src.stop(t+len+.02); src._end=t+len; srcs.push(src); t+=len-f; });
+    return t+f; }
+  function c2(){ return ctx; }
+  function punc2(w){ return w.dash?' —':w.excl?'!':w.ask?'?':w.stop?'.':w.gap>=.5?',':''; }
+  function step(i,t){ if(!on) return; var g=gen; B=beatPrep(B.ri);
+    if(i>=B.ws.length){ var W=clock(); if(W.ri!==B.ri){ B=W.B; i=W.wi; } else i=0; }   /* the end: again from the top, or on to the clock's review */
+    var w=B.ws[i], rate=clamp(1+.2*REMIX.temper,.75,1.3), t0=Math.max(t,ctx.currentTime+.04);
+    show(i,t0); var end=sayWord(w,t0,rate); said.push(w.text+punc2(w)); if(said.length>40) said.shift();
+    var nx=B.ws[i+1], gap=(!nx||nx.para!==w.para)?.9:w.stop||w.excl||w.ask?.38:w.dash?.3:w.gap>=.5?.2:.045;
+    var at=end+gap/rate, now=ctx.currentTime; srcs=srcs.filter(function(s){ return s._end>now; });
+    tm=setTimeout(function(){ if(g===gen) step(i+1,at); },Math.max(0,(end-ctx.currentTime-.15)*1000)); }
+  function hush(){ var now=ctx?ctx.currentTime:0; srcs.forEach(function(s){ try{ s.stop(now+.01); }catch(e){} }); srcs=[]; clearTimeout(tm); }
+  return {
+    ready:function(){ return !!RXV; },
+    start:function(){ if(!RXV||!ctx) return false; if(!out){ out=ctx.createGain(); out.gain.value=1.6; out.connect(eng.comp); }
+      on=true; gen++; var W=clock(); B=W.B; step(W.wi,ctx.currentTime+.3); return true; },
+    stop:function(){ on=false; gen++; clearTimeout(deb); if(ctx) hush(); out=null; },
+    change:function(){ if(!on) return; clearTimeout(deb); deb=setTimeout(function(){
+      var oB=curB||B, w=oB.ws[wi]||oB.ws[0], para=w.para, ows=oB.ws.filter(function(x){ return x.para===para; }), fr=(ows.indexOf(w)+1)/Math.max(1,ows.length);
+      B=beatPrep(B.ri); var ni=-1, cnt=0; B.ws.forEach(function(x,k){ if(x.para===para){ if(ni<0) ni=k; cnt++; } });
+      gen++; hush(); step(ni<0?0:ni+Math.min(cnt-1,Math.round(fr*cnt)),ctx.currentTime+.03); },60); },
+    on:function(){ return on; }, said:function(){ return said.join(' '); }
+  };
+})();
+
 
 
 /* the information keeps out of the way: it fades while you listen and comes back when you move */
@@ -2836,6 +2881,7 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
   remix:function(o){ if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; return loadRemix().then(function(){ return REMIX; }); },
   remixText:function(ri,o){ var keep=JSON.stringify(REMIX); if(o) Object.keys(o).forEach(function(k){ REMIX[k]=o[k]; }); RXC={}; var st=STATION; STATION='remix'; var B=beatPrep(ri); STATION=st; REMIX=JSON.parse(keep); RXC={}; return {text:B.text, words:B.ws.length, g:B.R.g}; },
   rxStyle:function(k){ RXSTYLE=k; },
+  rv:function(){ return {on:RV2.on(), words:RXV?Object.keys(RXV.map).length:0, said:RV2.said()}; },
   vis:function(e){ applyVis(e); },   /* feed the picture one event by hand, for checking */
   visBeat:function(kind,at,secs){   /* what the picture is told, for checking (no sound) */
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc), out=[];
