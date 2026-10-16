@@ -2897,7 +2897,7 @@ var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "ti
     var el=$('rxText'); el.innerHTML='<div class="rx-lines"><span class="gr-hd">'+esc2(R.a)+', <i>'+esc2(R.t)+'</i></span> '+out2.join(' ')+'</div>';
     var cur=el.querySelector('.snt.on, i.cur'); if(cur){ var box=el.querySelector('.rx-lines'); box.scrollTop=Math.max(0,cur.offsetTop-box.offsetTop-box.clientHeight*.25); } }
   return {
-    start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=0; pi=0; ii=-1; item=null; srcs=[];
+    start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=3; pi=0; ii=-1; item=null; srcs=[];   /* Envy first (Todd: not Exhaust, it has a mispronunciation near the top) */
       say0(); function say0(){ loadGrade().then(function(){ if(on) begin(); }); } },
     stop:function(){ on=false; gen++; hush(); out=null; },
     change:function(){ paint(); if(!on||!item||!src) return; var frac=clamp((ctx.currentTime-srcT0)/srcLen,0,.98), gg=++gen;
