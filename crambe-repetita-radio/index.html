@@ -1443,7 +1443,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(motor){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=5.2; lg.gain.value=.35; tg.gain.value=.7; lf.connect(lg); lg.connect(tg.gain); lf.start(t); lf.stop(end); }   /* the motor's tremolo */
     var o2=tg; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-70)/24,-.5,.5); tg.connect(pn); o2=pn; } g.connect(tg); o2.connect(bus); o2.connect(send); }
   function stepRemix(Gi,A,t){
-    if(RXSTYLE==='voice') return;                                                     /* the voice reads instead (RV) */
+    if(RXSTYLE==='voice'||RXSTYLE==='grade') return;                                  /* a voice reads instead (RV, GR): no band */
     var j=Gi.j, bar=j>>4, s=j&15, W=where(A), B=W.B, x=recRx(B), w=W.w, S=W.S, ws=B.ws, late=RXSTYLE==='late';
     var M=moment(W,A,x.s16,x.s16*4);
     if(M.stop){ if(vis) vis.push({t:t,k:'rx',B:B,wi:W.wi,stop:1}); return; }
