@@ -1589,13 +1589,15 @@ function loadVox(){
     .catch(function(){ voxLoading=null; });
   return voxLoading;
 }
-function loadSound(c){
-  if(loading) return loading;
+var vowLoading=null;
+function loadSound(c,vowels){   /* the voice clips and the sting for every station; my vowels only for Ambient (2026-10-16: 5.2 MB at Play was 2.6 MB of vowels nothing else uses) */
   var dec=function(u){ return fetch(u).then(function(r){ return r.arrayBuffer(); }).then(function(b){ return new Promise(function(ok,no){ c.decodeAudioData(b,ok,no); }); }); };
-  loading=Promise.all([fetch('vowels.json').then(function(r){ return r.json(); }), dec('vowels.mp3'),
-    fetch('idents.json').then(function(r){ return r.json(); }), dec('idents.mp3'), dec('sting.mp3')])
-  .then(function(r){ VOW=r[0]; SPRITE=r[1]; IDX=r[2]; IDB=r[3]; STING=r[4]; BYV={}; VOW.forEach(function(v,i){ (BYV[v.v]=BYV[v.v]||[]).push(i); }); cache={}; });
-  return loading;
+  if(!loading) loading=Promise.all([fetch('idents.json').then(function(r){ return r.json(); }), dec('idents.mp3'), dec('sting.mp3')])
+    .then(function(r){ IDX=r[0]; IDB=r[1]; STING=r[2]; cache={}; });
+  if(vowels===undefined) vowels=STATION==='ambient';
+  if(vowels&&!vowLoading) vowLoading=Promise.all([fetch('vowels.json').then(function(r){ return r.json(); }), dec('vowels.mp3')])
+    .then(function(r){ VOW=r[0]; SPRITE=r[1]; BYV={}; VOW.forEach(function(v,i){ (BYV[v.v]=BYV[v.v]||[]).push(i); }); cache={}; });
+  return Promise.all([loading,vowels?vowLoading:0]);
 }
 function play(quick){
   if(starting||playing||!ST) return;
@@ -1603,7 +1605,7 @@ function play(quick){
   unlock(); starting=true; $('play').setAttribute('aria-busy','true');
   var go=function(){
     if(ctx.state!=='running'){ starting=false; $('play').removeAttribute('aria-busy'); say('Your browser is blocking sound. Tap Play again.'); return; }
-    if(!SPRITE) say('Tuning in…');
+    if(!IDB||(STATION==='ambient'&&!SPRITE)) say('Tuning in…');
     loadSound(ctx).then(function(){
       starting=false; $('play').removeAttribute('aria-busy'); say('');
       eng.newBus(); anchorCtx=ctx.currentTime+.15; anchorAbs=Date.now()/1000-EPOCH; anchorPos=((anchorAbs%TOTAL)+TOTAL)%TOTAL;
@@ -1629,7 +1631,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GR) GR.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GR) GR.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -2879,9 +2881,10 @@ var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "ti
     for(;;){ ii++; if(pi<P.length && ii<P[pi].length){ if(active(P[pi][ii])) break; continue; }
       if(pi<P.length){ pi++; ii=-1; if(pi<P.length){ nextAt+=.8; continue; } item={close:1}; ii=0; return say(0,nextAt); }
       ri=nri(); pi=0; ii=-1; return begin(); }
+    if(pi===P.length-1) grSprite('r'+nri());   /* the next review loads during this one's last paragraph, not at the start */
     item=null; say(0,nextAt); }
   function begin(){ var R=rv(), gg=gen; setGrade(R.g); S={pi:0,ii:-1,item:null}; paint();
-    Promise.all([grSprite('r'+ri),grSprite('common')]).then(function(b){ if(gg!==gen) return; BUF['r'+ri]=b[0]; BUF.common=b[1]; grSprite('r'+nri());
+    Promise.all([grSprite('r'+ri),grSprite('common')]).then(function(b){ if(gg!==gen) return; BUF['r'+ri]=b[0]; BUF.common=b[1];
       nextAt=ctx.currentTime+Math.max(1.2,identUntil-ctx.currentTime+.5); next(); }); }
   function say(frac,at){ var gg=gen; if(!item||!item.close) item=rv().paras[pi][ii]; var it=item, snap={pi:pi,ii:ii,item:it}, te=playClip(clipOf(it),frac||0,at);
     var now=ctx.currentTime, nowT=Date.now(); srcs=srcs.filter(function(x){ return x._end>now; });
@@ -2931,7 +2934,7 @@ requestAnimationFrame(function(t){ last=t; frame(t); });
 window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, recipe:function(i,k){ var B=beatPrep(i); return RECIPE[k](B); },
   render:function(at,secs){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
-    return loadSound(oc).then(function(){
+    return loadSound(oc,true).then(function(){
       e.newBus(); e.master.gain.value=MASTER; anchorCtx=0; anchorPos=at; var c=cursorAt(at), saved=cur; cur=c;
       var save=eng; eng=e; var H=secs; var HP=at+secs;
       for(var g=0;g<4000;g++){ var ws=prep(cur.ri).words; if(cur.wi>=ws.length){ cur.base+=ST[cur.ri].s; cur.ri=(cur.ri+1)%N; cur.wi=0; continue; }
