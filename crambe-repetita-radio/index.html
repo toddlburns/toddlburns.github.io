@@ -104,6 +104,7 @@ body[data-station="remix"] #play{top:24%}
 .rx-desk{box-sizing:border-box;padding:.7em 1.6em .4em;background:#efe6d2;background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(120,90,40,.08));transform:rotate(.4deg);box-shadow:0 8px 22px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:4px}
 .sl{pointer-events:auto}
 .sl-head{display:flex;align-items:baseline}
+body[data-station="remix"] #now{visibility:hidden}   /* Todd 2026-10-17: the station clock's review means nothing on Remix */
 .sl-name{font-family:"EB Garamond",Georgia,serif;font-size:.85em;letter-spacing:.16em;text-transform:uppercase;color:#3a3229;text-align:center;white-space:nowrap;padding:0 .6em}
 .sl-track{position:relative;height:1.9em;margin-top:-.15em;cursor:ew-resize;touch-action:none;outline:none}
 .sl-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#2b241c}
@@ -342,7 +343,7 @@ function makeEngine(ctx){
      the phrase   8-bar root moves, fills on the 8th bar, a filter ridden over 16 bars.
      the text     ! = a hit, ? = a riser, quotes drop the drums, a dash stops the band, the italic title is the hook. */
 var BPM=100, BEAT=60/BPM, S16=BEAT/4, BAR=BEAT*4;
-var STATIONS=['ambient','303','fusion','classical','woodblock','dub','electro','italo','berlin','newage','idm','soundtrack','remix'], STATION='ambient';
+var STATIONS=['ambient','303','fusion','classical','woodblock','dub','electro','italo','berlin','newage','idm','soundtrack','remix'], STATION='berlin';   /* Todd 2026-10-17: everyone lands on Berlin School */
 function mtof(m){ return 440*Math.pow(2,(m-69)/12); }
 function euclid(k,n,rot){ var a=[]; rot=((rot%n)+n)%n; for(var i=0;i<n;i++) a.push(((i+rot)*k)%n<k); return a; }
 function ih(n){ n=(n^61)^(n>>>16); n=n+(n<<3); n^=n>>>4; n=Math.imul(n,0x27d4eb2d); n^=n>>>15; return (n>>>0)/4294967296; }   /* the same dice for every listener */
@@ -1636,7 +1637,7 @@ function pause(){
 }
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
-/* the station chooser: remembered on this device; #303 or #fusion in the link picks one */
+/* the station chooser: #303 or #fusion in the link picks one; otherwise you land on Berlin School (Todd 2026-10-17: no longer the last one you chose) */
 function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GR) GR.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
@@ -1644,7 +1645,6 @@ function setStation(st){
   if(playing){ pause(); play(true); }
 }
 (function(){ var h=location.hash.replace('#',''), st=STATIONS.indexOf(h)>=0?h:null;
-  if(!st){ try{ st=localStorage.getItem('crr-station'); }catch(e){} }
   if(STATIONS.indexOf(st)>=0) STATION=st; showStation(); })();
 window.addEventListener('hashchange',function(){ var h=location.hash.replace('#',''); if(STATIONS.indexOf(h)>=0) setStation(h); });
 /* the dial: drag or swipe it and let go to tune to the station nearest the needle; the arrows step; a tap on a name tunes */
@@ -2910,8 +2910,17 @@ var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "ti
       if(it.stock){ if(it.stock!==G) return; h='<span class="mk"><span class="car">‸</span><i class="'+(on2?'cur':'')+'">'+esc2(GRD.stock[it.stock][it.k])+'</i></span>'; }
       else { h=esc2(it.tx[og]); (it.mk[G]||[]).forEach(function(m){ h=h.replace(esc2(m[0]),'<span class="mk"><s>'+esc2(m[0])+'</s><i>'+esc2(m[1])+'</i></span>'); }); h='<span class="snt'+(on2?' on':'')+'">'+h+'</span>'; }
       out2.push(h); });
-    var el=$('rxText'); el.innerHTML='<div class="rx-lines"><span class="gr-hd">'+esc2(R.a)+', <i>'+esc2(R.t)+'</i></span> '+out2.join(' ')+'</div>';
-    var cur=el.querySelector('.snt.on, i.cur'); if(cur){ var box=el.querySelector('.rx-lines'); box.scrollTop=Math.max(0,cur.offsetTop-box.offsetTop-box.clientHeight*.25); } }
+    var el=$('rxText'), ob=el.querySelector('.rx-lines'), keep=ob?ob.scrollTop:0; el.innerHTML='<div class="rx-lines"><span class="gr-hd">'+esc2(R.a)+', <i>'+esc2(R.t)+'</i></span> '+out2.join(' ')+'</div>';
+    var box=el.querySelector('.rx-lines'); box.scrollTop=S.pi===shownPi?keep:0; shownPi=S.pi; if(!on) follow(true); }
+  /* the page follows the voice (Todd 2026-10-17, on his phone: "not scrolling well"): it glides to the sentence being read and,
+     when a sentence is taller than the window, rolls through it as the take plays, instead of jumping on each repaint */
+  var shownPi=-1;
+  function follow(snap){ var el=$('rxText'), box=el&&el.querySelector('.rx-lines'), cur=box&&box.querySelector('.snt.on, i.cur'); if(!cur) return;
+    var rs=cur.getClientRects(); if(!rs.length) return; var bt=box.getBoundingClientRect().top, top=rs[0].top-bt+box.scrollTop, bot=rs[rs.length-1].bottom-bt+box.scrollTop, h=box.clientHeight;
+    var now=ctx?ctx.currentTime-heardLag():0, f=on&&src&&srcLen?(srcT0>now?1:clamp((now-srcT0)/srcLen,0,1)):0;
+    var tgt=Math.max(0,top-h*.1+Math.max(0,(bot-top)-h*.75)*f);
+    box.scrollTop=snap?tgt:box.scrollTop+(tgt-box.scrollTop)*.14; }
+  setInterval(function(){ if(on&&STATION==='remix') follow(false); },40);
   return {
     start:function(){ if(!ctx) return; if(!out){ out=ctx.createGain(); out.gain.value=1.4; out.connect(eng.comp); } on=true; gen++; ri=ORD[0]; pi=0; ii=-1; item=null; srcs=[];
       say0(); function say0(){ loadGrade().then(function(){ if(on) begin(); }); } },
