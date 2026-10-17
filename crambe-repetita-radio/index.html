@@ -1215,27 +1215,39 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     var inp=c.createGain(), out=c.createGain(), car=c.createGain(), N=20, lo=120, hi=7000, cv=new Float32Array(1025);
     for(var i=0;i<1025;i++) cv[i]=Math.abs(i/512-1);
     var oscs=[0,1,2].map(function(i){ var o=c.createOscillator(); o.type='sawtooth'; o.frequency.value=110*(i+1); o.detune.value=(i-1)*4; o.connect(car); o.start(); live.push(o); return o; });
-    var nz=c.createBufferSource(), ng=c.createGain(); nz.buffer=noise; nz.loop=true; ng.gain.value=.12; nz.connect(ng); ng.connect(car); nz.start(); live.push(nz);
+    var nz=c.createBufferSource(), ng=c.createGain(); nz.buffer=noise; nz.loop=true; ng.gain.value=.05; nz.connect(ng); ng.connect(car); nz.start(); live.push(nz);
     for(var b=0;b<N;b++){ var f=lo*Math.pow(hi/lo,b/(N-1)), m=c.createBiquadFilter(), r=c.createWaveShaper(), l=c.createBiquadFilter(), mk=c.createGain(), cb=c.createBiquadFilter(), vg=c.createGain();
       m.type='bandpass'; m.frequency.value=f; m.Q.value=3.2; r.curve=cv; l.type='lowpass'; l.frequency.value=55; mk.gain.value=2;   /* higher and it smears: tested by transcribing the sentence through it */ cb.type='bandpass'; cb.frequency.value=f; cb.Q.value=3.2; vg.gain.value=0;
       inp.connect(m); m.connect(r); r.connect(l); l.connect(mk); mk.connect(vg.gain); car.connect(cb); cb.connect(vg); vg.connect(out); }
-    var air=c.createBiquadFilter(), ag=c.createGain(); air.type='highpass'; air.frequency.value=3500; ag.gain.value=.7; inp.connect(air); air.connect(ag); ag.connect(out);
-    var dry=c.createGain(); dry.gain.value=.05; inp.connect(dry); dry.connect(out);   /* a little of the plain voice under it, for the words */
-    out.gain.value=kind==='electro'?3:2.2; out.connect(bus); out.connect(send); if(ECHO){ var sg=c.createGain(); sg.gain.value=.2; out.connect(sg); sg.connect(ECHO); }
+    var air=c.createBiquadFilter(), ag=c.createGain(); air.type='highpass'; air.frequency.value=3500; ag.gain.value=kind==='italo'?.3:.7; inp.connect(air); air.connect(ag); ag.connect(out);
+    var dry=c.createGain(); dry.gain.value=kind==='electro'?.32:.05; inp.connect(dry); dry.connect(out);   /* a little of the plain voice under it, for the words (Electro more: Todd 2026-10-17 "too distorted") */
+    out.gain.value=kind==='electro'?1.25:.8;   /* Todd 2026-10-17: Electro was 3, then 1.5 ("only slightly lower"); Italo was 2.2 ("way too loud… low-ish in the mix") */
+    var dest=out; if(kind==='italo'){ var soft=c.createBiquadFilter(); soft.type='lowpass'; soft.frequency.value=3200; soft.Q.value=.5; out.connect(soft); dest=soft; }   /* Italo: rounder, "more pleasant" */
+    dest.connect(bus); dest.connect(send); if(ECHO){ var sg=c.createGain(); sg.gain.value=.2; dest.connect(sg); sg.connect(ECHO); }
     var glide=kind==='italo'?.045:.008;   /* Italo slides between notes like a croon; Electro snaps */
     return {out:out, inp:inp, notes:function(ns,t){ oscs.forEach(function(o,i){ o.frequency.setTargetAtTime(mtof(ns[i%ns.length]),t,glide); }); }};
   }
   /* the vocoder's words (Todd 2026-10-17): the Remix's cut-up voice (rxvoice: 17,000 words built from one five-minute take), so
      nothing new is recorded and, through the vocoder, it is not recognisably me. Italo croons: slowed, so the words hang on the
      chord. Electro raps: a touch fast and clipped, on the step. */
-  function voxSay(t,w){ if(!VOC) return 0;
+  function voxSay(t,w,sing){ if(!VOC) return 0;
     if(VOX){ var cl=VOX.map[w.key.replace(/[^a-z0-9]/g,'')]; if(!cl) return 0;
       var s2=c.createBufferSource(); s2.buffer=VOX.buf; s2.connect(VOC.inp); s2.start(t,cl[0],cl[1]); if(vis) vis.push({t:t,k:'v'}); return cl[1]; }
     if(!RXV||!VOCRX) return 0; var k=(w.text||'').toLowerCase().replace(/’/g,"'").replace(/[^a-z0-9']/g,''), segs=RXV.map[k]||RXV.map[k.replace(/'s$/,'')]; if(!segs) return 0;
-    var rate=kind==='italo'?.74:1.12, f=.008, t0=t;
-    segs.forEach(function(sg){ var st=sg[0]/1000, d=(sg[1]-sg[0])/1000; if(d<.02) return; var len=d/rate, src=c.createBufferSource(), g=c.createGain();
-      src.buffer=RXV.buf; src.playbackRate.value=rate; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(1,t+f); g.gain.setValueAtTime(1,t+len-f); g.gain.linearRampToValueAtTime(0,t+len);
-      src.connect(g); g.connect(VOC.inp); src.start(t,st,d+.01); src.stop(t+len+.02); t+=len-f; });
+    var f=.008, t0=t, H=kind==='italo'&&RXH?RXH[k]:null;
+    function piece(a,b){ var d=b-a; if(d<.012) return; var src=c.createBufferSource(), g=c.createGain();
+      src.buffer=RXV.buf; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(1,t+f); g.gain.setValueAtTime(1,t+d-f); g.gain.linearRampToValueAtTime(0,t+d);
+      src.connect(g); g.connect(VOC.inp); src.start(t,a,d+.01); src.stop(t+d+.02); t+=d-f; }
+    /* Italo holds one sound of the word (its last vowel, or a closing s/z/sh: "theeee", "audiencesss"): overlapping 60 ms
+       grains taken from that spot, so the vocoder has a steady sound to sing on the chord */
+    function hold(a,b,len){ var gr=.06, hop=.025, t1=t;
+      for(var x=0;x<len;x+=hop){ var src=c.createBufferSource(), g=c.createGain(), at=a+(b-a)*Math.random(), tt=t1+x;
+        src.buffer=RXV.buf; g.gain.setValueAtTime(0,tt); g.gain.linearRampToValueAtTime(.55,tt+gr/2); g.gain.linearRampToValueAtTime(0,tt+gr);
+        src.connect(g); g.connect(VOC.inp); src.start(tt,Math.max(0,at-gr/2),gr+.01); src.stop(tt+gr+.02); }
+      t=t1+len; }
+    segs.forEach(function(sg,i){ var a=sg[0]/1000, b=sg[1]/1000;
+      if(H&&i===H[0]){ var la=H[1]/1000, lb=H[2]/1000; piece(a,la); hold(la,lb,clamp((sing||1.2)-.25,.35,2.4)); piece(lb,b); }
+      else piece(a,b); });
     if(vis) vis.push({t:t0,k:'v'}); return t-t0; }
   function echoFor(Gi,s,t){ if(ECHO && Gi.ri!==echoRi){ echoRi=Gi.ri; ECHO.time(s,t); } }
   function nextGap(W){ var ws=W.B.ws; return (W.wi+1<ws.length?ws[W.wi+1].start:W.w.start+4)-W.off; }
@@ -1265,7 +1277,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
       if(last && s>=12) D.tom(t,[200,170,140,110][s-12],.4); }
     var wordStart=w.start>W.off-x.s16 && w.start<=W.off, itLd=null;
     if(wordStart){ var pool=ch.concat([ch[0]+12,ch[1]+12]), m=pool[(w.h>>>0)%pool.length]+24+(M.title?12:0), dur=clamp(nextGap(W)*.9,.25,3.5), tq=s%2?t+x.s16:t;
-      if(VOC){ VOC.notes([m-12,m-24,m-5],tq); var vl=voxSay(tq,w); if(vl){ vocUntil=tq+vl+.1; itLast=m; } }
+      if(VOC){ VOC.notes([m-12,m-24,m-5],tq); var vl=voxSay(tq,w,dur); if(vl){ vocUntil=tq+vl+.1; itLast=m; } }
       if(!vl && W.off>x.bar*2){ itLd={m:m,dur:dur,from:itLast}; lead2(t,m,.05,dur,itLast,.3); itLast=m; } }   /* the held vowel (Todd's voice looped) was cut: "crazy annoying" */
     if(VOC && s===0 && t>vocUntil) VOC.notes([ch[0]+12,ch[1]+12,ch[2]+12],t);
     if(M.hit1){ D.crash(t,.25); [0,1,2,3].forEach(function(i){ D.tom(t+i*x.s16,[220,180,150,120][i],.45); }); }
@@ -1600,10 +1612,11 @@ function loadClassical(){
     .catch(function(){ clsLoading=null; });
   return clsLoading;
 }
-var VOCRX=/[?&]vox=1/.test(location.search);   /* the cut-up voice in the vocoder: on with ?vox=1 until Todd has heard it (2026-10-17) */
+var VOCRX=!/[?&]vox=0/.test(location.search);   /* the cut-up voice in the vocoder: ON (Todd 2026-10-17, "good to go"); ?vox=0 turns it off */
+var RXH=null;   /* Italo: which bit of each word to hold (rxhold.json, build/phon_hold.py) */
 var VOX=null, voxLoading=null, VOXON=false;   /* the vocoder's words stay off the live site until the voice is decided (Todd 2026-10-14) */   /* the vocoder's words: Todd's voice (ElevenLabs), one clip per word */
 function loadVox(){
-  if(!VOXON) return VOCRX?loadRxVoice():Promise.resolve();
+  if(!VOXON) return VOCRX?Promise.all([loadRxVoice(), RXH?0:fetch('rxhold.json').then(function(r){ return r.json(); }).then(function(d){ RXH=d; }).catch(function(){})]):Promise.resolve();
   if(!voxLoading) voxLoading=Promise.all([fetch('vox.json').then(function(r){ return r.json(); }), fetch('vox.mp3').then(function(r){ return r.arrayBuffer(); })])
     .then(function(r){ var oc=new OfflineAudioContext(1,1,44100); return new Promise(function(ok,no){ oc.decodeAudioData(r[1],ok,no); }).then(function(b){ VOX={map:r[0],buf:b}; }); })
     .catch(function(){ voxLoading=null; });
@@ -1688,7 +1701,7 @@ function nowLine(){
   var P=playing?posAt(ctx.currentTime):stationNow(), loop=Math.floor(P/TOTAL)*TOTAL, ri=reviewAt(P-loop), R=ST[ri], into=P-loop-START[ri];
   var nx=ST[(ri+1)%N];
   if(ri!==shown){ shown=ri; tempTarget=warmth(R.g); }
-  $('now').innerHTML='<span class="np-label">NOW PLAYING</span><br><span class="np-title">My review of '+esc(R.a)+', <i>'+esc(R.t)+'</i></span>'+(playing&&nowWord&&STATION!=='remix'?'<br><span class="np-word">You are now listening to the word:</span><br><span class="np-the">'+esc(nowWord.text)+'</span>':'')+'<br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
+  $('now').innerHTML='<span class="np-label">NOW PLAYING</span><br><span class="np-title">My review of '+esc(R.a.trim())+', <i>'+esc(R.t.trim())+'</i></span>'+(playing&&nowWord&&STATION!=='remix'?'<br><span class="np-word">You are now listening to the word:</span><br><span class="np-the">'+esc(nowWord.text)+'</span>':'')+'<br><span class="np-time">'+fmt(into)+' / '+fmt(R.s)+'</span>';
 }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
