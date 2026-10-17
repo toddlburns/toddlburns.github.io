@@ -1528,6 +1528,7 @@ var identUntil=0, lastBoundary=0, stingAt=0, events=[], nowWord=null, factsDone=
 var NFACT=13;
 function factFor(ri,base){ return {at:base+ST[ri].s*(.2+.6*((hash(ST[ri].a+'~'+ST[ri].t)%1000)/1000)), seq:['ff_lead',.35,'ff_'+('0'+((ri*5)%NFACT+1)).slice(-2)]}; }
 var SEQ={welcome:['ff_intro'],   /* Todd 2026-10-16: the fun-fact intro is the welcome now ("I'm Todd L. Burns and this is Crambe Repetita Radio…"); the facts themselves still play, without it */
+  rxwelcome:['ff_intro',.45,'rx_intro'],   /* Todd 2026-10-16: pressing play on Remix first adds "This station is a bit different, though…" */
   top:['open_00',.9,'conceit'], half:['open_30'], sting:['STING']};
 function ident(kind,t,seq){
   var tt=t; (seq||SEQ[kind]).forEach(function(x){ tt+= typeof x==='number' ? x : x==='STING' ? eng.sting(tt) : eng.speak(x,tt); });
@@ -1613,7 +1614,7 @@ function play(quick){
       cur=cursorAt(anchorPos);
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
-      if(!quick) ident('welcome',ctx.currentTime+1.5);
+      if(!quick) ident(STATION==='remix'?'rxwelcome':'welcome',ctx.currentTime+1.5);
       if(STATION==='remix'&&RXSTYLE==='grade'&&GR) GR.start();
       if(STATION==='remix'&&RXSTYLE==='voice'&&RV){ if(RXV) RV2.start(); else { RV.start(); loadRxVoice(ctx).then(function(){ if(playing&&STATION==='remix'&&RV.on()){ RV.stop(); RV2.start(); } }); } }
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
