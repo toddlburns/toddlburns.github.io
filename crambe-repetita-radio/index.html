@@ -1210,7 +1210,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
   /* ---- the vocoder (Electro and Italo; Todd 2026-10-14: "put it into a vocoder… one word, in time to the beat, as it
      appears on screen"). Fourteen bands: the voice's loudness in each band opens the same band of a synth chord;
      the voice's own hiss above 5 kHz goes straight through so the consonants stay clear. ---- */
-  var VOC=(kind==='electro'||kind==='italo')?vocRig():null, vocUntil=0;
+  var VOC=kind==='italo'?vocRig():null, vocUntil=0;   /* Electro: no voice (Todd 2026-10-17: "not working for me") */
   function vocRig(){
     var inp=c.createGain(), out=c.createGain(), car=c.createGain(), N=20, lo=120, hi=7000, cv=new Float32Array(1025);
     for(var i=0;i<1025;i++) cv[i]=Math.abs(i/512-1);
@@ -1329,7 +1329,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(s%2===0 && W.off>x.bar){ var fm=x.fig[(s>>1)%8]; fmv(t,ch[0]+12+fm,.045+.02*E,x.s16*3,{r:1,i0:2.2,i1:.25,id:.4,rel:.8,sus:.3,pan:((s>>1)%4-1.5)*.2,dl:.15}); if(vis) vis.push({t:t,k:'na',m:ch[0]+12+fm}); }
     var wordStart=w.start>W.off-x.s16 && w.start<=W.off;
     if(wordStart && W.off>x.bar*2 && W.wi%2===0){ var pent=[0,2,4,7,9], m=scNote(SC_ION,ch[0],0)+24+pent[(w.h>>>0)%5]+(M.quote?12:0); flute(t,m,.07,clamp(nextGap(W)*1.6,.5,4)); if(vis) vis.push({t:t,k:'nf',m:m,dur:clamp(nextGap(W)*1.6,.5,4)}); }
-    if((S.first && W.wi===S.a && wordStart) || M.hit1 || (M.title && s%8===0)) { [0,7,12,16].forEach(function(iv,i){ fmv(t+i*.09,ch[0]+36+iv,.04,1.2,{r:3.5,i0:3,i1:.2,id:1.2,rel:2.5,sus:.2,pan:(i-1.5)*.25,dl:.4}); }); if(vis) vis.push({t:t,k:'nb'}); }
+    /* the bell and its sparkles on the big moments: removed (Todd 2026-10-17: "don't love it") */
   }
 
   /* ---- IDM: the rhythm is the text. Each sentence's letters become a two-bar pattern (vowels are tuned blips,
@@ -1664,7 +1664,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: #303 or #fusion in the link picks one; otherwise you land on Berlin School (Todd 2026-10-17: no longer the last one you chose) */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GRADE) GRADE.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GRADE) GRADE.paint(); }); if(RX) RX.paint(); } if(STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -2991,7 +2991,7 @@ window.CRR={ prep:function(i){ return prep(i); }, nrev:function(){ return N; }, 
   },
   renderBeat:function(kind,at,secs,moves){
     var oc=new OfflineAudioContext(2,Math.floor(44100*secs),44100), e=makeEngine(oc);
-    return Promise.all([loadSound(oc), kind==='classical'||(kind==='remix'&&RXSTYLE==='desk')?loadClassical():(kind==='electro'||kind==='italo')?loadVox():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz));
+    return Promise.all([loadSound(oc), kind==='classical'||(kind==='remix'&&RXSTYLE==='desk')?loadClassical():kind==='italo'?loadVox():0]).then(function(){ beatCache={}; e.master.gain.value=MASTER; var b=makeBeat(oc,e.comp,kind,0,at,null); for(var hz=4;hz<secs+4;hz+=4) b.until(Math.min(secs,hz));
       (moves||[]).forEach(function(mv){ oc.suspend(mv.at).then(function(){ Object.keys(mv.set).forEach(function(k){ REMIX[k]=mv.set[k]; }); b.live(); oc.resume(); }); });   /* slider moves mid-render (Remix), to hear that they land at once */
       return oc.startRendering(); });
   },
