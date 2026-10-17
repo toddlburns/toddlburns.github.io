@@ -379,8 +379,8 @@ function beatCore(P,R,ri){
    Which words change is decided by the same dice for everyone, so a fader position always reads the same way. Each
    paragraph keeps its slot on the clock; inside it the new words share out the time. */
 var RX_GRADES=['F','D-','D','D+','C-','C','C+','B-','B','B+','A-','A','A+'];
-var RXSTYLE=(location.search.match(/[?&]rxs=(\w+)/)||[])[1]||'grade';   /* the Remix: grade (four reviews, one Grade slider, GR), voice (the review read aloud, RV), or the trial bands desk (typewriter, piano, cello) and late (brushes, vibes, upright bass) */
-var RXORIG=null;   /* where my own grade sits on the grade slider, 0..1 (set by GR per review) */
+var RXSTYLE=(location.search.match(/[?&]rxs=(\w+)/)||[])[1]||'grade';   /* the Remix: grade (four reviews, one Grade slider, GRADE), voice (the review read aloud, RV), or the trial bands desk (typewriter, piano, cello) and late (brushes, vibes, upright bass) */
+var RXORIG=null;   /* where my own grade sits on the grade slider, 0..1 (set by GRADE per review) */
 var REMIX={lang:0,grade:null,temper:0,sent:0,g5:0}, RXLEX=null, RXC={}, rxLoading=null;
 try{ var rxs=JSON.parse(localStorage.getItem('crr-remix')||'null'); if(rxs) ['lang','temper','sent'].forEach(function(k){ if(typeof rxs[k]==='number') REMIX[k]=clamp(rxs[k],-1,1); }), REMIX.grade=null; }catch(e){}   /* the grade is no longer yours to change (Todd 2026-10-15) */
 function loadRemix(){ if(!rxLoading) rxLoading=fetch('remix.json').then(function(r){ return r.json(); }).then(function(d){ RXLEX=d.w; RXC={}; }).catch(function(){}); return rxLoading; }
@@ -1461,7 +1461,7 @@ function makeBeat(c,dest,kind,aCtx,aAbs,vis){   /* vis: an array the picture rea
     if(motor){ var lf=c.createOscillator(), lg=c.createGain(); lf.frequency.value=5.2; lg.gain.value=.35; tg.gain.value=.7; lf.connect(lg); lg.connect(tg.gain); lf.start(t); lf.stop(end); }   /* the motor's tremolo */
     var o2=tg; if(c.createStereoPanner){ var pn=c.createStereoPanner(); pn.pan.value=clamp((m-70)/24,-.5,.5); tg.connect(pn); o2=pn; } g.connect(tg); o2.connect(bus); o2.connect(send); }
   function stepRemix(Gi,A,t){
-    if(RXSTYLE==='voice'||RXSTYLE==='grade') return;                                  /* a voice reads instead (RV, GR): no band */
+    if(RXSTYLE==='voice'||RXSTYLE==='grade') return;                                  /* a voice reads instead (RV, GRADE): no band */
     var j=Gi.j, bar=j>>4, s=j&15, W=where(A), B=W.B, x=recRx(B), w=W.w, S=W.S, ws=B.ws, late=RXSTYLE==='late';
     var M=moment(W,A,x.s16,x.s16*4);
     if(M.stop){ if(vis) vis.push({t:t,k:'rx',B:B,wi:W.wi,stop:1}); return; }
@@ -1634,7 +1634,7 @@ function play(quick){
       eng.master.gain.cancelScheduledValues(ctx.currentTime); eng.master.gain.setValueAtTime(0,ctx.currentTime); eng.master.gain.linearRampToValueAtTime(MASTER,ctx.currentTime+(quick?.6:3));
       playing=true; tick(); timer=setInterval(tick,250);
       if(!quick) ident(STATION==='remix'?'rxwelcome':'welcome',ctx.currentTime+1.5);
-      if(STATION==='remix'&&RXSTYLE==='grade'&&GR) GR.start();
+      if(STATION==='remix'&&RXSTYLE==='grade'&&GRADE) GRADE.start();
       if(STATION==='remix'&&RXSTYLE==='voice'&&RV){ if(RXV) RV2.start(); else { RV.start(); loadRxVoice(ctx).then(function(){ if(playing&&STATION==='remix'&&RV.on()){ RV.stop(); RV2.start(); } }); } }
       $('play').dataset.state='on'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h3.2v15H7zM13.8 4.5H17v15h-3.8z"/></svg>'; $('play').setAttribute('aria-label','Pause'); poke();
       try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(function(l){ lock=l; }).catch(function(){}); }catch(e){}
@@ -1643,7 +1643,7 @@ function play(quick){
   ctx.resume().then(go,go);
 }
 function pause(){
-  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop(); if(RV2) RV2.stop(); if(GR) GR.stop();
+  if(!playing) return; playing=false; clearInterval(timer); if(RV) RV.stop(); if(RV2) RV2.stop(); if(GRADE) GRADE.stop();
   eng.master.gain.setTargetAtTime(0,ctx.currentTime,.25); eng.kill(); if(beat){ beat.kill(); beat=null; }
   $('play').dataset.state='off'; $('play').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>'; $('play').setAttribute('aria-label','Play'); document.body.classList.remove('quiet'); events.length=0; nowWord=null;
   try{ if(hush) hush.pause(); }catch(e){} try{ if(lock){ lock.release(); lock=null; } }catch(e){}
@@ -1651,7 +1651,7 @@ function pause(){
 $('play').addEventListener('click',function(){ if(playing) pause(); else { if(STATION==='remix'&&RV) RV.prime(); play(); } });
 
 /* the station chooser: #303 or #fusion in the link picks one; otherwise you land on Berlin School (Todd 2026-10-17: no longer the last one you chose) */
-function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GR) GR.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
+function showStation(){ document.body.dataset.station=STATION; setTimeout(function(){ centerDial(); },0); if(STATION==='classical') loadClassical(); if(STATION==='remix'){ if(RXSTYLE!=='grade') loadRemix(); if(RXSTYLE==='desk') loadClassical(); if(RXSTYLE==='voice') loadRxVoice(); if(RXSTYLE==='grade') loadGrade().then(function(){ if(GRADE) GRADE.paint(); }); if(RX) RX.paint(); } if(STATION==='electro'||STATION==='italo') loadVox(); [].forEach.call($('stations').children,function(b){ b.setAttribute('aria-pressed',String(b.dataset.s===STATION)); }); $('how').href='how.html#'+STATION; }
 function setStation(st){
   if(STATIONS.indexOf(st)<0||st===STATION) return; STATION=st; showStation(); if(st==='remix'&&playing&&RV) RV.prime();
   try{ localStorage.setItem('crr-station',st); }catch(e){}
@@ -2012,7 +2012,7 @@ function frame(now){
   for(var k=0;k<NB;k++){ var ev2=ws[k]; if(ev2){ var p=ev2.pos||place(ev2.w); BLV.set([p.x,p.y,ev2.env,.45+(ev2.w.h%7)/7*.5],k*4); } else BLV.set([9,9,0,0],k*4); }
   if(now-lastLine>500){ lastLine=now; nowLine(); }
   var PR=STATION==='ambient'?null:VP[STATION==='303'?'303'+PIC303:STATION];
-  if(PR) drawBeat(PR,T,dim,rise);
+  if(PR){ try{ drawBeat(PR,T,dim,rise); }catch(e){ if(!frame.err){ frame.err=1; console.error(e); } } }   /* one bad picture must never stop the loop (2026-10-17: it froze every station) */
   else if(prog){
     gl.useProgram(prog); gl.uniform2f(uni.res,cv.width,cv.height); gl.uniform1f(uni.time,time); gl.uniform1f(uni.temp,temp); gl.uniform1f(uni.energy,energy);
     gl.uniform1f(uni.dim,dim); gl.uniform1f(uni.rise,rise); gl.uniform4fv(uni.bl,BLV);
@@ -2725,7 +2725,7 @@ var RX=(function(){
       e.thumb.style.left=fr*100+'%'; e.fill.style.left=Math.min(fr,o)*100+'%'; e.fill.style.width=Math.abs(fr-o)*100+'%';
       e.lo.style.opacity=Math.pow(Math.max(0,-v),.8).toFixed(3); e.hi.style.opacity=Math.pow(Math.max(0,v),.8).toFixed(3);
       e.tr.setAttribute('aria-valuenow',Math.round(v*100)); if(f.k==='g5') e.name.textContent='Grade: '+['F','D','C','B','A','A+'][Math.round((v+1)*2.5)]+(RXORIG!=null&&Math.abs(fr-RXORIG)<.01?' · my grade':''); e.tr.setAttribute('aria-valuetext',v===0?'as written':(v>0?f.hi:f.lo)+' '+Math.round(Math.abs(v)*100)+'%'); }); }
-  function set(k,v){ if(k==='g5') v=Math.round(clamp(v,0,1)*5)/2.5-1; else { v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; } if(REMIX[k]===v) return; REMIX[k]=v; if(k==='g5'){ paint(); if(GR) GR.change(); return; }
+  function set(k,v){ if(k==='g5') v=Math.round(clamp(v,0,1)*5)/2.5-1; else { v=Math.round(clamp(v*2-1,-1,1)*20)/20; if(Math.abs(v)<.06) v=0; } if(REMIX[k]===v) return; REMIX[k]=v; if(k==='g5'){ paint(); if(GRADE) GRADE.change(); return; }
     RXC={}; paint(); shownKey=''; if(beat&&beat.live&&STATION==='remix') beat.live(); if(RV&&STATION==='remix'){ RV.change(); RV2.change(); } try{ localStorage.setItem('crr-remix',JSON.stringify(REMIX)); }catch(e){} }
   F.forEach(function(f){
     var d=document.createElement('div'); d.className='sl';
@@ -2777,7 +2777,7 @@ var RX=(function(){
     if(e.word) flash('lang'); if(e.hit||e.ask) flash('temper'); if(e.sent) flash('sent');
     if(e.wi!==shownWi||e.B.key!==shownKey){ shownWi=e.wi; shownKey=e.B.key; text(e.B,e.wi); } }
   paint();
-  return {ev:ev, paint:paint, warm:function(){ return RXSTYLE==='grade'&&GR?GR.warm():warmNow; }};
+  return {ev:ev, paint:paint, warm:function(){ return RXSTYLE==='grade'&&GRADE?GRADE.warm():warmNow; }};
 })();
 /* ================= Remix, spoken (Todd 2026-10-15: "not actually have music but… speaking the review and then you get
    the edits in real time… an insane sound poem"). The browser's own voice reads the review as the listener has rewritten
@@ -2881,7 +2881,7 @@ function loadGrade(){ if(!grdLoading) grdLoading=fetch('grade.json').then(functi
 function grSprite(n){ if(!GRBUF[n]) GRBUF[n]=fetch('grade/'+n+'.mp3').then(function(r){ return r.arrayBuffer(); })
   .then(function(b){ return new Promise(function(ok,no){ (new OfflineAudioContext(1,1,44100)).decodeAudioData(b,ok,no); }); }).catch(function(){ delete GRBUF[n]; });
   return GRBUF[n]; }
-var GR=(function(){   /* v2 (Todd 2026-10-16, on his phone: the text was off "timing wise"): each take is started on the audio clock
+var GRADE=(function(){   /* was GR, which also named the Woodblock grass: the clash froze every picture after Woodblock (fixed 2026-10-17) */    /* v2 (Todd 2026-10-16, on his phone: the text was off "timing wise"): each take is started on the audio clock
      right where the last one ends (a timer only wakes it up early), and the page moves on when the take is HEARD, which on a
      phone is a quarter second or more after it is played (heardLag) */
   var on=false, ri=0, pi=0, ii=-1, gen=0, srcs=[], src=null, srcT0=0, srcLen=0, item=null, tm=null, out=null, BUF={}, nextAt=0, S={pi:0,ii:-1,item:null};
