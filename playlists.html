@@ -66,12 +66,25 @@
         .playlist-list a:hover {
             color: #8b1a1a;
         }
-        .playlist-list a.merch {
-            font-size: 12px;
-            color: #999;
-            margin-left: 8px;
+        .playlist-list li.row {
+            display: flex;
+            align-items: baseline;
         }
-        .playlist-list a.merch:hover {
+        .playlist-list .elsewhere {
+            margin-left: auto;
+            padding-left: 16px;
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .playlist-list .elsewhere a {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #999;
+            width: 18px;
+            text-align: right;
+        }
+        .playlist-list .elsewhere a:hover {
             color: #8b1a1a;
         }
         .accordion {
@@ -211,14 +224,30 @@
 
         allEntries.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
 
-        // Hype Machine's Merch Table: the playlist's albums that are on Bandcamp
-        function addMerchLink(li, p) {
-            const m = document.createElement('a');
-            m.className = 'merch';
-            m.href = 'https://hypem.com/merch-table/' + p.spotifyId;
-            m.target = '_blank';
-            m.textContent = 'Bandcamp';
-            li.appendChild(m);
+        // Other places to hear or buy each playlist: YouTube Music, and Hype Machine's
+        // Merch Table (the playlist's albums that are on Bandcamp). The YT slot stays
+        // empty when there is no YouTube copy, so the BC column lines up.
+        function addElsewhere(li, p) {
+            li.classList.add('row');
+            const box = document.createElement('span');
+            box.className = 'elsewhere';
+            const links = [
+                ['YT', 'YouTube Music', p.youtube && 'https://music.youtube.com/playlist?list=' + p.youtube],
+                ['BC', 'Albums on Bandcamp', 'https://hypem.com/merch-table/' + p.spotifyId],
+            ];
+            links.forEach(([label, title, href]) => {
+                const a = document.createElement('a');
+                if (href) {
+                    a.href = href;
+                    a.target = '_blank';
+                    a.title = title;
+                    a.textContent = label;
+                } else {
+                    a.textContent = '\u00a0';
+                }
+                box.appendChild(a);
+            });
+            li.appendChild(box);
         }
 
         const container = document.getElementById('playlist-container');
@@ -233,7 +262,7 @@
                 a.target = '_blank';
                 a.textContent = entry.data.name;
                 li.appendChild(a);
-                addMerchLink(li, entry.data);
+                addElsewhere(li, entry.data);
                 ul.appendChild(li);
             } else {
                 const wrapper = document.createElement('li');
@@ -257,7 +286,7 @@
                     const suffix = p.name.substring(p.name.indexOf(',') + 1).trim();
                     a.textContent = suffix;
                     li.appendChild(a);
-                    addMerchLink(li, p);
+                    addElsewhere(li, p);
                     body.appendChild(li);
                 });
 
