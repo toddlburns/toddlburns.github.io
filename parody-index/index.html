@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Parody Index</title>
+<meta name="description" content="Which album icon gets the most parody T-shirts? 1,524 shirts checked by eye, 422 jokes found.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#121211; --surface:#1b1b1a; --line:#2c2c2a;
+  --ink:#f3f0e7; --ink-2:#c3c2b7; --ink-3:#8d8c84;
+  --bar:#4a4945; --hi:#f3f0e7;
+  --words:#3987e5; --cast:#d95926; --object:#199e70;
+  --sans:'Archivo',system-ui,sans-serif; --serif:'Source Serif 4',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:660px;margin:0 auto;padding:0 16px}
+.wide{max-width:1180px;margin:0 auto;padding:0 16px}
+h1,h2,h3,.sans{font-family:var(--sans)}
+p{margin:0 0 1.1em}
+.k{font-family:var(--sans);font-weight:700;letter-spacing:.02em}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.mosaic{position:absolute;inset:-10% -10%;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:4px;opacity:.38;transform:rotate(-6deg);animation:drift 90s linear infinite alternate}
+.mosaic img{width:100%;aspect-ratio:1;display:block;border-radius:3px}
+@keyframes drift{to{transform:rotate(-6deg) translateY(-18%)}}
+@media (prefers-reduced-motion:reduce){.mosaic{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,17,.2) 0%,rgba(18,18,17,.75) 55%,var(--bg) 100%)}
+.hero-in{position:relative;z-index:2;padding:0 16px 9vh;max-width:1180px;margin:0 auto;width:100%}
+.kicker{font-family:var(--sans);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+h1{font-size:clamp(54px,11vw,148px);line-height:.86;font-weight:900;font-stretch:118%;margin:0 0 22px;letter-spacing:-.02em;text-transform:uppercase}
+.dek{font-size:clamp(20px,2.4vw,27px);line-height:1.35;max-width:720px;color:var(--ink);margin:0 0 18px}
+.by{font-family:var(--sans);font-size:14px;color:var(--ink-3)}
+.scrollcue{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:28px;letter-spacing:.1em;text-transform:uppercase}
+
+/* prose */
+.prose{padding:90px 0 40px}
+.prose .lead:first-letter{font-family:var(--sans);font-weight:900;float:left;font-size:4.3em;line-height:.8;margin:.06em .08em 0 0}
+.big-num{font-family:var(--sans);font-weight:900;font-stretch:118%;font-size:clamp(64px,12vw,140px);line-height:.9;margin:40px 0 6px}
+.big-cap{font-family:var(--sans);color:var(--ink-2);font-size:16px;margin-bottom:50px}
+
+/* scrolly */
+.scrolly{position:relative;display:grid;grid-template-columns:minmax(0,1fr);}
+.sticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:16px 0;z-index:1}
+.chart-head{font-family:var(--sans);display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 8px;flex-wrap:wrap}
+.chart-title{font-weight:800;font-size:18px}
+.chart-sub{font-size:13px;color:var(--ink-3)}
+.legend{display:flex;gap:16px;margin-bottom:10px;font-family:var(--sans);font-size:13px;color:var(--ink-2);min-height:20px;transition:opacity .5s;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+#chart{width:100%;display:block;overflow:visible}
+#chart text{font-family:var(--sans)}
+.bar{transition:width .9s cubic-bezier(.6,0,.2,1),fill .6s,opacity .6s}
+.row{transition:transform .9s cubic-bezier(.6,0,.2,1),opacity .6s}
+.val,.lab{transition:opacity .6s,fill .6s}
+.val{transition:x .9s cubic-bezier(.6,0,.2,1),opacity .6s}
+.steps{position:relative;z-index:2;pointer-events:none}
+.step{min-height:95svh;display:flex;align-items:center;justify-content:flex-end}
+.step:first-child{margin-top:-60svh}
+.step:last-child{min-height:110svh}
+.card{pointer-events:auto;background:rgba(27,27,26,.96);border:1px solid var(--line);border-radius:10px;padding:20px 22px;max-width:360px;font-size:17px;line-height:1.5;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.card p:last-child{margin:0}
+.card b{font-family:var(--sans);font-weight:800}
+.chip{font-family:var(--sans);font-weight:700;font-size:.85em;padding:1px 7px;border-radius:4px;color:#fff;white-space:nowrap}
+.chip.words{background:var(--words)}.chip.cast{background:var(--cast)}.chip.object{background:var(--object)}
+@media (min-width:900px){
+  .scrolly{grid-template-columns:minmax(0,1fr)}
+  .sticky{padding-right:400px}
+}
+@media (max-width:899px){
+  .sticky{height:auto;min-height:62svh;top:0;background:var(--bg);padding-top:12px;justify-content:flex-start}
+  .step{justify-content:center;min-height:80svh}
+  .step:first-child{margin-top:0}
+  .card{max-width:100%}
+}
+.tip{position:fixed;pointer-events:none;z-index:50;background:#262624;border:1px solid #3a3a37;border-radius:8px;padding:10px 12px;font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--ink);opacity:0;transition:opacity .12s;max-width:240px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.tip b{font-size:14px}
+.tip .m{color:var(--ink-3)}
+
+/* kinds */
+.section-head{padding:110px 0 20px}
+h2{font-size:clamp(34px,5.5vw,62px);line-height:.95;font-weight:900;font-stretch:112%;text-transform:uppercase;margin:0 0 18px;letter-spacing:-.01em}
+.kinds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+@media (max-width:820px){.kinds{grid-template-columns:1fr}}
+.kind{background:var(--surface);border-radius:12px;padding:20px;border-top:5px solid}
+.kind.words{border-color:var(--words)}.kind.cast{border-color:var(--cast)}.kind.object{border-color:var(--object)}
+.kind h3{margin:0 0 4px;font-size:22px;font-weight:850;text-transform:uppercase;font-stretch:110%}
+.kind .stat{font-family:var(--sans);color:var(--ink-2);font-size:14px;margin-bottom:12px}
+.kind .stat b{color:var(--ink);font-size:30px;font-weight:900;display:block;line-height:1.1}
+.kind p{font-size:16px;line-height:1.5;color:var(--ink-2)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.trio img{width:100%;aspect-ratio:1;border-radius:6px;display:block}
+
+/* icon blocks */
+.icon{padding:56px 0;border-top:1px solid var(--line)}
+.icon-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:end;margin-bottom:18px}
+.rank{font-family:var(--sans);font-weight:900;font-stretch:125%;font-size:clamp(48px,7vw,84px);line-height:.8;color:var(--ink-3)}
+.icon-name{font-family:var(--sans);font-weight:850;font-size:clamp(24px,3.2vw,36px);line-height:1;text-transform:uppercase;font-stretch:108%}
+.icon-meta{font-family:var(--sans);font-size:14px;color:var(--ink-3);margin-top:6px}
+.icon-count{text-align:right;font-family:var(--sans)}
+.icon-count b{display:block;font-size:clamp(34px,5vw,54px);font-weight:900;line-height:.9}
+.icon-count span{font-size:13px;color:var(--ink-3)}
+.icon-line{font-size:18px;color:var(--ink-2);margin:0 0 18px;max-width:620px}
+.rack{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.rack{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:520px){.rack{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.icon-head{grid-template-columns:auto 1fr}.icon-count{grid-column:1/-1;text-align:left;display:flex;gap:8px;align-items:baseline}}
+.shirt{display:block;text-decoration:none;position:relative}
+.shirt img{width:100%;aspect-ratio:1;display:block;border-radius:6px;background:#191919;transition:transform .2s}
+.shirt:hover img{transform:scale(1.04)}
+.shirt figcaption{font-family:var(--sans);font-size:12px;line-height:1.3;color:var(--ink-3);margin-top:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mechtag{font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+
+/* wall */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 18px;position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5}
+.filters button{font-family:var(--sans);font-size:13px;font-weight:600;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:5px}
+.wall a{display:block;position:relative}
+.wall img{width:100%;aspect-ratio:1;display:block;border-radius:4px;background:#191919}
+.wall a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:0 0 4px 4px;background:var(--c)}
+.wall a.hide{display:none}
+.wallcount{font-family:var(--sans);color:var(--ink-3);font-size:14px}
+
+/* table + method */
+details{margin:40px 0;font-family:var(--sans)}
+summary{cursor:pointer;color:var(--ink-2);font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink-3);font-weight:600}
+.method{padding:80px 0 60px;font-size:16px;color:var(--ink-2)}
+.method h3{font-size:16px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin:0 0 14px}
+.method li{margin-bottom:10px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;font-family:var(--sans);font-size:14px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mosaic" id="mosaic" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="kicker">A T-shirt investigation</div>
+    <h1>The Parody<br>Index</h1>
+    <p class="dek">Some album art is so simple that strangers can't stop rewriting it. I checked 1,524 T-shirts to see which icon gets the most jokes.</p>
+    <div class="by">By Todd L. Burns · October 2026</div>
+    <div class="scrollcue">Scroll ↓</div>
+  </div>
+</header>
+
+<section class="prose wrap">
+  <p class="lead">Earlier this month I made <a href="https://toddlburns.com/known-pleasures/">Known Pleasures</a>, a wall of T-shirts that rework the cover of Joy Division's <em>Unknown Pleasures</em>. The waves turn into mountains, bacon, Garfield, a cat knocking things off a table. I stopped at 142.</p>
+  <p>That made me wonder whether <em>Unknown Pleasures</em> is special, or whether every famous band image gets this treatment. So I took sixteen of the most parodied icons in rock and rap, searched TeePublic for each one, and looked at every result by eye. A shirt counted only if it made a joke out of the original. Straight bootlegs didn't count.</p>
+  <div class="big-num">422</div>
+  <div class="big-cap">parody shirts out of 1,524 checked, across 16 icons</div>
+</section>
+
+<section class="scrolly wide" id="scrolly">
+  <div class="sticky">
+    <div class="chart-head">
+      <div class="chart-title" id="chartTitle">Parody shirts found, by icon</div>
+      <div class="chart-sub" id="chartSub">Count of shirts verified by eye</div>
+    </div>
+    <div class="legend" id="legend" style="opacity:0">
+      <span><i style="background:var(--words)"></i>Swap the words</span>
+      <span><i style="background:var(--cast)"></i>Swap the cast</span>
+      <span><i style="background:var(--object)"></i>Swap the object</span>
+    </div>
+    <svg id="chart" role="img" aria-label="Bar chart of parody shirts found for each of 16 album icons"></svg>
+  </div>
+  <div class="steps">
+    <div class="step" data-step="0"><div class="card"><p>Start with the one I already knew. Using the same quick method as every other icon here, <b>Unknown Pleasures</b> turns up <b>21</b> parodies.</p><p>When I dug for days, I found 142. So read every number on this page as a floor, not a ceiling.</p></div></div>
+    <div class="step" data-step="1"><div class="card"><p>Now the other fifteen. <em>Unknown Pleasures</em> lands in the middle of the pack, at number eight.</p></div></div>
+    <div class="step" data-step="2"><div class="card"><p>The top three are a crosswalk, a prism and a lightning bolt.</p><p><b>Abbey Road</b> wins with 70: Santas, Simpsons, ducks, Peanuts, the Golden Girls, four coffee pots. Close behind are <b>The Dark Side of the Moon</b> (60) and the <b>AC/DC</b> logo (53).</p></div></div>
+    <div class="step" data-step="3"><div class="card"><p>Some of the most famous images barely get touched. These four came up nearly empty on the first pass, so I searched again more broadly. Even then, the <b>Nirvana smiley</b> produced only 9 jokes and <b>London Calling</b> 8.</p><p>Nirvana has gone to court over a smiley riff before: it sued Marc Jacobs in 2018.</p></div></div>
+    <div class="step" data-step="4"><div class="card"><p>Every parody does one of three things.</p><p><span class="chip words">Swap the words</span> keeps the font and changes the letters. <span class="chip cast">Swap the cast</span> keeps the scene and changes who's in it. <span class="chip object">Swap the object</span> keeps the shape and changes what it is.</p></div></div>
+    <div class="step" data-step="5"><div class="card"><p>The kind of joke matters more when you look at hit rate: how much of what you find is actually a parody.</p><p>Search for a Misfits or AC/DC parody and more than 8 in 10 results are jokes. For the Stones tongue, Steal Your Face and the Nirvana smiley, it's under 1 in 10. The rest are the logo, straight.</p></div></div>
+    <div class="step" data-step="6"><div class="card"><p>Icons with a slot to fill, like a cast or a word, get rewritten. Icons that are just one picture mostly get copied.</p><p>Four Beatles are four slots. The Stones tongue is just the tongue.</p></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <details>
+    <summary>See the numbers as a table</summary>
+    <table id="tbl"><thead><tr><th>Icon</th><th>Parodies</th><th>Reviewed</th><th>Hit rate</th><th>TeePublic says</th></tr></thead><tbody></tbody></table>
+  </details>
+</section>
+
+<section class="wide">
+  <div class="section-head wrap" style="padding-left:0;padding-right:0;max-width:none">
+    <h2>Three ways to<br>make the joke</h2>
+    <p style="max-width:640px;color:var(--ink-2)">Grouped by the kind of joke each icon invites. Rates are parodies divided by everything reviewed for that group.</p>
+  </div>
+  <div class="kinds" id="kinds"></div>
+</section>
+
+<section class="wide" id="icons">
+  <div class="section-head" style="padding-bottom:30px">
+    <h2>All sixteen,<br>ranked</h2>
+    <p style="max-width:640px;color:var(--ink-2)">A selection from each. Click any shirt to see it on TeePublic.</p>
+  </div>
+</section>
+
+<section class="wide" id="wallsec">
+  <div class="section-head" style="padding-bottom:0">
+    <h2>Every one<br>of the 422</h2>
+    <p class="wallcount" id="wallcount"></p>
+  </div>
+  <div class="filters" id="filters" role="group" aria-label="Filter by icon"></div>
+  <div class="wall" id="wall"></div>
+</section>
+
+<section class="method wrap">
+  <h3>How this was made</h3>
+  <ul>
+    <li>All shirts come from <a href="https://www.teepublic.com">TeePublic</a>, searched on October 21, 2026. I ran two searches per icon, such as "black flag parody" and "black flag bars parody", and took the first two pages of each.</li>
+    <li>The four icons with the fewest hits (Nirvana smiley, London Calling, Steal Your Face and the Stones tongue) got three extra, broader searches each. They still came last, so the extra digging only helps them.</li>
+    <li>Every result was checked by eye. A shirt counts if it's recognisably the original with a joke swapped in. Straight bootlegs, tributes, tour shirts and flag recolours don't count.</li>
+    <li>TeePublic's own result counts are noisy. "Dark side of the moon parody" returns 608 results, and I found 60 parodies in the 122 I could see. The table above shows both numbers.</li>
+    <li>Redbubble's search was too loose to count (it returns 11,387 results for "black flag parody"), so it's left out.</li>
+    <li>Every count is a floor. Known Pleasures found 142 <em>Unknown Pleasures</em> shirts by digging; the method here found 21.</li>
+  </ul>
+</section>
+
+<footer class="wrap">
+  A companion to <a href="https://toddlburns.com/known-pleasures/">Known Pleasures</a> · <a href="https://toddlburns.com/">toddlburns.com</a>
+</footer>
+
+<div class="tip" id="tip"></div>
+
+<script>
+const MECH={words:'Swap the words',cast:'Swap the cast',object:'Swap the object'};
+const SHORT={abbey:'Abbey Road',dsotm:'Dark Side of the Moon',acdc:'AC/DC logo',bf:'Black Flag bars',wu:'Wu-Tang W',ram:'Ramones seal',misf:'Misfits skull',up:'Unknown Pleasures',rdmc:'Run-DMC logo',syf:'Steal Your Face',nev:'Nevermind baby',tongue:'Stones tongue',vu:'Velvet Underground banana',mot:'Motörhead Snaggletooth',nirv:'Nirvana smiley',lc:'London Calling'};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+fetch('data.json').then(r=>r.json()).then(D=>{
+  D.forEach(d=>{d.rate=d.verified/d.reviewed;d.short=SHORT[d.id]});
+  mosaic(D); chart(D); table(D); kinds(D); icons(D); wall(D);
+});
+
+function mosaic(D){
+  const all=D.flatMap(d=>d.shirts.map(s=>s.i)).sort(()=>Math.random()-.5).slice(0,140);
+  document.getElementById('mosaic').innerHTML=all.map(i=>`<img src="${i}" alt="" loading="lazy">`).join('');
+}
+
+function chart(D){
+  const svg=document.getElementById('chart'), NS='http://www.w3.org/2000/svg', tip=document.getElementById('tip');
+  const ROW=Math.max(22,Math.min(34,(innerHeight*.72)/16));
+  let W=0,LAB=0,step=-1,metric='verified';
+  const rows={};
+  D.forEach(d=>{
+    const g=document.createElementNS(NS,'g'); g.setAttribute('class','row');
+    g.innerHTML=`<rect class="hit" x="0" y="0" height="${ROW}" fill="transparent"></rect>
+      <text class="lab" x="0" y="${ROW/2}" dy=".35em" text-anchor="end" font-size="13"></text>
+      <rect class="bar" x="0" y="${ROW*.18}" height="${ROW*.64}" rx="4"></rect>
+      <rect class="sq" x="0" y="${ROW*.18}" height="${ROW*.64}" width="4"></rect>
+      <text class="val" y="${ROW/2}" dy=".35em" font-size="13" font-weight="700"></text>`;
+    g.querySelector('.lab').textContent=d.short;
+    svg.appendChild(g); rows[d.id]={g,d};
+    g.addEventListener('mousemove',e=>{
+      tip.innerHTML=`<b>${esc(d.name)}</b><br><span class="m">${esc(d.band)}, ${d.year}</span><br>${d.verified} parodies of ${d.reviewed} reviewed<br>Hit rate ${Math.round(d.rate*100)}%<br><span class="m">${MECH[d.mech]}</span>`;
+      tip.style.opacity=1; const x=Math.min(e.clientX+14,innerWidth-250); tip.style.left=x+'px'; tip.style.top=(e.clientY+14)+'px';
+    });
+    g.addEventListener('mouseleave',()=>tip.style.opacity=0);
+  });
+  // ghost bar for Known Pleasures' deep count
+  const ghost=document.createElementNS(NS,'g'); ghost.setAttribute('class','row');
+  ghost.innerHTML=`<rect class="bar" x="0" y="${ROW*.18}" height="${ROW*.64}" rx="4" fill="none" stroke="${css('--ink-3')}" stroke-dasharray="4 4"></rect><text class="glab" y="${ROW/2}" dy=".35em" text-anchor="end" font-size="13" fill="${css('--ink-3')}">Known Pleasures</text><text class="val" y="${ROW/2}" dy=".35em" font-size="13" fill="${css('--ink-3')}">142 when I dug for days</text>`;
+  svg.insertBefore(ghost,svg.firstChild);
+
+  function layout(){
+    W=svg.parentNode.clientWidth - (innerWidth>=900?400:0);
+    LAB=Math.min(190,Math.max(120,W*.32));
+    svg.setAttribute('width',W); svg.setAttribute('height',ROW*16+8);
+    svg.setAttribute('viewBox',`0 0 ${W} ${ROW*16+8}`);
+    render(true);
+  }
+  function render(){
+    const s=Math.max(step,0);
+    metric=s>=5?'rate':'verified';
+    const order=[...D].sort((a,b)=>b[metric]-a[metric]);
+    const max=metric==='rate'?1:(s===0?142:70);
+    const plot=W-LAB-70;
+    document.getElementById('chartTitle').textContent=metric==='rate'?'Hit rate: share of results that are parodies':'Parody shirts found, by icon';
+    document.getElementById('chartSub').textContent=metric==='rate'?'Parodies ÷ shirts reviewed':'Count of shirts verified by eye';
+    document.getElementById('legend').style.opacity=s>=4?1:0;
+    order.forEach((d,i)=>{
+      const {g}=rows[d.id]; const y=s===0?0:i*ROW;
+      g.style.transform=`translate(0px,${y}px)`;
+      const show=s>0||d.id==='up';
+      g.style.opacity=show?1:0;
+      const v=d[metric], w=Math.max(4,plot*v/max);
+      const bar=g.querySelector('.bar'), sq=g.querySelector('.sq'), lab=g.querySelector('.lab'), val=g.querySelector('.val'), hit=g.querySelector('.hit');
+      bar.setAttribute('x',LAB+8); bar.setAttribute('width',w);
+      sq.setAttribute('x',LAB+8); // squares off the baseline end
+      lab.setAttribute('x',LAB);
+      hit.setAttribute('width',W);
+      val.setAttribute('x',LAB+8+w+6);
+      val.textContent=metric==='rate'?Math.round(v*100)+'%':v;
+      let fill=css('--bar'), labc=css('--ink-2'), op=1;
+      if(s>=4){fill=css('--'+d.mech)}
+      else if(s===0||s===1){fill=d.id==='up'?css('--hi'):css('--bar')}
+      else if(s===2){fill=['abbey','dsotm','acdc'].includes(d.id)?css('--hi'):css('--bar')}
+      else if(s===3){fill=['nirv','lc','syf','tongue'].includes(d.id)?css('--hi'):css('--bar')}
+      if(s===6){op=(d.mech==='object'&&d.rate<.2)||(d.mech==='cast'&&d.rate>.45)?1:.35}
+      bar.style.fill=fill; sq.style.fill=fill; g.style.opacity=show?op:0;
+      lab.style.fill=labc; val.style.fill=css('--ink');
+    });
+    // ghost
+    const gb=ghost.querySelector('.bar'), gv=ghost.querySelector('.val');
+    gb.setAttribute('x',LAB+8); gb.setAttribute('width',plot*142/142);
+    gv.setAttribute('x',Math.min(LAB+8+plot*0.18,W-170));
+    ghost.style.transform=`translate(0px,${ROW*2}px)`;
+    ghost.style.opacity=s===0?1:0;
+  }
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){step=+e.target.dataset.step;render()}})},{rootMargin:'-45% 0px -45% 0px'});
+  document.querySelectorAll('.step').forEach(el=>io.observe(el));
+  addEventListener('resize',layout); layout();
+}
+
+function table(D){
+  document.querySelector('#tbl tbody').innerHTML=D.map(d=>`<tr><td>${esc(d.short)}</td><td>${d.verified}</td><td>${d.reviewed}</td><td>${Math.round(d.rate*100)}%</td><td>${d.search}</td></tr>`).join('');
+}
+
+function kinds(D){
+  const T={words:'The font stays, the letters change. AC/DC becomes AB/CD, Run-DMC becomes Run CMD, the Ramones seal fills with new names.',cast:'The scene stays, the people change. Four Santas cross Abbey Road; four cats stand in the Black Flag bars; a corgi chases a bone underwater.',object:'The shape stays, the thing changes. A cat sits on the prism, the tongue becomes a pizza slice, the banana becomes a hot dog.'};
+  document.getElementById('kinds').innerHTML=['cast','words','object'].map(m=>{
+    const g=D.filter(d=>d.mech===m), v=g.reduce((a,d)=>a+d.verified,0), r=g.reduce((a,d)=>a+d.reviewed,0);
+    const ex=g.slice(0,3).map(d=>d.shirts.find(s=>s.f)).filter(Boolean);
+    return `<div class="kind ${m}"><h3>${MECH[m]}</h3><div class="stat"><b>${Math.round(100*v/r)}%</b>hit rate · ${v} parodies across ${g.length} icons</div><p>${T[m]}</p><p style="font-size:14px">${g.map(d=>esc(d.short)).join(' · ')}</p><div class="trio">${ex.map(s=>`<img src="${s.i}" alt="${esc(s.t)}" loading="lazy">`).join('')}</div></div>`;
+  }).join('');
+}
+
+function icons(D){
+  const host=document.getElementById('icons');
+  D.forEach((d,i)=>{
+    const feat=d.shirts.filter(s=>s.f).slice(0,12);
+    const el=document.createElement('article'); el.className='icon';
+    el.innerHTML=`<div class="icon-head"><div class="rank">${String(i+1).padStart(2,'0')}</div>
+      <div><div class="icon-name">${esc(d.name)}</div><div class="icon-meta">${esc(d.band)}, ${d.year} · <span class="mechtag" style="color:var(--${d.mech})">${MECH[d.mech]}</span></div></div>
+      <div class="icon-count"><b>${d.verified}</b><span>parodies · ${Math.round(d.rate*100)}% hit rate</span></div></div>
+      <p class="icon-line">${esc(d.line)}</p>
+      <div class="rack">${feat.map(s=>`<a class="shirt" href="${s.u}" target="_blank" rel="noopener"><figure style="margin:0"><img src="${s.i}" alt="${esc(s.t)}" loading="lazy"><figcaption>${esc(s.t)}</figcaption></figure></a>`).join('')}</div>`;
+    host.appendChild(el);
+  });
+}
+
+function wall(D){
+  const w=document.getElementById('wall'), f=document.getElementById('filters'), c=document.getElementById('wallcount');
+  w.innerHTML=D.flatMap(d=>d.shirts.map(s=>`<a href="${s.u}" target="_blank" rel="noopener" data-id="${d.id}" style="--c:var(--${d.mech})" title="${esc(s.t)}"><img src="${s.i}" alt="${esc(s.t)}" loading="lazy"></a>`)).join('');
+  const btn=(id,label)=>`<button data-id="${id}" aria-pressed="${id==='all'}">${esc(label)}</button>`;
+  f.innerHTML=btn('all','All 422')+D.map(d=>btn(d.id,`${d.short} ${d.verified}`)).join('');
+  const set=id=>{
+    f.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===id));
+    let n=0; w.querySelectorAll('a').forEach(a=>{const on=id==='all'||a.dataset.id===id;a.classList.toggle('hide',!on);n+=on});
+    c.textContent=`${n} shirts. The coloured stripe shows the kind of joke.`;
+  };
+  f.addEventListener('click',e=>{const b=e.target.closest('button');if(b)set(b.dataset.id)});
+  set('all');
+}
+</script>
+</body>
+</html>
