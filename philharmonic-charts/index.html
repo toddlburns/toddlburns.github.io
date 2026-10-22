@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CzIgxwEH.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Ddc_VDft.css">
+  <script type="module" crossorigin src="./assets/index-Cddoba95.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Cgzx9FQa.css">
 </head>
 <body>
 <header class="masthead">
@@ -92,10 +92,55 @@
   <details class="table-view"><summary>The line as a table, by decade</summary><div id="living-table"></div></details>
 </section>
 
-<!-- 5. FIND YOUR COMPOSER -->
-<section class="finder-section" id="finder">
+<!-- 5. WHAT MOVES THE CHART -->
+<section class="moves-section" id="moves">
   <div class="section-head">
     <p class="kicker">Part four</p>
+    <h2>What moves the chart</h2>
+    <p class="section-dek">Three outside forces line up with the chart’s big moves: anniversaries, the person on the podium, and events in the world. Here is how much each one explains.</p>
+  </div>
+
+  <div class="moves-block" id="anniv">
+    <h3>Anniversaries work, and centenaries work best</h3>
+    <p id="anniv-lede"></p>
+    <figure class="moves-fig">
+      <div id="anniv-chart"></div>
+      <figcaption class="caption" id="anniv-caption"></figcaption>
+    </figure>
+    <p id="anniv-peaks"></p>
+    <h4 class="list-head">The biggest anniversary bumps</h4>
+    <ol class="bump-list" id="anniv-list"></ol>
+  </div>
+
+  <div class="moves-block" id="conductors">
+    <h3>A new music director changes less than you’d think</h3>
+    <p id="cond-lede"></p>
+    <figure class="moves-fig">
+      <div id="turnover-chart"></div>
+      <figcaption class="caption">How much of the subscription repertoire changed between each five-season stretch and the five before it. Red dots: a new music director’s first season.</figcaption>
+    </figure>
+    <p id="cond-own"></p>
+    <figure class="moves-fig">
+      <div id="own-chart"></div>
+      <figcaption class="caption">Share of subscription performances each music director conducted personally during their tenure.</figcaption>
+    </figure>
+    <p id="cond-champ"></p>
+    <h4 class="list-head">Champions: the conductor who played each composer most above expectation</h4>
+    <ol class="champ-list" id="champ-list"></ol>
+    <details class="table-view"><summary>Turnover at every music-director change, as a table</summary><div id="turnover-table" class="scroll"></div></details>
+  </div>
+
+  <div class="moves-block wide-block" id="timeline-block">
+    <h3>A timeline of the outside world</h3>
+    <p>Events that line up with moves on the chart. Each one names its source: the Philharmonic’s own data, or a cited page. Printed programs from before 1931 are in the public domain and are shown here; later ones are linked.</p>
+    <ol class="timeline" id="timeline"></ol>
+  </div>
+</section>
+
+<!-- 6. FIND YOUR COMPOSER -->
+<section class="finder-section" id="finder">
+  <div class="section-head">
+    <p class="kicker">Part five</p>
     <h2>Find your composer</h2>
   </div>
   <div class="search">
@@ -113,12 +158,12 @@
   </article>
 </section>
 
-<!-- 6. METHODS -->
+<!-- 7. METHODS -->
 <section class="methods" id="methods">
   <h2>Methods and credits</h2>
   <div id="methods-body">
     <h3>The data</h3>
-    <p>Every number here comes from the New York Philharmonic’s <a href="https://github.com/nyphilarchive/PerformanceHistory">Performance History</a> dataset: every program since Dec. 7, 1842, with its concerts and the works played. The Philharmonic has dedicated it to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. This version was downloaded on Oct. 22, 2026. Program links open the scanned printed programs in the Philharmonic’s <a href="https://archives.nyphil.org/">Digital Archives</a>. The scans are linked, not copied.</p>
+    <p>Every number here comes from the New York Philharmonic’s <a href="https://github.com/nyphilarchive/PerformanceHistory">Performance History</a> dataset: every program since Dec. 7, 1842, with its concerts and the works played. The Philharmonic has dedicated it to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. This version was downloaded on Oct. 22, 2026. Program links open the scanned printed programs in the Philharmonic’s <a href="https://archives.nyphil.org/">Digital Archives</a>. Programs printed before 1931 are in the US public domain, and their cover pages are shown here, fetched through the archive’s public IIIF image service. Later programs are linked, not copied.</p>
 
     <h3>What counts as a performance</h3>
     <p>One work, on one program, on one date. If a program played the overture to <i>Oberon</i> and an aria from it, that is one performance of <i>Oberon</i>: the archive doesn’t reliably mark excerpts, so we don’t weight them. When the same program was played twice on the same day, as at the Roxy Theatre in 1950, that counts once.</p>
@@ -148,6 +193,15 @@
       <li><b>Premieres.</b> “First performance” means the first time this orchestra played a work. It is not necessarily a world premiere.</li>
     </ul>
 
+    <h3>Anniversaries</h3>
+    <p>For every composer with 100 or more performances and known dates, we took each 25th, 50th, 75th, 100th, 125th, 150th, 175th, 200th, 250th and 300th anniversary of birth and death that fell between 1880 and 2025. A calendar year’s anniversary seasons are the two that touch it (1991 means 1990-91 and 1991-92). We compared the composer’s share in those seasons with their average over the six seasons either side, skipping cases where that average was below 0.2%. The comparison is against 60 random years per composer, measured the same way, and the range is a bootstrap 95% interval. “Best season” peaks are counted from 1880-81 on. The method can’t tell an anniversary from something else happening that year; the one case we found by hand, Henry Hadley in 1921, is flagged but left in the numbers.</p>
+
+    <h3>Conductors</h3>
+    <p>Music directors and their tenures are from the orchestra’s official list (via <a href="https://en.wikipedia.org/wiki/New_York_Philharmonic">Wikipedia</a>). Turnover is the total variation distance between composer shares in the five subscription seasons before a boundary and the five from it: the share of the repertoire you would have to reassign to turn one mix into the other. Each music-director change is ranked against the non-change boundaries within 15 seasons, and the p-value comes from 5,000 random draws of the same number of ordinary boundaries. Champions compare each conductor’s performances of a composer with what their share of each season’s subscription concerts would predict.</p>
+
+    <h3>The timeline and pictures</h3>
+    <p>Each event in the timeline says where it comes from. Events marked “Data” are checked against the dataset by the analysis code, down to the program and date. The rest link to a published source. Photographs and paintings come from <a href="https://commons.wikimedia.org/">Wikimedia Commons</a> and are public domain or Creative Commons licensed; each caption links to its file page with the author and licence.</p>
+
     <h3>Known gaps</h3>
     <ul>
       <li>Excerpts and arrangements aren’t reliably marked. An arrangement can carry its own work ID, so one piece may be split in two.</li>
@@ -158,14 +212,19 @@
     </ul>
 
     <h3>Credits</h3>
-    <p>Data and program scans: New York Philharmonic Shelby White &amp; Leon Levy Digital Archives. We are grateful for their open-data release. Analysis code and the full cleaning log are in the project repository.</p>
+    <p>Data and program scans: New York Philharmonic Shelby White &amp; Leon Levy Digital Archives. We are grateful for their open-data release. Other images: Wikimedia Commons contributors, the Library of Congress (Bain News Service), and the New York World-Telegram &amp; Sun collection, credited under each picture. Analysis code and the full cleaning log are in the project repository.</p>
   </div>
 </section>
 </main>
 
 <footer class="colophon">
-  <p>Data: <a href="https://github.com/nyphilarchive/PerformanceHistory">New York Philharmonic Performance History</a>, dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Program scans courtesy of the <a href="https://archives.nyphil.org/">New York Philharmonic Shelby White &amp; Leon Levy Digital Archives</a>; they are linked, not reproduced.</p>
+  <p>Data: <a href="https://github.com/nyphilarchive/PerformanceHistory">New York Philharmonic Performance History</a>, dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Program scans courtesy of the <a href="https://archives.nyphil.org/">New York Philharmonic Shelby White &amp; Leon Levy Digital Archives</a>; only pre-1931 (public-domain) programs are reproduced, later ones are linked.</p>
 </footer>
 <div id="tooltip" class="tooltip" role="status" hidden></div>
+<dialog id="lightbox" aria-label="Printed program">
+  <form method="dialog"><button class="lb-close" aria-label="Close">×</button></form>
+  <img id="lb-img" alt="">
+  <p class="caption" id="lb-cap"></p>
+</dialog>
 </body>
 </html>
