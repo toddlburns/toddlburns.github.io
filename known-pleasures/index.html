@@ -147,7 +147,11 @@ function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random
 function lay(){
   timers.forEach(clearTimeout); timers=[];
   var wall=$('wall'); wall.innerHTML=''; $('n').textContent='0';
-  order=shuffle(S.map(function(_,i){return i}));
+  // black tees first, then dark and coloured ones, then the white ones; shuffled within each group
+  var g=[[],[],[]];
+  S.forEach(function(it,i){ var n=parseInt(it.c.slice(1),16), r=n>>16, gr=(n>>8)&255, b=n&255, hi=Math.max(r,gr,b), lo=Math.min(r,gr,b);
+    g[hi<0x40&&hi-lo<0x14?0:lum(it.c)>.5&&hi-lo<0x30&&lo>0xc0?2:1].push(i); });
+  order=shuffle(g[0]).concat(shuffle(g[1]),shuffle(g[2]));
   order.forEach(function(si,k){
     var it=S[si], b=document.createElement('button');
     b.className='shirt'; b.type='button'; b.setAttribute('role','listitem');
