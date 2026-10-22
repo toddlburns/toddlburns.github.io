@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-DwDM0JNb.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DkBXwxLU.css">
+  <script type="module" crossorigin src="./assets/index-BRm-eOHS.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C7599Vh-.css">
 </head>
 <body>
 <header class="masthead">
@@ -130,6 +130,12 @@
     <details class="table-view"><summary>Turnover at every music-director change, as a table</summary><div id="turnover-table" class="scroll"></div></details>
   </div>
 
+  <div class="moves-block" id="firmament">
+    <h3>How a piece joins the repertoire</h3>
+    <p id="firm-lede"></p>
+    <ol class="firm-list" id="firm-list"></ol>
+  </div>
+
   <div class="moves-block wide-block" id="timeline-block">
     <h3>A timeline of the outside world</h3>
     <p>Events that line up with moves on the chart. Each one names its source: the Philharmonic’s own data, or a cited page. Printed programs from before 1931 are in the public domain and are shown here; later ones are linked.</p>
@@ -189,6 +195,8 @@
     <h3>Comebacks, forgotten stars, premieres</h3>
     <ul>
       <li><b>Comebacks.</b> A composer is ranked on a five-season rolling chart. To count as a comeback, they must have been out of the top 50 for at least 20 straight seasons, then come back into the top 30, with at least 40 total performances. Two more tests remove false comebacks. They need at least 10 performances in the five seasons before dropping out; otherwise a single 1870s performance can rank a composer in the tiny early charts, which is how Verdi, Borodin, Scriabin and Vieuxtemps first qualified. And no single program may account for more than half of the five seasons after the return; this removes Grieg, whose 1970 “return” was one Scandinavian-themed Promenade program played four times, with eight Grieg pieces on it. The context line for each comeback is checked against the data by the analysis script. Mahler never left the top 50, so by this rule he’s a slow climber, not a comeback.</li>
+      <li><b>Why they faded.</b> Each forgotten-star card says who played the composer in their best decade. If one conductor led at least 40% of those performances and everyone else together played the composer less than half as often in the ten seasons after that conductor last did, the card names that conductor as the reason. Otherwise it names the main format (Stadium, tours) or says the fade was gradual. Role facts the data can’t show, like Hadley’s post as associate conductor, are linked to a source.</li>
+      <li><b>Joining the repertoire.</b> Subscription concerts from 1909, counted in programs. A piece “joins” in the first season it is played after appearing in at most 2 of the previous 15 seasons, if it is then played in at least 10 of the next 20 and was never that regular before. It must also be played in at least 10 seasons after the conductor who led it most in those 20 seasons last did, so it outlived its champion. Before 1909 the orchestra gave only six to nine subscription programs a season, too few to tell rare from regular, so the test can’t see anything joining before 1924.</li>
       <li><b>Forgotten stars.</b> They reached a decade’s top 40, with at least 12 performances that decade, between the 1870s and 1970s. Their share since 2000 is at least 15 times smaller.</li>
       <li><b>Premieres.</b> “First performance” means the first time this orchestra played a work. It is not necessarily a world premiere.</li>
     </ul>
