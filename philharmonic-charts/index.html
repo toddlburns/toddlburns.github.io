@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Philharmonic Charts</title>
+<meta name="description" content="180 years of New York Philharmonic programs, read like a pop chart: who charted, who peaked, who fell off, and who came back.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23A3312A%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Georgia%22 font-size=%2220%22 fill=%22%23FBF8F2%22 text-anchor=%22middle%22%3E%E2%99%A9%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-CzIgxwEH.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Ddc_VDft.css">
+</head>
+<body>
+<header class="masthead">
+  <span class="mast-title">The Philharmonic Charts</span>
+  <div class="universe" role="radiogroup" aria-label="Which concerts to count">
+    <span class="universe-label">Counting</span>
+    <button role="radio" aria-checked="true" data-uni="all">All concerts</button>
+    <button role="radio" aria-checked="false" data-uni="sub">Subscription only</button>
+  </div>
+</header>
+
+<main>
+<!-- 1. OPENING -->
+<section class="opening">
+  <p class="kicker">New York Philharmonic · 1842–2026</p>
+  <h1>The Philharmonic Charts</h1>
+  <p class="dek">Nearly two centuries of concert programs, read like a pop chart: who charted, who peaked, who fell off, and who came back.</p>
+  <div class="first-night">
+    <p class="date-line">Wednesday, Dec. 7, 1842</p>
+    <p>At the Apollo Rooms on lower Broadway, a new orchestra played its first concert. It opened with Beethoven’s Fifth Symphony and ran through Weber, Hummel, Mozart, Rossini and Kalliwoda: seven works, three conductors, one piano quintet in the middle.</p>
+    <p><a class="program-link" id="first-program" target="_blank" rel="noopener">See the printed program from that night</a></p>
+  </div>
+  <p class="scale" id="scale-line"></p>
+</section>
+
+<!-- 2. THE ALL-TIME CHART -->
+<section class="chart-section" id="bump-section">
+  <div class="section-head">
+    <p class="kicker">Part one</p>
+    <h2>The all-time chart</h2>
+    <p class="section-dek">Every decade, the ten composers the Philharmonic played most. Rank is a composer’s share of all works performed in that decade.</p>
+  </div>
+  <div class="scrolly">
+    <figure class="sticky" id="bump-figure" aria-describedby="bump-caption">
+      <div id="bump"></div>
+      <figcaption id="bump-caption" class="caption">Lines show decade rank, 1–10. Below the rule: ranks 11–15.</figcaption>
+    </figure>
+    <div class="steps" id="bump-steps">
+      <div class="step" data-step="intro"><p>Each line is a composer. Lines rise and fall as the decade’s share of performances shifts. The rule under rank 10 is where a composer drops off the chart.</p></div>
+      <div class="step" data-step="beethoven"><p><b class="hl">Beethoven</b> is the closest thing the chart has to a permanent #1. He tops the season in <span data-fact="bee_ones"></span> of <span data-fact="seasons"></span> seasons and is in the top three in <span data-fact="bee_top3"></span>. In no decade since the 1840s has he dropped below third.</p></div>
+      <div class="step" data-step="wagner"><p><b class="hl">Wagner</b> arrives in the 1850s at #9 and takes the top spot by the 1890s. From 1910-11 through 1923-24 he is #1 in every season but one. In 1910-11, <span data-fact="wagner_1910"></span> of everything the orchestra played was Wagner.</p></div>
+      <div class="step" data-step="wagner-fall"><p>The one exception is 1918-19, the season the First World War ended, when Wagner fell to <span data-fact="wagner_1918"></span> of performances. He came back, then slid after the Second World War: <b class="hl">#19 in the 1960s</b>, and outside the top 20 since 2010.</p></div>
+      <div class="step" data-step="mahler"><p><b class="hl">Mahler</b> was the orchestra’s own conductor in 1909–11, yet for fifty years after his death he hovered around #26–51, never quite charting. Then came 1959-60, the centennial of his birth. Leonard Bernstein, Dimitri Mitropoulos and Bruno Walter between them led <span data-fact="mahler_1959"></span> Mahler performances, and he was #2 for the year. From the 1960s through the 2010s he stayed in or near the decade top 10.</p></div>
+      <div class="step" data-step="mendelssohn"><p><b class="hl">Surprise:</b> the chart’s first #1 isn’t Beethoven. In the 1840s and 1850s it was <b class="hl">Mendelssohn</b>, who was still alive and writing. Today he sits around #20.</p></div>
+      <div class="step" data-step="mozart"><p><b class="hl">Surprise:</b> for four decades, the 1970s through the 2000s, <b class="hl">Mozart</b> out-charted Beethoven. Before 1960 Mozart had never been higher than #3.</p></div>
+      <div class="step" data-step="williams"><p><b class="hl">Surprise:</b> the newest name in the 2020s top three is <b class="hl">John Williams</b>. Film-with-orchestra nights made him the most-played composer of the 2024-25 season. Switch to <button class="inline-toggle" data-uni="sub">subscription only</button> and he disappears from the top ten.</p></div>
+    </div>
+  </div>
+  <details class="table-view"><summary>The chart as a table</summary><div id="bump-table"></div></details>
+  <aside class="comebacks">
+    <h3>Real comebacks</h3>
+    <p>By the strict rule, out of the top 50 for 20+ years and then back in the top 30, Mahler never left. These composers did:</p>
+    <ul id="comeback-list"></ul>
+  </aside>
+</section>
+
+<!-- 3. FORGOTTEN STARS -->
+<section class="forgotten-section">
+  <div class="section-head">
+    <p class="kicker">Part two</p>
+    <h2>One-hit wonders and forgotten stars</h2>
+    <p class="section-dek">Composers who made a decade’s top 40 and are now played at least 15 times less often, if at all. Each card links to a printed program from their best season.</p>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<!-- 4. LIVING COMPOSERS -->
+<section class="chart-section" id="living-section">
+  <div class="section-head">
+    <p class="kicker">Part three</p>
+    <h2>The living-composer line</h2>
+    <p class="section-dek" id="living-dek">The share of each season’s performances written by someone who was alive on the night of the concert. In the 1840s it was nearly half. By the 2000s it was one in eleven. Since 2021 it has climbed back above one in five.</p>
+  </div>
+  <figure class="wide">
+    <div id="living"></div>
+    <figcaption class="caption">Shaded bands: the season’s principal conductor (the one leading the most subscription performances), shown for runs of three seasons or more.</figcaption>
+  </figure>
+  <div class="living-notes" id="living-notes"></div>
+  <details class="table-view"><summary>The line as a table, by decade</summary><div id="living-table"></div></details>
+</section>
+
+<!-- 5. FIND YOUR COMPOSER -->
+<section class="finder-section" id="finder">
+  <div class="section-head">
+    <p class="kicker">Part four</p>
+    <h2>Find your composer</h2>
+  </div>
+  <div class="search">
+    <label for="search-input" class="visually-hidden">Search composers</label>
+    <input id="search-input" type="search" autocomplete="off" placeholder="Try Florence Price, Sibelius, Philip Glass…" aria-controls="search-results" aria-expanded="false" role="combobox">
+    <ul id="search-results" role="listbox" hidden></ul>
+  </div>
+  <article id="composer-card" hidden>
+    <h3 id="cc-name"></h3>
+    <p class="cc-sub" id="cc-sub"></p>
+    <div id="cc-chart"></div>
+    <dl class="cc-facts" id="cc-facts"></dl>
+    <h4>Three programs</h4>
+    <ul class="cc-programs" id="cc-programs"></ul>
+  </article>
+</section>
+
+<!-- 6. METHODS -->
+<section class="methods" id="methods">
+  <h2>Methods and credits</h2>
+  <div id="methods-body">
+    <h3>The data</h3>
+    <p>Every number here comes from the New York Philharmonic’s <a href="https://github.com/nyphilarchive/PerformanceHistory">Performance History</a> dataset: every program since Dec. 7, 1842, with its concerts and the works played. The Philharmonic has dedicated it to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. This version was downloaded on Oct. 22, 2026. Program links open the scanned printed programs in the Philharmonic’s <a href="https://archives.nyphil.org/">Digital Archives</a>. The scans are linked, not copied.</p>
+
+    <h3>What counts as a performance</h3>
+    <p>One work, on one program, on one date. If a program played the overture to <i>Oberon</i> and an aria from it, that is one performance of <i>Oberon</i>: the archive doesn’t reliably mark excerpts, so we don’t weight them. When the same program was played twice on the same day, as at the Roxy Theatre in 1950, that counts once.</p>
+    <p>The archive’s own search counts differently. It counts concerts at which a composer or work appeared, so two Mahler works on one program are one “performance” there and two here. Its program counts match ours exactly for every work we checked.</p>
+
+    <h3>Who is on the chart</h3>
+    <p>The chart counts the full Philharmonic orchestra: subscription concerts, tours, park and stadium concerts, young people’s concerts and specials. The switch at the top narrows everything to subscription concerts only. Some things are left out:</p>
+    <ul>
+      <li>The New York Symphony, a separate orchestra that merged with the Philharmonic in 1928, though the archive includes it.</li>
+      <li>Chamber groups of Philharmonic musicians, and concerts the Philharmonic presented by other performers.</li>
+      <li>National anthems, encores listed as “unspecified”, instrument demonstrations, talks, and intermissions.</li>
+      <li>Traditional and anonymous music. It’s counted in season totals but can’t chart, because there’s no composer.</li>
+    </ul>
+    <p>A composer’s rank is their share of all performances in a season or decade. Rank 1 is the largest share.</p>
+
+    <h3>Cleaning</h3>
+    <p>The archive had already reconciled composer names, so there’s one Tchaikovsky and no stray Tschaikowsky, and we found no duplicates written with initials. We only tidied names for display and restored a few missing accents, such as Dvořák and Janáček. Five concerts from 1938–46 appear twice under different program records with identical works. We kept one copy of each. Fourteen programs, twelve of them from the current season, have no archive record yet, so they can’t be linked. The 2026-27 season was only seven weeks old when the data was downloaded, so it is left off every season chart.</p>
+
+    <h3>Living composers</h3>
+    <p>Birth and death dates come from <a href="https://www.wikidata.org/">Wikidata</a>. Each name was searched, and the match had to be a person, a musician, and born before the work was first played here. Every match from a loosened search was checked by hand, and two were rejected. That covers 1,793 composers and 98.6% of all performances. The other 459 composers, mostly one-off names, are left out of the living-composer line rather than guessed at. Their share is highest in recent seasons (up to a fifth in 2020-21), and many are likely living, so the recent line probably understates new music.</p>
+    <p>The shaded bands show each season’s principal conductor: whoever led the most subscription performances. That is usually, but not always, the music director. The annotations are computed from the data, and each notes its source under the chart. The war dates are the only outside facts.</p>
+
+    <h3>Comebacks, forgotten stars, premieres</h3>
+    <ul>
+      <li><b>Comebacks.</b> A composer is ranked on a five-season rolling chart. To count as a comeback, they must have been out of the top 50 for at least 20 straight seasons, then come back into the top 30, with at least 40 total performances. Mahler never left the top 50, so by this rule he’s a slow climber, not a comeback.</li>
+      <li><b>Forgotten stars.</b> They reached a decade’s top 40, with at least 12 performances that decade, between the 1870s and 1970s. Their share since 2000 is at least 15 times smaller.</li>
+      <li><b>Premieres.</b> “First performance” means the first time this orchestra played a work. It is not necessarily a world premiere.</li>
+    </ul>
+
+    <h3>Known gaps</h3>
+    <ul>
+      <li>Excerpts and arrangements aren’t reliably marked. An arrangement can carry its own work ID, so one piece may be split in two.</li>
+      <li>Before 1890 the orchestra gave about five concerts a season. Ranks from those decades rest on a few dozen performances.</li>
+      <li>The 1910s include unusually heavy touring, with 505 of 784 performances in 1915-16 on the road.</li>
+      <li>A few dates fall outside their listed season. We kept the archive’s season.</li>
+      <li>About 4% of programs, mostly from the New York Symphony before 1928, have no scanned program in the archive, so they aren’t linked.</li>
+    </ul>
+
+    <h3>Credits</h3>
+    <p>Data and program scans: New York Philharmonic Shelby White &amp; Leon Levy Digital Archives. We are grateful for their open-data release. Analysis code and the full cleaning log are in the project repository.</p>
+  </div>
+</section>
+</main>
+
+<footer class="colophon">
+  <p>Data: <a href="https://github.com/nyphilarchive/PerformanceHistory">New York Philharmonic Performance History</a>, dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Program scans courtesy of the <a href="https://archives.nyphil.org/">New York Philharmonic Shelby White &amp; Leon Levy Digital Archives</a>; they are linked, not reproduced.</p>
+</footer>
+<div id="tooltip" class="tooltip" role="status" hidden></div>
+</body>
+</html>
