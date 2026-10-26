@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASC, Starter Pack on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>ASC, Starter Pack</h1>
+        <p class="intro">All 6 tracks, each linked to Apple Music.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/accelerate/1703809330?i=1703809728" target="_blank">Accelerate <span class="artist">&mdash; ASC</span></a></li>
+            <li><a href="https://music.apple.com/us/album/absent-mind/1678676134?i=1678676143" target="_blank">Absent Mind - Original Mix <span class="artist">&mdash; ASC</span></a></li>
+            <li><a href="https://music.apple.com/us/album/another-evasive-dream/1716884838?i=1716884841" target="_blank">Another Evasive Dream <span class="artist">&mdash; ASC, Sam KDC</span></a></li>
+            <li><a href="https://music.apple.com/us/album/cosm/1701233013?i=1701233020" target="_blank">Cosm <span class="artist">&mdash; ASC</span></a></li>
+            <li><a href="https://music.apple.com/us/album/depth-perception/1703811447?i=1703811450" target="_blank">Depth Perception <span class="artist">&mdash; ASC, Aural Imbalance</span></a></li>
+            <li><a href="https://music.apple.com/us/album/sequence-2/1703810272?i=1703810274" target="_blank">Sequence #2 <span class="artist">&mdash; ASC</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

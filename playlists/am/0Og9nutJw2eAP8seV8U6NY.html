@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahraganat, Starter Pack on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Mahraganat, Starter Pack</h1>
+        <p class="intro">11 of the 12 tracks, each linked to Apple Music. The rest aren&rsquo;t on Apple Music; the full playlist is <a href="https://open.spotify.com/playlist/0Og9nutJw2eAP8seV8U6NY" target="_blank">on Spotify</a>.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/el-volt-el-3aly/1775184019?i=1775184020" target="_blank">El Volt El 3aly <span class="artist">&mdash; Reda El Bahrawy</span></a></li>
+            <li><a href="https://music.apple.com/us/album/as7a-we-sa7y-elnaymen/1045147742?i=1045149468" target="_blank">As7a We Sa7y Elnaymen <span class="artist">&mdash; Oka Wi Ortega, Ortega</span></a></li>
+            <li><a href="https://music.apple.com/us/album/ana-kadab/1677742501?i=1677742507" target="_blank">Ana Kadab <span class="artist">&mdash; Oka Wi Ortega, Ortega</span></a></li>
+            <li><a href="https://music.apple.com/us/album/baba-fein/557047273?i=557047277" target="_blank">Baba Fein <span class="artist">&mdash; Free Baby</span></a></li>
+            <li><a href="https://music.apple.com/us/album/garabt/1489314278?i=1489314281" target="_blank">Garabt <span class="artist">&mdash; El Madfaagya</span></a></li>
+            <li><a href="https://music.apple.com/us/album/hangover/976773208?i=976773585" target="_blank">Hangover <span class="artist">&mdash; Oka Wi Ortega, Ortega</span></a></li>
+            <li><a href="https://music.apple.com/us/album/khamsa-farfasha/1489317905?i=1489318447" target="_blank">Khamsa Farfasha <span class="artist">&mdash; El Madfaagya</span></a></li>
+            <li><a href="https://music.apple.com/us/album/laa/1611919828?i=1611919829" target="_blank">Laa <span class="artist">&mdash; El Sawareekh</span></a></li>
+            <li><a href="https://music.apple.com/us/album/moled-el-madfaagya/1489306887?i=1489306893" target="_blank">Moled El Madfaagya <span class="artist">&mdash; El Madfaagya, Sadat El 3almy, Fifty</span></a></li>
+            <li><a href="https://music.apple.com/us/album/motamkena/6772127669?i=6772127671" target="_blank">Motamkena <span class="artist">&mdash; Lamis Kan</span></a></li>
+            <li><a href="https://music.apple.com/us/album/souq-el-banat/1547365689?i=1547365699" target="_blank">Souq El Banat <span class="artist">&mdash; Mahmoud El Leithy</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

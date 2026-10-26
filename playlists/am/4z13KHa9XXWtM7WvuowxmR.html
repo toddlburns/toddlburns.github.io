@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fumio Miyashita, Ambient on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Fumio Miyashita, Ambient</h1>
+        <p class="intro">7 of the 12 tracks, each linked to Apple Music. The rest aren&rsquo;t on Apple Music; the full playlist is <a href="https://open.spotify.com/playlist/4z13KHa9XXWtM7WvuowxmR" target="_blank">on Spotify</a>.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/nemuri/406532588?i=406532595" target="_blank">Nemuri <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/adration/1472264703?i=1472264707" target="_blank">ADRATION <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/hill-of-heart/1472255259?i=1472255262" target="_blank">hill of heart <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/see-the-light-abridged-remastered/1533690034?i=1533690933" target="_blank">See The Light (Abridged) <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/daybreak/1472259938?i=1472259940" target="_blank">daybreak <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/moon-shadow/1472277383?i=1472277391" target="_blank">moon shadow <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+            <li><a href="https://music.apple.com/us/album/white-whisper/1472255259?i=1472255263" target="_blank">white whisper <span class="artist">&mdash; Fumio Miyashita</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Autumn</h1>
+        <p class="intro">12 of the 15 tracks, each linked to Apple Music. The rest aren&rsquo;t on Apple Music; the full playlist is <a href="https://open.spotify.com/playlist/6UhnY0JKXAIp7lpemR460r" target="_blank">on Spotify</a>.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/coffee-with-cream/191515611?i=191515617" target="_blank">Coffee With Cream <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/caroline/202979121?i=202979240" target="_blank">Caroline <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/inexistential-ocean-voyage/193110126?i=193110502" target="_blank">Inexistential Ocean Voyage <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/part-14/202594426?i=202594587" target="_blank">Part 14 <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/silence-across-the-border/202979121?i=202979500" target="_blank">Silence Across The Border <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/hb-invitation/193110126?i=193110377" target="_blank">HB Invitation <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/mountainside/191515611?i=191517576" target="_blank">Mountainside <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/i-say-you-hello/202951197?i=202951364" target="_blank">I Say You Hello <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/no-mortal-tears/193081783?i=193083165" target="_blank">No Mortal Tears <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/a-message-to-the-end/193110126?i=193110700" target="_blank">A Message To The End <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/she-is-here/191515611?i=191516843" target="_blank">She Is Here <span class="artist">&mdash; Autumn</span></a></li>
+            <li><a href="https://music.apple.com/us/album/not-afraid-to-die/202951197?i=202951199" target="_blank">Not Afraid To Die <span class="artist">&mdash; Autumn</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

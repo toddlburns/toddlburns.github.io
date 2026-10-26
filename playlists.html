@@ -224,7 +224,7 @@
 
         allEntries.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
 
-        // Other places to hear or buy each playlist: YouTube Music, and Hype Machine's
+        // Other places to hear or buy each playlist: YouTube Music, a page of Apple Music track links, and Hype Machine's
         // Merch Table (the playlist's albums that are on Bandcamp). The YT slot stays
         // empty when there is no YouTube copy, so the BC column lines up.
         function addElsewhere(li, p) {
@@ -233,6 +233,7 @@
             box.className = 'elsewhere';
             const links = [
                 ['YT', 'YouTube Music', p.youtube && 'https://music.youtube.com/playlist?list=' + p.youtube],
+                ['AM', 'Tracks on Apple Music', '/playlists/am/' + p.spotifyId + '.html'],
                 ['BC', 'Albums on Bandcamp', 'https://hypem.com/merch-table/' + p.spotifyId],
             ];
             links.forEach(([label, title, href]) => {

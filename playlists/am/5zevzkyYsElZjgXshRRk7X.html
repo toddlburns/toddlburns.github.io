@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorik, Experimental on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Motorik, Experimental</h1>
+        <p class="intro">All 13 tracks, each linked to Apple Music.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/program/1444073507?i=1444073757" target="_blank">Program <span class="artist">&mdash; Silver Apples</span></a></li>
+            <li><a href="https://music.apple.com/us/album/ah-yeh/1736594334?i=1736594353" target="_blank">Ah Yeh - Full Length Version <span class="artist">&mdash; Beak&gt;</span></a></li>
+            <li><a href="https://music.apple.com/us/album/fortune-goodies/1633115742?i=1633115855" target="_blank">Fortune Goodies <span class="artist">&mdash; Minami Deutsch</span></a></li>
+            <li><a href="https://music.apple.com/us/album/i-know/1790741654?i=1790742843" target="_blank">I Know <span class="artist">&mdash; Beak&gt;</span></a></li>
+            <li><a href="https://music.apple.com/us/album/king-kong/1443011528?i=1443013146" target="_blank">King Kong <span class="artist">&mdash; Frank Zappa</span></a></li>
+            <li><a href="https://music.apple.com/us/album/liar/1394641282?i=1394641287" target="_blank">Liar <span class="artist">&mdash; Beak&gt;</span></a></li>
+            <li><a href="https://music.apple.com/us/album/the-platform-on-the-ocean/905117652?i=905117679" target="_blank">The Platform On The Ocean <span class="artist">&mdash; Arthur Russell</span></a></li>
+            <li><a href="https://music.apple.com/us/album/simple-headphone-mind/1626993408?i=1626993409" target="_blank">Simple Headphone Mind <span class="artist">&mdash; Stereolab, Nurse With Wound</span></a></li>
+            <li><a href="https://music.apple.com/us/album/all-gates-open/826512714?i=826512732" target="_blank">All Gates Open <span class="artist">&mdash; CAN</span></a></li>
+            <li><a href="https://music.apple.com/us/album/f%C3%BCr-dich/1184980612?i=1184981688" target="_blank">Für Dich - bureau b Edit <span class="artist">&mdash; Thomas Dinger</span></a></li>
+            <li><a href="https://music.apple.com/us/album/i-came-out-on-top-of-an-active-volcano/1518575834?i=1518575849" target="_blank">I CAME OUT ON TOP OF AN ACTIVE VOLCANO <span class="artist">&mdash; C.A.R.</span></a></li>
+            <li><a href="https://music.apple.com/us/album/su-pra/1019246854?i=1019248183" target="_blank">Su-pra <span class="artist">&mdash; Cheatahs</span></a></li>
+            <li><a href="https://music.apple.com/us/album/be-sure-to-loop/74258691?i=74258582" target="_blank">Be Sure To Loop <span class="artist">&mdash; OOIOO</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

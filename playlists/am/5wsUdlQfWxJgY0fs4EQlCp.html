@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stereolab, Starter Pack on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Stereolab, Starter Pack</h1>
+        <p class="intro">All 10 tracks, each linked to Apple Music.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/spark-plug/1230526714?i=1230527188" target="_blank">Spark Plug <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/cybeles-reverie/1231071491?i=1231071516" target="_blank">Cybele&#x27;s Reverie <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/the-free-design/1471004913?i=1471004918" target="_blank">The Free Design <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/jenny-ondioline/1293332438?i=1293333009" target="_blank">Jenny Ondioline <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/k-stars-2018-remaster/1542661138?i=1542661327" target="_blank">K-stars - 2018 Remaster <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/metronomic-underground/1471003849?i=1471003852" target="_blank">Metronomic Underground <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/brakhage/1471004407?i=1471004411" target="_blank">Brakhage <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/everybodys-weird-except-me/1640547295?i=1640547296" target="_blank">Everybody&#x27;s Weird Except Me <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/wow-and-flutter/1489994680?i=1489994682" target="_blank">Wow And Flutter <span class="artist">&mdash; Stereolab</span></a></li>
+            <li><a href="https://music.apple.com/us/album/avant-garde-m-o-r-2018-remaster/1642036144?i=1642036145" target="_blank">Avant Garde M.O.R. - 2018 Remaster <span class="artist">&mdash; Stereolab</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

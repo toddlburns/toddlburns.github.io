@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atom TM, Pop Light on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Atom TM, Pop Light</h1>
+        <p class="intro">8 of the 10 tracks, each linked to Apple Music. The rest aren&rsquo;t on Apple Music; the full playlist is <a href="https://open.spotify.com/playlist/3ANbspvqDje5SguYqQpyow" target="_blank">on Spotify</a>.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/wei%C3%9Fes-rauschen-erster-teil/305108838?i=305108980" target="_blank">Weißes Rauschen (Erster Teil) <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/wei%C3%9Fes-rauschen-zweiter-teil/305108838?i=305109010" target="_blank">Weißes Rauschen (Zweiter Teil) <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/im-rausch-der-gegenwart-ii/305108838?i=305108991" target="_blank">Im Rausch Der Gegenwart II <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/look-out-the-window-hollywood-piano/1123639164?i=1123639236" target="_blank">Look out the Window (Hollywood Piano) <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/superbad/1824001876?i=1824002228" target="_blank">Superbad <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/sexuality/1036827638?i=1036827896" target="_blank">Sexuality <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/about-pears-and-apples/905380914?i=905380978" target="_blank">About Pears and Apples <span class="artist">&mdash; Atom TM</span></a></li>
+            <li><a href="https://music.apple.com/us/album/simplicity/1523003509?i=1523003523" target="_blank">Simplicity <span class="artist">&mdash; Atom TM</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>

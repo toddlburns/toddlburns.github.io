@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low, Starter Pack on Apple Music - Todd L. Burns</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #111;
+            min-height: 100vh;
+            padding: 60px 20px 80px;
+        }
+        .container { max-width: 620px; margin: 0 auto; }
+        .back {
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        .back:hover { color: #111; }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .intro a { color: #8b1a1a; text-decoration: none; }
+        .intro a:hover { color: #111; }
+        ol { list-style: none; counter-reset: n; }
+        li {
+            counter-increment: n;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 12px;
+        }
+        li:last-child { border-bottom: none; }
+        li::before {
+            content: counter(n);
+            font-size: 11px;
+            color: #999;
+            min-width: 22px;
+            text-align: right;
+            padding-top: 4px;
+        }
+        li a { color: #111; text-decoration: none; }
+        li a:hover { color: #8b1a1a; }
+        .artist { color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/playlists.html" class="back">&larr; Playlists</a>
+        <h1>Low, Starter Pack</h1>
+        <p class="intro">9 of the 10 tracks, each linked to Apple Music. The rest aren&rsquo;t on Apple Music; the full playlist is <a href="https://open.spotify.com/playlist/7E7C6yWwLIH94UD04IgxMp" target="_blank">on Spotify</a>.</p>
+        <ol>
+            <li><a href="https://music.apple.com/us/album/try-to-sleep/6784266602?i=6784266706" target="_blank">Try to Sleep <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/amethyst/6784265193?i=6784265619" target="_blank">Amethyst <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/monkey/78976440?i=78976347" target="_blank">Monkey <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/congregation/1871543230?i=1871543575" target="_blank">Congregation <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/sunflower/697188726?i=697189414" target="_blank">Sunflower <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/do-you-know-how-to-waltz/714594338?i=714594614" target="_blank">Do You Know How To Waltz <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/over-the-ocean/714594338?i=714594545" target="_blank">Over The Ocean <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/days-like-these/1568438773?i=1568438779" target="_blank">Days Like These <span class="artist">&mdash; Low</span></a></li>
+            <li><a href="https://music.apple.com/us/album/dragonfly/1544592617?i=1544592622" target="_blank">Dragonfly <span class="artist">&mdash; Low</span></a></li>
+        </ol>
+    </div>
+</body>
+</html>
