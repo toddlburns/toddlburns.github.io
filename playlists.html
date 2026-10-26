@@ -83,9 +83,26 @@
             color: #999;
             width: 18px;
             text-align: right;
+            position: relative;
         }
         .playlist-list .elsewhere a:hover {
             color: #8b1a1a;
+        }
+        /* On hover the full platform name grows leftward from the mark's right edge,
+           over its neighbours, so the mark itself never moves out from under the cursor */
+        .playlist-list .elsewhere a .full {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            white-space: nowrap;
+            background: #fff;
+            padding-left: 8px;
+            min-width: 74px; /* at least the width of all three marks, so none peek out */
+            z-index: 1;
+        }
+        .playlist-list .elsewhere a:hover .full {
+            display: block;
         }
         .accordion {
             border-bottom: 1px solid #eee;
@@ -233,16 +250,20 @@
             box.className = 'elsewhere';
             const links = [
                 ['YT', 'YouTube Music', p.youtube && 'https://music.youtube.com/playlist?list=' + p.youtube],
-                ['AM', 'Tracks on Apple Music', '/playlists/am/' + p.spotifyId + '.html'],
-                ['BC', 'Albums on Bandcamp', 'https://hypem.com/merch-table/' + p.spotifyId],
+                ['AM', 'Apple Music', '/playlists/am/' + p.spotifyId + '.html'],
+                ['BC', 'Bandcamp', 'https://hypem.com/merch-table/' + p.spotifyId],
             ];
-            links.forEach(([label, title, href]) => {
+            links.forEach(([label, full, href]) => {
                 const a = document.createElement('a');
                 if (href) {
                     a.href = href;
                     a.target = '_blank';
-                    a.title = title;
+                    a.setAttribute('aria-label', full);
                     a.textContent = label;
+                    const span = document.createElement('span');
+                    span.className = 'full';
+                    span.textContent = full;
+                    a.appendChild(span);
                 } else {
                     a.textContent = '\u00a0';
                 }
