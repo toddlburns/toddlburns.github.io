@@ -70,39 +70,52 @@
             display: flex;
             align-items: baseline;
         }
+        /* The box keeps the width of the three marks in the layout; the marks sit in an
+           absolutely positioned strip pinned to its right edge, so a hovered mark can grow
+           leftward (over the title) without reflowing the row */
         .playlist-list .elsewhere {
             margin-left: auto;
             padding-left: 16px;
-            display: flex;
-            gap: 10px;
             flex-shrink: 0;
+            position: relative;
+            width: 74px;
+            align-self: stretch;
+        }
+        .playlist-list .elsewhere .marks {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 16px; /* same line box as the title, so the marks share its baseline */
+            line-height: 1.5;
+            white-space: nowrap;
+            background: #fff;
+            padding-left: 8px;
         }
         .playlist-list .elsewhere a {
             font-size: 11px;
             letter-spacing: 1px;
             color: #999;
-            width: 18px;
+            display: inline-block;
+            min-width: 18px;
+            margin-left: 10px;
             text-align: right;
-            position: relative;
+        }
+        .playlist-list .elsewhere a:first-child {
+            margin-left: 0;
         }
         .playlist-list .elsewhere a:hover {
             color: #8b1a1a;
         }
-        /* On hover the full platform name grows leftward from the mark's right edge,
-           over its neighbours, so the mark itself never moves out from under the cursor */
+        /* On hover the mark swaps to the full platform name, growing leftward from its own
+           right edge: it stays under the cursor and the other marks slide left, still visible */
         .playlist-list .elsewhere a .full {
             display: none;
-            position: absolute;
-            right: 0;
-            top: 0;
-            white-space: nowrap;
-            background: #fff;
-            padding-left: 8px;
-            min-width: 74px; /* at least the width of all three marks, so none peek out */
-            z-index: 1;
         }
         .playlist-list .elsewhere a:hover .full {
-            display: block;
+            display: inline;
+        }
+        .playlist-list .elsewhere a:hover .short {
+            display: none;
         }
         .accordion {
             border-bottom: 1px solid #eee;
@@ -248,6 +261,9 @@
             li.classList.add('row');
             const box = document.createElement('span');
             box.className = 'elsewhere';
+            const marks = document.createElement('span');
+            marks.className = 'marks';
+            box.appendChild(marks);
             const links = [
                 ['YT', 'YouTube Music', p.youtube && 'https://music.youtube.com/playlist?list=' + p.youtube],
                 ['AM', 'Apple Music', '/playlists/am/' + p.spotifyId + '.html'],
@@ -259,7 +275,10 @@
                     a.href = href;
                     a.target = '_blank';
                     a.setAttribute('aria-label', full);
-                    a.textContent = label;
+                    const short = document.createElement('span');
+                    short.className = 'short';
+                    short.textContent = label;
+                    a.appendChild(short);
                     const span = document.createElement('span');
                     span.className = 'full';
                     span.textContent = full;
@@ -267,7 +286,7 @@
                 } else {
                     a.textContent = '\u00a0';
                 }
-                box.appendChild(a);
+                marks.appendChild(a);
             });
             li.appendChild(box);
         }
