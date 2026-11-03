@@ -785,5 +785,223 @@ window.CANDIDATES = [
 "hometown": "Blue Island, IL",
 "evidence": "Thick south Chicago accent",
 "source": "https://en.wikipedia.org/wiki/Inland_Northern_American_English"
+},
+{
+"id": "M_SxvWocfj8",
+"region": "appalachia",
+"label": "Appalachia",
+"tier": 2,
+"start": 214,
+"end": 244,
+"words": [
+[
+"right",
+19.0
+],
+[
+"i",
+20.0
+],
+[
+"friday",
+24.2
+],
+[
+"then",
+29.1
+]
+],
+"title": "Brandon Robinson's 6:30am Forecast-May 19th, 2015",
+"channel": "WYMT Television",
+"other": 0.04,
+"person": "Brandon Robinson",
+"role": "WYMT-TV Hazard, KY chief forecaster",
+"hometown": "Harlan County, KY",
+"evidence": "Remembered for his mountain accent",
+"source": "https://www.wymt.com/2025/09/02/he-finally-got-his-wings-coworkers-remember-brandon-robinson"
+},
+{
+"id": "u23K6NzqWHE",
+"region": "appalachia",
+"label": "Appalachia",
+"tier": 3,
+"start": 95,
+"end": 115,
+"words": [
+[
+"right",
+11.6
+],
+[
+"i",
+16.3
+],
+[
+"friday",
+18.0
+],
+[
+"when",
+19.6
+]
+],
+"title": "Brandon Robinson's 5am Forecast-May 18th, 2015",
+"channel": "WYMT Television",
+"other": 0.1,
+"person": "Brandon Robinson",
+"role": "WYMT-TV Hazard, KY chief forecaster",
+"hometown": "Harlan County, KY",
+"evidence": "Remembered for his mountain accent",
+"source": "https://www.wymt.com/2025/09/02/he-finally-got-his-wings-coworkers-remember-brandon-robinson"
+},
+{
+"id": "CoWpmUcZilk",
+"region": "appalachia",
+"label": "Appalachia",
+"tier": 3,
+"start": 747,
+"end": 767,
+"words": [
+[
+"i",
+1.4
+],
+[
+"like",
+3.2
+],
+[
+"while",
+8.0
+]
+],
+"title": "Kentucky Author Silas House Part I",
+"channel": "The Talking Appalachian Podcast",
+"other": 0.17,
+"person": "Silas House",
+"role": "Author; Kentucky Poet Laureate",
+"hometown": "Lily, Laurel County, KY",
+"evidence": "Never lost his eastern Kentucky accent",
+"source": "https://www.kentuckyliving.com/news/silas-house-kentucky-author-chases-his-dream-and-finds-his-voice"
+},
+{
+"id": "pAQ60hlA4YM",
+"region": "deep_south",
+"label": "Deep South (Mississippi, Alabama, Georgia)",
+"tier": 3,
+"start": 1261,
+"end": 1281,
+"words": [
+[
+"when",
+0.4
+],
+[
+"i'm",
+2.5
+]
+],
+"title": "2024 McNair Conversation in Southern Studies: Jean Toal",
+"channel": "Take On The South",
+"other": 0.35,
+"person": "Jean Toal",
+"role": "Chief Justice, South Carolina Supreme Court",
+"hometown": "Columbia, SC",
+"evidence": "Thick, distinctive South Carolina accent",
+"source": "https://bradwarthen.com/henry-mcmasters-accent-is-a-state-treasure-and-should-be-preserved-in-a-museum/"
+},
+{
+"id": "VKO0pIhZMmo",
+"region": "texas",
+"label": "Texas",
+"tier": 3,
+"start": 120,
+"end": 140,
+"words": [
+[
+"i",
+1.6
+],
+[
+"my",
+2.2
+]
+],
+"title": "Texas Sheriff Arvin West on Declaring County 2A Sanctuary",
+"channel": "Conduit News",
+"other": 0.42,
+"person": "Arvin West",
+"role": "Sheriff of Hudspeth County, TX",
+"hometown": "Hudspeth County, TX",
+"evidence": "Distinctive West Texas drawl",
+"source": "https://kvia.com/?p=1312729"
+},
+{
+"id": "V-tKmN3tvwM",
+"region": "new_orleans",
+"label": "New Orleans (Yat)",
+"tier": 1,
+"start": 605,
+"end": 645,
+"words": [
+[
+"dressed",
+4.3
+],
+[
+"more",
+7.8
+]
+],
+"title": "KTIB Memories--1/14/2005 Saints, Squirrels, and Salutations, a Tribute to Buddy Diliberto--Part One",
+"channel": "KTIB-AM Memories-Not Affiliated with Radio Station",
+"other": 0.27,
+"person": "Buddy Diliberto",
+"role": "WWL sportscaster and talk host",
+"hometown": "New Orleans, LA",
+"evidence": "Speech patterns with potholes",
+"source": "https://www.neworleanssaints.com/news/hap-glaudi-buddy-d-mike-detillier-voices-that-sounded-like-new-orleans"
+},
+{
+"id": "_F14ErvmCLQ",
+"region": "ocracoke",
+"label": "Outer Banks / Ocracoke",
+"tier": 2,
+"start": 45,
+"end": 75,
+"words": [
+[
+"i",
+0.6
+],
+[
+"right",
+1.7
+],
+[
+"about",
+4.6
+],
+[
+"my",
+5.0
+],
+[
+"time",
+6.2
+],
+[
+"night",
+14.4
+]
+],
+"title": "Rex O'Neal: Gigging Flounders",
+"channel": "Barbara Garrity-Blake",
+"other": 0.11,
+"person": "Rex O'Neal",
+"role": "Ocracoke fisherman",
+"hometown": "Ocracoke, NC",
+"evidence": "Brogue too thick for linguists to follow",
+"source": "https://ncseagrant.ncsu.edu/coastwatch/ocracoke-brogue-for-dingbatters"
 }
 ];
