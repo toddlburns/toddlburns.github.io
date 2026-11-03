@@ -79,6 +79,9 @@ a{color:inherit}
 .role{color:var(--muted);margin:4px 0 2px}
 .place{font:500 14px var(--mono);color:var(--answer);margin:0 0 14px}
 .note{border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 18px;max-width:62ch}
+.words{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 18px}
+.words button{font:500 14px var(--mono);padding:7px 12px;background:transparent;color:var(--ink);border-color:var(--accent)}
+.words button small{color:var(--muted);margin-left:6px}
 .reveal .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .src{font:13px var(--mono);color:var(--muted)}
 
@@ -120,7 +123,7 @@ a{color:inherit}
 <div class="wrap">
   <header>
     <p class="logo">Accent<em>uate</em></p>
-    <div class="hud" id="hud" hidden><span>Round <b id="hRound">1</b>/5</span><span>Score <b id="hScore">0</b></span></div>
+    <div class="hud" id="hud" hidden><span>Round <b id="hRound">1</b>/5 · <b id="hTier">Easy</b></span><span>Score <b id="hScore">0</b></span></div>
   </header>
 
   <section class="intro" id="intro">
@@ -152,6 +155,7 @@ a{color:inherit}
       <p class="role" id="rRole"></p>
       <p class="place" id="rPlace"></p>
       <p class="note" id="rNote"></p>
+      <div class="words" id="rWords"></div>
       <div class="row">
         <a class="src" id="rSrc" target="_blank" rel="noopener">Watch the full video on YouTube ↗</a>
         <button id="nextBtn">Next round</button>
@@ -274,6 +278,7 @@ function initMap() {
 }
 
 /* ---------- Game ---------- */
+const LADDER = [1, 1, 2, 3, 3], TIER_NAME = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
 const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
 const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
   const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
@@ -282,7 +287,14 @@ const points = mi => Math.round(5000 * Math.exp(-mi / 300));
 function newGame() {
   const pool = CLIPS.map(clip).filter(c => !c.drop);
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
-  Object.assign(state, { round: 0, score: 0, picks: pool.slice(0, 5), results: [] });
+  // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
+  const picks = [], used = new Set();
+  for (const want of LADDER) {
+    const order = [want, want + 1, want - 1, want + 2, want - 2];
+    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !picks.includes(c))).find(Boolean);
+    if (c) { picks.push(c); used.add(c.region); }
+  }
+  Object.assign(state, { round: 0, score: 0, picks, results: [] });
   $('intro').hidden = true; $('final').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
   if (!map) initMap();
   startRound();
@@ -290,7 +302,7 @@ function newGame() {
 function startRound() {
   state.revealed = false;
   const c = state.picks[state.round];
-  $('hRound').textContent = state.round + 1; $('hScore').textContent = state.score.toLocaleString();
+  $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
   $('listen').classList.remove('revealed'); $('reveal').classList.remove('on'); $('guessbar').hidden = false;
   $('guessBtn').disabled = true; $('hint').textContent = 'Click the map to drop your pin.';
   [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
@@ -323,6 +335,11 @@ function guess() {
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
   $('rWho').textContent = c.name; $('rRole').textContent = c.role; $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
+  $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
+  $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => {
+    const at = c.start + +b.dataset.t;
+    player.loadVideoById({ videoId: c.id, startSeconds: Math.max(0, at - 0.6), endSeconds: at + 1.6 });
+  });
   $('rSrc').href = `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
   $('nextBtn').textContent = state.round === 4 ? 'See your score' : 'Next round';
   $('guessbar').hidden = true; $('reveal').classList.add('on'); $('listen').classList.add('revealed');
