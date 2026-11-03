@@ -110,6 +110,11 @@ a{color:inherit}
 .curate .times{font:14px var(--mono);color:var(--muted)}
 .curate select,.curate input[type=text],.curate textarea{font:14px var(--body);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
 .curate textarea{font-family:var(--mono);min-height:120px}
+.rv{border-top:1px solid var(--rule);padding:12px 0;display:grid;gap:8px}
+.rv h3{font:600 15px var(--body);margin:0}.rv .meta{font:12px var(--mono);color:var(--muted)}
+.rv .tools button.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.rv.keep{background:color-mix(in srgb,var(--answer) 10%,transparent)}.rv.drop{opacity:.45}
+.rgroup{font:400 26px var(--display);margin:22px 0 4px}
 .curate .clist{display:grid;gap:6px;max-height:300px;overflow:auto;border:1px solid var(--rule);border-radius:10px;padding:8px;background:var(--card)}
 .curate .clist button{display:flex;justify-content:space-between;text-align:left;background:transparent;color:var(--ink);border-color:transparent;border-radius:8px;padding:8px 10px;font-weight:400}
 .curate .clist button.on{border-color:var(--accent)}
@@ -177,6 +182,12 @@ a{color:inherit}
     <div class="actions"><button id="againBtn">Play again</button><button class="ghost" id="copyBtn">Copy result</button></div>
   </section>
 
+  <section class="curate" id="review" hidden>
+    <p class="hint">Review the hunt. Each clip is the stretch where one voice talks, with telltale words you can jump to. Mark <b>Keep</b> or <b>Drop</b>, add a note if needed, then <b>Copy decisions</b> and paste them to Claude.</p>
+    <div class="cplayer"><div id="ryt"></div></div>
+    <div class="tools"><span class="now" id="rNow">0:00</span><button id="rCopy">Copy decisions</button><span class="times" id="rCount"></span></div>
+    <div id="rList"></div>
+  </section>
   <section class="curate" id="curate" hidden>
     <p class="hint">Curate mode. Pick a clip, scrub the video to where the accent really comes through, then press <b>Mark start</b> and <b>Mark end</b>. Edits save in this browser and apply to the game here. When you're done, press <b>Copy edits</b> and paste them to Claude.</p>
     <div class="clist" id="clist"></div>
@@ -196,6 +207,7 @@ a{color:inherit}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="clips.js"></script>
+<script>if (/[?&]review/.test(location.search)) document.write('<script src="candidates.js"><\/script>');</script>
 <script>
 const $ = id => document.getElementById(id);
 const EDIT_KEY = 'accentuate-edits-v1';
@@ -203,19 +215,21 @@ const load = () => { try { return JSON.parse(localStorage.getItem(EDIT_KEY)) || 
 const save = e => { try { localStorage.setItem(EDIT_KEY, JSON.stringify(e)); } catch (_) {} };
 let edits = load();
 const clip = c => Object.assign({}, c, edits[c.id] || {});
+const esc = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
 const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const CURATE = new URLSearchParams(location.search).has('curate');
+const REVIEW = new URLSearchParams(location.search).has('review');
+const CURATE = new URLSearchParams(location.search).has('curate') || REVIEW;
 
 /* ---------- YouTube ---------- */
 let player, playerReady = false, playing = false;
 window.onYouTubeIframeAPIReady = () => {
-  const el = CURATE ? 'cyt' : 'yt';
+  const el = REVIEW ? 'ryt' : CURATE ? 'cyt' : 'yt';
   player = new YT.Player(el, {
     host: 'https://www.youtube-nocookie.com',
     playerVars: { controls: CURATE ? 1 : 0, disablekb: CURATE ? 0 : 1, modestbranding: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0, fs: CURATE ? 1 : 0 },
     events: {
-      onReady: () => { playerReady = true; if (CURATE) selectClip(0); },
+      onReady: () => { playerReady = true; if (CURATE && !REVIEW) selectClip(0); },
       onStateChange: e => {
         playing = e.data === YT.PlayerState.PLAYING;
         if (!CURATE) setPlayUI();
@@ -388,7 +402,9 @@ function setEdit(patch) {
   if (edits[id].end <= edits[id].start) edits[id].end = edits[id].start + 20;
   save(edits); selectClip(cur);
 }
-if (CURATE) {
+if (REVIEW) {
+  $('intro').hidden = true; $('review').hidden = false; initReview();
+} else if (CURATE) {
   $('intro').hidden = true; $('curate').hidden = false;
   setInterval(() => { if (playerReady && player.getCurrentTime) $('cNow').textContent = fmt(player.getCurrentTime()); }, 250);
   document.querySelectorAll('[data-nudge]').forEach(b => b.onclick = () => player.seekTo(player.getCurrentTime() + +b.dataset.nudge, true));
@@ -400,6 +416,36 @@ if (CURATE) {
   $('cReset').onclick = () => { delete edits[CLIPS[cur].id]; save(edits); selectClip(cur); };
   $('cCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(edits, null, 1)); $('cCopy').textContent = 'Copied'; setTimeout(() => $('cCopy').textContent = 'Copy edits', 1600); };
   renderList();
+}
+
+/* ---------- Review (hunt finalists) ---------- */
+function initReview() {
+  const KEY = 'accentuate-review-v1', TN = { 1: 'Easy · 40s', 2: 'Medium · 30s', 3: 'Hard · 20s' };
+  let dec = {}; try { dec = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  const put = () => { try { localStorage.setItem(KEY, JSON.stringify(dec)); } catch (e) {} const k = Object.values(dec).filter(d => d.v === 'keep').length;
+    $('rCount').textContent = `${k} kept · ${Object.keys(dec).length}/${CANDIDATES.length} decided`; };
+  const play = (c, a, b) => playerReady && player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b });
+  let last = '';
+  $('rList').innerHTML = CANDIDATES.map((c, i) => {
+    const head = c.label !== last ? `<h2 class="rgroup">${c.label}</h2>` : ''; last = c.label;
+    return head + `<div class="rv" data-i="${i}"><h3>${esc(c.title)}</h3><div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} · other voice ${Math.round(c.other * 100)}%</div>
+      <div class="tools"><button class="ghost" data-a="play">▶ Play clip</button>${c.words.map(([w, t]) => `<button class="ghost" data-w="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
+      <div class="tools"><button class="ghost" data-v="keep">Keep</button><button class="ghost" data-v="drop">Drop</button><input type="text" placeholder="Note (wrong voice, not local, too famous…)" style="flex:1;min-width:200px"></div></div>`;
+  }).join('');
+  document.querySelectorAll('.rv').forEach(row => {
+    const c = CANDIDATES[+row.dataset.i], d = dec[c.id] || {};
+    const paint = () => { row.classList.toggle('keep', d.v === 'keep'); row.classList.toggle('drop', d.v === 'drop');
+      row.querySelectorAll('[data-v]').forEach(b => b.classList.toggle('sel', b.dataset.v === d.v)); };
+    row.querySelector('input').value = d.note || '';
+    row.querySelector('[data-a]').onclick = () => play(c, c.start, c.end);
+    row.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.w; play(c, Math.max(0, at - 0.6), at + 1.6); });
+    row.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { d.v = d.v === b.dataset.v ? undefined : b.dataset.v; dec[c.id] = d; paint(); put(); });
+    row.querySelector('input').onchange = e => { d.note = e.target.value || undefined; dec[c.id] = d; put(); };
+    paint();
+  });
+  setInterval(() => { if (playerReady && player.getCurrentTime) $('rNow').textContent = fmt(player.getCurrentTime()); }, 250);
+  $('rCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(dec, null, 1)); $('rCopy').textContent = 'Copied'; setTimeout(() => $('rCopy').textContent = 'Copy decisions', 1600); };
+  put();
 }
 </script>
 </body>
