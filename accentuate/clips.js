@@ -15482,5 +15482,94 @@ window.CLIPS = [
   "words": [],
   "year": 2018,
   "born": 1956
+ },
+ {
+  "id": "j2-kxso2ucA",
+  "region": "upper_midwest",
+  "tier": 3,
+  "start": 38,
+  "end": 58,
+  "name": "Julianne Ortman",
+  "role": "Minnesota state senator",
+  "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
+  "lat": 44.862,
+  "lng": -93.531,
+  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "verified": true,
+  "words": [
+   [
+    "sure",
+    2.6
+   ],
+   [
+    "about",
+    4.4
+   ],
+   [
+    "stay",
+    7.3
+   ],
+   [
+    "way",
+    9.1
+   ],
+   [
+    "make",
+    12.9
+   ]
+  ],
+  "year": 2011,
+  "born": 1962
+ },
+ {
+  "id": "eEdsM-bVzq4",
+  "region": "michigan",
+  "tier": 3,
+  "start": 29,
+  "end": 49,
+  "name": "Rick Snyder",
+  "role": "Governor of Michigan",
+  "place": "Battle Creek, Michigan",
+  "lat": 42.321,
+  "lng": -85.18,
+  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "verified": true,
+  "words": [],
+  "year": 2015,
+  "born": 1958
+ },
+ {
+  "id": "iEkh3UB38vE",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 246,
+  "end": 266,
+  "name": "Steve Lonegan",
+  "role": "Mayor of Bogota, New Jersey",
+  "place": "Bogota, New Jersey",
+  "lat": 40.876,
+  "lng": -74.03,
+  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2014,
+  "born": 1956
+ },
+ {
+  "id": "rKGulYJ-jtg",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 46,
+  "end": 66,
+  "name": "Bill Pascrell",
+  "role": "U.S. Representative; former Mayor of Paterson",
+  "place": "Paterson, New Jersey",
+  "lat": 40.917,
+  "lng": -74.172,
+  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2019,
+  "born": 1937
  }
 ];
