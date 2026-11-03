@@ -3023,5 +3023,5405 @@ window.CLIPS = [
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1957
+ },
+ {
+  "id": "english170",
+  "audio": "audio/saa/english170.mp3",
+  "region": "st_ms",
+  "tier": 3,
+  "start": 0,
+  "end": 23.84,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 50,
+  "place": "Belmont, Mississippi",
+  "lat": 34.505,
+  "lng": -88.2083,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    7.0
+   ],
+   [
+    "snack",
+    10.8
+   ],
+   [
+    "brother",
+    11.5
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    16.4
+   ],
+   [
+    "bags",
+    19.9
+   ],
+   [
+    "Wednesday",
+    21.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english170/"
+ },
+ {
+  "id": "english242",
+  "audio": "audio/saa/english242.mp3",
+  "region": "st_ms",
+  "tier": 3,
+  "start": 0,
+  "end": 29.22,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 77,
+  "place": "Laurel, Mississippi",
+  "lat": 31.6951,
+  "lng": -89.145,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    9.1
+   ],
+   [
+    "snack",
+    12.6
+   ],
+   [
+    "brother",
+    13.6
+   ],
+   [
+    "Bob",
+    14.2
+   ],
+   [
+    "frog",
+    19.0
+   ],
+   [
+    "bags",
+    24.1
+   ],
+   [
+    "Wednesday",
+    27.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english242/"
+ },
+ {
+  "id": "english7",
+  "audio": "audio/saa/english7.mp3",
+  "region": "st_ms",
+  "tier": 3,
+  "start": 0,
+  "end": 26.33,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Macon, Mississippi",
+  "lat": 33.1221,
+  "lng": -88.5567,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    8.2
+   ],
+   [
+    "snack",
+    11.7
+   ],
+   [
+    "brother",
+    12.4
+   ],
+   [
+    "Bob",
+    12.8
+   ],
+   [
+    "frog",
+    17.4
+   ],
+   [
+    "bags",
+    21.7
+   ],
+   [
+    "Wednesday",
+    24.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english7/"
+ },
+ {
+  "id": "english345",
+  "audio": "audio/saa/english345.mp3",
+  "region": "st_mo",
+  "tier": 3,
+  "start": 0,
+  "end": 21.21,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 20,
+  "place": "Kansas City, Missouri",
+  "lat": 39.1224,
+  "lng": -94.5551,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    6.8
+   ],
+   [
+    "snack",
+    9.4
+   ],
+   [
+    "brother",
+    10.1
+   ],
+   [
+    "Bob",
+    10.6
+   ],
+   [
+    "frog",
+    13.8
+   ],
+   [
+    "bags",
+    17.4
+   ],
+   [
+    "Wednesday",
+    18.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english345/"
+ },
+ {
+  "id": "english55",
+  "audio": "audio/saa/english55.mp3",
+  "region": "st_mo",
+  "tier": 3,
+  "start": 0,
+  "end": 22.18,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 53,
+  "place": "St. Louis, Missouri",
+  "lat": 38.6357,
+  "lng": -90.2446,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    7.0
+   ],
+   [
+    "snack",
+    10.3
+   ],
+   [
+    "brother",
+    10.8
+   ],
+   [
+    "Bob",
+    11.6
+   ],
+   [
+    "frog",
+    14.7
+   ],
+   [
+    "bags",
+    18.7
+   ],
+   [
+    "Wednesday",
+    20.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english55/"
+ },
+ {
+  "id": "english171",
+  "audio": "audio/saa/english171.mp3",
+  "region": "st_mo",
+  "tier": 3,
+  "start": 0,
+  "end": 17.83,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "St. Louis, Missouri",
+  "lat": 38.6357,
+  "lng": -90.2446,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    5.6
+   ],
+   [
+    "snack",
+    7.8
+   ],
+   [
+    "brother",
+    8.3
+   ],
+   [
+    "Bob",
+    8.7
+   ],
+   [
+    "frog",
+    11.7
+   ],
+   [
+    "bags",
+    15.1
+   ],
+   [
+    "Wednesday",
+    16.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english171/"
+ },
+ {
+  "id": "english109",
+  "audio": "audio/saa/english109.mp3",
+  "region": "st_nh",
+  "tier": 3,
+  "start": 0,
+  "end": 22.56,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 26,
+  "place": "Concord, New Hampshire",
+  "lat": 43.2325,
+  "lng": -71.5613,
+  "note": "Eastern New England: the r drops in \"her\" and \"brother,\" and the a in \"bags\" and \"snack\" stays flat and open.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.6
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    10.6
+   ],
+   [
+    "brother",
+    11.2
+   ],
+   [
+    "Bob",
+    11.6
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    18.8
+   ],
+   [
+    "Wednesday",
+    20.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english109/"
+ },
+ {
+  "id": "english476",
+  "audio": "audio/saa/english476.mp3",
+  "region": "st_nh",
+  "tier": 3,
+  "start": 0,
+  "end": 23.06,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 64,
+  "place": "Manchester, New Hampshire",
+  "lat": 42.9849,
+  "lng": -71.4441,
+  "note": "Eastern New England: the r drops in \"her\" and \"brother,\" and the a in \"bags\" and \"snack\" stays flat and open.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.2
+   ],
+   [
+    "snack",
+    11.1
+   ],
+   [
+    "brother",
+    11.7
+   ],
+   [
+    "Bob",
+    12.1
+   ],
+   [
+    "frog",
+    15.6
+   ],
+   [
+    "bags",
+    19.2
+   ],
+   [
+    "Wednesday",
+    21.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english476/"
+ },
+ {
+  "id": "english96",
+  "audio": "audio/saa/english96.mp3",
+  "region": "st_nj",
+  "tier": 3,
+  "start": 0,
+  "end": 21.6,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 31,
+  "place": "Point Pleasant, New Jersey",
+  "lat": 40.0777,
+  "lng": -74.0699,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    6.2
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.2
+   ],
+   [
+    "Bob",
+    10.8
+   ],
+   [
+    "frog",
+    13.8
+   ],
+   [
+    "bags",
+    17.6
+   ],
+   [
+    "Wednesday",
+    19.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english96/"
+ },
+ {
+  "id": "english199",
+  "audio": "audio/saa/english199.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 21.26,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 25,
+  "place": "Bay Shore, New York",
+  "lat": 40.7294,
+  "lng": -73.2501,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.4
+   ],
+   [
+    "snack",
+    9.0
+   ],
+   [
+    "brother",
+    9.8
+   ],
+   [
+    "Bob",
+    10.3
+   ],
+   [
+    "frog",
+    13.4
+   ],
+   [
+    "bags",
+    17.0
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english199/"
+ },
+ {
+  "id": "english6",
+  "audio": "audio/saa/english6.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 25.55,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 45,
+  "place": "Brooklyn, New York",
+  "lat": 40.65,
+  "lng": -73.95,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.3
+   ],
+   [
+    "five",
+    7.7
+   ],
+   [
+    "snack",
+    10.7
+   ],
+   [
+    "brother",
+    11.3
+   ],
+   [
+    "Bob",
+    12.6
+   ],
+   [
+    "frog",
+    16.4
+   ],
+   [
+    "bags",
+    20.6
+   ],
+   [
+    "Wednesday",
+    22.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english6/"
+ },
+ {
+  "id": "english321",
+  "audio": "audio/saa/english321.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 19.85,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Brooklyn, New York",
+  "lat": 40.65,
+  "lng": -73.95,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    9.0
+   ],
+   [
+    "brother",
+    10.0
+   ],
+   [
+    "Bob",
+    10.5
+   ],
+   [
+    "frog",
+    13.5
+   ],
+   [
+    "bags",
+    16.7
+   ],
+   [
+    "Wednesday",
+    18.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english321/"
+ },
+ {
+  "id": "english555",
+  "audio": "audio/saa/english555.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 28.27,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 90,
+  "place": "Brooklyn, New York",
+  "lat": 40.65,
+  "lng": -73.95,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    4.6
+   ],
+   [
+    "snack",
+    12.3
+   ],
+   [
+    "brother",
+    13.1
+   ],
+   [
+    "Bob",
+    13.7
+   ],
+   [
+    "frog",
+    18.4
+   ],
+   [
+    "bags",
+    23.5
+   ],
+   [
+    "Wednesday",
+    25.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english555/"
+ },
+ {
+  "id": "english556",
+  "audio": "audio/saa/english556.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 27.59,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 84,
+  "place": "Brooklyn, New York",
+  "lat": 40.65,
+  "lng": -73.95,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.2
+   ],
+   [
+    "five",
+    9.1
+   ],
+   [
+    "snack",
+    12.8
+   ],
+   [
+    "brother",
+    13.9
+   ],
+   [
+    "Bob",
+    14.5
+   ],
+   [
+    "frog",
+    18.8
+   ],
+   [
+    "bags",
+    23.2
+   ],
+   [
+    "Wednesday",
+    25.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english556/"
+ },
+ {
+  "id": "english567",
+  "audio": "audio/saa/english567.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 20.56,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 24,
+  "place": "New York, New York",
+  "lat": 40.6627,
+  "lng": -73.9387,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    8.7
+   ],
+   [
+    "brother",
+    9.4
+   ],
+   [
+    "Bob",
+    9.7
+   ],
+   [
+    "frog",
+    13.4
+   ],
+   [
+    "bags",
+    16.8
+   ],
+   [
+    "Wednesday",
+    18.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english567/"
+ },
+ {
+  "id": "english602",
+  "audio": "audio/saa/english602.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 20.66,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 41,
+  "place": "New York, New York",
+  "lat": 40.6627,
+  "lng": -73.9387,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.0
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    8.9
+   ],
+   [
+    "brother",
+    9.7
+   ],
+   [
+    "Bob",
+    9.9
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    16.7
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english602/"
+ },
+ {
+  "id": "english638",
+  "audio": "audio/saa/english638.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 23.18,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "New York, New York",
+  "lat": 40.6627,
+  "lng": -73.9387,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    6.9
+   ],
+   [
+    "snack",
+    10.0
+   ],
+   [
+    "brother",
+    10.7
+   ],
+   [
+    "Bob",
+    11.2
+   ],
+   [
+    "frog",
+    15.1
+   ],
+   [
+    "bags",
+    18.7
+   ],
+   [
+    "Wednesday",
+    20.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english638/"
+ },
+ {
+  "id": "english648",
+  "audio": "audio/saa/english648.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 18.44,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 32,
+  "place": "Queens New York, New York",
+  "lat": 40.728,
+  "lng": -73.795,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    6.5
+   ],
+   [
+    "snack",
+    8.6
+   ],
+   [
+    "brother",
+    9.1
+   ],
+   [
+    "Bob",
+    9.7
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    15.7
+   ],
+   [
+    "Wednesday",
+    16.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english648/"
+ },
+ {
+  "id": "english34",
+  "audio": "audio/saa/english34.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 17.67,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 18,
+  "place": "Ronkonkoma, New York",
+  "lat": 40.8035,
+  "lng": -73.1245,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.5
+   ],
+   [
+    "snack",
+    7.9
+   ],
+   [
+    "brother",
+    8.5
+   ],
+   [
+    "Bob",
+    9.0
+   ],
+   [
+    "frog",
+    11.7
+   ],
+   [
+    "bags",
+    14.5
+   ],
+   [
+    "Wednesday",
+    15.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english34/"
+ },
+ {
+  "id": "english442",
+  "audio": "audio/saa/english442.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 17.98,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 23,
+  "place": "Salisbury Mills, New York",
+  "lat": 41.4323,
+  "lng": -74.1063,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "snack",
+    8.0
+   ],
+   [
+    "brother",
+    8.5
+   ],
+   [
+    "Bob",
+    8.7
+   ],
+   [
+    "frog",
+    11.8
+   ],
+   [
+    "bags",
+    15.1
+   ],
+   [
+    "Wednesday",
+    16.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english442/"
+ },
+ {
+  "id": "english103",
+  "audio": "audio/saa/english103.mp3",
+  "region": "st_ny",
+  "tier": 3,
+  "start": 0,
+  "end": 16.75,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Staten Island, New York",
+  "lat": 40.579,
+  "lng": -74.151,
+  "note": "New York City: the r drops after vowels (\"brothah,\" \"huh\"), and \"bags\" rises toward \"beh-ags.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.5
+   ],
+   [
+    "snack",
+    7.3
+   ],
+   [
+    "brother",
+    7.8
+   ],
+   [
+    "Bob",
+    8.2
+   ],
+   [
+    "frog",
+    11.2
+   ],
+   [
+    "bags",
+    14.1
+   ],
+   [
+    "Wednesday",
+    15.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english103/"
+ },
+ {
+  "id": "english46",
+  "audio": "audio/saa/english46.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 25.88,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 73,
+  "place": "Creswell, North Carolina",
+  "lat": 35.8714,
+  "lng": -76.3991,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    11.8
+   ],
+   [
+    "brother",
+    12.7
+   ],
+   [
+    "Bob",
+    13.2
+   ],
+   [
+    "frog",
+    17.0
+   ],
+   [
+    "bags",
+    21.3
+   ],
+   [
+    "Wednesday",
+    23.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english46/"
+ },
+ {
+  "id": "english344",
+  "audio": "audio/saa/english344.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 24.72,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Lumberton, North Carolina",
+  "lat": 34.6306,
+  "lng": -79.0186,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.0
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.6
+   ],
+   [
+    "brother",
+    11.5
+   ],
+   [
+    "Bob",
+    12.3
+   ],
+   [
+    "frog",
+    16.0
+   ],
+   [
+    "bags",
+    20.5
+   ],
+   [
+    "Wednesday",
+    22.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english344/"
+ },
+ {
+  "id": "english20",
+  "audio": "audio/saa/english20.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 20.29,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "Mt. Holly, North Carolina",
+  "lat": 35.3144,
+  "lng": -81.0066,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.7
+   ],
+   [
+    "snack",
+    9.0
+   ],
+   [
+    "brother",
+    9.8
+   ],
+   [
+    "Bob",
+    10.3
+   ],
+   [
+    "frog",
+    13.3
+   ],
+   [
+    "bags",
+    16.8
+   ],
+   [
+    "Wednesday",
+    17.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english20/"
+ },
+ {
+  "id": "english454",
+  "audio": "audio/saa/english454.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 22.76,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Raleigh, North Carolina",
+  "lat": 35.8319,
+  "lng": -78.641,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    6.9
+   ],
+   [
+    "snack",
+    9.8
+   ],
+   [
+    "brother",
+    10.5
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.5
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english454/"
+ },
+ {
+  "id": "english398",
+  "audio": "audio/saa/english398.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 36.19,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 83,
+  "place": "Salisbury, North Carolina",
+  "lat": 35.6655,
+  "lng": -80.4889,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.6
+   ],
+   [
+    "five",
+    11.4
+   ],
+   [
+    "snack",
+    16.1
+   ],
+   [
+    "brother",
+    16.8
+   ],
+   [
+    "Bob",
+    17.4
+   ],
+   [
+    "frog",
+    23.5
+   ],
+   [
+    "bags",
+    30.4
+   ],
+   [
+    "Wednesday",
+    33.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english398/"
+ },
+ {
+  "id": "english397",
+  "audio": "audio/saa/english397.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 34.03,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 76,
+  "place": "Wadesboro, North Carolina",
+  "lat": 34.9638,
+  "lng": -80.0747,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.6
+   ],
+   [
+    "five",
+    10.0
+   ],
+   [
+    "snack",
+    13.3
+   ],
+   [
+    "brother",
+    14.6
+   ],
+   [
+    "Bob",
+    15.4
+   ],
+   [
+    "frog",
+    21.5
+   ],
+   [
+    "bags",
+    28.2
+   ],
+   [
+    "Wednesday",
+    30.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english397/"
+ },
+ {
+  "id": "english97",
+  "audio": "audio/saa/english97.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 18.08,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 42,
+  "place": "Wilmington Nc, North Carolina",
+  "lat": 34.2092,
+  "lng": -77.8858,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.6
+   ],
+   [
+    "snack",
+    8.1
+   ],
+   [
+    "brother",
+    9.0
+   ],
+   [
+    "Bob",
+    9.4
+   ],
+   [
+    "frog",
+    12.2
+   ],
+   [
+    "bags",
+    15.2
+   ],
+   [
+    "Wednesday",
+    16.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english97/"
+ },
+ {
+  "id": "english44",
+  "audio": "audio/saa/english44.mp3",
+  "region": "st_nc",
+  "tier": 3,
+  "start": 0,
+  "end": 24.24,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 63,
+  "place": "Winston Salem, North Carolina",
+  "lat": 36.1029,
+  "lng": -80.2608,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    11.6
+   ],
+   [
+    "Bob",
+    11.6
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english44/"
+ },
+ {
+  "id": "english118",
+  "audio": "audio/saa/english118.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 19.38,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Akron, Ohio",
+  "lat": 41.0805,
+  "lng": -81.5214,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    5.8
+   ],
+   [
+    "snack",
+    8.5
+   ],
+   [
+    "brother",
+    9.1
+   ],
+   [
+    "Bob",
+    9.5
+   ],
+   [
+    "frog",
+    12.6
+   ],
+   [
+    "bags",
+    16.0
+   ],
+   [
+    "Wednesday",
+    17.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english118/"
+ },
+ {
+  "id": "english126",
+  "audio": "audio/saa/english126.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 18.98,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 34,
+  "place": "Cincinnati, Ohio",
+  "lat": 39.1402,
+  "lng": -84.5058,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.3
+   ],
+   [
+    "snack",
+    8.8
+   ],
+   [
+    "brother",
+    9.4
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    13.2
+   ],
+   [
+    "bags",
+    15.9
+   ],
+   [
+    "Wednesday",
+    17.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english126/"
+ },
+ {
+  "id": "english162",
+  "audio": "audio/saa/english162.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 20.89,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 41,
+  "place": "Delaware, Ohio",
+  "lat": 40.2865,
+  "lng": -83.0749,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "snack",
+    8.9
+   ],
+   [
+    "brother",
+    9.6
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    13.6
+   ],
+   [
+    "bags",
+    17.5
+   ],
+   [
+    "Wednesday",
+    18.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english162/"
+ },
+ {
+  "id": "english163",
+  "audio": "audio/saa/english163.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 22.92,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 41,
+  "place": "Fairview Park, Ohio",
+  "lat": 41.442,
+  "lng": -81.853,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    9.7
+   ],
+   [
+    "brother",
+    10.4
+   ],
+   [
+    "Bob",
+    10.8
+   ],
+   [
+    "frog",
+    14.5
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english163/"
+ },
+ {
+  "id": "english494",
+  "audio": "audio/saa/english494.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 22.06,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": null,
+  "place": "Findlay, Ohio",
+  "lat": 41.0474,
+  "lng": -83.6381,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    6.8
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.4
+   ],
+   [
+    "Bob",
+    10.8
+   ],
+   [
+    "frog",
+    14.3
+   ],
+   [
+    "bags",
+    17.9
+   ],
+   [
+    "Wednesday",
+    19.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english494/"
+ },
+ {
+  "id": "english237",
+  "audio": "audio/saa/english237.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 24.04,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 22,
+  "place": "Jeffersonville, Ohio",
+  "lat": 39.6534,
+  "lng": -83.5516,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    7.6
+   ],
+   [
+    "snack",
+    10.5
+   ],
+   [
+    "brother",
+    11.3
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    16.1
+   ],
+   [
+    "bags",
+    20.2
+   ],
+   [
+    "Wednesday",
+    21.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english237/"
+ },
+ {
+  "id": "english514",
+  "audio": "audio/saa/english514.mp3",
+  "region": "st_oh",
+  "tier": 3,
+  "start": 0,
+  "end": 22.39,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 57,
+  "place": "Youngstown, Ohio",
+  "lat": 41.0991,
+  "lng": -80.6459,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.9
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.3
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.7
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    20.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english514/"
+ },
+ {
+  "id": "english481",
+  "audio": "audio/saa/english481.mp3",
+  "region": "st_ok",
+  "tier": 3,
+  "start": 0,
+  "end": 35.05,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 88,
+  "place": "Stringtown, Oklahoma",
+  "lat": 34.4696,
+  "lng": -96.0555,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.2
+   ],
+   [
+    "five",
+    10.3
+   ],
+   [
+    "snack",
+    14.7
+   ],
+   [
+    "brother",
+    16.1
+   ],
+   [
+    "Bob",
+    16.9
+   ],
+   [
+    "frog",
+    22.2
+   ],
+   [
+    "bags",
+    27.6
+   ],
+   [
+    "Wednesday",
+    30.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english481/"
+ },
+ {
+  "id": "english184",
+  "audio": "audio/saa/english184.mp3",
+  "region": "st_or",
+  "tier": 3,
+  "start": 0,
+  "end": 19.25,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 18,
+  "place": "Hillsboro, Oregon",
+  "lat": 45.5268,
+  "lng": -122.9354,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    6.1
+   ],
+   [
+    "snack",
+    8.6
+   ],
+   [
+    "brother",
+    9.2
+   ],
+   [
+    "Bob",
+    9.6
+   ],
+   [
+    "frog",
+    12.5
+   ],
+   [
+    "bags",
+    15.3
+   ],
+   [
+    "Wednesday",
+    16.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english184/"
+ },
+ {
+  "id": "english273",
+  "audio": "audio/saa/english273.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 23.14,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 46,
+  "place": "Blue Bell, Pennsylvania",
+  "lat": 40.1474,
+  "lng": -75.2687,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    6.4
+   ],
+   [
+    "snack",
+    9.7
+   ],
+   [
+    "brother",
+    10.3
+   ],
+   [
+    "Bob",
+    10.7
+   ],
+   [
+    "frog",
+    14.4
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english273/"
+ },
+ {
+  "id": "english427",
+  "audio": "audio/saa/english427.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 17.03,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 68,
+  "place": "Hanover, Pennsylvania",
+  "lat": 39.8118,
+  "lng": -76.9836,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.3
+   ],
+   [
+    "snack",
+    7.4
+   ],
+   [
+    "brother",
+    7.9
+   ],
+   [
+    "Bob",
+    8.5
+   ],
+   [
+    "frog",
+    11.2
+   ],
+   [
+    "bags",
+    14.3
+   ],
+   [
+    "Wednesday",
+    15.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english427/"
+ },
+ {
+  "id": "english65",
+  "audio": "audio/saa/english65.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 20.62,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 47,
+  "place": "Lewistown, Pennsylvania",
+  "lat": 40.5972,
+  "lng": -77.5715,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    6.3
+   ],
+   [
+    "snack",
+    8.9
+   ],
+   [
+    "brother",
+    9.6
+   ],
+   [
+    "Bob",
+    10.3
+   ],
+   [
+    "frog",
+    13.9
+   ],
+   [
+    "bags",
+    17.3
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english65/"
+ },
+ {
+  "id": "english181",
+  "audio": "audio/saa/english181.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 22.4,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 68,
+  "place": "New Eagle, Pennsylvania",
+  "lat": 40.2072,
+  "lng": -79.9533,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    6.7
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.2
+   ],
+   [
+    "Bob",
+    10.8
+   ],
+   [
+    "frog",
+    14.8
+   ],
+   [
+    "bags",
+    18.8
+   ],
+   [
+    "Wednesday",
+    20.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english181/"
+ },
+ {
+  "id": "english429",
+  "audio": "audio/saa/english429.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 21.32,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Philadelphia, Pennsylvania",
+  "lat": 40.0094,
+  "lng": -75.1333,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.4
+   ],
+   [
+    "snack",
+    9.3
+   ],
+   [
+    "brother",
+    10.1
+   ],
+   [
+    "Bob",
+    10.4
+   ],
+   [
+    "frog",
+    14.5
+   ],
+   [
+    "bags",
+    17.9
+   ],
+   [
+    "Wednesday",
+    19.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english429/"
+ },
+ {
+  "id": "english510",
+  "audio": "audio/saa/english510.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 24.2,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 66,
+  "place": "Philadelphia, Pennsylvania",
+  "lat": 40.0094,
+  "lng": -75.1333,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    7.0
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.4
+   ],
+   [
+    "frog",
+    15.6
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english510/"
+ },
+ {
+  "id": "english1",
+  "audio": "audio/saa/english1.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 21.87,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 42,
+  "place": "Pittsburgh, Pennsylvania",
+  "lat": 40.4399,
+  "lng": -79.9757,
+  "note": "Western Pennsylvania: \"Bob\" and \"frog\" share one deep \"aw\" vowel, and the o in \"snow\" glides toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    9.7
+   ],
+   [
+    "brother",
+    10.3
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    13.8
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    19.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english1/"
+ },
+ {
+  "id": "english90",
+  "audio": "audio/saa/english90.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 23.2,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 53,
+  "place": "Pittsburgh, Pennsylvania",
+  "lat": 40.4399,
+  "lng": -79.9757,
+  "note": "Western Pennsylvania: \"Bob\" and \"frog\" share one deep \"aw\" vowel, and the o in \"snow\" glides toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    11.2
+   ],
+   [
+    "Bob",
+    11.5
+   ],
+   [
+    "frog",
+    15.1
+   ],
+   [
+    "bags",
+    19.1
+   ],
+   [
+    "Wednesday",
+    20.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english90/"
+ },
+ {
+  "id": "english99",
+  "audio": "audio/saa/english99.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 22.02,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Pittsburgh, Pennsylvania",
+  "lat": 40.4399,
+  "lng": -79.9757,
+  "note": "Western Pennsylvania: \"Bob\" and \"frog\" share one deep \"aw\" vowel, and the o in \"snow\" glides toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "snack",
+    9.1
+   ],
+   [
+    "brother",
+    9.7
+   ],
+   [
+    "Bob",
+    10.0
+   ],
+   [
+    "frog",
+    13.5
+   ],
+   [
+    "bags",
+    17.7
+   ],
+   [
+    "Wednesday",
+    19.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english99/"
+ },
+ {
+  "id": "english245",
+  "audio": "audio/saa/english245.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 18.31,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 25,
+  "place": "Pittsburgh, Pennsylvania",
+  "lat": 40.4399,
+  "lng": -79.9757,
+  "note": "Western Pennsylvania: \"Bob\" and \"frog\" share one deep \"aw\" vowel, and the o in \"snow\" glides toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.8
+   ],
+   [
+    "five",
+    5.4
+   ],
+   [
+    "snack",
+    8.2
+   ],
+   [
+    "brother",
+    9.0
+   ],
+   [
+    "Bob",
+    9.5
+   ],
+   [
+    "frog",
+    12.1
+   ],
+   [
+    "bags",
+    15.4
+   ],
+   [
+    "Wednesday",
+    16.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english245/"
+ },
+ {
+  "id": "english325",
+  "audio": "audio/saa/english325.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 25.79,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 32,
+  "place": "Reading, Pennsylvania",
+  "lat": 40.3392,
+  "lng": -75.9263,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    8.2
+   ],
+   [
+    "snack",
+    11.4
+   ],
+   [
+    "brother",
+    12.1
+   ],
+   [
+    "Bob",
+    12.7
+   ],
+   [
+    "frog",
+    16.4
+   ],
+   [
+    "bags",
+    21.5
+   ],
+   [
+    "Wednesday",
+    23.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english325/"
+ },
+ {
+  "id": "english178",
+  "audio": "audio/saa/english178.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 27.53,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 30,
+  "place": "Wilkes-Barre, Pennsylvania",
+  "lat": 41.2466,
+  "lng": -75.8757,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    8.3
+   ],
+   [
+    "snack",
+    11.9
+   ],
+   [
+    "brother",
+    12.7
+   ],
+   [
+    "Bob",
+    12.9
+   ],
+   [
+    "frog",
+    18.1
+   ],
+   [
+    "bags",
+    23.6
+   ],
+   [
+    "Wednesday",
+    25.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english178/"
+ },
+ {
+  "id": "english207",
+  "audio": "audio/saa/english207.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 21.54,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 23,
+  "place": "Wilkes-Barre, Pennsylvania",
+  "lat": 41.2466,
+  "lng": -75.8757,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    6.8
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.3
+   ],
+   [
+    "Bob",
+    10.7
+   ],
+   [
+    "frog",
+    14.1
+   ],
+   [
+    "bags",
+    17.6
+   ],
+   [
+    "Wednesday",
+    19.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english207/"
+ },
+ {
+  "id": "english482",
+  "audio": "audio/saa/english482.mp3",
+  "region": "st_pa",
+  "tier": 3,
+  "start": 0,
+  "end": 28.63,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 74,
+  "place": "Yeadon, Pennsylvania",
+  "lat": 39.9325,
+  "lng": -75.2527,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.7
+   ],
+   [
+    "snack",
+    13.1
+   ],
+   [
+    "brother",
+    13.9
+   ],
+   [
+    "Bob",
+    14.4
+   ],
+   [
+    "frog",
+    18.1
+   ],
+   [
+    "bags",
+    23.3
+   ],
+   [
+    "Wednesday",
+    25.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english482/"
+ },
+ {
+  "id": "english139",
+  "audio": "audio/saa/english139.mp3",
+  "region": "st_ri",
+  "tier": 3,
+  "start": 0,
+  "end": 23.5,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 20,
+  "place": "Providence, Rhode Island",
+  "lat": 41.8231,
+  "lng": -71.4188,
+  "note": "Eastern New England: the r drops in \"her\" and \"brother,\" and the a in \"bags\" and \"snack\" stays flat and open.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.1
+   ],
+   [
+    "five",
+    8.3
+   ],
+   [
+    "snack",
+    11.1
+   ],
+   [
+    "brother",
+    12.2
+   ],
+   [
+    "Bob",
+    12.7
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.1
+   ],
+   [
+    "Wednesday",
+    20.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english139/"
+ },
+ {
+  "id": "english394",
+  "audio": "audio/saa/english394.mp3",
+  "region": "st_sc",
+  "tier": 3,
+  "start": 0,
+  "end": 28.76,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 82,
+  "place": "Aiken, South Carolina",
+  "lat": 33.5316,
+  "lng": -81.7251,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    7.9
+   ],
+   [
+    "snack",
+    11.5
+   ],
+   [
+    "brother",
+    12.8
+   ],
+   [
+    "Bob",
+    13.5
+   ],
+   [
+    "frog",
+    18.1
+   ],
+   [
+    "bags",
+    23.3
+   ],
+   [
+    "Wednesday",
+    26.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english394/"
+ },
+ {
+  "id": "english86",
+  "audio": "audio/saa/english86.mp3",
+  "region": "st_sc",
+  "tier": 3,
+  "start": 0,
+  "end": 22.12,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 50,
+  "place": "Charleston, South Carolina",
+  "lat": 32.828,
+  "lng": -79.9729,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.3
+   ],
+   [
+    "five",
+    6.8
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.3
+   ],
+   [
+    "frog",
+    14.8
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    20.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english86/"
+ },
+ {
+  "id": "english426",
+  "audio": "audio/saa/english426.mp3",
+  "region": "st_sc",
+  "tier": 3,
+  "start": 0,
+  "end": 21.27,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 30,
+  "place": "Florence, South Carolina",
+  "lat": 34.1789,
+  "lng": -79.7922,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    5.8
+   ],
+   [
+    "snack",
+    9.1
+   ],
+   [
+    "brother",
+    9.9
+   ],
+   [
+    "Bob",
+    10.3
+   ],
+   [
+    "frog",
+    13.8
+   ],
+   [
+    "bags",
+    17.6
+   ],
+   [
+    "Wednesday",
+    19.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english426/"
+ },
+ {
+  "id": "english562",
+  "audio": "audio/saa/english562.mp3",
+  "region": "st_sc",
+  "tier": 3,
+  "start": 0,
+  "end": 25.07,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 30,
+  "place": "Florence, South Carolina",
+  "lat": 34.1789,
+  "lng": -79.7922,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.4
+   ],
+   [
+    "snack",
+    11.7
+   ],
+   [
+    "brother",
+    12.6
+   ],
+   [
+    "Bob",
+    13.2
+   ],
+   [
+    "frog",
+    16.9
+   ],
+   [
+    "bags",
+    20.7
+   ],
+   [
+    "Wednesday",
+    22.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english562/"
+ },
+ {
+  "id": "english428",
+  "audio": "audio/saa/english428.mp3",
+  "region": "st_sc",
+  "tier": 3,
+  "start": 0,
+  "end": 23.36,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 55,
+  "place": "Kingstree, South Carolina",
+  "lat": 33.6672,
+  "lng": -79.8287,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "snack",
+    10.6
+   ],
+   [
+    "brother",
+    11.2
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english428/"
+ },
+ {
+  "id": "english50",
+  "audio": "audio/saa/english50.mp3",
+  "region": "st_sd",
+  "tier": 3,
+  "start": 0,
+  "end": 23.28,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 29,
+  "place": "Baltic, South Dakota",
+  "lat": 43.7601,
+  "lng": -96.7369,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.5
+   ],
+   [
+    "snack",
+    10.7
+   ],
+   [
+    "brother",
+    11.6
+   ],
+   [
+    "Bob",
+    12.0
+   ],
+   [
+    "frog",
+    15.5
+   ],
+   [
+    "bags",
+    19.2
+   ],
+   [
+    "Wednesday",
+    21.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english50/"
+ },
+ {
+  "id": "english598",
+  "audio": "audio/saa/english598.mp3",
+  "region": "st_sd",
+  "tier": 3,
+  "start": 0,
+  "end": 25.01,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 29,
+  "place": "Mitchell, South Dakota",
+  "lat": 43.7271,
+  "lng": -98.0422,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    11.2
+   ],
+   [
+    "brother",
+    12.0
+   ],
+   [
+    "Bob",
+    12.8
+   ],
+   [
+    "frog",
+    16.7
+   ],
+   [
+    "bags",
+    20.6
+   ],
+   [
+    "Wednesday",
+    22.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english598/"
+ },
+ {
+  "id": "english276",
+  "audio": "audio/saa/english276.mp3",
+  "region": "st_tn",
+  "tier": 3,
+  "start": 0,
+  "end": 23.51,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 50,
+  "place": "Chattanooga, Tennessee",
+  "lat": 35.066,
+  "lng": -85.2484,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.6
+   ],
+   [
+    "snack",
+    9.8
+   ],
+   [
+    "brother",
+    10.4
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.0
+   ],
+   [
+    "bags",
+    18.9
+   ],
+   [
+    "Wednesday",
+    20.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english276/"
+ },
+ {
+  "id": "english23",
+  "audio": "audio/saa/english23.mp3",
+  "region": "st_tn",
+  "tier": 3,
+  "start": 0,
+  "end": 25.77,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 43,
+  "place": "Englewood, Tennessee",
+  "lat": 35.4229,
+  "lng": -84.4883,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.5
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    11.2
+   ],
+   [
+    "brother",
+    12.3
+   ],
+   [
+    "Bob",
+    13.0
+   ],
+   [
+    "frog",
+    17.2
+   ],
+   [
+    "bags",
+    21.4
+   ],
+   [
+    "Wednesday",
+    23.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english23/"
+ },
+ {
+  "id": "english619",
+  "audio": "audio/saa/english619.mp3",
+  "region": "st_tn",
+  "tier": 3,
+  "start": 0,
+  "end": 25.46,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Jackson, Tennessee",
+  "lat": 35.6541,
+  "lng": -88.835,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.7
+   ],
+   [
+    "five",
+    8.3
+   ],
+   [
+    "snack",
+    11.6
+   ],
+   [
+    "brother",
+    12.9
+   ],
+   [
+    "Bob",
+    13.1
+   ],
+   [
+    "frog",
+    17.0
+   ],
+   [
+    "bags",
+    21.0
+   ],
+   [
+    "Wednesday",
+    22.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english619/"
+ },
+ {
+  "id": "english637",
+  "audio": "audio/saa/english637.mp3",
+  "region": "st_tn",
+  "tier": 3,
+  "start": 0,
+  "end": 20.82,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 18,
+  "place": "Knoxville, Tennessee",
+  "lat": 35.9707,
+  "lng": -83.9493,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.1
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    10.5
+   ],
+   [
+    "Bob",
+    10.8
+   ],
+   [
+    "frog",
+    13.7
+   ],
+   [
+    "bags",
+    17.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english637/"
+ },
+ {
+  "id": "english314",
+  "audio": "audio/saa/english314.mp3",
+  "region": "st_tn",
+  "tier": 3,
+  "start": 0,
+  "end": 19.7,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 26,
+  "place": "Memphis, Tennessee",
+  "lat": 35.109,
+  "lng": -89.9675,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.8
+   ],
+   [
+    "five",
+    6.2
+   ],
+   [
+    "snack",
+    8.7
+   ],
+   [
+    "brother",
+    9.4
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    16.7
+   ],
+   [
+    "Wednesday",
+    18.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english314/"
+ },
+ {
+  "id": "english70",
+  "audio": "audio/saa/english70.mp3",
+  "region": "st_tx",
+  "tier": 3,
+  "start": 0,
+  "end": 16.47,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Beaumont, Texas",
+  "lat": 30.0849,
+  "lng": -94.1453,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.8
+   ],
+   [
+    "five",
+    5.0
+   ],
+   [
+    "snack",
+    7.5
+   ],
+   [
+    "brother",
+    8.3
+   ],
+   [
+    "Bob",
+    8.6
+   ],
+   [
+    "frog",
+    11.1
+   ],
+   [
+    "bags",
+    13.6
+   ],
+   [
+    "Wednesday",
+    14.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english70/"
+ },
+ {
+  "id": "english286",
+  "audio": "audio/saa/english286.mp3",
+  "region": "st_tx",
+  "tier": 3,
+  "start": 0,
+  "end": 22.92,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Beaumont, Texas",
+  "lat": 30.0849,
+  "lng": -94.1453,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.3
+   ],
+   [
+    "five",
+    7.1
+   ],
+   [
+    "snack",
+    10.5
+   ],
+   [
+    "brother",
+    11.9
+   ],
+   [
+    "Bob",
+    11.9
+   ],
+   [
+    "frog",
+    15.5
+   ],
+   [
+    "bags",
+    18.9
+   ],
+   [
+    "Wednesday",
+    20.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english286/"
+ },
+ {
+  "id": "english9",
+  "audio": "audio/saa/english9.mp3",
+  "region": "st_tx",
+  "tier": 3,
+  "start": 0,
+  "end": 28.65,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 48,
+  "place": "Carthage, Texas",
+  "lat": 32.152,
+  "lng": -94.3371,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    12.0
+   ],
+   [
+    "brother",
+    12.9
+   ],
+   [
+    "Bob",
+    13.5
+   ],
+   [
+    "frog",
+    18.1
+   ],
+   [
+    "bags",
+    23.5
+   ],
+   [
+    "Wednesday",
+    26.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english9/"
+ },
+ {
+  "id": "english63",
+  "audio": "audio/saa/english63.mp3",
+  "region": "st_tx",
+  "tier": 3,
+  "start": 0,
+  "end": 20.32,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Lewisville, Texas",
+  "lat": 33.0507,
+  "lng": -96.9746,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    8.9
+   ],
+   [
+    "brother",
+    9.9
+   ],
+   [
+    "Bob",
+    10.7
+   ],
+   [
+    "frog",
+    13.7
+   ],
+   [
+    "bags",
+    16.9
+   ],
+   [
+    "Wednesday",
+    18.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english63/"
+ },
+ {
+  "id": "english475",
+  "audio": "audio/saa/english475.mp3",
+  "region": "st_ut",
+  "tier": 3,
+  "start": 0,
+  "end": 19.28,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 29,
+  "place": "Ogden, Utah",
+  "lat": 41.2284,
+  "lng": -111.9681,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    5.8
+   ],
+   [
+    "snack",
+    8.4
+   ],
+   [
+    "brother",
+    9.4
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.8
+   ],
+   [
+    "bags",
+    16.3
+   ],
+   [
+    "Wednesday",
+    17.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english475/"
+ },
+ {
+  "id": "english62",
+  "audio": "audio/saa/english62.mp3",
+  "region": "st_ut",
+  "tier": 3,
+  "start": 0,
+  "end": 22.29,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 30,
+  "place": "West Jordan, Utah",
+  "lat": 40.6027,
+  "lng": -112.0013,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.1
+   ],
+   [
+    "snack",
+    10.0
+   ],
+   [
+    "brother",
+    10.5
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.4
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english62/"
+ },
+ {
+  "id": "english449",
+  "audio": "audio/saa/english449.mp3",
+  "region": "st_vt",
+  "tier": 3,
+  "start": 0,
+  "end": 22.41,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "Barton, Vermont",
+  "lat": 44.748,
+  "lng": -72.1786,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    6.6
+   ],
+   [
+    "snack",
+    9.4
+   ],
+   [
+    "brother",
+    10.6
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.7
+   ],
+   [
+    "bags",
+    18.4
+   ],
+   [
+    "Wednesday",
+    20.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english449/"
+ },
+ {
+  "id": "english229",
+  "audio": "audio/saa/english229.mp3",
+  "region": "st_vt",
+  "tier": 3,
+  "start": 0,
+  "end": 17.98,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 25,
+  "place": "Burlington, Vermont",
+  "lat": 44.4919,
+  "lng": -73.2389,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    5.5
+   ],
+   [
+    "snack",
+    7.8
+   ],
+   [
+    "brother",
+    8.3
+   ],
+   [
+    "Bob",
+    8.8
+   ],
+   [
+    "frog",
+    11.7
+   ],
+   [
+    "bags",
+    14.8
+   ],
+   [
+    "Wednesday",
+    16.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english229/"
+ },
+ {
+  "id": "english218",
+  "audio": "audio/saa/english218.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 20.25,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "Abingdon, Virginia",
+  "lat": 36.7067,
+  "lng": -81.9716,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.0
+   ],
+   [
+    "snack",
+    9.1
+   ],
+   [
+    "brother",
+    9.6
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.9
+   ],
+   [
+    "bags",
+    16.6
+   ],
+   [
+    "Wednesday",
+    18.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english218/"
+ },
+ {
+  "id": "english389",
+  "audio": "audio/saa/english389.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 25.3,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 71,
+  "place": "Aldie, Virginia",
+  "lat": 38.9761,
+  "lng": -77.648,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    11.3
+   ],
+   [
+    "brother",
+    12.2
+   ],
+   [
+    "Bob",
+    12.7
+   ],
+   [
+    "frog",
+    16.9
+   ],
+   [
+    "bags",
+    20.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english389/"
+ },
+ {
+  "id": "english307",
+  "audio": "audio/saa/english307.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 22.2,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 48,
+  "place": "Alexandria, Virginia",
+  "lat": 38.8193,
+  "lng": -77.0837,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    6.6
+   ],
+   [
+    "snack",
+    9.4
+   ],
+   [
+    "brother",
+    10.0
+   ],
+   [
+    "Bob",
+    10.5
+   ],
+   [
+    "frog",
+    14.0
+   ],
+   [
+    "bags",
+    17.8
+   ],
+   [
+    "Wednesday",
+    19.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english307/"
+ },
+ {
+  "id": "english657",
+  "audio": "audio/saa/english657.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 28.11,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 55,
+  "place": "Alexandria, Virginia",
+  "lat": 38.8193,
+  "lng": -77.0837,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.0
+   ],
+   [
+    "five",
+    9.3
+   ],
+   [
+    "snack",
+    12.6
+   ],
+   [
+    "brother",
+    13.7
+   ],
+   [
+    "Bob",
+    14.2
+   ],
+   [
+    "frog",
+    18.4
+   ],
+   [
+    "bags",
+    22.6
+   ],
+   [
+    "Wednesday",
+    24.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english657/"
+ },
+ {
+  "id": "english382",
+  "audio": "audio/saa/english382.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 28.19,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 34,
+  "place": "Arlington, Virginia",
+  "lat": 38.8783,
+  "lng": -77.1007,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.4
+   ],
+   [
+    "five",
+    6.9
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.4
+   ],
+   [
+    "frog",
+    15.2
+   ],
+   [
+    "bags",
+    22.5
+   ],
+   [
+    "Wednesday",
+    25.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english382/"
+ },
+ {
+  "id": "english372",
+  "audio": "audio/saa/english372.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 32.42,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 80,
+  "place": "Christiansburg, Virginia",
+  "lat": 37.1407,
+  "lng": -80.4045,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.0
+   ],
+   [
+    "five",
+    10.1
+   ],
+   [
+    "snack",
+    13.2
+   ],
+   [
+    "brother",
+    14.6
+   ],
+   [
+    "Bob",
+    15.3
+   ],
+   [
+    "frog",
+    21.1
+   ],
+   [
+    "bags",
+    26.2
+   ],
+   [
+    "Wednesday",
+    28.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english372/"
+ },
+ {
+  "id": "english424",
+  "audio": "audio/saa/english424.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 23.72,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 75,
+  "place": "Danville, Virginia",
+  "lat": 36.5833,
+  "lng": -79.4081,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.5
+   ],
+   [
+    "five",
+    7.7
+   ],
+   [
+    "snack",
+    11.0
+   ],
+   [
+    "brother",
+    11.8
+   ],
+   [
+    "Bob",
+    11.9
+   ],
+   [
+    "frog",
+    15.7
+   ],
+   [
+    "bags",
+    19.5
+   ],
+   [
+    "Wednesday",
+    21.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english424/"
+ },
+ {
+  "id": "english18",
+  "audio": "audio/saa/english18.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 20.82,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 39,
+  "place": "Dickenson County, Virginia",
+  "lat": 37.126,
+  "lng": -82.35,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.8
+   ],
+   [
+    "snack",
+    9.3
+   ],
+   [
+    "brother",
+    9.7
+   ],
+   [
+    "Bob",
+    10.1
+   ],
+   [
+    "frog",
+    13.4
+   ],
+   [
+    "bags",
+    17.8
+   ],
+   [
+    "Wednesday",
+    19.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english18/"
+ },
+ {
+  "id": "english585",
+  "audio": "audio/saa/english585.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 22.0,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 26,
+  "place": "Dumfries, Virginia",
+  "lat": 38.5673,
+  "lng": -77.3224,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.3
+   ],
+   [
+    "five",
+    7.0
+   ],
+   [
+    "snack",
+    9.9
+   ],
+   [
+    "brother",
+    10.6
+   ],
+   [
+    "Bob",
+    11.1
+   ],
+   [
+    "frog",
+    14.6
+   ],
+   [
+    "bags",
+    18.1
+   ],
+   [
+    "Wednesday",
+    19.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english585/"
+ },
+ {
+  "id": "english5",
+  "audio": "audio/saa/english5.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 29.74,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 62,
+  "place": "Fairfax, Virginia",
+  "lat": 38.8532,
+  "lng": -77.299,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    9.2
+   ],
+   [
+    "snack",
+    14.1
+   ],
+   [
+    "brother",
+    15.2
+   ],
+   [
+    "Bob",
+    15.9
+   ],
+   [
+    "frog",
+    20.2
+   ],
+   [
+    "bags",
+    24.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english5/"
+ },
+ {
+  "id": "english551",
+  "audio": "audio/saa/english551.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 28.52,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 81,
+  "place": "King George, Virginia",
+  "lat": 38.2794,
+  "lng": -77.1843,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    12.2
+   ],
+   [
+    "brother",
+    14.1
+   ],
+   [
+    "Bob",
+    14.5
+   ],
+   [
+    "frog",
+    19.0
+   ],
+   [
+    "bags",
+    23.6
+   ],
+   [
+    "Wednesday",
+    25.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english551/"
+ },
+ {
+  "id": "english563",
+  "audio": "audio/saa/english563.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 25.82,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 32,
+  "place": "Manassas, Virginia",
+  "lat": 38.7468,
+  "lng": -77.4826,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.1
+   ],
+   [
+    "snack",
+    11.1
+   ],
+   [
+    "brother",
+    11.8
+   ],
+   [
+    "Bob",
+    12.4
+   ],
+   [
+    "frog",
+    16.2
+   ],
+   [
+    "bags",
+    21.0
+   ],
+   [
+    "Wednesday",
+    23.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english563/"
+ },
+ {
+  "id": "english15",
+  "audio": "audio/saa/english15.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 27.55,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 7,
+  "place": "Norton, Virginia",
+  "lat": 36.9315,
+  "lng": -82.626,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    10.1
+   ],
+   [
+    "snack",
+    13.0
+   ],
+   [
+    "brother",
+    14.0
+   ],
+   [
+    "Bob",
+    14.9
+   ],
+   [
+    "bags",
+    23.6
+   ],
+   [
+    "Wednesday",
+    25.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english15/"
+ },
+ {
+  "id": "english396",
+  "audio": "audio/saa/english396.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 30.65,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 48,
+  "place": "Orange, Virginia",
+  "lat": 38.2478,
+  "lng": -78.1132,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    9.5
+   ],
+   [
+    "snack",
+    13.7
+   ],
+   [
+    "brother",
+    15.1
+   ],
+   [
+    "Bob",
+    15.6
+   ],
+   [
+    "frog",
+    20.3
+   ],
+   [
+    "bags",
+    25.5
+   ],
+   [
+    "Wednesday",
+    28.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english396/"
+ },
+ {
+  "id": "english559",
+  "audio": "audio/saa/english559.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 25.95,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Reston, Virginia",
+  "lat": 38.9498,
+  "lng": -77.3462,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.4
+   ],
+   [
+    "five",
+    9.2
+   ],
+   [
+    "snack",
+    12.0
+   ],
+   [
+    "brother",
+    12.6
+   ],
+   [
+    "Bob",
+    12.9
+   ],
+   [
+    "frog",
+    16.4
+   ],
+   [
+    "bags",
+    20.6
+   ],
+   [
+    "Wednesday",
+    22.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english559/"
+ },
+ {
+  "id": "english235",
+  "audio": "audio/saa/english235.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 26.8,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Richmond, Virginia",
+  "lat": 37.5314,
+  "lng": -77.476,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.4
+   ],
+   [
+    "snack",
+    11.9
+   ],
+   [
+    "brother",
+    13.0
+   ],
+   [
+    "Bob",
+    13.7
+   ],
+   [
+    "frog",
+    18.2
+   ],
+   [
+    "bags",
+    22.0
+   ],
+   [
+    "Wednesday",
+    23.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english235/"
+ },
+ {
+  "id": "english536",
+  "audio": "audio/saa/english536.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 20.92,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Richmond, Virginia",
+  "lat": 37.5314,
+  "lng": -77.476,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.2
+   ],
+   [
+    "snack",
+    8.8
+   ],
+   [
+    "brother",
+    9.5
+   ],
+   [
+    "Bob",
+    10.1
+   ],
+   [
+    "frog",
+    13.5
+   ],
+   [
+    "bags",
+    17.1
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english536/"
+ },
+ {
+  "id": "english594",
+  "audio": "audio/saa/english594.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 23.13,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 20,
+  "place": "Richmond, Virginia",
+  "lat": 37.5314,
+  "lng": -77.476,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    11.0
+   ],
+   [
+    "Bob",
+    11.3
+   ],
+   [
+    "frog",
+    15.1
+   ],
+   [
+    "bags",
+    19.1
+   ],
+   [
+    "Wednesday",
+    20.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english594/"
+ },
+ {
+  "id": "english545",
+  "audio": "audio/saa/english545.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 21.42,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 56,
+  "place": "Tangier Island, Virginia",
+  "lat": 37.825,
+  "lng": -75.993,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.4
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    11.4
+   ],
+   [
+    "Bob",
+    11.6
+   ],
+   [
+    "frog",
+    14.7
+   ],
+   [
+    "bags",
+    18.1
+   ],
+   [
+    "Wednesday",
+    19.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english545/"
+ },
+ {
+  "id": "english546",
+  "audio": "audio/saa/english546.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 20.02,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 43,
+  "place": "Tangier Island, Virginia",
+  "lat": 37.825,
+  "lng": -75.993,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    5.9
+   ],
+   [
+    "snack",
+    8.5
+   ],
+   [
+    "brother",
+    9.2
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.9
+   ],
+   [
+    "bags",
+    16.6
+   ],
+   [
+    "Wednesday",
+    18.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english546/"
+ },
+ {
+  "id": "english547",
+  "audio": "audio/saa/english547.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 27.49,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 63,
+  "place": "Tangier Island, Virginia",
+  "lat": 37.825,
+  "lng": -75.993,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    7.8
+   ],
+   [
+    "snack",
+    11.4
+   ],
+   [
+    "brother",
+    12.6
+   ],
+   [
+    "Bob",
+    13.0
+   ],
+   [
+    "bags",
+    22.7
+   ],
+   [
+    "Wednesday",
+    24.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english547/"
+ },
+ {
+  "id": "english16",
+  "audio": "audio/saa/english16.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 25.78,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Wise, Virginia",
+  "lat": 36.9769,
+  "lng": -82.5811,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    8.1
+   ],
+   [
+    "snack",
+    11.1
+   ],
+   [
+    "brother",
+    12.0
+   ],
+   [
+    "Bob",
+    12.1
+   ],
+   [
+    "frog",
+    16.3
+   ],
+   [
+    "bags",
+    21.0
+   ],
+   [
+    "Wednesday",
+    23.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english16/"
+ },
+ {
+  "id": "english561",
+  "audio": "audio/saa/english561.mp3",
+  "region": "st_va",
+  "tier": 3,
+  "start": 0,
+  "end": 23.12,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 20,
+  "place": "Yorktown, Virginia",
+  "lat": 37.234,
+  "lng": -76.5182,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.3
+   ],
+   [
+    "snack",
+    10.6
+   ],
+   [
+    "brother",
+    11.5
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    15.3
+   ],
+   [
+    "bags",
+    19.1
+   ],
+   [
+    "Wednesday",
+    20.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english561/"
+ },
+ {
+  "id": "english98",
+  "audio": "audio/saa/english98.mp3",
+  "region": "st_wa",
+  "tier": 3,
+  "start": 0,
+  "end": 21.0,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 22,
+  "place": "Spokane, Washington",
+  "lat": 47.6669,
+  "lng": -117.4333,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.4
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.7
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    13.9
+   ],
+   [
+    "bags",
+    17.2
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english98/"
+ },
+ {
+  "id": "english333",
+  "audio": "audio/saa/english333.mp3",
+  "region": "st_wa",
+  "tier": 3,
+  "start": 0,
+  "end": 17.99,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 32,
+  "place": "Spokane, Washington",
+  "lat": 47.6669,
+  "lng": -117.4333,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.6
+   ],
+   [
+    "snack",
+    7.9
+   ],
+   [
+    "brother",
+    8.5
+   ],
+   [
+    "Bob",
+    8.9
+   ],
+   [
+    "frog",
+    11.8
+   ],
+   [
+    "bags",
+    14.7
+   ],
+   [
+    "Wednesday",
+    16.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english333/"
+ },
+ {
+  "id": "english388",
+  "audio": "audio/saa/english388.mp3",
+  "region": "st_wv",
+  "tier": 3,
+  "start": 0,
+  "end": 31.12,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 70,
+  "place": "Bluefield, West Virginia",
+  "lat": 37.2628,
+  "lng": -81.2113,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.1
+   ],
+   [
+    "five",
+    10.0
+   ],
+   [
+    "snack",
+    14.7
+   ],
+   [
+    "brother",
+    15.4
+   ],
+   [
+    "Bob",
+    15.8
+   ],
+   [
+    "frog",
+    21.1
+   ],
+   [
+    "bags",
+    26.3
+   ],
+   [
+    "Wednesday",
+    28.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english388/"
+ },
+ {
+  "id": "english340",
+  "audio": "audio/saa/english340.mp3",
+  "region": "st_wv",
+  "tier": 3,
+  "start": 0,
+  "end": 18.42,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 19,
+  "place": "Charleston, West Virginia",
+  "lat": 38.3487,
+  "lng": -81.6323,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.6
+   ],
+   [
+    "snack",
+    8.3
+   ],
+   [
+    "brother",
+    9.1
+   ],
+   [
+    "Bob",
+    9.5
+   ],
+   [
+    "frog",
+    12.6
+   ],
+   [
+    "bags",
+    15.6
+   ],
+   [
+    "Wednesday",
+    16.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english340/"
+ },
+ {
+  "id": "english384",
+  "audio": "audio/saa/english384.mp3",
+  "region": "st_wv",
+  "tier": 3,
+  "start": 0,
+  "end": 25.01,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 57,
+  "place": "Williamson, West Virginia",
+  "lat": 37.6741,
+  "lng": -82.2711,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    11.1
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    16.5
+   ],
+   [
+    "bags",
+    20.3
+   ],
+   [
+    "Wednesday",
+    22.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english384/"
+ },
+ {
+  "id": "english36",
+  "audio": "audio/saa/english36.mp3",
+  "region": "st_wi",
+  "tier": 3,
+  "start": 0,
+  "end": 20.99,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 60,
+  "place": "Arcadia, Wisconsin",
+  "lat": 44.2486,
+  "lng": -91.4916,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.3
+   ],
+   [
+    "snack",
+    8.9
+   ],
+   [
+    "brother",
+    9.5
+   ],
+   [
+    "Bob",
+    10.0
+   ],
+   [
+    "frog",
+    13.4
+   ],
+   [
+    "bags",
+    16.9
+   ],
+   [
+    "Wednesday",
+    18.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english36/"
+ },
+ {
+  "id": "english528",
+  "audio": "audio/saa/english528.mp3",
+  "region": "st_wi",
+  "tier": 3,
+  "start": 0,
+  "end": 23.13,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Green Bay, Wisconsin",
+  "lat": 44.5215,
+  "lng": -87.9866,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    7.3
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    11.1
+   ],
+   [
+    "Bob",
+    11.5
+   ],
+   [
+    "frog",
+    15.0
+   ],
+   [
+    "bags",
+    18.4
+   ],
+   [
+    "Wednesday",
+    20.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english528/"
+ },
+ {
+  "id": "english35",
+  "audio": "audio/saa/english35.mp3",
+  "region": "st_wi",
+  "tier": 3,
+  "start": 0,
+  "end": 21.28,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 60,
+  "place": "Milwaukee, Wisconsin",
+  "lat": 43.0633,
+  "lng": -87.9667,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.5
+   ],
+   [
+    "five",
+    6.2
+   ],
+   [
+    "snack",
+    9.3
+   ],
+   [
+    "brother",
+    10.1
+   ],
+   [
+    "Bob",
+    10.4
+   ],
+   [
+    "frog",
+    14.1
+   ],
+   [
+    "bags",
+    17.7
+   ],
+   [
+    "Wednesday",
+    19.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english35/"
+ },
+ {
+  "id": "english564",
+  "audio": "audio/saa/english564.mp3",
+  "region": "st_wy",
+  "tier": 3,
+  "start": 0,
+  "end": 25.34,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 52,
+  "place": "Casper, Wyoming",
+  "lat": 42.8421,
+  "lng": -106.3213,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    7.9
+   ],
+   [
+    "snack",
+    11.1
+   ],
+   [
+    "brother",
+    12.0
+   ],
+   [
+    "Bob",
+    12.9
+   ],
+   [
+    "frog",
+    16.7
+   ],
+   [
+    "bags",
+    21.0
+   ],
+   [
+    "Wednesday",
+    22.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english564/"
  }
 ];
