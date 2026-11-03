@@ -28,7 +28,8 @@ window.CLIPS = [
     19.4
    ]
   ],
-  "year": 2019
+  "year": 2019,
+  "st": "MA"
  },
  {
   "id": "LCmL6x2Rr18",
@@ -62,7 +63,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2021,
-  "born": 1973
+  "born": 1973,
+  "st": "MA"
  },
  {
   "id": "-YuUR6EbeXQ",
@@ -93,7 +95,8 @@ window.CLIPS = [
   ],
   "year": 1983,
   "born": 1928,
-  "recorded": true
+  "recorded": true,
+  "st": "MA"
  },
  {
   "id": "KfQNyrUDtaY",
@@ -119,7 +122,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2012,
-  "born": 1941
+  "born": 1941,
+  "st": "RI"
  },
  {
   "id": "Ynr0Tf2TNV0",
@@ -157,7 +161,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2011,
-  "born": 1949
+  "born": 1949,
+  "st": "PA"
  },
  {
   "id": "Ai4URTITHtg",
@@ -183,7 +188,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2021,
-  "born": 1959
+  "born": 1959,
+  "st": "PA"
  },
  {
   "id": "G-8u1UBSsP0",
@@ -209,7 +215,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2009,
-  "born": 1927
+  "born": 1927,
+  "st": "IL"
  },
  {
   "id": "739-uzmJLPM",
@@ -239,7 +246,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2008,
-  "born": 1927
+  "born": 1927,
+  "st": "IL"
  },
  {
   "id": "iLKz7P32vlI",
@@ -273,7 +281,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2019,
-  "born": 1946
+  "born": 1946,
+  "st": "IL"
  },
  {
   "id": "MzKbsHP5WJU",
@@ -289,7 +298,8 @@ window.CLIPS = [
   "note": "A Southwest Side Chicago accent. Listen to \"that\": the a rises, close to \"thyat.\"",
   "verified": true,
   "words": [],
-  "year": 2012
+  "year": 2012,
+  "st": "IL"
  },
  {
   "id": "lIFYC5irddA",
@@ -322,7 +332,8 @@ window.CLIPS = [
     29.9
    ]
   ],
-  "year": 2015
+  "year": 2015,
+  "st": "IL"
  },
  {
   "id": "mtm-RlgsN-I",
@@ -344,7 +355,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2014,
-  "born": 1958
+  "born": 1958,
+  "st": "IL"
  },
  {
   "id": "50Yy4XntSDU",
@@ -378,7 +390,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2023,
-  "born": 1958
+  "born": 1958,
+  "st": "IL"
  },
  {
   "id": "PJSron8VRaA",
@@ -395,7 +408,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2019,
-  "born": 1966
+  "born": 1966,
+  "st": "MA"
  },
  {
   "id": "mSpTwzm9HxI",
@@ -412,7 +426,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2023,
-  "born": 1943
+  "born": 1943,
+  "st": "RI"
  },
  {
   "id": "lt_3zOIYquI",
@@ -433,7 +448,8 @@ window.CLIPS = [
     3.2
    ]
   ],
-  "born": 1941
+  "born": 1941,
+  "st": "RI"
  },
  {
   "id": "cwr8j3x0a7Y",
@@ -459,7 +475,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2018,
-  "born": 1969
+  "born": 1969,
+  "st": "IL"
  },
  {
   "id": "M_SxvWocfj8",
@@ -492,7 +509,8 @@ window.CLIPS = [
     29.1
    ]
   ],
-  "year": 2015
+  "year": 2015,
+  "st": "KY"
  },
  {
   "id": "u23K6NzqWHE",
@@ -525,7 +543,8 @@ window.CLIPS = [
     19.6
    ]
   ],
-  "year": 2015
+  "year": 2015,
+  "st": "KY"
  },
  {
   "id": "CoWpmUcZilk",
@@ -555,7 +574,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2024,
-  "born": 1971
+  "born": 1971,
+  "st": "KY"
  },
  {
   "id": "pAQ60hlA4YM",
@@ -581,7 +601,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2024,
-  "born": 1943
+  "born": 1943,
+  "st": "SC"
  },
  {
   "id": "_F14ErvmCLQ",
@@ -618,7 +639,8 @@ window.CLIPS = [
     14.4
    ]
   ],
-  "year": 2012
+  "year": 2012,
+  "st": "NC"
  },
  {
   "id": "hH4lMG8Zuu0",
@@ -640,7 +662,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2010,
-  "born": 1945
+  "born": 1945,
+  "st": "NY"
  },
  {
   "id": "ArDBN4s_mXk",
@@ -670,7 +693,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2020,
-  "born": 1953
+  "born": 1953,
+  "st": "PA"
  },
  {
   "id": "-rm_p_osglI",
@@ -703,7 +727,8 @@ window.CLIPS = [
     17.2
    ]
   ],
-  "year": 2019
+  "year": 2019,
+  "st": "PA"
  },
  {
   "id": "C5VaBWwX0ns",
@@ -732,7 +757,8 @@ window.CLIPS = [
     10.3
    ]
   ],
-  "year": 2025
+  "year": 2025,
+  "st": "PA"
  },
  {
   "id": "qe-4_EpreKo",
@@ -754,7 +780,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2017,
-  "born": 1941
+  "born": 1941,
+  "st": "MD"
  },
  {
   "id": "vP2AjrbIh0U",
@@ -771,7 +798,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2012,
-  "born": 1917
+  "born": 1917,
+  "st": "PA"
  },
  {
   "id": "3u_ry-eMOyc",
@@ -796,7 +824,8 @@ window.CLIPS = [
     19.7
    ]
   ],
-  "year": 2015
+  "year": 2015,
+  "st": "KY"
  },
  {
   "id": "1v9y--TAgm4",
@@ -822,7 +851,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2026,
-  "born": 1980
+  "born": 1980,
+  "st": "MS"
  },
  {
   "id": "KjOSEjFL8LU",
@@ -848,7 +878,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2026,
-  "born": 1980
+  "born": 1980,
+  "st": "MS"
  },
  {
   "id": "togPeRIdeGg",
@@ -878,7 +909,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2022,
-  "born": 1969
+  "born": 1969,
+  "st": "TX"
  },
  {
   "id": "ATL_se0_ag1_f_02_1_709",
@@ -898,7 +930,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1992
+  "born": 1992,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_f_03_1_597",
@@ -918,7 +951,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1993
+  "born": 1993,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1403",
@@ -938,7 +972,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1993
+  "born": 1993,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1447",
@@ -958,7 +993,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1993
+  "born": 1993,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_03_1_1341",
@@ -978,7 +1014,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1990
+  "born": 1990,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_04_1_685",
@@ -998,7 +1035,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1988
+  "born": 1988,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_04_2_188",
@@ -1018,7 +1056,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1988
+  "born": 1988,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_05_1_147",
@@ -1038,7 +1077,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1991
+  "born": 1991,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_05_1_582",
@@ -1058,7 +1098,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1991
+  "born": 1991,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag1_m_05_1_646",
@@ -1078,7 +1119,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1991
+  "born": 1991,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1098",
@@ -1098,7 +1140,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1984
+  "born": 1984,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_f_01_1_282",
@@ -1118,7 +1161,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1984
+  "born": 1984,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1631",
@@ -1138,7 +1182,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1984
+  "born": 1984,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_f_02_1_587",
@@ -1158,7 +1203,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1980
+  "born": 1980,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_01_1_181",
@@ -1178,7 +1224,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1976
+  "born": 1976,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_01_1_331",
@@ -1198,7 +1245,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1976
+  "born": 1976,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_01_1_682",
@@ -1218,7 +1266,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1976
+  "born": 1976,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2466",
@@ -1238,7 +1287,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1987
+  "born": 1987,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2431",
@@ -1258,7 +1308,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1987
+  "born": 1987,
+  "st": "GA"
  },
  {
   "id": "ATL_se0_ag2_m_02_1_1992",
@@ -1278,7 +1329,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1987
+  "born": 1987,
+  "st": "GA"
  },
  {
   "id": "LES_se0_ag3_f_01_1_2450",
@@ -1298,7 +1350,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2009,
-  "born": 1969
+  "born": 1969,
+  "st": "NY"
  },
  {
   "id": "LES_se0_ag3_m_02_1_1779",
@@ -1318,7 +1371,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
-  "born": 1958
+  "born": 1958,
+  "st": "NY"
  },
  {
   "id": "LES_se0_ag4_f_01_1_505",
@@ -1338,7 +1392,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
-  "born": 1947
+  "born": 1947,
+  "st": "NY"
  },
  {
   "id": "LES_se0_ag4_f_01_2_498",
@@ -1358,7 +1413,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
-  "born": 1947
+  "born": 1947,
+  "st": "NY"
  },
  {
   "id": "LES_se0_ag4_f_01_2_695",
@@ -1378,7 +1434,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
-  "born": 1947
+  "born": 1947,
+  "st": "NY"
  },
  {
   "id": "LES_se0_ag4_f_01_2_336",
@@ -1398,7 +1455,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
-  "born": 1947
+  "born": 1947,
+  "st": "NY"
  },
  {
   "id": "PRV_se0_ag1_f_01_1_840",
@@ -1418,7 +1476,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
-  "born": 1985
+  "born": 1985,
+  "st": "NC"
  },
  {
   "id": "PRV_se0_ag2_m_01_1_2484",
@@ -1438,7 +1497,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
-  "born": 1972
+  "born": 1972,
+  "st": "NC"
  },
  {
   "id": "PRV_se0_ag3_f_01_1_1269",
@@ -1458,7 +1518,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
-  "born": 1943
+  "born": 1943,
+  "st": "NC"
  },
  {
   "id": "PRV_se0_ag3_f_03_1_840",
@@ -1478,7 +1539,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2003,
-  "born": 1934
+  "born": 1934,
+  "st": "NC"
  },
  {
   "id": "PRV_se0_ag3_f_03_1_2000",
@@ -1498,7 +1560,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2003,
-  "born": 1934
+  "born": 1934,
+  "st": "NC"
  },
  {
   "id": "H6VO9JpbLss",
@@ -1528,7 +1591,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2017,
-  "born": 1945
+  "born": 1945,
+  "st": "NY"
  },
  {
   "id": "Ysc8ua6lw90",
@@ -1562,7 +1626,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2026,
-  "born": 1980
+  "born": 1980,
+  "st": "MS"
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2660",
@@ -1582,7 +1647,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1984
+  "born": 1984,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2113",
@@ -1602,7 +1668,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1984
+  "born": 1984,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_02_1_1265",
@@ -1622,7 +1689,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1984
+  "born": 1984,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2500",
@@ -1642,7 +1710,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1977
+  "born": 1977,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2635",
@@ -1662,7 +1731,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1977
+  "born": 1977,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2063",
@@ -1682,7 +1752,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1977
+  "born": 1977,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2460",
@@ -1702,7 +1773,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1973
+  "born": 1973,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_04_1_686",
@@ -1722,7 +1794,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1973
+  "born": 1973,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2257",
@@ -1742,7 +1815,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
-  "born": 1973
+  "born": 1973,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_1_3279",
@@ -1762,7 +1836,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2438",
@@ -1782,7 +1857,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2029",
@@ -1802,7 +1878,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_2_198",
@@ -1822,7 +1899,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_2_168",
@@ -1842,7 +1920,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_3_1368",
@@ -1862,7 +1941,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_3_71",
@@ -1882,7 +1962,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "ROC_se0_ag3_f_02_3_2009",
@@ -1902,7 +1983,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1937
+  "born": 1937,
+  "st": "NY"
  },
  {
   "id": "VLD_se0_ag2_f_01_1_1289",
@@ -1922,7 +2004,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1990
+  "born": 1990,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag2_f_01_1_578",
@@ -1942,7 +2025,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1990
+  "born": 1990,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag2_f_01_1_801",
@@ -1962,7 +2046,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1990
+  "born": 1990,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2844",
@@ -1982,7 +2067,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1997
+  "born": 1997,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2478",
@@ -2002,7 +2088,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1997
+  "born": 1997,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag2_m_01_1_3161",
@@ -2022,7 +2109,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1997
+  "born": 1997,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2671",
@@ -2042,7 +2130,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1969
+  "born": 1969,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2419",
@@ -2062,7 +2151,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1969
+  "born": 1969,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_01_1_1957",
@@ -2082,7 +2172,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1969
+  "born": 1969,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_01_2_52",
@@ -2102,7 +2193,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1969
+  "born": 1969,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_02_1_2302",
@@ -2122,7 +2214,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1983
+  "born": 1983,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1604",
@@ -2142,7 +2235,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1983
+  "born": 1983,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1671",
@@ -2162,7 +2256,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1983
+  "born": 1983,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_02_1_2553",
@@ -2182,7 +2277,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1982
+  "born": 1982,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_02_1_797",
@@ -2202,7 +2298,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1982
+  "born": 1982,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_02_1_747",
@@ -2222,7 +2319,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1982
+  "born": 1982,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_03_1_503",
@@ -2242,7 +2340,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1986
+  "born": 1986,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_03_1_2121",
@@ -2262,7 +2361,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1986
+  "born": 1986,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag3_m_03_1_1832",
@@ -2282,7 +2382,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
-  "born": 1986
+  "born": 1986,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_01_1_1034",
@@ -2302,7 +2403,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1959
+  "born": 1959,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2094",
@@ -2322,7 +2424,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1959
+  "born": 1959,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2398",
@@ -2342,7 +2445,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
-  "born": 1959
+  "born": 1959,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1284",
@@ -2362,7 +2466,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1936
+  "born": 1936,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_02_1_2634",
@@ -2382,7 +2487,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1936
+  "born": 1936,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1909",
@@ -2402,7 +2508,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1936
+  "born": 1936,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_01_1_982",
@@ -2422,7 +2529,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1957
+  "born": 1957,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_01_1_867",
@@ -2442,7 +2550,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1957
+  "born": 1957,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_01_1_1869",
@@ -2462,7 +2571,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1957
+  "born": 1957,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_02_1_2042",
@@ -2482,7 +2592,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1961
+  "born": 1961,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1804",
@@ -2502,7 +2613,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1961
+  "born": 1961,
+  "st": "GA"
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1873",
@@ -2522,7 +2634,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
-  "born": 1961
+  "born": 1961,
+  "st": "GA"
  },
  {
   "id": "DCA_se1_ag1_m_04_1_715",
@@ -2542,7 +2655,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se1_ag1_m_04_1_1615",
@@ -2562,7 +2676,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se1_ag1_m_05_1_706",
@@ -2582,7 +2697,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se1_ag1_m_05_1_227",
@@ -2602,7 +2718,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se1_ag1_m_06_1_61",
@@ -2622,7 +2739,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1955
+  "born": 1955,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_01_1_456",
@@ -2642,7 +2760,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1958
+  "born": 1958,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_01_1_154",
@@ -2662,7 +2781,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1958
+  "born": 1958,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_02_1_368",
@@ -2682,7 +2802,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1957
+  "born": 1957,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_02_1_277",
@@ -2702,7 +2823,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1957
+  "born": 1957,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_02_1_1516",
@@ -2722,7 +2844,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1957
+  "born": 1957,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_04_1_403",
@@ -2742,7 +2865,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_04_1_1195",
@@ -2762,7 +2886,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1956
+  "born": 1956,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_05_1_704",
@@ -2782,7 +2907,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1954
+  "born": 1954,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_f_07_1_70",
@@ -2802,7 +2928,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1951
+  "born": 1951,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_01_1_940",
@@ -2822,7 +2949,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_01_1_472",
@@ -2842,7 +2970,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_01_1_1741",
@@ -2862,7 +2991,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_02_1_2269",
@@ -2882,7 +3012,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1897",
@@ -2902,7 +3033,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1786",
@@ -2922,7 +3054,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1952
+  "born": 1952,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_03_1_774",
@@ -2942,7 +3075,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1951
+  "born": 1951,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_03_1_1490",
@@ -2962,7 +3096,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
-  "born": 1951
+  "born": 1951,
+  "st": "DC"
  },
  {
   "id": "DCA_se2_ag1_m_04_1_670",
@@ -2982,7 +3117,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1950
+  "born": 1950,
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag1_f_01_1_612",
@@ -3002,7 +3138,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1958
+  "born": 1958,
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag1_f_02_1_51",
@@ -3022,7 +3159,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
-  "born": 1957
+  "born": 1957,
+  "st": "DC"
  },
  {
   "id": "english170",
@@ -3074,7 +3212,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english170/"
+  "link": "https://accent.gmu.edu/samples/english170/",
+  "st": "MS"
  },
  {
   "id": "english242",
@@ -3126,7 +3265,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english242/"
+  "link": "https://accent.gmu.edu/samples/english242/",
+  "st": "MS"
  },
  {
   "id": "english7",
@@ -3178,7 +3318,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english7/"
+  "link": "https://accent.gmu.edu/samples/english7/",
+  "st": "MS"
  },
  {
   "id": "english171",
@@ -3230,7 +3371,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english171/"
+  "link": "https://accent.gmu.edu/samples/english171/",
+  "st": "MO"
  },
  {
   "id": "english109",
@@ -3282,7 +3424,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english109/"
+  "link": "https://accent.gmu.edu/samples/english109/",
+  "st": "NH"
  },
  {
   "id": "english476",
@@ -3334,7 +3477,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english476/"
+  "link": "https://accent.gmu.edu/samples/english476/",
+  "st": "NH"
  },
  {
   "id": "english199",
@@ -3386,7 +3530,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english199/"
+  "link": "https://accent.gmu.edu/samples/english199/",
+  "st": "NY"
  },
  {
   "id": "english6",
@@ -3438,7 +3583,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english6/"
+  "link": "https://accent.gmu.edu/samples/english6/",
+  "st": "NY"
  },
  {
   "id": "english321",
@@ -3490,7 +3636,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english321/"
+  "link": "https://accent.gmu.edu/samples/english321/",
+  "st": "NY"
  },
  {
   "id": "english555",
@@ -3538,7 +3685,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english555/"
+  "link": "https://accent.gmu.edu/samples/english555/",
+  "st": "NY"
  },
  {
   "id": "english556",
@@ -3590,7 +3738,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english556/"
+  "link": "https://accent.gmu.edu/samples/english556/",
+  "st": "NY"
  },
  {
   "id": "english567",
@@ -3642,7 +3791,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english567/"
+  "link": "https://accent.gmu.edu/samples/english567/",
+  "st": "NY"
  },
  {
   "id": "english602",
@@ -3694,7 +3844,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english602/"
+  "link": "https://accent.gmu.edu/samples/english602/",
+  "st": "NY"
  },
  {
   "id": "english638",
@@ -3746,7 +3897,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english638/"
+  "link": "https://accent.gmu.edu/samples/english638/",
+  "st": "NY"
  },
  {
   "id": "english648",
@@ -3798,7 +3950,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english648/"
+  "link": "https://accent.gmu.edu/samples/english648/",
+  "st": "NY"
  },
  {
   "id": "english34",
@@ -3850,7 +4003,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english34/"
+  "link": "https://accent.gmu.edu/samples/english34/",
+  "st": "NY"
  },
  {
   "id": "english103",
@@ -3902,7 +4056,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english103/"
+  "link": "https://accent.gmu.edu/samples/english103/",
+  "st": "NY"
  },
  {
   "id": "english46",
@@ -3954,7 +4109,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english46/"
+  "link": "https://accent.gmu.edu/samples/english46/",
+  "st": "NC"
  },
  {
   "id": "english344",
@@ -4006,7 +4162,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english344/"
+  "link": "https://accent.gmu.edu/samples/english344/",
+  "st": "NC"
  },
  {
   "id": "english20",
@@ -4058,7 +4215,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english20/"
+  "link": "https://accent.gmu.edu/samples/english20/",
+  "st": "NC"
  },
  {
   "id": "english454",
@@ -4110,7 +4268,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english454/"
+  "link": "https://accent.gmu.edu/samples/english454/",
+  "st": "NC"
  },
  {
   "id": "english397",
@@ -4162,7 +4321,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english397/"
+  "link": "https://accent.gmu.edu/samples/english397/",
+  "st": "NC"
  },
  {
   "id": "english97",
@@ -4214,7 +4374,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english97/"
+  "link": "https://accent.gmu.edu/samples/english97/",
+  "st": "NC"
  },
  {
   "id": "english44",
@@ -4262,7 +4423,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english44/"
+  "link": "https://accent.gmu.edu/samples/english44/",
+  "st": "NC"
  },
  {
   "id": "english126",
@@ -4314,7 +4476,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english126/"
+  "link": "https://accent.gmu.edu/samples/english126/",
+  "st": "OH"
  },
  {
   "id": "english162",
@@ -4362,7 +4525,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english162/"
+  "link": "https://accent.gmu.edu/samples/english162/",
+  "st": "OH"
  },
  {
   "id": "english163",
@@ -4414,7 +4578,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english163/"
+  "link": "https://accent.gmu.edu/samples/english163/",
+  "st": "OH"
  },
  {
   "id": "english494",
@@ -4466,7 +4631,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english494/"
+  "link": "https://accent.gmu.edu/samples/english494/",
+  "st": "OH"
  },
  {
   "id": "english237",
@@ -4518,7 +4684,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english237/"
+  "link": "https://accent.gmu.edu/samples/english237/",
+  "st": "OH"
  },
  {
   "id": "english514",
@@ -4570,7 +4737,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english514/"
+  "link": "https://accent.gmu.edu/samples/english514/",
+  "st": "OH"
  },
  {
   "id": "english481",
@@ -4622,7 +4790,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english481/"
+  "link": "https://accent.gmu.edu/samples/english481/",
+  "st": "OK"
  },
  {
   "id": "english184",
@@ -4674,7 +4843,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english184/"
+  "link": "https://accent.gmu.edu/samples/english184/",
+  "st": "OR"
  },
  {
   "id": "english273",
@@ -4726,7 +4896,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english273/"
+  "link": "https://accent.gmu.edu/samples/english273/",
+  "st": "PA"
  },
  {
   "id": "english427",
@@ -4774,7 +4945,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english427/"
+  "link": "https://accent.gmu.edu/samples/english427/",
+  "st": "PA"
  },
  {
   "id": "english65",
@@ -4826,7 +4998,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english65/"
+  "link": "https://accent.gmu.edu/samples/english65/",
+  "st": "PA"
  },
  {
   "id": "english181",
@@ -4878,7 +5051,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english181/"
+  "link": "https://accent.gmu.edu/samples/english181/",
+  "st": "PA"
  },
  {
   "id": "english429",
@@ -4930,7 +5104,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english429/"
+  "link": "https://accent.gmu.edu/samples/english429/",
+  "st": "PA"
  },
  {
   "id": "english1",
@@ -4982,7 +5157,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english1/"
+  "link": "https://accent.gmu.edu/samples/english1/",
+  "st": "PA"
  },
  {
   "id": "english90",
@@ -5034,7 +5210,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english90/"
+  "link": "https://accent.gmu.edu/samples/english90/",
+  "st": "PA"
  },
  {
   "id": "english99",
@@ -5082,7 +5259,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english99/"
+  "link": "https://accent.gmu.edu/samples/english99/",
+  "st": "PA"
  },
  {
   "id": "english245",
@@ -5134,7 +5312,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english245/"
+  "link": "https://accent.gmu.edu/samples/english245/",
+  "st": "PA"
  },
  {
   "id": "english325",
@@ -5186,7 +5365,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english325/"
+  "link": "https://accent.gmu.edu/samples/english325/",
+  "st": "PA"
  },
  {
   "id": "english178",
@@ -5238,7 +5418,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english178/"
+  "link": "https://accent.gmu.edu/samples/english178/",
+  "st": "PA"
  },
  {
   "id": "english482",
@@ -5286,7 +5467,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english482/"
+  "link": "https://accent.gmu.edu/samples/english482/",
+  "st": "PA"
  },
  {
   "id": "english139",
@@ -5338,7 +5520,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english139/"
+  "link": "https://accent.gmu.edu/samples/english139/",
+  "st": "RI"
  },
  {
   "id": "english394",
@@ -5390,7 +5573,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english394/"
+  "link": "https://accent.gmu.edu/samples/english394/",
+  "st": "SC"
  },
  {
   "id": "english86",
@@ -5442,7 +5626,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english86/"
+  "link": "https://accent.gmu.edu/samples/english86/",
+  "st": "SC"
  },
  {
   "id": "english426",
@@ -5494,7 +5679,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english426/"
+  "link": "https://accent.gmu.edu/samples/english426/",
+  "st": "SC"
  },
  {
   "id": "english562",
@@ -5546,7 +5732,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english562/"
+  "link": "https://accent.gmu.edu/samples/english562/",
+  "st": "SC"
  },
  {
   "id": "english428",
@@ -5594,7 +5781,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english428/"
+  "link": "https://accent.gmu.edu/samples/english428/",
+  "st": "SC"
  },
  {
   "id": "english50",
@@ -5646,7 +5834,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english50/"
+  "link": "https://accent.gmu.edu/samples/english50/",
+  "st": "SD"
  },
  {
   "id": "english598",
@@ -5698,7 +5887,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english598/"
+  "link": "https://accent.gmu.edu/samples/english598/",
+  "st": "SD"
  },
  {
   "id": "english276",
@@ -5750,7 +5940,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english276/"
+  "link": "https://accent.gmu.edu/samples/english276/",
+  "st": "TN"
  },
  {
   "id": "english23",
@@ -5802,7 +5993,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english23/"
+  "link": "https://accent.gmu.edu/samples/english23/",
+  "st": "TN"
  },
  {
   "id": "english619",
@@ -5854,7 +6046,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english619/"
+  "link": "https://accent.gmu.edu/samples/english619/",
+  "st": "TN"
  },
  {
   "id": "english637",
@@ -5902,7 +6095,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english637/"
+  "link": "https://accent.gmu.edu/samples/english637/",
+  "st": "TN"
  },
  {
   "id": "english314",
@@ -5954,7 +6148,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english314/"
+  "link": "https://accent.gmu.edu/samples/english314/",
+  "st": "TN"
  },
  {
   "id": "english70",
@@ -6006,7 +6201,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english70/"
+  "link": "https://accent.gmu.edu/samples/english70/",
+  "st": "TX"
  },
  {
   "id": "english286",
@@ -6058,7 +6254,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english286/"
+  "link": "https://accent.gmu.edu/samples/english286/",
+  "st": "TX"
  },
  {
   "id": "english9",
@@ -6110,7 +6307,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english9/"
+  "link": "https://accent.gmu.edu/samples/english9/",
+  "st": "TX"
  },
  {
   "id": "english63",
@@ -6162,7 +6360,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english63/"
+  "link": "https://accent.gmu.edu/samples/english63/",
+  "st": "TX"
  },
  {
   "id": "english449",
@@ -6214,7 +6413,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english449/"
+  "link": "https://accent.gmu.edu/samples/english449/",
+  "st": "VT"
  },
  {
   "id": "english218",
@@ -6262,7 +6462,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english218/"
+  "link": "https://accent.gmu.edu/samples/english218/",
+  "st": "VA"
  },
  {
   "id": "english389",
@@ -6310,7 +6511,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english389/"
+  "link": "https://accent.gmu.edu/samples/english389/",
+  "st": "VA"
  },
  {
   "id": "english307",
@@ -6362,7 +6564,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english307/"
+  "link": "https://accent.gmu.edu/samples/english307/",
+  "st": "VA"
  },
  {
   "id": "english657",
@@ -6414,7 +6617,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english657/"
+  "link": "https://accent.gmu.edu/samples/english657/",
+  "st": "VA"
  },
  {
   "id": "english382",
@@ -6466,7 +6670,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english382/"
+  "link": "https://accent.gmu.edu/samples/english382/",
+  "st": "VA"
  },
  {
   "id": "english372",
@@ -6518,7 +6723,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english372/"
+  "link": "https://accent.gmu.edu/samples/english372/",
+  "st": "VA"
  },
  {
   "id": "english424",
@@ -6570,7 +6776,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english424/"
+  "link": "https://accent.gmu.edu/samples/english424/",
+  "st": "VA"
  },
  {
   "id": "english18",
@@ -6618,7 +6825,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english18/"
+  "link": "https://accent.gmu.edu/samples/english18/",
+  "st": "VA"
  },
  {
   "id": "english585",
@@ -6670,7 +6878,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english585/"
+  "link": "https://accent.gmu.edu/samples/english585/",
+  "st": "VA"
  },
  {
   "id": "english5",
@@ -6718,7 +6927,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english5/"
+  "link": "https://accent.gmu.edu/samples/english5/",
+  "st": "VA"
  },
  {
   "id": "english551",
@@ -6770,7 +6980,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english551/"
+  "link": "https://accent.gmu.edu/samples/english551/",
+  "st": "VA"
  },
  {
   "id": "english563",
@@ -6822,7 +7033,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english563/"
+  "link": "https://accent.gmu.edu/samples/english563/",
+  "st": "VA"
  },
  {
   "id": "english15",
@@ -6870,7 +7082,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english15/"
+  "link": "https://accent.gmu.edu/samples/english15/",
+  "st": "VA"
  },
  {
   "id": "english396",
@@ -6922,7 +7135,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english396/"
+  "link": "https://accent.gmu.edu/samples/english396/",
+  "st": "VA"
  },
  {
   "id": "english559",
@@ -6974,7 +7188,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english559/"
+  "link": "https://accent.gmu.edu/samples/english559/",
+  "st": "VA"
  },
  {
   "id": "english235",
@@ -7026,7 +7241,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english235/"
+  "link": "https://accent.gmu.edu/samples/english235/",
+  "st": "VA"
  },
  {
   "id": "english536",
@@ -7078,7 +7294,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english536/"
+  "link": "https://accent.gmu.edu/samples/english536/",
+  "st": "VA"
  },
  {
   "id": "english594",
@@ -7130,7 +7347,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english594/"
+  "link": "https://accent.gmu.edu/samples/english594/",
+  "st": "VA"
  },
  {
   "id": "english545",
@@ -7182,7 +7400,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english545/"
+  "link": "https://accent.gmu.edu/samples/english545/",
+  "st": "VA"
  },
  {
   "id": "english546",
@@ -7234,7 +7453,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english546/"
+  "link": "https://accent.gmu.edu/samples/english546/",
+  "st": "VA"
  },
  {
   "id": "english547",
@@ -7282,7 +7502,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english547/"
+  "link": "https://accent.gmu.edu/samples/english547/",
+  "st": "VA"
  },
  {
   "id": "english16",
@@ -7334,7 +7555,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english16/"
+  "link": "https://accent.gmu.edu/samples/english16/",
+  "st": "VA"
  },
  {
   "id": "english561",
@@ -7386,7 +7608,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english561/"
+  "link": "https://accent.gmu.edu/samples/english561/",
+  "st": "VA"
  },
  {
   "id": "english98",
@@ -7438,7 +7661,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english98/"
+  "link": "https://accent.gmu.edu/samples/english98/",
+  "st": "WA"
  },
  {
   "id": "english333",
@@ -7490,7 +7714,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english333/"
+  "link": "https://accent.gmu.edu/samples/english333/",
+  "st": "WA"
  },
  {
   "id": "english388",
@@ -7542,7 +7767,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english388/"
+  "link": "https://accent.gmu.edu/samples/english388/",
+  "st": "WV"
  },
  {
   "id": "english340",
@@ -7594,7 +7820,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english340/"
+  "link": "https://accent.gmu.edu/samples/english340/",
+  "st": "WV"
  },
  {
   "id": "english384",
@@ -7646,7 +7873,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english384/"
+  "link": "https://accent.gmu.edu/samples/english384/",
+  "st": "WV"
  },
  {
   "id": "english36",
@@ -7698,7 +7926,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english36/"
+  "link": "https://accent.gmu.edu/samples/english36/",
+  "st": "WI"
  },
  {
   "id": "english528",
@@ -7750,7 +7979,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english528/"
+  "link": "https://accent.gmu.edu/samples/english528/",
+  "st": "WI"
  },
  {
   "id": "english35",
@@ -7802,7 +8032,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english35/"
+  "link": "https://accent.gmu.edu/samples/english35/",
+  "st": "WI"
  },
  {
   "id": "english564",
@@ -7854,7 +8085,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english564/"
+  "link": "https://accent.gmu.edu/samples/english564/",
+  "st": "WY"
  },
  {
   "id": "english26",
@@ -7906,7 +8138,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english26/"
+  "link": "https://accent.gmu.edu/samples/english26/",
+  "st": "MD"
  },
  {
   "id": "english114",
@@ -7958,7 +8191,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english114/"
+  "link": "https://accent.gmu.edu/samples/english114/",
+  "st": "AL"
  },
  {
   "id": "english54",
@@ -8010,7 +8244,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english54/"
+  "link": "https://accent.gmu.edu/samples/english54/",
+  "st": "IN"
  },
  {
   "id": "english466",
@@ -8062,7 +8297,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english466/"
+  "link": "https://accent.gmu.edu/samples/english466/",
+  "st": "ME"
  },
  {
   "id": "english568",
@@ -8114,7 +8350,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english568/"
+  "link": "https://accent.gmu.edu/samples/english568/",
+  "st": "FL"
  },
  {
   "id": "english150",
@@ -8166,7 +8403,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english150/"
+  "link": "https://accent.gmu.edu/samples/english150/",
+  "st": "KY"
  },
  {
   "id": "english455",
@@ -8214,7 +8452,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english455/"
+  "link": "https://accent.gmu.edu/samples/english455/",
+  "st": "DC"
  },
  {
   "id": "english203",
@@ -8266,7 +8505,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english203/"
+  "link": "https://accent.gmu.edu/samples/english203/",
+  "st": "MA"
  },
  {
   "id": "english506",
@@ -8318,7 +8558,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english506/"
+  "link": "https://accent.gmu.edu/samples/english506/",
+  "st": "LA"
  },
  {
   "id": "english369",
@@ -8370,7 +8611,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english369/"
+  "link": "https://accent.gmu.edu/samples/english369/",
+  "st": "OR"
  },
  {
   "id": "KjKU7g41EgE",
@@ -8386,7 +8628,8 @@ window.CLIPS = [
   "note": "North Dakota English. Long \"o\" and \"a\" stay round and pure, an echo of the Norwegian and German settlers.",
   "verified": true,
   "words": [],
-  "year": 2025
+  "year": 2025,
+  "st": "ND"
  },
  {
   "id": "tHfGI2k_H7M",
@@ -8402,7 +8645,8 @@ window.CLIPS = [
   "note": "Yooper English, shaped by Finnish settlers. Long vowels stay pure, and \"th\" can soften toward \"d.\"",
   "verified": true,
   "words": [],
-  "year": 2020
+  "year": 2020,
+  "st": "MI"
  },
  {
   "id": "4sxuhdCVm-s",
@@ -8418,7 +8662,8 @@ window.CLIPS = [
   "note": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite.",
   "verified": true,
   "words": [],
-  "year": 2017
+  "year": 2017,
+  "st": "OK"
  },
  {
   "id": "FgPgMDbXKxg",
@@ -8435,7 +8680,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2013,
-  "born": 1952
+  "born": 1952,
+  "st": "OH"
  },
  {
   "id": "english74",
@@ -8487,7 +8733,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english74/"
+  "link": "https://accent.gmu.edu/samples/english74/",
+  "st": "KS"
  },
  {
   "id": "english45",
@@ -8539,7 +8786,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english45/"
+  "link": "https://accent.gmu.edu/samples/english45/",
+  "st": "AR"
  },
  {
   "id": "english532",
@@ -8587,7 +8835,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english532/"
+  "link": "https://accent.gmu.edu/samples/english532/",
+  "st": "CT"
  },
  {
   "id": "tfmXTzh8NSE",
@@ -8604,7 +8853,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2012,
-  "born": 1950
+  "born": 1950,
+  "st": "MN"
  },
  {
   "id": "A1PuFHUjFSc",
@@ -8620,7 +8870,8 @@ window.CLIPS = [
   "note": "Mississippi Delta English. The long i loses its glide, and \"pen\" sounds like \"pin.\"",
   "verified": true,
   "words": [],
-  "year": 2023
+  "year": 2023,
+  "st": "MS"
  },
  {
   "id": "cbVPqxE0NJk",
@@ -8636,7 +8887,8 @@ window.CLIPS = [
   "note": "Old Florida English, Southern at its core: listen for the drawled vowels and the flat long i.",
   "verified": true,
   "words": [],
-  "year": 2011
+  "year": 2011,
+  "st": "FL"
  },
  {
   "id": "english186",
@@ -8688,7 +8940,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english186/"
+  "link": "https://accent.gmu.edu/samples/english186/",
+  "st": "AL"
  },
  {
   "id": "english451",
@@ -8740,7 +8993,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english451/"
+  "link": "https://accent.gmu.edu/samples/english451/",
+  "st": "GA"
  },
  {
   "id": "english616",
@@ -8792,7 +9046,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english616/"
+  "link": "https://accent.gmu.edu/samples/english616/",
+  "st": "IN"
  },
  {
   "id": "english197",
@@ -8844,7 +9099,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english197/"
+  "link": "https://accent.gmu.edu/samples/english197/",
+  "st": "IA"
  },
  {
   "id": "english391",
@@ -8896,7 +9152,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english391/"
+  "link": "https://accent.gmu.edu/samples/english391/",
+  "st": "FL"
  },
  {
   "id": "english411",
@@ -8948,7 +9205,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english411/"
+  "link": "https://accent.gmu.edu/samples/english411/",
+  "st": "DC"
  },
  {
   "id": "TL-68AEVe5M",
@@ -8964,7 +9222,8 @@ window.CLIPS = [
   "note": "Central Texas English. The long i flattens (\"Ah,\" \"rahd\"), and short vowels can stretch into two.",
   "verified": true,
   "words": [],
-  "year": 2019
+  "year": 2019,
+  "st": "TX"
  },
  {
   "id": "english497",
@@ -9016,7 +9275,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english497/"
+  "link": "https://accent.gmu.edu/samples/english497/",
+  "st": "OH"
  },
  {
   "id": "english553",
@@ -9068,7 +9328,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english553/"
+  "link": "https://accent.gmu.edu/samples/english553/",
+  "st": "TN"
  },
  {
   "id": "english83",
@@ -9116,7 +9377,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english83/"
+  "link": "https://accent.gmu.edu/samples/english83/",
+  "st": "LA"
  },
  {
   "id": "O-uQfm5Hqm4",
@@ -9132,7 +9394,8 @@ window.CLIPS = [
   "note": "North Dakota English. Listen for the pure, unglided \"o\" and \"a,\" the Upper Midwest sound.",
   "verified": true,
   "words": [],
-  "year": 2026
+  "year": 2026,
+  "st": "ND"
  },
  {
   "id": "eNnSxCBWfvg",
@@ -9148,7 +9411,8 @@ window.CLIPS = [
   "note": "Pacific Northwest English. \"Cot\" and \"caught\" sound the same, and the short a before \"g\" can rise toward \"ay.\"",
   "verified": true,
   "words": [],
-  "year": 2022
+  "year": 2022,
+  "st": "OR"
  },
  {
   "id": "5ZIN3CKUB58",
@@ -9164,7 +9428,8 @@ window.CLIPS = [
   "note": "Wisconsin English. Long \"o\" stays round (\"so,\" \"know\"), and the short a tightens before \"g\" and \"n.\"",
   "verified": true,
   "words": [],
-  "year": 2018
+  "year": 2018,
+  "st": "WI"
  },
  {
   "id": "KBtpv8igEZY",
@@ -9181,7 +9446,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2011,
-  "born": 1954
+  "born": 1954,
+  "st": "NY"
  },
  {
   "id": "english441",
@@ -9233,7 +9499,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english441/"
+  "link": "https://accent.gmu.edu/samples/english441/",
+  "st": "IL"
  },
  {
   "id": "ScnqC_2oHW8",
@@ -9250,7 +9517,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2012,
-  "born": 1952
+  "born": 1952,
+  "st": "OH"
  },
  {
   "id": "english512",
@@ -9302,7 +9570,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english512/"
+  "link": "https://accent.gmu.edu/samples/english512/",
+  "st": "KS"
  },
  {
   "id": "english88",
@@ -9354,7 +9623,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english88/"
+  "link": "https://accent.gmu.edu/samples/english88/",
+  "st": "MI"
  },
  {
   "id": "english146",
@@ -9406,7 +9676,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english146/"
+  "link": "https://accent.gmu.edu/samples/english146/",
+  "st": "AR"
  },
  {
   "id": "english511",
@@ -9458,7 +9729,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english511/"
+  "link": "https://accent.gmu.edu/samples/english511/",
+  "st": "AL"
  },
  {
   "id": "english116",
@@ -9506,7 +9778,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english116/"
+  "link": "https://accent.gmu.edu/samples/english116/",
+  "st": "GA"
  },
  {
   "id": "english222",
@@ -9558,7 +9831,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english222/"
+  "link": "https://accent.gmu.edu/samples/english222/",
+  "st": "IN"
  },
  {
   "id": "english292",
@@ -9610,7 +9884,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english292/"
+  "link": "https://accent.gmu.edu/samples/english292/",
+  "st": "MO"
  },
  {
   "id": "english10",
@@ -9662,7 +9937,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english10/"
+  "link": "https://accent.gmu.edu/samples/english10/",
+  "st": "IA"
  },
  {
   "id": "english385",
@@ -9714,7 +9990,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english385/"
+  "link": "https://accent.gmu.edu/samples/english385/",
+  "st": "KY"
  },
  {
   "id": "english633",
@@ -9766,7 +10043,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english633/"
+  "link": "https://accent.gmu.edu/samples/english633/",
+  "st": "DC"
  },
  {
   "id": "zLlvdMB31iA",
@@ -9792,7 +10070,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2009,
-  "born": 1949
+  "born": 1949,
+  "st": "MA"
  },
  {
   "id": "55Ldrm3RTIM",
@@ -9808,7 +10087,8 @@ window.CLIPS = [
   "note": "Central Texas English. Listen for the flat long i and the drawled short vowels.",
   "verified": true,
   "words": [],
-  "year": 2019
+  "year": 2019,
+  "st": "TX"
  },
  {
   "id": "english21",
@@ -9860,7 +10140,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english21/"
+  "link": "https://accent.gmu.edu/samples/english21/",
+  "st": "MA"
  },
  {
   "id": "english39",
@@ -9912,7 +10193,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english39/"
+  "link": "https://accent.gmu.edu/samples/english39/",
+  "st": "LA"
  },
  {
   "id": "english565",
@@ -9964,7 +10246,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english565/"
+  "link": "https://accent.gmu.edu/samples/english565/",
+  "st": "OR"
  },
  {
   "id": "6cZCQN91VUs",
@@ -9980,7 +10263,8 @@ window.CLIPS = [
   "note": "North Dakota English. The long vowels stay round and pure, and the rhythm is flat and even.",
   "verified": true,
   "words": [],
-  "year": 2026
+  "year": 2026,
+  "st": "ND"
  },
  {
   "id": "6Whhg-OCnU0",
@@ -9997,7 +10281,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2022,
-  "born": 1966
+  "born": 1966,
+  "st": "WI"
  },
  {
   "id": "english165",
@@ -10049,7 +10334,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english165/"
+  "link": "https://accent.gmu.edu/samples/english165/",
+  "st": "MI"
  },
  {
   "id": "english195",
@@ -10101,7 +10387,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english195/"
+  "link": "https://accent.gmu.edu/samples/english195/",
+  "st": "WI"
  },
  {
   "id": "C8_lDXijjd8",
@@ -10139,7 +10426,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2026,
-  "born": 1945
+  "born": 1945,
+  "st": "PA"
  },
  {
   "id": "english330",
@@ -10191,7 +10479,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english330/"
+  "link": "https://accent.gmu.edu/samples/english330/",
+  "st": "GA"
  },
  {
   "id": "english351",
@@ -10243,7 +10532,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english351/"
+  "link": "https://accent.gmu.edu/samples/english351/",
+  "st": "MO"
  },
  {
   "id": "english19",
@@ -10295,7 +10585,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english19/"
+  "link": "https://accent.gmu.edu/samples/english19/",
+  "st": "KY"
  },
  {
   "id": "english158",
@@ -10347,7 +10638,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english158/"
+  "link": "https://accent.gmu.edu/samples/english158/",
+  "st": "DC"
  },
  {
   "id": "english211",
@@ -10399,7 +10691,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english211/"
+  "link": "https://accent.gmu.edu/samples/english211/",
+  "st": "MA"
  },
  {
   "id": "english93",
@@ -10447,7 +10740,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english93/"
+  "link": "https://accent.gmu.edu/samples/english93/",
+  "st": "LA"
  },
  {
   "id": "DCA_se3_ag2_m_01_1_135",
@@ -10467,7 +10761,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_m_01_1_410",
@@ -10487,7 +10782,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "english254",
@@ -10539,7 +10835,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english254/"
+  "link": "https://accent.gmu.edu/samples/english254/",
+  "st": "OR"
  },
  {
   "id": "english387",
@@ -10591,7 +10888,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english387/"
+  "link": "https://accent.gmu.edu/samples/english387/",
+  "st": "CA"
  },
  {
   "id": "JDfOaUerBlM",
@@ -10607,7 +10905,8 @@ window.CLIPS = [
   "note": "Wisconsin English. Long \"o\" stays round, and the short a tightens toward \"eh-a.\"",
   "verified": true,
   "words": [],
-  "year": 2016
+  "year": 2016,
+  "st": "WI"
  },
  {
   "id": "ZFuL8-9npNs",
@@ -10624,7 +10923,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2015,
-  "born": 1954
+  "born": 1954,
+  "st": "NY"
  },
  {
   "id": "english173",
@@ -10676,7 +10976,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english173/"
+  "link": "https://accent.gmu.edu/samples/english173/",
+  "st": "IL"
  },
  {
   "id": "english213",
@@ -10728,7 +11029,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english213/"
+  "link": "https://accent.gmu.edu/samples/english213/",
+  "st": "KS"
  },
  {
   "id": "english201",
@@ -10780,7 +11082,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english201/"
+  "link": "https://accent.gmu.edu/samples/english201/",
+  "st": "MI"
  },
  {
   "id": "english523",
@@ -10832,7 +11135,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english523/"
+  "link": "https://accent.gmu.edu/samples/english523/",
+  "st": "WI"
  },
  {
   "id": "english317",
@@ -10884,7 +11188,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english317/"
+  "link": "https://accent.gmu.edu/samples/english317/",
+  "st": "VT"
  },
  {
   "id": "_yAEHbP0GdQ",
@@ -10906,7 +11211,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2009,
-  "born": 1949
+  "born": 1949,
+  "st": "MA"
  },
  {
   "id": "DCB_se1_ag1_f_01_1_1687",
@@ -10926,7 +11232,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag1_f_01_1_1164",
@@ -10946,7 +11253,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3866",
@@ -10966,7 +11274,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_01_1_2019",
@@ -10986,7 +11295,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3042",
@@ -11006,7 +11316,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "english346",
@@ -11058,7 +11369,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english346/"
+  "link": "https://accent.gmu.edu/samples/english346/",
+  "st": "CT"
  },
  {
   "id": "AWWR3ec2EpY",
@@ -11075,7 +11387,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2010,
-  "born": 1950
+  "born": 1950,
+  "st": "MN"
  },
  {
   "id": "english261",
@@ -11127,7 +11440,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english261/"
+  "link": "https://accent.gmu.edu/samples/english261/",
+  "st": "MD"
  },
  {
   "id": "Uhv7Ch6zhYs",
@@ -11165,7 +11479,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2007,
-  "born": 1945
+  "born": 1945,
+  "st": "PA"
  },
  {
   "id": "english661",
@@ -11217,7 +11532,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english661/"
+  "link": "https://accent.gmu.edu/samples/english661/",
+  "st": "AL"
  },
  {
   "id": "english25",
@@ -11269,7 +11585,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english25/"
+  "link": "https://accent.gmu.edu/samples/english25/",
+  "st": "GA"
  },
  {
   "id": "english639",
@@ -11321,7 +11638,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english639/"
+  "link": "https://accent.gmu.edu/samples/english639/",
+  "st": "KY"
  },
  {
   "id": "vr5AdP2Ov7o",
@@ -11347,7 +11665,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2009,
-  "born": 1949
+  "born": 1949,
+  "st": "MA"
  },
  {
   "id": "english515",
@@ -11399,7 +11718,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english515/"
+  "link": "https://accent.gmu.edu/samples/english515/",
+  "st": "OH"
  },
  {
   "id": "english378",
@@ -11451,7 +11771,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english378/"
+  "link": "https://accent.gmu.edu/samples/english378/",
+  "st": "MD"
  },
  {
   "id": "english117",
@@ -11499,7 +11820,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english117/"
+  "link": "https://accent.gmu.edu/samples/english117/",
+  "st": "AL"
  },
  {
   "id": "english149",
@@ -11551,7 +11873,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english149/"
+  "link": "https://accent.gmu.edu/samples/english149/",
+  "st": "GA"
  },
  {
   "id": "english381",
@@ -11603,7 +11926,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english381/"
+  "link": "https://accent.gmu.edu/samples/english381/",
+  "st": "KY"
  },
  {
   "id": "english76",
@@ -11655,7 +11979,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english76/"
+  "link": "https://accent.gmu.edu/samples/english76/",
+  "st": "MA"
  },
  {
   "id": "english177",
@@ -11703,7 +12028,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english177/"
+  "link": "https://accent.gmu.edu/samples/english177/",
+  "st": "LA"
  },
  {
   "id": "english263",
@@ -11755,7 +12081,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english263/"
+  "link": "https://accent.gmu.edu/samples/english263/",
+  "st": "IL"
  },
  {
   "id": "english127",
@@ -11807,7 +12134,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english127/"
+  "link": "https://accent.gmu.edu/samples/english127/",
+  "st": "CT"
  },
  {
   "id": "english66",
@@ -11859,7 +12187,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english66/"
+  "link": "https://accent.gmu.edu/samples/english66/",
+  "st": "MD"
  },
  {
   "id": "english135",
@@ -11911,7 +12240,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english135/"
+  "link": "https://accent.gmu.edu/samples/english135/",
+  "st": "AL"
  },
  {
   "id": "english278",
@@ -11963,7 +12293,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english278/"
+  "link": "https://accent.gmu.edu/samples/english278/",
+  "st": "GA"
  },
  {
   "id": "english234",
@@ -12015,7 +12346,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english234/"
+  "link": "https://accent.gmu.edu/samples/english234/",
+  "st": "IN"
  },
  {
   "id": "english94",
@@ -12067,7 +12399,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english94/"
+  "link": "https://accent.gmu.edu/samples/english94/",
+  "st": "FL"
  },
  {
   "id": "english373",
@@ -12115,7 +12448,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english373/"
+  "link": "https://accent.gmu.edu/samples/english373/",
+  "st": "KY"
  },
  {
   "id": "english624",
@@ -12167,7 +12501,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english624/"
+  "link": "https://accent.gmu.edu/samples/english624/",
+  "st": "DC"
  },
  {
   "id": "english81",
@@ -12219,7 +12554,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english81/"
+  "link": "https://accent.gmu.edu/samples/english81/",
+  "st": "MN"
  },
  {
   "id": "english89",
@@ -12271,7 +12607,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english89/"
+  "link": "https://accent.gmu.edu/samples/english89/",
+  "st": "MA"
  },
  {
   "id": "english603",
@@ -12323,7 +12660,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english603/"
+  "link": "https://accent.gmu.edu/samples/english603/",
+  "st": "CA"
  },
  {
   "id": "english82",
@@ -12375,7 +12713,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english82/"
+  "link": "https://accent.gmu.edu/samples/english82/",
+  "st": "IL"
  },
  {
   "id": "english433",
@@ -12427,7 +12766,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english433/"
+  "link": "https://accent.gmu.edu/samples/english433/",
+  "st": "MI"
  },
  {
   "id": "english660",
@@ -12479,7 +12819,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english660/"
+  "link": "https://accent.gmu.edu/samples/english660/",
+  "st": "GA"
  },
  {
   "id": "english204",
@@ -12531,7 +12872,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english204/"
+  "link": "https://accent.gmu.edu/samples/english204/",
+  "st": "IL"
  },
  {
   "id": "english311",
@@ -12583,7 +12925,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english311/"
+  "link": "https://accent.gmu.edu/samples/english311/",
+  "st": "MI"
  },
  {
   "id": "DCA_se3_ag2_m_02_1_47",
@@ -12603,7 +12946,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_m_02_1_752",
@@ -12623,7 +12967,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_m_02_1_1142",
@@ -12643,7 +12988,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_f_02_1_126",
@@ -12663,7 +13009,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_f_05_1_46",
@@ -12683,7 +13030,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_f_05_1_1417",
@@ -12703,7 +13051,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCA_se3_ag2_f_05_1_438",
@@ -12723,7 +13072,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1760",
@@ -12743,7 +13093,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_03_1_3013",
@@ -12763,7 +13114,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1851",
@@ -12783,7 +13135,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_1_488",
@@ -12803,7 +13156,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_1_539",
@@ -12823,7 +13177,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_1_379",
@@ -12843,7 +13198,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_2_252",
@@ -12863,7 +13219,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_2_296",
@@ -12883,7 +13240,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_f_02_2_562",
@@ -12903,7 +13261,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "english332",
@@ -12951,7 +13310,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english332/"
+  "link": "https://accent.gmu.edu/samples/english332/",
+  "st": "MD"
  },
  {
   "id": "english357",
@@ -13003,7 +13363,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english357/"
+  "link": "https://accent.gmu.edu/samples/english357/",
+  "st": "GA"
  },
  {
   "id": "english231",
@@ -13055,7 +13416,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english231/"
+  "link": "https://accent.gmu.edu/samples/english231/",
+  "st": "FL"
  },
  {
   "id": "english571",
@@ -13107,7 +13469,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english571/"
+  "link": "https://accent.gmu.edu/samples/english571/",
+  "st": "DC"
  },
  {
   "id": "english399",
@@ -13159,7 +13522,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english399/"
+  "link": "https://accent.gmu.edu/samples/english399/",
+  "st": "GA"
  },
  {
   "id": "english79",
@@ -13207,7 +13571,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english79/"
+  "link": "https://accent.gmu.edu/samples/english79/",
+  "st": "MA"
  },
  {
   "id": "english51",
@@ -13259,7 +13624,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english51/"
+  "link": "https://accent.gmu.edu/samples/english51/",
+  "st": "MI"
  },
  {
   "id": "english423",
@@ -13311,7 +13677,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english423/"
+  "link": "https://accent.gmu.edu/samples/english423/",
+  "st": "MD"
  },
  {
   "id": "english576",
@@ -13363,7 +13730,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english576/"
+  "link": "https://accent.gmu.edu/samples/english576/",
+  "st": "DC"
  },
  {
   "id": "english121",
@@ -13415,7 +13783,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english121/"
+  "link": "https://accent.gmu.edu/samples/english121/",
+  "st": "MN"
  },
  {
   "id": "english167",
@@ -13467,7 +13836,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english167/"
+  "link": "https://accent.gmu.edu/samples/english167/",
+  "st": "MI"
  },
  {
   "id": "english27",
@@ -13519,7 +13889,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english27/"
+  "link": "https://accent.gmu.edu/samples/english27/",
+  "st": "MD"
  },
  {
   "id": "english541",
@@ -13571,7 +13942,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english541/"
+  "link": "https://accent.gmu.edu/samples/english541/",
+  "st": "FL"
  },
  {
   "id": "english198",
@@ -13623,7 +13995,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english198/"
+  "link": "https://accent.gmu.edu/samples/english198/",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_1_2985",
@@ -13643,7 +14016,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_1_1028",
@@ -13663,7 +14037,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_1_2893",
@@ -13683,7 +14058,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_2_130",
@@ -13703,7 +14079,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_2_62",
@@ -13723,7 +14100,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se2_ag3_m_03_2_230",
@@ -13743,7 +14121,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_02_1_2205",
@@ -13763,7 +14142,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_02_1_63",
@@ -13783,7 +14163,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag4_m_02_1_619",
@@ -13803,7 +14184,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1361",
@@ -13823,7 +14205,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1146",
@@ -13843,7 +14226,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1405",
@@ -13863,7 +14247,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag3_m_02_2_618",
@@ -13883,7 +14268,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_01_1_1059",
@@ -13903,7 +14289,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_01_1_2035",
@@ -13923,7 +14310,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se1_ag2_f_01_1_1861",
@@ -13943,7 +14331,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "english316",
@@ -13995,7 +14384,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english316/"
+  "link": "https://accent.gmu.edu/samples/english316/",
+  "st": "CA"
  },
  {
   "id": "english508",
@@ -14047,7 +14437,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english508/"
+  "link": "https://accent.gmu.edu/samples/english508/",
+  "st": "IL"
  },
  {
   "id": "english393",
@@ -14099,7 +14490,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english393/"
+  "link": "https://accent.gmu.edu/samples/english393/",
+  "st": "DC"
  },
  {
   "id": "english205",
@@ -14151,7 +14543,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english205/"
+  "link": "https://accent.gmu.edu/samples/english205/",
+  "st": "MN"
  },
  {
   "id": "english520",
@@ -14203,7 +14596,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english520/"
+  "link": "https://accent.gmu.edu/samples/english520/",
+  "st": "MN"
  },
  {
   "id": "english504",
@@ -14255,7 +14649,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english504/"
+  "link": "https://accent.gmu.edu/samples/english504/",
+  "st": "FL"
  },
  {
   "id": "english618",
@@ -14307,7 +14702,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english618/"
+  "link": "https://accent.gmu.edu/samples/english618/",
+  "st": "CA"
  },
  {
   "id": "DCB_se3_ag4_f_02_1_993",
@@ -14327,7 +14723,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se3_ag4_f_02_1_3706",
@@ -14347,7 +14744,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "DCB_se3_ag4_f_02_1_4038",
@@ -14367,7 +14765,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
-  "link": "https://oraal.github.io/coraal"
+  "link": "https://oraal.github.io/coraal",
+  "st": "DC"
  },
  {
   "id": "english284",
@@ -14419,7 +14818,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english284/"
+  "link": "https://accent.gmu.edu/samples/english284/",
+  "st": "FL"
  },
  {
   "id": "english244",
@@ -14471,7 +14871,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english244/"
+  "link": "https://accent.gmu.edu/samples/english244/",
+  "st": "CA"
  },
  {
   "id": "english406",
@@ -14519,7 +14920,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english406/"
+  "link": "https://accent.gmu.edu/samples/english406/",
+  "st": "FL"
  },
  {
   "id": "english106",
@@ -14571,7 +14973,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english106/"
+  "link": "https://accent.gmu.edu/samples/english106/",
+  "st": "CA"
  },
  {
   "id": "english386",
@@ -14619,7 +15022,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english386/"
+  "link": "https://accent.gmu.edu/samples/english386/",
+  "st": "CA"
  },
  {
   "id": "english200",
@@ -14671,7 +15075,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english200/"
+  "link": "https://accent.gmu.edu/samples/english200/",
+  "st": "CA"
  },
  {
   "id": "english220",
@@ -14719,7 +15124,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english220/"
+  "link": "https://accent.gmu.edu/samples/english220/",
+  "st": "CA"
  },
  {
   "id": "english584",
@@ -14771,7 +15177,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english584/"
+  "link": "https://accent.gmu.edu/samples/english584/",
+  "st": "CA"
  },
  {
   "id": "english266",
@@ -14819,7 +15226,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english266/"
+  "link": "https://accent.gmu.edu/samples/english266/",
+  "st": "CA"
  },
  {
   "id": "english445",
@@ -14871,7 +15279,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english445/"
+  "link": "https://accent.gmu.edu/samples/english445/",
+  "st": "CA"
  },
  {
   "id": "english645",
@@ -14923,7 +15332,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english645/"
+  "link": "https://accent.gmu.edu/samples/english645/",
+  "st": "CA"
  },
  {
   "id": "english257",
@@ -14975,7 +15385,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english257/"
+  "link": "https://accent.gmu.edu/samples/english257/",
+  "st": "CA"
  },
  {
   "id": "english49",
@@ -15027,7 +15438,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english49/"
+  "link": "https://accent.gmu.edu/samples/english49/",
+  "st": "CA"
  },
  {
   "id": "english246",
@@ -15079,7 +15491,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english246/"
+  "link": "https://accent.gmu.edu/samples/english246/",
+  "st": "CA"
  },
  {
   "id": "english264",
@@ -15131,7 +15544,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english264/"
+  "link": "https://accent.gmu.edu/samples/english264/",
+  "st": "CA"
  },
  {
   "id": "english32",
@@ -15183,7 +15597,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english32/"
+  "link": "https://accent.gmu.edu/samples/english32/",
+  "st": "CA"
  },
  {
   "id": "english577",
@@ -15235,7 +15650,8 @@ window.CLIPS = [
    ]
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
-  "link": "https://accent.gmu.edu/samples/english577/"
+  "link": "https://accent.gmu.edu/samples/english577/",
+  "st": "CA"
  },
  {
   "id": "DoGhUoq8Qsw",
@@ -15273,7 +15689,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2016,
-  "born": 1962
+  "born": 1962,
+  "st": "MN"
  },
  {
   "id": "7WHrkF5KLWU",
@@ -15290,7 +15707,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2014,
-  "born": 1958
+  "born": 1958,
+  "st": "MI"
  },
  {
   "id": "WHtLFFrnUi8",
@@ -15307,7 +15725,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2016,
-  "born": 1956
+  "born": 1956,
+  "st": "NJ"
  },
  {
   "id": "CdQPw3NBmTw",
@@ -15341,7 +15760,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2026,
-  "born": 1970
+  "born": 1970,
+  "st": "LA"
  },
  {
   "id": "rwmfR76w5FE",
@@ -15375,7 +15795,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2012,
-  "born": 1962
+  "born": 1962,
+  "st": "MN"
  },
  {
   "id": "wnhlr0o2Auo",
@@ -15392,7 +15813,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2016,
-  "born": 1958
+  "born": 1958,
+  "st": "MI"
  },
  {
   "id": "V7K26_yowTI",
@@ -15430,7 +15852,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2025,
-  "born": 1961
+  "born": 1961,
+  "st": "LA"
  },
  {
   "id": "CplaGOzwMsg",
@@ -15447,7 +15870,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2019,
-  "born": 1937
+  "born": 1937,
+  "st": "NJ"
  },
  {
   "id": "3Dlc3y0XWko",
@@ -15464,7 +15888,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2014,
-  "born": 1937
+  "born": 1937,
+  "st": "NJ"
  },
  {
   "id": "AWhw0psz1fI",
@@ -15481,7 +15906,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2018,
-  "born": 1956
+  "born": 1956,
+  "st": "NJ"
  },
  {
   "id": "j2-kxso2ucA",
@@ -15519,7 +15945,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2011,
-  "born": 1962
+  "born": 1962,
+  "st": "MN"
  },
  {
   "id": "eEdsM-bVzq4",
@@ -15536,7 +15963,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2015,
-  "born": 1958
+  "born": 1958,
+  "st": "MI"
  },
  {
   "id": "iEkh3UB38vE",
@@ -15553,7 +15981,8 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2014,
-  "born": 1956
+  "born": 1956,
+  "st": "NJ"
  },
  {
   "id": "rKGulYJ-jtg",
@@ -15570,6 +15999,7 @@ window.CLIPS = [
   "verified": true,
   "words": [],
   "year": 2019,
-  "born": 1937
+  "born": 1937,
+  "st": "NJ"
  }
 ];

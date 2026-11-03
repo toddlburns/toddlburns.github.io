@@ -114,6 +114,17 @@ a{color:inherit}
 .final li .m{font-size:14px;color:var(--muted)}
 .final .actions{display:flex;gap:10px;flex-wrap:wrap}
 .final.side{left:16px;top:76px;transform:none}
+.board{margin-top:22px;border-top:1px solid var(--rule);padding-top:16px}
+.board h3{font:750 16px var(--font);margin:0 0 10px}
+.board form{display:flex;gap:8px}
+.board input{flex:1;min-width:0;font:15px var(--font);padding:10px 12px;border:1px solid var(--rule);border-radius:10px;background:var(--paper);color:var(--ink)}
+.board button{padding:10px 14px;font-size:14px}
+.lbmsg{font-size:13px;color:var(--muted);margin:8px 0;min-height:1em}
+.board ol{list-style:none;margin:0;padding:0;border-top:0;counter-reset:lb}
+.board li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px;counter-increment:lb}
+.board li::before{content:counter(lb);width:2ch;color:var(--muted);font-weight:650}
+.board li span{flex:1}.board li b{font-weight:700}
+.board li.me{color:var(--answer);font-weight:700}
 
 @media (max-width:620px){
   .logo{font-size:16px;padding:9px 12px}
@@ -209,6 +220,12 @@ a{color:inherit}
     <p class="verdict" id="fVerdict"></p>
     <ol id="fList"></ol>
     <div class="actions"><button id="againBtn">Play again</button><button class="ghost" id="copyBtn">Copy result</button></div>
+    <div class="board">
+      <h3>All-time leaderboard</h3>
+      <form id="lbForm"><input id="lbName" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name"><button id="lbBtn">Add my score</button></form>
+      <p class="lbmsg" id="lbMsg"></p>
+      <ol id="lbList"><li class="m">Loading…</li></ol>
+    </div>
   </section>
 </div>
 
@@ -408,8 +425,8 @@ function newGame() {
     const order = [want, want + 1, want - 1, want + 2, want - 2];
     // At most one Stella reading per game: everyone reads the same paragraph, so twice is repetitive.
     const stella = c => (c.audio || '').startsWith('audio/saa/'), hadStella = picks.some(stella);
-    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !picks.includes(c) && !(hadStella && stella(c)))).find(Boolean);
-    if (c) { picks.push(c); used.add(c.region); }
+    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !used.has(c.st) && !picks.includes(c) && !(hadStella && stella(c)))).find(Boolean);
+    if (c) { picks.push(c); used.add(c.region); if (c.st) used.add(c.st); }   // one region and one state per game
   }
   Object.assign(state, { round: 0, score: 0, picks, results: [] });
   $('intro').hidden = true; $('final').hidden = true; $('scrim').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
@@ -487,11 +504,39 @@ function next() {
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
   const max = 25000 + FAST * 5 + 1000 * state.results.filter(r => ageOf(r.c) != null).length;
+  state.max = max; state.submitted = false; myEntry = null;
+  $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
+  try { $('lbName').value = localStorage.getItem('accentuate-name') || ''; } catch (_) {}
+  loadBoard();
   $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ ${max.toLocaleString()}</small>`;
   const s = state.score;
   $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
   $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0) + (r.fb || 0)).toLocaleString()}${r.ab || r.fb ? `<br><small class="m">incl. ${[r.ab && `+${r.ab} age`, r.fb && `+${r.fb} quick`].filter(Boolean).join(', ')}</small>` : ''}</span></li>`).join('');
 }
+/* ---------- All-time leaderboard (Cloudflare Worker + D1) ---------- */
+const LB = 'https://accentuate-leaderboard.todd-burns.workers.dev';
+let myEntry = null;
+async function loadBoard() {
+  try {
+    const { top, total } = await (await fetch(LB + '/top?n=15')).json();
+    $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()}</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
+    if (myEntry?.rank) $('lbMsg').textContent = `You're #${myEntry.rank} of ${total.toLocaleString()} all time.`;
+  } catch (e) { $('lbList').innerHTML = '<li class="m"><span>The leaderboard is unreachable right now.</span></li>'; }
+}
+$('lbForm').onsubmit = async e => {
+  e.preventDefault();
+  const name = $('lbName').value.trim();
+  if (!name || state.submitted) return;
+  $('lbBtn').disabled = true; $('lbMsg').textContent = 'Saving…';
+  try { localStorage.setItem('accentuate-name', name); } catch (_) {}
+  try {
+    const r = await fetch(LB + '/score', { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name, score: state.score, max: state.max, rounds: state.results.map(r => [r.c.id, r.p, r.ab || 0, r.fb || 0]) }) });
+    const d = await r.json();
+    if (!r.ok) { $('lbMsg').textContent = d.error && d.error.length > 8 ? d.error : 'That score could not be saved.'; $('lbBtn').disabled = false; return; }
+    state.submitted = true; myEntry = { name, score: state.score, rank: d.rank }; $('lbForm').hidden = true; loadBoard();
+  } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
+};
 function copyResult() {
   const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
   const txt = `Accentuate ${state.score.toLocaleString()} points\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
