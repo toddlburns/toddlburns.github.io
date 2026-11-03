@@ -379,7 +379,9 @@ function newGame() {
   const picks = [], used = new Set();
   for (const want of LADDER) {
     const order = [want, want + 1, want - 1, want + 2, want - 2];
-    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !picks.includes(c))).find(Boolean);
+    // At most one Stella reading per game: everyone reads the same paragraph, so twice is repetitive.
+    const stella = c => (c.audio || '').startsWith('audio/saa/'), hadStella = picks.some(stella);
+    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !picks.includes(c) && !(hadStella && stella(c)))).find(Boolean);
     if (c) { picks.push(c); used.add(c.region); }
   }
   Object.assign(state, { round: 0, score: 0, picks, results: [] });
