@@ -227,7 +227,6 @@ let player, playerReady = false, playing = false;
 window.onYouTubeIframeAPIReady = () => {
   const el = REVIEW ? 'ryt' : CURATE ? 'cyt' : 'yt';
   player = new YT.Player(el, {
-    host: 'https://www.youtube-nocookie.com',
     playerVars: { controls: CURATE ? 1 : 0, disablekb: CURATE ? 0 : 1, modestbranding: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0, fs: CURATE ? 1 : 0 },
     events: {
       onReady: () => { playerReady = true; if (CURATE && !REVIEW) selectClip(0); },
