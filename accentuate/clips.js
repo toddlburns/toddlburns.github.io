@@ -12904,5 +12904,1045 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "english332",
+  "audio": "audio/saa/english332.mp3",
+  "region": "st_md",
+  "tier": 3,
+  "start": 0,
+  "end": 23.08,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 20,
+  "place": "Baltimore, Maryland",
+  "lat": 39.3,
+  "lng": -76.6105,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.6
+   ],
+   [
+    "snack",
+    10.7
+   ],
+   [
+    "brother",
+    11.3
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english332/"
+ },
+ {
+  "id": "english357",
+  "audio": "audio/saa/english357.mp3",
+  "region": "st_ga",
+  "tier": 3,
+  "start": 0,
+  "end": 20.31,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 24,
+  "place": "Alto, Georgia",
+  "lat": 34.465,
+  "lng": -83.5726,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.6
+   ],
+   [
+    "five",
+    5.9
+   ],
+   [
+    "snack",
+    8.6
+   ],
+   [
+    "brother",
+    9.4
+   ],
+   [
+    "Bob",
+    10.1
+   ],
+   [
+    "frog",
+    13.4
+   ],
+   [
+    "bags",
+    16.8
+   ],
+   [
+    "Wednesday",
+    18.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english357/"
+ },
+ {
+  "id": "english231",
+  "audio": "audio/saa/english231.mp3",
+  "region": "st_fl",
+  "tier": 3,
+  "start": 0,
+  "end": 18.41,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 22,
+  "place": "Tampa, Florida",
+  "lat": 27.9663,
+  "lng": -82.4776,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    8.7
+   ],
+   [
+    "brother",
+    9.3
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    15.6
+   ],
+   [
+    "Wednesday",
+    16.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english231/"
+ },
+ {
+  "id": "english571",
+  "audio": "audio/saa/english571.mp3",
+  "region": "st_dc",
+  "tier": 3,
+  "start": 0,
+  "end": 22.45,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 39,
+  "place": "Washington, District of Columbia",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.6
+   ],
+   [
+    "five",
+    7.3
+   ],
+   [
+    "snack",
+    10.0
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    14.7
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english571/"
+ },
+ {
+  "id": "english399",
+  "audio": "audio/saa/english399.mp3",
+  "region": "st_ga",
+  "tier": 3,
+  "start": 0,
+  "end": 33.59,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 80,
+  "place": "La Grange, Georgia",
+  "lat": 33.039,
+  "lng": -85.031,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    5.2
+   ],
+   [
+    "five",
+    9.3
+   ],
+   [
+    "snack",
+    13.2
+   ],
+   [
+    "brother",
+    14.9
+   ],
+   [
+    "Bob",
+    15.5
+   ],
+   [
+    "frog",
+    24.2
+   ],
+   [
+    "bags",
+    28.9
+   ],
+   [
+    "Wednesday",
+    30.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english399/"
+ },
+ {
+  "id": "english79",
+  "audio": "audio/saa/english79.mp3",
+  "region": "st_ma",
+  "tier": 3,
+  "start": 0,
+  "end": 26.1,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 73,
+  "place": "Boston, Massachusetts",
+  "lat": 42.3386,
+  "lng": -71.0183,
+  "note": "Eastern New England: the r drops in \"her\" and \"brother,\" and the a in \"bags\" and \"snack\" stays flat and open.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "snack",
+    11.9
+   ],
+   [
+    "brother",
+    12.2
+   ],
+   [
+    "Bob",
+    12.6
+   ],
+   [
+    "frog",
+    17.1
+   ],
+   [
+    "bags",
+    22.5
+   ],
+   [
+    "Wednesday",
+    24.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english79/"
+ },
+ {
+  "id": "english51",
+  "audio": "audio/saa/english51.mp3",
+  "region": "st_mi",
+  "tier": 3,
+  "start": 0,
+  "end": 23.74,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 67,
+  "place": "Detroit, Michigan",
+  "lat": 42.383,
+  "lng": -83.1022,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    7.7
+   ],
+   [
+    "snack",
+    10.7
+   ],
+   [
+    "brother",
+    11.6
+   ],
+   [
+    "Bob",
+    12.2
+   ],
+   [
+    "frog",
+    15.9
+   ],
+   [
+    "bags",
+    19.8
+   ],
+   [
+    "Wednesday",
+    21.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english51/"
+ },
+ {
+  "id": "english423",
+  "audio": "audio/saa/english423.mp3",
+  "region": "st_md",
+  "tier": 3,
+  "start": 0,
+  "end": 23.5,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 24,
+  "place": "Baltimore, Maryland",
+  "lat": 39.3,
+  "lng": -76.6105,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.5
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    10.9
+   ],
+   [
+    "brother",
+    11.4
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.7
+   ],
+   [
+    "Wednesday",
+    21.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english423/"
+ },
+ {
+  "id": "english576",
+  "audio": "audio/saa/english576.mp3",
+  "region": "st_dc",
+  "tier": 3,
+  "start": 0,
+  "end": 29.56,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 63,
+  "place": "Washington, District of Columbia",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    9.4
+   ],
+   [
+    "snack",
+    13.6
+   ],
+   [
+    "brother",
+    15.0
+   ],
+   [
+    "Bob",
+    15.3
+   ],
+   [
+    "frog",
+    19.6
+   ],
+   [
+    "bags",
+    24.2
+   ],
+   [
+    "Wednesday",
+    27.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english576/"
+ },
+ {
+  "id": "english121",
+  "audio": "audio/saa/english121.mp3",
+  "region": "st_mn",
+  "tier": 3,
+  "start": 0,
+  "end": 22.0,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Waconia, Minnesota",
+  "lat": 44.8415,
+  "lng": -93.7901,
+  "note": "Upper Midwest: \"bags\" sounds close to \"baygs,\" and the long o in \"snow\" stays round and pure.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    7.5
+   ],
+   [
+    "snack",
+    10.4
+   ],
+   [
+    "brother",
+    11.9
+   ],
+   [
+    "Bob",
+    12.2
+   ],
+   [
+    "frog",
+    15.0
+   ],
+   [
+    "bags",
+    18.4
+   ],
+   [
+    "Wednesday",
+    19.8
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english121/"
+ },
+ {
+  "id": "english167",
+  "audio": "audio/saa/english167.mp3",
+  "region": "st_mi",
+  "tier": 3,
+  "start": 0,
+  "end": 22.85,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 43,
+  "place": "Lakeview, Michigan",
+  "lat": 43.4431,
+  "lng": -85.2669,
+  "note": "Great Lakes English: the short a in \"bags\" and \"snack\" tenses toward \"eh-a,\" and \"Bob\" slides forward toward \"Bab.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    7.6
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    11.0
+   ],
+   [
+    "Bob",
+    11.5
+   ],
+   [
+    "frog",
+    15.2
+   ],
+   [
+    "bags",
+    19.0
+   ],
+   [
+    "Wednesday",
+    20.7
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english167/"
+ },
+ {
+  "id": "english27",
+  "audio": "audio/saa/english27.mp3",
+  "region": "st_md",
+  "tier": 3,
+  "start": 0,
+  "end": 24.42,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 37,
+  "place": "Smith Island, Maryland",
+  "lat": 37.9772,
+  "lng": -76.0288,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    6.9
+   ],
+   [
+    "snack",
+    10.5
+   ],
+   [
+    "brother",
+    11.4
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    15.2
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    22.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english27/"
+ },
+ {
+  "id": "english541",
+  "audio": "audio/saa/english541.mp3",
+  "region": "st_fl",
+  "tier": 3,
+  "start": 0,
+  "end": 21.96,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "Fort Lauderdale, Florida",
+  "lat": 26.1412,
+  "lng": -80.1467,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.6
+   ],
+   [
+    "snack",
+    9.7
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.2
+   ],
+   [
+    "frog",
+    14.8
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    19.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english541/"
+ },
+ {
+  "id": "english198",
+  "audio": "audio/saa/english198.mp3",
+  "region": "st_dc",
+  "tier": 3,
+  "start": 0,
+  "end": 35.28,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 56,
+  "place": "Washington, District of Columbia",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "Mid-Atlantic: \"Bob\" and \"frog\" keep different vowels, \"bags\" rises toward \"beh-ags,\" and the o in \"snow\" fronts toward \"eh-oo.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.9
+   ],
+   [
+    "five",
+    10.0
+   ],
+   [
+    "snack",
+    15.2
+   ],
+   [
+    "brother",
+    17.4
+   ],
+   [
+    "Bob",
+    17.9
+   ],
+   [
+    "frog",
+    23.5
+   ],
+   [
+    "bags",
+    29.5
+   ],
+   [
+    "Wednesday",
+    32.3
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english198/"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_1_2985",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_1_2985.mp3",
+  "region": "dc",
+  "tier": 1,
+  "start": 0.3,
+  "end": 40.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_1_1028",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_1_1028.mp3",
+  "region": "dc",
+  "tier": 2,
+  "start": 0.3,
+  "end": 30.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_1_2893",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_1_2893.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_2_130",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_2_130.mp3",
+  "region": "dc",
+  "tier": 1,
+  "start": 0.3,
+  "end": 40.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_2_62",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_2_62.mp3",
+  "region": "dc",
+  "tier": 2,
+  "start": 0.3,
+  "end": 30.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se2_ag3_m_03_2_230",
+  "audio": "audio/coraal/DCB_se2_ag3_m_03_2_230.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Man",
+  "role": "Engineering",
+  "year": 2015,
+  "born": 1978,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag4_m_02_1_2205",
+  "audio": "audio/coraal/DCB_se1_ag4_m_02_1_2205.mp3",
+  "region": "dc",
+  "tier": 1,
+  "start": 0.3,
+  "end": 40.3,
+  "name": "Man",
+  "role": "Retired",
+  "year": 2015,
+  "born": 1948,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag4_m_02_1_63",
+  "audio": "audio/coraal/DCB_se1_ag4_m_02_1_63.mp3",
+  "region": "dc",
+  "tier": 2,
+  "start": 0.3,
+  "end": 30.3,
+  "name": "Man",
+  "role": "Retired",
+  "year": 2015,
+  "born": 1948,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag4_m_02_1_619",
+  "audio": "audio/coraal/DCB_se1_ag4_m_02_1_619.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Man",
+  "role": "Retired",
+  "year": 2015,
+  "born": 1948,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag3_m_02_1_1361",
+  "audio": "audio/coraal/DCB_se1_ag3_m_02_1_1361.mp3",
+  "region": "dc",
+  "tier": 1,
+  "start": 0.3,
+  "end": 40.3,
+  "name": "Man",
+  "role": "Resident",
+  "year": 2015,
+  "born": 1979,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag3_m_02_1_1146",
+  "audio": "audio/coraal/DCB_se1_ag3_m_02_1_1146.mp3",
+  "region": "dc",
+  "tier": 2,
+  "start": 0.3,
+  "end": 30.3,
+  "name": "Man",
+  "role": "Resident",
+  "year": 2015,
+  "born": 1979,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag3_m_02_1_1405",
+  "audio": "audio/coraal/DCB_se1_ag3_m_02_1_1405.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Man",
+  "role": "Resident",
+  "year": 2015,
+  "born": 1979,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag3_m_02_2_618",
+  "audio": "audio/coraal/DCB_se1_ag3_m_02_2_618.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Man",
+  "role": "Resident",
+  "year": 2015,
+  "born": 1979,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag2_f_01_1_1059",
+  "audio": "audio/coraal/DCB_se1_ag2_f_01_1_1059.mp3",
+  "region": "dc",
+  "tier": 1,
+  "start": 0.3,
+  "end": 40.3,
+  "name": "Woman",
+  "role": "Volunteer Coordinator and Administrative Assistant",
+  "year": 2015,
+  "born": 1987,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag2_f_01_1_2035",
+  "audio": "audio/coraal/DCB_se1_ag2_f_01_1_2035.mp3",
+  "region": "dc",
+  "tier": 2,
+  "start": 0.3,
+  "end": 30.3,
+  "name": "Woman",
+  "role": "Volunteer Coordinator and Administrative Assistant",
+  "year": 2015,
+  "born": 1987,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "DCB_se1_ag2_f_01_1_1861",
+  "audio": "audio/coraal/DCB_se1_ag2_f_01_1_1861.mp3",
+  "region": "dc",
+  "tier": 3,
+  "start": 0.3,
+  "end": 20.3,
+  "name": "Woman",
+  "role": "Volunteer Coordinator and Administrative Assistant",
+  "year": 2015,
+  "born": 1987,
+  "place": "Washington, DC",
+  "lat": 38.907,
+  "lng": -77.037,
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "verified": true,
+  "words": [],
+  "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
+  "link": "https://oraal.github.io/coraal"
  }
 ];
