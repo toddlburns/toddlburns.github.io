@@ -296,6 +296,7 @@ const snd = {
     } else if (playerReady) { au.pause(); player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); player.unMute(); player.setVolume(100); }
   },
   pause() { au.pause(); if (playerReady) player.pauseVideo(); },
+  isPlaying: c => c.audio ? !au.paused : !!(playerReady && player.getPlayerState && player.getPlayerState() === YT.PlayerState.PLAYING),
   stop() { au.pause(); if (playerReady) player.stopVideo(); },
   time: () => auOn || (au.src && !playerReady) ? au.currentTime : (playerReady && player.getCurrentTime ? player.getCurrentTime() : 0),
   cue(c) { if (c.audio) { au.src = c.audio; au.load(); if (playerReady) player.stopVideo(); } else if (playerReady) { au.pause(); player.stopVideo(); player.cueVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); } },
@@ -421,13 +422,12 @@ function startRound() {
   $('guessBtn').disabled = true; $('hint').textContent = 'Press play, then tap the map';
   [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
   fitUS();
-  snd.cue(c);
-  $('listenLabel').textContent = 'Press play to listen';
+  snd.cue(c); playing = false; setPlayUI();
 }
 function playClip() {
   const c = state.picks[state.round];
   if (!snd.ready(c)) { $('listenLabel').textContent = 'Loading player…'; return; }
-  if (playing) { snd.pause(); return; }
+  if (snd.isPlaying(c)) { snd.pause(); return; }
   snd.play(c, c.start, c.end);
 }
 function setPlayUI() {
