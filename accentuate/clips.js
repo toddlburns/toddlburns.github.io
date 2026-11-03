@@ -15236,5 +15236,251 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english577/"
+ },
+ {
+  "id": "DoGhUoq8Qsw",
+  "region": "upper_midwest",
+  "tier": 3,
+  "start": 680,
+  "end": 700,
+  "name": "Julianne Ortman",
+  "role": "Minnesota state senator",
+  "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
+  "lat": 44.862,
+  "lng": -93.531,
+  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "verified": true,
+  "words": [
+   [
+    "go",
+    0.0
+   ],
+   [
+    "home",
+    0.3
+   ],
+   [
+    "going",
+    1.8
+   ],
+   [
+    "so",
+    2.5
+   ],
+   [
+    "old",
+    11.6
+   ]
+  ],
+  "year": 2016,
+  "born": 1962
+ },
+ {
+  "id": "7WHrkF5KLWU",
+  "region": "michigan",
+  "tier": 3,
+  "start": 422,
+  "end": 442,
+  "name": "Rick Snyder",
+  "role": "Governor of Michigan",
+  "place": "Battle Creek, Michigan",
+  "lat": 42.321,
+  "lng": -85.18,
+  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "verified": true,
+  "words": [],
+  "year": 2014,
+  "born": 1958
+ },
+ {
+  "id": "WHtLFFrnUi8",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 22,
+  "end": 42,
+  "name": "Steve Lonegan",
+  "role": "Mayor of Bogota, New Jersey",
+  "place": "Bogota, New Jersey",
+  "lat": 40.876,
+  "lng": -74.03,
+  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2016,
+  "born": 1956
+ },
+ {
+  "id": "CdQPw3NBmTw",
+  "region": "cajun",
+  "tier": 3,
+  "start": 183,
+  "end": 203,
+  "name": "Jeff Landry",
+  "role": "Governor of Louisiana",
+  "place": "St. Martinville, Louisiana",
+  "lat": 30.125,
+  "lng": -91.833,
+  "note": "Light Cajun English from St. Martin Parish. Listen for clipped, unglided vowels and a French-tinged rhythm.",
+  "verified": true,
+  "words": [
+   [
+    "the",
+    4.7
+   ],
+   [
+    "think",
+    9.1
+   ],
+   [
+    "that",
+    9.2
+   ],
+   [
+    "have",
+    14.6
+   ]
+  ],
+  "year": 2026,
+  "born": 1970
+ },
+ {
+  "id": "rwmfR76w5FE",
+  "region": "upper_midwest",
+  "tier": 3,
+  "start": 7,
+  "end": 27,
+  "name": "Julianne Ortman",
+  "role": "Minnesota state senator",
+  "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
+  "lat": 44.862,
+  "lng": -93.531,
+  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "verified": true,
+  "words": [
+   [
+    "sure",
+    2.7
+   ],
+   [
+    "about",
+    13.4
+   ],
+   [
+    "so",
+    19.0
+   ],
+   [
+    "know",
+    19.9
+   ]
+  ],
+  "year": 2012,
+  "born": 1962
+ },
+ {
+  "id": "wnhlr0o2Auo",
+  "region": "michigan",
+  "tier": 3,
+  "start": 263,
+  "end": 283,
+  "name": "Rick Snyder",
+  "role": "Governor of Michigan",
+  "place": "Battle Creek, Michigan",
+  "lat": 42.321,
+  "lng": -85.18,
+  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "verified": true,
+  "words": [],
+  "year": 2016,
+  "born": 1958
+ },
+ {
+  "id": "V7K26_yowTI",
+  "region": "cajun",
+  "tier": 2,
+  "start": 658,
+  "end": 688,
+  "name": "Ed Orgeron",
+  "role": "LSU football head coach",
+  "place": "Larose, Louisiana",
+  "lat": 29.572,
+  "lng": -90.382,
+  "note": "Cajun English from Bayou Lafourche. A gravelly, French-flavored voice: \"th\" turns toward \"d,\" and the vowels stay flat and unglided.",
+  "verified": true,
+  "words": [
+   [
+    "that",
+    0.4
+   ],
+   [
+    "crawfish",
+    2.0
+   ],
+   [
+    "have",
+    8.6
+   ],
+   [
+    "this",
+    9.1
+   ],
+   [
+    "the",
+    12.0
+   ]
+  ],
+  "year": 2025,
+  "born": 1961
+ },
+ {
+  "id": "CplaGOzwMsg",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 103,
+  "end": 123,
+  "name": "Bill Pascrell",
+  "role": "U.S. Representative; former Mayor of Paterson",
+  "place": "Paterson, New Jersey",
+  "lat": 40.917,
+  "lng": -74.172,
+  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2019,
+  "born": 1937
+ },
+ {
+  "id": "3Dlc3y0XWko",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 0,
+  "end": 20,
+  "name": "Bill Pascrell",
+  "role": "U.S. Representative; former Mayor of Paterson",
+  "place": "Paterson, New Jersey",
+  "lat": 40.917,
+  "lng": -74.172,
+  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2014,
+  "born": 1937
+ },
+ {
+  "id": "AWhw0psz1fI",
+  "region": "north_jersey",
+  "tier": 3,
+  "start": 76,
+  "end": 96,
+  "name": "Steve Lonegan",
+  "role": "Mayor of Bogota, New Jersey",
+  "place": "Bogota, New Jersey",
+  "lat": 40.876,
+  "lng": -74.03,
+  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "verified": true,
+  "words": [],
+  "year": 2018,
+  "born": 1956
  }
 ];
