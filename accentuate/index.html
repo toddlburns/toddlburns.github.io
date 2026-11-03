@@ -428,7 +428,8 @@ function initReview() {
   let last = '';
   $('rList').innerHTML = CANDIDATES.map((c, i) => {
     const head = c.label !== last ? `<h2 class="rgroup">${c.label}</h2>` : ''; last = c.label;
-    return head + `<div class="rv" data-i="${i}"><h3>${esc(c.title)}</h3><div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} · other voice ${Math.round(c.other * 100)}%</div>
+    const who = c.person ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · from ${esc(c.hometown)}</span></h3><div class="meta">Press on the accent: “${esc(c.evidence)}” <a href="${esc(c.source)}" target="_blank" rel="noopener">source ↗</a></div><div class="meta">Video: ${esc(c.title)}</div>` : `<h3>${esc(c.title)}</h3>`;
+    return head + `<div class="rv" data-i="${i}">${who}<div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} · other voice ${Math.round(c.other * 100)}%</div>
       <div class="tools"><button class="ghost" data-a="play">▶ Play clip</button>${c.words.map(([w, t]) => `<button class="ghost" data-w="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
       <div class="tools"><button class="ghost" data-v="keep">Keep</button><button class="ghost" data-v="drop">Drop</button><input type="text" placeholder="Note (wrong voice, not local, too famous…)" style="flex:1;min-width:200px"></div></div>`;
   }).join('');
