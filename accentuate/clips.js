@@ -14368,5 +14368,873 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal"
+ },
+ {
+  "id": "english284",
+  "audio": "audio/saa/english284.mp3",
+  "region": "st_fl",
+  "tier": 3,
+  "start": 0,
+  "end": 21.85,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 33,
+  "place": "Gainesville, Florida",
+  "lat": 29.6795,
+  "lng": -82.3468,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.1
+   ],
+   [
+    "five",
+    8.0
+   ],
+   [
+    "snack",
+    10.8
+   ],
+   [
+    "brother",
+    11.3
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    15.0
+   ],
+   [
+    "bags",
+    18.1
+   ],
+   [
+    "Wednesday",
+    19.4
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english284/"
+ },
+ {
+  "id": "english244",
+  "audio": "audio/saa/english244.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 21.99,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 23,
+  "place": "San Francisco, California",
+  "lat": 37.7272,
+  "lng": -123.0322,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.0
+   ],
+   [
+    "brother",
+    10.8
+   ],
+   [
+    "Bob",
+    11.1
+   ],
+   [
+    "frog",
+    15.0
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    20.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english244/"
+ },
+ {
+  "id": "english406",
+  "audio": "audio/saa/english406.mp3",
+  "region": "st_fl",
+  "tier": 3,
+  "start": 0,
+  "end": 20.13,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 24,
+  "place": "Pensacola, Florida",
+  "lat": 30.441,
+  "lng": -87.1912,
+  "note": "Southern English: \"five\" can lose its glide (\"fahv\"), and \"Wednesday\" can sound like \"Winsday.\"",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "snack",
+    8.7
+   ],
+   [
+    "brother",
+    9.3
+   ],
+   [
+    "Bob",
+    9.8
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    16.4
+   ],
+   [
+    "Wednesday",
+    18.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english406/"
+ },
+ {
+  "id": "english106",
+  "audio": "audio/saa/english106.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 22.77,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 39,
+  "place": "Los Angeles, California",
+  "lat": 34.0194,
+  "lng": -118.4108,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.8
+   ],
+   [
+    "five",
+    6.3
+   ],
+   [
+    "snack",
+    9.4
+   ],
+   [
+    "brother",
+    10.5
+   ],
+   [
+    "Bob",
+    10.9
+   ],
+   [
+    "frog",
+    14.6
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    20.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english106/"
+ },
+ {
+  "id": "english386",
+  "audio": "audio/saa/english386.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 24.26,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 56,
+  "place": "Los Angeles, California",
+  "lat": 34.0194,
+  "lng": -118.4108,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.2
+   ],
+   [
+    "snack",
+    10.6
+   ],
+   [
+    "brother",
+    11.5
+   ],
+   [
+    "Bob",
+    11.8
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english386/"
+ },
+ {
+  "id": "english200",
+  "audio": "audio/saa/english200.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 17.82,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 22,
+  "place": "Berkeley, California",
+  "lat": 37.8657,
+  "lng": -122.2987,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.0
+   ],
+   [
+    "snack",
+    8.3
+   ],
+   [
+    "brother",
+    8.7
+   ],
+   [
+    "Bob",
+    8.9
+   ],
+   [
+    "frog",
+    11.7
+   ],
+   [
+    "bags",
+    14.8
+   ],
+   [
+    "Wednesday",
+    16.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english200/"
+ },
+ {
+  "id": "english220",
+  "audio": "audio/saa/english220.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 22.0,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 18,
+  "place": "Anaheim, California",
+  "lat": 33.8555,
+  "lng": -117.7587,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.7
+   ],
+   [
+    "snack",
+    10.1
+   ],
+   [
+    "brother",
+    10.8
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    14.9
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english220/"
+ },
+ {
+  "id": "english584",
+  "audio": "audio/saa/english584.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 23.73,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 27,
+  "place": "Monterey, California",
+  "lat": 36.6012,
+  "lng": -121.8831,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    7.6
+   ],
+   [
+    "snack",
+    11.0
+   ],
+   [
+    "brother",
+    11.9
+   ],
+   [
+    "Bob",
+    12.3
+   ],
+   [
+    "frog",
+    15.9
+   ],
+   [
+    "bags",
+    19.6
+   ],
+   [
+    "Wednesday",
+    21.5
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english584/"
+ },
+ {
+  "id": "english266",
+  "audio": "audio/saa/english266.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 21.01,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 18,
+  "place": "San Diego, California",
+  "lat": 32.815,
+  "lng": -117.1356,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.1
+   ],
+   [
+    "snack",
+    9.1
+   ],
+   [
+    "brother",
+    9.8
+   ],
+   [
+    "Bob",
+    10.1
+   ],
+   [
+    "frog",
+    13.5
+   ],
+   [
+    "bags",
+    17.4
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english266/"
+ },
+ {
+  "id": "english445",
+  "audio": "audio/saa/english445.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 28.74,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 60,
+  "place": "San Francisco, California",
+  "lat": 37.7272,
+  "lng": -123.0322,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    3.1
+   ],
+   [
+    "five",
+    9.4
+   ],
+   [
+    "snack",
+    13.1
+   ],
+   [
+    "brother",
+    14.5
+   ],
+   [
+    "Bob",
+    15.1
+   ],
+   [
+    "frog",
+    19.7
+   ],
+   [
+    "bags",
+    24.2
+   ],
+   [
+    "Wednesday",
+    25.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english445/"
+ },
+ {
+  "id": "english645",
+  "audio": "audio/saa/english645.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 24.53,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Hollister, California",
+  "lat": 36.8556,
+  "lng": -121.3986,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    8.1
+   ],
+   [
+    "snack",
+    10.7
+   ],
+   [
+    "brother",
+    11.3
+   ],
+   [
+    "Bob",
+    11.7
+   ],
+   [
+    "frog",
+    15.4
+   ],
+   [
+    "bags",
+    19.7
+   ],
+   [
+    "Wednesday",
+    21.2
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english645/"
+ },
+ {
+  "id": "english257",
+  "audio": "audio/saa/english257.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 22.69,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 24,
+  "place": "San Diego, California",
+  "lat": 32.815,
+  "lng": -117.1356,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.4
+   ],
+   [
+    "five",
+    7.2
+   ],
+   [
+    "snack",
+    10.2
+   ],
+   [
+    "brother",
+    10.9
+   ],
+   [
+    "Bob",
+    11.4
+   ],
+   [
+    "frog",
+    14.8
+   ],
+   [
+    "bags",
+    18.6
+   ],
+   [
+    "Wednesday",
+    20.1
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english257/"
+ },
+ {
+  "id": "english49",
+  "audio": "audio/saa/english49.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 23.31,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 43,
+  "place": "Castro Valley, California",
+  "lat": 37.7083,
+  "lng": -122.0628,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    2.7
+   ],
+   [
+    "five",
+    7.1
+   ],
+   [
+    "snack",
+    9.9
+   ],
+   [
+    "brother",
+    10.8
+   ],
+   [
+    "Bob",
+    11.4
+   ],
+   [
+    "frog",
+    15.3
+   ],
+   [
+    "bags",
+    19.1
+   ],
+   [
+    "Wednesday",
+    20.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english49/"
+ },
+ {
+  "id": "english246",
+  "audio": "audio/saa/english246.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 19.97,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 32,
+  "place": "Los Angeles, California",
+  "lat": 34.0194,
+  "lng": -118.4108,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.2
+   ],
+   [
+    "snack",
+    8.7
+   ],
+   [
+    "brother",
+    9.6
+   ],
+   [
+    "Bob",
+    10.1
+   ],
+   [
+    "frog",
+    13.2
+   ],
+   [
+    "bags",
+    16.5
+   ],
+   [
+    "Wednesday",
+    17.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english246/"
+ },
+ {
+  "id": "english264",
+  "audio": "audio/saa/english264.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 19.1,
+  "name": "Man",
+  "role": "Reading a short passage",
+  "age": 21,
+  "place": "Freemont, California",
+  "lat": 37.4945,
+  "lng": -121.9411,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.4
+   ],
+   [
+    "five",
+    6.1
+   ],
+   [
+    "snack",
+    8.5
+   ],
+   [
+    "brother",
+    9.2
+   ],
+   [
+    "Bob",
+    9.6
+   ],
+   [
+    "frog",
+    12.7
+   ],
+   [
+    "bags",
+    16.6
+   ],
+   [
+    "Wednesday",
+    17.9
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english264/"
+ },
+ {
+  "id": "english32",
+  "audio": "audio/saa/english32.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 22.53,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 50,
+  "place": "Fresno, California",
+  "lat": 36.7827,
+  "lng": -119.7934,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.9
+   ],
+   [
+    "five",
+    6.3
+   ],
+   [
+    "snack",
+    9.6
+   ],
+   [
+    "brother",
+    10.7
+   ],
+   [
+    "Bob",
+    11.0
+   ],
+   [
+    "frog",
+    14.6
+   ],
+   [
+    "bags",
+    18.5
+   ],
+   [
+    "Wednesday",
+    20.0
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english32/"
+ },
+ {
+  "id": "english577",
+  "audio": "audio/saa/english577.mp3",
+  "region": "st_ca",
+  "tier": 3,
+  "start": 0,
+  "end": 21.0,
+  "name": "Woman",
+  "role": "Reading a short passage",
+  "age": 38,
+  "place": "San Leandro, California",
+  "lat": 37.7034,
+  "lng": -122.163,
+  "note": "Western English: \"Bob\" and \"frog\" often fall together with \"cot\" and \"caught,\" the clearest sign of the West.",
+  "verified": true,
+  "words": [
+   [
+    "her",
+    1.7
+   ],
+   [
+    "five",
+    5.6
+   ],
+   [
+    "snack",
+    8.8
+   ],
+   [
+    "brother",
+    9.8
+   ],
+   [
+    "Bob",
+    10.3
+   ],
+   [
+    "frog",
+    13.8
+   ],
+   [
+    "bags",
+    17.1
+   ],
+   [
+    "Wednesday",
+    18.6
+   ]
+  ],
+  "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
+  "link": "https://accent.gmu.edu/samples/english577/"
  }
 ];
