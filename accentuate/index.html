@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Accentuate</title>
+<meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* Layout: listening panel on top (visualizer hides the speaker), map below; reveal swaps the visualizer for the video */
+:root{
+  --bg:#f7f4ee; --card:#fffdf9; --ink:#1f1b16; --muted:#6f665b; --rule:#e5ded2; --accent:#c4421a; --accent-ink:#fff;
+  --answer:#1f6f5c; --guess:#c4421a;
+  --display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --body:"Public Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14120f; --card:#1d1a16; --ink:#f1ebe2; --muted:#a69c8f; --rule:#34302a; --accent:#f07a4f; --accent-ink:#14120f;
+  --answer:#5fc7a9; --guess:#f07a4f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14120f; --card:#1d1a16; --ink:#f1ebe2; --muted:#a69c8f; --rule:#34302a; --accent:#f07a4f; --accent-ink:#14120f;
+  --answer:#5fc7a9; --guess:#f07a4f; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--body);padding:0 16px 48px}
+.wrap{max-width:980px;margin:0 auto}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:20px 0 14px;border-bottom:1px solid var(--rule)}
+.logo{font:400 34px/1 var(--display);letter-spacing:-.01em;margin:0}
+.logo em{color:var(--accent)}
+.hud{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:16px}
+.hud b{color:var(--ink);font-weight:500}
+button{font:600 15px var(--body);border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:11px 22px;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+button:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a{color:inherit}
+
+/* intro */
+.intro{padding:64px 0 32px;max-width:640px}
+.intro h1{font:400 clamp(48px,10vw,88px)/.95 var(--display);margin:0 0 18px;letter-spacing:-.02em;text-wrap:balance}
+.intro h1 em{color:var(--accent)}
+.intro p{font-size:18px;color:var(--muted);margin:0 0 14px;max-width:52ch}
+.intro .rules{font:14px/1.7 var(--mono);color:var(--muted);margin:24px 0 32px;padding:0;list-style:none}
+.intro .rules li::before{content:"— ";color:var(--accent)}
+
+/* round */
+.stage{display:grid;gap:16px;padding-top:18px}
+.listen{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:14px;overflow:hidden;min-height:200px}
+#viz{position:relative;z-index:1;display:block;width:100%;height:200px;background:var(--card)}
+.listen .controls{z-index:2;position:absolute;inset:auto 0 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+.play{width:56px;height:56px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.play svg{width:22px;height:22px}
+.listen .label{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right}
+#ytwrap{position:absolute;inset:0;z-index:0;pointer-events:none;background:#000}
+#ytwrap iframe{width:100%;height:100%;border:0}
+.listen.revealed #ytwrap{z-index:3;pointer-events:auto}
+.listen.revealed #viz,.listen.revealed .controls{visibility:hidden}
+.listen.revealed{min-height:0;aspect-ratio:16/9;max-height:340px;margin-inline:auto;width:100%;max-width:604px}
+
+.mapbox{position:relative;border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+#map{height:min(56vh,520px);min-height:320px;background:var(--card)}
+.jump{position:absolute;left:10px;bottom:10px;z-index:500;display:flex;gap:6px}
+.jump button{font:500 12px var(--mono);padding:6px 10px;background:var(--card);color:var(--ink);border-color:var(--rule)}
+.guessbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.hint{font-size:14px;color:var(--muted)}
+
+/* reveal card */
+.reveal{display:none;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:22px}
+.reveal.on{display:block}
+.reveal .pts{font:400 56px/1 var(--display);color:var(--accent)}
+.reveal .dist{font:500 13px var(--mono);color:var(--muted);margin:6px 0 16px}
+.meter{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;margin-bottom:18px}
+.meter i{display:block;height:100%;background:var(--accent);width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.who{font:400 30px/1.1 var(--display);margin:0}
+.role{color:var(--muted);margin:4px 0 2px}
+.place{font:500 14px var(--mono);color:var(--answer);margin:0 0 14px}
+.note{border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 18px;max-width:62ch}
+.reveal .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.src{font:13px var(--mono);color:var(--muted)}
+
+/* final */
+.final{padding:48px 0}
+.final h2{font:400 clamp(44px,9vw,80px)/1 var(--display);margin:0}
+.final h2 small{font-size:.45em;color:var(--muted)}
+.final .verdict{font-size:18px;color:var(--muted);margin:10px 0 28px}
+.final ol{list-style:none;padding:0;margin:0 0 28px;border-top:1px solid var(--rule)}
+.final li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.final li .p{font:500 15px var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.final li .m{font-size:14px;color:var(--muted)}
+.final .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.g{background:var(--guess)} .pin.a{background:var(--answer)}
+.leaflet-container{font-family:var(--body)}
+
+/* curate */
+.curate{padding-top:18px;display:grid;gap:16px}
+.curate .cplayer{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;max-height:440px}
+.curate .cplayer iframe{width:100%;height:100%;border:0}
+.curate .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.curate .tools button{padding:8px 14px;font-size:14px}
+.curate .now{font:500 20px var(--mono);font-variant-numeric:tabular-nums;min-width:8ch}
+.curate .times{font:14px var(--mono);color:var(--muted)}
+.curate select,.curate input[type=text],.curate textarea{font:14px var(--body);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+.curate textarea{font-family:var(--mono);min-height:120px}
+.curate .clist{display:grid;gap:6px;max-height:300px;overflow:auto;border:1px solid var(--rule);border-radius:10px;padding:8px;background:var(--card)}
+.curate .clist button{display:flex;justify-content:space-between;text-align:left;background:transparent;color:var(--ink);border-color:transparent;border-radius:8px;padding:8px 10px;font-weight:400}
+.curate .clist button.on{border-color:var(--accent)}
+.curate .clist .st{font:12px var(--mono);color:var(--muted)}
+.curate .clist .ed{color:var(--answer)}
+[hidden]{display:none!important}
+@media (max-width:560px){.logo{font-size:28px}.hud{gap:10px;font-size:12px}#viz{height:170px}.listen{min-height:170px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="logo">Accent<em>uate</em></p>
+    <div class="hud" id="hud" hidden><span>Round <b id="hRound">1</b>/5</span><span>Score <b id="hScore">0</b></span></div>
+  </header>
+
+  <section class="intro" id="intro">
+    <h1>Hear a voice. <em>Find it</em> on the map.</h1>
+    <p>Five people who are well known at home: mayors, council members, county judges, neighbors. You hear them but don't see them. Drop a pin where you think they're from.</p>
+    <p>There's no right way to sound American. This is a game about how many ways there are.</p>
+    <ul class="rules">
+      <li>5 rounds, up to 5,000 points each</li>
+      <li>Replay as often as you like</li>
+      <li>The closer your pin, the more you score</li>
+    </ul>
+    <button id="startBtn">Start listening</button>
+  </section>
+
+  <section class="stage" id="stage" hidden>
+    <div class="listen" id="listen">
+      <canvas id="viz" aria-hidden="true"></canvas>
+      <div id="ytwrap"><div id="yt"></div></div>
+      <div class="controls">
+        <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+        <span class="label" id="listenLabel">Press play to listen</span>
+      </div>
+    </div>
+    <div class="reveal" id="reveal">
+      <div class="pts" id="rPts">0</div>
+      <div class="dist" id="rDist"></div>
+      <div class="meter"><i id="rMeter"></i></div>
+      <p class="who" id="rWho"></p>
+      <p class="role" id="rRole"></p>
+      <p class="place" id="rPlace"></p>
+      <p class="note" id="rNote"></p>
+      <div class="row">
+        <a class="src" id="rSrc" target="_blank" rel="noopener">Watch the full video on YouTube ↗</a>
+        <button id="nextBtn">Next round</button>
+      </div>
+    </div>
+    <div class="mapbox">
+      <div id="map"></div>
+      <div class="jump"><button data-jump="48">Lower 48</button><button data-jump="ak">Alaska</button><button data-jump="hi">Hawaiʻi</button></div>
+    </div>
+    <div class="guessbar" id="guessbar">
+      <span class="hint" id="hint">Click the map to drop your pin.</span>
+      <button id="guessBtn" disabled>Guess</button>
+    </div>
+  </section>
+
+  <section class="final" id="final" hidden>
+    <h2 id="fScore">0 <small>/ 25,000</small></h2>
+    <p class="verdict" id="fVerdict"></p>
+    <ol id="fList"></ol>
+    <div class="actions"><button id="againBtn">Play again</button><button class="ghost" id="copyBtn">Copy result</button></div>
+  </section>
+
+  <section class="curate" id="curate" hidden>
+    <p class="hint">Curate mode. Pick a clip, scrub the video to where the accent really comes through, then press <b>Mark start</b> and <b>Mark end</b>. Edits save in this browser and apply to the game here. When you're done, press <b>Copy edits</b> and paste them to Claude.</p>
+    <div class="clist" id="clist"></div>
+    <div class="cplayer"><div id="cyt"></div></div>
+    <div class="tools">
+      <span class="now" id="cNow">0:00</span>
+      <button class="ghost" data-nudge="-5">−5s</button><button class="ghost" data-nudge="-1">−1s</button><button class="ghost" data-nudge="1">+1s</button><button class="ghost" data-nudge="5">+5s</button>
+      <button id="cMarkStart">Mark start</button><button id="cMarkEnd">Mark end</button><button class="ghost" id="cPlayClip">Play clip</button>
+      <span class="times" id="cTimes"></span>
+    </div>
+    <label class="tools"><input type="checkbox" id="cDrop"> Drop this clip (wrong person, no accent, spoils the place…)</label>
+    <input type="text" id="cNote" placeholder="Note for Claude about this clip (optional)">
+    <div class="tools"><button id="cCopy">Copy edits</button><button class="ghost" id="cReset">Reset this clip</button><span class="times" id="cCount"></span></div>
+    <textarea id="cOut" readonly></textarea>
+  </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="clips.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const EDIT_KEY = 'accentuate-edits-v1';
+const load = () => { try { return JSON.parse(localStorage.getItem(EDIT_KEY)) || {}; } catch (e) { return {}; } };
+const save = e => { try { localStorage.setItem(EDIT_KEY, JSON.stringify(e)); } catch (_) {} };
+let edits = load();
+const clip = c => Object.assign({}, c, edits[c.id] || {});
+const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const CURATE = new URLSearchParams(location.search).has('curate');
+
+/* ---------- YouTube ---------- */
+let player, playerReady = false, playing = false;
+window.onYouTubeIframeAPIReady = () => {
+  const el = CURATE ? 'cyt' : 'yt';
+  player = new YT.Player(el, {
+    host: 'https://www.youtube-nocookie.com',
+    playerVars: { controls: CURATE ? 1 : 0, disablekb: CURATE ? 0 : 1, modestbranding: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0, fs: CURATE ? 1 : 0 },
+    events: {
+      onReady: () => { playerReady = true; if (CURATE) selectClip(0); },
+      onStateChange: e => {
+        playing = e.data === YT.PlayerState.PLAYING;
+        if (!CURATE) setPlayUI();
+      }
+    }
+  });
+};
+const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
+
+/* ---------- Visualizer (animated stand-in: YouTube does not expose its audio) ---------- */
+const cv = $('viz'), cx = cv.getContext('2d');
+let level = 0, syl = 0, sylTarget = 0, nextSyl = 0, t0 = performance.now();
+function frame(now) {
+  const dpr = devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cx.clearRect(0, 0, w, h);
+  const t = (now - t0) / 1000;
+  level += ((playing ? 1 : 0) - level) * 0.06;
+  if (now > nextSyl) { sylTarget = Math.random() < 0.18 ? 0.08 : 0.45 + Math.random() * 0.55; nextSyl = now + 120 + Math.random() * 180; }
+  syl += (sylTarget - syl) * 0.22;
+  const mid = h * 0.42, bars = Math.max(40, Math.floor(w / 7)), bw = w / bars;
+  const ink = css('--ink'), acc = css('--accent');
+  for (let i = 0; i < bars; i++) {
+    const x = i / bars, center = Math.exp(-Math.pow((x - 0.5) / 0.32, 2));
+    const n = Math.sin(i * 0.37 + t * 9.1) * 0.5 + Math.sin(i * 0.91 - t * 13.7) * 0.3 + Math.sin(i * 2.3 + t * 21) * 0.2;
+    const idle = 1.5 + Math.sin(t * 1.6 + i * 0.25) * 1.2;
+    const amp = idle + level * syl * center * (0.55 + 0.45 * Math.abs(n)) * h * 0.36;
+    cx.fillStyle = i % 9 === 4 ? acc : ink;
+    cx.globalAlpha = 0.25 + 0.75 * center;
+    cx.fillRect(i * bw + bw * 0.25, mid - amp, bw * 0.5, amp * 2);
+  }
+  cx.globalAlpha = 1;
+  requestAnimationFrame(frame);
+}
+if (!CURATE) requestAnimationFrame(frame);
+
+/* ---------- Map ---------- */
+let map, tiles, guessMarker, answerMarker, line;
+const VIEWS = { '48': [[24.5, -125], [49.5, -66.5]], ak: [[51, -170], [71.5, -130]], hi: [[18.8, -160.5], [22.4, -154.7]] };
+const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+function tileUrl() {
+  const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  const k = dark ? 'Dark' : 'Light';
+  return [`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${k}_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+          `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${k}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`];
+}
+function initMap() {
+  map = L.map('map', { worldCopyJump: false, minZoom: 2, zoomSnap: 0.25 }).fitBounds(VIEWS['48']);
+  const [base, ref] = tileUrl(), opt = { attribution: 'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors', maxZoom: 12 };
+  tiles = [L.tileLayer(base, opt).addTo(map), L.tileLayer(ref, { maxZoom: 12 }).addTo(map)];
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { const u = tileUrl(); tiles[0].setUrl(u[0]); tiles[1].setUrl(u[1]); });
+  map.on('click', e => {
+    if (state.revealed) return;
+    if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
+    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin or lock it in.';
+  });
+  document.querySelectorAll('[data-jump]').forEach(b => b.onclick = () => map.fitBounds(VIEWS[b.dataset.jump]));
+}
+
+/* ---------- Game ---------- */
+const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
+const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+  const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
+const points = mi => Math.round(5000 * Math.exp(-mi / 300));
+
+function newGame() {
+  const pool = CLIPS.map(clip).filter(c => !c.drop);
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  Object.assign(state, { round: 0, score: 0, picks: pool.slice(0, 5), results: [] });
+  $('intro').hidden = true; $('final').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
+  if (!map) initMap();
+  startRound();
+}
+function startRound() {
+  state.revealed = false;
+  const c = state.picks[state.round];
+  $('hRound').textContent = state.round + 1; $('hScore').textContent = state.score.toLocaleString();
+  $('listen').classList.remove('revealed'); $('reveal').classList.remove('on'); $('guessbar').hidden = false;
+  $('guessBtn').disabled = true; $('hint').textContent = 'Click the map to drop your pin.';
+  [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
+  map.fitBounds(VIEWS['48']); setTimeout(() => map.invalidateSize(), 50);
+  if (playerReady) { player.stopVideo(); player.cueVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); }
+  $('listenLabel').textContent = 'Press play to listen';
+}
+function playClip() {
+  const c = state.picks[state.round];
+  if (!playerReady) { $('listenLabel').textContent = 'Loading player…'; return; }
+  if (playing) { player.pauseVideo(); return; }
+  player.loadVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end });
+  player.unMute(); player.setVolume(100);
+}
+function setPlayUI() {
+  $('playIcon').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
+  $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play clip');
+  if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : 'Play again';
+}
+function guess() {
+  if (!guessMarker || state.revealed) return;
+  state.revealed = true;
+  const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
+  state.score += p; state.results.push({ c, mi, p });
+  answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map);
+  line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
+  map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.3), { maxZoom: 9 });
+  $('hScore').textContent = state.score.toLocaleString();
+  $('rPts').textContent = '+' + p.toLocaleString();
+  $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
+  $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
+  $('rWho').textContent = c.name; $('rRole').textContent = c.role; $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
+  $('rSrc').href = `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
+  $('nextBtn').textContent = state.round === 4 ? 'See your score' : 'Next round';
+  $('guessbar').hidden = true; $('reveal').classList.add('on'); $('listen').classList.add('revealed');
+  if (playerReady) { player.pauseVideo(); player.seekTo(c.start, true); }
+}
+function next() {
+  if (playerReady) player.stopVideo();
+  if (++state.round < 5) return startRound();
+  $('stage').hidden = true; $('hud').hidden = true; $('final').hidden = false;
+  $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ 25,000</small>`;
+  const s = state.score;
+  $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
+  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${r.p.toLocaleString()}</span></li>`).join('');
+}
+function copyResult() {
+  const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
+  const txt = `Accentuate ${state.score.toLocaleString()}/25,000\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
+  navigator.clipboard?.writeText(txt).then(() => { $('copyBtn').textContent = 'Copied'; setTimeout(() => $('copyBtn').textContent = 'Copy result', 1600); });
+}
+$('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
+$('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next;
+document.addEventListener('keydown', e => {
+  if (CURATE || $('stage').hidden) return;
+  if (e.code === 'Space' && !state.revealed) { e.preventDefault(); playClip(); }
+  if (e.key === 'Enter') state.revealed ? next() : guess();
+});
+
+/* ---------- Curate ---------- */
+let cur = 0;
+function renderList() {
+  $('clist').innerHTML = CLIPS.map((c0, i) => { const c = clip(c0), ed = edits[c.id];
+    return `<button data-i="${i}" class="${i === cur ? 'on' : ''}"><span>${c.drop ? '<s>' : ''}${c.name} · ${c.place}${c.drop ? '</s>' : ''}</span><span class="st ${ed ? 'ed' : ''}">${fmt(c.start)}–${fmt(c.end)}${ed ? ' ✎' : ''}</span></button>`; }).join('');
+  $('clist').querySelectorAll('button').forEach(b => b.onclick = () => selectClip(+b.dataset.i));
+  const n = Object.keys(edits).length; $('cCount').textContent = n ? `${n} clip${n > 1 ? 's' : ''} edited` : '';
+  $('cOut').value = n ? JSON.stringify(edits, null, 1) : '';
+}
+function selectClip(i) {
+  cur = i; const c = clip(CLIPS[i]);
+  $('cDrop').checked = !!c.drop; $('cNote').value = c.cnote || '';
+  $('cTimes').textContent = `clip ${fmt(c.start)} → ${fmt(c.end)} (${c.end - c.start}s)`;
+  if (playerReady) player.cueVideoById({ videoId: c.id, startSeconds: c.start });
+  renderList();
+}
+function setEdit(patch) {
+  const id = CLIPS[cur].id, base = CLIPS[cur];
+  edits[id] = Object.assign({ start: base.start, end: base.end }, edits[id] || {}, patch);
+  if (edits[id].end <= edits[id].start) edits[id].end = edits[id].start + 20;
+  save(edits); selectClip(cur);
+}
+if (CURATE) {
+  $('intro').hidden = true; $('curate').hidden = false;
+  setInterval(() => { if (playerReady && player.getCurrentTime) $('cNow').textContent = fmt(player.getCurrentTime()); }, 250);
+  document.querySelectorAll('[data-nudge]').forEach(b => b.onclick = () => player.seekTo(player.getCurrentTime() + +b.dataset.nudge, true));
+  $('cMarkStart').onclick = () => setEdit({ start: Math.floor(player.getCurrentTime()) });
+  $('cMarkEnd').onclick = () => setEdit({ end: Math.ceil(player.getCurrentTime()) });
+  $('cPlayClip').onclick = () => { const c = clip(CLIPS[cur]); player.loadVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); };
+  $('cDrop').onchange = e => setEdit({ drop: e.target.checked || undefined });
+  $('cNote').onchange = e => setEdit({ cnote: e.target.value || undefined });
+  $('cReset').onclick = () => { delete edits[CLIPS[cur].id]; save(edits); selectClip(cur); };
+  $('cCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(edits, null, 1)); $('cCopy').textContent = 'Copied'; setTimeout(() => $('cCopy').textContent = 'Copy edits', 1600); };
+  renderList();
+}
+</script>
+</body>
+</html>
