@@ -393,7 +393,7 @@ const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a
 const points = mi => Math.round(5000 * Math.exp(-mi / 300));
 
 function newGame() {
-  const pool = CLIPS.map(clip).filter(c => !c.drop);
+  const pool = CLIPS.map(clip).filter(c => !c.drop && ageOf(c) != null);   // every round has an age to guess
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
   // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
   const picks = [], used = new Set();
