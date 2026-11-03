@@ -76,7 +76,15 @@ a{color:inherit}
 .dock .label{display:none}
 #guessBtn{flex:none;height:52px;padding:0 22px}
 .hint{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom));margin:0;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--paper-a);box-shadow:0 2px 10px var(--shade);white-space:nowrap}
-.revealed .dock,.revealed .hint{display:none}
+.ages{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:4px;padding:5px 6px 5px 12px;border-radius:999px;white-space:nowrap}
+.ages span{font-size:13px;font-weight:650;margin-right:4px}
+.ages button{font:600 13px var(--font);padding:5px 9px;border-radius:999px;background:transparent;color:var(--ink);border-color:transparent}
+.ages button.sel{background:var(--ink);color:var(--paper)}
+.hud .era{font-size:12px;color:var(--muted)}
+.agebonus{font-size:14px;margin:-8px 0 14px;font-weight:600}
+.agebonus b{color:var(--answer)}
+.hint{bottom:calc(138px + env(safe-area-inset-bottom))!important}
+.revealed .dock,.revealed .hint,.revealed .ages{display:none}
 
 .reveal{position:absolute;z-index:20;left:16px;top:76px;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 92px);overflow:auto;padding:20px;display:none}
 .reveal.on{display:block}
@@ -108,7 +116,8 @@ a{color:inherit}
 .final.side{left:16px;top:76px;transform:none}
 
 @media (max-width:620px){
-  .logo{font-size:16px;padding:9px 12px}.hud{gap:10px;font-size:13px;padding:8px 12px}
+  .logo{font-size:16px;padding:9px 12px}
+  .ages button{padding:5px 6px}.ages span{display:none}.hud .tier{display:none}.hud{gap:10px;font-size:13px;padding:8px 12px}
   .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
   .vidslot{width:56%;margin:0 0 10px}
   .reveal .pts{font-size:36px}
@@ -149,7 +158,7 @@ a{color:inherit}
   <div id="ytwrap"><div id="yt"></div></div>
   <div class="topbar">
     <p class="logo card">Accentuate</p>
-    <div class="hud card" id="hud" hidden><span>Round <b id="hRound">1</b>/5</span><span class="tier" id="hTier">Easy</span><span><b id="hScore">0</b> pts</span></div>
+    <div class="hud card" id="hud" hidden><span>Round <b id="hRound">1</b>/5</span><span class="tier" id="hTier">Easy</span><span class="era" id="hEra"></span><span><b id="hScore">0</b> pts</span></div>
   </div>
   <div class="scrim" id="scrim"></div>
 
@@ -168,6 +177,7 @@ a{color:inherit}
 
   <section class="stage" id="stage" hidden>
     <p class="hint" id="hint">Press play, then tap the map</p>
+    <div class="ages card" id="ages"><span>How old?</span><button data-b="0">&lt;20</button><button data-b="1">20s</button><button data-b="2">30s</button><button data-b="3">40s</button><button data-b="4">50s</button><button data-b="5">60s</button><button data-b="6">70+</button></div>
     <div class="dock card" id="dock">
       <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
       <canvas id="viz" aria-hidden="true"></canvas>
@@ -179,6 +189,7 @@ a{color:inherit}
       <div class="pts" id="rPts">0</div>
       <div class="dist" id="rDist"></div>
       <div class="meter"><i id="rMeter"></i></div>
+      <p class="agebonus" id="rAge"></p>
       <p class="who" id="rWho"></p>
       <p class="role" id="rRole"></p>
       <p class="when" id="rWhen"></p>
@@ -368,6 +379,15 @@ $('reveal').addEventListener('scroll', placeVideo);
 /* ---------- Game ---------- */
 const LADDER = [1, 1, 2, 3, 3], TIER_NAME = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
 const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
+// Age bonus: only where the age is on record (archives) or close to it (birth year + video year).
+const ageOf = c => c.age || (c.year && c.born ? c.year - c.born : null);
+const bracket = a => a < 20 ? 0 : a >= 70 ? 6 : Math.floor(a / 10) - 1;
+const BR = ['under 20', 'in their 20s', 'in their 30s', 'in their 40s', 'in their 50s', 'in their 60s', '70 or older'];
+const ageBonus = (c, b) => { const a = ageOf(c); if (a == null || b == null) return 0; const d = Math.abs(bracket(a) - b); return d === 0 ? 1000 : d === 1 ? 400 : 0; };
+document.querySelectorAll('#ages button').forEach(b => b.onclick = () => {
+  state.age = state.age === +b.dataset.b ? null : +b.dataset.b;
+  document.querySelectorAll('#ages button').forEach(x => x.classList.toggle('sel', +x.dataset.b === state.age));
+});
 const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
   const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
 const points = mi => Math.round(5000 * Math.exp(-mi / 300));
@@ -391,8 +411,11 @@ function newGame() {
   startRound();
 }
 function startRound() {
-  state.revealed = false; state.heard = false;
+  state.revealed = false; state.heard = false; state.age = null;
   const c = state.picks[state.round];
+  document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
+  $('ages').hidden = ageOf(c) == null;
+  $('hEra').textContent = c.year ? (c.audio ? 'Recorded ' : 'Video from ') + c.year : '';
   $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
   document.body.classList.remove('revealed'); $('reveal').classList.remove('on'); hideVideo();
   $('guessBtn').disabled = true; $('hint').textContent = 'Press play, then tap the map';
@@ -417,11 +440,13 @@ function guess() {
   if (!guessMarker || state.revealed) return;
   state.revealed = true;
   const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
-  state.score += p; state.results.push({ c, mi, p, g: [g.lat, g.lng] });
+  const ab = ageBonus(c, state.age), a = ageOf(c);
+  state.score += p + ab; state.results.push({ c, mi, p, ab, g: [g.lat, g.lng] });
+  $('rAge').innerHTML = a == null ? '' : state.age == null ? `They were ${a}.` : ab ? `<b>+${ab.toLocaleString()} age bonus.</b> They were ${a}.` : `They were ${a}; you said ${BR[state.age]}.`;
   answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
-  $('rPts').textContent = '+' + p.toLocaleString();
+  $('rPts').textContent = '+' + (p + ab).toLocaleString();
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
   $('rWho').textContent = c.name; $('rRole').textContent = c.role;
@@ -453,14 +478,15 @@ function next() {
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
-  $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ 25,000</small>`;
+  const max = 25000 + 1000 * state.results.filter(r => ageOf(r.c) != null).length;
+  $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ ${max.toLocaleString()}</small>`;
   const s = state.score;
   $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
-  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${r.p.toLocaleString()}</span></li>`).join('');
+  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0)).toLocaleString()}${r.ab ? `<br><small class="m">incl. +${r.ab} age</small>` : ''}</span></li>`).join('');
 }
 function copyResult() {
   const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
-  const txt = `Accentuate ${state.score.toLocaleString()}/25,000\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
+  const txt = `Accentuate ${state.score.toLocaleString()} points\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
   navigator.clipboard?.writeText(txt).then(() => { $('copyBtn').textContent = 'Copied'; setTimeout(() => $('copyBtn').textContent = 'Copy result', 1600); });
 }
 if (!CURATE) initMap();

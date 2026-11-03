@@ -875,7 +875,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1992",
+  "name": "Woman",
   "role": "Resident",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -885,7 +885,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1992
  },
  {
   "id": "ATL_se0_ag1_f_03_1_597",
@@ -894,7 +895,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1993",
+  "name": "Woman",
   "role": "Teacher",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -904,7 +905,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1993
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1403",
@@ -913,7 +915,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1993",
+  "name": "Man",
   "role": "Graphic designer; Creator",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -923,7 +925,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1993
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1447",
@@ -932,7 +935,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1993",
+  "name": "Man",
   "role": "Graphic designer; Creator",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -942,7 +945,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1993
  },
  {
   "id": "ATL_se0_ag1_m_03_1_1341",
@@ -951,7 +955,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1990",
+  "name": "Man",
   "role": "Producer",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -961,7 +965,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1990
  },
  {
   "id": "ATL_se0_ag1_m_04_1_685",
@@ -970,7 +975,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1988",
+  "name": "Man",
   "role": "Artist",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -980,7 +985,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1988
  },
  {
   "id": "ATL_se0_ag1_m_04_2_188",
@@ -989,7 +995,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1988",
+  "name": "Man",
   "role": "Artist",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -999,7 +1005,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1988
  },
  {
   "id": "ATL_se0_ag1_m_05_1_147",
@@ -1008,7 +1015,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1991",
+  "name": "Man",
   "role": "DJ/Radio Host",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1018,7 +1025,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1991
  },
  {
   "id": "ATL_se0_ag1_m_05_1_582",
@@ -1027,7 +1035,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1991",
+  "name": "Man",
   "role": "DJ/Radio Host",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1037,7 +1045,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1991
  },
  {
   "id": "ATL_se0_ag1_m_05_1_646",
@@ -1046,7 +1055,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1991",
+  "name": "Man",
   "role": "DJ/Radio Host",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1056,7 +1065,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1991
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1098",
@@ -1065,7 +1075,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Entrepreneur",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1075,7 +1085,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1984
  },
  {
   "id": "ATL_se0_ag2_f_01_1_282",
@@ -1084,7 +1095,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Entrepreneur",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1094,7 +1105,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1984
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1631",
@@ -1103,7 +1115,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Entrepreneur",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1113,7 +1125,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1984
  },
  {
   "id": "ATL_se0_ag2_f_02_1_587",
@@ -1122,7 +1135,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1980",
+  "name": "Woman",
   "role": "Nurse, Entrepreneur",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1132,7 +1145,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1980
  },
  {
   "id": "ATL_se0_ag2_m_01_1_181",
@@ -1141,7 +1155,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1976",
+  "name": "Man",
   "role": "Homemaker",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1151,7 +1165,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1976
  },
  {
   "id": "ATL_se0_ag2_m_01_1_331",
@@ -1160,7 +1175,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1976",
+  "name": "Man",
   "role": "Homemaker",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1170,7 +1185,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1976
  },
  {
   "id": "ATL_se0_ag2_m_01_1_682",
@@ -1179,7 +1195,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1976",
+  "name": "Man",
   "role": "Homemaker",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1189,7 +1205,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1976
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2466",
@@ -1198,7 +1215,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1987",
+  "name": "Man",
   "role": "Musician",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1208,7 +1225,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1987
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2431",
@@ -1217,7 +1235,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1987",
+  "name": "Man",
   "role": "Musician",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1227,7 +1245,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1987
  },
  {
   "id": "ATL_se0_ag2_m_02_1_1992",
@@ -1236,7 +1255,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1987",
+  "name": "Man",
   "role": "Musician",
   "place": "Atlanta, Georgia",
   "lat": 33.749,
@@ -1246,7 +1265,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1987
  },
  {
   "id": "LES_se0_ag3_f_01_1_2450",
@@ -1255,7 +1275,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1969",
+  "name": "Woman",
   "role": "Site Coordinator",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1265,7 +1285,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2009
+  "year": 2009,
+  "born": 1969
  },
  {
   "id": "LES_se0_ag3_m_02_1_1779",
@@ -1274,7 +1295,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1958",
+  "name": "Man",
   "role": "Unknown",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1284,7 +1305,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2008
+  "year": 2008,
+  "born": 1958
  },
  {
   "id": "LES_se0_ag4_f_01_1_505",
@@ -1293,7 +1315,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1947",
+  "name": "Woman",
   "role": "Property Manager",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1303,7 +1325,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2008
+  "year": 2008,
+  "born": 1947
  },
  {
   "id": "LES_se0_ag4_f_01_2_498",
@@ -1312,7 +1335,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1947",
+  "name": "Woman",
   "role": "Property Manager",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1322,7 +1345,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2008
+  "year": 2008,
+  "born": 1947
  },
  {
   "id": "LES_se0_ag4_f_01_2_695",
@@ -1331,7 +1355,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1947",
+  "name": "Woman",
   "role": "Property Manager",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1341,7 +1365,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2008
+  "year": 2008,
+  "born": 1947
  },
  {
   "id": "LES_se0_ag4_f_01_2_336",
@@ -1350,7 +1375,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1947",
+  "name": "Woman",
   "role": "Property Manager",
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
@@ -1360,7 +1385,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2008
+  "year": 2008,
+  "born": 1947
  },
  {
   "id": "PRV_se0_ag1_f_01_1_840",
@@ -1369,7 +1395,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1985",
+  "name": "Woman",
   "role": "Student",
   "place": "Princeville, North Carolina",
   "lat": 35.888,
@@ -1379,7 +1405,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2004
+  "year": 2004,
+  "born": 1985
  },
  {
   "id": "PRV_se0_ag2_m_01_1_2484",
@@ -1388,7 +1415,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1972",
+  "name": "Man",
   "role": "Material Handler/Volunteer Firefighter",
   "place": "Princeville, North Carolina",
   "lat": 35.888,
@@ -1398,7 +1425,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2004
+  "year": 2004,
+  "born": 1972
  },
  {
   "id": "PRV_se0_ag3_f_01_1_1269",
@@ -1407,7 +1435,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1943",
+  "name": "Woman",
   "role": "Property Manager",
   "place": "Princeville, North Carolina",
   "lat": 35.888,
@@ -1417,7 +1445,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2004
+  "year": 2004,
+  "born": 1943
  },
  {
   "id": "PRV_se0_ag3_f_03_1_840",
@@ -1426,7 +1455,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1934",
+  "name": "Woman",
   "role": "Town Board Member",
   "place": "Princeville, North Carolina",
   "lat": 35.888,
@@ -1436,7 +1465,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2003
+  "year": 2003,
+  "born": 1934
  },
  {
   "id": "PRV_se0_ag3_f_03_1_2000",
@@ -1445,7 +1475,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1934",
+  "name": "Woman",
   "role": "Town Board Member",
   "place": "Princeville, North Carolina",
   "lat": 35.888,
@@ -1455,7 +1485,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2003
+  "year": 2003,
+  "born": 1934
  },
  {
   "id": "H6VO9JpbLss",
@@ -1527,7 +1558,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Administrative Mentor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1537,7 +1568,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1984
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2113",
@@ -1546,7 +1578,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Administrative Mentor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1556,7 +1588,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1984
  },
  {
   "id": "ROC_se0_ag2_f_02_1_1265",
@@ -1565,7 +1598,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1984",
+  "name": "Woman",
   "role": "Administrative Mentor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1575,7 +1608,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1984
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2500",
@@ -1584,7 +1618,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1977",
+  "name": "Woman",
   "role": "Manager; Implementation Services",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1594,7 +1628,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1977
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2635",
@@ -1603,7 +1638,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1977",
+  "name": "Woman",
   "role": "Manager; Implementation Services",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1613,7 +1648,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1977
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2063",
@@ -1622,7 +1658,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1977",
+  "name": "Woman",
   "role": "Manager; Implementation Services",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1632,7 +1668,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1977
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2460",
@@ -1641,7 +1678,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1973",
+  "name": "Woman",
   "role": "English Professor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1651,7 +1688,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1973
  },
  {
   "id": "ROC_se0_ag2_f_04_1_686",
@@ -1660,7 +1698,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1973",
+  "name": "Woman",
   "role": "English Professor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1670,7 +1708,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1973
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2257",
@@ -1679,7 +1718,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1973",
+  "name": "Woman",
   "role": "English Professor",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1689,7 +1728,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2016
+  "year": 2016,
+  "born": 1973
  },
  {
   "id": "ROC_se0_ag3_f_02_1_3279",
@@ -1698,7 +1738,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1708,7 +1748,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2438",
@@ -1717,7 +1758,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1727,7 +1768,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2029",
@@ -1736,7 +1778,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1746,7 +1788,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_2_198",
@@ -1755,7 +1798,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1765,7 +1808,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_2_168",
@@ -1774,7 +1818,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1784,7 +1828,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_3_1368",
@@ -1793,7 +1838,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1803,7 +1848,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_3_71",
@@ -1812,7 +1858,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1822,7 +1868,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "ROC_se0_ag3_f_02_3_2009",
@@ -1831,7 +1878,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1937",
+  "name": "Woman",
   "role": "Retired",
   "place": "Rochester, New York",
   "lat": 43.157,
@@ -1841,7 +1888,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1937
  },
  {
   "id": "VLD_se0_ag2_f_01_1_1289",
@@ -1850,7 +1898,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1990",
+  "name": "Woman",
   "role": "Caregiver/Youth Minster",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1860,7 +1908,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1990
  },
  {
   "id": "VLD_se0_ag2_f_01_1_578",
@@ -1869,7 +1918,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1990",
+  "name": "Woman",
   "role": "Caregiver/Youth Minster",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1879,7 +1928,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1990
  },
  {
   "id": "VLD_se0_ag2_f_01_1_801",
@@ -1888,7 +1938,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1990",
+  "name": "Woman",
   "role": "Caregiver/Youth Minster",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1898,7 +1948,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1990
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2844",
@@ -1907,7 +1958,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1997",
+  "name": "Man",
   "role": "Mechanic/Stocker at WalMart",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1917,7 +1968,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1997
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2478",
@@ -1926,7 +1978,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1997",
+  "name": "Man",
   "role": "Mechanic/Stocker at WalMart",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1936,7 +1988,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1997
  },
  {
   "id": "VLD_se0_ag2_m_01_1_3161",
@@ -1945,7 +1998,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1997",
+  "name": "Man",
   "role": "Mechanic/Stocker at WalMart",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1955,7 +2008,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1997
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2671",
@@ -1964,7 +2018,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1969",
+  "name": "Woman",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1974,7 +2028,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1969
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2419",
@@ -1983,7 +2038,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1969",
+  "name": "Woman",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -1993,7 +2048,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1969
  },
  {
   "id": "VLD_se0_ag3_f_01_1_1957",
@@ -2002,7 +2058,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1969",
+  "name": "Woman",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2012,7 +2068,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1969
  },
  {
   "id": "VLD_se0_ag3_f_01_2_52",
@@ -2021,7 +2078,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1969",
+  "name": "Woman",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2031,7 +2088,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1969
  },
  {
   "id": "VLD_se0_ag3_f_02_1_2302",
@@ -2040,7 +2098,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1983",
+  "name": "Woman",
   "role": "HR Technology (Senior Executive)",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2050,7 +2108,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1983
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1604",
@@ -2059,7 +2118,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1983",
+  "name": "Woman",
   "role": "HR Technology (Senior Executive)",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2069,7 +2128,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1983
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1671",
@@ -2078,7 +2138,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1983",
+  "name": "Woman",
   "role": "HR Technology (Senior Executive)",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2088,7 +2148,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1983
  },
  {
   "id": "VLD_se0_ag3_m_02_1_2553",
@@ -2097,7 +2158,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1982",
+  "name": "Man",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2107,7 +2168,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1982
  },
  {
   "id": "VLD_se0_ag3_m_02_1_797",
@@ -2116,7 +2178,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1982",
+  "name": "Man",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2126,7 +2188,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1982
  },
  {
   "id": "VLD_se0_ag3_m_02_1_747",
@@ -2135,7 +2198,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1982",
+  "name": "Man",
   "role": "Educator",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2145,7 +2208,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1982
  },
  {
   "id": "VLD_se0_ag3_m_03_1_503",
@@ -2154,7 +2218,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1986",
+  "name": "Man",
   "role": "Manager at Fast Food Restaurant",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2164,7 +2228,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1986
  },
  {
   "id": "VLD_se0_ag3_m_03_1_2121",
@@ -2173,7 +2238,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1986",
+  "name": "Man",
   "role": "Manager at Fast Food Restaurant",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2183,7 +2248,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1986
  },
  {
   "id": "VLD_se0_ag3_m_03_1_1832",
@@ -2192,7 +2258,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1986",
+  "name": "Man",
   "role": "Manager at Fast Food Restaurant",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2202,7 +2268,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2018
+  "year": 2018,
+  "born": 1986
  },
  {
   "id": "VLD_se0_ag4_f_01_1_1034",
@@ -2211,7 +2278,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1959",
+  "name": "Woman",
   "role": "Case Worker",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2221,7 +2288,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1959
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2094",
@@ -2230,7 +2298,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1959",
+  "name": "Woman",
   "role": "Case Worker",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2240,7 +2308,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1959
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2398",
@@ -2249,7 +2318,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1959",
+  "name": "Woman",
   "role": "Case Worker",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2259,7 +2328,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2017
+  "year": 2017,
+  "born": 1959
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1284",
@@ -2268,7 +2338,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1936",
+  "name": "Woman",
   "role": "Hair Dresser",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2278,7 +2348,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1936
  },
  {
   "id": "VLD_se0_ag4_f_02_1_2634",
@@ -2287,7 +2358,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1936",
+  "name": "Woman",
   "role": "Hair Dresser",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2297,7 +2368,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1936
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1909",
@@ -2306,7 +2378,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1936",
+  "name": "Woman",
   "role": "Hair Dresser",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2316,7 +2388,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1936
  },
  {
   "id": "VLD_se0_ag4_m_01_1_982",
@@ -2325,7 +2398,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1957",
+  "name": "Man",
   "role": "Supervisor at Shipping Company",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2335,7 +2408,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1957
  },
  {
   "id": "VLD_se0_ag4_m_01_1_867",
@@ -2344,7 +2418,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1957",
+  "name": "Man",
   "role": "Supervisor at Shipping Company",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2354,7 +2428,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1957
  },
  {
   "id": "VLD_se0_ag4_m_01_1_1869",
@@ -2363,7 +2438,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1957",
+  "name": "Man",
   "role": "Supervisor at Shipping Company",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2373,7 +2448,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1957
  },
  {
   "id": "VLD_se0_ag4_m_02_1_2042",
@@ -2382,7 +2458,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1961",
+  "name": "Man",
   "role": "Disabled/Plumber",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2392,7 +2468,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1961
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1804",
@@ -2401,7 +2478,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1961",
+  "name": "Man",
   "role": "Disabled/Plumber",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2411,7 +2488,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1961
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1873",
@@ -2420,7 +2498,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1961",
+  "name": "Man",
   "role": "Disabled/Plumber",
   "place": "Valdosta, Georgia",
   "lat": 30.833,
@@ -2430,7 +2508,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 2019
+  "year": 2019,
+  "born": 1961
  },
  {
   "id": "DCA_se1_ag1_m_04_1_715",
@@ -2439,7 +2518,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1956",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2449,7 +2528,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1956
  },
  {
   "id": "DCA_se1_ag1_m_04_1_1615",
@@ -2458,7 +2538,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1956",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2468,7 +2548,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1956
  },
  {
   "id": "DCA_se1_ag1_m_05_1_706",
@@ -2477,7 +2558,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1956",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2487,7 +2568,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1956
  },
  {
   "id": "DCA_se1_ag1_m_05_1_227",
@@ -2496,7 +2578,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1956",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2506,7 +2588,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1956
  },
  {
   "id": "DCA_se1_ag1_m_06_1_61",
@@ -2515,7 +2598,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1955",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2525,7 +2608,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1955
  },
  {
   "id": "DCA_se2_ag1_f_01_1_456",
@@ -2534,7 +2618,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1958",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2544,7 +2628,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1958
  },
  {
   "id": "DCA_se2_ag1_f_01_1_154",
@@ -2553,7 +2638,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1958",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2563,7 +2648,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1958
  },
  {
   "id": "DCA_se2_ag1_f_02_1_368",
@@ -2572,7 +2658,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1957",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2582,7 +2668,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1957
  },
  {
   "id": "DCA_se2_ag1_f_02_1_277",
@@ -2591,7 +2678,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Woman, born 1957",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2601,7 +2688,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1957
  },
  {
   "id": "DCA_se2_ag1_f_02_1_1516",
@@ -2610,7 +2698,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1957",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2620,7 +2708,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1957
  },
  {
   "id": "DCA_se2_ag1_f_04_1_403",
@@ -2629,7 +2718,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Woman, born 1956",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2639,7 +2728,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1956
  },
  {
   "id": "DCA_se2_ag1_f_04_1_1195",
@@ -2648,7 +2738,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1956",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2658,7 +2748,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1956
  },
  {
   "id": "DCA_se2_ag1_f_05_1_704",
@@ -2667,7 +2758,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1954",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2677,7 +2768,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1954
  },
  {
   "id": "DCA_se2_ag1_f_07_1_70",
@@ -2686,7 +2778,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1951",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2696,7 +2788,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1951
  },
  {
   "id": "DCA_se2_ag1_m_01_1_940",
@@ -2705,7 +2798,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2715,7 +2808,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_01_1_472",
@@ -2724,7 +2818,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2734,7 +2828,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_01_1_1741",
@@ -2743,7 +2838,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2753,7 +2848,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_02_1_2269",
@@ -2762,7 +2858,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2772,7 +2868,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1897",
@@ -2781,7 +2878,7 @@ window.CLIPS = [
   "tier": 2,
   "start": 0.3,
   "end": 30.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2791,7 +2888,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1786",
@@ -2800,7 +2898,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1952",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2810,7 +2908,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1952
  },
  {
   "id": "DCA_se2_ag1_m_03_1_774",
@@ -2819,7 +2918,7 @@ window.CLIPS = [
   "tier": 1,
   "start": 0.3,
   "end": 40.3,
-  "name": "Man, born 1951",
+  "name": "Man",
   "role": "Store Clerk",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2829,7 +2928,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1951
  },
  {
   "id": "DCA_se2_ag1_m_03_1_1490",
@@ -2838,7 +2938,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1951",
+  "name": "Man",
   "role": "Store Clerk",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2848,7 +2948,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1969
+  "year": 1969,
+  "born": 1951
  },
  {
   "id": "DCA_se2_ag1_m_04_1_670",
@@ -2857,7 +2958,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Man, born 1950",
+  "name": "Man",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2867,7 +2968,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1950
  },
  {
   "id": "DCA_se3_ag1_f_01_1_612",
@@ -2876,7 +2978,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1958",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2886,7 +2988,8 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1958
  },
  {
   "id": "DCA_se3_ag1_f_02_1_51",
@@ -2895,7 +2998,7 @@ window.CLIPS = [
   "tier": 3,
   "start": 0.3,
   "end": 20.3,
-  "name": "Woman, born 1957",
+  "name": "Woman",
   "role": "Student",
   "place": "Washington, DC",
   "lat": 38.907,
@@ -2905,6 +3008,7 @@ window.CLIPS = [
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "year": 1968
+  "year": 1968,
+  "born": 1957
  }
 ];
