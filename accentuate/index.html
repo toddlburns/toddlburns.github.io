@@ -163,7 +163,6 @@ a{color:inherit}
     </div>
     <div class="mapbox">
       <div id="map"></div>
-      <div class="jump"><button data-jump="48">Lower 48</button><button data-jump="ak">Alaska</button><button data-jump="hi">Hawaiʻi</button></div>
     </div>
     <div class="guessbar" id="guessbar">
       <span class="hint" id="hint">Click the map to drop your pin.</span>
@@ -256,7 +255,7 @@ if (!CURATE) requestAnimationFrame(frame);
 
 /* ---------- Map ---------- */
 let map, tiles, guessMarker, answerMarker, line;
-const VIEWS = { '48': [[24.5, -125], [49.5, -66.5]], ak: [[51, -170], [71.5, -130]], hi: [[18.8, -160.5], [22.4, -154.7]] };
+const VIEWS = { '48': [[24.5, -125], [49.5, -66.5]] };
 const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
 function tileUrl() {
   const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
@@ -265,7 +264,8 @@ function tileUrl() {
           `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${k}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`];
 }
 function initMap() {
-  map = L.map('map', { worldCopyJump: false, minZoom: 2, zoomSnap: 0.25 }).fitBounds(VIEWS['48']);
+  map = L.map('map', { worldCopyJump: false, zoomSnap: 0.25, maxBounds: [[20, -132], [53, -60]], maxBoundsViscosity: 1 }).fitBounds(VIEWS['48']);
+  map.setMinZoom(map.getZoom());
   const [base, ref] = tileUrl(), opt = { attribution: 'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors', maxZoom: 12 };
   tiles = [L.tileLayer(base, opt).addTo(map), L.tileLayer(ref, { maxZoom: 12 }).addTo(map)];
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { const u = tileUrl(); tiles[0].setUrl(u[0]); tiles[1].setUrl(u[1]); });
@@ -274,7 +274,6 @@ function initMap() {
     if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
     $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin or lock it in.';
   });
-  document.querySelectorAll('[data-jump]').forEach(b => b.onclick = () => map.fitBounds(VIEWS[b.dataset.jump]));
 }
 
 /* ---------- Game ---------- */
