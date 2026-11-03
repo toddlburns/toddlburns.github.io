@@ -87,6 +87,7 @@ a{color:inherit}
 .meter i{display:block;height:100%;background:var(--answer);width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
 .who{font:750 22px/1.15 var(--font);margin:0}
 .role{color:var(--muted);margin:2px 0}
+.when{font-size:13px;color:var(--muted);margin:0 0 2px}
 .place{font-weight:650;color:var(--answer);margin:0 0 12px}
 .note{margin:0 0 14px;font-size:15px}
 .words{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
@@ -180,6 +181,7 @@ a{color:inherit}
       <div class="meter"><i id="rMeter"></i></div>
       <p class="who" id="rWho"></p>
       <p class="role" id="rRole"></p>
+      <p class="when" id="rWhen"></p>
       <p class="place" id="rPlace"></p>
       <p class="note" id="rNote"></p>
       <div class="words" id="rWords"></div>
@@ -420,7 +422,9 @@ function guess() {
   $('rPts').textContent = '+' + p.toLocaleString();
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
-  $('rWho').textContent = c.name; $('rRole').textContent = c.role; $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
+  $('rWho').textContent = c.name; $('rRole').textContent = c.role;
+  // YouTube gives only the upload year, so say so; archives give the real recording year.
+  $('rWhen').textContent = [c.year && (c.audio ? 'Recorded ' : 'Video posted ') + c.year, c.born && 'born ' + c.born, c.age && 'age ' + c.age].filter(Boolean).join(' · '); $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
   $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
   $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => {
     const at = c.start + +b.dataset.t;

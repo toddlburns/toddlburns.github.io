@@ -43,6 +43,25 @@ window.CANDIDATES = [
 "lng": -79.8287
 },
 {
+"id": "6QqeLpcVXAY",
+"region": "st_louis",
+"label": "St Louis",
+"tier": 3,
+"start": 57,
+"end": 77,
+"words": [],
+"title": "The Accent Tag || St Louis, Missouri vs Southern Missouri Accent",
+"channel": "Show Me an Adventure",
+"other": 0.11,
+"person": "Local speaker (Show Me an Adventure)",
+"role": "Featured in \"The Accent Tag || St Louis, Missouri vs Southern Missouri Accent\"",
+"hometown": "St. Louis, Missouri",
+"evidence": "Found by searching YouTube for \"south St. Louis accent\"",
+"source": "https://youtu.be/6QqeLpcVXAY",
+"lat": 38.627,
+"lng": -90.199
+},
+{
 "id": "V00HoA9GLws",
 "region": "iron_range",
 "label": "Iron Range",
@@ -344,6 +363,25 @@ window.CANDIDATES = [
 "lng": -94.2317
 },
 {
+"id": "T68dGWVDhM4",
+"region": "harkers_island",
+"label": "Harkers Island",
+"tier": 3,
+"start": 224,
+"end": 244,
+"words": [],
+"title": "Interview with Professor Walt Wolfram",
+"channel": "bpompeii1",
+"other": 0.49,
+"person": "Local speaker (bpompeii1)",
+"role": "Featured in \"Interview with Professor Walt Wolfram\"",
+"hometown": "Harkers Island, North Carolina",
+"evidence": "Found by searching YouTube for \"Harkers Island interview brogue\"",
+"source": "https://youtu.be/T68dGWVDhM4",
+"lat": 34.69,
+"lng": -76.56
+},
+{
 "id": "english568",
 "audio": "audio/saa/english568.mp3",
 "region": "st_fl",
@@ -384,6 +422,42 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 37.1949,
 "lng": -86.2653
+},
+{
+"id": "dZy6ClCnQyM",
+"region": "baltimore",
+"label": "Baltimore",
+"tier": 2,
+"start": 250,
+"end": 280,
+"words": [
+[
+"so",
+0.1
+],
+[
+"going",
+7.8
+],
+[
+"about",
+20.8
+],
+[
+"down",
+28.3
+]
+],
+"title": "Interview with Joni Rampolla, Health Spokesperson for Baltimore Expo 2014",
+"channel": "SuccessintheCityTV",
+"other": 0.44,
+"person": "Local speaker (SuccessintheCityTV)",
+"role": "Featured in \"Interview with Joni Rampolla, Health Spokesperson for Baltimore Expo 2014\"",
+"hometown": "Baltimore, Maryland",
+"evidence": "Found by searching YouTube for \"Bawlmer accent interview\"",
+"source": "https://youtu.be/dZy6ClCnQyM",
+"lat": 39.29,
+"lng": -76.61
 },
 {
 "id": "english455",
@@ -754,6 +828,25 @@ window.CANDIDATES = [
 "lng": -96.0555
 },
 {
+"id": "-kfOSFn5sU0",
+"region": "montana",
+"label": "Montana",
+"tier": 3,
+"start": 613,
+"end": 633,
+"words": [],
+"title": "Interview With Brendan O'Connor and Aaron Flint",
+"channel": "USSJoin",
+"other": 0.47,
+"person": "Local speaker (USSJoin)",
+"role": "Featured in \"Interview With Brendan O'Connor and Aaron Flint\"",
+"hometown": "Montana ranch country",
+"evidence": "Found by searching YouTube for \"Montana old timer interview\"",
+"source": "https://youtu.be/-kfOSFn5sU0",
+"lat": 46.88,
+"lng": -110.36
+},
+{
 "id": "english329",
 "audio": "audio/saa/english329.mp3",
 "region": "st_id",
@@ -882,6 +975,44 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 45.211,
 "lng": -123.1918
+},
+{
+"id": "KjKU7g41EgE",
+"region": "north_dakota",
+"label": "North Dakota",
+"tier": 3,
+"start": 22,
+"end": 42,
+"words": [],
+"title": "Farmer Interview: Black Leg Ranch, Sterling, North Dakota",
+"channel": "TheUSDANRCS",
+"other": 0.16,
+"person": "Local speaker (TheUSDANRCS)",
+"role": "Featured in \"Farmer Interview: Black Leg Ranch, Sterling, North Dakota\"",
+"hometown": "Rural North Dakota",
+"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
+"source": "https://youtu.be/KjKU7g41EgE",
+"lat": 47.55,
+"lng": -99.78
+},
+{
+"id": "lBvqb7U5lwk",
+"region": "pnw_timber",
+"label": "Pnw Timber",
+"tier": 3,
+"start": 498,
+"end": 518,
+"words": [],
+"title": "Logger interview #29 Ben Baker \"They threw me the Keys and said here ya go \"",
+"channel": "Daniel Boone's Logging videos",
+"other": 0.21,
+"person": "Local speaker (Daniel Boone's Logging videos)",
+"role": "Featured in \"Logger interview #29 Ben Baker \"They threw me the Keys and said here ya go \"\"",
+"hometown": "Oregon timber country",
+"evidence": "Found by searching YouTube for \"Oregon logger interview\"",
+"source": "https://youtu.be/lBvqb7U5lwk",
+"lat": 43.8,
+"lng": -123.0
 },
 {
 "id": "english7",
@@ -1027,6 +1158,30 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 41.2627,
 "lng": -96.0535
+},
+{
+"id": "92R7WGCDPD4",
+"region": "utah",
+"label": "Utah",
+"tier": 3,
+"start": 42,
+"end": 62,
+"words": [
+[
+"deal",
+8.3
+]
+],
+"title": "Utah Department of Agriculture and Food Commissioner Interview",
+"channel": "ABC4 Utah",
+"other": 0.29,
+"person": "Local speaker (ABC4 Utah)",
+"role": "Featured in \"Utah Department of Agriculture and Food Commissioner Interview\"",
+"hometown": "Rural Utah",
+"evidence": "Found by searching YouTube for \"rural Utah rancher interview\"",
+"source": "https://youtu.be/92R7WGCDPD4",
+"lat": 39.32,
+"lng": -111.09
 },
 {
 "id": "i6CylkCA46s",
@@ -1208,6 +1363,25 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 32.3264,
 "lng": -106.7897
+},
+{
+"id": "2C92nzxzLy0",
+"region": "pa_dutch",
+"label": "Pa Dutch",
+"tier": 3,
+"start": 65,
+"end": 85,
+"words": [],
+"title": "Your PA Dutch Minute: Our Accent and our Identity",
+"channel": "Douglas Madenford",
+"other": 0.13,
+"person": "Local speaker (Douglas Madenford)",
+"role": "Featured in \"Your PA Dutch Minute: Our Accent and our Identity\"",
+"hometown": "Lancaster County, Pennsylvania",
+"evidence": "Found by searching YouTube for \"Pennsylvania Dutch accent interview\"",
+"source": "https://youtu.be/2C92nzxzLy0",
+"lat": 40.04,
+"lng": -76.31
 },
 {
 "id": "tHfGI2k_H7M",
@@ -1753,6 +1927,25 @@ window.CANDIDATES = [
 "lng": -91.5309
 },
 {
+"id": "fChBgb3t8vM",
+"region": "harkers_island",
+"label": "Harkers Island",
+"tier": 3,
+"start": 260,
+"end": 280,
+"words": [],
+"title": "Outer Banks Voice Interview with Jeff Finch",
+"channel": "obxvoice",
+"other": 0.36,
+"person": "Local speaker (obxvoice)",
+"role": "Featured in \"Outer Banks Voice Interview with Jeff Finch\"",
+"hometown": "Harkers Island, North Carolina",
+"evidence": "Found by searching YouTube for \"Harkers Island interview brogue\"",
+"source": "https://youtu.be/fChBgb3t8vM",
+"lat": 34.69,
+"lng": -76.56
+},
+{
 "id": "english391",
 "audio": "audio/saa/english391.mp3",
 "region": "st_fl",
@@ -2220,6 +2413,44 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 45.537,
 "lng": -122.65
+},
+{
+"id": "O-uQfm5Hqm4",
+"region": "north_dakota",
+"label": "North Dakota",
+"tier": 3,
+"start": 577,
+"end": 597,
+"words": [],
+"title": "Full Interview: Regenerative Agriculture with Christi Kuhlka | North Dakota Producer",
+"channel": "Dakota Legacy Initiative",
+"other": 0.4,
+"person": "Local speaker (Dakota Legacy Initiative)",
+"role": "Featured in \"Full Interview: Regenerative Agriculture with Christi Kuhlka | North Dakota Prod\"",
+"hometown": "Rural North Dakota",
+"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
+"source": "https://youtu.be/O-uQfm5Hqm4",
+"lat": 47.55,
+"lng": -99.78
+},
+{
+"id": "eNnSxCBWfvg",
+"region": "pnw_timber",
+"label": "Pnw Timber",
+"tier": 3,
+"start": 210,
+"end": 230,
+"words": [],
+"title": "LOGGER INTERVIEW #42 MARK \"LOUIE'' LABON . \"I DID 40 LOADS A DAY WITH THE 235C\"",
+"channel": "Daniel Boone's Logging videos",
+"other": 0.37,
+"person": "Local speaker (Daniel Boone's Logging videos)",
+"role": "Featured in \"LOGGER INTERVIEW #42 MARK \"LOUIE'' LABON . \"I DID 40 LOADS A DAY WITH THE 235C\"\"",
+"hometown": "Oregon timber country",
+"evidence": "Found by searching YouTube for \"Oregon logger interview\"",
+"source": "https://youtu.be/eNnSxCBWfvg",
+"lat": 43.8,
+"lng": -123.0
 },
 {
 "id": "english170",
@@ -3313,6 +3544,25 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 45.537,
 "lng": -122.65
+},
+{
+"id": "6cZCQN91VUs",
+"region": "north_dakota",
+"label": "North Dakota",
+"tier": 3,
+"start": 729,
+"end": 749,
+"words": [],
+"title": "Full Interview: Regenerative Agriculture with Chris Walberg | North Dakota Producer",
+"channel": "Dakota Legacy Initiative",
+"other": 0.14,
+"person": "Local speaker (Dakota Legacy Initiative)",
+"role": "Featured in \"Full Interview: Regenerative Agriculture with Chris Walberg | North Dakota Produ\"",
+"hometown": "Rural North Dakota",
+"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
+"source": "https://youtu.be/6cZCQN91VUs",
+"lat": 47.55,
+"lng": -99.78
 },
 {
 "id": "english169",
