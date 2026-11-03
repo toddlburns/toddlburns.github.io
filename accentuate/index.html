@@ -169,7 +169,7 @@ a{color:inherit}
     <ul class="rules">
       <li>5 voices, up to 5,000 points each</li>
       <li>Easy first, harder as you go</li>
-      <li>Replay as often as you like</li>
+      <li>Replay as often as you like, or guess before the first listen ends for a bonus</li>
     </ul>
     <button id="startBtn">Start listening</button>
     <p class="credits">Some recordings come from <a href="https://oraal.github.io/coraal" target="_blank" rel="noopener">CORAAL</a> and the <a href="https://accent.gmu.edu" target="_blank" rel="noopener">Speech Accent Archive</a>, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>; our trimmed clips carry the same <a href="audio/LICENSE.txt">license</a>.</p>
@@ -190,6 +190,7 @@ a{color:inherit}
       <div class="dist" id="rDist"></div>
       <div class="meter"><i id="rMeter"></i></div>
       <p class="agebonus" id="rAge"></p>
+      <p class="agebonus" id="rFast"></p>
       <p class="who" id="rWho"></p>
       <p class="role" id="rRole"></p>
       <p class="when" id="rWhen"></p>
@@ -264,6 +265,8 @@ window.onYouTubeIframeAPIReady = () => {
       onReady: () => { playerReady = true; if (CURATE && !REVIEW) selectClip(0); },
       onStateChange: e => {
         playing = e.data === YT.PlayerState.PLAYING;
+        const c = state.picks?.[state.round];
+        if (!CURATE && c && !c.audio && (e.data === YT.PlayerState.ENDED || (e.data === YT.PlayerState.PAUSED && player.getCurrentTime() >= c.end - 0.6))) clipDone();
         if (!CURATE) setPlayUI();
       }
     }
@@ -274,7 +277,7 @@ const tag = document.createElement('script'); tag.src = 'https://www.youtube.com
 /* ---------- Sound: our own audio files (archive clips) or YouTube ---------- */
 const au = new Audio(); au.preload = 'auto';
 let actx, analyser, freq, auEnd = 0, auOn = false;
-au.addEventListener('timeupdate', () => { if (au.currentTime >= auEnd) au.pause(); });
+au.addEventListener('timeupdate', () => { if (au.currentTime >= auEnd) { au.pause(); if (!CURATE && !state.revealed) clipDone(); } });
 ['play', 'pause', 'ended'].forEach(ev => au.addEventListener(ev, () => { auOn = !au.paused; playing = auOn; if (!CURATE) setPlayUI(); }));
 function hookAnalyser() {
   if (actx) { actx.resume(); return; }
@@ -356,7 +359,7 @@ function initMap() {
   map.on('click', e => {
     if (state.revealed || $('stage').hidden) return;
     if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
-    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin, or press Guess';
+    $('guessBtn').disabled = false; $('hint').textContent = state.heard && !state.fullListen ? `Press Guess before it ends for +${FAST}` : 'Move your pin, or press Guess';
   });
 }
 // Keep the floating cards from covering what matters on the map.
@@ -381,6 +384,9 @@ $('reveal').addEventListener('scroll', placeVideo);
 const LADDER = [1, 1, 2, 3, 3], TIER_NAME = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
 const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
 // Age bonus: only where the age is on record (archives) or close to it (birth year + video year).
+// First-listen bonus: lock in before the clip has played all the way through once. Pausing is fine; replays are free but end the bonus.
+const FAST = 500;
+function clipDone() { if (state.heard && !state.fullListen) { state.fullListen = true; if (!state.revealed) $('hint').textContent = guessMarker ? 'Move your pin, or press Guess' : 'Tap the map to drop your pin'; } }
 const ageOf = c => c.age || (c.year && c.born ? c.year - c.born : null);
 const bracket = a => a < 20 ? 0 : a >= 70 ? 6 : Math.floor(a / 10) - 1;
 const BR = ['under 20', 'in their 20s', 'in their 30s', 'in their 40s', 'in their 50s', 'in their 60s', '70 or older'];
@@ -412,7 +418,7 @@ function newGame() {
   startRound();
 }
 function startRound() {
-  state.revealed = false; state.heard = false; state.age = null;
+  state.revealed = false; state.heard = false; state.age = null; state.fullListen = false;
   const c = state.picks[state.round];
   document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
   $('ages').hidden = ageOf(c) == null;
@@ -433,7 +439,7 @@ function playClip() {
 function setPlayUI() {
   $('playIcon').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
   $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play clip');
-  if (playing) state.heard = true;
+  if (playing && !state.heard) { state.heard = true; if (!guessMarker) $('hint').textContent = `Guess before it ends for +${FAST}`; }
   if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : state.heard ? 'Play again' : 'Press play to listen';
 }
 function guess() {
@@ -441,12 +447,14 @@ function guess() {
   state.revealed = true;
   const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
   const ab = ageBonus(c, state.age), a = ageOf(c);
-  state.score += p + ab; state.results.push({ c, mi, p, ab, g: [g.lat, g.lng] });
+  const fb = state.heard && !state.fullListen ? FAST : 0;
+  state.score += p + ab + fb; state.results.push({ c, mi, p, ab, fb, g: [g.lat, g.lng] });
   $('rAge').innerHTML = a == null ? '' : state.age == null ? `They were ${a}.` : ab ? `<b>+${ab.toLocaleString()} age bonus.</b> They were ${a}.` : `They were ${a}; you said ${BR[state.age]}.`;
   answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
-  $('rPts').textContent = '+' + (p + ab).toLocaleString();
+  $('rPts').textContent = '+' + (p + ab + fb).toLocaleString();
+  $('rFast').innerHTML = fb ? `<b>+${fb} first-listen bonus.</b> You called it before the clip ended.` : '';
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
   $('rWho').textContent = c.name; $('rRole').textContent = c.role;
@@ -478,11 +486,11 @@ function next() {
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
-  const max = 25000 + 1000 * state.results.filter(r => ageOf(r.c) != null).length;
+  const max = 25000 + FAST * 5 + 1000 * state.results.filter(r => ageOf(r.c) != null).length;
   $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ ${max.toLocaleString()}</small>`;
   const s = state.score;
   $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
-  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0)).toLocaleString()}${r.ab ? `<br><small class="m">incl. +${r.ab} age</small>` : ''}</span></li>`).join('');
+  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0) + (r.fb || 0)).toLocaleString()}${r.ab || r.fb ? `<br><small class="m">incl. ${[r.ab && `+${r.ab} age`, r.fb && `+${r.fb} quick`].filter(Boolean).join(', ')}</small>` : ''}</span></li>`).join('');
 }
 function copyResult() {
   const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
