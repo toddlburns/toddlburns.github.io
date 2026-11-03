@@ -355,5 +355,231 @@ window.CLIPS = [
     22.6
    ]
   ]
+ },
+ {
+  "id": "PJSron8VRaA",
+  "region": "boston",
+  "tier": 3,
+  "start": 92,
+  "end": 112,
+  "name": "Joseph Curtatone",
+  "role": "Mayor of Somerville, MA (2004-2022)",
+  "place": "Somerville, Massachusetts",
+  "lat": 42.3876,
+  "lng": -71.0995,
+  "note": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad.",
+  "verified": true,
+  "words": []
+ },
+ {
+  "id": "mSpTwzm9HxI",
+  "region": "rhode_island",
+  "tier": 3,
+  "start": 46,
+  "end": 66,
+  "name": "Arlene Violet",
+  "role": "Former RI attorney general; talk-radio host",
+  "place": "South Providence, Rhode Island",
+  "lat": 41.805,
+  "lng": -71.413,
+  "note": "Rhode Island English: non-rhotic like Boston, but with a rounder, more nasal \"aw.\" Listen for r-less endings on \"-er\" words.",
+  "verified": true,
+  "words": []
+ },
+ {
+  "id": "lt_3zOIYquI",
+  "region": "rhode_island",
+  "tier": 3,
+  "start": 133,
+  "end": 153,
+  "name": "Buddy Cianci",
+  "role": "Mayor of Providence; radio host",
+  "place": "Providence, Rhode Island",
+  "lat": 41.824,
+  "lng": -71.4128,
+  "note": "Old Providence English. \"Here\" comes out \"hee-ah,\" with the r gone and an extra syllable in its place.",
+  "verified": true,
+  "words": [
+   [
+    "here",
+    3.2
+   ]
+  ]
+ },
+ {
+  "id": "cwr8j3x0a7Y",
+  "region": "chicago",
+  "tier": 3,
+  "start": 132,
+  "end": 152,
+  "name": "Robert Rita",
+  "role": "Illinois state representative",
+  "place": "Blue Island, Illinois",
+  "lat": 41.6573,
+  "lng": -87.68,
+  "note": "Inland North (Chicago) English. The short a in \"that\" and \"last\" rises and tightens toward \"eh-a,\" part of the Northern Cities Vowel Shift.",
+  "verified": true,
+  "words": [
+   [
+    "that",
+    1.0
+   ],
+   [
+    "last",
+    11.3
+   ]
+  ]
+ },
+ {
+  "id": "M_SxvWocfj8",
+  "region": "appalachia",
+  "tier": 2,
+  "start": 214,
+  "end": 244,
+  "name": "Brandon Robinson",
+  "role": "WYMT-TV Hazard, KY chief forecaster",
+  "place": "Hazard, Kentucky",
+  "lat": 37.2493,
+  "lng": -83.1932,
+  "note": "Appalachian English. The \"i\" glide flattens, so \"right\" and \"Friday\" become \"raht\" and \"Frahday,\" and \"then\" rhymes with \"tin.\"",
+  "verified": true,
+  "words": [
+   [
+    "right",
+    19.0
+   ],
+   [
+    "i",
+    20.0
+   ],
+   [
+    "friday",
+    24.2
+   ],
+   [
+    "then",
+    29.1
+   ]
+  ]
+ },
+ {
+  "id": "u23K6NzqWHE",
+  "region": "appalachia",
+  "tier": 3,
+  "start": 95,
+  "end": 115,
+  "name": "Brandon Robinson",
+  "role": "WYMT-TV Hazard, KY chief forecaster",
+  "place": "Hazard, Kentucky",
+  "lat": 37.2493,
+  "lng": -83.1932,
+  "note": "Appalachian English. Listen for flat \"ah\" in \"right,\" \"I\" and \"Friday,\" and for \"when\" sounding like \"win.\"",
+  "verified": true,
+  "words": [
+   [
+    "right",
+    11.6
+   ],
+   [
+    "i",
+    16.3
+   ],
+   [
+    "friday",
+    18.0
+   ],
+   [
+    "when",
+    19.6
+   ]
+  ]
+ },
+ {
+  "id": "CoWpmUcZilk",
+  "region": "appalachia",
+  "tier": 3,
+  "start": 747,
+  "end": 767,
+  "name": "Silas House",
+  "role": "Author; Kentucky Poet Laureate",
+  "place": "Lily, Kentucky",
+  "lat": 37.0081,
+  "lng": -84.0599,
+  "note": "Eastern Kentucky English. The long i is a single flat vowel: \"I,\" \"like\" and \"while\" come out \"ah,\" \"lahk,\" \"whahl.\"",
+  "verified": true,
+  "words": [
+   [
+    "i",
+    1.4
+   ],
+   [
+    "like",
+    3.2
+   ],
+   [
+    "while",
+    8.0
+   ]
+  ]
+ },
+ {
+  "id": "pAQ60hlA4YM",
+  "region": "deep_south",
+  "tier": 3,
+  "start": 1261,
+  "end": 1281,
+  "name": "Jean Toal",
+  "role": "Chief Justice, South Carolina Supreme Court",
+  "place": "Columbia, South Carolina",
+  "lat": 34.0007,
+  "lng": -81.0348,
+  "note": "Old South Carolina Midlands speech. \"When\" merges with \"win\" (the pin/pen merger), and \"I'm\" flattens to \"Ahm.\"",
+  "verified": true,
+  "words": [
+   [
+    "when",
+    0.4
+   ],
+   [
+    "i'm",
+    2.5
+   ]
+  ]
+ },
+ {
+  "id": "_F14ErvmCLQ",
+  "region": "ocracoke",
+  "tier": 2,
+  "start": 45,
+  "end": 75,
+  "name": "Rex O'Neal",
+  "role": "Ocracoke fisherman",
+  "place": "Ocracoke, North Carolina",
+  "lat": 35.1146,
+  "lng": -75.981,
+  "note": "The Outer Banks \"hoi toider\" brogue. The long i rounds toward \"oi\": listen to \"I,\" \"right,\" \"my,\" \"time\" and \"night.\"",
+  "verified": true,
+  "words": [
+   [
+    "i",
+    0.6
+   ],
+   [
+    "right",
+    1.7
+   ],
+   [
+    "my",
+    5.0
+   ],
+   [
+    "time",
+    6.2
+   ],
+   [
+    "night",
+    14.4
+   ]
+  ]
  }
 ];
