@@ -65,6 +65,45 @@ window.CANDIDATES = [
 "source": "https://en.wikipedia.org/wiki/Boston_accent"
 },
 {
+"id": "PJSron8VRaA",
+"region": "boston",
+"label": "Boston / Eastern Massachusetts",
+"tier": 3,
+"start": 92,
+"end": 112,
+"words": [],
+"title": "Keller @ Large: Part 2 Of Mayor Joe Curtatone's Interview With Jon Keller.",
+"channel": "CBS Boston",
+"other": 0.25,
+"person": "Joseph Curtatone",
+"role": "Mayor of Somerville, MA (2004-2022)",
+"hometown": "Somerville, MA",
+"evidence": "Rapid-fire 'Summahville' accent",
+"source": "https://www.bostonglobe.com/metro/2016/02/25/curtatone-doesn-shy-from-fight-spotlight/fs7UjYIC0YD3t3L7gTyFDO/story.html"
+},
+{
+"id": "chwvICzt7Lk",
+"region": "boston",
+"label": "Boston / Eastern Massachusetts",
+"tier": 3,
+"start": 371,
+"end": 391,
+"words": [
+[
+"idea",
+0.2
+]
+],
+"title": "Mel King Interview, Pt. 1",
+"channel": "Boston History",
+"other": 0.14,
+"person": "Mel King",
+"role": "Massachusetts state representative; community activist",
+"hometown": "South End, Boston",
+"evidence": "Soft R's of a deep Boston accent",
+"source": "https://en.wikipedia.org/wiki/Boston_accent"
+},
+{
 "id": "-YuUR6EbeXQ",
 "region": "boston",
 "label": "Boston / Eastern Massachusetts",
@@ -95,6 +134,45 @@ window.CANDIDATES = [
 "source": "https://en.wikipedia.org/wiki/Boston_accent"
 },
 {
+"id": "mSpTwzm9HxI",
+"region": "rhode_island",
+"label": "Rhode Island",
+"tier": 3,
+"start": 46,
+"end": 66,
+"words": [],
+"title": "Arlene Violet is worried about the fracturing of America | My Take",
+"channel": "Ocean State Media",
+"other": 0.16,
+"person": "Arlene Violet",
+"role": "Former RI attorney general; talk-radio host",
+"hometown": "South Providence, RI",
+"evidence": "Thick blue-collar South Providence accent",
+"source": "https://en.wikipedia.org/wiki/Eastern_New_England_English"
+},
+{
+"id": "lt_3zOIYquI",
+"region": "rhode_island",
+"label": "Rhode Island",
+"tier": 3,
+"start": 133,
+"end": 153,
+"words": [
+[
+"here",
+3.2
+]
+],
+"title": "FEDERAL HILL: \"Buddy\" Cianci - UNCUT! 🇮🇹🇺🇸",
+"channel": "Freeway City",
+"other": 0.12,
+"person": "Buddy Cianci",
+"role": "Mayor of Providence; radio host",
+"hometown": "Providence, RI",
+"evidence": "Cited for his Providence accent",
+"source": "https://en.wikipedia.org/wiki/Eastern_New_England_English"
+},
+{
 "id": "KfQNyrUDtaY",
 "region": "rhode_island",
 "label": "Rhode Island",
@@ -118,6 +196,45 @@ window.CANDIDATES = [
 "role": "Mayor of Providence; radio host",
 "hometown": "Providence, RI",
 "evidence": "Cited for his Providence accent",
+"source": "https://en.wikipedia.org/wiki/Eastern_New_England_English"
+},
+{
+"id": "2NcHKZz4OkM",
+"region": "rhode_island",
+"label": "Rhode Island",
+"tier": 3,
+"start": 308,
+"end": 328,
+"words": [
+[
+"here",
+19.4
+]
+],
+"title": "A Conversation with Rhode Island Secretary of State Gregg Amore",
+"channel": "Greater Providence Chamber of Commerce",
+"other": 0.2,
+"person": "Gregg Amore",
+"role": "RI state representative, teacher and coach",
+"hometown": "East Providence, RI",
+"evidence": "Lifelong Rhode Islander with the accent to prove it",
+"source": "https://en.wikipedia.org/wiki/Eastern_New_England_English"
+},
+{
+"id": "qC4tRcfY7FM",
+"region": "rhode_island",
+"label": "Rhode Island",
+"tier": 3,
+"start": 1926,
+"end": 1946,
+"words": [],
+"title": "A conversation with Gregg Amore, Democratic candidate for Secretary of State",
+"channel": "What'sUpNewp",
+"other": 0.39,
+"person": "Gregg Amore",
+"role": "RI state representative, teacher and coach",
+"hometown": "East Providence, RI",
+"evidence": "Lifelong Rhode Islander with the accent to prove it",
 "source": "https://en.wikipedia.org/wiki/Eastern_New_England_English"
 },
 {
@@ -961,6 +1078,23 @@ window.CANDIDATES = [
 "hometown": "New Orleans, LA",
 "evidence": "Speech patterns with potholes",
 "source": "https://www.neworleanssaints.com/news/hap-glaudi-buddy-d-mike-detillier-voices-that-sounded-like-new-orleans"
+},
+{
+"id": "ycurqMph2P8",
+"region": "new_orleans",
+"label": "New Orleans (Yat)",
+"tier": 3,
+"start": 62,
+"end": 82,
+"words": [],
+"title": "Ronnie Virgets, New Oreleans storyteller, & his passing at age 77, May 20, 2019",
+"channel": "Gematria Effect News",
+"other": 0.23,
+"person": "Ronnie Virgets",
+"role": "WWL-TV feature reporter and columnist",
+"hometown": "New Orleans, LA",
+"evidence": "Pure Yat accent",
+"source": "https://www.wafb.com/2019/05/21/ronnie-virgets-dies"
 },
 {
 "id": "_F14ErvmCLQ",
