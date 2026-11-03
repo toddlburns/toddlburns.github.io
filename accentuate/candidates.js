@@ -43,44 +43,6 @@ window.CANDIDATES = [
 "lng": -79.8287
 },
 {
-"id": "6QqeLpcVXAY",
-"region": "st_louis",
-"label": "St Louis",
-"tier": 3,
-"start": 57,
-"end": 77,
-"words": [],
-"title": "The Accent Tag || St Louis, Missouri vs Southern Missouri Accent",
-"channel": "Show Me an Adventure",
-"other": 0.11,
-"person": "Local speaker (Show Me an Adventure)",
-"role": "Featured in \"The Accent Tag || St Louis, Missouri vs Southern Missouri Accent\"",
-"hometown": "St. Louis, Missouri",
-"evidence": "Found by searching YouTube for \"south St. Louis accent\"",
-"source": "https://youtu.be/6QqeLpcVXAY",
-"lat": 38.627,
-"lng": -90.199
-},
-{
-"id": "V00HoA9GLws",
-"region": "iron_range",
-"label": "Iron Range",
-"tier": 3,
-"start": 64,
-"end": 84,
-"words": [],
-"title": "Rep. Keith Downey against Rep. Tom Rukavina amendment",
-"channel": "MNHouseInfo",
-"other": 0.02,
-"person": "Tom Rukavina",
-"role": "Minnesota state rep; St. Louis County commissioner",
-"hometown": "Virginia, Minnesota",
-"evidence": "His accent is all Range",
-"source": "https://minnlawyer.com/?p=131436",
-"lat": 47.523,
-"lng": -92.536
-},
-{
 "id": "english189",
 "audio": "audio/saa/english189.mp3",
 "region": "st_nd",
@@ -100,25 +62,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 47.9196,
 "lng": -97.0873
-},
-{
-"id": "VOiSvihlpE8",
-"region": "smith_island",
-"label": "Smith Island",
-"tier": 3,
-"start": 347,
-"end": 367,
-"words": [],
-"title": "What should we do if they want to be happy? Interview with Dirk Somers",
-"channel": "CCAchannel",
-"other": 0.51,
-"person": "Eddie Somers",
-"role": "President, Smith Island United; native islander",
-"hometown": "Smith Island, Maryland",
-"evidence": "Defended the Smith Island accent on 60 Minutes",
-"source": "https://www.cbsnews.com/news/smith-island-chesapeake-bay-preservation-efforts-60-minutes-transcript/",
-"lat": 37.995,
-"lng": -76.035
 },
 {
 "id": "english26",
@@ -142,44 +85,6 @@ window.CANDIDATES = [
 "lng": -76.0288
 },
 {
-"id": "_DAJVo9Bfic",
-"region": "delta",
-"label": "Delta",
-"tier": 3,
-"start": 0,
-"end": 20,
-"words": [],
-"title": "Oral History:  Mississippi Delta Cotton Farmer",
-"channel": "FirstPersonVideo",
-"other": 0.09,
-"person": "Local speaker (FirstPersonVideo)",
-"role": "Featured in \"Oral History:  Mississippi Delta Cotton Farmer\"",
-"hometown": "Mississippi Delta",
-"evidence": "Found by searching YouTube for \"Mississippi Delta farmer interview\"",
-"source": "https://youtu.be/_DAJVo9Bfic",
-"lat": 33.749,
-"lng": -90.708
-},
-{
-"id": "sklw_AWOKw0",
-"region": "florida_cracker",
-"label": "Florida Cracker",
-"tier": 3,
-"start": 310,
-"end": 330,
-"words": [],
-"title": "Oral History Video: Myakka River State Park Ranger Paula Benshoff",
-"channel": "Water Atlas",
-"other": 0.08,
-"person": "Local speaker (Water Atlas)",
-"role": "Featured in \"Oral History Video: Myakka River State Park Ranger Paula Benshoff\"",
-"hometown": "Central Florida ranch country",
-"evidence": "Found by searching YouTube for \"Florida cattleman oral history\"",
-"source": "https://youtu.be/sklw_AWOKw0",
-"lat": 27.495,
-"lng": -81.441
-},
-{
 "id": "english109",
 "audio": "audio/saa/english109.mp3",
 "region": "st_nh",
@@ -199,42 +104,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 43.2325,
 "lng": -71.5613
-},
-{
-"id": "-dWkCh5_ypc",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 3,
-"start": 208,
-"end": 228,
-"words": [
-[
-"after",
-3.8
-],
-[
-"plan",
-6.7
-],
-[
-"man",
-17.6
-],
-[
-"on",
-19.7
-]
-],
-"title": "Tom Gola EXPOSES LeBron James—Every Emotional Moment Is A PLANNED Performance!",
-"channel": "Hoop Flyx",
-"other": 0.27,
-"person": "Tom Gola",
-"role": "La Salle coach; Philadelphia city controller",
-"hometown": "Olney, Philadelphia",
-"evidence": "Nasal accent betrayed his hometown",
-"source": "https://en.wikipedia.org/wiki/Philadelphia_English",
-"lat": 40.04,
-"lng": -75.12
 },
 {
 "id": "english114",
@@ -363,25 +232,6 @@ window.CANDIDATES = [
 "lng": -94.2317
 },
 {
-"id": "T68dGWVDhM4",
-"region": "harkers_island",
-"label": "Harkers Island",
-"tier": 3,
-"start": 224,
-"end": 244,
-"words": [],
-"title": "Interview with Professor Walt Wolfram",
-"channel": "bpompeii1",
-"other": 0.49,
-"person": "Local speaker (bpompeii1)",
-"role": "Featured in \"Interview with Professor Walt Wolfram\"",
-"hometown": "Harkers Island, North Carolina",
-"evidence": "Found by searching YouTube for \"Harkers Island interview brogue\"",
-"source": "https://youtu.be/T68dGWVDhM4",
-"lat": 34.69,
-"lng": -76.56
-},
-{
 "id": "english568",
 "audio": "audio/saa/english568.mp3",
 "region": "st_fl",
@@ -422,42 +272,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 37.1949,
 "lng": -86.2653
-},
-{
-"id": "dZy6ClCnQyM",
-"region": "baltimore",
-"label": "Baltimore",
-"tier": 2,
-"start": 250,
-"end": 280,
-"words": [
-[
-"so",
-0.1
-],
-[
-"going",
-7.8
-],
-[
-"about",
-20.8
-],
-[
-"down",
-28.3
-]
-],
-"title": "Interview with Joni Rampolla, Health Spokesperson for Baltimore Expo 2014",
-"channel": "SuccessintheCityTV",
-"other": 0.44,
-"person": "Local speaker (SuccessintheCityTV)",
-"role": "Featured in \"Interview with Joni Rampolla, Health Spokesperson for Baltimore Expo 2014\"",
-"hometown": "Baltimore, Maryland",
-"evidence": "Found by searching YouTube for \"Bawlmer accent interview\"",
-"source": "https://youtu.be/dZy6ClCnQyM",
-"lat": 39.29,
-"lng": -76.61
 },
 {
 "id": "english455",
@@ -502,38 +316,6 @@ window.CANDIDATES = [
 "lng": -77.0837
 },
 {
-"id": "ByP2ubzmzVo",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 351,
-"end": 371,
-"words": [
-[
-"can't",
-0.4
-],
-[
-"better",
-2.4
-],
-[
-"sure",
-19.5
-]
-],
-"title": "On The Line: Former Viking Jermaine Wiggins on His NFL Career, Current Minnesota Vikings Depth at TE",
-"channel": "Minnesota Vikings",
-"other": 0.34,
-"person": "Jermaine Wiggins",
-"role": "Boston sports radio commentator",
-"hometown": "East Boston, Massachusetts",
-"evidence": "A thick East Boston accent",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.375,
-"lng": -71.039
-},
-{
 "id": "english458",
 "audio": "audio/saa/english458.mp3",
 "region": "st_nv",
@@ -553,25 +335,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 39.5491,
 "lng": -119.8499
-},
-{
-"id": "HNmNceVhmws",
-"region": "hill_country",
-"label": "Hill Country",
-"tier": 3,
-"start": 56,
-"end": 76,
-"words": [],
-"title": "Rita Scott Interview- Walnut Hill Oldtime Band",
-"channel": "Chattanooga Folk",
-"other": 0.46,
-"person": "Local speaker (Chattanooga Folk)",
-"role": "Featured in \"Rita Scott Interview- Walnut Hill Oldtime Band\"",
-"hometown": "Texas Hill Country",
-"evidence": "Found by searching YouTube for \"Hill Country old timer interview\"",
-"source": "https://youtu.be/HNmNceVhmws",
-"lat": 30.27,
-"lng": -98.87
 },
 {
 "id": "english347",
@@ -679,92 +442,6 @@ window.CANDIDATES = [
 "lng": -71.3196
 },
 {
-"id": "_uTurwvurlo",
-"region": "chicago",
-"label": "Chicago & the Great Lakes (Inland North)",
-"tier": 2,
-"start": 185,
-"end": 215,
-"words": [
-[
-"can",
-1.1
-],
-[
-"that",
-11.1
-],
-[
-"just",
-14.7
-],
-[
-"but",
-16.2
-],
-[
-"stuff",
-20.5
-],
-[
-"lot",
-24.7
-],
-[
-"money",
-29.1
-]
-],
-"title": "NFL Exec Mike North Talks 2026 Schedule Release | Full Interview | The Rich Eisen Show",
-"channel": "The Rich Eisen Show",
-"other": 0.31,
-"person": "Mike North",
-"role": "Chicago sports-talk radio host",
-"hometown": "Chicago, Illinois",
-"evidence": "Tough-minded little guy from Chicago with the accent",
-"source": "https://17people.blogspot.com/2008/06/sports-radio-mike-north.html",
-"lat": 41.881,
-"lng": -87.632
-},
-{
-"id": "JPD1-aq6FF8",
-"region": "east_texas",
-"label": "East Texas",
-"tier": 3,
-"start": 589,
-"end": 609,
-"words": [],
-"title": "Hunter Sets East Texas Golem Story Straight",
-"channel": "Andrew Thomas Visuals",
-"other": 0.24,
-"person": "Local speaker (Andrew Thomas Visuals)",
-"role": "Featured in \"Hunter Sets East Texas Golem Story Straight\"",
-"hometown": "East Texas",
-"evidence": "Found by searching YouTube for \"East Texas old timer interview\"",
-"source": "https://youtu.be/JPD1-aq6FF8",
-"lat": 32.35,
-"lng": -95.3
-},
-{
-"id": "8am0I_VAYzY",
-"region": "ozarks",
-"label": "Ozarks",
-"tier": 3,
-"start": 134,
-"end": 154,
-"words": [],
-"title": "INVENTING ANNA interview with Julia Garner talking accents, Ozark, Ruth Langmore, acting craft",
-"channel": "FOX 5 Washington DC",
-"other": 0.47,
-"person": "Local speaker (FOX 5 Washington DC)",
-"role": "Featured in \"INVENTING ANNA interview with Julia Garner talking accents, Ozark, Ruth Langmore\"",
-"hometown": "Ozark Mountains, Arkansas/Missouri",
-"evidence": "Found by searching YouTube for \"Ozark accent interview\"",
-"source": "https://youtu.be/8am0I_VAYzY",
-"lat": 36.37,
-"lng": -92.62
-},
-{
 "id": "english286",
 "audio": "audio/saa/english286.mp3",
 "region": "st_tx",
@@ -826,25 +503,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 34.4696,
 "lng": -96.0555
-},
-{
-"id": "-kfOSFn5sU0",
-"region": "montana",
-"label": "Montana",
-"tier": 3,
-"start": 613,
-"end": 633,
-"words": [],
-"title": "Interview With Brendan O'Connor and Aaron Flint",
-"channel": "USSJoin",
-"other": 0.47,
-"person": "Local speaker (USSJoin)",
-"role": "Featured in \"Interview With Brendan O'Connor and Aaron Flint\"",
-"hometown": "Montana ranch country",
-"evidence": "Found by searching YouTube for \"Montana old timer interview\"",
-"source": "https://youtu.be/-kfOSFn5sU0",
-"lat": 46.88,
-"lng": -110.36
 },
 {
 "id": "english329",
@@ -977,44 +635,6 @@ window.CANDIDATES = [
 "lng": -123.1918
 },
 {
-"id": "KjKU7g41EgE",
-"region": "north_dakota",
-"label": "North Dakota",
-"tier": 3,
-"start": 22,
-"end": 42,
-"words": [],
-"title": "Farmer Interview: Black Leg Ranch, Sterling, North Dakota",
-"channel": "TheUSDANRCS",
-"other": 0.16,
-"person": "Local speaker (TheUSDANRCS)",
-"role": "Featured in \"Farmer Interview: Black Leg Ranch, Sterling, North Dakota\"",
-"hometown": "Rural North Dakota",
-"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
-"source": "https://youtu.be/KjKU7g41EgE",
-"lat": 47.55,
-"lng": -99.78
-},
-{
-"id": "lBvqb7U5lwk",
-"region": "pnw_timber",
-"label": "Pnw Timber",
-"tier": 3,
-"start": 498,
-"end": 518,
-"words": [],
-"title": "Logger interview #29 Ben Baker \"They threw me the Keys and said here ya go \"",
-"channel": "Daniel Boone's Logging videos",
-"other": 0.21,
-"person": "Local speaker (Daniel Boone's Logging videos)",
-"role": "Featured in \"Logger interview #29 Ben Baker \"They threw me the Keys and said here ya go \"\"",
-"hometown": "Oregon timber country",
-"evidence": "Found by searching YouTube for \"Oregon logger interview\"",
-"source": "https://youtu.be/lBvqb7U5lwk",
-"lat": 43.8,
-"lng": -123.0
-},
-{
 "id": "english7",
 "audio": "audio/saa/english7.mp3",
 "region": "st_ms",
@@ -1034,25 +654,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 33.1221,
 "lng": -88.5567
-},
-{
-"id": "zxQE8F2eef8",
-"region": "vermont",
-"label": "Vermont",
-"tier": 3,
-"start": 270,
-"end": 290,
-"words": [],
-"title": "RAW VIDEO: Reporters Q&A With New Chattanooga Police Chief Fred Fletcher",
-"channel": "WTVC NewsChannel 9",
-"other": 0.27,
-"person": "Fred Fletcher",
-"role": "Vermont dairy farmer",
-"hometown": "Fletcher, Vermont",
-"evidence": "The older Vermont accent: ke-ow for cow",
-"source": "https://www.vermontpublic.org/programs/2016-08-05/cow-or-ke-ow-the-past-present-and-future-of-the-vermont-accent",
-"lat": 44.68,
-"lng": -72.91
 },
 {
 "id": "english650",
@@ -1160,49 +761,6 @@ window.CANDIDATES = [
 "lng": -96.0535
 },
 {
-"id": "92R7WGCDPD4",
-"region": "utah",
-"label": "Utah",
-"tier": 3,
-"start": 42,
-"end": 62,
-"words": [
-[
-"deal",
-8.3
-]
-],
-"title": "Utah Department of Agriculture and Food Commissioner Interview",
-"channel": "ABC4 Utah",
-"other": 0.29,
-"person": "Local speaker (ABC4 Utah)",
-"role": "Featured in \"Utah Department of Agriculture and Food Commissioner Interview\"",
-"hometown": "Rural Utah",
-"evidence": "Found by searching YouTube for \"rural Utah rancher interview\"",
-"source": "https://youtu.be/92R7WGCDPD4",
-"lat": 39.32,
-"lng": -111.09
-},
-{
-"id": "i6CylkCA46s",
-"region": "down_east_maine",
-"label": "Down East Maine",
-"tier": 3,
-"start": 480,
-"end": 500,
-"words": [],
-"title": "UTI  discussion and UTI Tracker Interview with urologist Dr. Dana Rice",
-"channel": "John C Lin, MD",
-"other": 0.36,
-"person": "Dana Rice",
-"role": "Gouldsboro selectman, harbormaster and lobster dealer",
-"hometown": "Birch Harbor, Gouldsboro, Maine",
-"evidence": "Accent out of an old Pepperidge Farm commercial",
-"source": "https://www.amny.com/news/tribeca-film-festival-downeast",
-"lat": 44.395,
-"lng": -68.04
-},
-{
 "id": "english207",
 "audio": "audio/saa/english207.mp3",
 "region": "st_pa",
@@ -1243,63 +801,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 33.9381,
 "lng": -117.3932
-},
-{
-"id": "Wv-RH8gmHCM",
-"region": "eastern_kentucky",
-"label": "Eastern Kentucky",
-"tier": 3,
-"start": 697,
-"end": 717,
-"words": [],
-"title": "Interview with Gurney Norman on the Kentucky River",
-"channel": "Appalshop",
-"other": 0.33,
-"person": "Local speaker (Appalshop)",
-"role": "Featured in \"Interview with Gurney Norman on the Kentucky River\"",
-"hometown": "Eastern Kentucky",
-"evidence": "Found by searching YouTube for \"Appalshop interview Kentucky\"",
-"source": "https://youtu.be/Wv-RH8gmHCM",
-"lat": 37.25,
-"lng": -83.19
-},
-{
-"id": "jI5Uis4D-58",
-"region": "milwaukee",
-"label": "Milwaukee",
-"tier": 3,
-"start": 295,
-"end": 315,
-"words": [],
-"title": "The Wisdom of Mark Borchardt #filmmaking #creativity #motivation",
-"channel": "Carl King",
-"other": 0.19,
-"person": "Mark Borchardt",
-"role": "Independent filmmaker, subject of 'American Movie'",
-"hometown": "Menomonee Falls, Wisconsin",
-"evidence": "Intense Milwaukee accent",
-"source": "https://www.nathanrabin.com/happy-place/2022/9/14/twenty-three-years-after-the-release-of-american-movie-i-find-myself-relating-to-mark-borchardt-on-a-painful-level",
-"lat": 43.178,
-"lng": -88.117
-},
-{
-"id": "uNQXAgIOK2s",
-"region": "buffalo",
-"label": "Buffalo",
-"tier": 3,
-"start": 182,
-"end": 202,
-"words": [],
-"title": "Kevin O'Connell speaks after Vikings preseason loss to Patriots",
-"channel": "FOX 9 Minneapolis-St. Paul",
-"other": 0.08,
-"person": "Kevin O'Connell",
-"role": "Local TV weather and sportscaster",
-"hometown": "Buffalo, New York",
-"evidence": "Buffalo accent you could fry chicken wings in",
-"source": "https://www.britannica.com/biography/Kevin-O'Connell-(American-broadcaster)",
-"lat": 42.886,
-"lng": -78.878
 },
 {
 "id": "english598",
@@ -1365,44 +866,6 @@ window.CANDIDATES = [
 "lng": -106.7897
 },
 {
-"id": "2C92nzxzLy0",
-"region": "pa_dutch",
-"label": "Pa Dutch",
-"tier": 3,
-"start": 65,
-"end": 85,
-"words": [],
-"title": "Your PA Dutch Minute: Our Accent and our Identity",
-"channel": "Douglas Madenford",
-"other": 0.13,
-"person": "Local speaker (Douglas Madenford)",
-"role": "Featured in \"Your PA Dutch Minute: Our Accent and our Identity\"",
-"hometown": "Lancaster County, Pennsylvania",
-"evidence": "Found by searching YouTube for \"Pennsylvania Dutch accent interview\"",
-"source": "https://youtu.be/2C92nzxzLy0",
-"lat": 40.04,
-"lng": -76.31
-},
-{
-"id": "tHfGI2k_H7M",
-"region": "yooper",
-"label": "Yooper",
-"tier": 3,
-"start": 192,
-"end": 212,
-"words": [],
-"title": "What is YOOPER English? One of the most interesting accents in the USA.",
-"channel": "Learn English with Camille",
-"other": 0.5,
-"person": "Local speaker (Learn English with Camille)",
-"role": "Featured in \"What is YOOPER English? One of the most interesting accents in the USA.\"",
-"hometown": "Upper Peninsula, Michigan",
-"evidence": "Found by searching YouTube for \"Yooper accent interview\"",
-"source": "https://youtu.be/tHfGI2k_H7M",
-"lat": 46.54,
-"lng": -87.4
-},
-{
 "id": "english384",
 "audio": "audio/saa/english384.mp3",
 "region": "st_wv",
@@ -1424,25 +887,6 @@ window.CANDIDATES = [
 "lng": -82.2711
 },
 {
-"id": "4sxuhdCVm-s",
-"region": "okie",
-"label": "Okie",
-"tier": 3,
-"start": 608,
-"end": 628,
-"words": [],
-"title": "Interview with Oklahoma farmer, Rodney Jones",
-"channel": "Bailey Norwood's Farm 2 Fork class",
-"other": 0.26,
-"person": "Local speaker (Bailey Norwood's Farm 2 Fork class)",
-"role": "Featured in \"Interview with Oklahoma farmer, Rodney Jones\"",
-"hometown": "Rural Oklahoma",
-"evidence": "Found by searching YouTube for \"Oklahoma farmer interview accent\"",
-"source": "https://youtu.be/4sxuhdCVm-s",
-"lat": 35.47,
-"lng": -97.52
-},
-{
 "id": "english554",
 "audio": "audio/saa/english554.mp3",
 "region": "st_il",
@@ -1462,25 +906,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 42.0652,
 "lng": -88.153
-},
-{
-"id": "FgPgMDbXKxg",
-"region": "cleveland",
-"label": "Cleveland",
-"tier": 3,
-"start": 175,
-"end": 195,
-"words": [],
-"title": "Phil Mendelson on The Rock Newman Show",
-"channel": "RockNewmanShow",
-"other": 0.44,
-"person": "Phil Mendelson",
-"role": "Chair, DC Council (raised in Cleveland)",
-"hometown": "Cleveland, Ohio",
-"evidence": "A rasping Cleveland accent",
-"source": "https://www.cleveland.com/tipoff/2017/01/clevelanders_probably_think_th.html",
-"lat": 41.499,
-"lng": -81.694
 },
 {
 "id": "english74",
@@ -1523,25 +948,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 42.7489,
 "lng": -84.4824
-},
-{
-"id": "2t9hLHoLiy0",
-"region": "south_georgia",
-"label": "South Georgia",
-"tier": 3,
-"start": 307,
-"end": 327,
-"words": [],
-"title": "Joao Vendramini Interviews Allen Smith of Southern Accent Farm in Okeechobee",
-"channel": "UF/IFAS Range Cattle Research and Education Center (RCREC)",
-"other": 0.43,
-"person": "Local speaker (UF/IFAS Range Cattle Research and Education Center (RCREC))",
-"role": "Featured in \"Joao Vendramini Interviews Allen Smith of Southern Accent Farm in Okeechobee\"",
-"hometown": "South Georgia",
-"evidence": "Found by searching YouTube for \"south Georgia farmer interview accent\"",
-"source": "https://youtu.be/2t9hLHoLiy0",
-"lat": 31.578,
-"lng": -84.156
 },
 {
 "id": "english36",
@@ -1670,25 +1076,6 @@ window.CANDIDATES = [
 "lng": -79.7922
 },
 {
-"id": "tfmXTzh8NSE",
-"region": "iron_range",
-"label": "Iron Range",
-"tier": 3,
-"start": 259,
-"end": 279,
-"words": [],
-"title": "Rep. Rukavina Reflects on Retirement",
-"channel": "Minnesota Senate Media Services",
-"other": 0.2,
-"person": "Tom Rukavina",
-"role": "Minnesota state rep; St. Louis County commissioner",
-"hometown": "Virginia, Minnesota",
-"evidence": "His accent is all Range",
-"source": "https://minnlawyer.com/?p=131436",
-"lat": 47.523,
-"lng": -92.536
-},
-{
 "id": "english336",
 "audio": "audio/saa/english336.mp3",
 "region": "st_md",
@@ -1710,44 +1097,6 @@ window.CANDIDATES = [
 "lng": -76.6105
 },
 {
-"id": "A1PuFHUjFSc",
-"region": "delta",
-"label": "Delta",
-"tier": 3,
-"start": 57,
-"end": 77,
-"words": [],
-"title": "Farming in the Mississippi Delta: A Success Story with Hydrovant",
-"channel": "Corbet Scientific",
-"other": 0.12,
-"person": "Local speaker (Corbet Scientific)",
-"role": "Featured in \"Farming in the Mississippi Delta: A Success Story with Hydrovant\"",
-"hometown": "Mississippi Delta",
-"evidence": "Found by searching YouTube for \"Mississippi Delta farmer interview\"",
-"source": "https://youtu.be/A1PuFHUjFSc",
-"lat": 33.749,
-"lng": -90.708
-},
-{
-"id": "cbVPqxE0NJk",
-"region": "florida_cracker",
-"label": "Florida Cracker",
-"tier": 3,
-"start": 84,
-"end": 104,
-"words": [],
-"title": "Oral History Video: Dr. Mary Jelks on Myakka River State Park's Plants and Prairie Ecosystem",
-"channel": "Water Atlas",
-"other": 0.59,
-"person": "Local speaker (Water Atlas)",
-"role": "Featured in \"Oral History Video: Dr. Mary Jelks on Myakka River State Park's Plants and Prair\"",
-"hometown": "Central Florida ranch country",
-"evidence": "Found by searching YouTube for \"Florida cattleman oral history\"",
-"source": "https://youtu.be/cbVPqxE0NJk",
-"lat": 27.495,
-"lng": -81.441
-},
-{
 "id": "english476",
 "audio": "audio/saa/english476.mp3",
 "region": "st_nh",
@@ -1767,38 +1116,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 42.9849,
 "lng": -71.4441
-},
-{
-"id": "CS_K9neKY7Q",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 3,
-"start": 53,
-"end": 73,
-"words": [
-[
-"on",
-13.8
-],
-[
-"class",
-14.2
-],
-[
-"down",
-19.9
-]
-],
-"title": "Interview video",
-"channel": "Peter McLaughlin",
-"other": 0.28,
-"person": "Peter McLaughlin",
-"role": "Northeast Philly resident interviewed after the 2023 I-95 collapse",
-"hometown": "Mayfair, Northeast Philadelphia",
-"evidence": "The most perfect example of a Philly accent",
-"source": "https://billypenn.com/2023/06/11/philadelphia-accent-example-hoagiemouth-highway-collapse/",
-"lat": 40.035,
-"lng": -75.04
 },
 {
 "id": "english186",
@@ -1927,25 +1244,6 @@ window.CANDIDATES = [
 "lng": -91.5309
 },
 {
-"id": "fChBgb3t8vM",
-"region": "harkers_island",
-"label": "Harkers Island",
-"tier": 3,
-"start": 260,
-"end": 280,
-"words": [],
-"title": "Outer Banks Voice Interview with Jeff Finch",
-"channel": "obxvoice",
-"other": 0.36,
-"person": "Local speaker (obxvoice)",
-"role": "Featured in \"Outer Banks Voice Interview with Jeff Finch\"",
-"hometown": "Harkers Island, North Carolina",
-"evidence": "Found by searching YouTube for \"Harkers Island interview brogue\"",
-"source": "https://youtu.be/fChBgb3t8vM",
-"lat": 34.69,
-"lng": -76.56
-},
-{
 "id": "english391",
 "audio": "audio/saa/english391.mp3",
 "region": "st_fl",
@@ -2028,57 +1326,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 38.8847,
 "lng": -77.1756
-},
-{
-"id": "L5wNTBL5WnY",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 769,
-"end": 789,
-"words": [
-[
-"sure",
-1.3
-],
-[
-"after",
-3.0
-],
-[
-"order",
-17.8
-]
-],
-"title": "Insights From Abroad - Congress's Responsibility in Foreign Policy | Rep. Mike Capuano",
-"channel": "Middle East Studies Program at UCF",
-"other": 0.23,
-"person": "Mike Capuano",
-"role": "Mayor of Somerville",
-"hometown": "Somerville, Massachusetts",
-"evidence": "The stronger Boston accent of two candidates",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.388,
-"lng": -71.099
-},
-{
-"id": "TL-68AEVe5M",
-"region": "hill_country",
-"label": "Hill Country",
-"tier": 3,
-"start": 189,
-"end": 209,
-"words": [],
-"title": "Opus Ranch Interview",
-"channel": "Jônt",
-"other": 0.25,
-"person": "Local speaker (Jônt)",
-"role": "Featured in \"Opus Ranch Interview\"",
-"hometown": "Texas Hill Country",
-"evidence": "Found by searching YouTube for \"Texas Hill Country rancher interview\"",
-"source": "https://youtu.be/TL-68AEVe5M",
-"lat": 30.27,
-"lng": -98.87
 },
 {
 "id": "english654",
@@ -2184,84 +1431,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 41.8231,
 "lng": -71.4188
-},
-{
-"id": "OYWaeyDZoTs",
-"region": "chicago",
-"label": "Chicago & the Great Lakes (Inland North)",
-"tier": 3,
-"start": 212,
-"end": 232,
-"words": [
-[
-"can",
-9.2
-],
-[
-"that",
-10.5
-],
-[
-"just",
-14.0
-],
-[
-"not",
-15.6
-],
-[
-"have",
-15.7
-]
-],
-"title": "Cubs/Nats Recap-Ron Coomer Interview-Matt Shaw at Wrigley-Cardinals preview| Fly the W Ep 114",
-"channel": "104.3 The Score",
-"other": 0.41,
-"person": "Ron Coomer",
-"role": "Chicago Cubs radio color analyst",
-"hometown": "Lockport, Illinois",
-"evidence": "South Side accent noted when he joined Cubs radio",
-"source": "https://chicago.suntimes.com/news/2013/12/12/18598747/ron-coomer-headed-to-cubs-radio-booth-report",
-"lat": 41.589,
-"lng": -88.058
-},
-{
-"id": "8QeyyOT2OXk",
-"region": "east_texas",
-"label": "East Texas",
-"tier": 3,
-"start": 57,
-"end": 77,
-"words": [],
-"title": "FULL INTERVIEW: East Texas' Ruth Simmons becomes first Black president of Ivy League institution",
-"channel": "CBS19",
-"other": 0.15,
-"person": "Local speaker (CBS19)",
-"role": "Featured in \"FULL INTERVIEW: East Texas' Ruth Simmons becomes first Black president of Ivy Le\"",
-"hometown": "East Texas",
-"evidence": "Found by searching YouTube for \"East Texas accent interview\"",
-"source": "https://youtu.be/8QeyyOT2OXk",
-"lat": 32.35,
-"lng": -95.3
-},
-{
-"id": "pU7AsbIhNws",
-"region": "ozarks",
-"label": "Ozarks",
-"tier": 3,
-"start": 87,
-"end": 107,
-"words": [],
-"title": "OZARK Interview Jason Bateman NETFLIX exclusive",
-"channel": "CELEBRITY INTERVIEWS Parviz Khosrawi",
-"other": 0.39,
-"person": "Local speaker (CELEBRITY INTERVIEWS Parviz Khosrawi)",
-"role": "Featured in \"OZARK Interview Jason Bateman NETFLIX exclusive\"",
-"hometown": "Ozark Mountains, Arkansas/Missouri",
-"evidence": "Found by searching YouTube for \"Ozark accent interview\"",
-"source": "https://youtu.be/pU7AsbIhNws",
-"lat": 36.37,
-"lng": -92.62
 },
 {
 "id": "english272",
@@ -2415,44 +1584,6 @@ window.CANDIDATES = [
 "lng": -122.65
 },
 {
-"id": "O-uQfm5Hqm4",
-"region": "north_dakota",
-"label": "North Dakota",
-"tier": 3,
-"start": 577,
-"end": 597,
-"words": [],
-"title": "Full Interview: Regenerative Agriculture with Christi Kuhlka | North Dakota Producer",
-"channel": "Dakota Legacy Initiative",
-"other": 0.4,
-"person": "Local speaker (Dakota Legacy Initiative)",
-"role": "Featured in \"Full Interview: Regenerative Agriculture with Christi Kuhlka | North Dakota Prod\"",
-"hometown": "Rural North Dakota",
-"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
-"source": "https://youtu.be/O-uQfm5Hqm4",
-"lat": 47.55,
-"lng": -99.78
-},
-{
-"id": "eNnSxCBWfvg",
-"region": "pnw_timber",
-"label": "Pnw Timber",
-"tier": 3,
-"start": 210,
-"end": 230,
-"words": [],
-"title": "LOGGER INTERVIEW #42 MARK \"LOUIE'' LABON . \"I DID 40 LOADS A DAY WITH THE 235C\"",
-"channel": "Daniel Boone's Logging videos",
-"other": 0.37,
-"person": "Local speaker (Daniel Boone's Logging videos)",
-"role": "Featured in \"LOGGER INTERVIEW #42 MARK \"LOUIE'' LABON . \"I DID 40 LOADS A DAY WITH THE 235C\"\"",
-"hometown": "Oregon timber country",
-"evidence": "Found by searching YouTube for \"Oregon logger interview\"",
-"source": "https://youtu.be/eNnSxCBWfvg",
-"lat": 43.8,
-"lng": -123.0
-},
-{
 "id": "english170",
 "audio": "audio/saa/english170.mp3",
 "region": "st_ms",
@@ -2472,25 +1603,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 34.505,
 "lng": -88.2083
-},
-{
-"id": "mQ6bgqNCWbg",
-"region": "vermont",
-"label": "Vermont",
-"tier": 3,
-"start": 117,
-"end": 137,
-"words": [],
-"title": "Chattanooga Police Chief Fred Fletcher",
-"channel": "UTC Honors College",
-"other": 0.3,
-"person": "Fred Fletcher",
-"role": "Vermont dairy farmer",
-"hometown": "Fletcher, Vermont",
-"evidence": "The older Vermont accent: ke-ow for cow",
-"source": "https://www.vermontpublic.org/programs/2016-08-05/cow-or-ke-ow-the-past-present-and-future-of-the-vermont-accent",
-"lat": 44.68,
-"lng": -72.91
 },
 {
 "id": "english260",
@@ -2619,63 +1731,6 @@ window.CANDIDATES = [
 "lng": -118.4108
 },
 {
-"id": "e1ZzsWYNpwE",
-"region": "eastern_kentucky",
-"label": "Eastern Kentucky",
-"tier": 3,
-"start": 325,
-"end": 345,
-"words": [],
-"title": "Interview with Florida Slone",
-"channel": "Appalshop",
-"other": 0.24,
-"person": "Local speaker (Appalshop)",
-"role": "Featured in \"Interview with Florida Slone\"",
-"hometown": "Eastern Kentucky",
-"evidence": "Found by searching YouTube for \"Appalshop interview Kentucky\"",
-"source": "https://youtu.be/e1ZzsWYNpwE",
-"lat": 37.25,
-"lng": -83.19
-},
-{
-"id": "5ZIN3CKUB58",
-"region": "milwaukee",
-"label": "Milwaukee",
-"tier": 3,
-"start": 165,
-"end": 185,
-"words": [],
-"title": "Kathy Cramer - The Politics of Resentment",
-"channel": "Renk Agribusiness Institute UW-Madison",
-"other": 0.08,
-"person": "Kathy Cramer",
-"role": "UW-Madison political scientist",
-"hometown": "Grafton, Wisconsin",
-"evidence": "Strong Wisconsin accent",
-"source": "https://onwisconsin.uwalumni.com/room-for-debate/",
-"lat": 43.32,
-"lng": -87.953
-},
-{
-"id": "KBtpv8igEZY",
-"region": "buffalo",
-"label": "Buffalo",
-"tier": 3,
-"start": 12,
-"end": 32,
-"words": [],
-"title": "MICD: Niagara Falls Mayor Paul Dyster",
-"channel": "United States Conference of Mayors",
-"other": 0.03,
-"person": "Paul Dyster",
-"role": "Mayor of Niagara Falls, NY",
-"hometown": "Niagara Falls, New York",
-"evidence": "Super-strong Inland North accent",
-"source": "https://www.chicagomag.com/city-life/chicago-accent-erie-canal-vowel-shift/",
-"lat": 43.094,
-"lng": -79.057
-},
-{
 "id": "english179",
 "audio": "audio/saa/english179.mp3",
 "region": "st_sd",
@@ -2737,25 +1792,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 40.9375,
 "lng": -90.9495
-},
-{
-"id": "ScnqC_2oHW8",
-"region": "cleveland",
-"label": "Cleveland",
-"tier": 3,
-"start": 97,
-"end": 117,
-"words": [],
-"title": "The Kojo Nnamdi Show: New D.C. Council Chairman Phil Mendelson",
-"channel": "Kojo Nnamdi",
-"other": 0.29,
-"person": "Phil Mendelson",
-"role": "Chair, DC Council (raised in Cleveland)",
-"hometown": "Cleveland, Ohio",
-"evidence": "A rasping Cleveland accent",
-"source": "https://www.cleveland.com/tipoff/2017/01/clevelanders_probably_think_th.html",
-"lat": 41.499,
-"lng": -81.694
 },
 {
 "id": "english512",
@@ -2947,25 +1983,6 @@ window.CANDIDATES = [
 "lng": -75.8545
 },
 {
-"id": "LWoVVw6lcQY",
-"region": "delta",
-"label": "Delta",
-"tier": 3,
-"start": 370,
-"end": 390,
-"words": [],
-"title": "Black History in the Mississippi Delta | Hermon Johnson Sr. Shares His Story",
-"channel": "History Before Us",
-"other": 0.47,
-"person": "Local speaker (History Before Us)",
-"role": "Featured in \"Black History in the Mississippi Delta | Hermon Johnson Sr. Shares His Story\"",
-"hometown": "Mississippi Delta",
-"evidence": "Found by searching YouTube for \"Mississippi Delta oral history interview\"",
-"source": "https://youtu.be/LWoVVw6lcQY",
-"lat": 33.749,
-"lng": -90.708
-},
-{
 "id": "english544",
 "audio": "audio/saa/english544.mp3",
 "region": "st_nh",
@@ -2985,42 +2002,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 43.7116,
 "lng": -72.2731
-},
-{
-"id": "nKIxXMssR_8",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 3,
-"start": 83,
-"end": 103,
-"words": [
-[
-"know",
-13.9
-],
-[
-"going",
-18.1
-],
-[
-"out",
-19.5
-],
-[
-"on",
-19.7
-]
-],
-"title": "Hypnotherapy & Subconscious Healing for Trauma | Peter McLaughlin Interview",
-"channel": "Family Office Insights US",
-"other": 0.33,
-"person": "Peter McLaughlin",
-"role": "Northeast Philly resident interviewed after the 2023 I-95 collapse",
-"hometown": "Mayfair, Northeast Philadelphia",
-"evidence": "The most perfect example of a Philly accent",
-"source": "https://billypenn.com/2023/06/11/philadelphia-accent-example-hoagiemouth-highway-collapse/",
-"lat": 40.035,
-"lng": -75.04
 },
 {
 "id": "english511",
@@ -3233,53 +2214,6 @@ window.CANDIDATES = [
 "lng": -75.993
 },
 {
-"id": "zLlvdMB31iA",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 233,
-"end": 253,
-"words": [
-[
-"here",
-18.1
-],
-[
-"area",
-19.7
-]
-],
-"title": "Christy Mihos for Massachusetts Governor: Dick Morris on Massachusetts State Sales Tax and Spending",
-"channel": "christymihos2010",
-"other": 0.13,
-"person": "Christy Mihos",
-"role": "Owner of Christy's Markets",
-"hometown": "Brockton, Massachusetts",
-"evidence": "Unpretentious Boston accent",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.083,
-"lng": -71.018
-},
-{
-"id": "55Ldrm3RTIM",
-"region": "hill_country",
-"label": "Hill Country",
-"tier": 3,
-"start": 71,
-"end": 91,
-"words": [],
-"title": "Jones Ranch Interview",
-"channel": "Jônt",
-"other": 0.19,
-"person": "Local speaker (Jônt)",
-"role": "Featured in \"Jones Ranch Interview\"",
-"hometown": "Texas Hill Country",
-"evidence": "Found by searching YouTube for \"Texas Hill Country rancher interview\"",
-"source": "https://youtu.be/55Ldrm3RTIM",
-"lat": 30.27,
-"lng": -98.87
-},
-{
 "id": "english474",
 "audio": "audio/saa/english474.mp3",
 "region": "st_mn",
@@ -3383,58 +2317,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 42.0017,
 "lng": -71.4999
-},
-{
-"id": "ZjlNRSZ8RGU",
-"region": "chicago",
-"label": "Chicago & the Great Lakes (Inland North)",
-"tier": 2,
-"start": 296,
-"end": 326,
-"words": [
-[
-"not",
-0.2
-],
-[
-"much",
-0.5
-],
-[
-"money",
-2.2
-],
-[
-"lot",
-7.7
-],
-[
-"but",
-10.9
-],
-[
-"got",
-12.2
-],
-[
-"back",
-13.4
-],
-[
-"that",
-15.2
-]
-],
-"title": "Mike North on how the NFL builds its schedule, manages primetime TV & more! | The Rich Eisen Show",
-"channel": "NFL on ESPN",
-"other": 0.3,
-"person": "Mike North",
-"role": "Chicago sports-talk radio host",
-"hometown": "Chicago, Illinois",
-"evidence": "Tough-minded little guy from Chicago with the accent",
-"source": "https://17people.blogspot.com/2008/06/sports-radio-mike-north.html",
-"lat": 41.881,
-"lng": -87.632
 },
 {
 "id": "english649",
@@ -3544,25 +2426,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 45.537,
 "lng": -122.65
-},
-{
-"id": "6cZCQN91VUs",
-"region": "north_dakota",
-"label": "North Dakota",
-"tier": 3,
-"start": 729,
-"end": 749,
-"words": [],
-"title": "Full Interview: Regenerative Agriculture with Chris Walberg | North Dakota Producer",
-"channel": "Dakota Legacy Initiative",
-"other": 0.14,
-"person": "Local speaker (Dakota Legacy Initiative)",
-"role": "Featured in \"Full Interview: Regenerative Agriculture with Chris Walberg | North Dakota Produ\"",
-"hometown": "Rural North Dakota",
-"evidence": "Found by searching YouTube for \"North Dakota rancher interview\"",
-"source": "https://youtu.be/6cZCQN91VUs",
-"lat": 47.55,
-"lng": -99.78
 },
 {
 "id": "english169",
@@ -3689,44 +2552,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 33.717,
 "lng": -117.831
-},
-{
-"id": "6Whhg-OCnU0",
-"region": "milwaukee",
-"label": "Milwaukee",
-"tier": 3,
-"start": 98,
-"end": 118,
-"words": [],
-"title": "Advice For ALL Creative People - by Mark Borchardt #motivation #creativity #inspiration",
-"channel": "Carl King",
-"other": 0.15,
-"person": "Mark Borchardt",
-"role": "Independent filmmaker, subject of 'American Movie'",
-"hometown": "Menomonee Falls, Wisconsin",
-"evidence": "Intense Milwaukee accent",
-"source": "https://www.nathanrabin.com/happy-place/2022/9/14/twenty-three-years-after-the-release-of-american-movie-i-find-myself-relating-to-mark-borchardt-on-a-painful-level",
-"lat": 43.178,
-"lng": -88.117
-},
-{
-"id": "jlpm73b3XUY",
-"region": "buffalo",
-"label": "Buffalo",
-"tier": 3,
-"start": 38,
-"end": 58,
-"words": [],
-"title": "Kevin O'Connell takes blame for Vikings 26-0 loss at Seattle [FULL]",
-"channel": "FOX 9 Minneapolis-St. Paul",
-"other": 0.06,
-"person": "Kevin O'Connell",
-"role": "Local TV weather and sportscaster",
-"hometown": "Buffalo, New York",
-"evidence": "Buffalo accent you could fry chicken wings in",
-"source": "https://www.britannica.com/biography/Kevin-O'Connell-(American-broadcaster)",
-"lat": 42.886,
-"lng": -78.878
 },
 {
 "id": "english50",
@@ -3960,54 +2785,6 @@ window.CANDIDATES = [
 "lng": -76.6105
 },
 {
-"id": "C8_lDXijjd8",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 2,
-"start": 649,
-"end": 679,
-"words": [
-[
-"now",
-0.5
-],
-[
-"out",
-2.3
-],
-[
-"our",
-5.1
-],
-[
-"last",
-8.2
-],
-[
-"so",
-9.7
-],
-[
-"going",
-10.3
-],
-[
-"know",
-11.5
-]
-],
-"title": "With plans to run again, Bob Brady believes it would be last term as Democratic chair",
-"channel": "NBC10 Philadelphia",
-"other": 0.28,
-"person": "Bob Brady",
-"role": "Philadelphia Democratic Party chairman",
-"hometown": "Overbrook, West Philadelphia",
-"evidence": "A thick Philly accent",
-"source": "https://en.wikipedia.org/wiki/Philadelphia_English",
-"lat": 39.98,
-"lng": -75.24
-},
-{
 "id": "english444",
 "audio": "audio/saa/english444.mp3",
 "region": "st_al",
@@ -4174,53 +2951,6 @@ window.CANDIDATES = [
 "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
 "lat": 37.1407,
 "lng": -80.4045
-},
-{
-"id": "KZdseK9YlpQ",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 832,
-"end": 852,
-"words": [
-[
-"number",
-3.9
-],
-[
-"better",
-20.0
-]
-],
-"title": "Jermaine Wiggins joins \"The Morning Roast\" live in Boston",
-"channel": "95.7 The Game",
-"other": 0.19,
-"person": "Jermaine Wiggins",
-"role": "Boston sports radio commentator",
-"hometown": "East Boston, Massachusetts",
-"evidence": "A thick East Boston accent",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.375,
-"lng": -71.039
-},
-{
-"id": "9RaaUl_eXO4",
-"region": "hill_country",
-"label": "Hill Country",
-"tier": 3,
-"start": 325,
-"end": 345,
-"words": [],
-"title": "Dave Hoke plays Katy Hill + interview",
-"channel": "Oldtime Central",
-"other": 0.42,
-"person": "Local speaker (Oldtime Central)",
-"role": "Featured in \"Dave Hoke plays Katy Hill + interview\"",
-"hometown": "Texas Hill Country",
-"evidence": "Found by searching YouTube for \"Hill Country old timer interview\"",
-"source": "https://youtu.be/9RaaUl_eXO4",
-"lat": 30.27,
-"lng": -98.87
 },
 {
 "id": "english281",
@@ -4562,44 +3292,6 @@ window.CANDIDATES = [
 "lng": -118.1753
 },
 {
-"id": "JDfOaUerBlM",
-"region": "milwaukee",
-"label": "Milwaukee",
-"tier": 3,
-"start": 265,
-"end": 285,
-"words": [],
-"title": "Kathy Cramer: The Politics of Resentment",
-"channel": "rotaryclubofmadison",
-"other": 0.32,
-"person": "Kathy Cramer",
-"role": "UW-Madison political scientist",
-"hometown": "Grafton, Wisconsin",
-"evidence": "Strong Wisconsin accent",
-"source": "https://onwisconsin.uwalumni.com/room-for-debate/",
-"lat": 43.32,
-"lng": -87.953
-},
-{
-"id": "ZFuL8-9npNs",
-"region": "buffalo",
-"label": "Buffalo",
-"tier": 3,
-"start": 648,
-"end": 668,
-"words": [],
-"title": "Paul Dyster",
-"channel": "City & State",
-"other": 0.26,
-"person": "Paul Dyster",
-"role": "Mayor of Niagara Falls, NY",
-"hometown": "Niagara Falls, New York",
-"evidence": "Super-strong Inland North accent",
-"source": "https://www.chicagomag.com/city-life/chicago-accent-erie-canal-vowel-shift/",
-"lat": 43.094,
-"lng": -79.057
-},
-{
 "id": "english340",
 "audio": "audio/saa/english340.mp3",
 "region": "st_wv",
@@ -4747,85 +3439,6 @@ window.CANDIDATES = [
 "lng": -74.1063
 },
 {
-"id": "O5j9Z21LtGA",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 2,
-"start": 752,
-"end": 782,
-"words": [
-[
-"know",
-1.3
-],
-[
-"on",
-8.0
-],
-[
-"so",
-27.2
-],
-[
-"around",
-29.8
-]
-],
-"title": "\"Mr. All-Around: The Life of Tom Gola\" with David Grzybowski",
-"channel": "PCNTV",
-"other": 0.16,
-"person": "Tom Gola",
-"role": "La Salle coach; Philadelphia city controller",
-"hometown": "Olney, Philadelphia",
-"evidence": "Nasal accent betrayed his hometown",
-"source": "https://en.wikipedia.org/wiki/Philadelphia_English",
-"lat": 40.04,
-"lng": -75.12
-},
-{
-"id": "_yAEHbP0GdQ",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 102,
-"end": 122,
-"words": [
-[
-"party",
-19.9
-]
-],
-"title": "Christy Mihos Interview on Fox Boston",
-"channel": "capecodtoday",
-"other": 0.34,
-"person": "Christy Mihos",
-"role": "Owner of Christy's Markets",
-"hometown": "Brockton, Massachusetts",
-"evidence": "Unpretentious Boston accent",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.083,
-"lng": -71.018
-},
-{
-"id": "4DiayeHaqiI",
-"region": "hill_country",
-"label": "Hill Country",
-"tier": 3,
-"start": 514,
-"end": 534,
-"words": [],
-"title": "Santa Rita Ranch Expo Gold Sponsor - Texas Hill Country TMS Interview",
-"channel": "rennerrealty",
-"other": 0.44,
-"person": "Local speaker (rennerrealty)",
-"role": "Featured in \"Santa Rita Ranch Expo Gold Sponsor - Texas Hill Country TMS Interview\"",
-"hometown": "Texas Hill Country",
-"evidence": "Found by searching YouTube for \"Texas Hill Country rancher interview\"",
-"source": "https://youtu.be/4DiayeHaqiI",
-"lat": 30.27,
-"lng": -98.87
-},
-{
 "id": "DCA_se3_ag3_f_01_1_1091",
 "audio": "audio/coraal/DCA_se3_ag3_f_01_1_1091.mp3",
 "region": "dc",
@@ -4848,86 +3461,6 @@ window.CANDIDATES = [
 "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
 "lat": 38.907,
 "lng": -77.037
-},
-{
-"id": "2yrZMmrcg-I",
-"region": "philly",
-"label": "Philadelphia",
-"tier": 2,
-"start": 514,
-"end": 544,
-"words": [
-[
-"out",
-2.0
-],
-[
-"town",
-5.8
-],
-[
-"know",
-6.1
-],
-[
-"go",
-9.1
-],
-[
-"our",
-9.5
-],
-[
-"mad",
-12.4
-],
-[
-"so",
-24.6
-],
-[
-"about",
-27.4
-]
-],
-"title": "Philly Dem Party chair Bob Brady discusses 2024, shifting city politics | NBC10 Philadelphia",
-"channel": "NBC10 Philadelphia",
-"other": 0.34,
-"person": "Bob Brady",
-"role": "Philadelphia Democratic Party chairman",
-"hometown": "Overbrook, West Philadelphia",
-"evidence": "A thick Philly accent",
-"source": "https://en.wikipedia.org/wiki/Philadelphia_English",
-"lat": 39.98,
-"lng": -75.24
-},
-{
-"id": "AmxdJmv7Yjo",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 677,
-"end": 697,
-"words": [
-[
-"year",
-3.5
-],
-[
-"hard",
-14.7
-]
-],
-"title": "Interview with Congressman Mike Capuano",
-"channel": "Discovering the Law",
-"other": 0.22,
-"person": "Mike Capuano",
-"role": "Mayor of Somerville",
-"hometown": "Somerville, Massachusetts",
-"evidence": "The stronger Boston accent of two candidates",
-"source": "https://en.wikipedia.org/wiki/Boston_accent",
-"lat": 42.388,
-"lng": -71.099
 },
 {
 "id": "DCB_se1_ag1_f_01_1_1687",

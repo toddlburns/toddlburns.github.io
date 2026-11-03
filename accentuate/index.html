@@ -415,7 +415,7 @@ function startRound() {
   const c = state.picks[state.round];
   document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
   $('ages').hidden = ageOf(c) == null;
-  $('hEra').textContent = c.year ? (c.audio ? 'Recorded ' : 'Video from ') + c.year : '';
+  $('hEra').textContent = c.year ? (c.audio || c.recorded ? 'Recorded ' : 'Video from ') + c.year : '';
   $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
   document.body.classList.remove('revealed'); $('reveal').classList.remove('on'); hideVideo();
   $('guessBtn').disabled = true; $('hint').textContent = 'Press play, then tap the map';
@@ -451,7 +451,7 @@ function guess() {
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
   $('rWho').textContent = c.name; $('rRole').textContent = c.role;
   // YouTube gives only the upload year, so say so; archives give the real recording year.
-  $('rWhen').textContent = [c.year && (c.audio ? 'Recorded ' : 'Video posted ') + c.year, c.born && 'born ' + c.born, c.age && 'age ' + c.age].filter(Boolean).join(' · '); $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
+  $('rWhen').textContent = [c.year && (c.audio || c.recorded ? 'Recorded ' : 'Video posted ') + c.year, c.born && 'born ' + c.born, c.age && 'age ' + c.age].filter(Boolean).join(' · '); $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
   $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
   $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => {
     const at = c.start + +b.dataset.t;

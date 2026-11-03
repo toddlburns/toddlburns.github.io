@@ -91,8 +91,9 @@ window.CLIPS = [
     17.6
    ]
   ],
-  "year": 2023,
-  "born": 1928
+  "year": 1983,
+  "born": 1928,
+  "recorded": true
  },
  {
   "id": "KfQNyrUDtaY",
@@ -181,7 +182,8 @@ window.CLIPS = [
     15.8
    ]
   ],
-  "year": 2021
+  "year": 2021,
+  "born": 1959
  },
  {
   "id": "G-8u1UBSsP0",
@@ -206,7 +208,8 @@ window.CLIPS = [
     3.0
    ]
   ],
-  "year": 2009
+  "year": 2009,
+  "born": 1927
  },
  {
   "id": "739-uzmJLPM",
@@ -235,7 +238,8 @@ window.CLIPS = [
     15.8
    ]
   ],
-  "year": 2008
+  "year": 2008,
+  "born": 1927
  },
  {
   "id": "iLKz7P32vlI",
@@ -268,7 +272,8 @@ window.CLIPS = [
     29.2
    ]
   ],
-  "year": 2019
+  "year": 2019,
+  "born": 1946
  },
  {
   "id": "MzKbsHP5WJU",
@@ -389,7 +394,8 @@ window.CLIPS = [
   "note": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad.",
   "verified": true,
   "words": [],
-  "year": 2019
+  "year": 2019,
+  "born": 1966
  },
  {
   "id": "mSpTwzm9HxI",
@@ -427,7 +433,6 @@ window.CLIPS = [
     3.2
    ]
   ],
-  "year": 2024,
   "born": 1941
  },
  {
@@ -453,7 +458,8 @@ window.CLIPS = [
     11.3
    ]
   ],
-  "year": 2018
+  "year": 2018,
+  "born": 1969
  },
  {
   "id": "M_SxvWocfj8",
@@ -548,7 +554,8 @@ window.CLIPS = [
     8.0
    ]
   ],
-  "year": 2024
+  "year": 2024,
+  "born": 1971
  },
  {
   "id": "pAQ60hlA4YM",
@@ -573,7 +580,8 @@ window.CLIPS = [
     2.5
    ]
   ],
-  "year": 2024
+  "year": 2024,
+  "born": 1943
  },
  {
   "id": "_F14ErvmCLQ",
@@ -762,7 +770,8 @@ window.CLIPS = [
   "note": "Old Pittsburgh speech. The ow sound flattens toward \"ah\" (the \"dahntahn\" vowel), and the cadence is pure western Pennsylvania.",
   "verified": true,
   "words": [],
-  "year": 2012
+  "year": 2012,
+  "born": 1917
  },
  {
   "id": "3u_ry-eMOyc",
@@ -812,7 +821,8 @@ window.CLIPS = [
     8.6
    ]
   ],
-  "year": 2026
+  "year": 2026,
+  "born": 1980
  },
  {
   "id": "KjOSEjFL8LU",
@@ -837,7 +847,8 @@ window.CLIPS = [
     9.3
    ]
   ],
-  "year": 2026
+  "year": 2026,
+  "born": 1980
  },
  {
   "id": "togPeRIdeGg",
@@ -866,7 +877,8 @@ window.CLIPS = [
     28.4
    ]
   ],
-  "year": 2022
+  "year": 2022,
+  "born": 1969
  },
  {
   "id": "ATL_se0_ag1_f_02_1_709",
@@ -1549,7 +1561,8 @@ window.CLIPS = [
     11.1
    ]
   ],
-  "year": 2026
+  "year": 2026,
+  "born": 1980
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2660",
