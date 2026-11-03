@@ -7,153 +7,174 @@
 <title>Accentuate</title>
 <meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-/* Layout: listening panel on top (visualizer hides the speaker), map below; reveal swaps the visualizer for the video */
+/* Layout: the map is the game. It fills the screen; listening, guessing and the reveal float over it. */
 :root{
-  --bg:#f7f4ee; --card:#fffdf9; --ink:#1f1b16; --muted:#6f665b; --rule:#e5ded2; --accent:#c4421a; --accent-ink:#fff;
-  --answer:#1f6f5c; --guess:#c4421a;
-  --display:"Instrument Serif",Georgia,"Times New Roman",serif;
-  --body:"Public Sans",system-ui,-apple-system,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --paper:#ffffff; --paper-a:rgba(255,255,255,.92); --ink:#18232a; --muted:#5d6b72; --rule:#dfe4e6;
+  --answer:#d7262e; --guess:#18232a; --accent:#d7262e; --accent-ink:#fff; --shade:rgba(24,35,42,.28);
+  --font:"Archivo",system-ui,-apple-system,sans-serif;
+  --bg:#ffffff; --card:#ffffff;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#14120f; --card:#1d1a16; --ink:#f1ebe2; --muted:#a69c8f; --rule:#34302a; --accent:#f07a4f; --accent-ink:#14120f;
-  --answer:#5fc7a9; --guess:#f07a4f; color-scheme:dark}}
+  --paper:#172026; --paper-a:rgba(23,32,38,.92); --ink:#eef2f3; --muted:#9aa8ae; --rule:#2c3940;
+  --answer:#ff5a5f; --guess:#eef2f3; --accent:#ff5a5f; --accent-ink:#172026; --shade:rgba(0,0,0,.45); --bg:#0f161a; --card:#172026; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#14120f; --card:#1d1a16; --ink:#f1ebe2; --muted:#a69c8f; --rule:#34302a; --accent:#f07a4f; --accent-ink:#14120f;
-  --answer:#5fc7a9; --guess:#f07a4f; color-scheme:dark}
+  --paper:#172026; --paper-a:rgba(23,32,38,.92); --ink:#eef2f3; --muted:#9aa8ae; --rule:#2c3940;
+  --answer:#ff5a5f; --guess:#eef2f3; --accent:#ff5a5f; --accent-ink:#172026; --shade:rgba(0,0,0,.45); --bg:#0f161a; --card:#172026; color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--body);padding:0 16px 48px}
-.wrap{max-width:980px;margin:0 auto}
-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:20px 0 14px;border-bottom:1px solid var(--rule)}
-.logo{font:400 34px/1 var(--display);letter-spacing:-.01em;margin:0}
-.logo em{color:var(--accent)}
-.hud{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:16px}
-.hud b{color:var(--ink);font-weight:500}
-button{font:600 15px var(--body);border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:11px 22px;cursor:pointer}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 var(--font);font-variant-numeric:tabular-nums}
+button{font:650 15px var(--font);border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:11px 20px;cursor:pointer}
 button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
 button:disabled{opacity:.35;cursor:not-allowed}
 button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 a{color:inherit}
+[hidden]{display:none!important}
 
-/* intro */
-.intro{padding:64px 0 32px;max-width:640px}
-.intro h1{font:400 clamp(48px,10vw,88px)/.95 var(--display);margin:0 0 18px;letter-spacing:-.02em;text-wrap:balance}
-.intro h1 em{color:var(--accent)}
-.intro p{font-size:18px;color:var(--muted);margin:0 0 14px;max-width:52ch}
-.intro .rules{font:14px/1.7 var(--mono);color:var(--muted);margin:24px 0 32px;padding:0;list-style:none}
-.intro .rules li::before{content:"— ";color:var(--accent)}
+/* the map */
+#game{position:fixed;inset:0}
+#map{position:absolute;inset:0;z-index:1;background:#7ea6c9}
+.leaflet-container{font-family:var(--font)}
+.leaflet-tile-container img{width:257px!important;height:257px!important}  /* hide hairline seams at fractional zoom */
+.relief{mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}}
+:root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
+.leaflet-control-attribution{font-size:10px;opacity:.7}
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+.pin.g{background:var(--guess)} .pin.a{background:var(--answer)}
+.pin.sm{width:12px;height:12px;border-width:2px}
+.leaflet-tooltip.place{font:650 13px var(--font);background:var(--paper);color:var(--ink);border:0;box-shadow:0 2px 8px rgba(0,0,0,.2);padding:4px 8px}
+.leaflet-tooltip.place::before{display:none}
 
-/* round */
-.stage{display:grid;gap:16px;padding-top:18px}
-.listen{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:14px;overflow:hidden;min-height:200px}
-#viz{position:relative;z-index:1;display:block;width:100%;height:200px;background:var(--card)}
-.listen .controls{z-index:2;position:absolute;inset:auto 0 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
-.play{width:56px;height:56px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.play svg{width:22px;height:22px}
-.listen .label{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right}
-#ytwrap{position:absolute;inset:0;z-index:0;pointer-events:none;background:#000}
+/* hidden player (YouTube only plays while visible, so it sits under the map until the reveal) */
+#ytwrap{position:fixed;left:0;top:0;width:356px;height:200px;z-index:0;background:#000;border-radius:10px;overflow:hidden}
 #ytwrap iframe{width:100%;height:100%;border:0}
-.listen.revealed #ytwrap{z-index:3;pointer-events:auto}
-.listen.revealed #viz,.listen.revealed .controls{visibility:hidden}
-.listen.revealed{min-height:0;aspect-ratio:16/9;max-height:340px;margin-inline:auto;width:100%;max-width:604px}
+#ytwrap.show{z-index:40}
 
-.mapbox{position:relative;border:1px solid var(--rule);border-radius:14px;overflow:hidden}
-#map{height:min(56vh,520px);min-height:320px;background:var(--card)}
-.jump{position:absolute;left:10px;bottom:10px;z-index:500;display:flex;gap:6px}
-.jump button{font:500 12px var(--mono);padding:6px 10px;background:var(--card);color:var(--ink);border-color:var(--rule)}
-.guessbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.hint{font-size:14px;color:var(--muted)}
+/* floating pieces */
+.card{background:var(--paper-a);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;box-shadow:0 10px 40px var(--shade)}
+.topbar{position:absolute;z-index:20;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
+.logo{font:800 20px/1 var(--font);font-stretch:125%;letter-spacing:-.01em;margin:0;padding:10px 14px;pointer-events:auto}
+.hud{display:flex;align-items:center;gap:14px;padding:9px 14px;font-size:14px;pointer-events:auto}
+.hud b{font-weight:750}
+.hud .tier{font-size:12px;font-weight:650;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted)}
+.scrim{position:absolute;inset:0;z-index:15;background:var(--shade)}
 
-/* reveal card */
-.reveal{display:none;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:22px}
+.intro,.final{position:absolute;z-index:20;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 120px);overflow:auto;padding:28px}
+.intro h1{font:800 clamp(30px,6vw,44px)/1.02 var(--font);font-stretch:112%;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance}
+.intro p{color:var(--muted);margin:0 0 10px}
+.intro .rules{margin:16px 0 22px;padding:0;list-style:none;display:grid;gap:4px;font-size:15px}
+.intro .rules li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--answer);margin-right:10px;vertical-align:middle}
+.credits{font-size:12px;color:var(--muted);margin:18px 0 0}
+
+.dock{position:absolute;z-index:20;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:10px 10px 10px 10px;width:min(560px,calc(100vw - 24px))}
+.play{flex:none;width:52px;height:52px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.play svg{width:22px;height:22px}
+#viz{flex:1;min-width:0;height:52px;display:block}
+.dock .label{display:none}
+#guessBtn{flex:none;height:52px;padding:0 22px}
+.hint{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom));margin:0;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--paper-a);box-shadow:0 2px 10px var(--shade);white-space:nowrap}
+.revealed .dock,.revealed .hint{display:none}
+
+.reveal{position:absolute;z-index:20;left:16px;top:76px;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 92px);overflow:auto;padding:20px;display:none}
 .reveal.on{display:block}
-.reveal .pts{font:400 56px/1 var(--display);color:var(--accent)}
-.reveal .dist{font:500 13px var(--mono);color:var(--muted);margin:6px 0 16px}
-.meter{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;margin-bottom:18px}
-.meter i{display:block;height:100%;background:var(--accent);width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
-.who{font:400 30px/1.1 var(--display);margin:0}
-.role{color:var(--muted);margin:4px 0 2px}
-.place{font:500 14px var(--mono);color:var(--answer);margin:0 0 14px}
-.note{border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:0 0 18px;max-width:62ch}
-.words{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 18px}
-.words button{font:500 14px var(--mono);padding:7px 12px;background:transparent;color:var(--ink);border-color:var(--accent)}
-.words button small{color:var(--muted);margin-left:6px}
+.vidslot{aspect-ratio:16/9;border-radius:10px;background:#000;margin:-6px -6px 16px}
+.reveal .pts{font:800 44px/1 var(--font);font-stretch:112%;color:var(--answer)}
+.reveal .dist{font-size:14px;color:var(--muted);margin:4px 0 12px}
+.meter{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;margin-bottom:16px}
+.meter i{display:block;height:100%;background:var(--answer);width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.who{font:750 22px/1.15 var(--font);margin:0}
+.role{color:var(--muted);margin:2px 0}
+.place{font-weight:650;color:var(--answer);margin:0 0 12px}
+.note{margin:0 0 14px;font-size:15px}
+.words{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.words button{font:600 14px var(--font);padding:6px 11px;background:transparent;color:var(--ink);border-color:var(--rule);border-radius:999px}
+.words button::before{content:"▸ ";color:var(--answer)}
+.words button small{color:var(--muted);margin-left:6px;font-weight:400}
 .reveal .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.src{font:13px var(--mono);color:var(--muted)}
+.src{font-size:12px;color:var(--muted);max-width:60%}
 
-/* final */
-.final{padding:48px 0}
-.final h2{font:400 clamp(44px,9vw,80px)/1 var(--display);margin:0}
-.final h2 small{font-size:.45em;color:var(--muted)}
-.final .verdict{font-size:18px;color:var(--muted);margin:10px 0 28px}
-.final ol{list-style:none;padding:0;margin:0 0 28px;border-top:1px solid var(--rule)}
-.final li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--rule)}
-.final li .p{font:500 15px var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.final h2{font:800 clamp(40px,8vw,60px)/1 var(--font);font-stretch:112%;margin:0}
+.final h2 small{font-size:.4em;color:var(--muted);font-weight:600}
+.final .verdict{color:var(--muted);margin:8px 0 18px}
+.final ol{list-style:none;padding:0;margin:0 0 20px;border-top:1px solid var(--rule)}
+.final li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.final li .p{font-weight:700;text-align:right}
 .final li .m{font-size:14px;color:var(--muted)}
 .final .actions{display:flex;gap:10px;flex-wrap:wrap}
+.final.side{left:16px;top:76px;transform:none}
 
-.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
-.pin.g{background:var(--guess)} .pin.a{background:var(--answer)}
-.leaflet-container{font-family:var(--body)}
+@media (max-width:620px){
+  .logo{font-size:16px;padding:9px 12px}.hud{gap:10px;font-size:13px;padding:8px 12px}
+  .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
+  .vidslot{width:56%;margin:0 0 10px}
+  .reveal .pts{font-size:36px}
+  .final.side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58dvh;padding:18px}
+}
 
-/* curate */
+/* review + curate tools (separate pages, plain layout) */
+#tools{max-width:980px;margin:0 auto;padding:0 16px 48px}
+#tools header{padding:20px 0 14px;border-bottom:1px solid var(--rule)}
+#tools .logo{padding:0}
 .curate{padding-top:18px;display:grid;gap:16px}
 .curate .cplayer{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;max-height:440px}
 .curate .cplayer iframe{width:100%;height:100%;border:0}
 .curate .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .curate .tools button{padding:8px 14px;font-size:14px}
-.curate .now{font:500 20px var(--mono);font-variant-numeric:tabular-nums;min-width:8ch}
-.curate .times{font:14px var(--mono);color:var(--muted)}
-.curate select,.curate input[type=text],.curate textarea{font:14px var(--body);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
-.curate textarea{font-family:var(--mono);min-height:120px}
+.curate .now{font:600 20px var(--font);min-width:8ch}
+.curate .times{font-size:14px;color:var(--muted)}
+.curate .hint{position:static;transform:none;white-space:normal;background:none;box-shadow:none;padding:0;font-weight:400;font-size:15px;color:var(--muted)}
+.curate select,.curate input[type=text],.curate textarea{font:14px var(--font);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+.curate textarea{min-height:120px}
 .rv{border-top:1px solid var(--rule);padding:12px 0;display:grid;gap:8px}
-.rv h3{font:600 15px var(--body);margin:0}.rv .meta{font:12px var(--mono);color:var(--muted)}
+.rv h3{font:650 15px var(--font);margin:0}.rv .meta{font-size:12px;color:var(--muted)}
 .rv .tools button.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.rv.keep{background:color-mix(in srgb,var(--answer) 10%,transparent)}.rv.drop{opacity:.45}
+.rv.keep{background:color-mix(in srgb,#1f9d55 12%,transparent)}.rv.drop{opacity:.45}
+#review .rv.cur{outline:2px solid var(--accent);outline-offset:4px}
 #review .cplayer{position:sticky;top:0;z-index:5;max-height:260px;max-width:462px}
-.rgroup{font:400 26px var(--display);margin:22px 0 4px}
+.rgroup{font:750 22px var(--font);margin:22px 0 4px}
 .curate .clist{display:grid;gap:6px;max-height:300px;overflow:auto;border:1px solid var(--rule);border-radius:10px;padding:8px;background:var(--card)}
 .curate .clist button{display:flex;justify-content:space-between;text-align:left;background:transparent;color:var(--ink);border-color:transparent;border-radius:8px;padding:8px 10px;font-weight:400}
 .curate .clist button.on{border-color:var(--accent)}
-.curate .clist .st{font:12px var(--mono);color:var(--muted)}
-.curate .clist .ed{color:var(--answer)}
-[hidden]{display:none!important}
-@media (max-width:560px){.logo{font-size:28px}.hud{gap:10px;font-size:12px}#viz{height:170px}.listen{min-height:170px}}
+.curate .clist .st{font-size:12px;color:var(--muted)}
+.curate .clist .ed{color:#1f9d55}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <p class="logo">Accent<em>uate</em></p>
-    <div class="hud" id="hud" hidden><span>Round <b id="hRound">1</b>/5 · <b id="hTier">Easy</b></span><span>Score <b id="hScore">0</b></span></div>
-  </header>
+<div id="game">
+  <div id="map"></div>
+  <div id="ytwrap"><div id="yt"></div></div>
+  <div class="topbar">
+    <p class="logo card">Accentuate</p>
+    <div class="hud card" id="hud" hidden><span>Round <b id="hRound">1</b>/5</span><span class="tier" id="hTier">Easy</span><span><b id="hScore">0</b> pts</span></div>
+  </div>
+  <div class="scrim" id="scrim"></div>
 
-  <section class="intro" id="intro">
-    <h1>Hear a voice. <em>Find it</em> on the map.</h1>
-    <p>Five people who are well known at home: mayors, council members, county judges, neighbors. You hear them but don't see them. Drop a pin where you think they're from.</p>
-    <p>There's no right way to sound American. This is a game about how many ways there are.</p>
+  <section class="card intro" id="intro">
+    <h1>Where’s that voice from?</h1>
+    <p>Listen to someone talk, then drop a pin where you think they grew up. The closer you are, the more you score.</p>
+    <p>There’s no right way to sound American. This is a game about how many ways there are.</p>
     <ul class="rules">
-      <li>5 rounds, up to 5,000 points each</li>
+      <li>5 voices, up to 5,000 points each</li>
+      <li>Easy first, harder as you go</li>
       <li>Replay as often as you like</li>
-      <li>The closer your pin, the more you score</li>
     </ul>
     <button id="startBtn">Start listening</button>
+    <p class="credits">Some recordings come from <a href="https://oraal.github.io/coraal" target="_blank" rel="noopener">CORAAL</a> and the <a href="https://accent.gmu.edu" target="_blank" rel="noopener">Speech Accent Archive</a>, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>; our trimmed clips carry the same <a href="audio/LICENSE.txt">license</a>.</p>
   </section>
 
   <section class="stage" id="stage" hidden>
-    <div class="listen" id="listen">
+    <p class="hint" id="hint">Press play, then tap the map</p>
+    <div class="dock card" id="dock">
+      <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
       <canvas id="viz" aria-hidden="true"></canvas>
-      <div id="ytwrap"><div id="yt"></div></div>
-      <div class="controls">
-        <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-        <span class="label" id="listenLabel">Press play to listen</span>
-      </div>
+      <span class="label" id="listenLabel">Press play to listen</span>
+      <button id="guessBtn" disabled>Guess</button>
     </div>
-    <div class="reveal" id="reveal">
+    <div class="card reveal" id="reveal">
+      <div class="vidslot" id="vidslot"></div>
       <div class="pts" id="rPts">0</div>
       <div class="dist" id="rDist"></div>
       <div class="meter"><i id="rMeter"></i></div>
@@ -167,24 +188,21 @@ a{color:inherit}
         <button id="nextBtn">Next round</button>
       </div>
     </div>
-    <div class="mapbox">
-      <div id="map"></div>
-    </div>
-    <div class="guessbar" id="guessbar">
-      <span class="hint" id="hint">Click the map to drop your pin.</span>
-      <button id="guessBtn" disabled>Guess</button>
-    </div>
   </section>
 
-  <section class="final" id="final" hidden>
+  <section class="card final" id="final" hidden>
     <h2 id="fScore">0 <small>/ 25,000</small></h2>
     <p class="verdict" id="fVerdict"></p>
     <ol id="fList"></ol>
     <div class="actions"><button id="againBtn">Play again</button><button class="ghost" id="copyBtn">Copy result</button></div>
   </section>
+</div>
+
+<div id="tools" hidden>
+  <header><p class="logo">Accentuate</p></header>
 
   <section class="curate" id="review" hidden>
-    <p class="hint">Review the hunt. Each clip is the stretch where one voice talks, with telltale words you can jump to. Mark <b>Keep</b> or <b>Drop</b>, add a note if needed, then <b>Copy decisions</b> and paste them to Claude.</p>
+    <p class="hint">Review the hunt. Each clip is the stretch where one voice talks, with telltale words you can jump to. Mark <b>Keep</b> or <b>Drop</b>, add a note if needed, then <b>Copy decisions</b> and paste them to Claude. Keys: <b>Space</b> play/pause · <b>K</b> keep and play next · <b>D</b> drop and play next · <b>↑/↓</b> move · <b>N</b> note.</p>
     <div class="cplayer"><div id="ryt"></div></div>
     <div class="tools"><span class="now" id="rNow">0:00</span><button id="rCopy">Copy decisions</button><span class="times" id="rCount"></span></div>
     <div id="rList"></div>
@@ -207,6 +225,7 @@ a{color:inherit}
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script src="clips.js"></script>
 <script>if (/[?&]review/.test(location.search)) document.write('<script src="candidates.js"><\/script>');</script>
 <script>
@@ -239,6 +258,36 @@ window.onYouTubeIframeAPIReady = () => {
 };
 const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
 
+/* ---------- Sound: our own audio files (archive clips) or YouTube ---------- */
+const au = new Audio(); au.preload = 'auto';
+let actx, analyser, freq, auEnd = 0, auOn = false;
+au.addEventListener('timeupdate', () => { if (au.currentTime >= auEnd) au.pause(); });
+['play', 'pause', 'ended'].forEach(ev => au.addEventListener(ev, () => { auOn = !au.paused; playing = auOn; if (!CURATE) setPlayUI(); }));
+function hookAnalyser() {
+  if (actx) { actx.resume(); return; }
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    const src = actx.createMediaElementSource(au); analyser = actx.createAnalyser(); analyser.fftSize = 256; analyser.smoothingTimeConstant = 0.7;
+    src.connect(analyser); analyser.connect(actx.destination); freq = new Uint8Array(analyser.frequencyBinCount);
+  } catch (e) { analyser = null; }
+}
+const snd = {
+  ready: c => !!(c && c.audio) || playerReady,
+  play(c, a, b) {
+    if (c.audio) {
+      if (playerReady) player.pauseVideo();
+      hookAnalyser();
+      if (!au.src.endsWith(c.audio)) au.src = c.audio;
+      auEnd = b; const go = () => { au.currentTime = a; au.play().catch(() => {}); };
+      au.readyState >= 1 ? go() : au.addEventListener('loadedmetadata', go, { once: true });
+    } else if (playerReady) { au.pause(); player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); player.unMute(); player.setVolume(100); }
+  },
+  pause() { au.pause(); if (playerReady) player.pauseVideo(); },
+  stop() { au.pause(); if (playerReady) player.stopVideo(); },
+  time: () => auOn || (au.src && !playerReady) ? au.currentTime : (playerReady && player.getCurrentTime ? player.getCurrentTime() : 0),
+  cue(c) { if (c.audio) { au.src = c.audio; au.load(); if (playerReady) player.stopVideo(); } else if (playerReady) { au.pause(); player.stopVideo(); player.cueVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); } },
+};
+
 /* ---------- Visualizer (animated stand-in: YouTube does not expose its audio) ---------- */
 const cv = $('viz'), cx = cv.getContext('2d');
 let level = 0, syl = 0, sylTarget = 0, nextSyl = 0, t0 = performance.now();
@@ -251,13 +300,16 @@ function frame(now) {
   level += ((playing ? 1 : 0) - level) * 0.06;
   if (now > nextSyl) { sylTarget = Math.random() < 0.18 ? 0.08 : 0.45 + Math.random() * 0.55; nextSyl = now + 120 + Math.random() * 180; }
   syl += (sylTarget - syl) * 0.22;
-  const mid = h * 0.42, bars = Math.max(40, Math.floor(w / 7)), bw = w / bars;
+  const mid = h / 2, bars = Math.max(40, Math.floor(w / 7)), bw = w / bars;
+  const real = auOn && analyser; if (real) analyser.getByteFrequencyData(freq);
   const ink = css('--ink'), acc = css('--accent');
   for (let i = 0; i < bars; i++) {
     const x = i / bars, center = Math.exp(-Math.pow((x - 0.5) / 0.32, 2));
     const n = Math.sin(i * 0.37 + t * 9.1) * 0.5 + Math.sin(i * 0.91 - t * 13.7) * 0.3 + Math.sin(i * 2.3 + t * 21) * 0.2;
     const idle = 1.5 + Math.sin(t * 1.6 + i * 0.25) * 1.2;
-    const amp = idle + level * syl * center * (0.55 + 0.45 * Math.abs(n)) * h * 0.36;
+    // Real spectrum, mirrored out from the centre (speech lives in the low bins).
+    const bin = real ? freq[Math.min(freq.length - 1, Math.floor(Math.abs(x - 0.5) * 2 * 70) + 1)] / 255 : 0;
+    const amp = real ? idle + level * Math.pow(bin, 1.4) * (0.35 + 0.65 * center) * h * 0.4 : idle + level * syl * center * (0.55 + 0.45 * Math.abs(n)) * h * 0.36;
     cx.fillStyle = i % 9 === 4 ? acc : ink;
     cx.globalAlpha = 0.25 + 0.75 * center;
     cx.fillRect(i * bw + bw * 0.25, mid - amp, bw * 0.5, amp * 2);
@@ -268,27 +320,48 @@ function frame(now) {
 if (!CURATE) requestAnimationFrame(frame);
 
 /* ---------- Map ---------- */
-let map, tiles, guessMarker, answerMarker, line;
+let map, guessMarker, answerMarker, line, finalLayers = [];
 const VIEWS = { '48': [[24.5, -125], [49.5, -66.5]] };
 const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
-function tileUrl() {
-  const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
-  const k = dark ? 'Dark' : 'Light';
-  return [`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${k}_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
-          `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${k}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`];
-}
 function initMap() {
-  map = L.map('map', { worldCopyJump: false, zoomSnap: 0.25, maxBounds: [[20, -132], [53, -60]], maxBoundsViscosity: 1 }).fitBounds(VIEWS['48']);
-  map.setMinZoom(map.getZoom());
-  const [base, ref] = tileUrl(), opt = { attribution: 'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors', maxZoom: 12 };
-  tiles = [L.tileLayer(base, opt).addTo(map), L.tileLayer(ref, { maxZoom: 12 }).addTo(map)];
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { const u = tileUrl(); tiles[0].setUrl(u[0]); tiles[1].setUrl(u[1]); });
+  map = L.map('map', { worldCopyJump: false, zoomSnap: 0.5, zoomControl: false, maxBounds: [[-45, -175], [72, -20]], maxBoundsViscosity: .8 });
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+  fitUS();
+  map.setMinZoom(Math.max(1, map.getZoom() - 1.5));
+  // Soft colored terrain with hillshade and no labels: mountains, rivers and coasts are the only clues.
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+    { maxNativeZoom: 8, maxZoom: 11, attribution: 'Terrain © Esri, US National Park Service · States: US Census' }).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+    { maxNativeZoom: 13, maxZoom: 11, opacity: .35, className: 'relief' }).addTo(map);
+  fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(r => r.json()).then(us => {
+    const lines = topojson.mesh(us, us.objects.states, (a, b) => a !== b);
+    const outline = topojson.mesh(us, us.objects.states, (a, b) => a === b);
+    L.geoJSON(lines, { interactive: false, style: { color: '#3b4a52', weight: 1, opacity: .45 } }).addTo(map);
+    L.geoJSON(outline, { interactive: false, style: { color: '#3b4a52', weight: 1.2, opacity: .3 } }).addTo(map);
+  }).catch(() => {});
   map.on('click', e => {
-    if (state.revealed) return;
+    if (state.revealed || $('stage').hidden) return;
     if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
-    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin or lock it in.';
+    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin, or press Guess';
   });
 }
+// Keep the floating cards from covering what matters on the map.
+function cardPad() {
+  const r = document.querySelector('.reveal.on, .final.side:not([hidden])')?.getBoundingClientRect();
+  if (!r) return { paddingTopLeft: [20, 70], paddingBottomRight: [20, 110] };
+  return r.width < innerWidth * 0.7 ? { paddingTopLeft: [r.right + 16, 70], paddingBottomRight: [40, 30] } : { paddingTopLeft: [20, 70], paddingBottomRight: [20, innerHeight - r.top + 16] };
+}
+const fitUS = () => map.fitBounds(VIEWS['48'], cardPad());
+addEventListener('resize', () => { placeVideo(); });
+// YouTube only plays while its player is on screen, so it waits under the map and moves into the card at the reveal.
+function placeVideo() {
+  const yw = $('ytwrap'), slot = $('vidslot');
+  if (!yw.classList.contains('show') || slot.hidden) return;
+  const r = slot.getBoundingClientRect();
+  Object.assign(yw.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+}
+function hideVideo() { const yw = $('ytwrap'); yw.classList.remove('show'); Object.assign(yw.style, { left: '0', top: '0', width: '356px', height: '200px' }); }
+$('reveal').addEventListener('scroll', placeVideo);
 
 /* ---------- Game ---------- */
 const LADDER = [1, 1, 2, 3, 3], TIER_NAME = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
@@ -308,41 +381,41 @@ function newGame() {
     if (c) { picks.push(c); used.add(c.region); }
   }
   Object.assign(state, { round: 0, score: 0, picks, results: [] });
-  $('intro').hidden = true; $('final').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
+  $('intro').hidden = true; $('final').hidden = true; $('scrim').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
   if (!map) initMap();
+  finalLayers.forEach(l => map.removeLayer(l)); finalLayers = [];
   startRound();
 }
 function startRound() {
-  state.revealed = false;
+  state.revealed = false; state.heard = false;
   const c = state.picks[state.round];
   $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
-  $('listen').classList.remove('revealed'); $('reveal').classList.remove('on'); $('guessbar').hidden = false;
-  $('guessBtn').disabled = true; $('hint').textContent = 'Click the map to drop your pin.';
+  document.body.classList.remove('revealed'); $('reveal').classList.remove('on'); hideVideo();
+  $('guessBtn').disabled = true; $('hint').textContent = 'Press play, then tap the map';
   [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
-  map.fitBounds(VIEWS['48']); setTimeout(() => map.invalidateSize(), 50);
-  if (playerReady) { player.stopVideo(); player.cueVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); }
+  fitUS();
+  snd.cue(c);
   $('listenLabel').textContent = 'Press play to listen';
 }
 function playClip() {
   const c = state.picks[state.round];
-  if (!playerReady) { $('listenLabel').textContent = 'Loading player…'; return; }
-  if (playing) { player.pauseVideo(); return; }
-  player.loadVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end });
-  player.unMute(); player.setVolume(100);
+  if (!snd.ready(c)) { $('listenLabel').textContent = 'Loading player…'; return; }
+  if (playing) { snd.pause(); return; }
+  snd.play(c, c.start, c.end);
 }
 function setPlayUI() {
   $('playIcon').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
   $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play clip');
-  if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : 'Play again';
+  if (playing) state.heard = true;
+  if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : state.heard ? 'Play again' : 'Press play to listen';
 }
 function guess() {
   if (!guessMarker || state.revealed) return;
   state.revealed = true;
   const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
-  state.score += p; state.results.push({ c, mi, p });
-  answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map);
+  state.score += p; state.results.push({ c, mi, p, g: [g.lat, g.lng] });
+  answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
-  map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.3), { maxZoom: 9 });
   $('hScore').textContent = state.score.toLocaleString();
   $('rPts').textContent = '+' + p.toLocaleString();
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
@@ -351,17 +424,29 @@ function guess() {
   $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
   $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => {
     const at = c.start + +b.dataset.t;
-    player.loadVideoById({ videoId: c.id, startSeconds: Math.max(0, at - 0.6), endSeconds: at + 1.6 });
+    snd.play(c, Math.max(0, at - 0.6), at + 1.6);
   });
-  $('rSrc').href = `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
+  $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
+  $('rSrc').textContent = c.credit ? c.credit + ' ↗' : 'Watch the full video on YouTube ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your score' : 'Next round';
-  $('guessbar').hidden = true; $('reveal').classList.add('on'); $('listen').classList.add('revealed');
-  if (playerReady) { player.pauseVideo(); player.seekTo(c.start, true); }
+  document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
+  $('vidslot').hidden = !!c.audio;
+  if (!c.audio) { $('ytwrap').classList.add('show'); requestAnimationFrame(placeVideo); }
+  map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad()));
+  snd.pause();
 }
 function next() {
-  if (playerReady) player.stopVideo();
+  snd.stop();
   if (++state.round < 5) return startRound();
-  $('stage').hidden = true; $('hud').hidden = true; $('final').hidden = false;
+  $('stage').hidden = true; $('hud').hidden = true; hideVideo(); document.body.classList.remove('revealed');
+  [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
+  $('final').hidden = false; $('final').classList.add('side');
+  // Every guess and every answer, all at once.
+  const pts = [];
+  state.results.forEach(r => { const a = [r.c.lat, r.c.lng]; pts.push(a, r.g);
+    finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
+      L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
+  requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
   $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ 25,000</small>`;
   const s = state.score;
   $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
@@ -372,6 +457,7 @@ function copyResult() {
   const txt = `Accentuate ${state.score.toLocaleString()}/25,000\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
   navigator.clipboard?.writeText(txt).then(() => { $('copyBtn').textContent = 'Copied'; setTimeout(() => $('copyBtn').textContent = 'Copy result', 1600); });
 }
+if (!CURATE) initMap();
 $('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
 $('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next;
 document.addEventListener('keydown', e => {
@@ -403,9 +489,9 @@ function setEdit(patch) {
   save(edits); selectClip(cur);
 }
 if (REVIEW) {
-  $('intro').hidden = true; $('review').hidden = false; initReview();
+  $('game').hidden = true; $('tools').hidden = false; $('review').hidden = false; initReview();
 } else if (CURATE) {
-  $('intro').hidden = true; $('curate').hidden = false;
+  $('game').hidden = true; $('tools').hidden = false; $('curate').hidden = false;
   setInterval(() => { if (playerReady && player.getCurrentTime) $('cNow').textContent = fmt(player.getCurrentTime()); }, 250);
   document.querySelectorAll('[data-nudge]').forEach(b => b.onclick = () => player.seekTo(player.getCurrentTime() + +b.dataset.nudge, true));
   $('cMarkStart').onclick = () => setEdit({ start: Math.floor(player.getCurrentTime()) });
@@ -424,12 +510,12 @@ function initReview() {
   let dec = {}; try { dec = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
   const put = () => { try { localStorage.setItem(KEY, JSON.stringify(dec)); } catch (e) {} const k = Object.values(dec).filter(d => d.v === 'keep').length;
     $('rCount').textContent = `${k} kept · ${Object.keys(dec).length}/${CANDIDATES.length} decided`; };
-  const play = (c, a, b) => playerReady && player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b });
+  const play = (c, a, b) => snd.play(c, a, b);
   let last = '';
   $('rList').innerHTML = CANDIDATES.map((c, i) => {
     const head = c.label !== last ? `<h2 class="rgroup">${c.label}</h2>` : ''; last = c.label;
-    const who = c.person ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · from ${esc(c.hometown)}</span></h3><div class="meta">Press on the accent: “${esc(c.evidence)}” <a href="${esc(c.source)}" target="_blank" rel="noopener">source ↗</a></div><div class="meta">Video: ${esc(c.title)}</div>` : `<h3>${esc(c.title)}</h3>`;
-    return head + `<div class="rv" data-i="${i}">${who}<div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} · other voice ${Math.round(c.other * 100)}%</div>
+    const who = c.audio ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · ${esc(c.hometown)}</span></h3><div class="meta">${esc(c.evidence)}</div>` : c.person ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · from ${esc(c.hometown)}</span></h3><div class="meta">Press on the accent: “${esc(c.evidence)}” <a href="${esc(c.source)}" target="_blank" rel="noopener">source ↗</a></div><div class="meta">Video: ${esc(c.title)}</div>` : `<h3>${esc(c.title)}</h3>`;
+    return head + `<div class="rv" data-i="${i}">${who}<div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} ${c.audio ? '' : ` · other voice ${Math.round(c.other * 100)}%`}</div>
       <div class="tools"><button class="ghost" data-a="play">▶ Play clip</button>${c.words.map(([w, t]) => `<button class="ghost" data-w="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
       <div class="tools"><button class="ghost" data-v="keep">Keep</button><button class="ghost" data-v="drop">Drop</button><input type="text" placeholder="Note (wrong voice, not local, too famous…)" style="flex:1;min-width:200px"></div></div>`;
   }).join('');
@@ -444,7 +530,23 @@ function initReview() {
     row.querySelector('input').onchange = e => { d.note = e.target.value || undefined; dec[c.id] = d; put(); };
     paint();
   });
-  setInterval(() => { if (playerReady && player.getCurrentTime) $('rNow').textContent = fmt(player.getCurrentTime()); }, 250);
+  setInterval(() => { $('rNow').textContent = fmt(snd.time()); }, 250);
+  // Keyboard review: Space plays the current clip, K keeps, D drops (both move on and play the next).
+  const rows = [...document.querySelectorAll('.rv')];
+  let at = Math.max(0, rows.findIndex(r => !dec[CANDIDATES[+r.dataset.i].id]?.v));
+  const focus = (i, autoplay) => { at = Math.max(0, Math.min(rows.length - 1, i)); rows.forEach(r => r.classList.remove('cur')); const r = rows[at]; if (!r) return;
+    r.classList.add('cur'); r.scrollIntoView({ block: 'center', behavior: 'smooth' }); if (autoplay) r.querySelector('[data-a]').click(); };
+  rows.forEach((r, i) => r.addEventListener('click', () => { at = i; rows.forEach(x => x.classList.remove('cur')); r.classList.add('cur'); }, true));
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const r = rows[at]; if (!r) return;
+    if (e.code === 'Space') { e.preventDefault(); playing ? snd.pause() : r.querySelector('[data-a]').click(); }
+    else if (e.key === 'k' || e.key === 'd') { const b = r.querySelector(`[data-v="${e.key === 'k' ? 'keep' : 'drop'}"]`); if (!b.classList.contains('sel')) b.click(); focus(at + 1, true); }
+    else if (e.key === 'j' || e.key === 'ArrowDown') { e.preventDefault(); focus(at + 1, false); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focus(at - 1, false); }
+    else if (e.key === 'n') { e.preventDefault(); r.querySelector('input').focus(); }
+  });
+  focus(at, false);
   $('rCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(dec, null, 1)); $('rCopy').textContent = 'Copied'; setTimeout(() => $('rCopy').textContent = 'Copy decisions', 1600); };
   put();
 }

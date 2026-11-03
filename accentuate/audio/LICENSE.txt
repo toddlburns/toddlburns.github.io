@@ -1,0 +1,8 @@
+Audio clips in this folder are excerpts, trimmed and loudness-matched, from:
+
+coraal/  Corpus of Regional African American Language (CORAAL), Kendall, T. & Farrington, C.,
+         Online Resources for African American Language Project, https://oraal.github.io/coraal
+saa/     The Speech Accent Archive, Weinberger, S., George Mason University, https://accent.gmu.edu
+
+Both sources, and these excerpts, are licensed CC BY-NC-SA 4.0:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
