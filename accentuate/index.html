@@ -646,7 +646,7 @@ const LB = 'https://accentuate-leaderboard.todd-burns.workers.dev';
 let myEntry = null;
 async function loadBoard() {
   try {
-    const { top, total } = await (await fetch(LB + '/top?n=15')).json();
+    const { top, total } = await (await fetch(LB + '/top?n=5')).json();
     $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()} mi</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
     if (myEntry?.rank) $('lbMsg').textContent = `You're #${myEntry.rank} of ${total.toLocaleString()} all time.`;
   } catch (e) { $('lbList').innerHTML = '<li class="m"><span>The leaderboard is unreachable right now.</span></li>'; }
