@@ -109,10 +109,11 @@ a{color:inherit}
 @media (max-width:620px){.final .verdictband{margin:-18px -18px 14px;padding:16px 18px 12px}.reveal .verdictband{margin:-14px -14px 12px;padding:12px 14px 10px;font-size:22px}}
 @media (prefers-reduced-motion:reduce){.reveal.big,.pin.a.ring{animation:none}.agebonus{transition:none}}
 .reveal .kicker{font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
-.reveal .pts{font:800 40px/1 var(--font);font-stretch:112%}
+.reveal .pts{font:800 40px/1 var(--font);font-stretch:112%;color:var(--accent)}
+.reveal .verdictband{background:color-mix(in srgb,var(--muted) 12%,transparent);color:var(--ink)}
 .ptsrow{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
 .vword{font:800 17px/1.1 var(--font);text-align:right;max-width:55%}
-.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--ink);margin:2px 0 6px;text-wrap:balance}
+.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--accent);margin:2px 0 6px;text-wrap:balance}
 .reveal .who{font-size:13px;color:var(--muted);margin:0 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reveal .note{margin:0 0 10px;font-size:15px;color:var(--ink)}
 .rhead{font:750 11px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;padding-top:12px;border-top:1px solid var(--rule)}
@@ -123,7 +124,10 @@ a{color:inherit}
 .tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
 .nextbtn{width:100%;padding:12px}
 .reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:10px;max-width:none;line-height:1.35}
-.words{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.words{display:none}
+.note .ts{font:650 13px var(--font);padding:0 7px;margin:0 1px;border-radius:999px;background:transparent;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);vertical-align:1px;cursor:pointer}
+.note .ts::before{content:"▸ ";font-size:10px}
+.note .ts:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
 .words button{font:600 14px var(--font);padding:6px 11px;background:transparent;color:var(--ink);border-color:var(--rule);border-radius:999px}
 .words button::before{content:"▸ ";color:var(--answer)}
 .words button small{color:var(--muted);margin-left:6px;font-weight:400}
@@ -220,7 +224,7 @@ a{color:inherit}
       <button id="guessBtn" disabled>Guess</button>
     </div>
     <div class="card reveal" id="reveal">
-      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div><div class="vword" id="rVword"></div></div></div>
+      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div></div></div>
       <p class="place" id="rPlace"></p>
       <p class="who" id="rWho"></p>
       <p class="note" id="rNote"></p>
@@ -439,7 +443,7 @@ const points = mi => Math.round(5000 * Math.exp(-mi / 300));
 
 function newGame() {
   stopFx();
-  const pool = CLIPS.map(clip).filter(c => !c.drop && ageOf(c) >= 20);   // every round has an adult age to guess
+  const pool = CLIPS.map(clip).filter(c => !c.drop);
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
   // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
   const picks = [], used = new Set();
@@ -530,15 +534,18 @@ function guess() {
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
   const [lv, head] = VERDICT(mi);
-  $('rVerdict').className = 'verdictband lv' + lv; $('rKicker').textContent = `Points · Round ${state.round + 1}`; $('rVword').textContent = head;
+  $('rVerdict').className = 'verdictband'; $('rKicker').textContent = `Points · Round ${state.round + 1}`;
   $('reveal').classList.remove('big'); void $('reveal').offsetWidth; $('reveal').classList.toggle('big', lv >= 4);
   countUp($('rPts'), p + ab + fb, '');
   $('rPlace').textContent = c.place;
   // one compact line: who, what, when, how old (YouTube gives only the upload year, so say "video")
   $('rWho').textContent = [c.name, c.role, c.year && (c.audio || c.recorded ? 'recorded ' : 'video ') + c.year, a != null && 'age ' + a].filter(Boolean).join(' · ');
-  $('rNote').textContent = c.note;
-  $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
-  $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
+  // "(0:19)" in the note plays that moment; snap to the matching word's exact time when we have it
+  $('rNote').innerHTML = esc(c.note).replace(/\((\d+):(\d\d)\)/g, (m, mm, ss) => {
+    const t = +mm * 60 + +ss, w = (c.words || []).find(([, wt]) => Math.abs(wt - t) < 1.5);
+    return `<button class="ts" data-t="${w ? w[1] : t}" aria-label="Play this moment">${m.slice(1, -1)}</button>`; });
+  $('rNote').querySelectorAll('.ts').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
+  $('rWords').innerHTML = '';
   const dist = mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
   nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
