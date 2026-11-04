@@ -203,6 +203,48 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "rkmKJqxCKlM",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 273,
+"end": 293,
+"words": [
+[
+"the",
+0.1
+],
+[
+"they",
+4.3
+],
+[
+"that",
+5.9
+],
+[
+"something",
+13.1
+],
+[
+"with",
+18.4
+]
+],
+"title": "388: A.I. Apocalypse with Manny Rutinel and Ira Shapiro | Politics War Room with James Carville...",
+"channel": "Politicon",
+"other": 0.49,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
 "id": "XSp6LXXO1W8",
 "region": "cajun",
 "label": "Cajun Louisiana (Acadiana)",
@@ -230,6 +272,40 @@ window.CANDIDATES = [
 "title": "391: How Russia Owns Trump with David Corn | Politics War Room with James Carville & Al Hunt",
 "channel": "Politicon",
 "other": 0.28,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "MjyGzkVXxj8",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 1140,
+"end": 1160,
+"words": [
+[
+"three",
+1.1
+],
+[
+"that",
+3.5
+],
+[
+"with",
+13.1
+]
+],
+"title": "376: Schisms With Jim Gerstein | Politics War Room with James Carville & Al Hunt",
+"channel": "Politicon",
+"other": 0.56,
 "person": "James Carville",
 "role": "Political strategist",
 "hometown": "Carville, Louisiana",
@@ -302,6 +378,70 @@ window.CANDIDATES = [
 "title": "389: We Didn’t Start The Fire with Sam Forstag | Politics War Room with James Carville & Al Hunt",
 "channel": "Politicon",
 "other": 0.42,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "X8s2Kn-YTXo",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 1009,
+"end": 1029,
+"words": [
+[
+"that",
+1.3
+],
+[
+"the",
+13.6
+]
+],
+"title": "Kay and Britt Rice Lecture Series featuring James Carville and Mary Matalin",
+"channel": "The George and Barbara Bush Foundation",
+"other": 0.61,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "HfyT_BxQ6y8",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 889,
+"end": 909,
+"words": [
+[
+"home",
+5.5
+],
+[
+"other",
+11.0
+],
+[
+"they",
+16.5
+]
+],
+"title": "390: MAGA In Retreat with Jacob Weisberg & Nancy Lacore | Politics War Room with James Carville...",
+"channel": "Politicon",
+"other": 0.5,
 "person": "James Carville",
 "role": "Political strategist",
 "hometown": "Carville, Louisiana",
