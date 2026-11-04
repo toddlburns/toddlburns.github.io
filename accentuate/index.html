@@ -199,7 +199,7 @@ a{color:inherit}
     <ul class="rules">
       <li>5 voices, up to 5,000 points each</li>
       <li>Easy first, harder as you go</li>
-      <li>Replay as often as you like, or guess before the first listen ends for a bonus</li>
+      <li>Replay as often as you like</li>
     </ul>
     <button id="startBtn">Start listening</button>
     <p class="credits">Some recordings come from <a href="https://oraal.github.io/coraal" target="_blank" rel="noopener">CORAAL</a> and the <a href="https://accent.gmu.edu" target="_blank" rel="noopener">Speech Accent Archive</a>, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>; our trimmed clips carry the same <a href="audio/LICENSE.txt">license</a>.</p>
@@ -397,7 +397,7 @@ function initMap() {
   map.on('click', e => {
     if (state.revealed || $('stage').hidden) return;
     if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
-    $('guessBtn').disabled = false; $('hint').textContent = state.heard && !state.fullListen ? `Press Guess before it ends for +${FAST}` : 'Move your pin, or press Guess';
+    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin, or press Guess';
   });
 }
 // Keep the floating cards from covering what matters on the map.
@@ -424,7 +424,7 @@ const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
 // Age bonus: only where the age is on record (archives) or close to it (birth year + video year).
 // First-listen bonus: lock in before the clip has played all the way through once. Pausing is fine; replays are free but end the bonus.
 const FAST = 500;
-function clipDone() { if (state.heard && !state.fullListen) { state.fullListen = true; if (!state.revealed) $('hint').textContent = guessMarker ? 'Move your pin, or press Guess' : 'Tap the map to drop your pin'; } }
+function clipDone() { if (state.heard) state.fullListen = true; }   // the bonus is only ever mentioned on the reveal
 const ageOf = c => c.age || (c.year && c.born ? c.year - c.born : null);
 const bracket = a => a < 20 ? 0 : a >= 70 ? 6 : Math.floor(a / 10) - 1;
 const BR = ['under 20', 'in their 20s', 'in their 30s', 'in their 40s', 'in their 50s', 'in their 60s', '70 or older'];
@@ -478,7 +478,7 @@ function playClip() {
 function setPlayUI() {
   $('playIcon').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
   $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play clip');
-  if (playing && !state.heard) { state.heard = true; if (!guessMarker) $('hint').textContent = `Guess before it ends for +${FAST}`; }
+  if (playing) state.heard = true;
   if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : state.heard ? 'Play again' : 'Press play to listen';
 }
 /* ---------- Reveal fanfare: quick, never in the way (Next works immediately) ---------- */
