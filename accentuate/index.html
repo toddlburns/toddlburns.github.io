@@ -41,7 +41,10 @@ a{color:inherit}
 .relief{mix-blend-mode:multiply}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}}
 :root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
-.leaflet-control-attribution{font-size:10px;opacity:.7}
+.leaflet-control-attribution{font-size:10px;opacity:.7;cursor:pointer}
+.leaflet-control-attribution.mini:not(.open){font-size:0;width:20px;height:20px;padding:0;margin:0 6px 6px 0;border-radius:50%;background:rgba(20,24,28,.6)!important;opacity:.8;display:grid;place-items:center}
+.leaflet-control-attribution.mini:not(.open) *{display:none}
+.leaflet-control-attribution.mini:not(.open)::before{content:"i";font:700 12px/1 Georgia,serif;font-style:italic;color:#fff}
 .pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
 .pin.g{background:var(--guess)} .pin.a{background:var(--answer)}
 .pin.sm{width:12px;height:12px;border-width:2px}
@@ -392,6 +395,9 @@ const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></d
 function initMap() {
   map = L.map('map', { worldCopyJump: false, zoomSnap: 0.5, zoomControl: false, maxBounds: [[-45, -175], [72, -20]], maxBoundsViscosity: .8 });
   L.control.zoom({ position: 'bottomright' }).addTo(map);
+  // Map credit is required on the map; keep it as a small "i" that opens on tap.
+  const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
+  ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
   fitUS();
   map.setMinZoom(Math.max(1, map.getZoom() - 1.5));
   // Soft colored terrain with hillshade and no labels: mountains, rivers and coasts are the only clues.
