@@ -113,7 +113,7 @@ a{color:inherit}
 .reveal .verdictband{background:color-mix(in srgb,var(--muted) 12%,transparent);color:var(--ink)}
 .ptsrow{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
 .vword{font:800 17px/1.1 var(--font);text-align:right;max-width:55%}
-.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--accent);margin:2px 0 6px;text-wrap:balance}
+.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--ink);margin:2px 0 6px;text-wrap:balance}
 .reveal .who{font-size:13px;color:var(--muted);margin:0 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reveal .note{margin:0 0 10px;font-size:15px;color:var(--ink)}
 .rhead{font:750 11px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;padding-top:12px;border-top:1px solid var(--rule)}
@@ -554,11 +554,10 @@ function guess() {
     + `<span class="tot">Round ${state.round + 1}</span><span class="tot">${(p + ab + fb).toLocaleString()}</span>`
     + `<span class="run">Game so far</span><span class="run">${state.score.toLocaleString()}</span>`;
   $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
-  $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube (watch the full video)') + ' ↗';
+  $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
   document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
-  $('vidslot').hidden = !!c.audio;
-  if (!c.audio) { $('ytwrap').classList.add('show'); requestAnimationFrame(placeVideo); }
+  $('vidslot').hidden = true;   // no embedded video; the source link under the button opens it on YouTube
   map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad()));
   snd.pause();
   if (lv >= 4) setTimeout(() => {   // the wow moment: one burst out of the answer pin
