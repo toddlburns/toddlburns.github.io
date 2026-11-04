@@ -154,25 +154,16 @@ window.CLIPS = [
   "id": "Ai4URTITHtg",
   "region": "pittsburgh",
   "tier": 1,
-  "start": 104,
-  "end": 142,
+  "start": 105,
+  "end": 124,
   "name": "Rich Fitzgerald",
   "role": "Allegheny County Executive",
   "place": "Pittsburgh, Pennsylvania",
   "lat": 40.4406,
   "lng": -79.9959,
-  "note": "Western Pennsylvania English. Listen to “about” (0:33) and “out” (0:36): the “ow” flattens toward “ah,” so it can sound like “abaht” and “aht.”",
+  "note": "Western Pennsylvania English. The ow sound flattens: \"our\" and \"power\" lean toward \"ahr\" and \"pahr.\"",
   "verified": true,
-  "words": [
-   [
-    "about",
-    33.8
-   ],
-   [
-    "out",
-    36.2
-   ]
-  ],
+  "words": [],
   "year": 2021,
   "born": 1959,
   "st": "PA",
@@ -452,23 +443,23 @@ window.CLIPS = [
   "id": "lt_3zOIYquI",
   "region": "rhode_island",
   "tier": 1,
-  "start": 133,
+  "start": 135,
   "end": 173,
   "name": "Buddy Cianci",
   "role": "Mayor of Providence; radio host",
   "place": "Providence, Rhode Island",
   "lat": 41.824,
   "lng": -71.4128,
-  "note": "Old Providence English. Listen to “here” (0:03) and “other” (0:20): the r after a vowel drops, so it can sound like “hee-ah” and “othah.”",
+  "note": "Old Providence English. Listen to “here” (0:01) and “other” (0:18): the r after a vowel drops, so it can sound like “hee-ah” and “othah.”",
   "verified": true,
   "words": [
    [
     "here",
-    3.4
+    1.4
    ],
    [
     "other",
-    20.6
+    18.6
    ]
   ],
   "born": 1941,
@@ -20486,23 +20477,23 @@ window.CLIPS = [
   "id": "bbKtH1-A3F4",
   "region": "baltimore",
   "tier": 1,
-  "start": 263,
-  "end": 294,
+  "start": 264,
+  "end": 290,
   "name": "Barbara Mikulski",
   "role": "U.S. Senator; grew up above her family's Highlandtown grocery",
   "place": "Highlandtown, Baltimore, Maryland",
   "lat": 39.2871,
   "lng": -76.5683,
-  "note": "Baltimore English. Listen to “home” (0:08) and “so” (0:14): the long o starts forward, close to “eh-oo,” so it can sound like “heh-oome” and “seh-oo.”",
+  "note": "Baltimore English. Listen to “home” (0:07) and “so” (0:13): the long o starts forward, close to “eh-oo,” so it can sound like “heh-oome” and “seh-oo.”",
   "verified": true,
   "words": [
    [
     "home",
-    8.3
+    7.3
    ],
    [
     "so",
-    14.8
+    13.8
    ]
   ],
   "born": 1936,
