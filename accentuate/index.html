@@ -138,6 +138,7 @@ a{color:inherit}
 .tally .cur{font-weight:650}
 .tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
 .nextbtn{width:100%;padding:12px}
+.playrow{display:flex;justify-content:center;margin-top:6px}.playrow button{padding:12px 34px;letter-spacing:.04em}
 .nexttop{display:none;padding:10px 16px;white-space:nowrap}
 .reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:4px;max-width:none;line-height:1.35}
 .words{display:none}
@@ -219,16 +220,15 @@ a{color:inherit}
   <div class="scrim" id="scrim"></div>
 
   <section class="card intro" id="intro">
-    <h1>Where’s that voice from?</h1>
-    <p>Listen to someone talk, then drop a pin where you think they grew up. The closer you are, the more you score.</p>
+    <h1>Accentuate</h1>
+    <p>Listen to someone talk, drop a pin where you think they’re from.</p>
     <p>There’s no right way to sound American. This is a game about how many ways there are.</p>
     <ul class="rules">
-      <li>5 voices. Your score is how many miles off you were in total, so lower is better (a single miss counts as 1,000 at most)</li>
+      <li>Lowest score wins</li>
+      <li>Five rounds</li>
       <li>Easy first, harder as you go</li>
-      <li>Replay as often as you like</li>
     </ul>
-    <button id="startBtn">Start listening</button>
-    <p class="credits">Some recordings come from <a href="https://oraal.github.io/coraal" target="_blank" rel="noopener">CORAAL</a> and the <a href="https://accent.gmu.edu" target="_blank" rel="noopener">Speech Accent Archive</a>, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>; our trimmed clips carry the same <a href="audio/LICENSE.txt">license</a>.</p>
+    <div class="playrow"><button id="startBtn">PLAY NOW</button></div>
   </section>
 
   <section class="stage" id="stage" hidden>
