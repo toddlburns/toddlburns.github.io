@@ -268,7 +268,9 @@ window.CLIPS = [
   "year": 2019,
   "born": 1946,
   "st": "IL",
-  "note_base": "Bridgeport, the Daley family's neighborhood. Listen to \"budget\" and \"cut\": the u is pulled back toward \"bawdget.\""
+  "note_base": "Bridgeport, the Daley family's neighborhood. Listen to \"budget\" and \"cut\": the u is pulled back toward \"bawdget.\"",
+  "drop": true,
+  "drop_why": "loudness -32.5 LUFS"
  },
  {
   "id": "MzKbsHP5WJU",
@@ -414,7 +416,9 @@ window.CLIPS = [
   "year": 2019,
   "born": 1966,
   "st": "MA",
-  "note_base": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad."
+  "note_base": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad.",
+  "drop": true,
+  "drop_why": "loudness -31.1 LUFS"
  },
  {
   "id": "mSpTwzm9HxI",
@@ -587,7 +591,9 @@ window.CLIPS = [
   "year": 2024,
   "born": 1971,
   "st": "KY",
-  "note_base": "Eastern Kentucky English. The long i is a single flat vowel: \"I,\" \"like\" and \"while\" come out \"ah,\" \"lahk,\" \"whahl.\""
+  "note_base": "Eastern Kentucky English. The long i is a single flat vowel: \"I,\" \"like\" and \"while\" come out \"ah,\" \"lahk,\" \"whahl.\"",
+  "drop": true,
+  "drop_why": "loudness -35.1 LUFS"
  },
  {
   "id": "pAQ60hlA4YM",
@@ -879,7 +885,9 @@ window.CLIPS = [
   "year": 2026,
   "born": 1980,
   "st": "MS",
-  "note_base": "Northeast Mississippi English. The long i flattens: \"I\" and \"my\" come out \"Ah\" and \"mah.\""
+  "note_base": "Northeast Mississippi English. The long i flattens: \"I\" and \"my\" come out \"Ah\" and \"mah.\"",
+  "drop": true,
+  "drop_why": "loudness -34.6 LUFS"
  },
  {
   "id": "KjOSEjFL8LU",
@@ -10438,7 +10446,9 @@ window.CLIPS = [
   "words": [],
   "year": 2017,
   "st": "OK",
-  "note_base": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite."
+  "note_base": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite.",
+  "drop": true,
+  "drop_why": "loudness -32.8 LUFS"
  },
  {
   "id": "FgPgMDbXKxg",
@@ -10708,7 +10718,9 @@ window.CLIPS = [
   ],
   "year": 2011,
   "st": "FL",
-  "note_base": "Old Florida English, Southern at its core: listen for the drawled vowels and the flat long i."
+  "note_base": "Old Florida English, Southern at its core: listen for the drawled vowels and the flat long i.",
+  "drop": true,
+  "drop_why": "loudness -30.3 LUFS"
  },
  {
   "id": "english186",
@@ -11301,7 +11313,9 @@ window.CLIPS = [
   "year": 2011,
   "born": 1954,
   "st": "NY",
-  "note_base": "Western New York English. The short a in words like \"that\" rises toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\""
+  "note_base": "Western New York English. The short a in words like \"that\" rises toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\"",
+  "drop": true,
+  "drop_why": "loudness -31.3 LUFS"
  },
  {
   "id": "english441",
@@ -13711,7 +13725,9 @@ window.CLIPS = [
   "year": 2009,
   "born": 1949,
   "st": "MA",
-  "note_base": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens."
+  "note_base": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens.",
+  "drop": true,
+  "drop_why": "loudness -31.1 LUFS"
  },
  {
   "id": "english515",
@@ -19096,7 +19112,9 @@ window.CLIPS = [
   "year": 2024,
   "born": 1936,
   "st": "IN",
-  "note_base": "Southern Indiana English, the \"Hoosier\" twang."
+  "note_base": "Southern Indiana English, the \"Hoosier\" twang.",
+  "drop": true,
+  "drop_why": "loudness -7.5 LUFS"
  },
  {
   "id": "MMcNCQdBsq0",
@@ -19372,7 +19390,9 @@ window.CLIPS = [
   "year": 2012,
   "born": 1943,
   "st": "TX",
-  "note_base": "Texas English."
+  "note_base": "Texas English.",
+  "drop": true,
+  "drop_why": "loudness -31.4 LUFS"
  },
  {
   "id": "G85azi-A7io",
@@ -19418,7 +19438,9 @@ window.CLIPS = [
   ],
   "born": 1931,
   "st": "NC",
-  "note_base": "Blue Ridge mountain English from western North Carolina."
+  "note_base": "Blue Ridge mountain English from western North Carolina.",
+  "drop": true,
+  "drop_why": "loudness -32.8 LUFS"
  },
  {
   "id": "YEw_NsXhywk",
@@ -19772,7 +19794,9 @@ window.CLIPS = [
   "year": 2013,
   "born": 1957,
   "st": "ME",
-  "note_base": "Maine English."
+  "note_base": "Maine English.",
+  "drop": true,
+  "drop_why": "loudness -31.5 LUFS"
  },
  {
   "id": "vtpBcTFsSRA",
