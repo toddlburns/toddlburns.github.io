@@ -253,8 +253,8 @@ a{color:inherit}
     <div class="verdictband" id="fBand"></div>
     <h2 id="fScore">0 <small>/ 25,000</small></h2>
     <p class="verdict" id="fVerdict"></p>
+    <div class="actions"><button id="copyBtn">Share my score</button><button class="ghost" id="againBtn">Play again</button></div>
     <ol id="fList"></ol>
-    <div class="actions"><button id="againBtn">Play again</button><button class="ghost" id="copyBtn">Copy result</button></div>
     <div class="board">
       <h3>All-time leaderboard</h3>
       <form id="lbForm"><input id="lbName" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name"><button id="lbBtn">Add my score</button></form>
@@ -648,8 +648,12 @@ $('lbForm').onsubmit = async e => {
 };
 function copyResult() {
   const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
-  const txt = `Accentuate ${state.score.toLocaleString()} points\n${state.results.map(r => sq(r.p)).join('')}\ntoddlburns.com/accentuate`;
-  navigator.clipboard?.writeText(txt).then(() => { $('copyBtn').textContent = 'Copied'; setTimeout(() => $('copyBtn').textContent = 'Copy result', 1600); });
+  const url = 'https://toddlburns.com/accentuate/';
+  const text = `I scored ${state.score.toLocaleString()} out of 25,000 on Accentuate, where you hear a voice and guess where in America it's from.\n${state.results.map(r => sq(r.p)).join('')}\nThink you can beat me?`;
+  const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
+  // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text, url }).catch(() => {});
+  else navigator.clipboard?.writeText(text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
 $('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
