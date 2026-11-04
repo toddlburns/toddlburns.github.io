@@ -121,6 +121,7 @@ a{color:inherit}
 .tally{display:grid;grid-template-columns:1fr auto;gap:2px 12px;font-size:14px;margin-bottom:14px}
 .tally .tot{font-weight:800;border-top:1px solid var(--rule);padding-top:4px;margin-top:2px}
 .tally .run{color:var(--muted);font-size:13px}
+.tally .cur{font-weight:650}
 .tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
 .nextbtn{width:100%;padding:12px}
 .reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:10px;max-width:none;line-height:1.35}
@@ -549,10 +550,10 @@ function guess() {
   const dist = mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
   nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
-  const row = (k, v) => `<span>${k}</span><span>${v}</span>`;
-  $('rTally').innerHTML = row(`Distance`, p.toLocaleString())
-    + `<span class="tot">Round ${state.round + 1}</span><span class="tot">${(p + ab + fb).toLocaleString()}</span>`
-    + `<span class="run">Game so far</span><span class="run">${state.score.toLocaleString()}</span>`;
+  // newest round first, then the earlier ones, then the running total
+  const rounds = state.results.map((r, i) => [i + 1, r.p + (r.ab || 0) + (r.fb || 0)]).reverse();
+  $('rTally').innerHTML = rounds.map(([n, v], i) => `<span class="${i ? 'run' : 'cur'}">Round ${n}</span><span class="${i ? 'run' : 'cur'}">${v.toLocaleString()}</span>`).join('')
+    + `<span class="tot">Total</span><span class="tot">${state.score.toLocaleString()}</span>`;
   $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
   $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
