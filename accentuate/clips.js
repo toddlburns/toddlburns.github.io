@@ -497,7 +497,7 @@ window.CLIPS = [
  {
   "id": "M_SxvWocfj8",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 214,
   "end": 250,
   "name": "Brandon Robinson",
@@ -532,7 +532,7 @@ window.CLIPS = [
  {
   "id": "u23K6NzqWHE",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 95,
   "end": 117,
   "name": "Brandon Robinson",
@@ -834,7 +834,7 @@ window.CLIPS = [
  {
   "id": "3u_ry-eMOyc",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 38,
   "end": 59,
   "name": "Brandon Robinson",
@@ -10378,7 +10378,7 @@ window.CLIPS = [
  {
   "id": "KjKU7g41EgE",
   "region": "north_dakota",
-  "tier": 1,
+  "tier": 2,
   "start": 22,
   "end": 49,
   "name": "A North Dakota rancher",
@@ -10405,7 +10405,7 @@ window.CLIPS = [
  {
   "id": "tHfGI2k_H7M",
   "region": "yooper",
-  "tier": 1,
+  "tier": 2,
   "start": 58,
   "end": 78,
   "name": "A lifelong Yooper",
@@ -10632,7 +10632,7 @@ window.CLIPS = [
  {
   "id": "tfmXTzh8NSE",
   "region": "iron_range",
-  "tier": 1,
+  "tier": 2,
   "start": 259,
   "end": 293,
   "name": "Tom Rukavina",
@@ -11217,7 +11217,7 @@ window.CLIPS = [
  {
   "id": "O-uQfm5Hqm4",
   "region": "north_dakota",
-  "tier": 1,
+  "tier": 2,
   "start": 577,
   "end": 600,
   "name": "Christi Kuhlka",
@@ -12130,7 +12130,7 @@ window.CLIPS = [
  {
   "id": "6cZCQN91VUs",
   "region": "north_dakota",
-  "tier": 1,
+  "tier": 2,
   "start": 729,
   "end": 769,
   "name": "Chris Walberg",
@@ -13425,7 +13425,7 @@ window.CLIPS = [
  {
   "id": "AWWR3ec2EpY",
   "region": "iron_range",
-  "tier": 1,
+  "tier": 2,
   "start": 174,
   "end": 195,
   "name": "Tom Rukavina",
@@ -18791,7 +18791,7 @@ window.CLIPS = [
  {
   "id": "Y2kqI6kyeMQ",
   "region": "kentucky",
-  "tier": 1,
+  "tier": 2,
   "start": 425,
   "end": 453,
   "name": "Darrell Waltrip",
@@ -18851,7 +18851,7 @@ window.CLIPS = [
  {
   "id": "yZdmGzsO_l0",
   "region": "nc_mountains",
-  "tier": 1,
+  "tier": 2,
   "start": 240,
   "end": 268,
   "name": "Junior Johnson",
@@ -18968,7 +18968,7 @@ window.CLIPS = [
  {
   "id": "5HZ8_UG8WRQ",
   "region": "maine",
-  "tier": 1,
+  "tier": 2,
   "start": 415,
   "end": 436,
   "name": "Linda Greenlaw",
@@ -18996,7 +18996,7 @@ window.CLIPS = [
  {
   "id": "fOaWoI8niz8",
   "region": "arkansas",
-  "tier": 1,
+  "tier": 2,
   "start": 69,
   "end": 89,
   "name": "Larry Nixon",
@@ -19024,7 +19024,7 @@ window.CLIPS = [
  {
   "id": "ZTUeAfIAIZ8",
   "region": "east_texas",
-  "tier": 1,
+  "tier": 2,
   "start": 624,
   "end": 650,
   "name": "Louie Gohmert",
@@ -19202,7 +19202,7 @@ window.CLIPS = [
  {
   "id": "POynUofOP9k",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 35,
   "end": 58,
   "name": "Jim Justice",
@@ -19282,7 +19282,7 @@ window.CLIPS = [
  {
   "id": "_25HyWSUibk",
   "region": "okie",
-  "tier": 1,
+  "tier": 2,
   "start": 532,
   "end": 572,
   "name": "Jimmy Houston",
@@ -19314,7 +19314,7 @@ window.CLIPS = [
  {
   "id": "bpRUxyQ8R6E",
   "region": "tennessee",
-  "tier": 1,
+  "tier": 2,
   "start": 240,
   "end": 276,
   "name": "Bill Dance",
@@ -19427,7 +19427,7 @@ window.CLIPS = [
  {
   "id": "bLduqc9mGu0",
   "region": "nc_mountains",
-  "tier": 1,
+  "tier": 2,
   "start": 711,
   "end": 731,
   "name": "Junior Johnson",
@@ -19475,7 +19475,7 @@ window.CLIPS = [
  {
   "id": "xHJtevcvIKk",
   "region": "maine",
-  "tier": 1,
+  "tier": 2,
   "start": 408,
   "end": 430,
   "name": "Linda Greenlaw",
@@ -19623,7 +19623,7 @@ window.CLIPS = [
  {
   "id": "A4h4kMZOgNQ",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 109,
   "end": 149,
   "name": "Jim Justice",
@@ -20080,7 +20080,7 @@ window.CLIPS = [
  {
   "id": "Lf3GphuWTiY",
   "region": "maine",
-  "tier": 1,
+  "tier": 2,
   "start": 382,
   "end": 404,
   "name": "Linda Greenlaw",
@@ -20108,7 +20108,7 @@ window.CLIPS = [
  {
   "id": "QmmBdbWSPdQ",
   "region": "east_texas",
-  "tier": 1,
+  "tier": 2,
   "start": 743,
   "end": 783,
   "name": "Louie Gohmert",
@@ -20180,7 +20180,7 @@ window.CLIPS = [
  {
   "id": "yi7XO-64mcw",
   "region": "appalachia",
-  "tier": 1,
+  "tier": 2,
   "start": 820,
   "end": 843,
   "name": "Jim Justice",
@@ -20252,7 +20252,7 @@ window.CLIPS = [
  {
   "id": "W0XO_LxlURg",
   "region": "vermont",
-  "tier": 1,
+  "tier": 2,
   "start": 83.8,
   "end": 94.5,
   "name": "Fred Tuttle",
@@ -20615,7 +20615,7 @@ window.CLIPS = [
  {
   "id": "adDYgQk2FxQ",
   "region": "arkansas",
-  "tier": 1,
+  "tier": 2,
   "start": 55,
   "end": 95,
   "name": "Bear Bryant",
@@ -20650,7 +20650,7 @@ window.CLIPS = [
  {
   "id": "UB9shlpkvz0",
   "region": "north_dakota",
-  "tier": 1,
+  "tier": 2,
   "start": 83,
   "end": 122,
   "name": "Heidi Heitkamp",
@@ -20747,7 +20747,7 @@ window.CLIPS = [
  {
   "id": "zkOIAD2eI0A",
   "region": "tennessee",
-  "tier": 1,
+  "tier": 2,
   "start": 38,
   "end": 59,
   "name": "Steve Spurrier",
@@ -20867,7 +20867,7 @@ window.CLIPS = [
  {
   "id": "VMObdNZLxtw",
   "region": "arkansas",
-  "tier": 1,
+  "tier": 2,
   "start": 35,
   "end": 55,
   "name": "Barry Switzer",
@@ -20894,7 +20894,7 @@ window.CLIPS = [
  {
   "id": "s6UYwEUVGkE",
   "region": "east_texas",
-  "tier": 1,
+  "tier": 2,
   "start": 45,
   "end": 65,
   "name": "Ross Perot",
