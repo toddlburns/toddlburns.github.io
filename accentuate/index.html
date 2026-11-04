@@ -59,6 +59,7 @@ a{color:inherit}
 .logo{font:800 20px/1 var(--font);font-stretch:125%;letter-spacing:-.01em;margin:0;padding:10px 14px;pointer-events:auto}
 .hud{display:flex;align-items:center;gap:14px;padding:9px 14px;font-size:14px;pointer-events:auto}
 .hud b{font-weight:750}
+.hud,.hud span{white-space:nowrap}
 .hud .tier{font-size:12px;font-weight:650;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted)}
 .scrim{position:absolute;inset:0;z-index:15;background:var(--shade)}
 
@@ -89,6 +90,23 @@ a{color:inherit}
 .reveal{position:absolute;z-index:20;left:16px;top:76px;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 92px);overflow:auto;padding:20px;display:none}
 .reveal.on{display:block}
 .vidslot{aspect-ratio:16/9;border-radius:10px;background:#000;margin:-6px -6px 16px}
+#fx{position:fixed;inset:0;z-index:35;pointer-events:none;width:100%;height:100%}
+.verdictband{font:800 26px/1.05 var(--font);font-stretch:112%;letter-spacing:-.01em;margin:-20px -20px 14px;padding:16px 20px 12px;border-radius:16px 16px 0 0;color:var(--ink)}
+.verdictband:empty{display:none}
+.verdictband small{display:block;font:600 13px var(--font);font-stretch:100%;letter-spacing:0;opacity:.75;margin-top:4px}
+.lv5,.lv4{background:linear-gradient(120deg,#ffd84d,#ffb000 55%,#ff7a00);color:#2a1a00}
+.lv3{background:color-mix(in srgb,#1f9d55 22%,transparent)}
+.lv2{background:color-mix(in srgb,#2b7bd6 16%,transparent)}
+.lv1,.lv0{background:color-mix(in srgb,var(--muted) 14%,transparent)}
+.reveal.big{animation:pop .3s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.94)}100%{transform:scale(1)}}
+.pin.a.ring{animation:ring .9s ease-out 1}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,184,0,.9),0 1px 5px rgba(0,0,0,.45)}100%{box-shadow:0 0 0 26px rgba(255,184,0,0),0 1px 5px rgba(0,0,0,.45)}}
+.agebonus{opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
+.agebonus.in{opacity:1;transform:none}
+.final .verdictband{margin:-28px -28px 18px;padding:20px 28px 16px}
+@media (max-width:620px){.final .verdictband{margin:-18px -18px 14px;padding:16px 18px 12px}.reveal .verdictband{margin:-14px -14px 12px;padding:12px 14px 10px;font-size:22px}}
+@media (prefers-reduced-motion:reduce){.reveal.big,.pin.a.ring{animation:none}.agebonus{transition:none}}
 .reveal .pts{font:800 44px/1 var(--font);font-stretch:112%;color:var(--answer)}
 .reveal .dist{font-size:14px;color:var(--muted);margin:4px 0 12px}
 .meter{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;margin-bottom:16px}
@@ -128,7 +146,7 @@ a{color:inherit}
 
 @media (max-width:620px){
   .logo{font-size:16px;padding:9px 12px}
-  .ages button{padding:5px 6px}.ages span{display:none}.hud .tier{display:none}.hud{gap:10px;font-size:13px;padding:8px 12px}
+  .ages button{padding:5px 6px}.ages span{display:none}.hud .tier{display:none}.hud{gap:8px;font-size:12px;padding:8px 10px}
   .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
   .vidslot{width:56%;margin:0 0 10px}
   .reveal .pts{font-size:36px}
@@ -166,6 +184,7 @@ a{color:inherit}
 <body>
 <div id="game">
   <div id="map"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
   <div id="ytwrap"><div id="yt"></div></div>
   <div class="topbar">
     <p class="logo card">Accentuate</p>
@@ -197,6 +216,7 @@ a{color:inherit}
     </div>
     <div class="card reveal" id="reveal">
       <div class="vidslot" id="vidslot"></div>
+      <div class="verdictband" id="rVerdict"></div>
       <div class="pts" id="rPts">0</div>
       <div class="dist" id="rDist"></div>
       <div class="meter"><i id="rMeter"></i></div>
@@ -216,6 +236,7 @@ a{color:inherit}
   </section>
 
   <section class="card final" id="final" hidden>
+    <div class="verdictband" id="fBand"></div>
     <h2 id="fScore">0 <small>/ 25,000</small></h2>
     <p class="verdict" id="fVerdict"></p>
     <ol id="fList"></ol>
@@ -417,6 +438,7 @@ const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a
 const points = mi => Math.round(5000 * Math.exp(-mi / 300));
 
 function newGame() {
+  stopFx();
   const pool = CLIPS.map(clip).filter(c => !c.drop && ageOf(c) != null);   // every round has an age to guess
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
   // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
@@ -459,6 +481,33 @@ function setPlayUI() {
   if (playing && !state.heard) { state.heard = true; if (!guessMarker) $('hint').textContent = `Guess before it ends for +${FAST}`; }
   if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : state.heard ? 'Play again' : 'Press play to listen';
 }
+/* ---------- Reveal fanfare: quick, never in the way (Next works immediately) ---------- */
+const CALM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const VERDICT = mi => mi < 25 ? [5, 'Bullseye!', 'You found their hometown.'] : mi < 100 ? [4, 'Spot on!', 'You can hear the neighborhood.'] : mi < 250 ? [3, 'Close!', 'Right part of the state.']
+  : mi < 600 ? [2, 'Right region', 'You heard where they’re from.'] : mi < 1200 ? [1, 'Right half of the country', 'Getting warmer.'] : [0, 'Way off', 'Listen again to the telltale words below.'];
+function countUp(el, to, prefix = '+') {
+  if (CALM) { el.textContent = prefix + to.toLocaleString(); return; }
+  const t0 = performance.now(), dur = 650;
+  const tick = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = prefix + Math.round(to * e).toLocaleString(); if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+// Confetti from a point on screen: one burst, gone in 1.2 s.
+let fxRun = 0;
+function confetti(x, y, n = 120) {
+  if (CALM) return;
+  const run = ++fxRun, cv = $('fx'), cx = cv.getContext('2d'), dpr = devicePixelRatio || 1, LIFE = 1200;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cols = ['#ffd84d', '#ffb000', '#ff7a00', '#d7262e', '#1f9d55', '#2b7bd6', '#ffffff'];
+  const ps = Array.from({ length: n }, () => { const a = Math.random() * Math.PI * 2, v = 5 + Math.random() * 10;
+    return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 6, r: Math.random() * 6, s: 4 + Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)], spin: (Math.random() - .5) * .4 }; });
+  const t0 = performance.now();
+  const tick = now => { if (run !== fxRun) return; const t = now - t0; cx.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(p => { p.vy += .45; p.vx *= .98; p.x += p.vx; p.y += p.vy; p.r += p.spin;
+      cx.save(); cx.globalAlpha = Math.max(0, 1 - t / LIFE); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); cx.restore(); });
+    if (t < LIFE) requestAnimationFrame(tick); else cx.clearRect(0, 0, innerWidth, innerHeight); };
+  requestAnimationFrame(tick);
+}
+const stopFx = () => { fxRun++; const cv = $('fx'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); };
 function guess() {
   if (!guessMarker || state.revealed) return;
   state.revealed = true;
@@ -470,7 +519,12 @@ function guess() {
   answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
-  $('rPts').textContent = '+' + (p + ab + fb).toLocaleString();
+  const [lv, head, sub] = VERDICT(mi);
+  $('rVerdict').className = 'verdictband lv' + lv; $('rVerdict').innerHTML = `${head}<small>${sub}</small>`;
+  $('reveal').classList.remove('big'); void $('reveal').offsetWidth; $('reveal').classList.toggle('big', lv >= 4);
+  countUp($('rPts'), p + ab + fb);
+  ['rAge', 'rFast'].forEach(id => $(id).classList.remove('in'));
+  setTimeout(() => $('rAge').classList.add('in'), CALM ? 0 : 350); setTimeout(() => $('rFast').classList.add('in'), CALM ? 0 : 550);
   $('rFast').innerHTML = fb ? `<b>+${fb} first-listen bonus.</b> You called it before the clip ended.` : '';
   $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
   $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
@@ -490,9 +544,14 @@ function guess() {
   if (!c.audio) { $('ytwrap').classList.add('show'); requestAnimationFrame(placeVideo); }
   map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad()));
   snd.pause();
+  if (lv >= 4) setTimeout(() => {   // the wow moment: one burst out of the answer pin
+    if (!state.revealed) return;
+    const pt = map.latLngToContainerPoint([c.lat, c.lng]); confetti(pt.x, pt.y, lv === 5 ? 180 : 110);
+    answerMarker?.getElement()?.querySelector('.pin')?.classList.add('ring');
+  }, 300);
 }
 function next() {
-  snd.stop();
+  snd.stop(); stopFx();
   if (++state.round < 5) return startRound();
   $('stage').hidden = true; $('hud').hidden = true; hideVideo(); document.body.classList.remove('revealed');
   [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
@@ -508,8 +567,12 @@ function next() {
   $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
   try { $('lbName').value = localStorage.getItem('accentuate-name') || ''; } catch (_) {}
   loadBoard();
-  $('fScore').innerHTML = `${state.score.toLocaleString()} <small>/ ${max.toLocaleString()}</small>`;
-  const s = state.score;
+  const s = state.score, share = s / 25000;
+  $('fScore').innerHTML = `<span id="fNum">0</span> <small>/ ${max.toLocaleString()}</small>`; countUp($('fNum'), s, '');
+  const [flv, fhead] = share >= .8 ? [5, 'Incredible ear!'] : share >= .6 ? [4, 'Superb listening!'] : share >= .4 ? [3, 'Nicely done'] : share >= .2 ? [2, 'Not bad'] : [0, 'Tough round'];
+  const bulls = state.results.filter(r => r.mi < 25).length;
+  $('fBand').className = 'verdictband lv' + flv; $('fBand').innerHTML = fhead + (bulls ? `<small>${bulls} bullseye${bulls > 1 ? 's' : ''}</small>` : '');
+  if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
   $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
   $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0) + (r.fb || 0)).toLocaleString()}${r.ab || r.fb ? `<br><small class="m">incl. ${[r.ab && `+${r.ab} age`, r.fb && `+${r.fb} quick`].filter(Boolean).join(', ')}</small>` : ''}</span></li>`).join('');
 }
