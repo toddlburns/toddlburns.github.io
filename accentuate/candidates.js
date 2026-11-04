@@ -35,6 +35,40 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "4pwFb_XZv4o",
+"region": "upper_midwest",
+"label": "Minnesota, Wisconsin, Dakotas",
+"tier": 3,
+"start": 247,
+"end": 267,
+"words": [
+[
+"going",
+11.0
+],
+[
+"so",
+12.8
+],
+[
+"say",
+17.5
+]
+],
+"title": "Sen. Klobuchar on efforts to end ICE operations in MN [FULL]",
+"channel": "FOX 9 Minneapolis-St. Paul",
+"other": 0.46,
+"person": "Amy Klobuchar",
+"role": "U.S. Senator from Minnesota",
+"hometown": "Plymouth, Minnesota",
+"evidence": "Raised in the Twin Cities suburbs",
+"source": "https://en.wikipedia.org/wiki/Amy_Klobuchar",
+"lat": 45.0105,
+"lng": -93.4555,
+"born": null,
+"age": null
+},
+{
 "id": "DxzLoniToSg",
 "region": "baltimore",
 "label": "Baltimore",
@@ -73,6 +107,40 @@ window.CANDIDATES = [
 "source": "",
 "lat": 39.5096,
 "lng": -76.1641,
+"born": null,
+"age": null
+},
+{
+"id": "LQkmbmQR1MQ",
+"region": "upper_midwest",
+"label": "Minnesota, Wisconsin, Dakotas",
+"tier": 3,
+"start": 220,
+"end": 240,
+"words": [
+[
+"know",
+3.8
+],
+[
+"say",
+10.5
+],
+[
+"so",
+15.9
+]
+],
+"title": "Amy Klobuchar on what she would do if elected governor of Minnesota",
+"channel": "WCCO - CBS Minnesota",
+"other": 0.38,
+"person": "Amy Klobuchar",
+"role": "U.S. Senator from Minnesota",
+"hometown": "Plymouth, Minnesota",
+"evidence": "Raised in the Twin Cities suburbs",
+"source": "https://en.wikipedia.org/wiki/Amy_Klobuchar",
+"lat": 45.0105,
+"lng": -93.4555,
 "born": null,
 "age": null
 },
