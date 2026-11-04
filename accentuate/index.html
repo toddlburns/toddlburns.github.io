@@ -128,6 +128,7 @@ a{color:inherit}
 .tally .cur{font-weight:650}
 .tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
 .nextbtn{width:100%;padding:12px}
+.nexttop{display:none;padding:10px 16px;white-space:nowrap}
 .reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:10px;max-width:none;line-height:1.35}
 .words{display:none}
 .note .ts{font:650 13px var(--font);padding:0 7px;margin:0 1px;border-radius:999px;background:transparent;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);vertical-align:1px;cursor:pointer}
@@ -164,6 +165,7 @@ a{color:inherit}
   .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
   .vidslot{width:56%}
   .reveal .pts{font-size:32px}.reveal .place{font-size:22px}
+  .nexttop{display:block}.nextbtn{display:none}.ptsrow{align-items:center}
   .final.side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58dvh;padding:18px}
 }
 
@@ -229,7 +231,7 @@ a{color:inherit}
       <button id="guessBtn" disabled>Guess</button>
     </div>
     <div class="card reveal" id="reveal">
-      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div></div></div>
+      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
       <p class="place" id="rPlace"></p>
       <p class="who" id="rWho"></p>
       <p class="note" id="rNote"></p>
@@ -561,6 +563,7 @@ function guess() {
   $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
   $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
+  $('nextTop').textContent = state.round === 4 ? 'Final score →' : 'Next round →';
   document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
   $('vidslot').hidden = true;   // no embedded video; the source link under the button opens it on YouTube
   map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad()));
@@ -628,7 +631,7 @@ function copyResult() {
 }
 if (!CURATE) initMap();
 $('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
-$('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next;
+$('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next; $('nextTop').onclick = next;
 document.addEventListener('keydown', e => {
   if (CURATE || $('stage').hidden) return;
   if (e.code === 'Space' && !state.revealed) { e.preventDefault(); playClip(); }
