@@ -7,7 +7,7 @@
 <title>Accentuate</title>
 <meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
 <meta property="og:title" content="Accentuate: guess the American accent">
-<meta property="og:description" content="Hear a voice, then click the map where you think it's from. Five rounds, 100 points. Think you can beat my score?">
+<meta property="og:description" content="Hear a voice, then click the map where you think it's from. Five rounds, lowest total miles wins. Think you can get closer?">
 <meta property="og:image" content="https://toddlburns.com/accentuate/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://toddlburns.com/accentuate/">
@@ -214,7 +214,7 @@ a{color:inherit}
   <div id="ytwrap"><div id="yt"></div></div>
   <div class="topbar">
     <p class="logo card">Accentuate</p>
-    <div class="hud card" id="hud" hidden><span class="hpts"><b id="hScore">0</b> pts</span><span class="hround">Round <b id="hRound">1</b>/5</span><span class="tier" id="hTier" hidden></span><span class="era" id="hEra" hidden></span></div>
+    <div class="hud card" id="hud" hidden><span class="hpts"><b id="hScore">0</b> mi</span><span class="hround">Round <b id="hRound">1</b>/5</span><span class="tier" id="hTier" hidden></span><span class="era" id="hEra" hidden></span></div>
   </div>
   <div class="scrim" id="scrim"></div>
 
@@ -223,7 +223,7 @@ a{color:inherit}
     <p>Listen to someone talk, then drop a pin where you think they grew up. The closer you are, the more you score.</p>
     <p>There’s no right way to sound American. This is a game about how many ways there are.</p>
     <ul class="rules">
-      <li>5 voices, up to 20 points each. A perfect game is 100</li>
+      <li>5 voices. Your score is how many miles off you were in total, so lower is better (a single miss counts as 1,000 at most)</li>
       <li>Easy first, harder as you go</li>
       <li>Replay as often as you like</li>
     </ul>
@@ -241,14 +241,14 @@ a{color:inherit}
       <button id="guessBtn" disabled>Guess</button>
     </div>
     <div class="card reveal" id="reveal">
-      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
+      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Miles off · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
       <p class="place" id="rPlace"></p>
       <p class="note" id="rNote"></p>
       <div class="words" id="rWords"></div>
       <div class="vidslot" id="vidslot"></div>
       <h4 class="rhead">Your guess</h4>
       <p class="guessline" id="rGuess"></p>
-      <h4 class="rhead">Your points</h4>
+      <h4 class="rhead">Your miles</h4>
       <div class="tally" id="rTally"></div>
       <button id="nextBtn" class="nextbtn">Start next round</button>
       <p class="who" id="rWho"></p>
@@ -258,7 +258,7 @@ a{color:inherit}
 
   <section class="card final" id="final" hidden>
     <div class="verdictband" id="fBand"></div>
-    <h2 id="fScore">0 <small>/ 100</small></h2>
+    <h2 id="fScore">0 <small>miles off</small></h2>
     <p class="verdict" id="fVerdict"></p>
     <div class="actions"><button id="copyBtn">Share my score</button><button class="ghost" id="againBtn">Play again</button></div>
     <ol id="fList"></ol>
@@ -475,7 +475,8 @@ document.querySelectorAll('#ages button').forEach(b => b.onclick = () => {
 });
 const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
   const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
-const points = mi => Math.round(20 * Math.exp(-mi / 300));   // up to 20 a round, 100 a game
+const CAP = 1000;   // score = miles off, lowest wins; one wild miss counts as 1,000 at most
+const points = mi => Math.min(CAP, Math.round(mi));
 
 function newGame() {
   stopFx();
@@ -570,7 +571,7 @@ function guess() {
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
   const [lv, head] = VERDICT(mi);
-  $('rVerdict').className = 'verdictband'; $('rKicker').textContent = `Points · Round ${state.round + 1}`;
+  $('rVerdict').className = 'verdictband'; $('rKicker').textContent = `Miles off · Round ${state.round + 1}`;
   $('reveal').classList.remove('big'); void $('reveal').offsetWidth; $('reveal').classList.toggle('big', lv >= 4);
   countUp($('rPts'), p + ab + fb, '');
   $('rPlace').textContent = c.place;
@@ -582,13 +583,13 @@ function guess() {
     return `<button class="ts" data-t="${w ? w[1] : t}" aria-label="Play this moment">${m.slice(1, -1)}</button>`; });
   $('rNote').querySelectorAll('.ts').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
   $('rWords').innerHTML = '';
-  const dist = mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`;
+  const dist = (mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`) + (mi > CAP ? `, counts as ${CAP.toLocaleString()}` : '');
   $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
   nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
   // newest round first, then the earlier ones, then the running total
   const rounds = state.results.map((r, i) => [i + 1, r.p + (r.ab || 0) + (r.fb || 0)]).reverse();
-  $('rTally').innerHTML = rounds.map(([n, v], i) => `<span class="${i ? 'run' : 'cur'}">Round ${n}</span><span class="${i ? 'run' : 'cur'}">${v.toLocaleString()}</span>`).join('')
-    + `<span class="tot">Total</span><span class="tot">${state.score.toLocaleString()}</span>`;
+  $('rTally').innerHTML = rounds.map(([n, v], i) => `<span class="${i ? 'run' : 'cur'}">Round ${n}</span><span class="${i ? 'run' : 'cur'}">${v.toLocaleString()} mi</span>`).join('')
+    + `<span class="tot">Total</span><span class="tot">${state.score.toLocaleString()} mi</span>`;
   $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
   $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
@@ -615,14 +616,14 @@ function next() {
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
-  const max = 100;
+  const max = 5 * CAP;
   state.max = max; state.submitted = false; myEntry = null;
   $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
   try { $('lbName').value = localStorage.getItem('accentuate-name') || ''; } catch (_) {}
   loadBoard();
-  const s = state.score, share = s / 100;
-  $('fScore').innerHTML = `<span id="fNum">0</span> <small>/ ${max.toLocaleString()}</small>`; countUp($('fNum'), s, '');
-  const [flv, fhead] = share >= .8 ? [5, 'Incredible ear!'] : share >= .6 ? [4, 'Superb listening!'] : share >= .4 ? [3, 'Nicely done'] : share >= .2 ? [2, 'Not bad'] : [0, 'Tough round'];
+  const s = state.score;
+  $('fScore').innerHTML = `<span id="fNum">0</span> <small>miles off</small>`; countUp($('fNum'), s, '');
+  const flv = s <= 500 ? 5 : s <= 1000 ? 4 : 0;   // confetti for a great game
   const bulls = state.results.filter(r => r.mi < 25).length;
   $('fBand').hidden = true;   // no verdict headline (Todd): the number, then one real fact
   if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
@@ -638,7 +639,7 @@ let myEntry = null;
 async function loadBoard() {
   try {
     const { top, total } = await (await fetch(LB + '/top?n=15')).json();
-    $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()}</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
+    $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()} mi</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
     if (myEntry?.rank) $('lbMsg').textContent = `You're #${myEntry.rank} of ${total.toLocaleString()} all time.`;
   } catch (e) { $('lbList').innerHTML = '<li class="m"><span>The leaderboard is unreachable right now.</span></li>'; }
 }
@@ -657,9 +658,9 @@ $('lbForm').onsubmit = async e => {
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 };
 function copyResult() {
-  const sq = p => p >= 16 ? '🟩' : p >= 8 ? '🟨' : p >= 2 ? '🟧' : '⬜';
+  const sq = m => m < 100 ? '🟩' : m < 300 ? '🟨' : m < 600 ? '🟧' : '⬜';
   const url = 'https://toddlburns.com/accentuate/';
-  const text = `I scored ${state.score.toLocaleString()} out of 100 on Accentuate, where you hear a voice and guess where in America it's from.\n${state.results.map(r => sq(r.p)).join('')}\nThink you can beat me?`;
+  const text = `I was ${state.score.toLocaleString()} miles off in total on Accentuate, where you hear a voice and guess where in America it's from.\n${state.results.map(r => sq(r.mi)).join('')}\nThink you can get closer?`;
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
   if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text, url }).catch(() => {});
