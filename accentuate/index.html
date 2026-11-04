@@ -177,6 +177,13 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
 .board ol{max-width:340px;margin:10px auto 0}.board li{font-size:16px;padding:8px 0;text-align:left}.board li > span{flex:1}.board .lbmsg{text-align:center}
 .board li span{flex:1}.board li b{font-weight:700}
 .board li.me{color:var(--answer);font-weight:700}
+/* leaderboard polish: small-caps heading like the other labels, no empty gap, tighter rows, gold/silver/bronze ranks */
+.board h3{font:750 11.5px var(--font)!important;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px!important}
+.board form input,.board form button{height:42px;padding-top:0;padding-bottom:0}
+.lbmsg:empty{display:none}
+.board ol{margin-top:12px}.board li{padding:7px 0;font-size:15px}.board li:last-child{border-bottom:0}
+.board li:nth-child(1)::before{color:#ffc93c}.board li:nth-child(2)::before{color:#c9d3d8}.board li:nth-child(3)::before{color:#e0a26b}
+@media (max-width:620px){.final.side{max-height:74dvh!important}.board{margin-top:16px;padding-top:14px}.final .actions button{min-width:0;width:100%;max-width:300px}}
 
 @media (max-width:620px){
   .logo{font-size:16px;padding:9px 12px}
