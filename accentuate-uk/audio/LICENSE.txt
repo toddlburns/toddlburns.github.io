@@ -1,0 +1,6 @@
+Audio clips in this folder are excerpts, trimmed and loudness-matched, from:
+
+saa/     The Speech Accent Archive, Weinberger, S., George Mason University, https://accent.gmu.edu
+         Licensed CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+These excerpts are shared under the same licence.

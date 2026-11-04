@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Accentuate UK</title>
+<meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways the UK says things.">
+<meta property="og:title" content="Accentuate UK: Guess the accent">
+<meta property="og:description" content="Check out this cool game about recognizing accents across the UK!">
+<meta property="og:image" content="https://toddlburns.com/accentuate-uk/og-play.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://toddlburns.com/accentuate-uk/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* Layout: the map is the game. It fills the screen; listening, guessing and the reveal float over it. */
+:root{
+  --paper:#fbf9f4; --paper-a:rgba(251,249,244,.93); --ink:#13213c; --muted:#5c6478; --rule:#e3e0d8;
+  --answer:#6a2bd9; --guess:#13213c; --accent:#6a2bd9; --accent-ink:#fff; --shade:rgba(19,33,60,.28);
+  --font:"Archivo",system-ui,-apple-system,sans-serif;
+  --bg:#fbf9f4; --card:#fbf9f4;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#161a2e; --paper-a:rgba(22,26,46,.92); --ink:#f1f0ec; --muted:#9da3b8; --rule:#2a3050;
+  --answer:#a77bff; --guess:#f1f0ec; --accent:#a77bff; --accent-ink:#161a2e; --shade:rgba(0,0,0,.45); --bg:#0e1122; --card:#161a2e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#161a2e; --paper-a:rgba(22,26,46,.92); --ink:#f1f0ec; --muted:#9da3b8; --rule:#2a3050;
+  --answer:#a77bff; --guess:#f1f0ec; --accent:#a77bff; --accent-ink:#161a2e; --shade:rgba(0,0,0,.45); --bg:#0e1122; --card:#161a2e; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 var(--font);font-variant-numeric:tabular-nums}
+button{font:650 15px var(--font);border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:11px 20px;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+button:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a{color:inherit}
+[hidden]{display:none!important}
+
+/* the map */
+#game{position:fixed;inset:0}
+#map{position:absolute;inset:0;z-index:1;background:#7ea6c9}
+.leaflet-container{font-family:var(--font)}
+.leaflet-tile-container img{width:257px!important;height:257px!important;mix-blend-mode:normal!important}  /* hide hairline seams at fractional zoom; Leaflet's own plus-lighter blend turns the 1px overlap into white grid lines */
+.relief{mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}}
+:root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
+.leaflet-control-attribution{font-size:10px;opacity:.7;cursor:pointer}
+.leaflet-control-attribution.mini:not(.open){font-size:0;width:20px;height:20px;padding:0;margin:0 6px 6px 0;border-radius:50%;background:rgba(20,24,28,.6)!important;opacity:.8;display:grid;place-items:center}
+.leaflet-control-attribution.mini:not(.open) *{display:none}
+.leaflet-control-attribution.mini:not(.open)::before{content:"i";font:700 12px/1 Georgia,serif;font-style:italic;color:#fff}
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+.pin.g{background:var(--guess)} .pin.a{background:var(--answer)}
+.pin.sm{width:12px;height:12px;border-width:2px}
+.leaflet-tooltip.place{font:650 13px var(--font);background:var(--paper);color:var(--ink);border:0;box-shadow:0 2px 8px rgba(0,0,0,.2);padding:4px 8px}
+.leaflet-tooltip.place::before{display:none}
+
+/* hidden player (YouTube only plays while visible, so it sits under the map until the reveal) */
+#ytwrap{position:fixed;left:0;top:0;width:356px;height:200px;z-index:0;background:#000;border-radius:10px;overflow:hidden}
+#ytwrap iframe{width:100%;height:100%;border:0}
+#ytwrap.show{z-index:40}
+
+/* floating pieces */
+.card{background:var(--paper-a);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;box-shadow:0 10px 40px var(--shade)}
+.topbar{position:absolute;z-index:20;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
+#game:has(#intro:not([hidden])) .topbar .logo{visibility:hidden}
+button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the intro has its own title */
+.logo{font:800 20px/1 var(--font);font-stretch:125%;letter-spacing:-.01em;margin:0;padding:10px 14px;pointer-events:auto}
+.hud{display:flex;align-items:center;gap:14px;padding:9px 14px;font-size:14px;pointer-events:auto}
+.hud b{font-weight:750}
+#hScore{color:var(--accent)}
+.hud{flex-direction:column;align-items:center;gap:0!important;line-height:1;padding:10px 16px!important;min-width:92px}
+.hud .hpts{font:600 13px/1 var(--font);color:var(--ink)}.hud .hpts b{font:800 24px/1 var(--font);font-stretch:112%;letter-spacing:-.01em;margin-right:3px}
+.hud .hround{font:700 10.5px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:6px}.hud .hround b{font-weight:700;color:inherit}
+.hud,.hud span{white-space:nowrap}
+.hud .tier{font-size:12px;font-weight:650;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted)}
+.scrim{position:absolute;inset:0;z-index:15;background:var(--shade)}
+
+.intro,.final{position:absolute;z-index:20;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 120px);overflow:auto;padding:28px}
+.intro h1{font:800 clamp(30px,6vw,44px)/1.02 var(--font);font-stretch:112%;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance}
+.intro p{color:var(--muted);margin:0 0 10px}
+.intro .rules{margin:16px 0 22px;padding:0;list-style:none;display:grid;gap:4px;font-size:15px}
+.intro .rules li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--answer);margin-right:10px;vertical-align:middle}
+.aboutlink{text-align:center;font-size:13px;margin:14px 0 0}.aboutlink a{color:var(--muted)}
+.credits{font-size:12px;color:var(--muted);margin:18px 0 0}
+
+.dock{position:absolute;z-index:20;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:10px 10px 10px 10px;width:min(560px,calc(100vw - 24px))}
+.play{flex:none;width:52px;height:52px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.play svg{width:22px;height:22px}
+#viz{flex:1;min-width:0;height:52px;display:block}
+.dock .label{display:none}
+#guessBtn{flex:none;height:52px;padding:0 22px}
+.hint{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom));margin:0;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--paper-a);box-shadow:0 2px 10px var(--shade);white-space:nowrap}
+.ages{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:4px;padding:5px 6px 5px 12px;border-radius:999px;white-space:nowrap}
+.ages span{font-size:13px;font-weight:650;margin-right:4px}
+.ages .bonus{color:var(--accent);font-weight:800}
+.ages button{font:600 13px var(--font);padding:5px 9px;border-radius:999px;background:transparent;color:var(--ink);border-color:transparent}
+.ages button.sel{background:var(--ink);color:var(--paper)}
+.hud .era{font-size:12px;color:var(--muted)}
+.agebonus{font-size:14px;margin:-8px 0 14px;font-weight:600}
+.agebonus b{color:var(--answer)}
+.hint{bottom:calc(98px + env(safe-area-inset-bottom))!important}
+.revealed .dock,.revealed .hint,.revealed .ages{display:none}
+
+.reveal{position:absolute;z-index:20;left:16px;top:76px;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 92px);overflow:auto;padding:20px;display:none}
+.reveal.on{display:block}
+.vidslot{aspect-ratio:16/9;border-radius:10px;background:#000;margin:10px 0 0}
+#fx{position:fixed;inset:0;z-index:35;pointer-events:none;width:100%;height:100%}
+.verdictband{font:800 26px/1.05 var(--font);font-stretch:112%;letter-spacing:-.01em;margin:-20px -20px 14px;padding:16px 20px 12px;border-radius:16px 16px 0 0;color:var(--ink)}
+.verdictband:empty{display:none}
+.verdictband small{display:block;font:600 13px var(--font);font-stretch:100%;letter-spacing:0;opacity:.75;margin-top:4px}
+.lv5,.lv4{background:linear-gradient(120deg,#ffd84d,#ffb000 55%,#ff7a00);color:#2a1a00}
+.lv3{background:color-mix(in srgb,#1f9d55 22%,transparent)}
+.lv2{background:color-mix(in srgb,#2b7bd6 16%,transparent)}
+.lv1,.lv0{background:color-mix(in srgb,var(--muted) 14%,transparent)}
+.reveal.big{animation:pop .3s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.94)}100%{transform:scale(1)}}
+.pin.a.ring{animation:ring .9s ease-out 1}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,184,0,.9),0 1px 5px rgba(0,0,0,.45)}100%{box-shadow:0 0 0 26px rgba(255,184,0,0),0 1px 5px rgba(0,0,0,.45)}}
+.agebonus{opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
+.agebonus.in{opacity:1;transform:none}
+.final .verdictband{margin:-28px -28px 18px;padding:20px 28px 16px}
+@media (max-width:620px){.final .verdictband{margin:-18px -18px 14px;padding:16px 18px 12px}.reveal .verdictband{margin:-14px -14px 12px;padding:12px 14px 10px;font-size:22px}}
+@media (prefers-reduced-motion:reduce){.reveal.big,.pin.a.ring{animation:none}.agebonus{transition:none}}
+.reveal .kicker{font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.reveal .pts{font:800 40px/1 var(--font);font-stretch:112%;color:var(--accent)}
+.reveal .verdictband{background:color-mix(in srgb,var(--muted) 12%,transparent);color:var(--ink)}
+.ptsrow{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.vword{font:800 17px/1.1 var(--font);text-align:right;max-width:55%}
+.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--ink);margin:2px 0 6px;text-wrap:balance}
+.reveal .who{font-size:12px;color:var(--muted);margin:12px 0 0;line-height:1.4}
+.reveal .note{margin:0 0 10px;font-size:15px;color:var(--ink)}
+.reveal .note .lead{display:block;font-size:13px;color:var(--muted);margin:-2px 0 1.6em}
+.rhead{font:750 11px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;padding-top:12px;border-top:1px solid var(--rule)}
+.guessline{margin:0;font-weight:650}.guessline span{color:var(--muted);font-weight:400}
+.tally{display:grid;grid-template-columns:1fr auto;gap:2px 12px;font-size:14px;margin-bottom:14px}
+.tally .tot{font-weight:800;border-top:1px solid var(--rule);padding-top:4px;margin-top:2px}
+.tally .run{color:var(--muted);font-size:13px}
+.tally .cur{font-weight:650}
+.tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
+.nextbtn{width:100%;padding:12px}
+.playrow{display:flex;justify-content:center;margin-top:6px}.playrow button{padding:12px 40px;letter-spacing:.04em;background:var(--accent);border-color:var(--accent);color:#fff}
+.nexttop{display:none;padding:10px 16px;white-space:nowrap}
+.reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:4px;max-width:none;line-height:1.35}
+.words{display:none}
+.note .ts{font:650 13px var(--font);padding:0 7px;margin:0 1px;border-radius:999px;background:transparent;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);vertical-align:1px;cursor:pointer}
+.note .ts::before{content:"▸ ";font-size:10px}
+.note .ts:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.words button{font:600 14px var(--font);padding:6px 11px;background:transparent;color:var(--ink);border-color:var(--rule);border-radius:999px}
+.words button::before{content:"▸ ";color:var(--answer)}
+.words button small{color:var(--muted);margin-left:6px;font-weight:400}
+
+.final h2{font:800 clamp(40px,8vw,60px)/1 var(--font);font-stretch:112%;margin:0}
+.final h2 small{font-size:.4em;color:var(--muted);font-weight:600}
+.final .verdict{color:var(--muted);margin:8px 0 18px}
+.final ol{list-style:none;padding:0;margin:0 0 20px;border-top:1px solid var(--rule)}
+.final li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.final li .p{font-weight:700;text-align:right}
+.final li .m{font-size:14px;color:var(--muted)}
+.final .actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin:4px 0}
+.final .actions button{min-width:200px;padding:11px 22px}
+#againBtn{background:var(--accent);border-color:var(--accent);color:#fff}
+.final.side{left:16px;top:76px;transform:none}
+.board{margin-top:22px;border-top:1px solid var(--rule);padding-top:16px}
+.board h3{font:750 16px var(--font);margin:0 0 10px}
+.board form{display:flex;gap:8px}
+.board input{flex:1;min-width:0;font:15px var(--font);padding:10px 12px;border:1px solid var(--rule);border-radius:10px;background:var(--paper);color:var(--ink)}
+.board button{padding:10px 14px;font-size:14px}
+.lbmsg{font-size:13px;color:var(--muted);margin:8px 0;min-height:1em}
+.board ol{list-style:none;margin:0;padding:0;border-top:0;counter-reset:lb}
+.board li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px;counter-increment:lb}
+.board li::before{content:counter(lb);width:2ch;color:var(--muted);font-weight:650}
+/* leaderboard: centered, a size up (Todd) */
+.board{text-align:center}.board h3{font-size:19px;margin-bottom:12px}.board form{max-width:380px;margin:0 auto}
+.board ol{max-width:340px;margin:10px auto 0}.board li{font-size:16px;padding:8px 0;text-align:left}.board li > span{flex:1}.board .lbmsg{text-align:center}
+.board li span{flex:1}.board li b{font-weight:700}
+.board li.me{color:var(--answer);font-weight:700}
+/* leaderboard polish: small-caps heading like the other labels, no empty gap, tighter rows, gold/silver/bronze ranks */
+.board h3{font:750 11.5px var(--font)!important;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px!important}
+.board form input,.board form button{height:42px;padding-top:0;padding-bottom:0}
+.lbmsg:empty{display:none}
+.board ol{margin-top:12px}.board li{padding:7px 0;font-size:15px}.board li:last-child{border-bottom:0}
+.board li:nth-child(1)::before{color:#ffc93c}.board li:nth-child(2)::before{color:#c9d3d8}.board li:nth-child(3)::before{color:#e0a26b}
+@media (max-width:620px){.final.side{max-height:74dvh!important}.board{margin-top:16px;padding-top:14px}.final .actions button{min-width:0;width:100%;max-width:300px}}
+
+@media (max-width:620px){
+  .logo{font-size:16px;padding:9px 12px}
+  .ages{flex-wrap:wrap;justify-content:center;border-radius:14px;width:calc(100vw - 24px)}.ages span{width:100%;text-align:center;font-size:12px;margin:0}.ages button{padding:4px 8px}.hint{bottom:calc(98px + env(safe-area-inset-bottom))!important}.hud .tier{display:none}.hud{padding:8px 12px!important;min-width:0}.hud .hpts b{font-size:20px}.hud .hround{font-size:9.5px;margin-top:5px}
+  .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
+  .vidslot{width:56%}
+  .reveal .pts{font-size:32px}.reveal .place{font-size:22px}
+  .nexttop{display:block}.nextbtn{display:none}.ptsrow{align-items:center}
+  .final.side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58dvh;padding:18px}
+}
+
+/* review + curate tools (separate pages, plain layout) */
+#tools{max-width:980px;margin:0 auto;padding:0 16px 48px}
+#tools header{padding:20px 0 14px;border-bottom:1px solid var(--rule)}
+#tools .logo{padding:0}
+.curate{padding-top:18px;display:grid;gap:16px}
+.curate .cplayer{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;max-height:440px}
+.curate .cplayer iframe{width:100%;height:100%;border:0}
+.curate .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.curate .tools button{padding:8px 14px;font-size:14px}
+.curate .now{font:600 20px var(--font);min-width:8ch}
+.curate .times{font-size:14px;color:var(--muted)}
+.curate .hint{position:static;transform:none;white-space:normal;background:none;box-shadow:none;padding:0;font-weight:400;font-size:15px;color:var(--muted)}
+.curate select,.curate input[type=text],.curate textarea{font:14px var(--font);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+.curate textarea{min-height:120px}
+.rv{border-top:1px solid var(--rule);padding:12px 0;display:grid;gap:8px}
+.rv h3{font:650 15px var(--font);margin:0}.rv .meta{font-size:12px;color:var(--muted)}
+.rv .tools button.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.rv.keep{background:color-mix(in srgb,#1f9d55 12%,transparent)}.rv.drop{opacity:.45}
+#review .rv.cur{outline:2px solid var(--accent);outline-offset:4px}
+#review .cplayer{position:sticky;top:0;z-index:5;max-height:260px;max-width:462px}
+.rgroup{font:750 22px var(--font);margin:22px 0 4px}
+.curate .clist{display:grid;gap:6px;max-height:300px;overflow:auto;border:1px solid var(--rule);border-radius:10px;padding:8px;background:var(--card)}
+.curate .clist button{display:flex;justify-content:space-between;text-align:left;background:transparent;color:var(--ink);border-color:transparent;border-radius:8px;padding:8px 10px;font-weight:400}
+.curate .clist button.on{border-color:var(--accent)}
+.curate .clist .st{font-size:12px;color:var(--muted)}
+.curate .clist .ed{color:#1f9d55}
+</style>
+</head>
+<body>
+<div id="game">
+  <div id="map"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div id="ytwrap"><div id="yt"></div></div>
+  <div class="topbar">
+    <button class="logo card" id="logoBtn" title="New game">Accentuate UK</button>
+    <div class="hud card" id="hud" hidden><span class="hpts"><b id="hScore">0</b> mi</span><span class="hround">Round <b id="hRound">1</b> of 5</span><span class="tier" id="hTier" hidden></span><span class="era" id="hEra" hidden></span></div>
+  </div>
+  <div class="scrim" id="scrim"></div>
+
+  <section class="card intro" id="intro">
+    <h1>Accentuate UK</h1>
+    <p>Listen to someone talk, drop a pin where you think they’re from.</p>
+    <ul class="rules">
+      <li>Five rounds</li>
+      <li>Easy first, harder as you go</li>
+      <li>Lowest score wins</li>
+    </ul>
+    <div class="playrow"><button id="startBtn">PLAY</button></div>
+    <p class="aboutlink"><a href="about/">About this game</a></p>
+  </section>
+
+  <section class="stage" id="stage" hidden>
+    <p class="hint" id="hint">Press play, then tap the map</p>
+    <div class="ages card" id="ages"><span><b class="bonus">BONUS:</b> Age of speaker?</span><button data-b="1">20s</button><button data-b="2">30s</button><button data-b="3">40s</button><button data-b="4">50s</button><button data-b="5">60s</button><button data-b="6">70+</button></div>
+    <div class="dock card" id="dock">
+      <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <canvas id="viz" aria-hidden="true"></canvas>
+      <span class="label" id="listenLabel">Press play to listen</span>
+      <button id="guessBtn" disabled>Guess</button>
+    </div>
+    <div class="card reveal" id="reveal">
+      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Miles off · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
+      <p class="place" id="rPlace"></p>
+      <p class="note" id="rNote"></p>
+      <div class="words" id="rWords"></div>
+      <div class="vidslot" id="vidslot"></div>
+      <h4 class="rhead">Your guess</h4>
+      <p class="guessline" id="rGuess"></p>
+      <h4 class="rhead">Your miles</h4>
+      <div class="tally" id="rTally"></div>
+      <button id="nextBtn" class="nextbtn">Start next round</button>
+      <p class="who" id="rWho"></p>
+      <a class="src" id="rSrc" target="_blank" rel="noopener"></a>
+    </div>
+  </section>
+
+  <section class="card final" id="final" hidden>
+    <div class="verdictband" id="fBand"></div>
+    <h2 id="fScore">0 <small>miles off</small></h2>
+    <p class="verdict" id="fVerdict"></p>
+    <div class="actions"><button id="copyBtn">Share my score</button><button class="ghost" id="againBtn">Play again</button></div>
+    <ol id="fList" hidden></ol>
+    <div class="board">
+      <h3>All-time leaderboard</h3>
+      <form id="lbForm"><input id="lbName" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name"><button id="lbBtn">Add my score</button></form>
+      <p class="lbmsg" id="lbMsg"></p>
+      <ol id="lbList"><li class="m">Loading…</li></ol>
+    </div>
+  </section>
+</div>
+
+<div id="tools" hidden>
+  <header><p class="logo">Accentuate UK</p></header>
+
+  <section class="curate" id="review" hidden>
+    <p class="hint">Review the hunt. Each clip is the stretch where one voice talks, with telltale words you can jump to. Mark <b>Keep</b> or <b>Drop</b>, add a note if needed, then <b>Copy decisions</b> and paste them to Claude. Keys: <b>Space</b> play/pause · <b>K</b> keep and play next · <b>D</b> drop and play next · <b>↑/↓</b> move · <b>N</b> note.</p>
+    <div class="cplayer"><div id="ryt"></div></div>
+    <div class="tools"><span class="now" id="rNow">0:00</span><button id="rCopy">Copy decisions</button><span class="times" id="rCount"></span></div>
+    <div id="rList"></div>
+  </section>
+  <section class="curate" id="curate" hidden>
+    <p class="hint">Curate mode. Pick a clip, scrub the video to where the accent really comes through, then press <b>Mark start</b> and <b>Mark end</b>. Edits save in this browser and apply to the game here. When you're done, press <b>Copy edits</b> and paste them to Claude.</p>
+    <div class="clist" id="clist"></div>
+    <div class="cplayer"><div id="cyt"></div></div>
+    <div class="tools">
+      <span class="now" id="cNow">0:00</span>
+      <button class="ghost" data-nudge="-5">−5s</button><button class="ghost" data-nudge="-1">−1s</button><button class="ghost" data-nudge="1">+1s</button><button class="ghost" data-nudge="5">+5s</button>
+      <button id="cMarkStart">Mark start</button><button id="cMarkEnd">Mark end</button><button class="ghost" id="cPlayClip">Play clip</button>
+      <span class="times" id="cTimes"></span>
+    </div>
+    <label class="tools"><input type="checkbox" id="cDrop"> Drop this clip (wrong person, no accent, spoils the place…)</label>
+    <input type="text" id="cNote" placeholder="Note for Claude about this clip (optional)">
+    <div class="tools"><button id="cCopy">Copy edits</button><button class="ghost" id="cReset">Reset this clip</button><span class="times" id="cCount"></span></div>
+    <textarea id="cOut" readonly></textarea>
+  </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="clips.js"></script>
+<script>if (/[?&]review/.test(location.search)) document.write('<script src="candidates.js"><\/script>');</script>
+<script>
+const $ = id => document.getElementById(id);
+const EDIT_KEY = 'accentuate-uk-edits-v1';
+const load = () => { try { return JSON.parse(localStorage.getItem(EDIT_KEY)) || {}; } catch (e) { return {}; } };
+const save = e => { try { localStorage.setItem(EDIT_KEY, JSON.stringify(e)); } catch (_) {} };
+let edits = load();
+const clip = c => Object.assign({}, c, edits[c.id] || {});
+const esc = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
+const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const REVIEW = new URLSearchParams(location.search).has('review');
+const CURATE = new URLSearchParams(location.search).has('curate') || REVIEW;
+
+/* ---------- YouTube ---------- */
+let player, playerReady = false, playing = false;
+window.onYouTubeIframeAPIReady = () => {
+  const el = REVIEW ? 'ryt' : CURATE ? 'cyt' : 'yt';
+  player = new YT.Player(el, {
+    playerVars: { controls: CURATE ? 1 : 0, disablekb: CURATE ? 0 : 1, modestbranding: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0, fs: CURATE ? 1 : 0 },
+    events: {
+      onReady: () => { playerReady = true; if (CURATE && !REVIEW) selectClip(0); },
+      onStateChange: e => {
+        playing = e.data === YT.PlayerState.PLAYING;
+        const c = state.picks?.[state.round];
+        if (!CURATE && c && !c.audio && (e.data === YT.PlayerState.ENDED || (e.data === YT.PlayerState.PAUSED && player.getCurrentTime() >= c.end - 0.6))) clipDone();
+        if (!CURATE) setPlayUI();
+      }
+    }
+  });
+};
+const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
+
+/* ---------- Sound: our own audio files (archive clips) or YouTube ---------- */
+const au = new Audio(); au.preload = 'auto';
+let actx, analyser, freq, auEnd = 0, auOn = false;
+au.addEventListener('timeupdate', () => { if (au.currentTime >= auEnd) { au.pause(); if (!CURATE && !state.revealed) clipDone(); } });
+['play', 'pause', 'ended'].forEach(ev => au.addEventListener(ev, () => { auOn = !au.paused; playing = auOn; if (!CURATE) setPlayUI(); }));
+function hookAnalyser() {
+  if (actx) { actx.resume(); return; }
+  try {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    const src = actx.createMediaElementSource(au); analyser = actx.createAnalyser(); analyser.fftSize = 256; analyser.smoothingTimeConstant = 0.7;
+    src.connect(analyser); analyser.connect(actx.destination); freq = new Uint8Array(analyser.frequencyBinCount);
+  } catch (e) { analyser = null; }
+}
+const snd = {
+  ready: c => !!(c && c.audio) || playerReady,
+  play(c, a, b) {
+    if (c.audio) {
+      if (playerReady) player.pauseVideo();
+      hookAnalyser();
+      if (!au.src.endsWith(c.audio)) au.src = c.audio;
+      auEnd = b; const go = () => { au.currentTime = a; au.play().catch(() => {}); };
+      au.readyState >= 1 ? go() : au.addEventListener('loadedmetadata', go, { once: true });
+    } else if (playerReady) { au.pause(); player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); player.unMute(); player.setVolume(100); }
+  },
+  pause() { au.pause(); if (playerReady) player.pauseVideo(); },
+  isPlaying: c => c.audio ? !au.paused : !!(playerReady && player.getPlayerState && player.getPlayerState() === YT.PlayerState.PLAYING),
+  stop() { au.pause(); if (playerReady) player.stopVideo(); },
+  time: () => auOn || (au.src && !playerReady) ? au.currentTime : (playerReady && player.getCurrentTime ? player.getCurrentTime() : 0),
+  cue(c) { if (c.audio) { au.src = c.audio; au.load(); if (playerReady) player.stopVideo(); } else if (playerReady) { au.pause(); player.stopVideo(); player.cueVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); } },
+};
+
+/* ---------- Visualizer (animated stand-in: YouTube does not expose its audio) ---------- */
+const cv = $('viz'), cx = cv.getContext('2d');
+let level = 0, syl = 0, sylTarget = 0, nextSyl = 0, t0 = performance.now();
+function frame(now) {
+  const dpr = devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cx.clearRect(0, 0, w, h);
+  const t = (now - t0) / 1000;
+  level += ((playing ? 1 : 0) - level) * 0.06;
+  if (now > nextSyl) { sylTarget = Math.random() < 0.18 ? 0.08 : 0.45 + Math.random() * 0.55; nextSyl = now + 120 + Math.random() * 180; }
+  syl += (sylTarget - syl) * 0.22;
+  const mid = h / 2, bars = Math.max(40, Math.floor(w / 7)), bw = w / bars;
+  const real = auOn && analyser; if (real) analyser.getByteFrequencyData(freq);
+  const ink = css('--ink'), acc = css('--accent');
+  for (let i = 0; i < bars; i++) {
+    const x = i / bars, center = Math.exp(-Math.pow((x - 0.5) / 0.32, 2));
+    const n = Math.sin(i * 0.37 + t * 9.1) * 0.5 + Math.sin(i * 0.91 - t * 13.7) * 0.3 + Math.sin(i * 2.3 + t * 21) * 0.2;
+    const idle = 1.5 + Math.sin(t * 1.6 + i * 0.25) * 1.2;
+    // Real spectrum, mirrored out from the centre (speech lives in the low bins).
+    const bin = real ? freq[Math.min(freq.length - 1, Math.floor(Math.abs(x - 0.5) * 2 * 70) + 1)] / 255 : 0;
+    const amp = real ? idle + level * Math.pow(bin, 1.4) * (0.35 + 0.65 * center) * h * 0.4 : idle + level * syl * center * (0.55 + 0.45 * Math.abs(n)) * h * 0.36;
+    cx.fillStyle = i % 9 === 4 ? acc : ink;
+    cx.globalAlpha = 0.25 + 0.75 * center;
+    cx.fillRect(i * bw + bw * 0.25, mid - amp, bw * 0.5, amp * 2);
+  }
+  cx.globalAlpha = 1;
+  requestAnimationFrame(frame);
+}
+if (!CURATE) requestAnimationFrame(frame);
+
+/* ---------- Map ---------- */
+let map, guessMarker, answerMarker, line, finalLayers = [];
+const VIEWS = { '48': [[50.0, -7.6], [58.7, 1.8]] };   // the UK: Scilly to Shetland, Northern Ireland to East Anglia
+const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+// A plain-English line on where the clip comes from and who is speaking.
+function aboutClip(c, a) {
+  const an = n => /^(8|11|18)/.test(String(n)) ? 'an' : 'a';
+  const generic = /^(man|woman)$/i.test(c.name);
+  const role = c.role && !/^(unknown|reading a short passage)$/i.test(c.role) ? c.role : '';
+  const who = generic
+    ? (a != null ? `${an(a)} ${a}-year-old ${a < 18 ? (/^w/i.test(c.name) ? 'girl' : 'boy') : c.name.toLowerCase()}` : `a ${c.name.toLowerCase()}`) + (role ? `, ${/^[aeiou]/i.test(role) ? 'an' : 'a'} ${role.toLowerCase()}` : '')
+    : (/^an? /i.test(c.name) ? c.name[0].toLowerCase() + c.name.slice(1) : c.name + (role ? `, ${role}` : '')) + (a != null ? `, then about ${a}` : '');
+  const yr = c.year ? ` in ${c.year}` : '';
+  if ((c.audio || '').includes('/coraal/'))
+    return `This recording is from CORAAL, a collection of interviews with Black Americans about their lives and neighborhoods. It was made${yr} and features ${who}.`;
+  if ((c.audio || '').includes('/saa/'))
+    return `This recording is from the Speech Accent Archive, where people read the same short paragraph (“Please call Stella…”) so their accents can be compared. It features ${who} who grew up here.`;
+  if (c.recorded) return `This recording was made in ${c.year} and later posted on YouTube. It features ${who}.`;
+  return `This clip is from a YouTube video${c.year ? ' posted' + yr : ''}. It features ${who}.`;
+}
+function initMap() {
+  map = L.map('map', { worldCopyJump: false, zoomSnap: 0.25, zoomControl: false, maxBounds: [[44, -20], [66, 12]], maxBoundsViscosity: .8 });
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+  // Map credit is required on the map; keep it as a small "i" that opens on tap.
+  const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
+  ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
+  fitUS();
+  map.setMinZoom(Math.max(1, map.getZoom() - 1.5));
+  // Soft colored terrain with hillshade and no labels: mountains, rivers and coasts are the only clues.
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+    { maxNativeZoom: 8, maxZoom: 11, attribution: 'Terrain © Esri · Boundaries: ONS, Open Government Licence' }).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+    { maxNativeZoom: 13, maxZoom: 11, opacity: .35, className: 'relief' }).addTo(map);
+  fetch('uk_regions.json').then(r => r.json()).then(us => {   // nations + English regions (ONS ITL1)
+    const lines = topojson.mesh(us, us.objects.regions, (a, b) => a !== b);
+    const outline = topojson.mesh(us, us.objects.regions, (a, b) => a === b);
+    L.geoJSON(lines, { interactive: false, style: { color: '#2a3560', weight: 1, opacity: .45 } }).addTo(map);
+    L.geoJSON(outline, { interactive: false, style: { color: '#2a3560', weight: 1.2, opacity: .3 } }).addTo(map);
+  }).catch(() => {});
+  map.on('click', e => {
+    if (state.revealed || $('stage').hidden) return;
+    if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
+    $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin, or press Guess';
+  });
+}
+// Keep the floating cards from covering what matters on the map.
+function cardPad() {
+  const r = document.querySelector('.reveal.on, .final.side:not([hidden])')?.getBoundingClientRect();
+  if (!r) return { paddingTopLeft: [20, 70], paddingBottomRight: [20, 110] };
+  return r.width < innerWidth * 0.7 ? { paddingTopLeft: [r.right + 16, 70], paddingBottomRight: [40, 30] } : { paddingTopLeft: [20, 70], paddingBottomRight: [20, innerHeight - r.top + 16] };
+}
+const fitUS = () => map.fitBounds(VIEWS['48'], cardPad());
+addEventListener('resize', () => { placeVideo(); });
+// YouTube only plays while its player is on screen, so it waits under the map and moves into the card at the reveal.
+function placeVideo() {
+  const yw = $('ytwrap'), slot = $('vidslot');
+  if (!yw.classList.contains('show') || slot.hidden) return;
+  const r = slot.getBoundingClientRect();
+  Object.assign(yw.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+}
+function hideVideo() { const yw = $('ytwrap'); yw.classList.remove('show'); Object.assign(yw.style, { left: '0', top: '0', width: '356px', height: '200px' }); }
+$('reveal').addEventListener('scroll', placeVideo);
+
+/* ---------- Game ---------- */
+const LADDER = [1, 1, 2, 3, 3], TIER_NAME = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
+const state = { round: 0, score: 0, picks: [], results: [], revealed: false };
+// Age bonus: only where the age is on record (archives) or close to it (birth year + video year).
+// First-listen bonus: lock in before the clip has played all the way through once. Pausing is fine; replays are free but end the bonus.
+const FAST = 500;
+function clipDone() { if (state.heard) state.fullListen = true; }   // the bonus is only ever mentioned on the reveal
+const ageOf = c => c.age || (c.year && c.born ? c.year - c.born : null);
+const bracket = a => a < 20 ? 0 : a >= 70 ? 6 : Math.floor(a / 10) - 1;
+const BR = ['under 20', 'in their 20s', 'in their 30s', 'in their 40s', 'in their 50s', 'in their 60s', '70 or older'];
+const ageBonus = (c, b) => { const a = ageOf(c); if (a == null || b == null) return 0; const d = Math.abs(bracket(a) - b); return d === 0 ? 1000 : d === 1 ? 400 : 0; };
+document.querySelectorAll('#ages button').forEach(b => b.onclick = () => {
+  state.age = state.age === +b.dataset.b ? null : +b.dataset.b;
+  document.querySelectorAll('#ages button').forEach(x => x.classList.toggle('sel', +x.dataset.b === state.age));
+});
+const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+  const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
+const CAP = 300;   // score = miles off, lowest wins; one wild miss counts as 300 at most (the UK is ~600 miles end to end)
+const points = mi => Math.min(CAP, Math.round(mi));
+
+function newGame() {
+  stopFx();
+  const pool = CLIPS.map(clip).filter(c => !c.drop);
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
+  const picks = [], used = new Set();
+  for (const want of LADDER) {
+    const order = [want, want + 1, want - 1, want + 2, want - 2];
+    // At most one Stella reading per game: everyone reads the same paragraph, so twice is repetitive.
+    const stella = c => (c.audio || '').startsWith('audio/saa/'), hadStella = picks.some(stella);
+    const c = order.map(t => pool.find(c => c.tier === t && !used.has(c.region) && !used.has(c.st) && !picks.includes(c) && !(hadStella && stella(c)))).find(Boolean);
+    if (c) { picks.push(c); used.add(c.region); if (c.st) used.add(c.st); }   // one region and one state per game
+  }
+  Object.assign(state, { round: 0, score: 0, picks, results: [] });
+  $('intro').hidden = true; $('final').hidden = true; $('scrim').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
+  if (!map) initMap();
+  finalLayers.forEach(l => map.removeLayer(l)); finalLayers = [];
+  startRound();
+}
+function startRound() {
+  state.revealed = false; state.heard = false; state.age = null; state.fullListen = false;
+  const c = state.picks[state.round];
+  document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
+  $('ages').hidden = true;
+  $('hEra').textContent = c.year ? (c.audio || c.recorded ? 'Recorded ' : 'Video from ') + c.year : '';
+  $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
+  document.body.classList.remove('revealed'); $('reveal').classList.remove('on'); hideVideo();
+  $('guessBtn').disabled = true; $('hint').textContent = 'Press play, then tap the map';
+  [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
+  fitUS();
+  snd.cue(c); playing = false; setPlayUI();
+}
+function playClip() {
+  const c = state.picks[state.round];
+  if (!snd.ready(c)) { $('listenLabel').textContent = 'Loading player…'; return; }
+  if (snd.isPlaying(c)) { snd.pause(); return; }
+  snd.play(c, c.start, c.end);
+}
+function setPlayUI() {
+  $('playIcon').innerHTML = playing ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M7 4.5v15l13-7.5z"/>';
+  $('playBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play clip');
+  if (playing) state.heard = true;
+  if (!state.revealed) $('listenLabel').textContent = playing ? 'Listening…' : state.heard ? 'Play again' : 'Press play to listen';
+}
+/* ---------- Reveal fanfare: quick, never in the way (Next works immediately) ---------- */
+const CALM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const VERDICT = mi => mi < 8 ? [5, 'Bullseye!', 'You found their hometown.'] : mi < 30 ? [4, 'Spot on!', 'You can hear the town.'] : mi < 75 ? [3, 'Close!', 'Right part of the country.']
+  : mi < 150 ? [2, 'Right region', 'You heard where they’re from.'] : mi < 300 ? [1, 'Right half of the UK', 'Getting warmer.'] : [0, 'Way off', 'Listen again to the telltale words below.'];
+function countUp(el, to, prefix = '+') {
+  if (CALM) { el.textContent = prefix + to.toLocaleString(); return; }
+  const t0 = performance.now(), dur = 650;
+  const tick = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = prefix + Math.round(to * e).toLocaleString(); if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+// Confetti from a point on screen: one burst, gone in 1.2 s.
+let fxRun = 0;
+function confetti(x, y, n = 120) {
+  if (CALM) return;
+  const run = ++fxRun, cv = $('fx'), cx = cv.getContext('2d'), dpr = devicePixelRatio || 1, LIFE = 1200;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cols = ['#ffd84d', '#ffb000', '#ff7a00', '#6a2bd9', '#1f9d55', '#2b7bd6', '#ffffff'];
+  const ps = Array.from({ length: n }, () => { const a = Math.random() * Math.PI * 2, v = 5 + Math.random() * 10;
+    return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 6, r: Math.random() * 6, s: 4 + Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)], spin: (Math.random() - .5) * .4 }; });
+  const t0 = performance.now();
+  const tick = now => { if (run !== fxRun) return; const t = now - t0; cx.clearRect(0, 0, innerWidth, innerHeight);
+    ps.forEach(p => { p.vy += .45; p.vx *= .98; p.x += p.vx; p.y += p.vy; p.r += p.spin;
+      cx.save(); cx.globalAlpha = Math.max(0, 1 - t / LIFE); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); cx.restore(); });
+    if (t < LIFE) requestAnimationFrame(tick); else cx.clearRect(0, 0, innerWidth, innerHeight); };
+  requestAnimationFrame(tick);
+}
+const stopFx = () => { fxRun++; const cv = $('fx'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); };
+// Name the town nearest the player's pin (Esri's public reverse geocoder, the same provider as the map tiles).
+async function nearestPlace(lat, lng) {
+  try {
+    const u = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&langCode=en&featureTypes=Locality,Postal&location=${lng},${lat}`;
+    const d = await (await fetch(u)).json(), A = d.address || {};
+    const town = A.City || A.Neighborhood || A.Subregion, region = A.Region;
+    if (town && region) return A.CountryCode === 'USA' ? `${town}, ${region}` : `${town}, ${A.CntryName || region}`;
+    if (region) return region;
+  } catch (e) {}
+  return 'Somewhere off the map';
+}
+function guess() {
+  if (!guessMarker || state.revealed) return;
+  state.revealed = true;
+  const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
+  const ab = 0, a = ageOf(c);   // age is shown, not scored (age bonus retired 2026-11-03)
+  const fb = 0;   // first-listen bonus retired 2026-11-03
+  state.score += p + ab + fb; state.results.push({ c, mi, p, ab, fb, g: [g.lat, g.lng] });
+  answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
+  line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
+  $('hScore').textContent = state.score.toLocaleString();
+  const [lv, head] = VERDICT(mi);
+  $('rVerdict').className = 'verdictband'; $('rKicker').textContent = `Miles off · Round ${state.round + 1}`;
+  $('reveal').classList.remove('big'); void $('reveal').offsetWidth; $('reveal').classList.toggle('big', lv >= 4);
+  countUp($('rPts'), p + ab + fb, '');
+  $('rPlace').textContent = c.place;
+  // one compact line: who, what, when, how old (YouTube gives only the upload year, so say "video")
+  $('rWho').textContent = aboutClip(c, a);
+  // "(0:19)" in the note plays that moment; snap to the matching word's exact time when we have it
+  // first sentence = a small subheadline under the place; the words to listen for follow after a gap
+  const sp = c.note.match(/^(.+?[.:])\s+(\S.*)$/s), lead = sp ? sp[1].replace(/:$/, '.') : '', body = sp ? sp[2] : c.note;
+  $('rNote').innerHTML = (lead ? `<span class="lead">${esc(lead)}</span>` : '') + esc(body).replace(/\((\d+):(\d\d)\)/g, (m, mm, ss) => {
+    const t = +mm * 60 + +ss, w = (c.words || []).find(([, wt]) => Math.abs(wt - t) < 1.5);
+    return `<button class="ts" data-t="${w ? w[1] : t}" aria-label="Play this moment">${m.slice(1, -1)}</button>`; });
+  $('rNote').querySelectorAll('.ts').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
+  $('rWords').innerHTML = '';
+  const dist = (mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`) + (mi > CAP ? `, counts as ${CAP.toLocaleString()}` : '');
+  $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
+  nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
+  // newest round first, then the earlier ones, then the running total
+  const rounds = state.results.map((r, i) => [i + 1, r.p + (r.ab || 0) + (r.fb || 0)]).reverse();
+  $('rTally').innerHTML = rounds.map(([n, v], i) => `<span class="${i ? 'run' : 'cur'}">Round ${n}</span><span class="${i ? 'run' : 'cur'}">${v.toLocaleString()} mi</span>`).join('')
+    + `<span class="tot">Total</span><span class="tot">${state.score.toLocaleString()} mi</span>`;
+  $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
+  $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
+  $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
+  $('nextTop').textContent = state.round === 4 ? 'Final score →' : 'Next round →';
+  document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
+  $('vidslot').hidden = true;   // no embedded video; the source link under the button opens it on YouTube
+  map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 9 }, cardPad()));
+  snd.pause();
+  if (lv >= 4) setTimeout(() => {   // the wow moment: one burst out of the answer pin
+    if (!state.revealed) return;
+    const pt = map.latLngToContainerPoint([c.lat, c.lng]); confetti(pt.x, pt.y, lv === 5 ? 180 : 110);
+    answerMarker?.getElement()?.querySelector('.pin')?.classList.add('ring');
+  }, 300);
+}
+function next() {
+  snd.stop(); stopFx();
+  if (++state.round < 5) return startRound();
+  $('stage').hidden = true; $('hud').hidden = true; hideVideo(); document.body.classList.remove('revealed');
+  [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
+  $('final').hidden = false; $('final').classList.add('side');
+  // Every guess and every answer, all at once.
+  const pts = [];
+  state.results.forEach(r => { const a = [r.c.lat, r.c.lng]; pts.push(a, r.g);
+    finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
+      L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
+  requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 9 }, cardPad())));
+  const max = 5 * CAP;
+  state.max = max; state.submitted = false; myEntry = null;
+  $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
+  try { $('lbName').value = localStorage.getItem('accentuate-uk-name') || ''; } catch (_) {}
+  loadBoard();
+  const s = state.score;
+  $('fScore').innerHTML = `<span id="fNum">0</span> <small>miles off</small>`; countUp($('fNum'), s, '');
+  const flv = s <= 500 ? 5 : s <= 1000 ? 4 : 0;   // confetti for a great game
+  const bulls = state.results.filter(r => r.mi < 8).length;
+  $('fBand').hidden = true;   // no verdict headline (Todd): the number, then one real fact
+  if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
+  // place names read inside a sentence: "the Lower East Side", "rural Oklahoma"
+  const inText = pl => /^(Lower East Side|Northwest Side|South End|Mississippi Delta|Texas Hill Country|Upper Peninsula)\b/.test(pl) ? 'the ' + pl : pl.replace(/^Rural /, 'rural ');
+  const best = state.results.reduce((a, b) => b.mi < a.mi ? b : a);
+  $('fVerdict').textContent = best.mi < 1 ? `Your closest guess landed right on ${inText(best.c.place)}.` : `Your closest guess: ${Math.round(best.mi).toLocaleString()} mile${Math.round(best.mi) === 1 ? '' : 's'} from ${inText(best.c.place)}.`;
+  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span></li>`).join('');
+}
+/* ---------- All-time leaderboard (Cloudflare Worker + D1) ---------- */
+const LB = 'https://accentuate-leaderboard.todd-burns.workers.dev/uk';   // UK scores live in their own table
+let myEntry = null;
+async function loadBoard() {
+  try {
+    const { top, total } = await (await fetch(LB + '/top?n=5')).json();
+    $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()} mi</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
+    if (myEntry?.rank) $('lbMsg').textContent = `You're #${myEntry.rank} of ${total.toLocaleString()} all time.`;
+  } catch (e) { $('lbList').innerHTML = '<li class="m"><span>The leaderboard is unreachable right now.</span></li>'; }
+}
+$('lbForm').onsubmit = async e => {
+  e.preventDefault();
+  const name = $('lbName').value.trim();
+  if (!name || state.submitted) return;
+  $('lbBtn').disabled = true; $('lbMsg').textContent = 'Saving…';
+  try { localStorage.setItem('accentuate-uk-name', name); } catch (_) {}
+  try {
+    const r = await fetch(LB + '/score', { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name, score: state.score, max: state.max, rounds: state.results.map(r => [r.c.id, r.p, r.ab || 0, r.fb || 0]) }) });
+    const d = await r.json();
+    if (!r.ok) { $('lbMsg').textContent = d.error && d.error.length > 8 ? d.error : 'That score could not be saved.'; $('lbBtn').disabled = false; return; }
+    state.submitted = true; myEntry = { name, score: state.score, rank: d.rank }; $('lbForm').hidden = true; loadBoard();
+  } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
+};
+function copyResult() {
+  const sq = m => m < 100 ? '🟩' : m < 300 ? '🟨' : m < 600 ? '🟧' : '⬜';
+  const url = 'https://toddlburns.com/accentuate-uk/';
+  const text = 'Check out this cool game about recognizing accents across the UK!';   // Todd's wording
+  const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
+  // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
+  else navigator.clipboard?.writeText(text + '\n' + url).then(done);
+}
+if (!CURATE) initMap();
+$('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
+$('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
+$('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next; $('nextTop').onclick = next;
+document.addEventListener('keydown', e => {
+  if (CURATE || $('stage').hidden) return;
+  if (e.code === 'Space' && !state.revealed) { e.preventDefault(); playClip(); }
+  if (e.key === 'Enter') state.revealed ? next() : guess();
+});
+
+/* ---------- Curate ---------- */
+let cur = 0;
+function renderList() {
+  $('clist').innerHTML = CLIPS.map((c0, i) => { const c = clip(c0), ed = edits[c.id];
+    return `<button data-i="${i}" class="${i === cur ? 'on' : ''}"><span>${c.drop ? '<s>' : ''}${c.name} · ${c.place}${c.drop ? '</s>' : ''}</span><span class="st ${ed ? 'ed' : ''}">${fmt(c.start)}–${fmt(c.end)}${ed ? ' ✎' : ''}</span></button>`; }).join('');
+  $('clist').querySelectorAll('button').forEach(b => b.onclick = () => selectClip(+b.dataset.i));
+  const n = Object.keys(edits).length; $('cCount').textContent = n ? `${n} clip${n > 1 ? 's' : ''} edited` : '';
+  $('cOut').value = n ? JSON.stringify(edits, null, 1) : '';
+}
+function selectClip(i) {
+  cur = i; const c = clip(CLIPS[i]);
+  $('cDrop').checked = !!c.drop; $('cNote').value = c.cnote || '';
+  $('cTimes').textContent = `clip ${fmt(c.start)} → ${fmt(c.end)} (${c.end - c.start}s)`;
+  if (playerReady) player.cueVideoById({ videoId: c.id, startSeconds: c.start });
+  renderList();
+}
+function setEdit(patch) {
+  const id = CLIPS[cur].id, base = CLIPS[cur];
+  edits[id] = Object.assign({ start: base.start, end: base.end }, edits[id] || {}, patch);
+  if (edits[id].end <= edits[id].start) edits[id].end = edits[id].start + 20;
+  save(edits); selectClip(cur);
+}
+if (REVIEW) {
+  $('game').hidden = true; $('tools').hidden = false; $('review').hidden = false; initReview();
+} else if (CURATE) {
+  $('game').hidden = true; $('tools').hidden = false; $('curate').hidden = false;
+  setInterval(() => { if (playerReady && player.getCurrentTime) $('cNow').textContent = fmt(player.getCurrentTime()); }, 250);
+  document.querySelectorAll('[data-nudge]').forEach(b => b.onclick = () => player.seekTo(player.getCurrentTime() + +b.dataset.nudge, true));
+  $('cMarkStart').onclick = () => setEdit({ start: Math.floor(player.getCurrentTime()) });
+  $('cMarkEnd').onclick = () => setEdit({ end: Math.ceil(player.getCurrentTime()) });
+  $('cPlayClip').onclick = () => { const c = clip(CLIPS[cur]); player.loadVideoById({ videoId: c.id, startSeconds: c.start, endSeconds: c.end }); };
+  $('cDrop').onchange = e => setEdit({ drop: e.target.checked || undefined });
+  $('cNote').onchange = e => setEdit({ cnote: e.target.value || undefined });
+  $('cReset').onclick = () => { delete edits[CLIPS[cur].id]; save(edits); selectClip(cur); };
+  $('cCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(edits, null, 1)); $('cCopy').textContent = 'Copied'; setTimeout(() => $('cCopy').textContent = 'Copy edits', 1600); };
+  renderList();
+}
+
+/* ---------- Review (hunt finalists) ---------- */
+function initReview() {
+  const KEY = 'accentuate-uk-review-v1', TN = { 1: 'Easy · 40s', 2: 'Medium · 30s', 3: 'Hard · 20s' };
+  let dec = {}; try { dec = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  const put = () => { try { localStorage.setItem(KEY, JSON.stringify(dec)); } catch (e) {} const k = Object.values(dec).filter(d => d.v === 'keep').length;
+    $('rCount').textContent = `${k} kept · ${Object.keys(dec).length}/${CANDIDATES.length} decided`; };
+  const play = (c, a, b) => snd.play(c, a, b);
+  let last = '';
+  $('rList').innerHTML = CANDIDATES.map((c, i) => {
+    const head = c.label !== last ? `<h2 class="rgroup">${c.label}</h2>` : ''; last = c.label;
+    const who = c.audio ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · ${esc(c.hometown)}</span></h3><div class="meta">${esc(c.evidence)}</div>` : c.person ? `<h3>${esc(c.person)} <span class="meta">· ${esc(c.role)} · from ${esc(c.hometown)}</span></h3><div class="meta">Press on the accent: “${esc(c.evidence)}” <a href="${esc(c.source)}" target="_blank" rel="noopener">source ↗</a></div><div class="meta">Video: ${esc(c.title)}</div>` : `<h3>${esc(c.title)}</h3>`;
+    return head + `<div class="rv" data-i="${i}">${who}<div class="meta">${esc(c.channel)} · ${TN[c.tier]} · ${fmt(c.start)}–${fmt(c.end)} ${c.audio ? '' : ` · other voice ${Math.round(c.other * 100)}%`}</div>
+      <div class="tools"><button class="ghost" data-a="play">▶ Play clip</button>${c.words.map(([w, t]) => `<button class="ghost" data-w="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
+      <div class="tools"><button class="ghost" data-v="keep">Keep</button><button class="ghost" data-v="drop">Drop</button><input type="text" placeholder="Note (wrong voice, not local, too famous…)" style="flex:1;min-width:200px"></div></div>`;
+  }).join('');
+  document.querySelectorAll('.rv').forEach(row => {
+    const c = CANDIDATES[+row.dataset.i], d = dec[c.id] || {};
+    const paint = () => { row.classList.toggle('keep', d.v === 'keep'); row.classList.toggle('drop', d.v === 'drop');
+      row.querySelectorAll('[data-v]').forEach(b => b.classList.toggle('sel', b.dataset.v === d.v)); };
+    row.querySelector('input').value = d.note || '';
+    row.querySelector('[data-a]').onclick = () => play(c, c.start, c.end);
+    row.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.w; play(c, Math.max(0, at - 0.6), at + 1.6); });
+    row.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { d.v = d.v === b.dataset.v ? undefined : b.dataset.v; dec[c.id] = d; paint(); put(); });
+    row.querySelector('input').onchange = e => { d.note = e.target.value || undefined; dec[c.id] = d; put(); };
+    paint();
+  });
+  setInterval(() => { $('rNow').textContent = fmt(snd.time()); }, 250);
+  // Keyboard review: Space plays the current clip, K keeps, D drops (both move on and play the next).
+  const rows = [...document.querySelectorAll('.rv')];
+  let at = Math.max(0, rows.findIndex(r => !dec[CANDIDATES[+r.dataset.i].id]?.v));
+  const focus = (i, autoplay) => { at = Math.max(0, Math.min(rows.length - 1, i)); rows.forEach(r => r.classList.remove('cur')); const r = rows[at]; if (!r) return;
+    r.classList.add('cur'); r.scrollIntoView({ block: 'center', behavior: 'smooth' }); if (autoplay) r.querySelector('[data-a]').click(); };
+  rows.forEach((r, i) => r.addEventListener('click', () => { at = i; rows.forEach(x => x.classList.remove('cur')); r.classList.add('cur'); }, true));
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const r = rows[at]; if (!r) return;
+    if (e.code === 'Space') { e.preventDefault(); playing ? snd.pause() : r.querySelector('[data-a]').click(); }
+    else if (e.key === 'k' || e.key === 'd') { const b = r.querySelector(`[data-v="${e.key === 'k' ? 'keep' : 'drop'}"]`); if (!b.classList.contains('sel')) b.click(); focus(at + 1, true); }
+    else if (e.key === 'j' || e.key === 'ArrowDown') { e.preventDefault(); focus(at + 1, false); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focus(at - 1, false); }
+    else if (e.key === 'n') { e.preventDefault(); r.querySelector('input').focus(); }
+  });
+  focus(at, false);
+  $('rCopy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify(dec, null, 1)); $('rCopy').textContent = 'Copied'; setTimeout(() => $('rCopy').textContent = 'Copy decisions', 1600); };
+  put();
+}
+</script>
+</body>
+</html>

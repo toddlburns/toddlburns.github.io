@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Accentuate Sound Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<style>
+/* Every clip in the game, playable and editable. Edits stay in this browser until Todd copies them to Claude. */
+:root{--paper:#fbf9f4;--bg:#f6f4ee;--ink:#13213c;--muted:#5c6478;--rule:#e3e0d8;--accent:#6a2bd9;--ok:#1f9d55;--font:"Archivo",system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#161a2e;--bg:#0e1122;--ink:#f1f0ec;--muted:#9da3b8;--rule:#2a3050;--accent:#a77bff;--ok:#4fd18b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#161a2e;--bg:#0e1122;--ink:#f1f0ec;--muted:#9da3b8;--rule:#2a3050;--accent:#a77bff;--ok:#4fd18b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--font);font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 16px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+h1{font:800 20px var(--font);font-stretch:125%;margin:0}
+.count{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;max-width:1100px;margin:10px auto 0}
+input,select,textarea{font:14px var(--font);padding:7px 9px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink)}
+input[type=search]{flex:1;min-width:180px}
+button{font:650 14px var(--font);border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:7px 12px;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{max-width:1100px;margin:0 auto;padding:12px 16px 80px}
+#yt{position:fixed;right:16px;bottom:16px;width:320px;height:180px;z-index:6;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+#yt.off{visibility:hidden}
+/* sound only: the player has to stay "visible" for YouTube to play, so it sits under a cover the page color */
+#yt{z-index:-2!important}#ytcov{position:fixed;right:0;bottom:0;width:360px;height:220px;z-index:-1;background:var(--bg)}
+.stgrid{display:flex;flex-wrap:wrap;gap:4px;max-width:1100px;margin:10px auto 0}
+.stgrid button{font:600 12px var(--font);padding:3px 7px;border-radius:6px;background:transparent;color:var(--ink);border-color:var(--rule);min-width:52px;text-align:left}
+.stgrid button b{font-weight:800;margin-left:4px}.stgrid .z{border-color:#c0392b;color:#c0392b}.stgrid .lo{border-color:#d4a017}.stgrid .on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.row{background:var(--paper);border:1px solid var(--rule);border-radius:12px;margin:8px 0;padding:10px 12px}
+.row.edited{border-color:var(--ok)}.row.dropped{opacity:.5}
+.head{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;cursor:pointer}
+.play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--accent);border-color:var(--accent);color:#fff;font-size:13px}
+.who b{font-weight:700}.who .m{color:var(--muted);font-size:13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.tag.e{border-color:var(--ok);color:var(--ok)}
+.del{font-size:12px;padding:4px 10px;background:transparent;color:var(--muted);border-color:var(--rule)}.del:hover{color:#c0392b;border-color:#c0392b}.row.dropped .del{color:var(--ink);border-color:var(--ink)}
+.note{color:var(--muted);font-size:13px;margin:6px 0 0 44px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0 44px}
+.chips button{font-size:12px;padding:3px 9px;border-radius:999px;background:transparent;color:var(--ink);border-color:var(--rule)}
+.edit{display:none;margin:12px 0 2px 44px;gap:8px;grid-template-columns:110px 1fr}
+.row.open .edit{display:grid}
+.edit label{font-size:12px;color:var(--muted);padding-top:8px}
+.edit textarea{min-height:90px;width:100%}
+.edit input,.edit select{width:100%}
+.edit .line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.edit .line input{width:90px}
+@media (max-width:640px){.head{grid-template-columns:auto 1fr}.tags{grid-column:1/-1;justify-content:flex-start}.note,.chips,.edit{margin-left:0}.edit{grid-template-columns:1fr}#yt{width:200px;height:113px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>Sound bank</h1>
+    <span class="count" id="count"></span>
+    <span style="flex:1"></span>
+    <span class="count" id="ecount"></span>
+    <button id="copy">Copy changes</button>
+  </div>
+  <div class="filters">
+    <input type="search" id="q" placeholder="Search name, place, note…">
+    <button class="ghost" id="stPrev" title="Previous region">◀</button><select id="fst"><option value="">All regions</option></select><button class="ghost" id="stNext" title="Next state">▶</button>
+    <select id="fsrc"><option value="">All sources</option><option>YouTube</option><option>CORAAL</option><option>Stella</option></select>
+    <select id="ftier"><option value="">All tiers</option><option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option></select>
+    <select id="fshow"><option value="">Everything</option><option value="edited">Edited</option><option value="dropped">Deleted</option><option value="noage">No age (sits out)</option></select>
+  </div>
+  <div class="stgrid" id="stgrid"></div>
+</header>
+<main id="list"></main>
+<div id="yt" class="off"><div id="ytp"></div></div><div id="ytcov"></div>
+
+<script src="../clips.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const fmt = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const KEY = 'accentuate-uk-bank-v1';
+let edits = {}; try { edits = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+let save = () => { try { localStorage.setItem(KEY, JSON.stringify(edits)); } catch (e) {} paintCount(); };
+const src = c => c.id.startsWith('english') ? 'Stella' : (c.audio || '').includes('coraal') ? 'CORAAL' : 'YouTube';
+const ageOf = c => c.age || (c.year && c.born ? c.year - c.born : null);
+const cur = c => Object.assign({}, c, edits[c.id] || {});
+const TIER = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
+
+/* players: our own audio files, or YouTube */
+const au = new Audio(); let auEnd = 0, yt, ytReady = false;
+au.addEventListener('timeupdate', () => { if (au.currentTime >= auEnd) au.pause(); });
+window.onYouTubeIframeAPIReady = () => { yt = new YT.Player('ytp', { width: '100%', height: '100%', playerVars: { playsinline: 1, rel: 0 }, events: { onReady: () => ytReady = true } }); };
+const t = document.createElement('script'); t.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(t);
+function play(c, a, b) {
+  if (c.audio) { if (ytReady) yt.pauseVideo(); $('yt').classList.add('off'); if (!au.src.endsWith(c.audio)) au.src = '../' + c.audio; auEnd = b;
+    const go = () => { au.currentTime = a; au.play(); }; au.readyState >= 1 ? go() : au.addEventListener('loadedmetadata', go, { once: true }); }
+  else if (ytReady) { au.pause(); $('yt').classList.remove('off'); yt.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); }
+}
+
+const states = [...new Set(CLIPS.map(c => c.st).filter(Boolean))].sort();
+$('fst').innerHTML += states.map(s => `<option>${s}</option>`).join('');
+
+function render() {
+  const q = $('q').value.toLowerCase(), fs = $('fst').value, fsrc = $('fsrc').value, ft = $('ftier').value, show = $('fshow').value;
+  const rows = CLIPS.map(cur).filter(c => (!fs || c.st === fs) && (!fsrc || src(c) === fsrc) && (!ft || String(c.tier) === ft)
+    && (!show || (show === 'edited' ? edits[c.id] : show === 'dropped' ? c.drop : ageOf(c) == null))
+    && (!q || [c.name, c.role, c.place, c.note, c.id].join(' ').toLowerCase().includes(q)));
+  $('count').textContent = `${rows.length} of ${CLIPS.length} clips`;
+  $('list').innerHTML = rows.map(c => `<div class="row ${edits[c.id] ? 'edited' : ''} ${c.drop ? 'dropped' : ''}" data-id="${esc(c.id)}">
+    <div class="head"><button class="play" data-play aria-label="Play">▶</button>
+      <div class="who"><b>${esc(c.name)}</b> <span class="m">· ${esc(c.role)} · ${esc(c.place)}</span></div>
+      <div class="tags"><span class="tag">${c.st || '?'}</span><span class="tag">${src(c)}</span><span class="tag">${TIER[c.tier] || ''}</span><span class="tag">${ageOf(c) != null ? 'age ' + ageOf(c) : 'no age'}</span>${c.year ? `<span class="tag">${c.year}</span>` : ''}${edits[c.id] ? '<span class="tag e">edited</span>' : ''}${c.drop ? '<span class="tag e">deleted</span>' : ''}</div>
+      <button class="del" data-del>${c.drop ? 'Restore' : 'Delete'}</button></div>
+    <div class="note">${esc(c.note)}</div>
+    <div class="chips">${(c.words || []).map(([w, t]) => `<button data-t="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
+    <div class="edit">
+      <label>Name</label><input data-f="name" value="${esc(c.name)}">
+      <label>Role</label><input data-f="role" value="${esc(c.role)}">
+      <label>Place</label><input data-f="place" value="${esc(c.place)}">
+      <label>Note</label><textarea data-f="note">${esc(c.note)}</textarea>
+      <label>Tier</label><select data-f="tier">${[1, 2, 3].map(t => `<option value="${t}" ${c.tier === t ? 'selected' : ''}>${TIER[t]}</option>`).join('')}</select>
+      <label>Clip</label><div class="line">start <input data-f="start" type="number" step="0.1" value="${c.start}"> end <input data-f="end" type="number" step="0.1" value="${c.end}"> <span class="count">${src(c) === 'YouTube' ? 'seconds into the video' : 'seconds into the clip file'}</span></div>
+      <label>In the game</label><div class="line"><label style="padding:0;color:var(--ink)"><input type="checkbox" data-f="drop" ${c.drop ? 'checked' : ''} style="width:auto"> Delete this clip from the game</label></div>
+      <label>Note to Claude</label><input data-f="cnote" value="${esc(c.cnote)}" placeholder="Anything else (wrong place, wrong person…)">
+      <label></label><div class="line"><button class="ghost" data-reset>Undo my edits to this clip</button></div>
+    </div></div>`).join('');
+}
+function paintCount() { const n = Object.keys(edits).length; $('ecount').textContent = n ? `${n} clip${n > 1 ? 's' : ''} edited` : ''; }
+
+$('list').addEventListener('click', e => {
+  const row = e.target.closest('.row'); if (!row) return;
+  const c = cur(CLIPS.find(x => x.id === row.dataset.id));
+  if (e.target.closest('[data-play]')) { play(c, c.start, c.end); return; }
+  if (e.target.dataset.t != null) { const at = c.start + +e.target.dataset.t; play(c, Math.max(0, at - 0.6), at + 1.6); return; }
+  if (e.target.closest('[data-del]')) {   // one-click delete / restore (Todd applies it by pasting "Copy changes")
+    const ed = edits[c.id] || {}, base = CLIPS.find(x => x.id === c.id); if (!c.drop === !base.drop) ed.drop = !c.drop; else delete ed.drop;
+    if (Object.keys(ed).length) edits[c.id] = ed; else delete edits[c.id]; save(); render(); return;
+  }
+  if (e.target.closest('[data-reset]')) { delete edits[c.id]; save(); render(); return; }
+  if (e.target.closest('.head')) row.classList.toggle('open');
+});
+$('list').addEventListener('change', e => {
+  const f = e.target.dataset.f; if (!f) return;
+  const id = e.target.closest('.row').dataset.id, base = CLIPS.find(x => x.id === id);
+  let v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+  if (['tier'].includes(f)) v = +v; if (['start', 'end'].includes(f)) v = Math.round(+v * 10) / 10;
+  const ed = edits[id] || {};
+  if (v === base[f] || (f === 'drop' && !v && !base.drop) || (f === 'cnote' && !v)) delete ed[f]; else ed[f] = v;
+  if (Object.keys(ed).length) edits[id] = ed; else delete edits[id];
+  save(); const open = e.target.closest('.row').classList.contains('open'); render();
+  if (open) document.querySelector(`.row[data-id="${CSS.escape(id)}"]`)?.classList.add('open');
+});
+['q', 'fst', 'fsrc', 'ftier', 'fshow'].forEach(id => $(id).addEventListener('input', render));
+$('copy').onclick = () => { navigator.clipboard?.writeText(JSON.stringify({ bank: edits }, null, 1)); $('copy').textContent = 'Copied'; setTimeout(() => $('copy').textContent = 'Copy changes', 1600); };
+/* every state at a glance: clips still in the game, red = none, amber = under 5; click to step through */
+const ALL_ST = 'NE NW YH EM WM EE LDN SE SW WAL SCO NI'.split(' ');   // UK nations + English regions (ONS ITL1)
+function paintStates() {
+  const n = {}; CLIPS.map(cur).filter(c => !c.drop).forEach(c => n[c.st] = (n[c.st] || 0) + 1);
+  $('stgrid').innerHTML = ALL_ST.map(st => `<button data-st="${st}" class="${!n[st] ? 'z' : n[st] < 5 ? 'lo' : ''} ${$('fst').value === st ? 'on' : ''}">${st}<b>${n[st] || 0}</b></button>`).join('');
+}
+const pickState = st => { if (![...$('fst').options].some(o => o.value === st)) $('fst').add(new Option(st, st)); $('fst').value = st; render(); paintStates(); scrollTo(0, 0); };
+$('stgrid').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if (b) pickState($('fst').value === b.dataset.st ? '' : b.dataset.st); });
+const step = d => { const i = ALL_ST.indexOf($('fst').value); pickState(ALL_ST[(i + d + ALL_ST.length) % ALL_ST.length]); };
+$('stPrev').onclick = () => step(-1); $('stNext').onclick = () => step(1);
+$('fst').addEventListener('input', paintStates);
+const _save = save; save = () => { _save(); paintStates(); };
+render(); paintCount(); paintStates();
+</script>
+</body>
+</html>
