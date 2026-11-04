@@ -12,7 +12,7 @@ window.CLIPS = [
   "place": "South Boston, Massachusetts",
   "lat": 42.3381,
   "lng": -71.0476,
-  "note": "Eastern New England English.",
+  "note": "Eastern New England English. The r after a vowel drops away: listen to \"cars,\" \"hard\" and \"sure.\"",
   "verified": true,
   "words": [
    [
@@ -160,7 +160,7 @@ window.CLIPS = [
   "place": "Pittsburgh, Pennsylvania",
   "lat": 40.4406,
   "lng": -79.9959,
-  "note": "Western Pennsylvania English.",
+  "note": "Western Pennsylvania English. The ow sound flattens: \"our\" and \"power\" lean toward \"ahr\" and \"pahr.\"",
   "verified": true,
   "words": [
    [
@@ -788,7 +788,7 @@ window.CLIPS = [
   "place": "Baltimore, Maryland",
   "lat": 39.329,
   "lng": -76.6205,
-  "note": "Baltimore English.",
+  "note": "Baltimore English. The ow in \"down\" starts far forward, close to \"dane.\"",
   "verified": true,
   "words": [
    [
@@ -4436,7 +4436,7 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC.",
+  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
@@ -10384,7 +10384,7 @@ window.CLIPS = [
   "place": "Rural Oklahoma",
   "lat": 35.47,
   "lng": -97.52,
-  "note": "Oklahoma English, where South meets West.",
+  "note": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite.",
   "verified": true,
   "words": [],
   "year": 2017,
@@ -10989,7 +10989,7 @@ window.CLIPS = [
   "place": "Texas Hill Country",
   "lat": 30.27,
   "lng": -98.87,
-  "note": "Central Texas English.",
+  "note": "Central Texas English. The long i flattens (\"Ah,\" \"rahd\"), and short vowels can stretch into two.",
   "verified": true,
   "words": [],
   "year": 2019,
@@ -11216,7 +11216,7 @@ window.CLIPS = [
   "place": "Grafton, Wisconsin",
   "lat": 43.32,
   "lng": -87.953,
-  "note": "Wisconsin English.",
+  "note": "Wisconsin English. Long \"o\" stays round (\"so,\" \"know\"), and the short a tightens before \"g\" and \"n.\"",
   "verified": true,
   "words": [],
   "year": 2018,
@@ -13090,7 +13090,7 @@ window.CLIPS = [
   "place": "Brockton, Massachusetts",
   "lat": 42.083,
   "lng": -71.018,
-  "note": "South Shore Massachusetts English.",
+  "note": "South Shore Massachusetts English. Listen for the missing r in words like \"for,\" \"here\" and \"never.\"",
   "verified": true,
   "words": [
    [
