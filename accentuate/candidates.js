@@ -183,6 +183,32 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "IzqJ1nRly9M",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 1,
+"start": 229,
+"end": 269,
+"words": [
+[
+"there",
+6.4
+]
+],
+"title": "James Carville Commencement Address- University of New Orleans Fall 2014",
+"channel": "LSUNewOrleans",
+"other": 0.67,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
 "id": "roPUhGNqxA4",
 "region": "cajun",
 "label": "Cajun Louisiana (Acadiana)",
