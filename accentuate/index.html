@@ -66,7 +66,8 @@ a{color:inherit}
 /* floating pieces */
 .card{background:var(--paper-a);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;box-shadow:0 10px 40px var(--shade)}
 .topbar{position:absolute;z-index:20;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:none}
-#game:has(#intro:not([hidden])) .topbar .logo{visibility:hidden}   /* the intro has its own title */
+#game:has(#intro:not([hidden])) .topbar .logo{visibility:hidden}
+button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the intro has its own title */
 .logo{font:800 20px/1 var(--font);font-stretch:125%;letter-spacing:-.01em;margin:0;padding:10px 14px;pointer-events:auto}
 .hud{display:flex;align-items:center;gap:14px;padding:9px 14px;font-size:14px;pointer-events:auto}
 .hud b{font-weight:750}
@@ -221,7 +222,7 @@ a{color:inherit}
   <canvas id="fx" aria-hidden="true"></canvas>
   <div id="ytwrap"><div id="yt"></div></div>
   <div class="topbar">
-    <p class="logo card">Accentuate</p>
+    <button class="logo card" id="logoBtn" title="New game">Accentuate</button>
     <div class="hud card" id="hud" hidden><span class="hpts"><b id="hScore">0</b> mi</span><span class="hround">Round <b id="hRound">1</b> of 5</span><span class="tier" id="hTier" hidden></span><span class="era" id="hEra" hidden></span></div>
   </div>
   <div class="scrim" id="scrim"></div>
@@ -675,6 +676,7 @@ function copyResult() {
   else navigator.clipboard?.writeText(text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
+$('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
 $('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
 $('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next; $('nextTop').onclick = next;
 document.addEventListener('keydown', e => {
