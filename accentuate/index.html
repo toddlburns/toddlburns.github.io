@@ -627,7 +627,7 @@ function next() {
   $('fBand').className = 'verdictband lv' + flv; $('fBand').innerHTML = fhead + (bulls ? `<small>${bulls} bullseye${bulls > 1 ? 's' : ''}</small>` : '');
   if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
   $('fVerdict').textContent = s >= 80 ? 'You have a remarkable ear.' : s >= 56 ? 'Well traveled.' : s >= 32 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
-  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0) + (r.fb || 0)).toLocaleString()}${r.ab || r.fb ? `<br><small class="m">incl. ${[r.ab && `+${r.ab} age`, r.fb && `+${r.fb} quick`].filter(Boolean).join(', ')}</small>` : ''}</span></li>`).join('');
+  $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span></li>`).join('');
 }
 /* ---------- All-time leaderboard (Cloudflare Worker + D1) ---------- */
 const LB = 'https://accentuate-leaderboard.todd-burns.workers.dev';
