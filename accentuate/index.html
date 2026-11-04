@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Accentuate</title>
 <meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
-<meta property="og:title" content="Accentuate: guess the American accent">
+<meta property="og:title" content="Guess the accent">
 <meta property="og:description" content="Check out this cool game about recognizing accents across the United States!">
 <meta property="og:image" content="https://toddlburns.com/accentuate/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -679,7 +679,7 @@ function copyResult() {
   const text = 'Check out this cool game about recognizing accents across the United States!';   // Todd's wording
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
-  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text, url }).catch(() => {});
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
   else navigator.clipboard?.writeText(text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
