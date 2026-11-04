@@ -21157,5 +21157,230 @@ window.CLIPS = [
   "born": 1967,
   "st": "MA",
   "note_base": "Dorchester Boston English: the r after a vowel drops away."
+ },
+ {
+  "id": "7wR2w7IATIM",
+  "region": "philly",
+  "tier": 1,
+  "start": 812,
+  "end": 844,
+  "name": "Jim Kenney",
+  "role": "Mayor of Philadelphia",
+  "place": "South Philadelphia, Pennsylvania",
+  "lat": 39.925,
+  "lng": -75.168,
+  "note": "South Philadelphia English. Listen to “know” (0:07) and “so” (0:08): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “seh-oo.” Listen to “that” (0:01) and “can” (0:08): the short a tenses and rises toward “eh-a.”",
+  "verified": true,
+  "words": [
+   [
+    "that",
+    1.2
+   ],
+   [
+    "know",
+    7.3
+   ],
+   [
+    "so",
+    8.0
+   ],
+   [
+    "can",
+    8.6
+   ]
+  ],
+  "born": 1958,
+  "st": "PA",
+  "note_base": "South Philadelphia English."
+ },
+ {
+  "id": "oLX0oGrYrnM",
+  "region": "boston",
+  "tier": 1,
+  "start": 46,
+  "end": 66,
+  "name": "Marty Walsh",
+  "role": "Mayor of Boston; U.S. Labor Secretary",
+  "place": "Dorchester, Boston, Massachusetts",
+  "lat": 42.3,
+  "lng": -71.061,
+  "note": "Dorchester Boston English: the r after a vowel drops away. Listen to “more” (0:05) and “year” (0:10): the r after a vowel drops, so it can sound like “moah” and “yeah.”",
+  "verified": true,
+  "words": [
+   [
+    "more",
+    5.8
+   ],
+   [
+    "year",
+    10.6
+   ]
+  ],
+  "born": 1967,
+  "st": "MA",
+  "note_base": "Dorchester Boston English: the r after a vowel drops away."
+ },
+ {
+  "id": "_ZEiY_v5vkE",
+  "region": "chicago",
+  "tier": 1,
+  "start": 45,
+  "end": 67,
+  "name": "Richard M. Daley",
+  "role": "Mayor of Chicago",
+  "place": "Bridgeport, Chicago, Illinois",
+  "lat": 41.838,
+  "lng": -87.651,
+  "note": "Chicago South Side English, Bridgeport's own. Listen to “have” (0:05) and “family” (0:07): the short a tenses and rises toward “eh-a.” Listen to “college” (0:14) and “job” (0:15): the short o slides forward toward “a,” so it can sound like “callege” and “jab.”",
+  "verified": true,
+  "words": [
+   [
+    "have",
+    5.4
+   ],
+   [
+    "family",
+    7.6
+   ],
+   [
+    "college",
+    14.3
+   ],
+   [
+    "job",
+    15.1
+   ]
+  ],
+  "born": 1942,
+  "st": "IL",
+  "note_base": "Chicago South Side English, Bridgeport's own."
+ },
+ {
+  "id": "CS_O0elCU2U",
+  "region": "cajun",
+  "tier": 1,
+  "start": 574,
+  "end": 595,
+  "name": "James Carville",
+  "role": "Political strategist",
+  "place": "Carville, Louisiana",
+  "lat": 30.217,
+  "lng": -91.098,
+  "note": "South Louisiana English from the river parishes, fast and Cajun-tinged. Listen to “the” (0:05) and “that” (0:06): “th” can soften toward “d,” “t” or “f.” Listen to “like” (0:05): the long i loses its glide, so it can sound like “lahk.”",
+  "verified": true,
+  "words": [
+   [
+    "the",
+    5.0
+   ],
+   [
+    "like",
+    5.9
+   ],
+   [
+    "that",
+    6.2
+   ]
+  ],
+  "born": 1944,
+  "st": "LA",
+  "note_base": "South Louisiana English from the river parishes, fast and Cajun-tinged."
+ },
+ {
+  "id": "HfyT_BxQ6y8",
+  "region": "cajun",
+  "tier": 1,
+  "start": 889,
+  "end": 913,
+  "name": "James Carville",
+  "role": "Political strategist",
+  "place": "Carville, Louisiana",
+  "lat": 30.217,
+  "lng": -91.098,
+  "note": "South Louisiana English from the river parishes, fast and Cajun-tinged. Listen to “the” (0:00) and “other” (0:11): “th” can soften toward “d,” “t” or “f.” Listen to “time” (0:15) and “while” (0:17): the long i loses its glide, so it can sound like “tahm” and “whahl.”",
+  "verified": true,
+  "words": [
+   [
+    "the",
+    0.2
+   ],
+   [
+    "other",
+    11.8
+   ],
+   [
+    "time",
+    15.3
+   ],
+   [
+    "while",
+    17.1
+   ]
+  ],
+  "born": 1944,
+  "st": "LA",
+  "note_base": "South Louisiana English from the river parishes, fast and Cajun-tinged."
+ },
+ {
+  "id": "VhBibgjD47s",
+  "region": "cajun",
+  "tier": 1,
+  "start": 1257,
+  "end": 1297,
+  "name": "James Carville",
+  "role": "Political strategist",
+  "place": "Carville, Louisiana",
+  "lat": 30.217,
+  "lng": -91.098,
+  "note": "South Louisiana English from the river parishes, fast and Cajun-tinged. Listen to “other” (0:02) and “they” (0:06): “th” can soften toward “d,” “t” or “f.” Listen to “I” (0:15): the long i loses its glide, so it can sound like “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "other",
+    2.4
+   ],
+   [
+    "they",
+    6.3
+   ],
+   [
+    "I",
+    15.7
+   ]
+  ],
+  "born": 1944,
+  "st": "LA",
+  "note_base": "South Louisiana English from the river parishes, fast and Cajun-tinged."
+ },
+ {
+  "id": "FMiSKPpyvMk",
+  "region": "cajun",
+  "tier": 1,
+  "start": 478,
+  "end": 518,
+  "name": "James Carville",
+  "role": "Political strategist",
+  "place": "Carville, Louisiana",
+  "lat": 30.217,
+  "lng": -91.098,
+  "note": "South Louisiana English from the river parishes, fast and Cajun-tinged. Listen to “this” (0:09) and “the” (0:09): “th” can soften toward “d,” “t” or “f.” Listen to “life” (0:10): the long i loses its glide, so it can sound like “lahf.”",
+  "verified": true,
+  "words": [
+   [
+    "this",
+    9.1
+   ],
+   [
+    "the",
+    9.7
+   ],
+   [
+    "life",
+    10.3
+   ]
+  ],
+  "born": 1944,
+  "st": "LA",
+  "note_base": "South Louisiana English from the river parishes, fast and Cajun-tinged."
  }
 ];
