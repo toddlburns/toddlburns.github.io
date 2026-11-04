@@ -20499,5 +20499,663 @@ window.CLIPS = [
   "born": 1936,
   "st": "MD",
   "note_base": "Baltimore English."
+ },
+ {
+  "id": "gcBZRmfQ5W0",
+  "region": "texas",
+  "tier": 1,
+  "start": 216,
+  "end": 237,
+  "name": "Rick Perry",
+  "role": "Governor of Texas",
+  "place": "Paint Creek, Texas",
+  "lat": 32.949,
+  "lng": -99.791,
+  "note": "Texas English. Listen to “I” (0:04): the long i loses its glide, so it can sound like “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    4.4
+   ]
+  ],
+  "born": 1950,
+  "st": "TX",
+  "note_base": "Texas English."
+ },
+ {
+  "id": "2fa3rGG-CHE",
+  "region": "boston",
+  "tier": 1,
+  "start": 127,
+  "end": 167,
+  "name": "Marty Walsh",
+  "role": "Mayor of Boston; U.S. Labor Secretary",
+  "place": "Dorchester, Boston, Massachusetts",
+  "lat": 42.3,
+  "lng": -71.061,
+  "note": "Dorchester Boston English: the r after a vowel drops away. Listen to “there” (0:01) and “after” (0:23): the r after a vowel drops, so it can sound like “theah” and “aftah.”",
+  "verified": true,
+  "words": [
+   [
+    "there",
+    1.1
+   ],
+   [
+    "after",
+    23.7
+   ]
+  ],
+  "born": 1967,
+  "st": "MA",
+  "note_base": "Dorchester Boston English: the r after a vowel drops away."
+ },
+ {
+  "id": "oNcogN2bv8Y",
+  "region": "deep_south",
+  "tier": 1,
+  "start": 1557,
+  "end": 1583,
+  "name": "Dabo Swinney",
+  "role": "Clemson football coach",
+  "place": "Pelham, Alabama",
+  "lat": 33.286,
+  "lng": -86.81,
+  "note": "Mississippi Delta English, slow and r-less in the old Southern way. Listen to “kind” (0:09) and “I” (0:19): the long i loses its glide, so it can sound like “kahnd” and “Ah.” Listen to “went” (0:03) and “again” (0:08): e before n or m becomes “i” (the pin–pen merger), so it can sound like “wint” and “agin.”",
+  "verified": true,
+  "words": [
+   [
+    "went",
+    3.4
+   ],
+   [
+    "again",
+    8.9
+   ],
+   [
+    "kind",
+    9.8
+   ],
+   [
+    "I",
+    19.9
+   ]
+  ],
+  "born": 1969,
+  "st": "AL",
+  "note_base": "Mississippi Delta English, slow and r-less in the old Southern way."
+ },
+ {
+  "id": "jVzgtHP-cjc",
+  "region": "chicago",
+  "tier": 1,
+  "start": 170,
+  "end": 201,
+  "name": "Richard M. Daley",
+  "role": "Mayor of Chicago",
+  "place": "Bridgeport, Chicago, Illinois",
+  "lat": 41.838,
+  "lng": -87.651,
+  "note": "Chicago South Side English, Bridgeport's own. Listen to “that” (0:00) and “have” (0:18): the short a tenses and rises toward “eh-a.”",
+  "verified": true,
+  "words": [
+   [
+    "that",
+    0.6
+   ],
+   [
+    "have",
+    18.2
+   ]
+  ],
+  "born": 1942,
+  "st": "IL",
+  "note_base": "Chicago South Side English, Bridgeport's own."
+ },
+ {
+  "id": "adDYgQk2FxQ",
+  "region": "arkansas",
+  "tier": 1,
+  "start": 55,
+  "end": 95,
+  "name": "Bear Bryant",
+  "role": "Alabama football coach",
+  "place": "Moro Bottom, Arkansas",
+  "lat": 33.814,
+  "lng": -92.413,
+  "note": "Arkansas English. Listen to “I” (0:01) and “like” (0:08): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “then” (0:20) and “them” (0:24): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “thim.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    1.3
+   ],
+   [
+    "like",
+    8.6
+   ],
+   [
+    "then",
+    20.2
+   ],
+   [
+    "them",
+    24.8
+   ]
+  ],
+  "born": 1913,
+  "st": "AR",
+  "note_base": "Arkansas English."
+ },
+ {
+  "id": "UB9shlpkvz0",
+  "region": "north_dakota",
+  "tier": 1,
+  "start": 83,
+  "end": 122,
+  "name": "Heidi Heitkamp",
+  "role": "U.S. Senator from North Dakota",
+  "place": "Mantador, North Dakota",
+  "lat": 46.166,
+  "lng": -96.979,
+  "note": "North Dakota English. Listen to “know” (0:01) and “no” (0:07): the long o stays a pure, round “oh,” with no glide. Listen to “back” (0:07) and “that” (0:17): the short a tenses and rises toward “eh-a.”",
+  "verified": true,
+  "words": [
+   [
+    "know",
+    1.7
+   ],
+   [
+    "no",
+    7.3
+   ],
+   [
+    "back",
+    7.8
+   ],
+   [
+    "that",
+    17.8
+   ]
+  ],
+  "born": 1955,
+  "st": "ND",
+  "note_base": "North Dakota English."
+ },
+ {
+  "id": "p0xdVvMC3aI",
+  "region": "upper_midwest",
+  "tier": 2,
+  "start": 357,
+  "end": 387,
+  "name": "Amy Klobuchar",
+  "role": "U.S. Senator from Minnesota",
+  "place": "Plymouth, Minnesota",
+  "lat": 45.0105,
+  "lng": -93.4555,
+  "note": "Minnesota English. Listen to “so” (0:21) and “go” (0:25): the long o stays a pure, round “oh,” with no glide. Listen to “bad” (0:20) and “that” (0:27): the short a tenses and rises toward “eh-a.”",
+  "verified": true,
+  "words": [
+   [
+    "bad",
+    20.9
+   ],
+   [
+    "so",
+    21.5
+   ],
+   [
+    "go",
+    26.0
+   ],
+   [
+    "that",
+    27.4
+   ]
+  ],
+  "born": 1960,
+  "st": "MN",
+  "note_base": "Minnesota English."
+ },
+ {
+  "id": "mDdx55Zz7KE",
+  "region": "nyc",
+  "tier": 1,
+  "start": 822,
+  "end": 843,
+  "name": "Curtis Sliwa",
+  "role": "Guardian Angels founder; radio host",
+  "place": "Canarsie, Brooklyn, New York",
+  "lat": 40.64,
+  "lng": -73.9,
+  "note": "Brooklyn English. Listen to “talking” (0:02) and “all” (0:10): the “aw” rises and glides, so it can sound like “taw-uhking” and “aw-uhl.”",
+  "verified": true,
+  "words": [
+   [
+    "talking",
+    2.5
+   ],
+   [
+    "all",
+    10.2
+   ]
+  ],
+  "born": 1954,
+  "st": "NY",
+  "note_base": "Brooklyn English."
+ },
+ {
+  "id": "zkOIAD2eI0A",
+  "region": "tennessee",
+  "tier": 1,
+  "start": 38,
+  "end": 59,
+  "name": "Steve Spurrier",
+  "role": "Football coach",
+  "place": "Johnson City, Tennessee",
+  "lat": 36.313,
+  "lng": -82.353,
+  "note": "Middle Tennessee English. Listen to “I” (0:00) and “why” (0:00): the long i loses its glide, so it can sound like “Ah” and “whah.” Listen to “them” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    0.6
+   ],
+   [
+    "why",
+    1.0
+   ],
+   [
+    "them",
+    5.2
+   ]
+  ],
+  "born": 1945,
+  "st": "TN",
+  "note_base": "Middle Tennessee English."
+ },
+ {
+  "id": "H44g84dwJxE",
+  "region": "philly",
+  "tier": 1,
+  "start": 8,
+  "end": 40,
+  "name": "Frank Rizzo",
+  "role": "Mayor of Philadelphia; police commissioner",
+  "place": "South Philadelphia, Pennsylvania",
+  "lat": 39.925,
+  "lng": -75.168,
+  "note": "South Philadelphia English. Listen to “show” (0:11) and “know” (0:14): the long o starts forward, close to “eh-oo,” so it can sound like “sheh-oo” and “neh-oo.” Listen to “all” (0:03) and “talk” (0:11): the “aw” rises and glides, so it can sound like “aw-uhl” and “taw-uhk.”",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    3.0
+   ],
+   [
+    "talk",
+    11.2
+   ],
+   [
+    "show",
+    11.6
+   ],
+   [
+    "know",
+    14.2
+   ]
+  ],
+  "born": 1920,
+  "st": "PA",
+  "note_base": "South Philadelphia English."
+ },
+ {
+  "id": "yMngzt-Sg8M",
+  "region": "boston",
+  "tier": 1,
+  "start": 151,
+  "end": 179,
+  "name": "Thomas Menino",
+  "role": "Mayor of Boston",
+  "place": "Hyde Park, Boston, Massachusetts",
+  "lat": 42.256,
+  "lng": -71.124,
+  "note": "Hyde Park Boston English, famously mumbled. Listen to “for” (0:10) and “together” (0:20): the r after a vowel drops, so it can sound like “fuh” and “togethah.”",
+  "verified": true,
+  "words": [
+   [
+    "for",
+    10.0
+   ],
+   [
+    "together",
+    20.2
+   ]
+  ],
+  "born": 1942,
+  "st": "MA",
+  "note_base": "Hyde Park Boston English, famously mumbled."
+ },
+ {
+  "id": "6DZbP1-KsFw",
+  "region": "deep_south",
+  "tier": 1,
+  "start": 828,
+  "end": 850,
+  "name": "Dabo Swinney",
+  "role": "Clemson football coach",
+  "place": "Pelham, Alabama",
+  "lat": 33.286,
+  "lng": -86.81,
+  "note": "Mississippi Delta English, slow and r-less in the old Southern way. Listen to “try” (0:13) and “I” (0:18): the long i loses its glide, so it can sound like “trah” and “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "try",
+    13.7
+   ],
+   [
+    "I",
+    18.6
+   ]
+  ],
+  "born": 1969,
+  "st": "AL",
+  "note_base": "Mississippi Delta English, slow and r-less in the old Southern way."
+ },
+ {
+  "id": "VMObdNZLxtw",
+  "region": "arkansas",
+  "tier": 1,
+  "start": 35,
+  "end": 55,
+  "name": "Barry Switzer",
+  "role": "Football coach",
+  "place": "Crossett, Arkansas",
+  "lat": 33.128,
+  "lng": -91.961,
+  "note": "Arkansas English. Listen to “I” (0:01): the long i loses its glide, so it can sound like “Ah.” Listen to “when” (0:00): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
+  "verified": true,
+  "words": [
+   [
+    "when",
+    0.1
+   ],
+   [
+    "I",
+    1.1
+   ]
+  ],
+  "born": 1937,
+  "st": "AR",
+  "note_base": "Arkansas English."
+ },
+ {
+  "id": "s6UYwEUVGkE",
+  "region": "east_texas",
+  "tier": 1,
+  "start": 45,
+  "end": 65,
+  "name": "Ross Perot",
+  "role": "Businessman; presidential candidate",
+  "place": "Texarkana, Texas",
+  "lat": 33.425,
+  "lng": -94.048,
+  "note": "East Texas English, closer to the Deep South than to West Texas. Listen to “spend” (0:05) and “then” (0:06): e before n or m becomes “i” (the pin–pen merger), so it can sound like “spind” and “thin.”",
+  "verified": true,
+  "words": [
+   [
+    "spend",
+    5.8
+   ],
+   [
+    "then",
+    6.6
+   ]
+  ],
+  "born": 1930,
+  "st": "TX",
+  "note_base": "East Texas English, closer to the Deep South than to West Texas."
+ },
+ {
+  "id": "YAWXXiMqG3c",
+  "region": "baltimore",
+  "tier": 1,
+  "start": 831,
+  "end": 852,
+  "name": "Barbara Mikulski",
+  "role": "U.S. Senator; grew up above her family's Highlandtown grocery",
+  "place": "Highlandtown, Baltimore, Maryland",
+  "lat": 39.2871,
+  "lng": -76.5683,
+  "note": "Baltimore English.",
+  "verified": true,
+  "words": [
+   [
+    "about",
+    6.9
+   ],
+   [
+    "out",
+    11.6
+   ],
+   [
+    "down",
+    16.8
+   ],
+   [
+    "town",
+    17.0
+   ]
+  ],
+  "born": 1936,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "J2MiN5Evo9k",
+  "region": "deep_south",
+  "tier": 1,
+  "start": 526,
+  "end": 548,
+  "name": "Bobby Bowden",
+  "role": "Florida State football coach",
+  "place": "Birmingham, Alabama",
+  "lat": 33.521,
+  "lng": -86.802,
+  "note": "Mississippi Delta English, slow and r-less in the old Southern way. Listen to “while” (0:02) and “I'm” (0:03): the long i loses its glide, so it can sound like “whahl” and “Ahm.” Listen to “when” (0:11) and “went” (0:11): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “wint.”",
+  "verified": true,
+  "words": [
+   [
+    "while",
+    2.4
+   ],
+   [
+    "I'm",
+    3.1
+   ],
+   [
+    "when",
+    11.4
+   ],
+   [
+    "went",
+    11.7
+   ]
+  ],
+  "born": 1929,
+  "st": "AL",
+  "note_base": "Mississippi Delta English, slow and r-less in the old Southern way."
+ },
+ {
+  "id": "uierwr0cbFk",
+  "region": "nyc",
+  "tier": 1,
+  "start": 437,
+  "end": 477,
+  "name": "Curtis Sliwa",
+  "role": "Guardian Angels founder; radio host",
+  "place": "Canarsie, Brooklyn, New York",
+  "lat": 40.64,
+  "lng": -73.9,
+  "note": "Brooklyn English. Listen to “all” (0:03) and “talk” (0:20): the “aw” rises and glides, so it can sound like “aw-uhl” and “taw-uhk.” Listen to “after” (0:08) and “or” (0:10): the r after a vowel drops, so it can sound like “aftah” and “aw.”",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    3.4
+   ],
+   [
+    "after",
+    8.6
+   ],
+   [
+    "or",
+    10.1
+   ],
+   [
+    "talk",
+    20.2
+   ]
+  ],
+  "born": 1954,
+  "st": "NY",
+  "note_base": "Brooklyn English."
+ },
+ {
+  "id": "w0qbn01WEhg",
+  "region": "pittsburgh",
+  "tier": 1,
+  "start": 106,
+  "end": 126,
+  "name": "Bill Cowher",
+  "role": "Pittsburgh Steelers head coach",
+  "place": "Crafton, Pennsylvania",
+  "lat": 40.435,
+  "lng": -80.067,
+  "note": "Pittsburgh English.",
+  "verified": true,
+  "words": [
+   [
+    "on",
+    6.9
+   ]
+  ],
+  "born": 1957,
+  "st": "PA",
+  "note_base": "Pittsburgh English."
+ },
+ {
+  "id": "Gr5R5fQIUzs",
+  "region": "baltimore",
+  "tier": 3,
+  "start": 690,
+  "end": 710,
+  "name": "John Waters",
+  "role": "Filmmaker",
+  "place": "Lutherville, Baltimore County, Maryland",
+  "lat": 39.421,
+  "lng": -76.6261,
+  "note": "Baltimore English. Listen to “know” (0:05) and “so” (0:07): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “seh-oo.”",
+  "verified": true,
+  "words": [
+   [
+    "know",
+    5.4
+   ],
+   [
+    "so",
+    7.7
+   ]
+  ],
+  "born": 1946,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "bMmLLiFB8zQ",
+  "region": "baltimore",
+  "tier": 3,
+  "start": 738,
+  "end": 758,
+  "name": "Cal Ripken Jr.",
+  "role": "Baseball player",
+  "place": "Aberdeen, Maryland",
+  "lat": 39.5096,
+  "lng": -76.1641,
+  "note": "Baltimore English. Listen to “so” (0:09) and “don't” (0:17): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “deh-oon't.” Listen to “thought” (0:07): the “aw” rises and glides, so it can sound like “thaw-uht.”",
+  "verified": true,
+  "words": [
+   [
+    "thought",
+    7.2
+   ],
+   [
+    "so",
+    10.0
+   ],
+   [
+    "don't",
+    17.0
+   ]
+  ],
+  "born": 1960,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "yBR4E0jSRRc",
+  "region": "boston",
+  "tier": 1,
+  "start": 469,
+  "end": 492,
+  "name": "Thomas Menino",
+  "role": "Mayor of Boston",
+  "place": "Hyde Park, Boston, Massachusetts",
+  "lat": 42.256,
+  "lng": -71.124,
+  "note": "Hyde Park Boston English, famously mumbled. Listen to “for” (0:04) and “mother” (0:10): the r after a vowel drops, so it can sound like “fuh” and “mothah.”",
+  "verified": true,
+  "words": [
+   [
+    "for",
+    4.8
+   ],
+   [
+    "mother",
+    10.5
+   ]
+  ],
+  "born": 1942,
+  "st": "MA",
+  "note_base": "Hyde Park Boston English, famously mumbled."
+ },
+ {
+  "id": "tKnibelAJX0",
+  "region": "boston",
+  "tier": 1,
+  "start": 31,
+  "end": 59,
+  "name": "Marty Walsh",
+  "role": "Mayor of Boston; U.S. Labor Secretary",
+  "place": "Dorchester, Boston, Massachusetts",
+  "lat": 42.3,
+  "lng": -71.061,
+  "note": "Dorchester Boston English: the r after a vowel drops away. Listen to “number” (0:10) and “there” (0:18): the r after a vowel drops, so it can sound like “numbah” and “theah.”",
+  "verified": true,
+  "words": [
+   [
+    "number",
+    10.0
+   ],
+   [
+    "there",
+    18.1
+   ]
+  ],
+  "born": 1967,
+  "st": "MA",
+  "note_base": "Dorchester Boston English: the r after a vowel drops away."
  }
 ];
