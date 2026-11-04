@@ -7,7 +7,7 @@
 <title>Accentuate</title>
 <meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
 <meta property="og:title" content="Accentuate: guess the American accent">
-<meta property="og:description" content="Hear a voice, then click the map where you think it's from. Five rounds, 25,000 points. Think you can beat my score?">
+<meta property="og:description" content="Hear a voice, then click the map where you think it's from. Five rounds, 100 points. Think you can beat my score?">
 <meta property="og:image" content="https://toddlburns.com/accentuate/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://toddlburns.com/accentuate/">
@@ -223,7 +223,7 @@ a{color:inherit}
     <p>Listen to someone talk, then drop a pin where you think they grew up. The closer you are, the more you score.</p>
     <p>There’s no right way to sound American. This is a game about how many ways there are.</p>
     <ul class="rules">
-      <li>5 voices, up to 5,000 points each</li>
+      <li>5 voices, up to 20 points each. A perfect game is 100</li>
       <li>Easy first, harder as you go</li>
       <li>Replay as often as you like</li>
     </ul>
@@ -258,7 +258,7 @@ a{color:inherit}
 
   <section class="card final" id="final" hidden>
     <div class="verdictband" id="fBand"></div>
-    <h2 id="fScore">0 <small>/ 25,000</small></h2>
+    <h2 id="fScore">0 <small>/ 100</small></h2>
     <p class="verdict" id="fVerdict"></p>
     <div class="actions"><button id="copyBtn">Share my score</button><button class="ghost" id="againBtn">Play again</button></div>
     <ol id="fList"></ol>
@@ -475,7 +475,7 @@ document.querySelectorAll('#ages button').forEach(b => b.onclick = () => {
 });
 const miles = (a, b) => { const R = 3958.8, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
   const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(s)); };
-const points = mi => Math.round(5000 * Math.exp(-mi / 300));
+const points = mi => Math.round(20 * Math.exp(-mi / 300));   // up to 20 a round, 100 a game
 
 function newGame() {
   stopFx();
@@ -615,18 +615,18 @@ function next() {
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
-  const max = 25000;
+  const max = 100;
   state.max = max; state.submitted = false; myEntry = null;
   $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
   try { $('lbName').value = localStorage.getItem('accentuate-name') || ''; } catch (_) {}
   loadBoard();
-  const s = state.score, share = s / 25000;
+  const s = state.score, share = s / 100;
   $('fScore').innerHTML = `<span id="fNum">0</span> <small>/ ${max.toLocaleString()}</small>`; countUp($('fNum'), s, '');
   const [flv, fhead] = share >= .8 ? [5, 'Incredible ear!'] : share >= .6 ? [4, 'Superb listening!'] : share >= .4 ? [3, 'Nicely done'] : share >= .2 ? [2, 'Not bad'] : [0, 'Tough round'];
   const bulls = state.results.filter(r => r.mi < 25).length;
   $('fBand').className = 'verdictband lv' + flv; $('fBand').innerHTML = fhead + (bulls ? `<small>${bulls} bullseye${bulls > 1 ? 's' : ''}</small>` : '');
   if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
-  $('fVerdict').textContent = s >= 20000 ? 'You have a remarkable ear.' : s >= 14000 ? 'Well traveled.' : s >= 8000 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
+  $('fVerdict').textContent = s >= 80 ? 'You have a remarkable ear.' : s >= 56 ? 'Well traveled.' : s >= 32 ? 'Getting there. The middle of the map is the hardest.' : 'Every accent here took generations to make. Go again.';
   $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span><span class="p">${(r.p + (r.ab || 0) + (r.fb || 0)).toLocaleString()}${r.ab || r.fb ? `<br><small class="m">incl. ${[r.ab && `+${r.ab} age`, r.fb && `+${r.fb} quick`].filter(Boolean).join(', ')}</small>` : ''}</span></li>`).join('');
 }
 /* ---------- All-time leaderboard (Cloudflare Worker + D1) ---------- */
@@ -654,9 +654,9 @@ $('lbForm').onsubmit = async e => {
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 };
 function copyResult() {
-  const sq = p => p >= 4000 ? '🟩' : p >= 2000 ? '🟨' : p >= 500 ? '🟧' : '⬜';
+  const sq = p => p >= 16 ? '🟩' : p >= 8 ? '🟨' : p >= 2 ? '🟧' : '⬜';
   const url = 'https://toddlburns.com/accentuate/';
-  const text = `I scored ${state.score.toLocaleString()} out of 25,000 on Accentuate, where you hear a voice and guess where in America it's from.\n${state.results.map(r => sq(r.p)).join('')}\nThink you can beat me?`;
+  const text = `I scored ${state.score.toLocaleString()} out of 100 on Accentuate, where you hear a voice and guess where in America it's from.\n${state.results.map(r => sq(r.p)).join('')}\nThink you can beat me?`;
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
   if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text, url }).catch(() => {});
