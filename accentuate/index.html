@@ -44,7 +44,7 @@ a{color:inherit}
 #game{position:fixed;inset:0}
 #map{position:absolute;inset:0;z-index:1;background:#7ea6c9}
 .leaflet-container{font-family:var(--font)}
-.leaflet-tile-container img{width:257px!important;height:257px!important}  /* hide hairline seams at fractional zoom */
+.leaflet-tile-container img{width:257px!important;height:257px!important;mix-blend-mode:normal!important}  /* hide hairline seams at fractional zoom; Leaflet's own plus-lighter blend turns the 1px overlap into white grid lines */
 .relief{mix-blend-mode:multiply}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}}
 :root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
