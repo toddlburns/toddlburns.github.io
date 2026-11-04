@@ -79,6 +79,7 @@ a{color:inherit}
 .hint{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom));margin:0;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--paper-a);box-shadow:0 2px 10px var(--shade);white-space:nowrap}
 .ages{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:4px;padding:5px 6px 5px 12px;border-radius:999px;white-space:nowrap}
 .ages span{font-size:13px;font-weight:650;margin-right:4px}
+.ages .bonus{color:var(--accent);font-weight:800}
 .ages button{font:600 13px var(--font);padding:5px 9px;border-radius:999px;background:transparent;color:var(--ink);border-color:transparent}
 .ages button.sel{background:var(--ink);color:var(--paper)}
 .hud .era{font-size:12px;color:var(--muted)}
@@ -146,7 +147,7 @@ a{color:inherit}
 
 @media (max-width:620px){
   .logo{font-size:16px;padding:9px 12px}
-  .ages button{padding:5px 6px}.ages span{display:none}.hud .tier{display:none}.hud{gap:8px;font-size:12px;padding:8px 10px}
+  .ages{flex-wrap:wrap;justify-content:center;border-radius:14px;width:calc(100vw - 24px)}.ages span{width:100%;text-align:center;font-size:12px;margin:0}.ages button{padding:4px 8px}.hint{bottom:calc(160px + env(safe-area-inset-bottom))!important}.hud .tier{display:none}.hud{gap:8px;font-size:12px;padding:8px 10px}
   .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
   .vidslot{width:56%;margin:0 0 10px}
   .reveal .pts{font-size:36px}
@@ -207,7 +208,7 @@ a{color:inherit}
 
   <section class="stage" id="stage" hidden>
     <p class="hint" id="hint">Press play, then tap the map</p>
-    <div class="ages card" id="ages"><span>How old?</span><button data-b="0">&lt;20</button><button data-b="1">20s</button><button data-b="2">30s</button><button data-b="3">40s</button><button data-b="4">50s</button><button data-b="5">60s</button><button data-b="6">70+</button></div>
+    <div class="ages card" id="ages"><span><b class="bonus">BONUS:</b> Age of speaker?</span><button data-b="1">20s</button><button data-b="2">30s</button><button data-b="3">40s</button><button data-b="4">50s</button><button data-b="5">60s</button><button data-b="6">70+</button></div>
     <div class="dock card" id="dock">
       <button class="play" id="playBtn" aria-label="Play clip"><svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M7 4.5v15l13-7.5z"/></svg></button>
       <canvas id="viz" aria-hidden="true"></canvas>
@@ -439,7 +440,7 @@ const points = mi => Math.round(5000 * Math.exp(-mi / 300));
 
 function newGame() {
   stopFx();
-  const pool = CLIPS.map(clip).filter(c => !c.drop && ageOf(c) != null);   // every round has an age to guess
+  const pool = CLIPS.map(clip).filter(c => !c.drop && ageOf(c) >= 20);   // every round has an adult age to guess
   for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
   // Difficulty ladder; if a tier runs dry, take the nearest tier. One clip per region per game.
   const picks = [], used = new Set();
