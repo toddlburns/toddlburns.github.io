@@ -85,12 +85,12 @@ a{color:inherit}
 .hud .era{font-size:12px;color:var(--muted)}
 .agebonus{font-size:14px;margin:-8px 0 14px;font-weight:600}
 .agebonus b{color:var(--answer)}
-.hint{bottom:calc(138px + env(safe-area-inset-bottom))!important}
+.hint{bottom:calc(98px + env(safe-area-inset-bottom))!important}
 .revealed .dock,.revealed .hint,.revealed .ages{display:none}
 
 .reveal{position:absolute;z-index:20;left:16px;top:76px;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 92px);overflow:auto;padding:20px;display:none}
 .reveal.on{display:block}
-.vidslot{aspect-ratio:16/9;border-radius:10px;background:#000;margin:-6px -6px 16px}
+.vidslot{aspect-ratio:16/9;border-radius:10px;background:#000;margin:10px 0 0}
 #fx{position:fixed;inset:0;z-index:35;pointer-events:none;width:100%;height:100%}
 .verdictband{font:800 26px/1.05 var(--font);font-stretch:112%;letter-spacing:-.01em;margin:-20px -20px 14px;padding:16px 20px 12px;border-radius:16px 16px 0 0;color:var(--ink)}
 .verdictband:empty{display:none}
@@ -108,21 +108,25 @@ a{color:inherit}
 .final .verdictband{margin:-28px -28px 18px;padding:20px 28px 16px}
 @media (max-width:620px){.final .verdictband{margin:-18px -18px 14px;padding:16px 18px 12px}.reveal .verdictband{margin:-14px -14px 12px;padding:12px 14px 10px;font-size:22px}}
 @media (prefers-reduced-motion:reduce){.reveal.big,.pin.a.ring{animation:none}.agebonus{transition:none}}
-.reveal .pts{font:800 44px/1 var(--font);font-stretch:112%;color:var(--answer)}
-.reveal .dist{font-size:14px;color:var(--muted);margin:4px 0 12px}
-.meter{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;margin-bottom:16px}
-.meter i{display:block;height:100%;background:var(--answer);width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
-.who{font:750 22px/1.15 var(--font);margin:0}
-.role{color:var(--muted);margin:2px 0}
-.when{font-size:13px;color:var(--muted);margin:0 0 2px}
-.place{font-weight:650;color:var(--answer);margin:0 0 12px}
-.note{margin:0 0 14px;font-size:15px}
-.words{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.reveal .kicker{font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.reveal .pts{font:800 40px/1 var(--font);font-stretch:112%}
+.ptsrow{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.vword{font:800 17px/1.1 var(--font);text-align:right;max-width:55%}
+.reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--ink);margin:2px 0 6px;text-wrap:balance}
+.reveal .who{font-size:13px;color:var(--muted);margin:0 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reveal .note{margin:0 0 10px;font-size:15px;color:var(--ink)}
+.rhead{font:750 11px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;padding-top:12px;border-top:1px solid var(--rule)}
+.guessline{margin:0;font-weight:650}.guessline span{color:var(--muted);font-weight:400}
+.tally{display:grid;grid-template-columns:1fr auto;gap:2px 12px;font-size:14px;margin-bottom:14px}
+.tally .tot{font-weight:800;border-top:1px solid var(--rule);padding-top:4px;margin-top:2px}
+.tally .run{color:var(--muted);font-size:13px}
+.tally span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
+.nextbtn{width:100%;padding:12px}
+.reveal .src{display:block;font-size:11px;color:var(--muted);margin-top:10px;max-width:none;line-height:1.35}
+.words{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
 .words button{font:600 14px var(--font);padding:6px 11px;background:transparent;color:var(--ink);border-color:var(--rule);border-radius:999px}
 .words button::before{content:"▸ ";color:var(--answer)}
 .words button small{color:var(--muted);margin-left:6px;font-weight:400}
-.reveal .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.src{font-size:12px;color:var(--muted);max-width:60%}
 
 .final h2{font:800 clamp(40px,8vw,60px)/1 var(--font);font-stretch:112%;margin:0}
 .final h2 small{font-size:.4em;color:var(--muted);font-weight:600}
@@ -147,10 +151,10 @@ a{color:inherit}
 
 @media (max-width:620px){
   .logo{font-size:16px;padding:9px 12px}
-  .ages{flex-wrap:wrap;justify-content:center;border-radius:14px;width:calc(100vw - 24px)}.ages span{width:100%;text-align:center;font-size:12px;margin:0}.ages button{padding:4px 8px}.hint{bottom:calc(160px + env(safe-area-inset-bottom))!important}.hud .tier{display:none}.hud{gap:8px;font-size:12px;padding:8px 10px}
+  .ages{flex-wrap:wrap;justify-content:center;border-radius:14px;width:calc(100vw - 24px)}.ages span{width:100%;text-align:center;font-size:12px;margin:0}.ages button{padding:4px 8px}.hint{bottom:calc(98px + env(safe-area-inset-bottom))!important}.hud .tier{display:none}.hud{gap:8px;font-size:12px;padding:8px 10px}
   .reveal{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:48dvh;padding:14px}
-  .vidslot{width:56%;margin:0 0 10px}
-  .reveal .pts{font-size:36px}
+  .vidslot{width:56%}
+  .reveal .pts{font-size:32px}.reveal .place{font-size:22px}
   .final.side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58dvh;padding:18px}
 }
 
@@ -216,23 +220,18 @@ a{color:inherit}
       <button id="guessBtn" disabled>Guess</button>
     </div>
     <div class="card reveal" id="reveal">
-      <div class="vidslot" id="vidslot"></div>
-      <div class="verdictband" id="rVerdict"></div>
-      <div class="pts" id="rPts">0</div>
-      <div class="dist" id="rDist"></div>
-      <div class="meter"><i id="rMeter"></i></div>
-      <p class="agebonus" id="rAge"></p>
-      <p class="agebonus" id="rFast"></p>
-      <p class="who" id="rWho"></p>
-      <p class="role" id="rRole"></p>
-      <p class="when" id="rWhen"></p>
+      <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Points · Round 1</div><div class="pts" id="rPts">0</div></div><div class="vword" id="rVword"></div></div></div>
       <p class="place" id="rPlace"></p>
+      <p class="who" id="rWho"></p>
       <p class="note" id="rNote"></p>
       <div class="words" id="rWords"></div>
-      <div class="row">
-        <a class="src" id="rSrc" target="_blank" rel="noopener">Watch the full video on YouTube ↗</a>
-        <button id="nextBtn">Next round</button>
-      </div>
+      <div class="vidslot" id="vidslot"></div>
+      <h4 class="rhead">Your guess</h4>
+      <p class="guessline" id="rGuess"></p>
+      <h4 class="rhead">Your points</h4>
+      <div class="tally" id="rTally"></div>
+      <button id="nextBtn" class="nextbtn">Start next round</button>
+      <a class="src" id="rSrc" target="_blank" rel="noopener"></a>
     </div>
   </section>
 
@@ -461,7 +460,7 @@ function startRound() {
   state.revealed = false; state.heard = false; state.age = null; state.fullListen = false;
   const c = state.picks[state.round];
   document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
-  $('ages').hidden = ageOf(c) == null;
+  $('ages').hidden = true;
   $('hEra').textContent = c.year ? (c.audio || c.recorded ? 'Recorded ' : 'Video from ') + c.year : '';
   $('hRound').textContent = state.round + 1; $('hTier').textContent = TIER_NAME[c.tier] || ''; $('hScore').textContent = state.score.toLocaleString();
   document.body.classList.remove('revealed'); $('reveal').classList.remove('on'); hideVideo();
@@ -509,37 +508,47 @@ function confetti(x, y, n = 120) {
   requestAnimationFrame(tick);
 }
 const stopFx = () => { fxRun++; const cv = $('fx'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); };
+// Name the town nearest the player's pin (Esri's public reverse geocoder, the same provider as the map tiles).
+async function nearestPlace(lat, lng) {
+  try {
+    const u = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&langCode=en&featureTypes=Locality,Postal&location=${lng},${lat}`;
+    const d = await (await fetch(u)).json(), A = d.address || {};
+    const town = A.City || A.Neighborhood || A.Subregion, region = A.Region;
+    if (town && region) return A.CountryCode === 'USA' ? `${town}, ${region}` : `${town}, ${A.CntryName || region}`;
+    if (region) return region;
+  } catch (e) {}
+  return 'Somewhere off the map';
+}
 function guess() {
   if (!guessMarker || state.revealed) return;
   state.revealed = true;
   const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
-  const ab = ageBonus(c, state.age), a = ageOf(c);
-  const fb = state.heard && !state.fullListen ? FAST : 0;
+  const ab = 0, a = ageOf(c);   // age is shown, not scored (age bonus retired 2026-11-03)
+  const fb = 0;   // first-listen bonus retired 2026-11-03
   state.score += p + ab + fb; state.results.push({ c, mi, p, ab, fb, g: [g.lat, g.lng] });
-  $('rAge').innerHTML = a == null ? '' : state.age == null ? `They were ${a}.` : ab ? `<b>+${ab.toLocaleString()} age bonus.</b> They were ${a}.` : `They were ${a}; you said ${BR[state.age]}.`;
   answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
-  const [lv, head, sub] = VERDICT(mi);
-  $('rVerdict').className = 'verdictband lv' + lv; $('rVerdict').innerHTML = `${head}<small>${sub}</small>`;
+  const [lv, head] = VERDICT(mi);
+  $('rVerdict').className = 'verdictband lv' + lv; $('rKicker').textContent = `Points · Round ${state.round + 1}`; $('rVword').textContent = head;
   $('reveal').classList.remove('big'); void $('reveal').offsetWidth; $('reveal').classList.toggle('big', lv >= 4);
-  countUp($('rPts'), p + ab + fb);
-  ['rAge', 'rFast'].forEach(id => $(id).classList.remove('in'));
-  setTimeout(() => $('rAge').classList.add('in'), CALM ? 0 : 350); setTimeout(() => $('rFast').classList.add('in'), CALM ? 0 : 550);
-  $('rFast').innerHTML = fb ? `<b>+${fb} first-listen bonus.</b> You called it before the clip ended.` : '';
-  $('rDist').textContent = mi < 1 ? 'Right on top of it.' : `${Math.round(mi).toLocaleString()} miles away`;
-  $('rMeter').style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => $('rMeter').style.width = (p / 50) + '%'));
-  $('rWho').textContent = c.name; $('rRole').textContent = c.role;
-  // YouTube gives only the upload year, so say so; archives give the real recording year.
-  $('rWhen').textContent = [c.year && (c.audio || c.recorded ? 'Recorded ' : 'Video posted ') + c.year, c.born && 'born ' + c.born, c.age && 'age ' + c.age].filter(Boolean).join(' · '); $('rPlace').textContent = c.place; $('rNote').textContent = c.note;
+  countUp($('rPts'), p + ab + fb, '');
+  $('rPlace').textContent = c.place;
+  // one compact line: who, what, when, how old (YouTube gives only the upload year, so say "video")
+  $('rWho').textContent = [c.name, c.role, c.year && (c.audio || c.recorded ? 'recorded ' : 'video ') + c.year, a != null && 'age ' + a].filter(Boolean).join(' · ');
+  $('rNote').textContent = c.note;
   $('rWords').innerHTML = (c.words || []).map(([w, t]) => `<button data-t="${t}">“${w}”<small>${fmt(t)}</small></button>`).join('');
-  $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => {
-    const at = c.start + +b.dataset.t;
-    snd.play(c, Math.max(0, at - 0.6), at + 1.6);
-  });
+  $('rWords').querySelectorAll('button').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
+  const dist = mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`;
+  $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
+  nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
+  const row = (k, v) => `<span>${k}</span><span>${v}</span>`;
+  $('rTally').innerHTML = row(`Distance`, p.toLocaleString())
+    + `<span class="tot">Round ${state.round + 1}</span><span class="tot">${(p + ab + fb).toLocaleString()}</span>`
+    + `<span class="run">Game so far</span><span class="run">${state.score.toLocaleString()}</span>`;
   $('rSrc').href = c.link || `https://www.youtube.com/watch?v=${c.id}&t=${c.start}s`;
-  $('rSrc').textContent = c.credit ? c.credit + ' ↗' : 'Watch the full video on YouTube ↗';
-  $('nextBtn').textContent = state.round === 4 ? 'See your score' : 'Next round';
+  $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube (watch the full video)') + ' ↗';
+  $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
   document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
   $('vidslot').hidden = !!c.audio;
   if (!c.audio) { $('ytwrap').classList.add('show'); requestAnimationFrame(placeVideo); }
@@ -563,7 +572,7 @@ function next() {
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
   requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
-  const max = 25000 + FAST * 5 + 1000 * state.results.filter(r => ageOf(r.c) != null).length;
+  const max = 25000;
   state.max = max; state.submitted = false; myEntry = null;
   $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
   try { $('lbName').value = localStorage.getItem('accentuate-name') || ''; } catch (_) {}

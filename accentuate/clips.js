@@ -128,7 +128,7 @@ window.CLIPS = [
   "place": "Springfield, Delaware County, Pennsylvania",
   "lat": 39.9307,
   "lng": -75.3202,
-  "note": "A Philly accent \"sharp enough to cut glass.\" Every \"know,\" \"go\" and \"over\" starts forward in the mouth, almost \"keh-now.\" Listen to “know” (0:05) and “going” (0:14): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “geh-oo-ing.” Listen to “that” (0:11): the short a tenses and rises toward “eh-a.”",
+  "note": "A Philly accent \"sharp enough to cut glass.\" Every \"know,\" \"go\" and \"over\" starts forward in the mouth, almost \"keh-now.\" Listen to “know” (0:05) and “going” (0:14): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “geh-oo-ing.” Listen to “that” (0:11): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
@@ -188,7 +188,7 @@ window.CLIPS = [
   "place": "West Ridge, Chicago, Illinois",
   "lat": 41.9997,
   "lng": -87.692,
-  "note": "Chicago English. Listen to “have” (0:06) and “that” (0:19): the short a tenses and rises toward “eh-a.” Listen to “got” (0:03): the short o slides forward toward “a”, so it can sound like “gat.”",
+  "note": "Chicago English. Listen to “have” (0:06) and “that” (0:19): the short a tenses and rises toward “eh-a.” Listen to “got” (0:03): the short o slides forward toward “a,” so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
@@ -220,7 +220,7 @@ window.CLIPS = [
   "place": "West Ridge, Chicago, Illinois",
   "lat": 41.9997,
   "lng": -87.692,
-  "note": "Chicago English. Listen to “actually” (0:07) and “thanks” (0:16): the short a tenses and rises toward “eh-a.” Listen to “got” (0:02): the short o slides forward toward “a”, so it can sound like “gat.”",
+  "note": "Chicago English. Listen to “actually” (0:07) and “thanks” (0:16): the short a tenses and rises toward “eh-a.” Listen to “got” (0:02): the short o slides forward toward “a,” so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
@@ -303,7 +303,7 @@ window.CLIPS = [
   "place": "Garfield Ridge, Chicago, Illinois",
   "lat": 41.792,
   "lng": -87.766,
-  "note": "A Southwest Side Chicago accent. Listen to “that” (0:13) and “can” (0:17): the short a tenses and rises toward “eh-a.” Listen to “got” (0:00) and “problem” (0:00): the short o slides forward toward “a”, so it can sound like “gat” and “prablem.”",
+  "note": "A Southwest Side Chicago accent. Listen to “that” (0:13) and “can” (0:17): the short a tenses and rises toward “eh-a.” Listen to “got” (0:00) and “problem” (0:00): the short o slides forward toward “a,” so it can sound like “gat” and “prablem.”",
   "verified": true,
   "words": [
    [
@@ -338,7 +338,7 @@ window.CLIPS = [
   "place": "Northwest Side, Chicago, Illinois",
   "lat": 41.953,
   "lng": -87.806,
-  "note": "Fluent \"Chicagoese.\" Listen to \"that\" (\"thyat\") and \"not\" (\"naht\"). Listen to “that” (0:11) and “stand” (0:19): the short a tenses and rises toward “eh-a.” Listen to “not” (0:14): the short o slides forward toward “a”, so it can sound like “nat.”",
+  "note": "Fluent \"Chicagoese.\" Listen to \"that\" (\"thyat\") and \"not\" (\"naht\"). Listen to “that” (0:11) and “stand” (0:19): the short a tenses and rises toward “eh-a.” Listen to “not” (0:14): the short o slides forward toward “a,” so it can sound like “nat.”",
   "verified": true,
   "words": [
    [
@@ -370,7 +370,7 @@ window.CLIPS = [
   "place": "Northwest Side, Chicago, Illinois",
   "lat": 41.953,
   "lng": -87.806,
-  "note": "Fluent \"Chicagoese.\" Listen to \"man\" and \"bad\". Listen to “man” (0:04) and “that” (0:07): the short a tenses and rises toward “eh-a.” Listen to “got” (0:22): the short o slides forward toward “a”, so it can sound like “gat.”",
+  "note": "Fluent \"Chicagoese.\" Listen to \"man\" and \"bad\". Listen to “man” (0:04) and “that” (0:07): the short a tenses and rises toward “eh-a.” Listen to “got” (0:22): the short o slides forward toward “a,” so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
@@ -694,7 +694,7 @@ window.CLIPS = [
   "place": "Southwest Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.2271,
-  "note": "Philadelphia English. Listen to “no” (0:02) and “over” (0:23): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “eh-oover.” Listen to “have” (0:03) and “back” (0:21): the short a tenses and rises toward “eh-a.”",
+  "note": "Philadelphia English. Listen to “no” (0:02) and “over” (0:23): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “eh-oover.” Listen to “have” (0:03) and “back” (0:21): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
@@ -730,7 +730,7 @@ window.CLIPS = [
   "place": "South Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.1695,
-  "note": "South Philly English. Listen to “so” (0:12) and “know” (0:17): the long o starts forward, close to “eh-oo”, so it can sound like “seh-oo” and “neh-oo.” Listen to “also” (0:07): the “aw” rises and glides, so it can sound like “aw-uhlso.”",
+  "note": "South Philly English. Listen to “so” (0:12) and “know” (0:17): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “neh-oo.” Listen to “also” (0:07): the “aw” rises and glides, so it can sound like “aw-uhlso.”",
   "verified": true,
   "words": [
    [
@@ -761,7 +761,7 @@ window.CLIPS = [
   "place": "South Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.1695,
-  "note": "South Philly English. Listen to “know” (0:00) and “going” (0:03): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “geh-oo-ing.”",
+  "note": "South Philly English. Listen to “know” (0:00) and “going” (0:03): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “geh-oo-ing.”",
   "verified": true,
   "words": [
    [
@@ -812,7 +812,7 @@ window.CLIPS = [
   "place": "Hill District, Pittsburgh, Pennsylvania",
   "lat": 40.4434,
   "lng": -79.9817,
-  "note": "Old Pittsburgh speech. Listen to “found” (0:05): the “ow” flattens toward “ah”, so it can sound like “fahnd.”",
+  "note": "Old Pittsburgh speech. Listen to “found” (0:05): the “ow” flattens toward “ah,” so it can sound like “fahnd.”",
   "verified": true,
   "words": [
    [
@@ -10357,7 +10357,7 @@ window.CLIPS = [
   "place": "Upper Peninsula, Michigan",
   "lat": 46.54,
   "lng": -87.4,
-  "note": "Yooper English, shaped by Finnish settlers. Listen to “not” (0:12) and “lot” (0:19): the short o slides forward toward “a”, so it can sound like “nat” and “lat.”",
+  "note": "Yooper English, shaped by Finnish settlers. Listen to “not” (0:12) and “lot” (0:19): the short o slides forward toward “a,” so it can sound like “nat” and “lat.”",
   "verified": true,
   "words": [
    [
@@ -12248,7 +12248,7 @@ window.CLIPS = [
   "place": "Overbrook, West Philadelphia",
   "lat": 39.98,
   "lng": -75.24,
-  "note": "Philadelphia English. Listen to “so” (0:10) and “going” (0:10): the long o starts forward, close to “eh-oo”, so it can sound like “seh-oo” and “geh-oo-ing.” Listen to “always” (0:23): the “aw” rises and glides, so it can sound like “aw-uhlways.”",
+  "note": "Philadelphia English. Listen to “so” (0:10) and “going” (0:10): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “geh-oo-ing.” Listen to “always” (0:23): the “aw” rises and glides, so it can sound like “aw-uhlways.”",
   "verified": true,
   "words": [
    [
@@ -13443,7 +13443,7 @@ window.CLIPS = [
   "place": "Overbrook, West Philadelphia",
   "lat": 39.98,
   "lng": -75.24,
-  "note": "Philadelphia English. Listen to “going” (0:00) and “go” (0:16): the long o starts forward, close to “eh-oo”, so it can sound like “geh-oo-ing” and “geh-oo.” Listen to “all” (0:12): the “aw” rises and glides, so it can sound like “aw-uhl.”",
+  "note": "Philadelphia English. Listen to “going” (0:00) and “go” (0:16): the long o starts forward, close to “eh-oo,” so it can sound like “geh-oo-ing” and “geh-oo.” Listen to “all” (0:12): the “aw” rises and glides, so it can sound like “aw-uhl.”",
   "verified": true,
   "words": [
    [
@@ -18277,7 +18277,7 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. Listen to “that” (0:02) and “last” (0:03): the short a tenses and rises toward “eh-a.” Listen to “college” (0:12): the short o slides forward toward “a”, so it can sound like “callege.”",
+  "note": "Michigan English. Listen to “that” (0:02) and “last” (0:03): the short a tenses and rises toward “eh-a.” Listen to “college” (0:12): the short o slides forward toward “a,” so it can sound like “callege.”",
   "verified": true,
   "words": [
    [
@@ -18401,7 +18401,7 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. Listen to “that” (0:00) and “can” (0:16): the short a tenses and rises toward “eh-a.” Listen to “lot” (0:18): the short o slides forward toward “a”, so it can sound like “lat.”",
+  "note": "Michigan English. Listen to “that” (0:00) and “can” (0:16): the short a tenses and rises toward “eh-a.” Listen to “lot” (0:18): the short o slides forward toward “a,” so it can sound like “lat.”",
   "verified": true,
   "words": [
    [
@@ -18589,7 +18589,7 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. Listen to “actually” (0:15): the short a tenses and rises toward “eh-a.” Listen to “top” (0:01): the short o slides forward toward “a”, so it can sound like “tap.”",
+  "note": "Michigan English. Listen to “actually” (0:15): the short a tenses and rises toward “eh-a.” Listen to “top” (0:01): the short o slides forward toward “a,” so it can sound like “tap.”",
   "verified": true,
   "words": [
    [
