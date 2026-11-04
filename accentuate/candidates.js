@@ -131,6 +131,78 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "roPUhGNqxA4",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 594,
+"end": 614,
+"words": [
+[
+"that",
+0.6
+],
+[
+"this",
+1.4
+],
+[
+"the",
+2.5
+],
+[
+"other",
+2.7
+],
+[
+"with",
+7.6
+],
+[
+"have",
+19.0
+]
+],
+"title": "James Carville: The Cavalry Is Coming | Politics War Room (Full Episode)",
+"channel": "Politicon",
+"other": 0.46,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "yCe28D6mpDE",
+"region": "boston",
+"label": "Boston / Eastern Massachusetts",
+"tier": 3,
+"start": 46,
+"end": 66,
+"words": [
+[
+"year",
+1.0
+]
+],
+"title": "Sonya Isaacs Emotional Interview //  Behind The Mask with Ray Flynn",
+"channel": "SingingNews",
+"other": 0.6,
+"person": "Ray Flynn",
+"role": "Mayor of Boston; ambassador to the Vatican",
+"hometown": "South Boston, Massachusetts",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 42.338,
+"lng": -71.048,
+"born": null,
+"age": null
+},
+{
 "id": "XSp6LXXO1W8",
 "region": "cajun",
 "label": "Cajun Louisiana (Acadiana)",
@@ -169,32 +241,6 @@ window.CANDIDATES = [
 "age": null
 },
 {
-"id": "yCe28D6mpDE",
-"region": "boston",
-"label": "Boston / Eastern Massachusetts",
-"tier": 3,
-"start": 46,
-"end": 66,
-"words": [
-[
-"year",
-1.0
-]
-],
-"title": "Sonya Isaacs Emotional Interview //  Behind The Mask with Ray Flynn",
-"channel": "SingingNews",
-"other": 0.6,
-"person": "Ray Flynn",
-"role": "Mayor of Boston; ambassador to the Vatican",
-"hometown": "South Boston, Massachusetts",
-"evidence": "Heavy, widely noted local accent; lifelong local",
-"source": "",
-"lat": 42.338,
-"lng": -71.048,
-"born": null,
-"age": null
-},
-{
 "id": "CS_O0elCU2U",
 "region": "cajun",
 "label": "Cajun Louisiana (Acadiana)",
@@ -218,6 +264,44 @@ window.CANDIDATES = [
 "title": "394: Big Tent Is Back With Mark McKinnon & David Axelrod | Politics War Room with James Carville...",
 "channel": "Politicon",
 "other": 0.36,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "nDjFvVc1W9o",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 525,
+"end": 545,
+"words": [
+[
+"think",
+1.4
+],
+[
+"with",
+3.3
+],
+[
+"the",
+5.7
+],
+[
+"that",
+7.4
+]
+],
+"title": "389: We Didn’t Start The Fire with Sam Forstag | Politics War Room with James Carville & Al Hunt",
+"channel": "Politicon",
+"other": 0.42,
 "person": "James Carville",
 "role": "Political strategist",
 "hometown": "Carville, Louisiana",
