@@ -87,7 +87,8 @@ window.CLIPS = [
   "born": 1928,
   "recorded": true,
   "st": "MA",
-  "note_base": "A Boston accent from the South End, recorded during the 1983 mayoral race. Listen to the soft, dropped r in \"more,\" \"four\" and \"year.\""
+  "note_base": "A Boston accent from the South End, recorded during the 1983 mayoral race. Listen to the soft, dropped r in \"more,\" \"four\" and \"year.\"",
+  "drop": true
  },
  {
   "id": "KfQNyrUDtaY",
@@ -1086,7 +1087,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1993,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag1_m_03_1_1341",
@@ -1195,7 +1197,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1988,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag1_m_05_1_147",
@@ -1269,7 +1272,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1991,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag1_m_05_1_646",
@@ -1304,7 +1308,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1991,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1098",
@@ -1382,7 +1387,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1984,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1631",
@@ -1417,7 +1423,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1984,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_f_02_1_587",
@@ -1530,7 +1537,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1976,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_m_01_1_682",
@@ -1565,7 +1573,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1976,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2466",
@@ -1639,7 +1648,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1987,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "ATL_se0_ag2_m_02_1_1992",
@@ -1678,7 +1688,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1987,
   "st": "GA",
-  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "drop": true
  },
  {
   "id": "LES_se0_ag3_f_01_1_2450",
@@ -2876,7 +2887,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1990,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag2_f_01_1_801",
@@ -2915,7 +2927,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1990,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2844",
@@ -2993,7 +3006,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1997,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag2_m_01_1_3161",
@@ -3028,7 +3042,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1997,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2671",
@@ -3102,7 +3117,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1969,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_f_01_1_1957",
@@ -3137,7 +3153,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1969,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_f_01_2_52",
@@ -3172,7 +3189,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1969,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_f_02_1_2302",
@@ -3250,7 +3268,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1983,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1671",
@@ -3289,7 +3308,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1983,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_m_02_1_2553",
@@ -3359,7 +3379,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1982,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_m_02_1_747",
@@ -3394,7 +3415,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1982,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_m_03_1_503",
@@ -3468,7 +3490,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1986,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag3_m_03_1_1832",
@@ -3507,7 +3530,8 @@ window.CLIPS = [
   "year": 2018,
   "born": 1986,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_f_01_1_1034",
@@ -3581,7 +3605,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1959,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2398",
@@ -3616,7 +3641,8 @@ window.CLIPS = [
   "year": 2017,
   "born": 1959,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1284",
@@ -3690,7 +3716,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1936,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1909",
@@ -3725,7 +3752,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1936,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_m_01_1_982",
@@ -3799,7 +3827,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1957,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_m_01_1_1869",
@@ -3830,7 +3859,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1957,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_m_02_1_2042",
@@ -3904,7 +3934,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1961,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1873",
@@ -3939,7 +3970,8 @@ window.CLIPS = [
   "year": 2019,
   "born": 1961,
   "st": "GA",
-  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "drop": true
  },
  {
   "id": "DCA_se1_ag1_m_04_1_715",
@@ -4013,7 +4045,8 @@ window.CLIPS = [
   "year": 1969,
   "born": 1956,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se1_ag1_m_05_1_706",
@@ -4048,7 +4081,8 @@ window.CLIPS = [
   "year": 1969,
   "born": 1956,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se1_ag1_m_05_1_227",
@@ -4083,7 +4117,8 @@ window.CLIPS = [
   "year": 1969,
   "born": 1956,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se1_ag1_m_06_1_61",
@@ -4122,7 +4157,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1955,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_f_01_1_456",
@@ -4157,7 +4193,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1958,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_f_01_1_154",
@@ -4231,7 +4268,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1957,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_f_02_1_277",
@@ -4309,7 +4347,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1957,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_f_04_1_403",
@@ -4348,7 +4387,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1956,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_f_04_1_1195",
@@ -4522,7 +4562,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1952,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_01_1_1741",
@@ -4557,7 +4598,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1952,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_02_1_2269",
@@ -4596,7 +4638,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1952,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1897",
@@ -4635,7 +4678,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1952,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1786",
@@ -4674,7 +4718,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1952,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_03_1_774",
@@ -4752,7 +4797,8 @@ window.CLIPS = [
   "year": 1969,
   "born": 1951,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se2_ag1_m_04_1_670",
@@ -4830,7 +4876,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1958,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se3_ag1_f_02_1_51",
@@ -4865,7 +4912,8 @@ window.CLIPS = [
   "year": 1968,
   "born": 1957,
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english170",
@@ -10158,7 +10206,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english455/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english203",
@@ -10568,7 +10617,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english532/",
-  "st": "CT"
+  "st": "CT",
+  "drop": true
  },
  {
   "id": "tfmXTzh8NSE",
@@ -10817,7 +10867,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english616/",
-  "st": "IN"
+  "st": "IN",
+  "drop": true
  },
  {
   "id": "english197",
@@ -10976,7 +11027,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english411/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "TL-68AEVe5M",
@@ -11538,7 +11590,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english511/",
-  "st": "AL"
+  "st": "AL",
+  "drop": true
  },
  {
   "id": "english116",
@@ -11852,7 +11905,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english633/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "zLlvdMB31iA",
@@ -12479,7 +12533,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english158/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english211",
@@ -12532,7 +12587,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english211/",
-  "st": "MA"
+  "st": "MA",
+  "drop": true
  },
  {
   "id": "english93",
@@ -12655,7 +12711,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english254",
@@ -12761,7 +12818,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english387/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "JDfOaUerBlM",
@@ -12865,7 +12923,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english173/",
-  "st": "IL"
+  "st": "IL",
+  "drop": true
  },
  {
   "id": "english213",
@@ -13179,7 +13238,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3866",
@@ -13257,7 +13317,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3042",
@@ -13292,7 +13353,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english346",
@@ -14485,7 +14547,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english624/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english81",
@@ -14644,7 +14707,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english603/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english82",
@@ -14979,7 +15043,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se3_ag2_m_02_1_1142",
@@ -15018,7 +15083,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se3_ag2_f_02_1_126",
@@ -15127,7 +15193,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCA_se3_ag2_f_05_1_438",
@@ -15162,7 +15229,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1760",
@@ -15240,7 +15308,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1851",
@@ -15279,7 +15348,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_f_02_1_488",
@@ -15318,7 +15388,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_f_02_1_539",
@@ -15357,7 +15428,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_f_02_1_379",
@@ -15435,7 +15507,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_f_02_2_296",
@@ -15474,7 +15547,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_f_02_2_562",
@@ -15509,7 +15583,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english332",
@@ -15717,7 +15792,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english571/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english399",
@@ -15978,7 +16054,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english576/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english121",
@@ -16190,7 +16267,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english541/",
-  "st": "FL"
+  "st": "FL",
+  "drop": true
  },
  {
   "id": "english198",
@@ -16243,7 +16321,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english198/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_1_2985",
@@ -16282,7 +16361,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_1_1028",
@@ -16321,7 +16401,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_1_2893",
@@ -16360,7 +16441,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_2_130",
@@ -16399,7 +16481,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_2_62",
@@ -16434,7 +16517,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se2_ag3_m_03_2_230",
@@ -16547,7 +16631,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag4_m_02_1_619",
@@ -16586,7 +16671,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1361",
@@ -16625,7 +16711,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1146",
@@ -16660,7 +16747,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1405",
@@ -16699,7 +16787,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag3_m_02_2_618",
@@ -16816,7 +16905,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se1_ag2_f_01_1_1861",
@@ -16855,7 +16945,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english316",
@@ -16908,7 +16999,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english316/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english508",
@@ -17014,7 +17106,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english393/",
-  "st": "DC"
+  "st": "DC",
+  "drop": true
  },
  {
   "id": "english205",
@@ -17226,7 +17319,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english618/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "DCB_se3_ag4_f_02_1_993",
@@ -17304,7 +17398,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "DCB_se3_ag4_f_02_1_4038",
@@ -17343,7 +17438,8 @@ window.CLIPS = [
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "st": "DC",
-  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "drop": true
  },
  {
   "id": "english284",
@@ -17449,7 +17545,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english244/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english406",
@@ -17551,7 +17648,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english106/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english386",
@@ -17755,7 +17853,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english584/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english266",
@@ -17804,7 +17903,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english266/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english445",
@@ -17857,7 +17957,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english445/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english645",
@@ -17910,7 +18011,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english645/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english257",
@@ -17963,7 +18065,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english257/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english49",
@@ -18016,7 +18119,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english49/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english246",
@@ -18122,7 +18226,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english264/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english32",
@@ -18175,7 +18280,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english32/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "english577",
@@ -18228,7 +18334,8 @@ window.CLIPS = [
   ],
   "credit": "Speech Accent Archive (Weinberger), CC BY-NC-SA 4.0",
   "link": "https://accent.gmu.edu/samples/english577/",
-  "st": "CA"
+  "st": "CA",
+  "drop": true
  },
  {
   "id": "DoGhUoq8Qsw",
@@ -19121,7 +19228,8 @@ window.CLIPS = [
   "year": 2013,
   "born": 1944,
   "st": "AL",
-  "note_base": "Alabama English from the Black Belt."
+  "note_base": "Alabama English from the Black Belt.",
+  "drop": true
  },
  {
   "id": "UmNAi9O36iU",
