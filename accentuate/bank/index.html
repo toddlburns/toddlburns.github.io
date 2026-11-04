@@ -29,12 +29,13 @@ main{max-width:1100px;margin:0 auto;padding:12px 16px 80px}
 #yt.off{visibility:hidden}
 .row{background:var(--paper);border:1px solid var(--rule);border-radius:12px;margin:8px 0;padding:10px 12px}
 .row.edited{border-color:var(--ok)}.row.dropped{opacity:.5}
-.head{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;cursor:pointer}
+.head{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;cursor:pointer}
 .play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--accent);border-color:var(--accent);color:#fff;font-size:13px}
 .who b{font-weight:700}.who .m{color:var(--muted);font-size:13px}
 .tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .tag{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
 .tag.e{border-color:var(--ok);color:var(--ok)}
+.del{font-size:12px;padding:4px 10px;background:transparent;color:var(--muted);border-color:var(--rule)}.del:hover{color:#c0392b;border-color:#c0392b}.row.dropped .del{color:var(--ink);border-color:var(--ink)}
 .note{color:var(--muted);font-size:13px;margin:6px 0 0 44px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0 44px}
 .chips button{font-size:12px;padding:3px 9px;border-radius:999px;background:transparent;color:var(--ink);border-color:var(--rule)}
@@ -62,7 +63,7 @@ main{max-width:1100px;margin:0 auto;padding:12px 16px 80px}
     <select id="fst"><option value="">All states</option></select>
     <select id="fsrc"><option value="">All sources</option><option>YouTube</option><option>CORAAL</option><option>Stella</option></select>
     <select id="ftier"><option value="">All tiers</option><option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option></select>
-    <select id="fshow"><option value="">Everything</option><option value="edited">Edited</option><option value="dropped">Pulled from game</option><option value="noage">No age (sits out)</option></select>
+    <select id="fshow"><option value="">Everything</option><option value="edited">Edited</option><option value="dropped">Deleted</option><option value="noage">No age (sits out)</option></select>
   </div>
 </header>
 <main id="list"></main>
@@ -104,7 +105,8 @@ function render() {
   $('list').innerHTML = rows.map(c => `<div class="row ${edits[c.id] ? 'edited' : ''} ${c.drop ? 'dropped' : ''}" data-id="${esc(c.id)}">
     <div class="head"><button class="play" data-play aria-label="Play">▶</button>
       <div class="who"><b>${esc(c.name)}</b> <span class="m">· ${esc(c.role)} · ${esc(c.place)}</span></div>
-      <div class="tags"><span class="tag">${c.st || '?'}</span><span class="tag">${src(c)}</span><span class="tag">${TIER[c.tier] || ''}</span><span class="tag">${ageOf(c) != null ? 'age ' + ageOf(c) : 'no age'}</span>${c.year ? `<span class="tag">${c.year}</span>` : ''}${edits[c.id] ? '<span class="tag e">edited</span>' : ''}${c.drop ? '<span class="tag e">pulled</span>' : ''}</div></div>
+      <div class="tags"><span class="tag">${c.st || '?'}</span><span class="tag">${src(c)}</span><span class="tag">${TIER[c.tier] || ''}</span><span class="tag">${ageOf(c) != null ? 'age ' + ageOf(c) : 'no age'}</span>${c.year ? `<span class="tag">${c.year}</span>` : ''}${edits[c.id] ? '<span class="tag e">edited</span>' : ''}${c.drop ? '<span class="tag e">deleted</span>' : ''}</div>
+      <button class="del" data-del>${c.drop ? 'Restore' : 'Delete'}</button></div>
     <div class="note">${esc(c.note)}</div>
     <div class="chips">${(c.words || []).map(([w, t]) => `<button data-t="${t}">“${esc(w)}” ${fmt(t)}</button>`).join('')}</div>
     <div class="edit">
@@ -114,7 +116,7 @@ function render() {
       <label>Note</label><textarea data-f="note">${esc(c.note)}</textarea>
       <label>Tier</label><select data-f="tier">${[1, 2, 3].map(t => `<option value="${t}" ${c.tier === t ? 'selected' : ''}>${TIER[t]}</option>`).join('')}</select>
       <label>Clip</label><div class="line">start <input data-f="start" type="number" step="0.1" value="${c.start}"> end <input data-f="end" type="number" step="0.1" value="${c.end}"> <span class="count">${src(c) === 'YouTube' ? 'seconds into the video' : 'seconds into the clip file'}</span></div>
-      <label>In the game</label><div class="line"><label style="padding:0;color:var(--ink)"><input type="checkbox" data-f="drop" ${c.drop ? 'checked' : ''} style="width:auto"> Pull this clip from the game</label></div>
+      <label>In the game</label><div class="line"><label style="padding:0;color:var(--ink)"><input type="checkbox" data-f="drop" ${c.drop ? 'checked' : ''} style="width:auto"> Delete this clip from the game</label></div>
       <label>Note to Claude</label><input data-f="cnote" value="${esc(c.cnote)}" placeholder="Anything else (wrong place, wrong person…)">
       <label></label><div class="line"><button class="ghost" data-reset>Undo my edits to this clip</button></div>
     </div></div>`).join('');
@@ -126,6 +128,10 @@ $('list').addEventListener('click', e => {
   const c = cur(CLIPS.find(x => x.id === row.dataset.id));
   if (e.target.closest('[data-play]')) { play(c, c.start, c.end); return; }
   if (e.target.dataset.t != null) { const at = c.start + +e.target.dataset.t; play(c, Math.max(0, at - 0.6), at + 1.6); return; }
+  if (e.target.closest('[data-del]')) {   // one-click delete / restore (Todd applies it by pasting "Copy changes")
+    const ed = edits[c.id] || {}, base = CLIPS.find(x => x.id === c.id); if (!c.drop === !base.drop) ed.drop = !c.drop; else delete ed.drop;
+    if (Object.keys(ed).length) edits[c.id] = ed; else delete edits[c.id]; save(); render(); return;
+  }
   if (e.target.closest('[data-reset]')) { delete edits[c.id]; save(); render(); return; }
   if (e.target.closest('.head')) row.classList.toggle('open');
 });

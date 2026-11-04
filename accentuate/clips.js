@@ -18665,5 +18665,1250 @@ window.CLIPS = [
   "born": 1937,
   "st": "NJ",
   "note_base": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels."
+ },
+ {
+  "id": "Y2kqI6kyeMQ",
+  "region": "kentucky",
+  "tier": 3,
+  "start": 425,
+  "end": 445,
+  "name": "Darrell Waltrip",
+  "role": "NASCAR driver and broadcaster",
+  "place": "Owensboro, Kentucky",
+  "lat": 37.774,
+  "lng": -87.113,
+  "note": "Western Kentucky English. Listen to “I” (0:01) and “my” (0:15): the long i loses its glide, so it can sound like “Ah” and “mah.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    1.6
+   ],
+   [
+    "my",
+    15.2
+   ]
+  ],
+  "year": 2021,
+  "born": 1947,
+  "st": "KY",
+  "note_base": "Western Kentucky English."
+ },
+ {
+  "id": "xtBKYb1y4aY",
+  "region": "texas",
+  "tier": 3,
+  "start": 308,
+  "end": 328,
+  "name": "Jim Hightower",
+  "role": "Texas Agriculture Commissioner; radio commentator",
+  "place": "Denison, Texas",
+  "lat": 33.756,
+  "lng": -96.537,
+  "note": "Texas English. Listen to “I” (0:02): the long i loses its glide, so it can sound like “Ah.” Listen to “then” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    2.8
+   ],
+   [
+    "then",
+    16.4
+   ]
+  ],
+  "year": 2025,
+  "born": 1943,
+  "st": "TX",
+  "note_base": "Texas English."
+ },
+ {
+  "id": "yZdmGzsO_l0",
+  "region": "nc_mountains",
+  "tier": 3,
+  "start": 240,
+  "end": 260,
+  "name": "Junior Johnson",
+  "role": "NASCAR driver and team owner; former moonshiner",
+  "place": "Ronda, North Carolina",
+  "lat": 36.221,
+  "lng": -80.938,
+  "note": "Blue Ridge mountain English from western North Carolina. Listen to “I” (0:02): the long i loses its glide, so it can sound like “Ah.” Listen to “them” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    2.9
+   ],
+   [
+    "them",
+    5.8
+   ]
+  ],
+  "year": 2010,
+  "born": 1931,
+  "st": "NC",
+  "recorded": true,
+  "note_base": "Blue Ridge mountain English from western North Carolina."
+ },
+ {
+  "id": "1iXVyplBsP4",
+  "region": "deep_south",
+  "tier": 2,
+  "start": 132,
+  "end": 162,
+  "name": "Haley Barbour",
+  "role": "Governor of Mississippi",
+  "place": "Yazoo City, Mississippi",
+  "lat": 32.855,
+  "lng": -90.405,
+  "note": "Mississippi Delta English, slow and r-less in the old Southern way. Listen to “my” (0:08) and “I'm” (0:16): the long i loses its glide, so it can sound like “mah” and “Ahm.” Listen to “friends” (0:24): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frinds.”",
+  "verified": true,
+  "words": [
+   [
+    "my",
+    8.3
+   ],
+   [
+    "I'm",
+    16.2
+   ],
+   [
+    "friends",
+    24.2
+   ]
+  ],
+  "year": 2026,
+  "born": 1947,
+  "st": "MS",
+  "note_base": "Mississippi Delta English, slow and r-less in the old Southern way."
+ },
+ {
+  "id": "dY2pfiKZqto",
+  "region": "central_valley",
+  "tier": 3,
+  "start": 61,
+  "end": 81,
+  "name": "Jim Costa",
+  "role": "U.S. Representative; farm family",
+  "place": "Fresno, California",
+  "lat": 36.738,
+  "lng": -119.787,
+  "note": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west. Listen to “who” (0:18) and “do” (0:19): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "who",
+    18.4
+   ],
+   [
+    "do",
+    20.0
+   ]
+  ],
+  "year": 2026,
+  "born": 1952,
+  "st": "CA",
+  "note_base": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west."
+ },
+ {
+  "id": "Gj5i2Evl5TA",
+  "region": "nevada",
+  "tier": 3,
+  "start": 56,
+  "end": 76,
+  "name": "Harry Reid",
+  "role": "U.S. Senator from Nevada",
+  "place": "Searchlight, Nevada",
+  "lat": 35.465,
+  "lng": -114.919,
+  "note": "Rural Nevada English, plain Western speech from a desert mining town. Listen to “all” (0:10): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    10.4
+   ]
+  ],
+  "year": 2012,
+  "born": 1939,
+  "st": "NV",
+  "note_base": "Rural Nevada English, plain Western speech from a desert mining town."
+ },
+ {
+  "id": "5HZ8_UG8WRQ",
+  "region": "maine",
+  "tier": 3,
+  "start": 415,
+  "end": 435,
+  "name": "Linda Greenlaw",
+  "role": "Swordfishing captain and lobsterwoman",
+  "place": "Topsham, Maine",
+  "lat": 43.928,
+  "lng": -69.976,
+  "note": "Maine English. Listen to “for” (0:00): the r after a vowel drops, so it can sound like “fuh.”",
+  "verified": true,
+  "words": [
+   [
+    "for",
+    0.5
+   ]
+  ],
+  "year": 2021,
+  "born": 1960,
+  "st": "ME",
+  "note_base": "Maine English."
+ },
+ {
+  "id": "fOaWoI8niz8",
+  "region": "arkansas",
+  "tier": 3,
+  "start": 69,
+  "end": 89,
+  "name": "Larry Nixon",
+  "role": "Pro bass angler",
+  "place": "Bee Branch, Arkansas",
+  "lat": 35.43,
+  "lng": -92.4,
+  "note": "Arkansas English. Listen to “I” (0:02) and “try” (0:16): the long i loses its glide, so it can sound like “Ah” and “trah.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    2.0
+   ],
+   [
+    "try",
+    16.7
+   ]
+  ],
+  "year": 2021,
+  "born": 1950,
+  "st": "AR",
+  "note_base": "Arkansas English."
+ },
+ {
+  "id": "ZTUeAfIAIZ8",
+  "region": "east_texas",
+  "tier": 3,
+  "start": 624,
+  "end": 644,
+  "name": "Louie Gohmert",
+  "role": "U.S. Representative; East Texas judge",
+  "place": "Mount Pleasant, Texas",
+  "lat": 33.157,
+  "lng": -94.968,
+  "note": "East Texas English, closer to the Deep South than to West Texas. Listen to “I” (0:01): the long i loses its glide, so it can sound like “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    1.7
+   ]
+  ],
+  "year": 2022,
+  "born": 1953,
+  "st": "TX",
+  "note_base": "East Texas English, closer to the Deep South than to West Texas."
+ },
+ {
+  "id": "_3J0n13qWPg",
+  "region": "montana",
+  "tier": 3,
+  "start": 170,
+  "end": 190,
+  "name": "Evel Knievel",
+  "role": "Motorcycle daredevil",
+  "place": "Butte, Montana",
+  "lat": 46.004,
+  "lng": -112.535,
+  "note": "Montana English from mining-town Butte.",
+  "verified": true,
+  "words": [],
+  "year": 1973,
+  "born": 1938,
+  "st": "MT",
+  "recorded": true,
+  "note_base": "Montana English from mining-town Butte."
+ },
+ {
+  "id": "E56ZqK2F_5U",
+  "region": "delaware",
+  "tier": 3,
+  "start": 0,
+  "end": 20,
+  "name": "Elena Delle Donne",
+  "role": "WNBA basketball player",
+  "place": "Wilmington, Delaware",
+  "lat": 39.746,
+  "lng": -75.547,
+  "note": "Delaware English, from the Philadelphia orbit. Listen to “so” (0:07) and “going” (0:13): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “geh-oo-ing.” Listen to “always” (0:00) and “also” (0:12): the “aw” rises and glides, so it can sound like “aw-uhlways” and “aw-uhlso.”",
+  "verified": true,
+  "words": [
+   [
+    "always",
+    0.2
+   ],
+   [
+    "so",
+    7.7
+   ],
+   [
+    "also",
+    12.5
+   ],
+   [
+    "going",
+    13.4
+   ]
+  ],
+  "year": 2018,
+  "born": 1989,
+  "st": "DE",
+  "note_base": "Delaware English, from the Philadelphia orbit."
+ },
+ {
+  "id": "DJTmrgboJqw",
+  "region": "indiana",
+  "tier": 3,
+  "start": 778,
+  "end": 798,
+  "name": "Bobby Plump",
+  "role": "Milan High School basketball star (the real 'Hoosiers')",
+  "place": "Pierceville, Indiana",
+  "lat": 39.12,
+  "lng": -85.15,
+  "note": "Southern Indiana English, the \"Hoosier\" twang. Listen to “thought” (0:04): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "thought",
+    4.4
+   ]
+  ],
+  "year": 2024,
+  "born": 1936,
+  "st": "IN",
+  "note_base": "Southern Indiana English, the \"Hoosier\" twang."
+ },
+ {
+  "id": "MMcNCQdBsq0",
+  "region": "north_dakota",
+  "tier": 3,
+  "start": 63,
+  "end": 83,
+  "name": "Roger Maris",
+  "role": "Baseball player",
+  "place": "Fargo, North Dakota",
+  "lat": 46.877,
+  "lng": -96.789,
+  "note": "North Dakota English. Listen to “have” (0:02) and “can” (0:13): the short a tenses and rises toward “eh-a.”",
+  "verified": true,
+  "words": [
+   [
+    "have",
+    2.6
+   ],
+   [
+    "can",
+    13.1
+   ]
+  ],
+  "year": 1961,
+  "born": 1934,
+  "st": "ND",
+  "recorded": true,
+  "note_base": "North Dakota English."
+ },
+ {
+  "id": "xSIlwYsWYNs",
+  "region": "nebraska",
+  "tier": 3,
+  "start": 499,
+  "end": 519,
+  "name": "Tom Osborne",
+  "role": "Nebraska football coach",
+  "place": "Hastings, Nebraska",
+  "lat": 40.586,
+  "lng": -98.389,
+  "note": "Nebraska English, plain Midland speech.",
+  "verified": true,
+  "words": [],
+  "year": 2021,
+  "born": 1937,
+  "st": "NE",
+  "note_base": "Nebraska English, plain Midland speech."
+ },
+ {
+  "id": "ZG8Ho01JbdM",
+  "region": "socal",
+  "tier": 3,
+  "start": 267,
+  "end": 287,
+  "name": "Tony Alva",
+  "role": "Skateboarder, Z-Boys",
+  "place": "Santa Monica, California",
+  "lat": 34.019,
+  "lng": -118.491,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “do” (0:02): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "do",
+    2.1
+   ]
+  ],
+  "year": 2025,
+  "born": 1957,
+  "st": "CA",
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "POynUofOP9k",
+  "region": "appalachia",
+  "tier": 3,
+  "start": 35,
+  "end": 55,
+  "name": "Jim Justice",
+  "role": "Governor of West Virginia",
+  "place": "Charleston, West Virginia",
+  "lat": 38.35,
+  "lng": -81.633,
+  "note": "West Virginia mountain English. Listen to “try” (0:00) and “time” (0:12): the long i loses its glide, so it can sound like “trah” and “tahm.” Listen to “when” (0:13): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
+  "verified": true,
+  "words": [
+   [
+    "try",
+    0.4
+   ],
+   [
+    "time",
+    12.7
+   ],
+   [
+    "when",
+    13.1
+   ]
+  ],
+  "year": 2021,
+  "born": 1951,
+  "st": "WV",
+  "note_base": "West Virginia mountain English."
+ },
+ {
+  "id": "GsfpXQe0xyA",
+  "region": "alabama",
+  "tier": 3,
+  "start": 409,
+  "end": 429,
+  "name": "Kay Ivey",
+  "role": "Governor of Alabama",
+  "place": "Camden, Alabama",
+  "lat": 31.991,
+  "lng": -87.29,
+  "note": "Alabama English from the Black Belt. Listen to “I'm” (0:09) and “I” (0:09): the long i loses its glide, so it can sound like “Ahm” and “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "I'm",
+    9.2
+   ],
+   [
+    "I",
+    9.9
+   ]
+  ],
+  "year": 2013,
+  "born": 1944,
+  "st": "AL",
+  "note_base": "Alabama English from the Black Belt."
+ },
+ {
+  "id": "UmNAi9O36iU",
+  "region": "wyoming",
+  "tier": 3,
+  "start": 470,
+  "end": 490,
+  "name": "Alan Simpson",
+  "role": "U.S. Senator from Wyoming",
+  "place": "Cody, Wyoming",
+  "lat": 44.526,
+  "lng": -109.056,
+  "note": "Wyoming English, dry Western ranch-country speech.",
+  "verified": true,
+  "words": [],
+  "year": 2020,
+  "born": 1931,
+  "st": "WY",
+  "note_base": "Wyoming English, dry Western ranch-country speech."
+ },
+ {
+  "id": "_25HyWSUibk",
+  "region": "okie",
+  "tier": 3,
+  "start": 532,
+  "end": 552,
+  "name": "Jimmy Houston",
+  "role": "Pro bass angler and TV fisherman",
+  "place": "Moore, Oklahoma",
+  "lat": 35.339,
+  "lng": -97.487,
+  "note": "Oklahoma English. Listen to “I” (0:02) and “like” (0:03): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “them” (0:18): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    2.9
+   ],
+   [
+    "like",
+    3.0
+   ],
+   [
+    "them",
+    19.0
+   ]
+  ],
+  "year": 2026,
+  "born": 1944,
+  "st": "OK",
+  "note_base": "Oklahoma English."
+ },
+ {
+  "id": "bpRUxyQ8R6E",
+  "region": "tennessee",
+  "tier": 3,
+  "start": 240,
+  "end": 260,
+  "name": "Bill Dance",
+  "role": "Pro bass angler and TV fisherman",
+  "place": "Lynchburg, Tennessee",
+  "lat": 35.283,
+  "lng": -86.374,
+  "note": "Middle Tennessee English. Listen to “I” (0:02) and “time” (0:12): the long i loses its glide, so it can sound like “Ah” and “tahm.” Listen to “remember” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
+  "verified": true,
+  "words": [
+   [
+    "remember",
+    1.0
+   ],
+   [
+    "I",
+    2.0
+   ],
+   [
+    "time",
+    12.9
+   ]
+  ],
+  "year": 2020,
+  "born": 1940,
+  "st": "TN",
+  "note_base": "Middle Tennessee English."
+ },
+ {
+  "id": "6bc36BAWrCE",
+  "region": "oregon",
+  "tier": 3,
+  "start": 12,
+  "end": 32,
+  "name": "Larry Mahan",
+  "role": "Rodeo all-around champion",
+  "place": "Salem, Oregon",
+  "lat": 44.943,
+  "lng": -123.035,
+  "note": "Oregon English, plain Pacific Northwest speech. Listen to “bought” (0:14): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "bought",
+    14.3
+   ]
+  ],
+  "year": 2009,
+  "born": 1943,
+  "st": "OR",
+  "note_base": "Oregon English, plain Pacific Northwest speech."
+ },
+ {
+  "id": "Wor_ZSIzcGg",
+  "region": "texas",
+  "tier": 2,
+  "start": 690,
+  "end": 720,
+  "name": "Jim Hightower",
+  "role": "Texas Agriculture Commissioner; radio commentator",
+  "place": "Denison, Texas",
+  "lat": 33.756,
+  "lng": -96.537,
+  "note": "Texas English. Listen to “five” (0:15) and “right” (0:21): the long i loses its glide, so it can sound like “fahv” and “raht.” Listen to “when” (0:12) and “then” (0:26): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “thin.”",
+  "verified": true,
+  "words": [
+   [
+    "when",
+    12.4
+   ],
+   [
+    "five",
+    15.9
+   ],
+   [
+    "right",
+    21.7
+   ],
+   [
+    "then",
+    26.9
+   ]
+  ],
+  "year": 2012,
+  "born": 1943,
+  "st": "TX",
+  "note_base": "Texas English."
+ },
+ {
+  "id": "G85azi-A7io",
+  "region": "iowa",
+  "tier": 3,
+  "start": 203,
+  "end": 223,
+  "name": "Dan Gable",
+  "role": "Wrestler and Iowa wrestling coach",
+  "place": "Waterloo, Iowa",
+  "lat": 42.493,
+  "lng": -92.343,
+  "note": "Iowa English, the flat Midwestern voice.",
+  "verified": true,
+  "words": [],
+  "year": 2021,
+  "born": 1948,
+  "st": "IA",
+  "note_base": "Iowa English, the flat Midwestern voice."
+ },
+ {
+  "id": "bLduqc9mGu0",
+  "region": "nc_mountains",
+  "tier": 3,
+  "start": 711,
+  "end": 731,
+  "name": "Junior Johnson",
+  "role": "NASCAR driver and team owner; former moonshiner",
+  "place": "Ronda, North Carolina",
+  "lat": 36.221,
+  "lng": -80.938,
+  "note": "Blue Ridge mountain English from western North Carolina. Listen to “I” (0:10): the long i loses its glide, so it can sound like “Ah.” Listen to “when” (0:12): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    10.4
+   ],
+   [
+    "when",
+    12.3
+   ]
+  ],
+  "born": 1931,
+  "st": "NC",
+  "note_base": "Blue Ridge mountain English from western North Carolina."
+ },
+ {
+  "id": "YEw_NsXhywk",
+  "region": "nevada",
+  "tier": 3,
+  "start": 11,
+  "end": 31,
+  "name": "Harry Reid",
+  "role": "U.S. Senator from Nevada",
+  "place": "Searchlight, Nevada",
+  "lat": 35.465,
+  "lng": -114.919,
+  "note": "Rural Nevada English, plain Western speech from a desert mining town.",
+  "verified": true,
+  "words": [],
+  "year": 2014,
+  "born": 1939,
+  "st": "NV",
+  "note_base": "Rural Nevada English, plain Western speech from a desert mining town."
+ },
+ {
+  "id": "xHJtevcvIKk",
+  "region": "maine",
+  "tier": 3,
+  "start": 408,
+  "end": 428,
+  "name": "Linda Greenlaw",
+  "role": "Swordfishing captain and lobsterwoman",
+  "place": "Topsham, Maine",
+  "lat": 43.928,
+  "lng": -69.976,
+  "note": "Maine English. Listen to “year” (0:02) and “more” (0:03): the r after a vowel drops, so it can sound like “yeah” and “moah.”",
+  "verified": true,
+  "words": [
+   [
+    "year",
+    2.4
+   ],
+   [
+    "more",
+    3.4
+   ]
+  ],
+  "year": 2014,
+  "born": 1960,
+  "st": "ME",
+  "note_base": "Maine English."
+ },
+ {
+  "id": "WA7yKKozPOI",
+  "region": "arkansas",
+  "tier": 3,
+  "start": 229,
+  "end": 249,
+  "name": "Mark Martin",
+  "role": "NASCAR driver",
+  "place": "Batesville, Arkansas",
+  "lat": 35.77,
+  "lng": -91.641,
+  "note": "Arkansas English. Listen to “side” (0:17): the long i loses its glide, so it can sound like “sahd.” Listen to “again” (0:02): e before n or m becomes “i” (the pin–pen merger), so it can sound like “agin.”",
+  "verified": true,
+  "words": [
+   [
+    "again",
+    2.5
+   ],
+   [
+    "side",
+    17.6
+   ]
+  ],
+  "year": 2026,
+  "born": 1959,
+  "st": "AR",
+  "note_base": "Arkansas English."
+ },
+ {
+  "id": "0yeFpncuyHg",
+  "region": "delaware",
+  "tier": 3,
+  "start": 200,
+  "end": 220,
+  "name": "Elena Delle Donne",
+  "role": "WNBA basketball player",
+  "place": "Wilmington, Delaware",
+  "lat": 39.746,
+  "lng": -75.547,
+  "note": "Delaware English, from the Philadelphia orbit. Listen to “so” (0:01) and “know” (0:12): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “neh-oo.” Listen to “also” (0:11): the “aw” rises and glides, so it can sound like “aw-uhlso.”",
+  "verified": true,
+  "words": [
+   [
+    "so",
+    1.4
+   ],
+   [
+    "also",
+    11.6
+   ],
+   [
+    "know",
+    12.4
+   ]
+  ],
+  "year": 2026,
+  "born": 1989,
+  "st": "DE",
+  "note_base": "Delaware English, from the Philadelphia orbit."
+ },
+ {
+  "id": "gt7D5DRlEc0",
+  "region": "nebraska",
+  "tier": 3,
+  "start": 129,
+  "end": 149,
+  "name": "Tom Osborne",
+  "role": "Nebraska football coach",
+  "place": "Hastings, Nebraska",
+  "lat": 40.586,
+  "lng": -98.389,
+  "note": "Nebraska English, plain Midland speech. Listen to “thought” (0:16) and “dog” (0:18): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "thought",
+    16.9
+   ],
+   [
+    "dog",
+    18.6
+   ]
+  ],
+  "year": 2012,
+  "born": 1937,
+  "st": "NE",
+  "note_base": "Nebraska English, plain Midland speech."
+ },
+ {
+  "id": "uC3W5lL_yiM",
+  "region": "socal",
+  "tier": 3,
+  "start": 845,
+  "end": 865,
+  "name": "Stacy Peralta",
+  "role": "Skateboarder and filmmaker, Z-Boys",
+  "place": "Venice, California",
+  "lat": 33.985,
+  "lng": -118.469,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “food” (0:00): the “oo” moves forward toward “ew,” a California signature. Listen to “talking” (0:15) and “talk” (0:18): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "food",
+    0.7
+   ],
+   [
+    "talking",
+    15.0
+   ],
+   [
+    "talk",
+    18.4
+   ]
+  ],
+  "year": 2025,
+  "born": 1957,
+  "st": "CA",
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "A4h4kMZOgNQ",
+  "region": "appalachia",
+  "tier": 2,
+  "start": 109,
+  "end": 139,
+  "name": "Jim Justice",
+  "role": "Governor of West Virginia",
+  "place": "Charleston, West Virginia",
+  "lat": 38.35,
+  "lng": -81.633,
+  "note": "West Virginia mountain English. Listen to “I” (0:04) and “I'm” (0:06): the long i loses its glide, so it can sound like “Ah” and “Ahm.” Listen to “then” (0:02) and “them” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “thim.”",
+  "verified": true,
+  "words": [
+   [
+    "then",
+    2.4
+   ],
+   [
+    "them",
+    3.6
+   ],
+   [
+    "I",
+    4.0
+   ],
+   [
+    "I'm",
+    6.8
+   ]
+  ],
+  "year": 2021,
+  "born": 1951,
+  "st": "WV",
+  "note_base": "West Virginia mountain English."
+ },
+ {
+  "id": "uw0cwWj_UPI",
+  "region": "utah",
+  "tier": 3,
+  "start": 864,
+  "end": 884,
+  "name": "Gary Herbert",
+  "role": "Governor of Utah",
+  "place": "Orem, Utah",
+  "lat": 40.297,
+  "lng": -111.695,
+  "note": "Utah English.",
+  "verified": true,
+  "words": [],
+  "year": 2020,
+  "born": 1947,
+  "st": "UT",
+  "note_base": "Utah English."
+ },
+ {
+  "id": "2FRj2ryW37c",
+  "region": "new_mexico",
+  "tier": 3,
+  "start": 209,
+  "end": 229,
+  "name": "Al Unser Jr.",
+  "role": "Indianapolis 500 winner",
+  "place": "Albuquerque, New Mexico",
+  "lat": 35.084,
+  "lng": -106.651,
+  "note": "New Mexico English. Listen to “all” (0:01): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    1.9
+   ]
+  ],
+  "year": 2025,
+  "born": 1962,
+  "st": "NM",
+  "note_base": "New Mexico English."
+ },
+ {
+  "id": "QpZO6i3iJgo",
+  "region": "tennessee",
+  "tier": 3,
+  "start": 235,
+  "end": 255,
+  "name": "Phil Fulmer",
+  "role": "Tennessee football coach",
+  "place": "Winchester, Tennessee",
+  "lat": 35.186,
+  "lng": -86.112,
+  "note": "Middle Tennessee English. Listen to “I” (0:00) and “times” (0:10): the long i loses its glide, so it can sound like “Ah” and “tahms.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    0.7
+   ],
+   [
+    "times",
+    10.9
+   ]
+  ],
+  "year": 2026,
+  "born": 1950,
+  "st": "TN",
+  "note_base": "Middle Tennessee English."
+ },
+ {
+  "id": "QSMyhbPKB34",
+  "region": "texas",
+  "tier": 2,
+  "start": 161,
+  "end": 191,
+  "name": "Sid Miller",
+  "role": "Texas Agriculture Commissioner; rancher",
+  "place": "De Leon, Texas",
+  "lat": 32.11,
+  "lng": -98.535,
+  "note": "Texas English. Listen to “friend” (0:02) and “when” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frind” and “win.”",
+  "verified": true,
+  "words": [
+   [
+    "friend",
+    2.9
+   ],
+   [
+    "when",
+    5.3
+   ]
+  ],
+  "year": 2026,
+  "born": 1955,
+  "st": "TX",
+  "note_base": "Texas English."
+ },
+ {
+  "id": "vq7ZHH7bejI",
+  "region": "central_valley",
+  "tier": 3,
+  "start": 620,
+  "end": 640,
+  "name": "Devin Nunes",
+  "role": "U.S. Representative; dairy family",
+  "place": "Tulare, California",
+  "lat": 36.208,
+  "lng": -119.347,
+  "note": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west. Listen to “you” (0:02): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "you",
+    2.6
+   ]
+  ],
+  "year": 2025,
+  "born": 1973,
+  "st": "CA",
+  "note_base": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west."
+ },
+ {
+  "id": "Ei3qr9MpGFI",
+  "region": "maine",
+  "tier": 3,
+  "start": 34,
+  "end": 54,
+  "name": "Joan Benoit Samuelson",
+  "role": "Olympic marathon champion",
+  "place": "Cape Elizabeth, Maine",
+  "lat": 43.564,
+  "lng": -70.2,
+  "note": "Maine English. Listen to “there” (0:01) and “for” (0:03): the r after a vowel drops, so it can sound like “theah” and “fuh.”",
+  "verified": true,
+  "words": [
+   [
+    "there",
+    1.4
+   ],
+   [
+    "for",
+    3.2
+   ]
+  ],
+  "year": 2013,
+  "born": 1957,
+  "st": "ME",
+  "note_base": "Maine English."
+ },
+ {
+  "id": "vtpBcTFsSRA",
+  "region": "socal",
+  "tier": 3,
+  "start": 161,
+  "end": 181,
+  "name": "Tony Alva",
+  "role": "Skateboarder, Z-Boys",
+  "place": "Santa Monica, California",
+  "lat": 34.019,
+  "lng": -118.491,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “you” (0:09): the “oo” moves forward toward “ew,” a California signature. Listen to “off” (0:00): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "off",
+    0.3
+   ],
+   [
+    "you",
+    9.2
+   ]
+  ],
+  "year": 2013,
+  "born": 1957,
+  "st": "CA",
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "oVYzO7cO2IE",
+  "region": "utah",
+  "tier": 3,
+  "start": 399,
+  "end": 419,
+  "name": "Gary Herbert",
+  "role": "Governor of Utah",
+  "place": "Orem, Utah",
+  "lat": 40.297,
+  "lng": -111.695,
+  "note": "Utah English. Listen to “all” (0:17): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    17.6
+   ]
+  ],
+  "year": 2020,
+  "born": 1947,
+  "st": "UT",
+  "note_base": "Utah English."
+ },
+ {
+  "id": "g4WhvjvlE-Q",
+  "region": "wyoming",
+  "tier": 3,
+  "start": 385,
+  "end": 405,
+  "name": "Alan Simpson",
+  "role": "U.S. Senator from Wyoming",
+  "place": "Cody, Wyoming",
+  "lat": 44.526,
+  "lng": -109.056,
+  "note": "Wyoming English, dry Western ranch-country speech. Listen to “talk” (0:02) and “all” (0:03): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "talk",
+    2.9
+   ],
+   [
+    "all",
+    3.2
+   ]
+  ],
+  "year": 2010,
+  "born": 1931,
+  "st": "WY",
+  "recorded": true,
+  "note_base": "Wyoming English, dry Western ranch-country speech."
+ },
+ {
+  "id": "ol-GlCUKGVQ",
+  "region": "texas",
+  "tier": 2,
+  "start": 241,
+  "end": 271,
+  "name": "Sid Miller",
+  "role": "Texas Agriculture Commissioner; rancher",
+  "place": "De Leon, Texas",
+  "lat": 32.11,
+  "lng": -98.535,
+  "note": "Texas English. Listen to “like” (0:02) and “times” (0:05): the long i loses its glide, so it can sound like “lahk” and “tahms.” Listen to “when” (0:00): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
+  "verified": true,
+  "words": [
+   [
+    "when",
+    0.5
+   ],
+   [
+    "like",
+    2.2
+   ],
+   [
+    "times",
+    5.5
+   ]
+  ],
+  "year": 2025,
+  "born": 1955,
+  "st": "TX",
+  "note_base": "Texas English."
+ },
+ {
+  "id": "B7O_dBpn2R8",
+  "region": "maine",
+  "tier": 3,
+  "start": 844,
+  "end": 864,
+  "name": "Joan Benoit Samuelson",
+  "role": "Olympic marathon champion",
+  "place": "Cape Elizabeth, Maine",
+  "lat": 43.564,
+  "lng": -70.2,
+  "note": "Maine English. Listen to “year” (0:00) and “remember” (0:08): the r after a vowel drops, so it can sound like “yeah” and “remembah.”",
+  "verified": true,
+  "words": [
+   [
+    "year",
+    0.6
+   ],
+   [
+    "remember",
+    8.9
+   ]
+  ],
+  "year": 2022,
+  "born": 1957,
+  "st": "ME",
+  "note_base": "Maine English."
+ },
+ {
+  "id": "mFJx9Eh02s0",
+  "region": "tennessee",
+  "tier": 3,
+  "start": 56,
+  "end": 76,
+  "name": "Phil Fulmer",
+  "role": "Tennessee football coach",
+  "place": "Winchester, Tennessee",
+  "lat": 35.186,
+  "lng": -86.112,
+  "note": "Middle Tennessee English. Listen to “kind” (0:02) and “time” (0:10): the long i loses its glide, so it can sound like “kahnd” and “tahm.”",
+  "verified": true,
+  "words": [
+   [
+    "kind",
+    2.0
+   ],
+   [
+    "time",
+    10.6
+   ]
+  ],
+  "year": 2009,
+  "born": 1950,
+  "st": "TN",
+  "note_base": "Middle Tennessee English."
+ },
+ {
+  "id": "1rMSrLM4ta4",
+  "region": "central_valley",
+  "tier": 3,
+  "start": 274,
+  "end": 294,
+  "name": "Kevin McCarthy",
+  "role": "U.S. Representative",
+  "place": "Bakersfield, California",
+  "lat": 35.373,
+  "lng": -119.019,
+  "note": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west. Listen to “do” (0:14): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "do",
+    14.2
+   ]
+  ],
+  "year": 2023,
+  "born": 1965,
+  "st": "CA",
+  "note_base": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west."
+ },
+ {
+  "id": "9bbszAD7JL0",
+  "region": "socal",
+  "tier": 3,
+  "start": 10,
+  "end": 30,
+  "name": "Stacy Peralta",
+  "role": "Skateboarder and filmmaker, Z-Boys",
+  "place": "Venice, California",
+  "lat": 33.985,
+  "lng": -118.469,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “you” (0:02): the “oo” moves forward toward “ew,” a California signature. Listen to “saw” (0:06): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "you",
+    2.8
+   ],
+   [
+    "saw",
+    6.1
+   ]
+  ],
+  "year": 2016,
+  "born": 1957,
+  "st": "CA",
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "epX3-gzXt2Y",
+  "region": "central_valley",
+  "tier": 3,
+  "start": 219,
+  "end": 239,
+  "name": "Devin Nunes",
+  "role": "U.S. Representative; dairy family",
+  "place": "Tulare, California",
+  "lat": 36.208,
+  "lng": -119.347,
+  "note": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west. Listen to “long” (0:07): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "long",
+    7.3
+   ]
+  ],
+  "year": 2017,
+  "born": 1973,
+  "st": "CA",
+  "note_base": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west."
  }
 ];
