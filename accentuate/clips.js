@@ -12,7 +12,7 @@ window.CLIPS = [
   "place": "South Boston, Massachusetts",
   "lat": 42.3381,
   "lng": -71.0476,
-  "note": "Eastern New England English. The r after a vowel drops away: listen to \"cars,\" \"hard\" and \"sure.\"",
+  "note": "Eastern New England English.",
   "verified": true,
   "words": [
    [
@@ -29,7 +29,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2019,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "Eastern New England English. The r after a vowel drops away: listen to \"cars,\" \"hard\" and \"sure.\""
  },
  {
   "id": "LCmL6x2Rr18",
@@ -42,29 +43,22 @@ window.CLIPS = [
   "place": "Dorchester, Boston, Massachusetts",
   "lat": 42.3001,
   "lng": -71.0611,
-  "note": "Her Dorchester accent became a talking point in her 2021 mayoral race. Listen for \"teachah\" and \"yeah\" where other Americans say teacher and year.",
+  "note": "Her Dorchester accent became a talking point in her 2021 mayoral race. Listen to “years” (0:00) and “over” (0:24): the r after a vowel drops, so it can sound like “yeahs” and “ovah.”",
   "verified": true,
   "words": [
    [
-    "teacher",
-    10.5
+    "years",
+    0.9
    ],
    [
-    "year",
-    25.4
-   ],
-   [
-    "half",
-    25.9
-   ],
-   [
-    "better",
-    29.3
+    "over",
+    24.5
    ]
   ],
   "year": 2021,
   "born": 1973,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "Her Dorchester accent became a talking point in her 2021 mayoral race. Listen for \"teachah\" and \"yeah\" where other Americans say teacher and year."
  },
  {
   "id": "-YuUR6EbeXQ",
@@ -77,26 +71,23 @@ window.CLIPS = [
   "place": "South End, Boston, Massachusetts",
   "lat": 42.3417,
   "lng": -71.0752,
-  "note": "A Boston accent from the South End, recorded during the 1983 mayoral race. Listen to the soft, dropped r in \"more,\" \"four\" and \"year.\"",
+  "note": "A Boston accent from the South End, recorded during the 1983 mayoral race. Listen to “more” (0:01) and “for” (0:04): the r after a vowel drops, so it can sound like “moah” and “fuh.”",
   "verified": true,
   "words": [
    [
     "more",
-    0.2
+    1.0
    ],
    [
-    "four",
-    17.4
-   ],
-   [
-    "year",
-    17.6
+    "for",
+    4.8
    ]
   ],
   "year": 1983,
   "born": 1928,
   "recorded": true,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "A Boston accent from the South End, recorded during the 1983 mayoral race. Listen to the soft, dropped r in \"more,\" \"four\" and \"year.\""
  },
  {
   "id": "KfQNyrUDtaY",
@@ -109,21 +100,22 @@ window.CLIPS = [
   "place": "Providence, Rhode Island",
   "lat": 41.824,
   "lng": -71.4128,
-  "note": "Rhode Island English: Boston's dropped r, with its own broad vowels. Listen to \"better\" and \"more.\"",
+  "note": "Rhode Island English: Boston's dropped r, with its own broad vowels. Listen to “department” (0:03) and “number” (0:06): the r after a vowel drops, so it can sound like “depahtment” and “numbah.”",
   "verified": true,
   "words": [
    [
-    "better",
-    11.4
+    "department",
+    3.0
    ],
    [
-    "more",
-    19.6
+    "number",
+    6.0
    ]
   ],
   "year": 2012,
   "born": 1941,
-  "st": "RI"
+  "st": "RI",
+  "note_base": "Rhode Island English: Boston's dropped r, with its own broad vowels. Listen to \"better\" and \"more.\""
  },
  {
   "id": "Ynr0Tf2TNV0",
@@ -136,33 +128,26 @@ window.CLIPS = [
   "place": "Springfield, Delaware County, Pennsylvania",
   "lat": 39.9307,
   "lng": -75.3202,
-  "note": "A Philly accent \"sharp enough to cut glass.\" Every \"know,\" \"go\" and \"over\" starts forward in the mouth, almost \"keh-now.\"",
+  "note": "A Philly accent \"sharp enough to cut glass.\" Every \"know,\" \"go\" and \"over\" starts forward in the mouth, almost \"keh-now.\" Listen to “know” (0:05) and “going” (0:14): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “geh-oo-ing.” Listen to “that” (0:11): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
-    "now",
-    2.8
-   ],
-   [
-    "only",
-    3.1
-   ],
-   [
     "know",
-    4.9
+    5.1
+   ],
+   [
+    "that",
+    11.3
    ],
    [
     "going",
-    13.9
-   ],
-   [
-    "over",
-    14.2
+    14.1
    ]
   ],
   "year": 2011,
   "born": 1949,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "A Philly accent \"sharp enough to cut glass.\" Every \"know,\" \"go\" and \"over\" starts forward in the mouth, almost \"keh-now.\""
  },
  {
   "id": "Ai4URTITHtg",
@@ -175,7 +160,7 @@ window.CLIPS = [
   "place": "Pittsburgh, Pennsylvania",
   "lat": 40.4406,
   "lng": -79.9959,
-  "note": "Western Pennsylvania English. The ow sound flattens: \"our\" and \"power\" lean toward \"ahr\" and \"pahr.\"",
+  "note": "Western Pennsylvania English.",
   "verified": true,
   "words": [
    [
@@ -189,7 +174,8 @@ window.CLIPS = [
   ],
   "year": 2021,
   "born": 1959,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "Western Pennsylvania English. The ow sound flattens: \"our\" and \"power\" lean toward \"ahr\" and \"pahr.\""
  },
  {
   "id": "G-8u1UBSsP0",
@@ -202,21 +188,26 @@ window.CLIPS = [
   "place": "West Ridge, Chicago, Illinois",
   "lat": 41.9997,
   "lng": -87.692,
-  "note": "Chicago English. \"Alderman\" is the giveaway, but listen to \"got\" and \"up\": the o moves toward \"gaht\" and the u pulls back.",
+  "note": "Chicago English. Listen to “have” (0:06) and “that” (0:19): the short a tenses and rises toward “eh-a.” Listen to “got” (0:03): the short o slides forward toward “a”, so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
     "got",
-    2.8
+    3.3
    ],
    [
-    "alderman",
-    3.0
+    "have",
+    6.3
+   ],
+   [
+    "that",
+    19.9
    ]
   ],
   "year": 2009,
   "born": 1927,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Chicago English. \"Alderman\" is the giveaway, but listen to \"got\" and \"up\": the o moves toward \"gaht\" and the u pulls back."
  },
  {
   "id": "739-uzmJLPM",
@@ -229,25 +220,26 @@ window.CLIPS = [
   "place": "West Ridge, Chicago, Illinois",
   "lat": 41.9997,
   "lng": -87.692,
-  "note": "Chicago English. Listen to \"got\" and \"much\": the Northern Cities Shift pushes these vowels around.",
+  "note": "Chicago English. Listen to “actually” (0:07) and “thanks” (0:16): the short a tenses and rises toward “eh-a.” Listen to “got” (0:02): the short o slides forward toward “a”, so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
     "got",
-    1.7
+    2.2
    ],
    [
-    "alderman",
-    14.1
+    "actually",
+    7.4
    ],
    [
-    "much",
-    15.8
+    "thanks",
+    16.6
    ]
   ],
   "year": 2008,
   "born": 1927,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Chicago English. Listen to \"got\" and \"much\": the Northern Cities Shift pushes these vowels around."
  },
  {
   "id": "iLKz7P32vlI",
@@ -260,29 +252,22 @@ window.CLIPS = [
   "place": "Bridgeport, Chicago, Illinois",
   "lat": 41.8381,
   "lng": -87.651,
-  "note": "Bridgeport, the Daley family's neighborhood. Listen to \"budget\" and \"cut\": the u is pulled back toward \"bawdget.\"",
+  "note": "Bridgeport, the Daley family's neighborhood. Listen to “have” (0:18) and “past” (0:23): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
-    "budget",
-    2.0
+    "have",
+    18.0
    ],
    [
-    "cut",
-    10.0
-   ],
-   [
-    "dollar",
-    22.1
-   ],
-   [
-    "back",
-    29.2
+    "past",
+    23.7
    ]
   ],
   "year": 2019,
   "born": 1946,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Bridgeport, the Daley family's neighborhood. Listen to \"budget\" and \"cut\": the u is pulled back toward \"bawdget.\""
  },
  {
   "id": "MzKbsHP5WJU",
@@ -295,11 +280,17 @@ window.CLIPS = [
   "place": "Garfield Ridge, Chicago, Illinois",
   "lat": 41.792,
   "lng": -87.766,
-  "note": "A Southwest Side Chicago accent. Listen to \"that\": the a rises, close to \"thyat.\"",
+  "note": "A Southwest Side Chicago accent. Listen to “that” (0:15): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    15.9
+   ]
+  ],
   "year": 2012,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "A Southwest Side Chicago accent. Listen to \"that\": the a rises, close to \"thyat.\""
  },
  {
   "id": "lIFYC5irddA",
@@ -312,7 +303,7 @@ window.CLIPS = [
   "place": "Garfield Ridge, Chicago, Illinois",
   "lat": 41.792,
   "lng": -87.766,
-  "note": "A Southwest Side Chicago accent. Listen to \"got,\" \"problem\" and \"lot\": the o slides toward \"gaht,\" \"prahblem.\"",
+  "note": "A Southwest Side Chicago accent. Listen to “that” (0:13) and “can” (0:17): the short a tenses and rises toward “eh-a.” Listen to “got” (0:00) and “problem” (0:00): the short o slides forward toward “a”, so it can sound like “gat” and “prablem.”",
   "verified": true,
   "words": [
    [
@@ -324,16 +315,17 @@ window.CLIPS = [
     0.8
    ],
    [
-    "can",
-    17.6
+    "that",
+    13.4
    ],
    [
-    "lot",
-    29.9
+    "can",
+    17.6
    ]
   ],
   "year": 2015,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "A Southwest Side Chicago accent. Listen to \"got,\" \"problem\" and \"lot\": the o slides toward \"gaht,\" \"prahblem.\""
  },
  {
   "id": "mtm-RlgsN-I",
@@ -346,17 +338,26 @@ window.CLIPS = [
   "place": "Northwest Side, Chicago, Illinois",
   "lat": 41.953,
   "lng": -87.806,
-  "note": "Fluent \"Chicagoese.\" Listen to \"that\" (\"thyat\") and \"not\" (\"naht\").",
+  "note": "Fluent \"Chicagoese.\" Listen to \"that\" (\"thyat\") and \"not\" (\"naht\"). Listen to “that” (0:11) and “stand” (0:19): the short a tenses and rises toward “eh-a.” Listen to “not” (0:14): the short o slides forward toward “a”, so it can sound like “nat.”",
   "verified": true,
   "words": [
    [
+    "that",
+    11.9
+   ],
+   [
     "not",
     14.1
+   ],
+   [
+    "stand",
+    19.0
    ]
   ],
   "year": 2014,
   "born": 1958,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Fluent \"Chicagoese.\" Listen to \"that\" (\"thyat\") and \"not\" (\"naht\")."
  },
  {
   "id": "50Yy4XntSDU",
@@ -369,29 +370,26 @@ window.CLIPS = [
   "place": "Northwest Side, Chicago, Illinois",
   "lat": 41.953,
   "lng": -87.806,
-  "note": "Fluent \"Chicagoese.\" Listen to \"man\" and \"bad\": the a rises toward \"mee-an.\"",
+  "note": "Fluent \"Chicagoese.\" Listen to \"man\" and \"bad\". Listen to “man” (0:04) and “that” (0:07): the short a tenses and rises toward “eh-a.” Listen to “got” (0:22): the short o slides forward toward “a”, so it can sound like “gat.”",
   "verified": true,
   "words": [
    [
     "man",
-    4.0
+    4.2
    ],
    [
-    "bad",
-    14.9
-   ],
-   [
-    "much",
-    20.0
+    "that",
+    7.8
    ],
    [
     "got",
-    22.6
+    22.8
    ]
   ],
   "year": 2023,
   "born": 1958,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Fluent \"Chicagoese.\" Listen to \"man\" and \"bad\": the a rises toward \"mee-an.\""
  },
  {
   "id": "PJSron8VRaA",
@@ -404,12 +402,18 @@ window.CLIPS = [
   "place": "Somerville, Massachusetts",
   "lat": 42.3876,
   "lng": -71.0995,
-  "note": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad.",
+  "note": "Eastern New England English, at full speed. Listen to “other” (0:05): the r after a vowel drops, so it can sound like “othah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "other",
+    5.5
+   ]
+  ],
   "year": 2019,
   "born": 1966,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "Eastern New England English, at full speed. R after a vowel drops away, and the short a in words like \"after\" goes broad."
  },
  {
   "id": "mSpTwzm9HxI",
@@ -422,12 +426,22 @@ window.CLIPS = [
   "place": "South Providence, Rhode Island",
   "lat": 41.805,
   "lng": -71.413,
-  "note": "Rhode Island English: non-rhotic like Boston, but with a rounder, more nasal \"aw.\" Listen for r-less endings on \"-er\" words.",
+  "note": "Rhode Island English. Listen to “sure” (0:00) and “for” (0:02): the r after a vowel drops, so it can sound like “shuah” and “fuh.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "sure",
+    0.7
+   ],
+   [
+    "for",
+    2.7
+   ]
+  ],
   "year": 2023,
   "born": 1943,
-  "st": "RI"
+  "st": "RI",
+  "note_base": "Rhode Island English: non-rhotic like Boston, but with a rounder, more nasal \"aw.\" Listen for r-less endings on \"-er\" words."
  },
  {
   "id": "lt_3zOIYquI",
@@ -440,16 +454,17 @@ window.CLIPS = [
   "place": "Providence, Rhode Island",
   "lat": 41.824,
   "lng": -71.4128,
-  "note": "Old Providence English. \"Here\" comes out \"hee-ah,\" with the r gone and an extra syllable in its place.",
+  "note": "Old Providence English. Listen to “here” (0:03): the r after a vowel drops, so it can sound like “hee-ah.”",
   "verified": true,
   "words": [
    [
     "here",
-    3.2
+    3.4
    ]
   ],
   "born": 1941,
-  "st": "RI"
+  "st": "RI",
+  "note_base": "Old Providence English. \"Here\" comes out \"hee-ah,\" with the r gone and an extra syllable in its place."
  },
  {
   "id": "cwr8j3x0a7Y",
@@ -462,21 +477,22 @@ window.CLIPS = [
   "place": "Blue Island, Illinois",
   "lat": 41.6573,
   "lng": -87.68,
-  "note": "Inland North (Chicago) English. The short a in \"that\" and \"last\" rises and tightens toward \"eh-a,\" part of the Northern Cities Vowel Shift.",
+  "note": "Inland North (Chicago) English. Listen to “that” (0:01) and “last” (0:12): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
     "that",
-    1.0
+    1.8
    ],
    [
     "last",
-    11.3
+    12.2
    ]
   ],
   "year": 2018,
   "born": 1969,
-  "st": "IL"
+  "st": "IL",
+  "note_base": "Inland North (Chicago) English. The short a in \"that\" and \"last\" rises and tightens toward \"eh-a,\" part of the Northern Cities Vowel Shift."
  },
  {
   "id": "M_SxvWocfj8",
@@ -489,28 +505,29 @@ window.CLIPS = [
   "place": "Hazard, Kentucky",
   "lat": 37.2493,
   "lng": -83.1932,
-  "note": "Appalachian English. The \"i\" glide flattens, so \"right\" and \"Friday\" become \"raht\" and \"Frahday,\" and \"then\" rhymes with \"tin.\"",
+  "note": "Appalachian English. Listen to “right” (0:19) and “I” (0:19): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “again” (0:16) and “them” (0:28): e before n or m becomes “i” (the pin–pen merger), so it can sound like “agin” and “thim.”",
   "verified": true,
   "words": [
+   [
+    "again",
+    16.2
+   ],
    [
     "right",
     19.0
    ],
    [
-    "i",
+    "I",
     20.0
    ],
    [
-    "friday",
-    24.2
-   ],
-   [
-    "then",
-    29.1
+    "them",
+    28.6
    ]
   ],
   "year": 2015,
-  "st": "KY"
+  "st": "KY",
+  "note_base": "Appalachian English. The \"i\" glide flattens, so \"right\" and \"Friday\" become \"raht\" and \"Frahday,\" and \"then\" rhymes with \"tin.\""
  },
  {
   "id": "u23K6NzqWHE",
@@ -523,7 +540,7 @@ window.CLIPS = [
   "place": "Hazard, Kentucky",
   "lat": 37.2493,
   "lng": -83.1932,
-  "note": "Appalachian English. Listen for flat \"ah\" in \"right,\" \"I\" and \"Friday,\" and for \"when\" sounding like \"win.\"",
+  "note": "Appalachian English. Listen to “right” (0:11) and “I” (0:16): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “when” (0:19): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
   "words": [
    [
@@ -531,12 +548,8 @@ window.CLIPS = [
     11.6
    ],
    [
-    "i",
+    "I",
     16.3
-   ],
-   [
-    "friday",
-    18.0
    ],
    [
     "when",
@@ -544,7 +557,8 @@ window.CLIPS = [
    ]
   ],
   "year": 2015,
-  "st": "KY"
+  "st": "KY",
+  "note_base": "Appalachian English. Listen for flat \"ah\" in \"right,\" \"I\" and \"Friday,\" and for \"when\" sounding like \"win.\""
  },
  {
   "id": "CoWpmUcZilk",
@@ -557,25 +571,22 @@ window.CLIPS = [
   "place": "Lily, Kentucky",
   "lat": 37.0081,
   "lng": -84.0599,
-  "note": "Eastern Kentucky English. The long i is a single flat vowel: \"I,\" \"like\" and \"while\" come out \"ah,\" \"lahk,\" \"whahl.\"",
+  "note": "Eastern Kentucky English. Listen to “try” (0:00) and “I” (0:01): the long i loses its glide, so it can sound like “trah” and “Ah.”",
   "verified": true,
   "words": [
    [
-    "i",
+    "try",
+    0.2
+   ],
+   [
+    "I",
     1.4
-   ],
-   [
-    "like",
-    3.2
-   ],
-   [
-    "while",
-    8.0
    ]
   ],
   "year": 2024,
   "born": 1971,
-  "st": "KY"
+  "st": "KY",
+  "note_base": "Eastern Kentucky English. The long i is a single flat vowel: \"I,\" \"like\" and \"while\" come out \"ah,\" \"lahk,\" \"whahl.\""
  },
  {
   "id": "pAQ60hlA4YM",
@@ -588,21 +599,26 @@ window.CLIPS = [
   "place": "Columbia, South Carolina",
   "lat": 34.0007,
   "lng": -81.0348,
-  "note": "Old South Carolina Midlands speech. \"When\" merges with \"win\" (the pin/pen merger), and \"I'm\" flattens to \"Ahm.\"",
+  "note": "Old South Carolina Midlands speech. Listen to “kind” (0:00) and “I'm” (0:03): the long i loses its glide, so it can sound like “kahnd” and “Ahm.” Listen to “when” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
   "words": [
    [
-    "when",
-    0.4
+    "kind",
+    0.0
    ],
    [
-    "i'm",
-    2.5
+    "when",
+    1.2
+   ],
+   [
+    "I'm",
+    3.3
    ]
   ],
   "year": 2024,
   "born": 1943,
-  "st": "SC"
+  "st": "SC",
+  "note_base": "Old South Carolina Midlands speech. \"When\" merges with \"win\" (the pin/pen merger), and \"I'm\" flattens to \"Ahm.\""
  },
  {
   "id": "_F14ErvmCLQ",
@@ -615,32 +631,21 @@ window.CLIPS = [
   "place": "Ocracoke, North Carolina",
   "lat": 35.1146,
   "lng": -75.981,
-  "note": "The Outer Banks \"hoi toider\" brogue. The long i rounds toward \"oi\": listen to \"I,\" \"right,\" \"my,\" \"time\" and \"night.\"",
+  "note": "The Outer Banks \"hoi toider\" brogue. Listen to “I” (0:00) and “right” (0:01): the long i rounds toward “oi,” the Outer Banks brogue, so it can sound like “Oi” and “roit.”",
   "verified": true,
   "words": [
    [
-    "i",
-    0.6
+    "I",
+    0.8
    ],
    [
     "right",
-    1.7
-   ],
-   [
-    "my",
-    5.0
-   ],
-   [
-    "time",
-    6.2
-   ],
-   [
-    "night",
-    14.4
+    1.9
    ]
   ],
   "year": 2012,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "The Outer Banks \"hoi toider\" brogue. The long i rounds toward \"oi\": listen to \"I,\" \"right,\" \"my,\" \"time\" and \"night.\""
  },
  {
   "id": "hH4lMG8Zuu0",
@@ -653,17 +658,30 @@ window.CLIPS = [
   "place": "Crown Heights, Brooklyn, New York",
   "lat": 40.6694,
   "lng": -73.9422,
-  "note": "Old Brooklyn English. The r after a vowel drops away, so \"better\" comes out \"bettah.\"",
+  "note": "Old Brooklyn English. Listen to “for” (0:02) and “better” (0:19): the r after a vowel drops, so it can sound like “fuh” and “bettah.” Listen to “back” (0:00) and “that” (0:03): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
+    "back",
+    0.8
+   ],
+   [
+    "for",
+    2.8
+   ],
+   [
+    "that",
+    3.0
+   ],
+   [
     "better",
-    19.1
+    19.9
    ]
   ],
   "year": 2010,
   "born": 1945,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "Old Brooklyn English. The r after a vowel drops away, so \"better\" comes out \"bettah.\""
  },
  {
   "id": "ArDBN4s_mXk",
@@ -676,25 +694,30 @@ window.CLIPS = [
   "place": "Southwest Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.2271,
-  "note": "Philadelphia English. The long o fronts toward \"eh-oo,\" so \"no\" and \"over\" sound like \"neh-oo\" and \"eh-oo-ver,\" and \"out\" starts high.",
+  "note": "Philadelphia English. Listen to “no” (0:02) and “over” (0:23): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “eh-oover.” Listen to “have” (0:03) and “back” (0:21): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
     "no",
-    1.8
+    2.0
+   ],
+   [
+    "have",
+    3.8
+   ],
+   [
+    "back",
+    21.3
    ],
    [
     "over",
-    23.1
-   ],
-   [
-    "out",
-    26.9
+    23.3
    ]
   ],
   "year": 2020,
   "born": 1953,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "Philadelphia English. The long o fronts toward \"eh-oo,\" so \"no\" and \"over\" sound like \"neh-oo\" and \"eh-oo-ver,\" and \"out\" starts high."
  },
  {
   "id": "-rm_p_osglI",
@@ -707,28 +730,25 @@ window.CLIPS = [
   "place": "South Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.1695,
-  "note": "South Philly English. Listen to \"so,\" \"know\" and \"out\": the o fronts toward \"eh-oo\" and the ow in \"out\" starts high and forward.",
+  "note": "South Philly English. Listen to “so” (0:12) and “know” (0:17): the long o starts forward, close to “eh-oo”, so it can sound like “seh-oo” and “neh-oo.” Listen to “also” (0:07): the “aw” rises and glides, so it can sound like “aw-uhlso.”",
   "verified": true,
   "words": [
    [
-    "so",
-    12.2
+    "also",
+    7.6
    ],
    [
-    "around",
-    12.7
+    "so",
+    12.4
    ],
    [
     "know",
-    16.9
-   ],
-   [
-    "out",
-    17.2
+    17.1
    ]
   ],
   "year": 2019,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "South Philly English. Listen to \"so,\" \"know\" and \"out\": the o fronts toward \"eh-oo\" and the ow in \"out\" starts high and forward."
  },
  {
   "id": "C5VaBWwX0ns",
@@ -741,7 +761,7 @@ window.CLIPS = [
   "place": "South Philadelphia, Pennsylvania",
   "lat": 39.9246,
   "lng": -75.1695,
-  "note": "South Philly English. \"Know,\" \"going\" and \"no\" front toward \"neh-oo,\" the vowel that gives the city away.",
+  "note": "South Philly English. Listen to “know” (0:00) and “going” (0:03): the long o starts forward, close to “eh-oo”, so it can sound like “neh-oo” and “geh-oo-ing.”",
   "verified": true,
   "words": [
    [
@@ -751,14 +771,11 @@ window.CLIPS = [
    [
     "going",
     3.6
-   ],
-   [
-    "no",
-    10.3
    ]
   ],
   "year": 2025,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "South Philly English. \"Know,\" \"going\" and \"no\" front toward \"neh-oo,\" the vowel that gives the city away."
  },
  {
   "id": "qe-4_EpreKo",
@@ -771,7 +788,7 @@ window.CLIPS = [
   "place": "Baltimore, Maryland",
   "lat": 39.329,
   "lng": -76.6205,
-  "note": "Baltimore English. The ow in \"down\" starts far forward, close to \"dane.\"",
+  "note": "Baltimore English.",
   "verified": true,
   "words": [
    [
@@ -781,7 +798,8 @@ window.CLIPS = [
   ],
   "year": 2017,
   "born": 1941,
-  "st": "MD"
+  "st": "MD",
+  "note_base": "Baltimore English. The ow in \"down\" starts far forward, close to \"dane.\""
  },
  {
   "id": "vP2AjrbIh0U",
@@ -794,12 +812,18 @@ window.CLIPS = [
   "place": "Hill District, Pittsburgh, Pennsylvania",
   "lat": 40.4434,
   "lng": -79.9817,
-  "note": "Old Pittsburgh speech. The ow sound flattens toward \"ah\" (the \"dahntahn\" vowel), and the cadence is pure western Pennsylvania.",
+  "note": "Old Pittsburgh speech. Listen to “found” (0:05): the “ow” flattens toward “ah”, so it can sound like “fahnd.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "found",
+    5.6
+   ]
+  ],
   "year": 2012,
   "born": 1917,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "Old Pittsburgh speech. The ow sound flattens toward \"ah\" (the \"dahntahn\" vowel), and the cadence is pure western Pennsylvania."
  },
  {
   "id": "3u_ry-eMOyc",
@@ -812,20 +836,21 @@ window.CLIPS = [
   "place": "Hazard, Kentucky",
   "lat": 37.2493,
   "lng": -83.1932,
-  "note": "Appalachian English. \"I\" and \"right\" lose their glide: \"Ah\" and \"raht.\"",
+  "note": "Appalachian English. Listen to “I” (0:03) and “try” (0:03): the long i loses its glide, so it can sound like “Ah” and “trah.”",
   "verified": true,
   "words": [
    [
-    "i",
-    3.2
+    "I",
+    3.4
    ],
    [
-    "right",
-    19.7
+    "try",
+    3.7
    ]
   ],
   "year": 2015,
-  "st": "KY"
+  "st": "KY",
+  "note_base": "Appalachian English. \"I\" and \"right\" lose their glide: \"Ah\" and \"raht.\""
  },
  {
   "id": "1v9y--TAgm4",
@@ -838,21 +863,22 @@ window.CLIPS = [
   "place": "Amory, Mississippi",
   "lat": 33.9843,
   "lng": -88.4881,
-  "note": "Northeast Mississippi English. The long i flattens: \"I\" and \"my\" come out \"Ah\" and \"mah.\"",
+  "note": "Northeast Mississippi English. Listen to “I” (0:03) and “my” (0:09): the long i loses its glide, so it can sound like “Ah” and “mah.”",
   "verified": true,
   "words": [
    [
-    "i",
-    2.8
+    "I",
+    3.3
    ],
    [
     "my",
-    8.6
+    9.1
    ]
   ],
   "year": 2026,
   "born": 1980,
-  "st": "MS"
+  "st": "MS",
+  "note_base": "Northeast Mississippi English. The long i flattens: \"I\" and \"my\" come out \"Ah\" and \"mah.\""
  },
  {
   "id": "KjOSEjFL8LU",
@@ -865,21 +891,22 @@ window.CLIPS = [
   "place": "Amory, Mississippi",
   "lat": 33.9843,
   "lng": -88.4881,
-  "note": "Northeast Mississippi English. Listen for the flat \"Ah\" in \"I\" and \"I'm.\"",
+  "note": "Northeast Mississippi English. Listen to “I” (0:03) and “times” (0:06): the long i loses its glide, so it can sound like “Ah” and “tahms.”",
   "verified": true,
   "words": [
    [
-    "i",
-    2.9
+    "I",
+    3.7
    ],
    [
-    "i'm",
-    9.3
+    "times",
+    7.0
    ]
   ],
   "year": 2026,
   "born": 1980,
-  "st": "MS"
+  "st": "MS",
+  "note_base": "Northeast Mississippi English. Listen for the flat \"Ah\" in \"I\" and \"I'm.\""
  },
  {
   "id": "togPeRIdeGg",
@@ -892,25 +919,26 @@ window.CLIPS = [
   "place": "Big Spring, Texas",
   "lat": 32.2504,
   "lng": -101.4787,
-  "note": "West Texas English. \"When\" rhymes with \"win\" (the pin/pen merger), and \"I\" flattens to \"Ah.\"",
+  "note": "West Texas English. Listen to “I” (0:02) and “kind” (0:22): the long i loses its glide, so it can sound like “Ah” and “kahnd.” Listen to “when” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
   "words": [
    [
     "when",
-    0.8
+    1.0
    ],
    [
-    "i",
-    1.9
+    "I",
+    2.1
    ],
    [
-    "well",
-    28.4
+    "kind",
+    22.4
    ]
   ],
   "year": 2022,
   "born": 1969,
-  "st": "TX"
+  "st": "TX",
+  "note_base": "West Texas English. \"When\" rhymes with \"win\" (the pin/pen merger), and \"I\" flattens to \"Ah.\""
  },
  {
   "id": "ATL_se0_ag1_f_02_1_709",
@@ -924,14 +952,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “my” (0:00) and “I” (0:00): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “mother” (0:01) and “with” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.0
+   ],
+   [
+    "I",
+    0.4
+   ],
+   [
+    "mother",
+    1.1
+   ],
+   [
+    "with",
+    8.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1992,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_f_03_1_597",
@@ -945,14 +991,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:01) and “like” (0:06): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “remember” (0:00): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "remember",
+    0.6
+   ],
+   [
+    "I",
+    1.5
+   ],
+   [
+    "like",
+    6.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1993,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1403",
@@ -966,14 +1026,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “my” (0:00) and “I'm” (0:05): the long i loses its glide, so it can sound like “mah” and “Ahm.” Listen to “the” (0:11): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    1.0
+   ],
+   [
+    "I'm",
+    5.6
+   ],
+   [
+    "the",
+    11.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1993,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_01_1_1447",
@@ -987,14 +1061,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I'm” (0:01) and “like” (0:04): the long i loses its glide, so it can sound like “Ahm” and “lahk.” Listen to “thing” (0:01) and “with” (0:07): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "thing",
+    1.3
+   ],
+   [
+    "I'm",
+    1.7
+   ],
+   [
+    "like",
+    4.1
+   ],
+   [
+    "with",
+    7.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1993,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_03_1_1341",
@@ -1008,14 +1100,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “like” (0:05) and “I” (0:09): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “went” (0:11) and “them” (0:15): e before n or m becomes “i” (the pin–pen merger), so it can sound like “wint” and “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    5.3
+   ],
+   [
+    "I",
+    9.7
+   ],
+   [
+    "went",
+    11.7
+   ],
+   [
+    "them",
+    15.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1990,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_04_1_685",
@@ -1029,14 +1139,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “my” (0:01) and “I” (0:02): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “when” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    1.5
+   ],
+   [
+    "I",
+    2.2
+   ],
+   [
+    "when",
+    3.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1988,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_04_2_188",
@@ -1050,14 +1174,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “my” (0:01) and “I” (0:09): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “them” (0:18): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    1.7
+   ],
+   [
+    "I",
+    9.1
+   ],
+   [
+    "them",
+    18.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1988,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_05_1_147",
@@ -1071,14 +1209,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:02) and “kind” (0:04): the long i loses its glide, so it can sound like “Ah” and “kahnd.” Listen to “went” (0:02): e before n or m becomes “i” (the pin–pen merger), so it can sound like “wint.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    2.9
+   ],
+   [
+    "went",
+    3.0
+   ],
+   [
+    "kind",
+    4.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1991,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_05_1_582",
@@ -1092,14 +1244,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “kind” (0:04) and “life” (0:06): the long i loses its glide, so it can sound like “kahnd” and “lahf.” Listen to “they” (0:01) and “with” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    1.1
+   ],
+   [
+    "with",
+    3.9
+   ],
+   [
+    "kind",
+    4.8
+   ],
+   [
+    "life",
+    6.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1991,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag1_m_05_1_646",
@@ -1113,14 +1283,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:00) and “right” (0:04): the long i loses its glide, so it can sound like “Ah” and “raht.” Listen to “friends” (0:02): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frinds.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.5
+   ],
+   [
+    "friends",
+    2.7
+   ],
+   [
+    "right",
+    4.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1991,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1098",
@@ -1134,14 +1318,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:00) and “like” (0:19): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “then” (0:12) and “them” (0:24): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.0
+   ],
+   [
+    "then",
+    12.2
+   ],
+   [
+    "like",
+    19.2
+   ],
+   [
+    "them",
+    24.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1984,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_f_01_1_282",
@@ -1155,14 +1357,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “time” (0:09) and “right” (0:11): the long i loses its glide, so it can sound like “tahm” and “raht.” Listen to “friends” (0:18) and “friend” (0:21): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frinds” and “frind.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "time",
+    9.7
+   ],
+   [
+    "right",
+    11.8
+   ],
+   [
+    "friends",
+    18.4
+   ],
+   [
+    "friend",
+    21.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1984,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_f_01_1_1631",
@@ -1176,14 +1396,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:01) and “my” (0:02): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “then” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.7
+   ],
+   [
+    "my",
+    2.1
+   ],
+   [
+    "then",
+    5.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1984,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_f_02_1_587",
@@ -1197,14 +1431,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:04) and “my” (0:05): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “that” (0:04) and “the” (0:15): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    4.5
+   ],
+   [
+    "that",
+    5.0
+   ],
+   [
+    "my",
+    5.5
+   ],
+   [
+    "the",
+    15.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1980,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_01_1_181",
@@ -1218,14 +1470,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “like” (0:06) and “I” (0:06): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “then” (0:14) and “them” (0:22): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    6.1
+   ],
+   [
+    "I",
+    6.6
+   ],
+   [
+    "then",
+    14.9
+   ],
+   [
+    "them",
+    22.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1976,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_01_1_331",
@@ -1239,14 +1509,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “like” (0:20) and “I” (0:26): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “when” (0:09): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    10.0
+   ],
+   [
+    "like",
+    20.9
+   ],
+   [
+    "I",
+    26.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1976,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_01_1_682",
@@ -1260,14 +1544,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “like” (0:05) and “time” (0:18): the long i loses its glide, so it can sound like “lahk” and “tahm.” Listen to “them” (0:14): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    5.2
+   ],
+   [
+    "them",
+    14.0
+   ],
+   [
+    "time",
+    18.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1976,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2466",
@@ -1281,14 +1579,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I” (0:11) and “time” (0:15): the long i loses its glide, so it can sound like “Ah” and “tahm.” Listen to “when” (0:00) and “again” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “agin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    0.1
+   ],
+   [
+    "I",
+    11.2
+   ],
+   [
+    "time",
+    15.7
+   ],
+   [
+    "again",
+    16.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1987,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_02_1_2431",
@@ -1302,14 +1618,28 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “like” (0:12) and “my” (0:13): the long i loses its glide, so it can sound like “lahk” and “mah.” Listen to “them” (0:26): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    12.7
+   ],
+   [
+    "my",
+    13.1
+   ],
+   [
+    "them",
+    26.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1987,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "ATL_se0_ag2_m_02_1_1992",
@@ -1323,14 +1653,32 @@ window.CLIPS = [
   "place": "Atlanta, Georgia",
   "lat": 33.749,
   "lng": -84.388,
-  "note": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\"",
+  "note": "African American English in Atlanta. Listen to “I'm” (0:00) and “right” (0:03): the long i loses its glide, so it can sound like “Ahm” and “raht.” Listen to “that” (0:00) and “the” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    0.2
+   ],
+   [
+    "I'm",
+    0.9
+   ],
+   [
+    "right",
+    3.9
+   ],
+   [
+    "the",
+    6.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1987,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in Atlanta. Listen for the Southern long i losing its glide (\"I,\" \"time\") and for \"pen\" sounding like \"pin.\""
  },
  {
   "id": "LES_se0_ag3_f_01_1_2450",
@@ -1344,14 +1692,28 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “after” (0:14) and “or” (0:17): the r after a vowel drops, so it can sound like “aftah” and “aw.” Listen to “all” (0:04): the “aw” rises and glides, so it can sound like “aw-uhl.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "all",
+    4.9
+   ],
+   [
+    "after",
+    14.1
+   ],
+   [
+    "or",
+    17.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2009,
   "born": 1969,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "LES_se0_ag3_m_02_1_1779",
@@ -1365,14 +1727,32 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “neighborhood” (0:09) and “or” (0:13): the r after a vowel drops, so it can sound like “neighbahood” and “aw.” Listen to “that” (0:05) and “the” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    5.5
+   ],
+   [
+    "the",
+    9.1
+   ],
+   [
+    "neighborhood",
+    9.3
+   ],
+   [
+    "or",
+    13.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
   "born": 1958,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "LES_se0_ag4_f_01_1_505",
@@ -1386,14 +1766,28 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “never” (0:02) and “there” (0:03): the r after a vowel drops, so it can sound like “nevah” and “theah.” Listen to “all” (0:18): the “aw” rises and glides, so it can sound like “aw-uhl.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "never",
+    2.9
+   ],
+   [
+    "there",
+    3.7
+   ],
+   [
+    "all",
+    18.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
   "born": 1947,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "LES_se0_ag4_f_01_2_498",
@@ -1407,14 +1801,32 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “there” (0:04) and “here” (0:13): the r after a vowel drops, so it can sound like “theah” and “hee-ah.” Listen to “saw” (0:02) and “all” (0:04): the “aw” rises and glides, so it can sound like “saw-uh” and “aw-uhl.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "saw",
+    2.1
+   ],
+   [
+    "all",
+    4.2
+   ],
+   [
+    "there",
+    4.5
+   ],
+   [
+    "here",
+    13.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
   "born": 1947,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "LES_se0_ag4_f_01_2_695",
@@ -1428,14 +1840,32 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “or” (0:04) and “sure” (0:21): the r after a vowel drops, so it can sound like “aw” and “shuah.” Listen to “this” (0:10) and “the” (0:17): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "or",
+    4.8
+   ],
+   [
+    "this",
+    10.9
+   ],
+   [
+    "the",
+    17.8
+   ],
+   [
+    "sure",
+    21.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
   "born": 1947,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "LES_se0_ag4_f_01_2_336",
@@ -1449,14 +1879,32 @@ window.CLIPS = [
   "place": "Lower East Side, Manhattan",
   "lat": 40.715,
   "lng": -73.984,
-  "note": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\"",
+  "note": "African American English in New York City. Listen to “where” (0:02) and “here” (0:14): the r after a vowel drops, so it can sound like “wheah” and “hee-ah.” Listen to “they” (0:05) and “them” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "where",
+    2.5
+   ],
+   [
+    "they",
+    5.1
+   ],
+   [
+    "them",
+    5.5
+   ],
+   [
+    "here",
+    14.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2008,
   "born": 1947,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in New York City. Like many longtime New Yorkers, the speaker drops the r after vowels (\"here,\" \"car\") and raises the \"aw\" in words like \"talk.\""
  },
  {
   "id": "PRV_se0_ag1_f_01_1_840",
@@ -1470,14 +1918,32 @@ window.CLIPS = [
   "place": "Princeville, North Carolina",
   "lat": 35.888,
   "lng": -77.523,
-  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\"",
+  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Listen to “I” (0:01) and “like” (0:01): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “think” (0:01) and “that” (0:02): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.8
+   ],
+   [
+    "think",
+    1.8
+   ],
+   [
+    "like",
+    1.9
+   ],
+   [
+    "that",
+    2.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
   "born": 1985,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "PRV_se0_ag2_m_01_1_2484",
@@ -1491,14 +1957,28 @@ window.CLIPS = [
   "place": "Princeville, North Carolina",
   "lat": 35.888,
   "lng": -77.523,
-  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\"",
+  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Listen to “I” (0:01) and “like” (0:04): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “when” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    1.3
+   ],
+   [
+    "I",
+    1.7
+   ],
+   [
+    "like",
+    4.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
   "born": 1972,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "PRV_se0_ag3_f_01_1_1269",
@@ -1512,14 +1992,32 @@ window.CLIPS = [
   "place": "Princeville, North Carolina",
   "lat": 35.888,
   "lng": -77.523,
-  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\"",
+  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Listen to “I” (0:02) and “right” (0:13): the long i loses its glide, so it can sound like “Ah” and “raht.” Listen to “them” (0:06) and “then” (0:10): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim” and “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    2.9
+   ],
+   [
+    "them",
+    7.0
+   ],
+   [
+    "then",
+    10.7
+   ],
+   [
+    "right",
+    13.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2004,
   "born": 1943,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "PRV_se0_ag3_f_03_1_840",
@@ -1533,14 +2031,32 @@ window.CLIPS = [
   "place": "Princeville, North Carolina",
   "lat": 35.888,
   "lng": -77.523,
-  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\"",
+  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Listen to “my” (0:01) and “I” (0:02): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “when” (0:00) and “went” (0:26): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “wint.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    0.0
+   ],
+   [
+    "my",
+    1.8
+   ],
+   [
+    "I",
+    2.9
+   ],
+   [
+    "went",
+    27.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2003,
   "born": 1934,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "PRV_se0_ag3_f_03_1_2000",
@@ -1554,14 +2070,28 @@ window.CLIPS = [
   "place": "Princeville, North Carolina",
   "lat": 35.888,
   "lng": -77.523,
-  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\"",
+  "note": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Listen to “nice” (0:00): the long i loses its glide, so it can sound like “nahs.” Listen to “that” (0:01) and “mother” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "nice",
+    0.4
+   ],
+   [
+    "that",
+    1.4
+   ],
+   [
+    "mother",
+    4.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2003,
   "born": 1934,
-  "st": "NC"
+  "st": "NC",
+  "note_base": "Founded by freed people after the Civil War, Princeville was the first town in America chartered by Black citizens (1885). Its speech carries eastern North Carolina: the long i flattens, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "H6VO9JpbLss",
@@ -1574,25 +2104,30 @@ window.CLIPS = [
   "place": "Crown Heights, Brooklyn, New York",
   "lat": 40.6694,
   "lng": -73.9422,
-  "note": "Old Brooklyn English. \"All,\" \"walk\" and \"more\" ride the high, gliding \"aw\" (\"aw-uh\"), and the r after a vowel drops.",
+  "note": "Old Brooklyn English. Listen to “all” (0:00) and “walk” (0:05): the “aw” rises and glides, so it can sound like “aw-uhl” and “waw-uhk.” Listen to “where” (0:16) and “more” (0:19): the r after a vowel drops, so it can sound like “wheah” and “moah.”",
   "verified": true,
   "words": [
    [
     "all",
-    0.4
+    0.6
    ],
    [
     "walk",
-    5.5
+    5.7
+   ],
+   [
+    "where",
+    16.3
    ],
    [
     "more",
-    19.0
+    19.2
    ]
   ],
   "year": 2017,
   "born": 1945,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "Old Brooklyn English. \"All,\" \"walk\" and \"more\" ride the high, gliding \"aw\" (\"aw-uh\"), and the r after a vowel drops."
  },
  {
   "id": "Ysc8ua6lw90",
@@ -1605,29 +2140,26 @@ window.CLIPS = [
   "place": "Amory, Mississippi",
   "lat": 33.9843,
   "lng": -88.4881,
-  "note": "Northeast Mississippi English. \"Like\" and \"Friday\" lose their glide (\"lahk,\" \"Frahday\"), and \"then\" and \"went\" rhyme with \"tin\" and \"wint.\"",
+  "note": "Northeast Mississippi English. Listen to “like” (0:02): the long i loses its glide, so it can sound like “lahk.” Listen to “then” (0:04) and “went” (0:07): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “wint.”",
   "verified": true,
   "words": [
    [
     "like",
-    1.6
+    2.4
    ],
    [
     "then",
-    3.3
+    4.1
    ],
    [
     "went",
-    6.5
-   ],
-   [
-    "friday",
-    11.1
+    7.3
    ]
   ],
   "year": 2026,
   "born": 1980,
-  "st": "MS"
+  "st": "MS",
+  "note_base": "Northeast Mississippi English. \"Like\" and \"Friday\" lose their glide (\"lahk,\" \"Frahday\"), and \"then\" and \"went\" rhyme with \"tin\" and \"wint.\""
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2660",
@@ -1641,14 +2173,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “had” (0:00) and “black” (0:00): the short a tenses and rises toward “eh-a.” Listen to “with” (0:00) and “they” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "had",
+    0.0
+   ],
+   [
+    "black",
+    0.2
+   ],
+   [
+    "with",
+    0.9
+   ],
+   [
+    "they",
+    3.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1984,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_02_1_2113",
@@ -1662,14 +2212,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “man” (0:20) and “black” (0:25): the short a tenses and rises toward “eh-a.” Listen to “these” (0:16) and “the” (0:24): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "these",
+    16.8
+   ],
+   [
+    "man",
+    20.0
+   ],
+   [
+    "the",
+    24.1
+   ],
+   [
+    "black",
+    25.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1984,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_02_1_1265",
@@ -1683,14 +2251,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “have” (0:01) and “had” (0:01): the short a tenses and rises toward “eh-a.” Listen to “the” (0:00) and “with” (0:02): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.1
+   ],
+   [
+    "have",
+    1.2
+   ],
+   [
+    "had",
+    1.5
+   ],
+   [
+    "with",
+    2.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1984,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2500",
@@ -1704,14 +2290,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “that” (0:04) and “had” (0:10): the short a tenses and rises toward “eh-a.” Listen to “with” (0:05) and “the” (0:12): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    4.9
+   ],
+   [
+    "with",
+    5.6
+   ],
+   [
+    "had",
+    10.2
+   ],
+   [
+    "the",
+    12.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1977,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2635",
@@ -1725,14 +2329,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “have” (0:04) and “that” (0:18): the short a tenses and rises toward “eh-a.” Listen to “the” (0:06) and “those” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "have",
+    4.7
+   ],
+   [
+    "the",
+    6.8
+   ],
+   [
+    "those",
+    8.0
+   ],
+   [
+    "that",
+    19.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1977,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_03_1_2063",
@@ -1746,14 +2368,24 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “this” (0:09) and “the” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "this",
+    9.5
+   ],
+   [
+    "the",
+    10.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1977,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2460",
@@ -1767,14 +2399,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “that” (0:00) and “grandmother” (0:02): the short a tenses and rises toward “eh-a.” Listen to “think” (0:00) and “the” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "think",
+    0.1
+   ],
+   [
+    "that",
+    0.4
+   ],
+   [
+    "grandmother",
+    2.6
+   ],
+   [
+    "the",
+    10.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1973,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_04_1_686",
@@ -1788,14 +2438,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “half” (0:03) and “have” (0:05): the short a tenses and rises toward “eh-a.” Listen to “the” (0:05) and “that” (0:13): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "half",
+    3.3
+   ],
+   [
+    "have",
+    5.3
+   ],
+   [
+    "the",
+    5.9
+   ],
+   [
+    "that",
+    13.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1973,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag2_f_04_1_2257",
@@ -1809,14 +2477,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “black” (0:06) and “that” (0:08): the short a tenses and rises toward “eh-a.” Listen to “the” (0:04) and “they” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    4.5
+   ],
+   [
+    "black",
+    6.3
+   ],
+   [
+    "that",
+    8.5
+   ],
+   [
+    "they",
+    9.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2016,
   "born": 1973,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_1_3279",
@@ -1830,14 +2516,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “bad” (0:00) and “had” (0:08): the short a tenses and rises toward “eh-a.” Listen to “the” (0:02) and “that” (0:13): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "bad",
+    0.7
+   ],
+   [
+    "the",
+    2.7
+   ],
+   [
+    "had",
+    8.0
+   ],
+   [
+    "that",
+    13.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2438",
@@ -1851,14 +2555,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “have” (0:03) and “back” (0:05): the short a tenses and rises toward “eh-a.” Listen to “the” (0:04) and “with” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "have",
+    3.6
+   ],
+   [
+    "the",
+    4.6
+   ],
+   [
+    "back",
+    5.3
+   ],
+   [
+    "with",
+    10.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_1_2029",
@@ -1872,14 +2594,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “man” (0:03) and “had” (0:03): the short a tenses and rises toward “eh-a.” Listen to “the” (0:02) and “those” (0:07): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    2.7
+   ],
+   [
+    "man",
+    3.0
+   ],
+   [
+    "had",
+    3.3
+   ],
+   [
+    "those",
+    7.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_2_198",
@@ -1893,14 +2633,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “back” (0:03) and “that” (0:05): the short a tenses and rises toward “eh-a.” Listen to “think” (0:01) and “the” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "think",
+    1.6
+   ],
+   [
+    "back",
+    3.8
+   ],
+   [
+    "that",
+    5.9
+   ],
+   [
+    "the",
+    8.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_2_168",
@@ -1914,14 +2672,28 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “have” (0:17): the short a tenses and rises toward “eh-a.” Listen to “with” (0:07) and “those” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "with",
+    7.7
+   ],
+   [
+    "those",
+    10.0
+   ],
+   [
+    "have",
+    17.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_3_1368",
@@ -1935,14 +2707,28 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “that” (0:02): the short a tenses and rises toward “eh-a.” Listen to “they” (0:04) and “the” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    2.0
+   ],
+   [
+    "they",
+    4.0
+   ],
+   [
+    "the",
+    9.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_3_71",
@@ -1956,14 +2742,32 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “that” (0:07) and “had” (0:11): the short a tenses and rises toward “eh-a.” Listen to “the” (0:03) and “this” (0:25): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    3.3
+   ],
+   [
+    "that",
+    7.0
+   ],
+   [
+    "had",
+    11.4
+   ],
+   [
+    "this",
+    25.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "ROC_se0_ag3_f_02_3_2009",
@@ -1977,14 +2781,24 @@ window.CLIPS = [
   "place": "Rochester, New York",
   "lat": 43.157,
   "lng": -77.615,
-  "note": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\"",
+  "note": "African American English in upstate New York. Listen to “with” (0:00) and “mother” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "with",
+    0.8
+   ],
+   [
+    "mother",
+    1.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1937,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "African American English in upstate New York. Many Rochester families came north in the Great Migration, so Southern rhythms meet Great Lakes vowels, like the short a in \"that\" rising toward \"eh-a.\""
  },
  {
   "id": "VLD_se0_ag2_f_01_1_1289",
@@ -1998,14 +2812,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “right” (0:00) and “I” (0:03): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “when” (0:14) and “remember” (0:29): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "right",
+    0.5
+   ],
+   [
+    "I",
+    3.5
+   ],
+   [
+    "when",
+    14.6
+   ],
+   [
+    "remember",
+    29.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1990,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag2_f_01_1_578",
@@ -2019,14 +2851,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “like” (0:02) and “side” (0:04): the long i loses its glide, so it can sound like “lahk” and “sahd.” Listen to “when” (0:00) and “then” (0:27): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    0.9
+   ],
+   [
+    "like",
+    2.4
+   ],
+   [
+    "side",
+    4.3
+   ],
+   [
+    "then",
+    27.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1990,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag2_f_01_1_801",
@@ -2040,14 +2890,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “time” (0:03) and “kind” (0:07): the long i loses its glide, so it can sound like “tahm” and “kahnd.” Listen to “friends” (0:00) and “friend” (0:04): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frinds” and “frind.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "friends",
+    0.6
+   ],
+   [
+    "time",
+    3.3
+   ],
+   [
+    "friend",
+    4.4
+   ],
+   [
+    "kind",
+    7.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1990,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2844",
@@ -2061,14 +2929,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “like” (0:12) and “I'm” (0:19): the long i loses its glide, so it can sound like “lahk” and “Ahm.” Listen to “then” (0:02) and “them” (0:10): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin” and “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "then",
+    2.8
+   ],
+   [
+    "them",
+    10.1
+   ],
+   [
+    "like",
+    12.3
+   ],
+   [
+    "I'm",
+    19.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1997,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag2_m_01_1_2478",
@@ -2082,14 +2968,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:05) and “time” (0:05): the long i loses its glide, so it can sound like “mah” and “tahm.” Listen to “them” (0:12) and “then” (0:13): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim” and “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    5.0
+   ],
+   [
+    "time",
+    5.5
+   ],
+   [
+    "them",
+    12.9
+   ],
+   [
+    "then",
+    13.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1997,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag2_m_01_1_3161",
@@ -2103,14 +3007,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “time” (0:02): the long i loses its glide, so it can sound like “Ah” and “tahm.” Listen to “them” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.1
+   ],
+   [
+    "time",
+    2.7
+   ],
+   [
+    "them",
+    3.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1997,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2671",
@@ -2124,14 +3042,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “like” (0:03) and “I” (0:16): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “thing” (0:00) and “the” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "thing",
+    0.4
+   ],
+   [
+    "like",
+    3.8
+   ],
+   [
+    "the",
+    4.7
+   ],
+   [
+    "I",
+    16.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1969,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_01_1_2419",
@@ -2145,14 +3081,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:01) and “my” (0:04): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “remember” (0:02): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.8
+   ],
+   [
+    "remember",
+    2.2
+   ],
+   [
+    "my",
+    4.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1969,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_01_1_1957",
@@ -2166,14 +3116,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “time” (0:02): the long i loses its glide, so it can sound like “Ah” and “tahm.” Listen to “them” (0:10): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.9
+   ],
+   [
+    "time",
+    2.9
+   ],
+   [
+    "them",
+    10.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1969,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_01_2_52",
@@ -2187,14 +3151,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “right” (0:03) and “kind” (0:05): the long i loses its glide, so it can sound like “raht” and “kahnd.” Listen to “when” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    1.7
+   ],
+   [
+    "right",
+    3.7
+   ],
+   [
+    "kind",
+    5.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1969,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_02_1_2302",
@@ -2208,14 +3186,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:02) and “kind” (0:10): the long i loses its glide, so it can sound like “Ah” and “kahnd.” Listen to “that” (0:04) and “the” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    2.9
+   ],
+   [
+    "that",
+    4.8
+   ],
+   [
+    "the",
+    9.6
+   ],
+   [
+    "kind",
+    10.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1983,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1604",
@@ -2229,14 +3225,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:00) and “I” (0:05): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “friends” (0:10) and “remember” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frinds” and “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.1
+   ],
+   [
+    "I",
+    5.2
+   ],
+   [
+    "friends",
+    10.2
+   ],
+   [
+    "remember",
+    16.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1983,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_f_02_1_1671",
@@ -2250,14 +3264,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:04) and “I” (0:05): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “that” (0:02) and “think” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    2.5
+   ],
+   [
+    "my",
+    4.1
+   ],
+   [
+    "I",
+    5.9
+   ],
+   [
+    "think",
+    6.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1983,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_02_1_2553",
@@ -2271,14 +3303,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I'm” (0:05) and “I” (0:08): the long i loses its glide, so it can sound like “Ahm” and “Ah.” Listen to “went” (0:12): e before n or m becomes “i” (the pin–pen merger), so it can sound like “wint.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I'm",
+    5.5
+   ],
+   [
+    "I",
+    8.3
+   ],
+   [
+    "went",
+    12.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1982,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_02_1_797",
@@ -2292,14 +3338,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:03) and “times” (0:07): the long i loses its glide, so it can sound like “Ah” and “tahms.” Listen to “remember” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    3.4
+   ],
+   [
+    "remember",
+    3.7
+   ],
+   [
+    "times",
+    7.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1982,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_02_1_747",
@@ -2313,14 +3373,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:18): the long i loses its glide, so it can sound like “Ah.” Listen to “the” (0:01) and “that” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    1.4
+   ],
+   [
+    "that",
+    5.7
+   ],
+   [
+    "I",
+    18.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1982,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_03_1_503",
@@ -2334,14 +3408,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:00) and “I” (0:01): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “the” (0:13) and “other” (0:27): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.4
+   ],
+   [
+    "I",
+    1.2
+   ],
+   [
+    "the",
+    13.5
+   ],
+   [
+    "other",
+    27.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1986,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_03_1_2121",
@@ -2355,14 +3447,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “time” (0:06): the long i loses its glide, so it can sound like “Ah” and “tahm.” Listen to “then” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.1
+   ],
+   [
+    "then",
+    3.9
+   ],
+   [
+    "time",
+    6.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1986,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag3_m_03_1_1832",
@@ -2376,14 +3482,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:02) and “like” (0:06): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “they” (0:04) and “that” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    3.0
+   ],
+   [
+    "they",
+    4.9
+   ],
+   [
+    "like",
+    6.1
+   ],
+   [
+    "that",
+    8.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2018,
   "born": 1986,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_01_1_1034",
@@ -2397,14 +3521,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:01) and “side” (0:04): the long i loses its glide, so it can sound like “Ah” and “sahd.” Listen to “when” (0:07) and “then” (0:10): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.7
+   ],
+   [
+    "side",
+    4.6
+   ],
+   [
+    "when",
+    8.0
+   ],
+   [
+    "then",
+    11.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1959,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2094",
@@ -2418,14 +3560,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:05) and “like” (0:17): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “remember” (0:13): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    5.7
+   ],
+   [
+    "remember",
+    13.0
+   ],
+   [
+    "like",
+    17.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1959,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_01_1_2398",
@@ -2439,14 +3595,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:00) and “I” (0:01): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “remember” (0:01): e before n or m becomes “i” (the pin–pen merger), so it can sound like “rememb-er (with an “i”).”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.1
+   ],
+   [
+    "I",
+    1.4
+   ],
+   [
+    "remember",
+    1.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2017,
   "born": 1959,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1284",
@@ -2460,14 +3630,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:07) and “I'm” (0:08): the long i loses its glide, so it can sound like “Ah” and “Ahm.” Listen to “went” (0:14) and “when” (0:15): e before n or m becomes “i” (the pin–pen merger), so it can sound like “wint” and “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    7.2
+   ],
+   [
+    "I'm",
+    8.3
+   ],
+   [
+    "went",
+    14.4
+   ],
+   [
+    "when",
+    15.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1936,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_02_1_2634",
@@ -2481,14 +3669,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00): the long i loses its glide, so it can sound like “Ah.” Listen to “again” (0:06) and “went” (0:18): e before n or m becomes “i” (the pin–pen merger), so it can sound like “agin” and “wint.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.0
+   ],
+   [
+    "again",
+    6.7
+   ],
+   [
+    "went",
+    18.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1936,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_f_02_1_1909",
@@ -2502,14 +3704,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “like” (0:10): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “them” (0:03): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.1
+   ],
+   [
+    "them",
+    3.1
+   ],
+   [
+    "like",
+    10.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1936,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_01_1_982",
@@ -2523,14 +3739,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “like” (0:11): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “then” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.8
+   ],
+   [
+    "like",
+    11.4
+   ],
+   [
+    "then",
+    16.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1957,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_01_1_867",
@@ -2544,14 +3774,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “my” (0:02) and “I” (0:07): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “when” (0:04) and “ten” (0:06): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “tin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    2.4
+   ],
+   [
+    "when",
+    4.6
+   ],
+   [
+    "ten",
+    6.6
+   ],
+   [
+    "I",
+    7.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1957,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_01_1_1869",
@@ -2565,14 +3813,24 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:01): the long i loses its glide, so it can sound like “Ah.” Listen to “when” (0:17): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.7
+   ],
+   [
+    "when",
+    17.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1957,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_02_1_2042",
@@ -2586,14 +3844,32 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “side” (0:01) and “I'm” (0:12): the long i loses its glide, so it can sound like “sahd” and “Ahm.” Listen to “when” (0:16) and “went” (0:25): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “wint.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "side",
+    1.4
+   ],
+   [
+    "I'm",
+    12.9
+   ],
+   [
+    "when",
+    16.6
+   ],
+   [
+    "went",
+    25.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1961,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1804",
@@ -2607,14 +3883,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “I” (0:00) and “my” (0:25): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “when” (0:00): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    0.2
+   ],
+   [
+    "I",
+    0.4
+   ],
+   [
+    "my",
+    25.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1961,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "VLD_se0_ag4_m_02_1_1873",
@@ -2628,14 +3918,28 @@ window.CLIPS = [
   "place": "Valdosta, Georgia",
   "lat": 30.833,
   "lng": -83.278,
-  "note": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops.",
+  "note": "African American English in south Georgia. Listen to “time” (0:13) and “I” (0:16): the long i loses its glide, so it can sound like “tahm” and “Ah.” Listen to “when” (0:10): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "when",
+    10.7
+   ],
+   [
+    "time",
+    13.3
+   ],
+   [
+    "I",
+    16.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 2019,
   "born": 1961,
-  "st": "GA"
+  "st": "GA",
+  "note_base": "African American English in south Georgia. The long i flattens (\"I,\" \"time\" become \"Ah,\" \"tahm\"), \"pen\" sounds like \"pin,\" and the r after a vowel often drops."
  },
  {
   "id": "DCA_se1_ag1_m_04_1_715",
@@ -2649,14 +3953,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “side” (0:15) and “time” (0:23): the long i loses its glide, so it can sound like “sahd” and “tahm.” Listen to “the” (0:00) and “that” (0:15): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.7
+   ],
+   [
+    "that",
+    15.1
+   ],
+   [
+    "side",
+    15.6
+   ],
+   [
+    "time",
+    23.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se1_ag1_m_04_1_1615",
@@ -2670,14 +3992,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:06): the long i loses its glide, so it can sound like “Ah.” Listen to “this” (0:01) and “three” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "this",
+    1.9
+   ],
+   [
+    "three",
+    5.4
+   ],
+   [
+    "I",
+    6.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se1_ag1_m_05_1_706",
@@ -2691,14 +4027,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:08): the long i loses its glide, so it can sound like “lahk.” Listen to “the” (0:01) and “them” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    2.0
+   ],
+   [
+    "them",
+    4.0
+   ],
+   [
+    "like",
+    8.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se1_ag1_m_05_1_227",
@@ -2712,14 +4062,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:14): the long i loses its glide, so it can sound like “tahm.” Listen to “the” (0:00) and “that” (0:11): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.1
+   ],
+   [
+    "that",
+    11.9
+   ],
+   [
+    "time",
+    14.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se1_ag1_m_06_1_61",
@@ -2733,14 +4097,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “while” (0:05) and “try” (0:10): the long i loses its glide, so it can sound like “whahl” and “trah.” Listen to “the” (0:05) and “other” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "while",
+    5.5
+   ],
+   [
+    "the",
+    5.8
+   ],
+   [
+    "other",
+    6.0
+   ],
+   [
+    "try",
+    10.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1955,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_01_1_456",
@@ -2754,14 +4136,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:24): the long i loses its glide, so it can sound like “lahk.” Listen to “this” (0:01) and “they” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "this",
+    1.3
+   ],
+   [
+    "they",
+    4.0
+   ],
+   [
+    "like",
+    24.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1958,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_01_1_154",
@@ -2775,14 +4171,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:13): the long i loses its glide, so it can sound like “tahm.” Listen to “that” (0:03) and “with” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    3.8
+   ],
+   [
+    "with",
+    5.8
+   ],
+   [
+    "time",
+    13.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1958,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_02_1_368",
@@ -2796,14 +4206,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:03) and “my” (0:16): the long i loses its glide, so it can sound like “tahm” and “mah.” Listen to “this” (0:04) and “the” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "time",
+    3.3
+   ],
+   [
+    "this",
+    4.4
+   ],
+   [
+    "the",
+    5.1
+   ],
+   [
+    "my",
+    16.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1957,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_02_1_277",
@@ -2817,14 +4245,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “with” (0:00) and “them” (0:11): “th” can soften toward “d,” “t” or “f.” Listen to “here” (0:13) and “other” (0:21): the r after a vowel drops, so it can sound like “hee-ah” and “othah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "with",
+    0.7
+   ],
+   [
+    "them",
+    11.4
+   ],
+   [
+    "here",
+    13.6
+   ],
+   [
+    "other",
+    21.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1957,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_02_1_1516",
@@ -2838,14 +4284,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “my” (0:02): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “with” (0:01) and “the” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.4
+   ],
+   [
+    "with",
+    1.7
+   ],
+   [
+    "my",
+    2.1
+   ],
+   [
+    "the",
+    10.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1957,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_04_1_403",
@@ -2859,14 +4323,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:11) and “I'm” (0:19): the long i loses its glide, so it can sound like “lahk” and “Ahm.” Listen to “the” (0:00) and “with” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.4
+   ],
+   [
+    "with",
+    8.3
+   ],
+   [
+    "like",
+    11.6
+   ],
+   [
+    "I'm",
+    19.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_04_1_1195",
@@ -2880,14 +4362,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:14) and “my” (0:17): the long i loses its glide, so it can sound like “lahk” and “mah.” Listen to “mother” (0:00) and “the” (0:07): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "mother",
+    0.0
+   ],
+   [
+    "the",
+    7.5
+   ],
+   [
+    "like",
+    14.7
+   ],
+   [
+    "my",
+    18.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1956,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_05_1_704",
@@ -2901,14 +4401,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:19): the long i loses its glide, so it can sound like “Ah.” Listen to “the” (0:02) and “they” (0:02): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    2.3
+   ],
+   [
+    "they",
+    2.7
+   ],
+   [
+    "I",
+    19.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1954,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_f_07_1_70",
@@ -2922,14 +4436,15 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC.",
   "verified": true,
   "words": [],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1951,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_01_1_940",
@@ -2943,14 +4458,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:02) and “my” (0:05): the long i loses its glide, so it can sound like “tahm” and “mah.” Listen to “this” (0:00) and “that” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "this",
+    0.3
+   ],
+   [
+    "that",
+    1.3
+   ],
+   [
+    "time",
+    3.0
+   ],
+   [
+    "my",
+    5.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_01_1_472",
@@ -2964,14 +4497,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “wife” (0:20) and “five” (0:25): the long i loses its glide, so it can sound like “wahf” and “fahv.” Listen to “they” (0:00) and “the” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    0.4
+   ],
+   [
+    "the",
+    8.2
+   ],
+   [
+    "wife",
+    20.1
+   ],
+   [
+    "five",
+    25.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_01_1_1741",
@@ -2985,14 +4536,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:07): the long i loses its glide, so it can sound like “Ah.” Listen to “that” (0:00) and “them” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    0.3
+   ],
+   [
+    "them",
+    1.3
+   ],
+   [
+    "I",
+    7.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_02_1_2269",
@@ -3006,14 +4571,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:01) and “I” (0:01): the long i loses its glide, so it can sound like “tahm” and “Ah.” Listen to “other” (0:00) and “the” (0:08): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "other",
+    0.7
+   ],
+   [
+    "time",
+    1.2
+   ],
+   [
+    "I",
+    1.9
+   ],
+   [
+    "the",
+    8.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1897",
@@ -3027,14 +4610,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:00) and “five” (0:13): the long i loses its glide, so it can sound like “tahm” and “fahv.” Listen to “that” (0:02) and “the” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "time",
+    0.1
+   ],
+   [
+    "that",
+    2.4
+   ],
+   [
+    "the",
+    5.5
+   ],
+   [
+    "five",
+    13.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_02_1_1786",
@@ -3048,14 +4649,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “right” (0:01) and “I” (0:05): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “they” (0:00) and “them” (0:00): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    0.0
+   ],
+   [
+    "them",
+    0.5
+   ],
+   [
+    "right",
+    1.8
+   ],
+   [
+    "I",
+    5.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1952,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_03_1_774",
@@ -3069,14 +4688,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:01) and “I” (0:02): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “this” (0:03) and “the” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    1.9
+   ],
+   [
+    "I",
+    2.2
+   ],
+   [
+    "this",
+    3.1
+   ],
+   [
+    "the",
+    3.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1951,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_03_1_1490",
@@ -3090,14 +4727,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:00) and “I” (0:01): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “the” (0:03) and “they” (0:11): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.1
+   ],
+   [
+    "I",
+    1.0
+   ],
+   [
+    "the",
+    3.5
+   ],
+   [
+    "they",
+    11.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1969,
   "born": 1951,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se2_ag1_m_04_1_670",
@@ -3111,14 +4766,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “mine” (0:04): the long i loses its glide, so it can sound like “Ah” and “mahn.” Listen to “think” (0:00) and “that” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.1
+   ],
+   [
+    "think",
+    0.5
+   ],
+   [
+    "that",
+    1.3
+   ],
+   [
+    "mine",
+    4.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1950,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag1_f_01_1_612",
@@ -3132,14 +4805,32 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “them” (0:00) and “they” (0:02): “th” can soften toward “d,” “t” or “f.” Listen to “there” (0:00) and “over” (0:18): the r after a vowel drops, so it can sound like “theah” and “ovah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "them",
+    0.3
+   ],
+   [
+    "there",
+    0.7
+   ],
+   [
+    "they",
+    2.9
+   ],
+   [
+    "over",
+    18.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1958,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag1_f_02_1_51",
@@ -3153,14 +4844,28 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:19): the long i loses its glide, so it can sound like “Ah.” Listen to “the” (0:01) and “they” (0:16): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    1.9
+   ],
+   [
+    "they",
+    16.1
+   ],
+   [
+    "I",
+    19.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
   "year": 1968,
   "born": 1957,
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english170",
@@ -8625,11 +10330,21 @@ window.CLIPS = [
   "place": "Sterling, North Dakota",
   "lat": 46.817,
   "lng": -100.288,
-  "note": "North Dakota English. Long \"o\" and \"a\" stay round and pure, an echo of the Norwegian and German settlers.",
+  "note": "North Dakota English. Listen to “home” (0:03): the long o stays a pure, round “oh,” with no glide. Listen to “dad” (0:04): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "home",
+    3.4
+   ],
+   [
+    "dad",
+    4.0
+   ]
+  ],
   "year": 2025,
-  "st": "ND"
+  "st": "ND",
+  "note_base": "North Dakota English. Long \"o\" and \"a\" stay round and pure, an echo of the Norwegian and German settlers."
  },
  {
   "id": "tHfGI2k_H7M",
@@ -8642,11 +10357,21 @@ window.CLIPS = [
   "place": "Upper Peninsula, Michigan",
   "lat": 46.54,
   "lng": -87.4,
-  "note": "Yooper English, shaped by Finnish settlers. Long vowels stay pure, and \"th\" can soften toward \"d.\"",
+  "note": "Yooper English, shaped by Finnish settlers. Listen to “not” (0:12) and “lot” (0:19): the short o slides forward toward “a”, so it can sound like “nat” and “lat.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "not",
+    12.0
+   ],
+   [
+    "lot",
+    19.4
+   ]
+  ],
   "year": 2020,
-  "st": "MI"
+  "st": "MI",
+  "note_base": "Yooper English, shaped by Finnish settlers. Long vowels stay pure, and \"th\" can soften toward \"d.\""
  },
  {
   "id": "4sxuhdCVm-s",
@@ -8659,11 +10384,12 @@ window.CLIPS = [
   "place": "Rural Oklahoma",
   "lat": 35.47,
   "lng": -97.52,
-  "note": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite.",
+  "note": "Oklahoma English, where South meets West.",
   "verified": true,
   "words": [],
   "year": 2017,
-  "st": "OK"
+  "st": "OK",
+  "note_base": "Oklahoma English, where South meets West. \"I\" flattens toward \"Ah,\" and you can hear \"little bitty,\" a Southern Plains favorite."
  },
  {
   "id": "FgPgMDbXKxg",
@@ -8676,12 +10402,18 @@ window.CLIPS = [
   "place": "Cleveland Heights, Ohio",
   "lat": 41.52,
   "lng": -81.556,
-  "note": "Cleveland English, still there after decades in Washington. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\"",
+  "note": "Cleveland English, still there after decades in Washington. Listen to “have” (0:13): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "have",
+    13.2
+   ]
+  ],
   "year": 2013,
   "born": 1952,
-  "st": "OH"
+  "st": "OH",
+  "note_base": "Cleveland English, still there after decades in Washington. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\""
  },
  {
   "id": "english74",
@@ -8849,12 +10581,30 @@ window.CLIPS = [
   "place": "Virginia, Minnesota",
   "lat": 47.523,
   "lng": -92.536,
-  "note": "Iron Range English. Long \"o\" and \"a\" stay pure and round (\"go,\" \"day\"), with the Range's clipped, plainspoken rhythm.",
+  "note": "Iron Range English. Listen to “go” (0:11) and “so” (0:16): the long o stays a pure, round “oh,” with no glide. Listen to “have” (0:10) and “had” (0:13): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "have",
+    10.6
+   ],
+   [
+    "go",
+    11.8
+   ],
+   [
+    "had",
+    13.0
+   ],
+   [
+    "so",
+    16.4
+   ]
+  ],
   "year": 2012,
   "born": 1950,
-  "st": "MN"
+  "st": "MN",
+  "note_base": "Iron Range English. Long \"o\" and \"a\" stay pure and round (\"go,\" \"day\"), with the Range's clipped, plainspoken rhythm."
  },
  {
   "id": "A1PuFHUjFSc",
@@ -8867,11 +10617,17 @@ window.CLIPS = [
   "place": "Mississippi Delta",
   "lat": 33.749,
   "lng": -90.708,
-  "note": "Mississippi Delta English. The long i loses its glide, and \"pen\" sounds like \"pin.\"",
+  "note": "Mississippi Delta English. Listen to “try” (0:00): the long i loses its glide, so it can sound like “trah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "try",
+    0.7
+   ]
+  ],
   "year": 2023,
-  "st": "MS"
+  "st": "MS",
+  "note_base": "Mississippi Delta English. The long i loses its glide, and \"pen\" sounds like \"pin.\""
  },
  {
   "id": "cbVPqxE0NJk",
@@ -8884,11 +10640,25 @@ window.CLIPS = [
   "place": "Sarasota County, Florida",
   "lat": 27.24,
   "lng": -82.31,
-  "note": "Old Florida English, Southern at its core: listen for the drawled vowels and the flat long i.",
+  "note": "Old Florida English, Southern at its core. Listen to “try” (0:14) and “why” (0:17): the long i loses its glide, so it can sound like “trah” and “whah.” Listen to “then” (0:04): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "then",
+    4.9
+   ],
+   [
+    "try",
+    14.2
+   ],
+   [
+    "why",
+    17.8
+   ]
+  ],
   "year": 2011,
-  "st": "FL"
+  "st": "FL",
+  "note_base": "Old Florida English, Southern at its core: listen for the drawled vowels and the flat long i."
  },
  {
   "id": "english186",
@@ -9219,11 +10989,12 @@ window.CLIPS = [
   "place": "Texas Hill Country",
   "lat": 30.27,
   "lng": -98.87,
-  "note": "Central Texas English. The long i flattens (\"Ah,\" \"rahd\"), and short vowels can stretch into two.",
+  "note": "Central Texas English.",
   "verified": true,
   "words": [],
   "year": 2019,
-  "st": "TX"
+  "st": "TX",
+  "note_base": "Central Texas English. The long i flattens (\"Ah,\" \"rahd\"), and short vowels can stretch into two."
  },
  {
   "id": "english497",
@@ -9391,11 +11162,25 @@ window.CLIPS = [
   "place": "Rural North Dakota",
   "lat": 47.55,
   "lng": -99.78,
-  "note": "North Dakota English. Listen for the pure, unglided \"o\" and \"a,\" the Upper Midwest sound.",
+  "note": "North Dakota English. Listen to “so” (0:02): the long o stays a pure, round “oh,” with no glide. Listen to “have” (0:03) and “had” (0:03): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "so",
+    2.2
+   ],
+   [
+    "have",
+    3.1
+   ],
+   [
+    "had",
+    3.3
+   ]
+  ],
   "year": 2026,
-  "st": "ND"
+  "st": "ND",
+  "note_base": "North Dakota English. Listen for the pure, unglided \"o\" and \"a,\" the Upper Midwest sound."
  },
  {
   "id": "eNnSxCBWfvg",
@@ -9408,11 +11193,17 @@ window.CLIPS = [
   "place": "Oregon timber country",
   "lat": 43.8,
   "lng": -123.0,
-  "note": "Pacific Northwest English. \"Cot\" and \"caught\" sound the same, and the short a before \"g\" can rise toward \"ay.\"",
+  "note": "Pacific Northwest English. Listen to “all” (0:01): it uses the same vowel as “cot” (the cot–caught merger of the West).",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "all",
+    1.7
+   ]
+  ],
   "year": 2022,
-  "st": "OR"
+  "st": "OR",
+  "note_base": "Pacific Northwest English. \"Cot\" and \"caught\" sound the same, and the short a before \"g\" can rise toward \"ay.\""
  },
  {
   "id": "5ZIN3CKUB58",
@@ -9425,11 +11216,12 @@ window.CLIPS = [
   "place": "Grafton, Wisconsin",
   "lat": 43.32,
   "lng": -87.953,
-  "note": "Wisconsin English. Long \"o\" stays round (\"so,\" \"know\"), and the short a tightens before \"g\" and \"n.\"",
+  "note": "Wisconsin English.",
   "verified": true,
   "words": [],
   "year": 2018,
-  "st": "WI"
+  "st": "WI",
+  "note_base": "Wisconsin English. Long \"o\" stays round (\"so,\" \"know\"), and the short a tightens before \"g\" and \"n.\""
  },
  {
   "id": "KBtpv8igEZY",
@@ -9442,12 +11234,22 @@ window.CLIPS = [
   "place": "Niagara Falls, New York",
   "lat": 43.094,
   "lng": -79.057,
-  "note": "Western New York English. The short a in words like \"that\" rises toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\"",
+  "note": "Western New York English. Listen to “have” (0:03) and “that” (0:04): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "have",
+    3.2
+   ],
+   [
+    "that",
+    4.4
+   ]
+  ],
   "year": 2011,
   "born": 1954,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "Western New York English. The short a in words like \"that\" rises toward \"eh-a,\" and \"o\" words slide forward toward \"ah.\""
  },
  {
   "id": "english441",
@@ -9513,12 +11315,18 @@ window.CLIPS = [
   "place": "Cleveland Heights, Ohio",
   "lat": 41.52,
   "lng": -81.556,
-  "note": "Cleveland English. Listen for the tense, nasal short a and the fronted \"ah\" in \"o\" words, the Great Lakes vowel shift.",
+  "note": "Cleveland English. Listen to “that” (0:03): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    3.8
+   ]
+  ],
   "year": 2012,
   "born": 1952,
-  "st": "OH"
+  "st": "OH",
+  "note_base": "Cleveland English. Listen for the tense, nasal short a and the fronted \"ah\" in \"o\" words, the Great Lakes vowel shift."
  },
  {
   "id": "english512",
@@ -10057,21 +11865,18 @@ window.CLIPS = [
   "place": "Brockton, Massachusetts",
   "lat": 42.083,
   "lng": -71.018,
-  "note": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens.",
+  "note": "South Shore Massachusetts English. Listen to “here” (0:18): the r after a vowel drops, so it can sound like “hee-ah.”",
   "verified": true,
   "words": [
    [
     "here",
     18.1
-   ],
-   [
-    "area",
-    19.7
    ]
   ],
   "year": 2009,
   "born": 1949,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens."
  },
  {
   "id": "55Ldrm3RTIM",
@@ -10084,11 +11889,17 @@ window.CLIPS = [
   "place": "Texas Hill Country",
   "lat": 30.27,
   "lng": -98.87,
-  "note": "Central Texas English. Listen for the flat long i and the drawled short vowels.",
+  "note": "Central Texas English. Listen to “time” (0:07): the long i loses its glide, so it can sound like “tahm.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "time",
+    7.4
+   ]
+  ],
   "year": 2019,
-  "st": "TX"
+  "st": "TX",
+  "note_base": "Central Texas English. Listen for the flat long i and the drawled short vowels."
  },
  {
   "id": "english21",
@@ -10260,11 +12071,29 @@ window.CLIPS = [
   "place": "Rural North Dakota",
   "lat": 47.55,
   "lng": -99.78,
-  "note": "North Dakota English. The long vowels stay round and pure, and the rhythm is flat and even.",
+  "note": "North Dakota English. Listen to “so” (0:08) and “know” (0:09): the long o stays a pure, round “oh,” with no glide. Listen to “that” (0:00) and “can” (0:15): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    0.8
+   ],
+   [
+    "so",
+    8.6
+   ],
+   [
+    "know",
+    9.0
+   ],
+   [
+    "can",
+    15.6
+   ]
+  ],
   "year": 2026,
-  "st": "ND"
+  "st": "ND",
+  "note_base": "North Dakota English. The long vowels stay round and pure, and the rhythm is flat and even."
  },
  {
   "id": "6Whhg-OCnU0",
@@ -10277,12 +12106,30 @@ window.CLIPS = [
   "place": "Menomonee Falls, Wisconsin",
   "lat": 43.178,
   "lng": -88.117,
-  "note": "Milwaukee-area English. The long o stays round and pure, and the short a tightens toward \"eh-a.\"",
+  "note": "Milwaukee-area English. Listen to “no” (0:06) and “know” (0:08): the long o stays a pure, round “oh,” with no glide. Listen to “that” (0:06) and “man” (0:09): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    6.2
+   ],
+   [
+    "no",
+    6.7
+   ],
+   [
+    "know",
+    8.6
+   ],
+   [
+    "man",
+    9.8
+   ]
+  ],
   "year": 2022,
   "born": 1966,
-  "st": "WI"
+  "st": "WI",
+  "note_base": "Milwaukee-area English. The long o stays round and pure, and the short a tightens toward \"eh-a.\""
  },
  {
   "id": "english165",
@@ -10401,33 +12248,26 @@ window.CLIPS = [
   "place": "Overbrook, West Philadelphia",
   "lat": 39.98,
   "lng": -75.24,
-  "note": "Philadelphia English. The long o fronts toward \"eh-oo,\" and \"out\" starts high and forward.",
+  "note": "Philadelphia English. Listen to “so” (0:10) and “going” (0:10): the long o starts forward, close to “eh-oo”, so it can sound like “seh-oo” and “geh-oo-ing.” Listen to “always” (0:23): the “aw” rises and glides, so it can sound like “aw-uhlways.”",
   "verified": true,
   "words": [
    [
-    "now",
-    0.5
-   ],
-   [
-    "out",
-    2.3
-   ],
-   [
-    "our",
-    5.1
-   ],
-   [
-    "last",
-    8.2
-   ],
-   [
     "so",
-    9.7
+    10.2
+   ],
+   [
+    "going",
+    10.8
+   ],
+   [
+    "always",
+    23.5
    ]
   ],
   "year": 2026,
   "born": 1945,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "Philadelphia English. The long o fronts toward \"eh-oo,\" and \"out\" starts high and forward."
  },
  {
   "id": "english330",
@@ -10757,12 +12597,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:03) and “I” (0:03): the long i loses its glide, so it can sound like “tahm” and “Ah.” Listen to “the” (0:00) and “three” (0:28): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.4
+   ],
+   [
+    "time",
+    3.6
+   ],
+   [
+    "I",
+    3.8
+   ],
+   [
+    "three",
+    28.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_m_01_1_410",
@@ -10778,12 +12636,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:05): the long i loses its glide, so it can sound like “tahm.” Listen to “the” (0:03) and “that” (0:19): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    3.9
+   ],
+   [
+    "time",
+    6.0
+   ],
+   [
+    "that",
+    19.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english254",
@@ -10902,11 +12774,21 @@ window.CLIPS = [
   "place": "Grafton, Wisconsin",
   "lat": 43.32,
   "lng": -87.953,
-  "note": "Wisconsin English. Long \"o\" stays round, and the short a tightens toward \"eh-a.\"",
+  "note": "Wisconsin English. Listen to “so” (0:00): the long o stays a pure, round “oh,” with no glide. Listen to “that” (0:05): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "so",
+    0.3
+   ],
+   [
+    "that",
+    6.0
+   ]
+  ],
   "year": 2016,
-  "st": "WI"
+  "st": "WI",
+  "note_base": "Wisconsin English. Long \"o\" stays round, and the short a tightens toward \"eh-a.\""
  },
  {
   "id": "ZFuL8-9npNs",
@@ -10919,12 +12801,18 @@ window.CLIPS = [
   "place": "Niagara Falls, New York",
   "lat": 43.094,
   "lng": -79.057,
-  "note": "Western New York English, from the heart of the Northern Cities Vowel Shift: listen to the tense short a.",
+  "note": "Western New York English, from the heart of the Northern Cities Vowel Shift. Listen to “that” (0:09): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    9.3
+   ]
+  ],
   "year": 2015,
   "born": 1954,
-  "st": "NY"
+  "st": "NY",
+  "note_base": "Western New York English, from the heart of the Northern Cities Vowel Shift: listen to the tense short a."
  },
  {
   "id": "english173",
@@ -11202,7 +13090,7 @@ window.CLIPS = [
   "place": "Brockton, Massachusetts",
   "lat": 42.083,
   "lng": -71.018,
-  "note": "South Shore Massachusetts English. Listen for the missing r in words like \"for,\" \"here\" and \"never.\"",
+  "note": "South Shore Massachusetts English.",
   "verified": true,
   "words": [
    [
@@ -11212,7 +13100,8 @@ window.CLIPS = [
   ],
   "year": 2009,
   "born": 1949,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "South Shore Massachusetts English. Listen for the missing r in words like \"for,\" \"here\" and \"never.\""
  },
  {
   "id": "DCB_se1_ag1_f_01_1_1687",
@@ -11228,12 +13117,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “why” (0:04) and “I” (0:04): the long i loses its glide, so it can sound like “whah” and “Ah.” Listen to “the” (0:05) and “this” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "why",
+    4.3
+   ],
+   [
+    "I",
+    4.5
+   ],
+   [
+    "the",
+    5.4
+   ],
+   [
+    "this",
+    6.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag1_f_01_1_1164",
@@ -11249,12 +13156,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:03) and “times” (0:06): the long i loses its glide, so it can sound like “lahk” and “tahms.” Listen to “the” (0:04) and “other” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    3.7
+   ],
+   [
+    "the",
+    4.6
+   ],
+   [
+    "other",
+    5.9
+   ],
+   [
+    "times",
+    6.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3866",
@@ -11270,12 +13195,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:02) and “I” (0:20): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “with” (0:00) and “they” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "with",
+    0.8
+   ],
+   [
+    "they",
+    1.8
+   ],
+   [
+    "my",
+    2.9
+   ],
+   [
+    "I",
+    20.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_01_1_2019",
@@ -11291,12 +13234,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:05) and “I” (0:23): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “these” (0:00) and “with” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "these",
+    0.0
+   ],
+   [
+    "with",
+    3.7
+   ],
+   [
+    "like",
+    5.0
+   ],
+   [
+    "I",
+    23.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_01_1_3042",
@@ -11312,12 +13273,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:02) and “I” (0:06): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “the” (0:11): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    2.4
+   ],
+   [
+    "I",
+    6.4
+   ],
+   [
+    "the",
+    11.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english346",
@@ -11383,12 +13358,26 @@ window.CLIPS = [
   "place": "Virginia, Minnesota",
   "lat": 47.523,
   "lng": -92.536,
-  "note": "Iron Range English. Long \"o\" and \"a\" stay pure and round (\"go,\" \"day\"), with the Range's clipped, plainspoken rhythm.",
+  "note": "Iron Range English. Listen to “know” (0:18): the long o stays a pure, round “oh,” with no glide. Listen to “had” (0:05) and “last” (0:07): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "had",
+    5.1
+   ],
+   [
+    "last",
+    8.0
+   ],
+   [
+    "know",
+    18.9
+   ]
+  ],
   "year": 2010,
   "born": 1950,
-  "st": "MN"
+  "st": "MN",
+  "note_base": "Iron Range English. Long \"o\" and \"a\" stay pure and round (\"go,\" \"day\"), with the Range's clipped, plainspoken rhythm."
  },
  {
   "id": "english261",
@@ -11454,7 +13443,7 @@ window.CLIPS = [
   "place": "Overbrook, West Philadelphia",
   "lat": 39.98,
   "lng": -75.24,
-  "note": "Philadelphia English. The long o fronts toward \"eh-oo,\" and \"out\" starts high and forward.",
+  "note": "Philadelphia English. Listen to “going” (0:00) and “go” (0:16): the long o starts forward, close to “eh-oo”, so it can sound like “geh-oo-ing” and “geh-oo.” Listen to “all” (0:12): the “aw” rises and glides, so it can sound like “aw-uhl.”",
   "verified": true,
   "words": [
    [
@@ -11462,16 +13451,8 @@ window.CLIPS = [
     1.0
    ],
    [
-    "out",
-    2.0
-   ],
-   [
-    "town",
-    6.6
-   ],
-   [
-    "proud",
-    10.6
+    "all",
+    12.2
    ],
    [
     "go",
@@ -11480,7 +13461,8 @@ window.CLIPS = [
   ],
   "year": 2007,
   "born": 1945,
-  "st": "PA"
+  "st": "PA",
+  "note_base": "Philadelphia English. The long o fronts toward \"eh-oo,\" and \"out\" starts high and forward."
  },
  {
   "id": "english661",
@@ -11652,21 +13634,22 @@ window.CLIPS = [
   "place": "Brockton, Massachusetts",
   "lat": 42.083,
   "lng": -71.018,
-  "note": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens.",
+  "note": "South Shore Massachusetts English. Listen to “or” (0:06) and “water” (0:08): the r after a vowel drops, so it can sound like “aw” and “watah.”",
   "verified": true,
   "words": [
    [
-    "water",
-    8.2
+    "or",
+    7.0
    ],
    [
-    "can't",
-    16.3
+    "water",
+    8.7
    ]
   ],
   "year": 2009,
   "born": 1949,
-  "st": "MA"
+  "st": "MA",
+  "note_base": "South Shore Massachusetts English. The r after a vowel drops (\"pahty,\" \"cah\"), and the short a broadens."
  },
  {
   "id": "english515",
@@ -12942,12 +14925,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “try” (0:06) and “like” (0:09): the long i loses its glide, so it can sound like “trah” and “lahk.” Listen to “this” (0:01) and “that” (0:02): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "this",
+    1.8
+   ],
+   [
+    "that",
+    2.5
+   ],
+   [
+    "try",
+    6.1
+   ],
+   [
+    "like",
+    9.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_m_02_1_752",
@@ -12963,12 +14964,22 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “that” (0:03) and “the” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    3.9
+   ],
+   [
+    "the",
+    9.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_m_02_1_1142",
@@ -12984,12 +14995,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “times” (0:00) and “I” (0:11): the long i loses its glide, so it can sound like “tahms” and “Ah.” Listen to “the” (0:04) and “they” (0:07): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "times",
+    0.6
+   ],
+   [
+    "the",
+    4.1
+   ],
+   [
+    "they",
+    7.5
+   ],
+   [
+    "I",
+    11.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_f_02_1_126",
@@ -13005,12 +15034,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:19): the long i loses its glide, so it can sound like “tahm.” Listen to “the” (0:06) and “other” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    6.2
+   ],
+   [
+    "other",
+    6.5
+   ],
+   [
+    "time",
+    19.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_f_05_1_46",
@@ -13026,12 +15069,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:37): the long i loses its glide, so it can sound like “Ah.” Listen to “the” (0:01) and “that” (0:17): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    1.7
+   ],
+   [
+    "that",
+    17.4
+   ],
+   [
+    "I",
+    37.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_f_05_1_1417",
@@ -13047,12 +15104,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:00) and “I” (0:05): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “the” (0:10) and “that” (0:28): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.5
+   ],
+   [
+    "I",
+    5.3
+   ],
+   [
+    "the",
+    10.5
+   ],
+   [
+    "that",
+    28.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCA_se3_ag2_f_05_1_438",
@@ -13068,12 +15143,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “they” (0:02) and “the” (0:04): “th” can soften toward “d,” “t” or “f.” Listen to “car” (0:01): the r after a vowel drops, so it can sound like “cah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "car",
+    1.4
+   ],
+   [
+    "they",
+    2.1
+   ],
+   [
+    "the",
+    4.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1760",
@@ -13089,12 +15178,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:00) and “like” (0:00): the long i loses its glide, so it can sound like “mah” and “lahk.” Listen to “mother” (0:00) and “the” (0:02): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.1
+   ],
+   [
+    "mother",
+    0.2
+   ],
+   [
+    "like",
+    0.9
+   ],
+   [
+    "the",
+    2.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_03_1_3013",
@@ -13110,12 +15217,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:02) and “right” (0:06): the long i loses its glide, so it can sound like “lahk” and “raht.” Listen to “the” (0:05) and “thing” (0:05): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "like",
+    2.8
+   ],
+   [
+    "the",
+    5.2
+   ],
+   [
+    "thing",
+    5.9
+   ],
+   [
+    "right",
+    6.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_03_1_1851",
@@ -13131,12 +15256,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “like” (0:02): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “the” (0:03) and “these” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.5
+   ],
+   [
+    "like",
+    2.4
+   ],
+   [
+    "the",
+    3.4
+   ],
+   [
+    "these",
+    4.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_1_488",
@@ -13152,12 +15295,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “why” (0:09) and “I” (0:12): the long i loses its glide, so it can sound like “whah” and “Ah.” Listen to “the” (0:00) and “with” (0:07): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.8
+   ],
+   [
+    "with",
+    7.9
+   ],
+   [
+    "why",
+    9.6
+   ],
+   [
+    "I",
+    12.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_1_539",
@@ -13173,12 +15334,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “my” (0:04): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “them” (0:00) and “think” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.0
+   ],
+   [
+    "them",
+    0.9
+   ],
+   [
+    "think",
+    3.1
+   ],
+   [
+    "my",
+    4.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_1_379",
@@ -13194,12 +15373,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “outside” (0:00) and “side” (0:05): the long i loses its glide, so it can sound like “outsahd” and “sahd.” Listen to “the” (0:01) and “with” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "outside",
+    0.5
+   ],
+   [
+    "the",
+    1.4
+   ],
+   [
+    "side",
+    5.2
+   ],
+   [
+    "with",
+    9.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_2_252",
@@ -13215,12 +15412,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:03) and “why” (0:09): the long i loses its glide, so it can sound like “Ah” and “whah.” Listen to “think” (0:03) and “the” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    3.4
+   ],
+   [
+    "think",
+    3.9
+   ],
+   [
+    "the",
+    6.0
+   ],
+   [
+    "why",
+    9.2
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_2_296",
@@ -13236,12 +15451,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:00) and “like” (0:10): the long i loses its glide, so it can sound like “mah” and “lahk.” Listen to “the” (0:09) and “that” (0:10): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "my",
+    0.0
+   ],
+   [
+    "the",
+    9.4
+   ],
+   [
+    "like",
+    10.5
+   ],
+   [
+    "that",
+    10.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_f_02_2_562",
@@ -13257,12 +15490,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “other” (0:06) and “the” (0:13): “th” can soften toward “d,” “t” or “f.” Listen to “together” (0:11): the r after a vowel drops, so it can sound like “togethah.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "other",
+    6.9
+   ],
+   [
+    "together",
+    11.6
+   ],
+   [
+    "the",
+    13.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english332",
@@ -14012,12 +16259,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “ride” (0:01) and “I'm” (0:02): the long i loses its glide, so it can sound like “rahd” and “Ahm.” Listen to “they” (0:00) and “the” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    0.1
+   ],
+   [
+    "ride",
+    1.2
+   ],
+   [
+    "the",
+    1.2
+   ],
+   [
+    "I'm",
+    2.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se2_ag3_m_03_1_1028",
@@ -14033,12 +16298,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I'm” (0:00) and “I” (0:00): the long i loses its glide, so it can sound like “Ahm” and “Ah.” Listen to “them” (0:01) and “the” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I'm",
+    0.3
+   ],
+   [
+    "I",
+    1.0
+   ],
+   [
+    "them",
+    1.5
+   ],
+   [
+    "the",
+    3.1
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se2_ag3_m_03_1_2893",
@@ -14054,12 +16337,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:00) and “I” (0:00): the long i loses its glide, so it can sound like “tahm” and “Ah.” Listen to “the” (0:01) and “that” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "time",
+    0.1
+   ],
+   [
+    "I",
+    0.3
+   ],
+   [
+    "the",
+    1.4
+   ],
+   [
+    "that",
+    4.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se2_ag3_m_03_2_130",
@@ -14075,12 +16376,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “try” (0:04) and “I'm” (0:07): the long i loses its glide, so it can sound like “trah” and “Ahm.” Listen to “that” (0:15) and “they” (0:18): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "try",
+    4.5
+   ],
+   [
+    "I'm",
+    7.9
+   ],
+   [
+    "that",
+    15.9
+   ],
+   [
+    "they",
+    18.9
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se2_ag3_m_03_2_62",
@@ -14096,12 +16415,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:16): the long i loses its glide, so it can sound like “Ah.” Listen to “that” (0:17) and “the” (0:18): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    16.2
+   ],
+   [
+    "that",
+    17.0
+   ],
+   [
+    "the",
+    18.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se2_ag3_m_03_2_230",
@@ -14117,12 +16450,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I'm” (0:00) and “my” (0:05): the long i loses its glide, so it can sound like “Ahm” and “mah.” Listen to “for” (0:10): the r after a vowel drops, so it can sound like “fuh.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I'm",
+    0.7
+   ],
+   [
+    "my",
+    5.7
+   ],
+   [
+    "for",
+    10.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_02_1_2205",
@@ -14138,12 +16485,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “right” (0:07): the long i loses its glide, so it can sound like “Ah” and “raht.” Listen to “that” (0:00) and “the” (0:06): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    0.4
+   ],
+   [
+    "I",
+    0.8
+   ],
+   [
+    "the",
+    6.2
+   ],
+   [
+    "right",
+    7.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_02_1_63",
@@ -14159,12 +16524,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:08) and “I” (0:08): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “them” (0:00) and “this” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "them",
+    0.3
+   ],
+   [
+    "this",
+    3.7
+   ],
+   [
+    "like",
+    8.2
+   ],
+   [
+    "I",
+    8.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag4_m_02_1_619",
@@ -14180,12 +16563,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “like” (0:04): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “they” (0:03) and “the” (0:12): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.3
+   ],
+   [
+    "they",
+    3.4
+   ],
+   [
+    "like",
+    4.3
+   ],
+   [
+    "the",
+    12.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1361",
@@ -14201,12 +16602,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “time” (0:02) and “like” (0:10): the long i loses its glide, so it can sound like “tahm” and “lahk.” Listen to “the” (0:01) and “thing” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    1.0
+   ],
+   [
+    "time",
+    2.8
+   ],
+   [
+    "thing",
+    9.8
+   ],
+   [
+    "like",
+    11.0
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1146",
@@ -14222,12 +16641,26 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “side” (0:01) and “I” (0:01): the long i loses its glide, so it can sound like “sahd” and “Ah.” Listen to “the” (0:00): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    0.9
+   ],
+   [
+    "side",
+    1.2
+   ],
+   [
+    "I",
+    1.7
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_m_02_1_1405",
@@ -14243,12 +16676,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I'm” (0:00) and “like” (0:09): the long i loses its glide, so it can sound like “Ahm” and “lahk.” Listen to “the” (0:01) and “that” (0:09): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I'm",
+    0.2
+   ],
+   [
+    "the",
+    1.8
+   ],
+   [
+    "like",
+    9.1
+   ],
+   [
+    "that",
+    9.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag3_m_02_2_618",
@@ -14264,12 +16715,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:03) and “I” (0:14): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “think” (0:00) and “they” (0:01): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "think",
+    0.0
+   ],
+   [
+    "they",
+    1.9
+   ],
+   [
+    "like",
+    3.6
+   ],
+   [
+    "I",
+    14.3
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_01_1_1059",
@@ -14285,12 +16754,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “like” (0:04) and “I” (0:13): the long i loses its glide, so it can sound like “lahk” and “Ah.” Listen to “they” (0:00) and “this” (0:24): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    0.9
+   ],
+   [
+    "like",
+    4.1
+   ],
+   [
+    "I",
+    13.3
+   ],
+   [
+    "this",
+    24.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_01_1_2035",
@@ -14306,12 +16793,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:02) and “I'm” (0:03): the long i loses its glide, so it can sound like “mah” and “Ahm.” Listen to “they” (0:00) and “the” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "they",
+    0.0
+   ],
+   [
+    "my",
+    2.1
+   ],
+   [
+    "I'm",
+    3.3
+   ],
+   [
+    "the",
+    3.6
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se1_ag2_f_01_1_1861",
@@ -14327,12 +16832,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “right” (0:02) and “life” (0:06): the long i loses its glide, so it can sound like “raht” and “lahf.” Listen to “the” (0:02) and “thing” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    2.1
+   ],
+   [
+    "right",
+    2.5
+   ],
+   [
+    "thing",
+    3.1
+   ],
+   [
+    "life",
+    6.5
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english316",
@@ -14719,12 +17242,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “my” (0:07) and “I” (0:12): the long i loses its glide, so it can sound like “mah” and “Ah.” Listen to “the” (0:01) and “that” (0:20): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "the",
+    1.1
+   ],
+   [
+    "my",
+    7.8
+   ],
+   [
+    "I",
+    12.5
+   ],
+   [
+    "that",
+    20.8
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se3_ag4_f_02_1_3706",
@@ -14740,12 +17281,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:01) and “like” (0:02): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “the” (0:02) and “think” (0:04): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    1.7
+   ],
+   [
+    "the",
+    2.1
+   ],
+   [
+    "like",
+    2.7
+   ],
+   [
+    "think",
+    4.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "DCB_se3_ag4_f_02_1_4038",
@@ -14761,12 +17320,30 @@ window.CLIPS = [
   "place": "Washington, DC",
   "lat": 38.907,
   "lng": -77.037,
-  "note": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm.",
+  "note": "African American English in Washington, DC. Listen to “I” (0:00) and “my” (0:02): the long i loses its glide, so it can sound like “Ah” and “mah.” Listen to “think” (0:02) and “the” (0:03): “th” can soften toward “d,” “t” or “f.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "I",
+    0.1
+   ],
+   [
+    "think",
+    2.3
+   ],
+   [
+    "my",
+    2.9
+   ],
+   [
+    "the",
+    3.4
+   ]
+  ],
   "credit": "CORAAL (Kendall & Farrington), CC BY-NC-SA 4.0",
   "link": "https://oraal.github.io/coraal",
-  "st": "DC"
+  "st": "DC",
+  "note_base": "African American English in Washington, DC. Southern features (a flat long i, \"pin\" for \"pen\") meet a quick Mid-Atlantic rhythm."
  },
  {
   "id": "english284",
@@ -15664,7 +18241,7 @@ window.CLIPS = [
   "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
   "lat": 44.862,
   "lng": -93.531,
-  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "note": "Minnesota English. Listen to “go” (0:00) and “home” (0:00): the long o stays a pure, round “oh,” with no glide. Listen to “have” (0:02) and “back” (0:02): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
@@ -15676,21 +18253,18 @@ window.CLIPS = [
     0.3
    ],
    [
-    "going",
-    1.8
+    "have",
+    2.0
    ],
    [
-    "so",
-    2.5
-   ],
-   [
-    "old",
-    11.6
+    "back",
+    2.3
    ]
   ],
   "year": 2016,
   "born": 1962,
-  "st": "MN"
+  "st": "MN",
+  "note_base": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound."
  },
  {
   "id": "7WHrkF5KLWU",
@@ -15703,12 +18277,26 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "note": "Michigan English. Listen to “that” (0:02) and “last” (0:03): the short a tenses and rises toward “eh-a.” Listen to “college” (0:12): the short o slides forward toward “a”, so it can sound like “callege.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    2.3
+   ],
+   [
+    "last",
+    3.4
+   ],
+   [
+    "college",
+    12.9
+   ]
+  ],
   "year": 2014,
   "born": 1958,
-  "st": "MI"
+  "st": "MI",
+  "note_base": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift."
  },
  {
   "id": "WHtLFFrnUi8",
@@ -15721,12 +18309,22 @@ window.CLIPS = [
   "place": "Bogota, New Jersey",
   "lat": 40.876,
   "lng": -74.03,
-  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "note": "North Jersey English. Listen to “can” (0:00) and “that” (0:03): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "can",
+    0.1
+   ],
+   [
+    "that",
+    4.0
+   ]
+  ],
   "year": 2016,
   "born": 1956,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels."
  },
  {
   "id": "CdQPw3NBmTw",
@@ -15739,29 +18337,26 @@ window.CLIPS = [
   "place": "St. Martinville, Louisiana",
   "lat": 30.125,
   "lng": -91.833,
-  "note": "Light Cajun English from St. Martin Parish. Listen for clipped, unglided vowels and a French-tinged rhythm.",
+  "note": "Light Cajun English from St. Listen to “the” (0:05) and “think” (0:09): “th” can soften toward “d,” “t” or “f.” Listen to “I” (0:09): the long i loses its glide, so it can sound like “Ah.”",
   "verified": true,
   "words": [
    [
     "the",
-    4.7
+    5.2
+   ],
+   [
+    "I",
+    9.4
    ],
    [
     "think",
-    9.1
-   ],
-   [
-    "that",
-    9.2
-   ],
-   [
-    "have",
-    14.6
+    9.6
    ]
   ],
   "year": 2026,
   "born": 1970,
-  "st": "LA"
+  "st": "LA",
+  "note_base": "Light Cajun English from St. Martin Parish. Listen for clipped, unglided vowels and a French-tinged rhythm."
  },
  {
   "id": "rwmfR76w5FE",
@@ -15774,29 +18369,26 @@ window.CLIPS = [
   "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
   "lat": 44.862,
   "lng": -93.531,
-  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "note": "Minnesota English. Listen to “so” (0:19): the long o stays a pure, round “oh,” with no glide. Listen to “that” (0:03) and “have” (0:04): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
-    "sure",
-    2.7
+    "that",
+    3.4
    ],
    [
-    "about",
-    13.4
+    "have",
+    4.9
    ],
    [
     "so",
-    19.0
-   ],
-   [
-    "know",
-    19.9
+    19.5
    ]
   ],
   "year": 2012,
   "born": 1962,
-  "st": "MN"
+  "st": "MN",
+  "note_base": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound."
  },
  {
   "id": "wnhlr0o2Auo",
@@ -15809,12 +18401,26 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "note": "Michigan English. Listen to “that” (0:00) and “can” (0:16): the short a tenses and rises toward “eh-a.” Listen to “lot” (0:18): the short o slides forward toward “a”, so it can sound like “lat.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    0.0
+   ],
+   [
+    "can",
+    16.6
+   ],
+   [
+    "lot",
+    18.8
+   ]
+  ],
   "year": 2016,
   "born": 1958,
-  "st": "MI"
+  "st": "MI",
+  "note_base": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift."
  },
  {
   "id": "V7K26_yowTI",
@@ -15827,33 +18433,30 @@ window.CLIPS = [
   "place": "Larose, Louisiana",
   "lat": 29.572,
   "lng": -90.382,
-  "note": "Cajun English from Bayou Lafourche. A gravelly, French-flavored voice: \"th\" turns toward \"d,\" and the vowels stay flat and unglided.",
+  "note": "Cajun English from Bayou Lafourche. Listen to “that” (0:00) and “this” (0:09): “th” can soften toward “d,” “t” or “f.” Listen to “I” (0:01) and “five” (0:25): the long i loses its glide, so it can sound like “Ah” and “fahv.”",
   "verified": true,
   "words": [
    [
     "that",
-    0.4
+    0.6
    ],
    [
-    "crawfish",
-    2.0
-   ],
-   [
-    "have",
-    8.6
+    "I",
+    1.5
    ],
    [
     "this",
-    9.1
+    9.3
    ],
    [
-    "the",
-    12.0
+    "five",
+    25.8
    ]
   ],
   "year": 2025,
   "born": 1961,
-  "st": "LA"
+  "st": "LA",
+  "note_base": "Cajun English from Bayou Lafourche. A gravelly, French-flavored voice: \"th\" turns toward \"d,\" and the vowels stay flat and unglided."
  },
  {
   "id": "CplaGOzwMsg",
@@ -15866,12 +18469,22 @@ window.CLIPS = [
   "place": "Paterson, New Jersey",
   "lat": 40.917,
   "lng": -74.172,
-  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "note": "Old Paterson English. Listen to “thought” (0:19): the “aw” rises and glides, so it can sound like “thaw-uht.” Listen to “or” (0:15): the r after a vowel drops, so it can sound like “aw.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "or",
+    15.6
+   ],
+   [
+    "thought",
+    19.8
+   ]
+  ],
   "year": 2019,
   "born": 1937,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels."
  },
  {
   "id": "3Dlc3y0XWko",
@@ -15884,12 +18497,22 @@ window.CLIPS = [
   "place": "Paterson, New Jersey",
   "lat": 40.917,
   "lng": -74.172,
-  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "note": "Old Paterson English. Listen to “class” (0:03) and “back” (0:08): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "class",
+    3.0
+   ],
+   [
+    "back",
+    8.6
+   ]
+  ],
   "year": 2014,
   "born": 1937,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels."
  },
  {
   "id": "AWhw0psz1fI",
@@ -15902,12 +18525,26 @@ window.CLIPS = [
   "place": "Bogota, New Jersey",
   "lat": 40.876,
   "lng": -74.03,
-  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "note": "North Jersey English. Listen to “talk” (0:14) and “all” (0:16): the “aw” rises and glides, so it can sound like “taw-uhk” and “aw-uhl.” Listen to “have” (0:19): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "talk",
+    14.8
+   ],
+   [
+    "all",
+    16.7
+   ],
+   [
+    "have",
+    19.1
+   ]
+  ],
   "year": 2018,
   "born": 1956,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels."
  },
  {
   "id": "j2-kxso2ucA",
@@ -15920,33 +18557,26 @@ window.CLIPS = [
   "place": "Chanhassen, Minnesota (born in Sioux Falls, South Dakota)",
   "lat": 44.862,
   "lng": -93.531,
-  "note": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound.",
+  "note": "Minnesota English. Listen to “though” (0:20): the long o stays a pure, round “oh,” with no glide. Listen to “happened” (0:01) and “that” (0:05): the short a tenses and rises toward “eh-a.”",
   "verified": true,
   "words": [
    [
-    "sure",
-    2.6
+    "happened",
+    1.4
    ],
    [
-    "about",
-    4.4
+    "that",
+    5.3
    ],
    [
-    "stay",
-    7.3
-   ],
-   [
-    "way",
-    9.1
-   ],
-   [
-    "make",
-    12.9
+    "though",
+    20.0
    ]
   ],
   "year": 2011,
   "born": 1962,
-  "st": "MN"
+  "st": "MN",
+  "note_base": "Minnesota English. Long \"o\" and \"a\" stay round and pure (\"so,\" \"day\"), the classic Upper Midwest sound."
  },
  {
   "id": "eEdsM-bVzq4",
@@ -15959,12 +18589,22 @@ window.CLIPS = [
   "place": "Battle Creek, Michigan",
   "lat": 42.321,
   "lng": -85.18,
-  "note": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift.",
+  "note": "Michigan English. Listen to “actually” (0:15): the short a tenses and rises toward “eh-a.” Listen to “top” (0:01): the short o slides forward toward “a”, so it can sound like “tap.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "top",
+    1.3
+   ],
+   [
+    "actually",
+    15.9
+   ]
+  ],
   "year": 2015,
   "born": 1958,
-  "st": "MI"
+  "st": "MI",
+  "note_base": "Michigan English. The short a tenses toward \"eh-a,\" and \"o\" words slide forward toward \"ah,\" the Northern Cities shift."
  },
  {
   "id": "iEkh3UB38vE",
@@ -15977,12 +18617,22 @@ window.CLIPS = [
   "place": "Bogota, New Jersey",
   "lat": 40.876,
   "lng": -74.03,
-  "note": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels.",
+  "note": "North Jersey English. Listen to “there” (0:18): the r after a vowel drops, so it can sound like “theah.” Listen to “that” (0:14): the short a tenses and rises toward “eh-a.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "that",
+    14.6
+   ],
+   [
+    "there",
+    19.0
+   ]
+  ],
   "year": 2014,
   "born": 1956,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "North Jersey English. The \"aw\" in \"talk\" and \"all\" rises and glides (\"aw-uh\"), and the r can soften after vowels."
  },
  {
   "id": "rKGulYJ-jtg",
@@ -15995,11 +18645,25 @@ window.CLIPS = [
   "place": "Paterson, New Jersey",
   "lat": 40.917,
   "lng": -74.172,
-  "note": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels.",
+  "note": "Old Paterson English. Listen to “all” (0:16): the “aw” rises and glides, so it can sound like “aw-uhl.” Listen to “more” (0:09) and “for” (0:11): the r after a vowel drops, so it can sound like “moah” and “fuh.”",
   "verified": true,
-  "words": [],
+  "words": [
+   [
+    "more",
+    9.2
+   ],
+   [
+    "for",
+    11.3
+   ],
+   [
+    "all",
+    16.9
+   ]
+  ],
   "year": 2019,
   "born": 1937,
-  "st": "NJ"
+  "st": "NJ",
+  "note_base": "Old Paterson English. A high, gliding \"aw\" (\"cawfee,\" \"tawk\") and r's that fade after vowels."
  }
 ];
