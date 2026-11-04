@@ -22,6 +22,27 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "zK5xEHo3h2o",
+"region": "idaho",
+"label": "Idaho",
+"tier": 3,
+"start": 15,
+"end": 35,
+"words": [],
+"title": "Racing Through the Pain With Olympic Ski Champion Picabo Street",
+"channel": "NewsUSAVideoContent",
+"other": 0.23,
+"person": "Picabo Street",
+"role": "Olympic skier",
+"hometown": "Triumph, Idaho",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Picabo_Street",
+"lat": 43.637,
+"lng": -114.255,
+"born": null,
+"age": null
+},
+{
 "id": "e9iYHASN1MU",
 "region": "oregon",
 "label": "Oregon",
@@ -207,6 +228,32 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "5HZ8_UG8WRQ",
+"region": "maine",
+"label": "Down East Maine",
+"tier": 3,
+"start": 415,
+"end": 435,
+"words": [
+[
+"here",
+19.9
+]
+],
+"title": "A Good Read with Sandy Phippen- Author Linda Greenlaw",
+"channel": "Maine Public",
+"other": 0.42,
+"person": "Linda Greenlaw",
+"role": "Swordfishing captain and lobsterwoman",
+"hometown": "Topsham, Maine (lives on Isle au Haut)",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Linda_Greenlaw",
+"lat": 43.928,
+"lng": -69.976,
+"born": null,
+"age": null
+},
+{
 "id": "fOaWoI8niz8",
 "region": "arkansas",
 "label": "Arkansas",
@@ -270,6 +317,27 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "E56ZqK2F_5U",
+"region": "delaware",
+"label": "Delaware",
+"tier": 3,
+"start": 0,
+"end": 20,
+"words": [],
+"title": "Elena Delle Donne on growing up, falling in love, and feeling comfortable in her own skin",
+"channel": "The Players' Tribune",
+"other": 0.14,
+"person": "Elena Delle Donne",
+"role": "WNBA basketball player",
+"hometown": "Wilmington, Delaware",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Elena_Delle_Donne",
+"lat": 39.746,
+"lng": -75.547,
+"born": null,
+"age": null
+},
+{
 "id": "DJTmrgboJqw",
 "region": "indiana",
 "label": "Indiana",
@@ -291,6 +359,27 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "MMcNCQdBsq0",
+"region": "north_dakota",
+"label": "North Dakota",
+"tier": 3,
+"start": 63,
+"end": 83,
+"words": [],
+"title": "Roger Maris 1961 - Mel Allen-Roger Maris Interview, Yankee Stadium, WPIX-TV, 9/1961",
+"channel": "YanksAtShea",
+"other": 0.19,
+"person": "Roger Maris",
+"role": "Baseball player",
+"hometown": "Fargo, North Dakota",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Roger_Maris",
+"lat": 46.877,
+"lng": -96.789,
+"born": null,
+"age": null
+},
+{
 "id": "t9nPdX7g9l0",
 "region": "arizona",
 "label": "Arizona",
@@ -308,6 +397,27 @@ window.CANDIDATES = [
 "source": "https://en.wikipedia.org/wiki/Ty_Murray",
 "lat": 33.539,
 "lng": -112.186,
+"born": null,
+"age": null
+},
+{
+"id": "W0XO_LxlURg",
+"region": "vermont",
+"label": "Vermont",
+"tier": 3,
+"start": 35,
+"end": 55,
+"words": [],
+"title": "Fred Tuttle on Late Night October 3, 1996",
+"channel": "VHS Archive",
+"other": 0.37,
+"person": "Fred Tuttle",
+"role": "Dairy farmer and actor in Man with a Plan",
+"hometown": "Tunbridge, Vermont",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Fred_Tuttle",
+"lat": 43.886,
+"lng": -72.493,
 "born": null,
 "age": null
 },
@@ -700,6 +810,40 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "xHJtevcvIKk",
+"region": "maine",
+"label": "Down East Maine",
+"tier": 3,
+"start": 408,
+"end": 428,
+"words": [
+[
+"year",
+2.4
+],
+[
+"more",
+3.4
+],
+[
+"lobster",
+11.1
+]
+],
+"title": "Lessons from the sea: Linda Greenlaw at TEDxUNE",
+"channel": "TEDx Talks",
+"other": 0.14,
+"person": "Linda Greenlaw",
+"role": "Swordfishing captain and lobsterwoman",
+"hometown": "Topsham, Maine (lives on Isle au Haut)",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Linda_Greenlaw",
+"lat": 43.928,
+"lng": -69.976,
+"born": null,
+"age": null
+},
+{
 "id": "WA7yKKozPOI",
 "region": "arkansas",
 "label": "Arkansas",
@@ -759,6 +903,27 @@ window.CANDIDATES = [
 "source": "https://en.wikipedia.org/wiki/Jon_Tester",
 "lat": 48.178,
 "lng": -110.113,
+"born": null,
+"age": null
+},
+{
+"id": "0yeFpncuyHg",
+"region": "delaware",
+"label": "Delaware",
+"tier": 3,
+"start": 200,
+"end": 220,
+"words": [],
+"title": "Elena Delle Donne | Journey to the Hall",
+"channel": "Women's Basketball Hall of Fame",
+"other": 0.26,
+"person": "Elena Delle Donne",
+"role": "WNBA basketball player",
+"hometown": "Wilmington, Delaware",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Elena_Delle_Donne",
+"lat": 39.746,
+"lng": -75.547,
 "born": null,
 "age": null
 },
@@ -1032,6 +1197,32 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "Ei3qr9MpGFI",
+"region": "maine",
+"label": "Down East Maine",
+"tier": 3,
+"start": 34,
+"end": 54,
+"words": [
+[
+"there",
+1.2
+]
+],
+"title": "Running Tips: Joan Benoit Samuelson shares her advice for people who want to run a marathoners",
+"channel": "ProTips4U",
+"other": 0.15,
+"person": "Joan Benoit Samuelson",
+"role": "Olympic marathon champion",
+"hometown": "Cape Elizabeth, Maine",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Joan_Benoit",
+"lat": 43.564,
+"lng": -70.2,
+"born": null,
+"age": null
+},
+{
 "id": "vtpBcTFsSRA",
 "region": "socal",
 "label": "Socal",
@@ -1184,6 +1375,36 @@ window.CANDIDATES = [
 "source": "https://en.wikipedia.org/wiki/Jim_Costa",
 "lat": 36.738,
 "lng": -119.787,
+"born": null,
+"age": null
+},
+{
+"id": "B7O_dBpn2R8",
+"region": "maine",
+"label": "Down East Maine",
+"tier": 3,
+"start": 844,
+"end": 864,
+"words": [
+[
+"year",
+0.6
+],
+[
+"there",
+18.7
+]
+],
+"title": "Boston Marathon legend Joan Benoit Samuelson on the history of women in the race",
+"channel": "GBH News",
+"other": 0.38,
+"person": "Joan Benoit Samuelson",
+"role": "Olympic marathon champion",
+"hometown": "Cape Elizabeth, Maine",
+"evidence": "Lifelong local (Wikipedia)",
+"source": "https://en.wikipedia.org/wiki/Joan_Benoit",
+"lat": 43.564,
+"lng": -70.2,
 "born": null,
 "age": null
 },
