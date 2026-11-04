@@ -121,7 +121,7 @@ a{color:inherit}
 .ptsrow{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
 .vword{font:800 17px/1.1 var(--font);text-align:right;max-width:55%}
 .reveal .place{font:800 26px/1.1 var(--font);font-stretch:108%;letter-spacing:-.01em;color:var(--ink);margin:2px 0 6px;text-wrap:balance}
-.reveal .who{font-size:13px;color:var(--muted);margin:12px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reveal .who{font-size:12px;color:var(--muted);margin:12px 0 0;line-height:1.4}
 .reveal .note{margin:0 0 10px;font-size:15px;color:var(--ink)}
 .rhead{font:750 11px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;padding-top:12px;border-top:1px solid var(--rule)}
 .guessline{margin:0;font-weight:650}.guessline span{color:var(--muted);font-weight:400}
@@ -392,6 +392,22 @@ if (!CURATE) requestAnimationFrame(frame);
 let map, guessMarker, answerMarker, line, finalLayers = [];
 const VIEWS = { '48': [[24.5, -125], [49.5, -66.5]] };
 const pinIcon = k => L.divIcon({ className: '', html: `<div class="pin ${k}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+// A plain-English line on where the clip comes from and who is speaking.
+function aboutClip(c, a) {
+  const an = n => /^(8|11|18)/.test(String(n)) ? 'an' : 'a';
+  const generic = /^(man|woman)$/i.test(c.name);
+  const role = c.role && !/^(unknown|reading a short passage)$/i.test(c.role) ? c.role : '';
+  const who = generic
+    ? (a != null ? `${an(a)} ${a}-year-old ${a < 18 ? (/^w/i.test(c.name) ? 'girl' : 'boy') : c.name.toLowerCase()}` : `a ${c.name.toLowerCase()}`) + (role ? `, ${/^[aeiou]/i.test(role) ? 'an' : 'a'} ${role.toLowerCase()}` : '')
+    : (/^an? /i.test(c.name) ? c.name[0].toLowerCase() + c.name.slice(1) : c.name + (role ? `, ${role}` : '')) + (a != null ? `, then about ${a}` : '');
+  const yr = c.year ? ` in ${c.year}` : '';
+  if ((c.audio || '').includes('/coraal/'))
+    return `This recording is from CORAAL, a collection of interviews with Black Americans about their lives and neighborhoods. It was made${yr} and features ${who}.`;
+  if ((c.audio || '').includes('/saa/'))
+    return `This recording is from the Speech Accent Archive, where people read the same short paragraph (“Please call Stella…”) so their accents can be compared. It features ${who} who grew up here.`;
+  if (c.recorded) return `This recording was made in ${c.year} and later posted on YouTube. It features ${who}.`;
+  return `This clip is from a YouTube video${c.year ? ' posted' + yr : ''}. It features ${who}.`;
+}
 function initMap() {
   map = L.map('map', { worldCopyJump: false, zoomSnap: 0.5, zoomControl: false, maxBounds: [[-45, -175], [72, -20]], maxBoundsViscosity: .8 });
   L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -552,7 +568,7 @@ function guess() {
   countUp($('rPts'), p + ab + fb, '');
   $('rPlace').textContent = c.place;
   // one compact line: who, what, when, how old (YouTube gives only the upload year, so say "video")
-  $('rWho').textContent = [c.name, c.role, c.year && (c.audio || c.recorded ? 'recorded ' : 'video ') + c.year, a != null && 'age ' + a].filter(Boolean).join(' · ');
+  $('rWho').textContent = aboutClip(c, a);
   // "(0:19)" in the note plays that moment; snap to the matching word's exact time when we have it
   $('rNote').innerHTML = esc(c.note).replace(/\((\d+):(\d\d)\)/g, (m, mm, ss) => {
     const t = +mm * 60 + +ss, w = (c.words || []).find(([, wt]) => Math.abs(wt - t) < 1.5);
