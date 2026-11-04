@@ -626,8 +626,10 @@ function next() {
   const bulls = state.results.filter(r => r.mi < 25).length;
   $('fBand').hidden = true;   // no verdict headline (Todd): the number, then one real fact
   if (flv >= 4) setTimeout(() => confetti(innerWidth / 2, innerHeight * .3, flv === 5 ? 200 : 130), 300);
+  // place names read inside a sentence: "the Lower East Side", "rural Oklahoma"
+  const inText = pl => /^(Lower East Side|Northwest Side|South End|Mississippi Delta|Texas Hill Country|Upper Peninsula)\b/.test(pl) ? 'the ' + pl : pl.replace(/^Rural /, 'rural ');
   const best = state.results.reduce((a, b) => b.mi < a.mi ? b : a);
-  $('fVerdict').textContent = best.mi < 1 ? `Your closest guess landed right on ${best.c.place}.` : `Your closest guess: ${Math.round(best.mi).toLocaleString()} mile${Math.round(best.mi) === 1 ? '' : 's'} from ${best.c.place}.`;
+  $('fVerdict').textContent = best.mi < 1 ? `Your closest guess landed right on ${inText(best.c.place)}.` : `Your closest guess: ${Math.round(best.mi).toLocaleString()} mile${Math.round(best.mi) === 1 ? '' : 's'} from ${inText(best.c.place)}.`;
   $('fList').innerHTML = state.results.map(r => `<li><span><b>${r.c.name}</b><br><span class="m">${r.c.place} · ${Math.round(r.mi).toLocaleString()} mi off</span></span></li>`).join('');
 }
 /* ---------- All-time leaderboard (Cloudflare Worker + D1) ---------- */
