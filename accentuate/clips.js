@@ -161,16 +161,16 @@ window.CLIPS = [
   "place": "Pittsburgh, Pennsylvania",
   "lat": 40.4406,
   "lng": -79.9959,
-  "note": "Western Pennsylvania English. The ow sound flattens: \"our\" and \"power\" lean toward \"ahr\" and \"pahr.\"",
+  "note": "Western Pennsylvania English. Listen to “about” (0:33) and “out” (0:36): the “ow” flattens toward “ah,” so it can sound like “abaht” and “aht.”",
   "verified": true,
   "words": [
    [
-    "our",
-    0.9
+    "about",
+    33.8
    ],
    [
-    "power",
-    15.8
+    "out",
+    36.2
    ]
   ],
   "year": 2021,
@@ -459,12 +459,16 @@ window.CLIPS = [
   "place": "Providence, Rhode Island",
   "lat": 41.824,
   "lng": -71.4128,
-  "note": "Old Providence English. Listen to “here” (0:03): the r after a vowel drops, so it can sound like “hee-ah.”",
+  "note": "Old Providence English. Listen to “here” (0:03) and “other” (0:20): the r after a vowel drops, so it can sound like “hee-ah” and “othah.”",
   "verified": true,
   "words": [
    [
     "here",
     3.4
+   ],
+   [
+    "other",
+    20.6
    ]
   ],
   "born": 1941,
@@ -545,7 +549,7 @@ window.CLIPS = [
   "place": "Hazard, Kentucky",
   "lat": 37.2493,
   "lng": -83.1932,
-  "note": "Appalachian English. Listen to “right” (0:11) and “I” (0:16): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “when” (0:19): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win.”",
+  "note": "Appalachian English. Listen to “right” (0:11) and “I” (0:16): the long i loses its glide, so it can sound like “raht” and “Ah.” Listen to “when” (0:19) and “again” (0:20): e before n or m becomes “i” (the pin–pen merger), so it can sound like “win” and “agin.”",
   "verified": true,
   "words": [
    [
@@ -559,6 +563,10 @@ window.CLIPS = [
    [
     "when",
     19.6
+   ],
+   [
+    "again",
+    20.5
    ]
   ],
   "year": 2015,
@@ -1703,7 +1711,7 @@ window.CLIPS = [
   "id": "LES_se0_ag3_f_01_1_2450",
   "audio": "audio/coraal/LES_se0_ag3_f_01_1_2450.mp3",
   "region": "nyc_les",
-  "tier": 2,
+  "tier": 1,
   "start": 0.3,
   "end": 20.3,
   "name": "Woman",
@@ -13163,12 +13171,12 @@ window.CLIPS = [
   "place": "Brockton, Massachusetts",
   "lat": 42.083,
   "lng": -71.018,
-  "note": "South Shore Massachusetts English. Listen for the missing r in words like \"for,\" \"here\" and \"never.\"",
+  "note": "South Shore Massachusetts English. Listen to “party” (0:20): the r after a vowel drops, so it can sound like “pahty.”",
   "verified": true,
   "words": [
    [
     "party",
-    19.9
+    20.7
    ]
   ],
   "year": 2009,
@@ -18620,16 +18628,16 @@ window.CLIPS = [
   "place": "Paterson, New Jersey",
   "lat": 40.917,
   "lng": -74.172,
-  "note": "Old Paterson English. Listen to “class” (0:03) and “back” (0:08): the short a tenses and rises toward “eh-a.”",
+  "note": "Old Paterson English. Listen to “always” (0:25): the “aw” rises and glides, so it can sound like “aw-uhlways.” Listen to “years” (0:34): the r after a vowel drops, so it can sound like “yeahs.”",
   "verified": true,
   "words": [
    [
-    "class",
-    3.0
+    "always",
+    25.7
    ],
    [
-    "back",
-    8.6
+    "years",
+    34.8
    ]
   ],
   "year": 2014,
@@ -18828,7 +18836,7 @@ window.CLIPS = [
   "place": "Denison, Texas",
   "lat": 33.756,
   "lng": -96.537,
-  "note": "Texas English. Listen to “I” (0:02): the long i loses its glide, so it can sound like “Ah.” Listen to “then” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
+  "note": "Texas English. Listen to “I” (0:02) and “right” (0:20): the long i loses its glide, so it can sound like “Ah” and “raht.” Listen to “then” (0:16): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thin.”",
   "verified": true,
   "words": [
    [
@@ -18838,6 +18846,10 @@ window.CLIPS = [
    [
     "then",
     16.4
+   ],
+   [
+    "right",
+    20.4
    ]
   ],
   "year": 2025,
@@ -18856,7 +18868,7 @@ window.CLIPS = [
   "place": "Ronda, North Carolina",
   "lat": 36.221,
   "lng": -80.938,
-  "note": "Blue Ridge mountain English from western North Carolina. Listen to “I” (0:02): the long i loses its glide, so it can sound like “Ah.” Listen to “them” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
+  "note": "Blue Ridge mountain English from western North Carolina. Listen to “I” (0:02) and “like” (0:22): the long i loses its glide, so it can sound like “Ah” and “lahk.” Listen to “them” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “thim.”",
   "verified": true,
   "words": [
    [
@@ -18866,6 +18878,10 @@ window.CLIPS = [
    [
     "them",
     5.8
+   ],
+   [
+    "like",
+    22.2
    ]
   ],
   "year": 2010,
@@ -18969,12 +18985,16 @@ window.CLIPS = [
   "place": "Topsham, Maine",
   "lat": 43.928,
   "lng": -69.976,
-  "note": "Maine English. Listen to “for” (0:00): the r after a vowel drops, so it can sound like “fuh.”",
+  "note": "Maine English. Listen to “for” (0:00) and “here” (0:20): the r after a vowel drops, so it can sound like “fuh” and “hee-ah.”",
   "verified": true,
   "words": [
    [
     "for",
     0.5
+   ],
+   [
+    "here",
+    20.7
    ]
   ],
   "year": 2021,
@@ -19727,7 +19747,7 @@ window.CLIPS = [
   "place": "De Leon, Texas",
   "lat": 32.11,
   "lng": -98.535,
-  "note": "Texas English. Listen to “friend” (0:02) and “when” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frind” and “win.”",
+  "note": "Texas English. Listen to “I” (0:37): the long i loses its glide, so it can sound like “Ah.” Listen to “friend” (0:02) and “when” (0:05): e before n or m becomes “i” (the pin–pen merger), so it can sound like “frind” and “win.”",
   "verified": true,
   "words": [
    [
@@ -19737,6 +19757,10 @@ window.CLIPS = [
    [
     "when",
     5.3
+   ],
+   [
+    "I",
+    37.3
    ]
   ],
   "year": 2026,
@@ -20263,5 +20287,226 @@ window.CLIPS = [
   "st": "VT",
   "note_base": "Old Vermont farm English.",
   "note_locked": true
+ },
+ {
+  "id": "S9gsEuni2qA",
+  "region": "baltimore",
+  "tier": 3,
+  "start": 294,
+  "end": 314,
+  "name": "Michael Phelps",
+  "role": "Olympic swimmer",
+  "place": "Rodgers Forge, Towson, Maryland",
+  "lat": 39.3801,
+  "lng": -76.6086,
+  "note": "Baltimore English. Listen to “old” (0:12) and “so” (0:15): the long o starts forward, close to “eh-oo,” so it can sound like “eh-oold” and “seh-oo.” Listen to “always” (0:00): the “aw” rises and glides, so it can sound like “aw-uhlways.”",
+  "verified": true,
+  "words": [
+   [
+    "always",
+    0.5
+   ],
+   [
+    "old",
+    12.3
+   ],
+   [
+    "so",
+    16.0
+   ]
+  ],
+  "born": 1985,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "DxzLoniToSg",
+  "region": "baltimore",
+  "tier": 2,
+  "start": 78,
+  "end": 108,
+  "name": "Cal Ripken Jr.",
+  "role": "Baseball player",
+  "place": "Aberdeen, Maryland",
+  "lat": 39.5096,
+  "lng": -76.1641,
+  "note": "Baltimore English. Listen to “so” (0:08) and “know” (0:11): the long o starts forward, close to “eh-oo,” so it can sound like “seh-oo” and “neh-oo.” Listen to “all” (0:19) and “thought” (0:24): the “aw” rises and glides, so it can sound like “aw-uhl” and “thaw-uht.”",
+  "verified": true,
+  "words": [
+   [
+    "so",
+    8.2
+   ],
+   [
+    "know",
+    11.1
+   ],
+   [
+    "all",
+    19.1
+   ],
+   [
+    "thought",
+    24.6
+   ]
+  ],
+  "born": 1960,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "MtfqOP2Un6M",
+  "region": "baltimore",
+  "tier": 3,
+  "start": 715,
+  "end": 735,
+  "name": "John Waters",
+  "role": "Filmmaker",
+  "place": "Lutherville, Baltimore County, Maryland",
+  "lat": 39.421,
+  "lng": -76.6261,
+  "note": "Baltimore English. Listen to “don't” (0:00) and “so” (0:05): the long o starts forward, close to “eh-oo,” so it can sound like “deh-oon't” and “seh-oo.” Listen to “talk” (0:01) and “all” (0:03): the “aw” rises and glides, so it can sound like “taw-uhk” and “aw-uhl.”",
+  "verified": true,
+  "words": [
+   [
+    "don't",
+    0.3
+   ],
+   [
+    "talk",
+    1.1
+   ],
+   [
+    "all",
+    3.9
+   ],
+   [
+    "so",
+    5.3
+   ]
+  ],
+  "born": 1946,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "qzKzu86Agg0",
+  "region": "baltimore",
+  "tier": 2,
+  "start": 230,
+  "end": 260,
+  "name": "Mike Rowe",
+  "role": "TV host (Dirty Jobs)",
+  "place": "Overlea, Baltimore County, Maryland",
+  "lat": 39.3615,
+  "lng": -76.5205,
+  "note": "Baltimore English. Listen to “don't” (0:01) and “so” (0:03): the long o starts forward, close to “eh-oo,” so it can sound like “deh-oon't” and “seh-oo.” Listen to “thought” (0:05): the “aw” rises and glides, so it can sound like “thaw-uht.”",
+  "verified": true,
+  "words": [
+   [
+    "don't",
+    1.2
+   ],
+   [
+    "so",
+    3.1
+   ],
+   [
+    "thought",
+    5.1
+   ]
+  ],
+  "born": 1962,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "7rOPV9pQ37E",
+  "region": "baltimore",
+  "tier": 3,
+  "start": 132,
+  "end": 152,
+  "name": "Cal Ripken Jr.",
+  "role": "Baseball player",
+  "place": "Aberdeen, Maryland",
+  "lat": 39.5096,
+  "lng": -76.1641,
+  "note": "Baltimore English. Listen to “no” (0:01) and “know” (0:06): the long o starts forward, close to “eh-oo,” so it can sound like “neh-oo” and “neh-oo.” Listen to “long” (0:00): the “aw” rises and glides, so it can sound like “law-uhng.”",
+  "verified": true,
+  "words": [
+   [
+    "long",
+    0.1
+   ],
+   [
+    "no",
+    1.8
+   ],
+   [
+    "know",
+    6.0
+   ]
+  ],
+  "born": 1960,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "z-NIGmwJNYQ",
+  "region": "baltimore",
+  "tier": 1,
+  "start": 71,
+  "end": 95,
+  "name": "Barbara Mikulski",
+  "role": "U.S. Senator; grew up above her family's Highlandtown grocery",
+  "place": "Highlandtown, Baltimore, Maryland",
+  "lat": 39.2871,
+  "lng": -76.5683,
+  "note": "Baltimore English. Listen to “going” (0:00) and “know” (0:16): the long o starts forward, close to “eh-oo,” so it can sound like “geh-oo-ing” and “neh-oo.” Listen to “all” (0:02): the “aw” rises and glides, so it can sound like “aw-uhl.”",
+  "verified": true,
+  "words": [
+   [
+    "going",
+    0.3
+   ],
+   [
+    "all",
+    2.3
+   ],
+   [
+    "know",
+    16.8
+   ]
+  ],
+  "born": 1936,
+  "st": "MD",
+  "note_base": "Baltimore English."
+ },
+ {
+  "id": "bbKtH1-A3F4",
+  "region": "baltimore",
+  "tier": 1,
+  "start": 263,
+  "end": 294,
+  "name": "Barbara Mikulski",
+  "role": "U.S. Senator; grew up above her family's Highlandtown grocery",
+  "place": "Highlandtown, Baltimore, Maryland",
+  "lat": 39.2871,
+  "lng": -76.5683,
+  "note": "Baltimore English. Listen to “home” (0:08) and “so” (0:14): the long o starts forward, close to “eh-oo,” so it can sound like “heh-oome” and “seh-oo.”",
+  "verified": true,
+  "words": [
+   [
+    "home",
+    8.3
+   ],
+   [
+    "so",
+    14.8
+   ]
+  ],
+  "born": 1936,
+  "st": "MD",
+  "note_base": "Baltimore English."
  }
 ];
