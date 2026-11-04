@@ -131,6 +131,44 @@ window.CANDIDATES = [
 "age": null
 },
 {
+"id": "XSp6LXXO1W8",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 1348,
+"end": 1368,
+"words": [
+[
+"that",
+1.4
+],
+[
+"the",
+1.7
+],
+[
+"they",
+3.2
+],
+[
+"everything",
+13.2
+]
+],
+"title": "391: How Russia Owns Trump with David Corn | Politics War Room with James Carville & Al Hunt",
+"channel": "Politicon",
+"other": 0.28,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
 "id": "yCe28D6mpDE",
 "region": "boston",
 "label": "Boston / Eastern Massachusetts",
@@ -153,6 +191,116 @@ window.CANDIDATES = [
 "source": "",
 "lat": 42.338,
 "lng": -71.048,
+"born": null,
+"age": null
+},
+{
+"id": "CS_O0elCU2U",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 3,
+"start": 574,
+"end": 594,
+"words": [
+[
+"have",
+0.3
+],
+[
+"the",
+4.8
+],
+[
+"that",
+6.0
+]
+],
+"title": "394: Big Tent Is Back With Mark McKinnon & David Axelrod | Politics War Room with James Carville...",
+"channel": "Politicon",
+"other": 0.36,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "VhBibgjD47s",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 2,
+"start": 1257,
+"end": 1287,
+"words": [
+[
+"other",
+1.9
+],
+[
+"they",
+5.8
+],
+[
+"the",
+6.8
+],
+[
+"home",
+9.4
+],
+[
+"have",
+13.7
+],
+[
+"this",
+16.3
+],
+[
+"with",
+21.7
+]
+],
+"title": "381: Not a Time For A Vanity Vote with Denise Powell | Politics War Room with James Carville &...",
+"channel": "Politicon",
+"other": 0.38,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
+"born": null,
+"age": null
+},
+{
+"id": "FMiSKPpyvMk",
+"region": "cajun",
+"label": "Cajun Louisiana (Acadiana)",
+"tier": 1,
+"start": 478,
+"end": 518,
+"words": [
+[
+"here",
+6.6
+]
+],
+"title": "Tulane 2008 Commencement Address - James Carville",
+"channel": "Tulane University",
+"other": 0.4,
+"person": "James Carville",
+"role": "Political strategist",
+"hometown": "Carville, Louisiana",
+"evidence": "Heavy, widely noted local accent; lifelong local",
+"source": "",
+"lat": 30.217,
+"lng": -91.098,
 "born": null,
 "age": null
 }

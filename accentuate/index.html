@@ -732,7 +732,7 @@ if (REVIEW) {
 
 /* ---------- Review (hunt finalists) ---------- */
 function initReview() {
-  const KEY = 'accentuate-review-v18', TN = { 1: 'Easy · 40s', 2: 'Medium · 30s', 3: 'Hard · 20s' };
+  const KEY = 'accentuate-review-v19', TN = { 1: 'Easy · 40s', 2: 'Medium · 30s', 3: 'Hard · 20s' };
   let dec = {}; try { dec = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
   const put = () => { try { localStorage.setItem(KEY, JSON.stringify(dec)); } catch (e) {} const k = Object.values(dec).filter(d => d.v === 'keep').length;
     $('rCount').textContent = `${k} kept · ${Object.keys(dec).length}/${CANDIDATES.length} decided`; };
