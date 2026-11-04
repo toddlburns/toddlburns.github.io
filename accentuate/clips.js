@@ -19910,5 +19910,226 @@ window.CLIPS = [
   "born": 1973,
   "st": "CA",
   "note_base": "California Central Valley English, with a touch of the Okie twang the Dust Bowl brought west."
+ },
+ {
+  "id": "VIpvOcJtNiw",
+  "region": "iowa",
+  "tier": 3,
+  "start": 285,
+  "end": 305,
+  "name": "Dan Gable",
+  "role": "Wrestler and Iowa wrestling coach",
+  "place": "Waterloo, Iowa",
+  "lat": 42.493,
+  "lng": -92.343,
+  "note": "Iowa English, the flat Midwestern voice.",
+  "verified": true,
+  "words": [],
+  "born": 1948,
+  "st": "IA",
+  "year": 2021,
+  "note_base": "Iowa English, the flat Midwestern voice."
+ },
+ {
+  "id": "Lf3GphuWTiY",
+  "region": "maine",
+  "tier": 3,
+  "start": 382,
+  "end": 402,
+  "name": "Linda Greenlaw",
+  "role": "Swordfishing captain and lobsterwoman",
+  "place": "Topsham, Maine",
+  "lat": 43.928,
+  "lng": -69.976,
+  "note": "Maine English. Listen to “water” (0:04) and “or” (0:06): the r after a vowel drops, so it can sound like “watah” and “aw.”",
+  "verified": true,
+  "words": [
+   [
+    "water",
+    5.0
+   ],
+   [
+    "or",
+    6.8
+   ]
+  ],
+  "born": 1960,
+  "st": "ME",
+  "year": 2013,
+  "note_base": "Maine English."
+ },
+ {
+  "id": "QmmBdbWSPdQ",
+  "region": "east_texas",
+  "tier": 3,
+  "start": 743,
+  "end": 763,
+  "name": "Louie Gohmert",
+  "role": "U.S. Representative; East Texas judge",
+  "place": "Mount Pleasant, Texas",
+  "lat": 33.157,
+  "lng": -94.968,
+  "note": "East Texas English, closer to the Deep South than to West Texas. Listen to “right” (0:02) and “side” (0:04): the long i loses its glide, so it can sound like “raht” and “sahd.”",
+  "verified": true,
+  "words": [
+   [
+    "right",
+    2.0
+   ],
+   [
+    "side",
+    5.0
+   ]
+  ],
+  "born": 1953,
+  "st": "TX",
+  "year": 2020,
+  "note_base": "East Texas English, closer to the Deep South than to West Texas."
+ },
+ {
+  "id": "zpQylFn8c28",
+  "region": "nebraska",
+  "tier": 3,
+  "start": 489,
+  "end": 509,
+  "name": "Tom Osborne",
+  "role": "Nebraska football coach",
+  "place": "Hastings, Nebraska",
+  "lat": 40.586,
+  "lng": -98.389,
+  "note": "Nebraska English, plain Midland speech.",
+  "verified": true,
+  "words": [],
+  "born": 1937,
+  "st": "NE",
+  "year": 1998,
+  "recorded": true,
+  "note_base": "Nebraska English, plain Midland speech."
+ },
+ {
+  "id": "1CUWOCAiNc8",
+  "region": "socal",
+  "tier": 3,
+  "start": 590,
+  "end": 610,
+  "name": "Stacy Peralta",
+  "role": "Skateboarder and filmmaker, Z-Boys",
+  "place": "Venice, California",
+  "lat": 33.985,
+  "lng": -118.469,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “you” (0:05): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "you",
+    5.9
+   ]
+  ],
+  "born": 1957,
+  "st": "CA",
+  "year": 2012,
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "yi7XO-64mcw",
+  "region": "appalachia",
+  "tier": 3,
+  "start": 820,
+  "end": 840,
+  "name": "Jim Justice",
+  "role": "Governor of West Virginia",
+  "place": "Charleston, West Virginia",
+  "lat": 38.35,
+  "lng": -81.633,
+  "note": "West Virginia mountain English. Listen to “I” (0:12): the long i loses its glide, so it can sound like “Ah.”",
+  "verified": true,
+  "words": [
+   [
+    "I",
+    12.6
+   ]
+  ],
+  "born": 1951,
+  "st": "WV",
+  "year": 2021,
+  "note_base": "West Virginia mountain English."
+ },
+ {
+  "id": "Vhfo5OQsfEM",
+  "region": "utah",
+  "tier": 3,
+  "start": 696,
+  "end": 716,
+  "name": "Gary Herbert",
+  "role": "Governor of Utah",
+  "place": "Orem, Utah",
+  "lat": 40.297,
+  "lng": -111.695,
+  "note": "Utah English. Listen to “all” (0:08): it uses the same vowel as “cot” (the cot–caught merger of the West).",
+  "verified": true,
+  "words": [
+   [
+    "all",
+    8.8
+   ]
+  ],
+  "born": 1947,
+  "st": "UT",
+  "year": 2020,
+  "note_base": "Utah English."
+ },
+ {
+  "id": "PJUB4hbP9V8",
+  "region": "socal",
+  "tier": 3,
+  "start": 34,
+  "end": 54,
+  "name": "Tony Alva",
+  "role": "Skateboarder, Z-Boys",
+  "place": "Santa Monica, California",
+  "lat": 34.019,
+  "lng": -118.491,
+  "note": "Southern California English, the surf-and-skate voice of Dogtown. Listen to “you” (0:13): the “oo” moves forward toward “ew,” a California signature.",
+  "verified": true,
+  "words": [
+   [
+    "you",
+    13.6
+   ]
+  ],
+  "born": 1957,
+  "st": "CA",
+  "year": 2024,
+  "note_base": "Southern California English, the surf-and-skate voice of Dogtown."
+ },
+ {
+  "id": "W0XO_LxlURg",
+  "region": "vermont",
+  "tier": 3,
+  "start": 83.8,
+  "end": 94.5,
+  "name": "Fred Tuttle",
+  "role": "Dairy farmer and star of Man with a Plan",
+  "place": "Tunbridge, Vermont",
+  "lat": 43.888,
+  "lng": -72.494,
+  "note": "Old rural Vermont English, from a dairy farmer born in 1919. Listen to “neighbor” (0:00) and “miles” (0:02): the r after a vowel fades and the long i flattens, the way hill-farm Vermonters of his generation talked.",
+  "verified": true,
+  "words": [
+   [
+    "neighbor",
+    0.7
+   ],
+   [
+    "miles",
+    2.1
+   ]
+  ],
+  "born": 1919,
+  "year": 1996,
+  "recorded": true,
+  "st": "VT",
+  "note_base": "Old Vermont farm English.",
+  "note_locked": true
  }
 ];
