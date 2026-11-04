@@ -84,6 +84,7 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
 .intro p{color:var(--muted);margin:0 0 10px}
 .intro .rules{margin:16px 0 22px;padding:0;list-style:none;display:grid;gap:4px;font-size:15px}
 .intro .rules li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--answer);margin-right:10px;vertical-align:middle}
+.aboutlink{text-align:center;font-size:13px;margin:14px 0 0}.aboutlink a{color:var(--muted)}
 .credits{font-size:12px;color:var(--muted);margin:18px 0 0}
 
 .dock{position:absolute;z-index:20;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:10px 10px 10px 10px;width:min(560px,calc(100vw - 24px))}
@@ -243,6 +244,7 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
       <li>Lowest score wins</li>
     </ul>
     <div class="playrow"><button id="startBtn">PLAY</button></div>
+    <p class="aboutlink"><a href="about/">About this game</a></p>
   </section>
 
   <section class="stage" id="stage" hidden>
