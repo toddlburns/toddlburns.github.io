@@ -85,8 +85,12 @@ body.white .disc .lab{background-color:#f6f4ee;color:#1b1a17}
 .seg svg{width:22px;height:38px;overflow:visible}
 .seg .on{fill:var(--led);filter:drop-shadow(0 0 3px var(--led))}
 .seg .off{fill:#3a1410}
-.stages{display:flex;justify-content:space-between;gap:4px;padding-bottom:2px}
-.stages div{display:flex;flex-direction:column;align-items:center;gap:6px}
+/* difficulty meter: five unlabelled segments filling green → red, like a mixer's level meter */
+.meter{display:flex;flex-direction:column;gap:5px;align-self:end}
+.stages{display:flex;gap:5px;background:#121211;padding:6px;border-radius:3px;box-shadow:0 0 0 2px #0c0c0b,0 0 0 3px #3e3c38}
+.stages i{flex:1;height:14px;border-radius:2px;background:color-mix(in srgb,var(--c) 18%,#121211);transition:background .3s,box-shadow .3s}
+.stages i.on{background:var(--c);box-shadow:0 0 8px var(--c)}
+.stages i:nth-child(1){--c:#5fe36a}.stages i:nth-child(2){--c:#b6e34a}.stages i:nth-child(3){--c:#ffd23a}.stages i:nth-child(4){--c:#ff9a2b}.stages i:nth-child(5){--c:#ff3b26}
 .led{display:inline-block;width:9px;height:9px;border-radius:50%;background:#3b1a12;box-shadow:0 0 0 1.5px #151413,0 1px 0 #4a4843}
 .led.amb{background:#4a3410}
 .led.on{background:var(--led);box-shadow:0 0 0 1.5px #151413,0 0 8px var(--led)}
@@ -167,6 +171,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 .receipt h3{font-family:var(--mono);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:.06em;color:#c4501c}
 .receipt .red{color:#c4501c}.receipt .blue{color:#1d6b63}
 .receipt .hl{color:#1d6b63;font-weight:600}
+.receipt h3+.big{margin-top:10px}
 .receipt .big{font-family:var(--silkfont);font-weight:700;font-size:30px;line-height:1;letter-spacing:.01em;text-transform:uppercase;margin:0 0 6px;color:var(--ink)}
 .receipt ol li span:first-child{color:#c4501c}
 .receipt ol li span:last-child{color:#1d6b63;font-weight:600}
@@ -215,13 +220,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
       <div class="vfd hero" id="vfd"><div class="l1" id="l1">Loading…</div><div class="l2" id="l2"></div><div class="l3" id="l3"></div></div>
       <div class="meters">
         <div class="counter"><div class="seg" id="seg"></div><div class="silk">In a row</div></div>
-        <div class="stages" id="ladder">
-          <div><i class="led amb"></i><span class="silk">Doors</span></div>
-          <div><i class="led amb"></i><span class="silk">Warm</span></div>
-          <div><i class="led amb"></i><span class="silk">Peak</span></div>
-          <div><i class="led amb"></i><span class="silk">After</span></div>
-          <div><i class="led amb"></i><span class="silk">Deep</span></div>
-        </div>
+        <div class="meter"><div class="stages" id="ladder"><i></i><i></i><i></i><i></i><i></i></div><div class="silk">Difficulty</div></div>
         <div class="mode"><div class="toggle"><i></i></div><div class="silk"><span id="mpic" class="act">Pic</span>/<span id="mwht">Wht</span></div></div>
       </div>
     </div>
@@ -275,7 +274,7 @@ function setCounter(n){
 function vfd(l1,l2='',l3=''){ $('vfd').classList.remove('hero'); $('l1').innerHTML=l1; $('l2').innerHTML=l2; $('l3').innerHTML=l3; }
 function setGo(label, fn){ $('go').textContent=label; $('go').disabled=!fn; GO=fn; }
 $('go').onclick = ()=>{ if (GO) GO(); };
-function setLadder(tier){ [...$('ladder').children].forEach((el,i)=>el.firstElementChild.classList.toggle('on', i<tier)); }
+function setLadder(tier){ [...$('ladder').children].forEach((el,i)=>el.classList.toggle('on', i<tier)); }
 function setWhite(on){ document.body.classList.toggle('white',on); $('mpic').classList.toggle('act',!on); $('mwht').classList.toggle('act',on); }
 function setSpin(on){ $('disc').classList.toggle('spin', on); }
 function printOut(html, scroll){
