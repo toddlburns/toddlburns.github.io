@@ -197,7 +197,24 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
   .reveal .pts{font-size:32px}.reveal .place{font-size:22px}
   .nexttop{display:block}.nextbtn{display:none}.ptsrow{align-items:center}
   .final.side{left:8px;right:8px;width:auto;top:auto;bottom:8px;max-height:58dvh;padding:18px}
+  /* Phones: the final card starts as a slim strip so the five guess lines stay in view; tap or swipe it up for share + leaderboard. */
+  .card > .grab{display:block;width:calc(100% + 36px);margin:-18px -18px 8px;padding:9px 0 6px;background:none;border:0;border-radius:16px 16px 0 0;color:var(--muted);font:650 12px var(--font);letter-spacing:.04em}
+  .card > .grab::before{content:"";display:block;width:38px;height:4px;border-radius:2px;background:var(--rule);margin:0 auto 6px}
+  .card.collapsed > .grab span::after{content:" \25B4"}.card:not(.collapsed) > .grab span::after{content:" \25BE"}
+  .final.collapsed{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:14px;padding-bottom:14px;overflow:hidden}
+  .final.collapsed > *{grid-column:1/-1}
+  .final.collapsed h2{grid-column:1;font-size:40px}
+  .final.collapsed .actions{grid-column:2;margin:0}
+  .final.collapsed .actions button{width:auto;padding:12px 20px}
+  .final.collapsed .verdict,.final.collapsed .board,.final.collapsed #copyBtn,.final.collapsed #fBand{display:none}
+  .card.reveal > .grab{width:calc(100% + 28px);margin:-14px -14px 0}
+  body.revealed .leaflet-bottom.leaflet-right,body.ended .leaflet-bottom.leaflet-right{bottom:calc(178px + env(safe-area-inset-bottom))}
+  .reveal .grab + .verdictband{margin-top:0}
+  .reveal.collapsed{overflow:hidden}
+  .reveal.collapsed > :not(.grab):not(.verdictband):not(.place){display:none}
+  .reveal.collapsed .place{margin-bottom:0}
 }
+.grab{display:none}
 
 /* review + curate tools (separate pages, plain layout) */
 #tools{max-width:980px;margin:0 auto;padding:0 16px 48px}
@@ -260,6 +277,7 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
       <button id="guessBtn" disabled>Guess</button>
     </div>
     <div class="card reveal" id="reveal">
+      <button class="grab" id="rGrab" data-more="Details" aria-expanded="false"><span>Details</span></button>
       <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Miles off · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
       <p class="place" id="rPlace"></p>
       <p class="note" id="rNote"></p>
@@ -276,6 +294,7 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
   </section>
 
   <section class="card final" id="final" hidden>
+    <button class="grab" id="fGrab" data-more="Share &amp; leaderboard" aria-expanded="false"><span>Share &amp; leaderboard</span></button>
     <div class="verdictband" id="fBand"></div>
     <h2 id="fScore">0 <small>miles off</small></h2>
     <p class="verdict" id="fVerdict"></p>
@@ -521,6 +540,7 @@ function newGame() {
     if (c) { picks.push(c); used.add(c.region); if (c.st) used.add(c.st); }   // one region and one state per game
   }
   Object.assign(state, { round: 0, score: 0, picks, results: [] });
+  document.body.classList.remove('ended');
   $('intro').hidden = true; $('final').hidden = true; $('scrim').hidden = true; $('stage').hidden = false; $('hud').hidden = false;
   if (!map) initMap();
   finalLayers.forEach(l => map.removeLayer(l)); finalLayers = [];
@@ -625,7 +645,7 @@ function guess() {
   $('rSrc').textContent = 'Clip source: ' + (c.credit ? c.credit : 'YouTube. Watch the full video') + ' ↗';
   $('nextBtn').textContent = state.round === 4 ? 'See your final score' : 'Start next round';
   $('nextTop').textContent = state.round === 4 ? 'Final score →' : 'Next round →';
-  document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
+  document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0; $('reveal').classList.toggle('collapsed', PHONE.matches); $('rGrab').firstChild.textContent = 'Details';
   $('vidslot').hidden = true;   // no embedded video; the source link under the button opens it on YouTube
   home = () => map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad())); home();
   snd.pause();
@@ -640,7 +660,8 @@ function next() {
   if (++state.round < 5) return startRound();
   $('stage').hidden = true; $('hud').hidden = true; hideVideo(); document.body.classList.remove('revealed');
   [guessMarker, answerMarker, line].forEach(m => m && map.removeLayer(m)); guessMarker = answerMarker = line = null;
-  $('final').hidden = false; $('final').classList.add('side');
+  $('final').hidden = false; $('final').classList.add('side'); document.body.classList.add('ended');
+  setSheet($('final'), PHONE.matches);   // phones: start as a slim strip over the map
   // Every guess and every answer, all at once.
   const pts = [];
   state.results.forEach(r => { const a = [r.c.lat, r.c.lng]; pts.push(a, r.g);
@@ -700,6 +721,21 @@ function copyResult() {
 if (!CURATE) initMap();
 $('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
 $('startBtn').onclick = newGame; $('againBtn').onclick = newGame; $('copyBtn').onclick = copyResult;
+// Phones: the reveal and final cards start as a slim strip so the pins stay in view; tap the handle (or swipe) for the rest.
+// The map re-fits so the pins sit above whichever size is showing.
+const PHONE = matchMedia('(max-width:620px)');
+function setSheet(el, collapsed) {
+  el.classList.toggle('collapsed', collapsed);
+  const g = el.querySelector('.grab'); g.setAttribute('aria-expanded', String(!collapsed));
+  g.firstChild.textContent = collapsed ? g.dataset.more : 'Show the map';
+  requestAnimationFrame(() => { placeVideo(); if (map && home) home(); });
+}
+['reveal', 'final'].forEach(id => { const el = $(id); let y0 = null;
+  el.querySelector('.grab').onclick = () => setSheet(el, !el.classList.contains('collapsed'));
+  el.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; }, { passive: true });
+  el.addEventListener('touchend', e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; y0 = null;
+    const c = el.classList.contains('collapsed');
+    if (c && dy < -30) setSheet(el, false); else if (!c && dy > 40 && el.scrollTop <= 0) setSheet(el, true); }); });
 $('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onclick = next; $('nextTop').onclick = next;
 document.addEventListener('keydown', e => {
   if (CURATE || $('stage').hidden) return;
