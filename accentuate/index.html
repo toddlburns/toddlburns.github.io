@@ -49,6 +49,7 @@ a{color:inherit}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}}
 :root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
 .leaflet-control-attribution{font-size:10px;opacity:.7;cursor:pointer}
+.leaflet-bar a.recenter{display:grid;place-items:center;color:#333}
 .leaflet-control-attribution.mini:not(.open){font-size:0;width:20px;height:20px;padding:0;margin:0 6px 6px 0;border-radius:50%;background:rgba(20,24,28,.6)!important;opacity:.8;display:grid;place-items:center}
 .leaflet-control-attribution.mini:not(.open) *{display:none}
 .leaflet-control-attribution.mini:not(.open)::before{content:"i";font:700 12px/1 Georgia,serif;font-style:italic;color:#fff}
@@ -433,11 +434,20 @@ function aboutClip(c, a) {
 }
 function initMap() {
   map = L.map('map', { worldCopyJump: false, zoomSnap: 0.5, zoomControl: false, maxBounds: [[-45, -175], [72, -20]], maxBoundsViscosity: .8 });
+  // Re-center sits above zoom: a stray drag or pinch on a phone is easy, finding the country again is not.
+  const Recenter = L.Control.extend({ options: { position: 'bottomright' }, onAdd() {
+    const b = L.DomUtil.create('div', 'leaflet-bar'), a = L.DomUtil.create('a', 'recenter', b);
+    a.href = '#'; a.title = 'Re-center map'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', 'Re-center map');
+    a.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>';
+    L.DomEvent.disableClickPropagation(b);
+    L.DomEvent.on(a, 'click', e => { L.DomEvent.preventDefault(e); (home || fitUS)(); });
+    return b; } });
+  new Recenter().addTo(map);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   // Map credit is required on the map; keep it as a small "i" that opens on tap.
   const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
   ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
-  fitUS();
+  fitUS(); map.setMinZoom(Math.floor(map.getZoom()) - 1);   // no zooming out to the whole world
   map.setMinZoom(Math.max(1, map.getZoom() - 1.5));
   // Soft colored terrain with hillshade and no labels: mountains, rivers and coasts are the only clues.
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
@@ -462,7 +472,8 @@ function cardPad() {
   if (!r) return { paddingTopLeft: [20, 70], paddingBottomRight: [20, 110] };
   return r.width < innerWidth * 0.7 ? { paddingTopLeft: [r.right + 16, 70], paddingBottomRight: [40, 30] } : { paddingTopLeft: [20, 70], paddingBottomRight: [20, innerHeight - r.top + 16] };
 }
-const fitUS = () => map.fitBounds(VIEWS['48'], cardPad());
+let home = null;   // what the re-center button returns to: the whole map, or the guess + answer after a reveal
+const fitUS = () => { home = fitUS; map.fitBounds(VIEWS['48'], cardPad()); };
 addEventListener('resize', () => { placeVideo(); });
 // YouTube only plays while its player is on screen, so it waits under the map and moves into the card at the reveal.
 function placeVideo() {
@@ -614,7 +625,7 @@ function guess() {
   $('nextTop').textContent = state.round === 4 ? 'Final score →' : 'Next round →';
   document.body.classList.add('revealed'); $('reveal').classList.add('on'); $('reveal').scrollTop = 0;
   $('vidslot').hidden = true;   // no embedded video; the source link under the button opens it on YouTube
-  map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad()));
+  home = () => map.fitBounds(L.latLngBounds([g, [c.lat, c.lng]]).pad(0.35), Object.assign({ maxZoom: 6.5 }, cardPad())); home();
   snd.pause();
   if (lv >= 4) setTimeout(() => {   // the wow moment: one burst out of the answer pin
     if (!state.revealed) return;
@@ -633,7 +644,7 @@ function next() {
   state.results.forEach(r => { const a = [r.c.lat, r.c.lng]; pts.push(a, r.g);
     finalLayers.push(L.marker(r.g, { icon: pinIcon('g sm') }).addTo(map), L.marker(a, { icon: pinIcon('a sm') }).addTo(map).bindTooltip(r.c.place, { direction: 'top', offset: [0, -6], className: 'place' }),
       L.polyline([r.g, a], { color: css('--ink'), weight: 1.5, dashArray: '3 5', opacity: .7 }).addTo(map)); });
-  requestAnimationFrame(() => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())));
+  home = () => map.fitBounds(L.latLngBounds(pts).pad(0.1), Object.assign({ maxZoom: 7 }, cardPad())); requestAnimationFrame(home);
   const max = 5 * CAP;
   state.max = max; state.submitted = false; myEntry = null;
   $('lbForm').hidden = false; $('lbBtn').disabled = false; $('lbMsg').textContent = '';
