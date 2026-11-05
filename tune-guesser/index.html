@@ -15,7 +15,18 @@
   --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'Archivo',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink)}
+/* records 6+: white labels. The page flips to a bare promo-sleeve palette */
+body.white{--bg:#e9e6dd; --ink:#121210; --dim:#6d6a62; --line:#cbc7bb; --label:#fbfaf6; --labelInk:#121210; --hot:#121210; --ok:#14833f; --bad:#c81e1e}
+html,body{background:var(--bg);color:var(--ink);transition:background .6s,color .6s}
+body.white .big:not(.again){color:#e9e6dd}
+.levelpill{display:none;margin-left:10px;padding:2px 7px;border:1px solid var(--ink);color:var(--ink);font-weight:600}
+body.white .levelpill{display:inline-block}
+body.white .disc .lab{background:var(--label);box-shadow:inset 0 0 0 1px #d9d5ca}
+.levelup{justify-content:center;text-align:left}
+.levelup .kick{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.levelup h1{margin:0 0 18px}
+.levelup p{font-family:var(--mono);font-size:14px;line-height:1.6;max-width:48ch;margin-bottom:12px}
+.levelup .big{margin-top:18px}
 body{font-family:var(--sans);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit}
@@ -72,6 +83,7 @@ ol.board li.empty{display:block;border:0}
 .opt .t{font-weight:800;font-size:17px;line-height:1.15;letter-spacing:-.01em}
 .opt .a{display:block;font-family:var(--mono);font-weight:400;font-size:12.5px;color:var(--dim);margin-top:3px;letter-spacing:0}
 .opt:disabled{cursor:default}
+.opt .a[hidden]{display:none}
 .opt.gone{opacity:.12}
 .opt.right{border-color:var(--ok);background:rgba(61,220,132,.1)}
 .opt.wrong{border-color:var(--bad);background:rgba(255,59,59,.1)}
@@ -108,16 +120,16 @@ footer{font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;b
 </head>
 <body>
 <div class="wrap">
-  <header><span><b>Tune Guesser</b></span><span>House · Techno · Drum &amp; Bass · –2010</span></header>
+  <header><span><b>Tune Guesser</b><span class="levelpill">White label</span></span><span>House · Techno · Drum &amp; Bass · –2010</span></header>
 
   <!-- INTRO -->
   <section class="screen on" id="intro">
     <h1>Tune<br><span>Guesser</span></h1>
     <p class="kicker">The needle drops somewhere in the middle of a foundational house, techno or drum &amp; bass record. Name it. Get one wrong and you're back at the beginning.</p>
     <div class="rules">
-      <div><b>Four choices</b>No clock: listen as long as you like. Miss one and you go back to the beginning. From record 11 you only see the artist names.</div>
-      <div><b>It gets deeper</b>Starts at doors open and ends in the deep crates.</div>
-      <div><b>Three lifelines</b>50:50, Sleeve notes, Needle drop. Each one works once per run.</div>
+      <div><b>Picture sleeves</b>Records 1–5 show the title and artist for each of the four choices. No clock, so listen as long as you like.</div>
+      <div><b>White labels</b>From record 6 you only get artist names, and the records keep getting deeper. Miss one and you go back to the beginning.</div>
+      <div><b>Three lifelines</b>50:50, Song name, Year. Each one works once per run.</div>
     </div>
     <button class="big" id="play" disabled>Loading…</button>
     <h2>Leaderboard</h2>
@@ -139,8 +151,8 @@ footer{font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;b
     <div class="notes" id="notes"></div>
     <div class="lifelines" id="lls">
       <button class="ll" data-ll="fifty"><b>50:50</b>Remove two</button>
-      <button class="ll" data-ll="notes"><b>Sleeve</b>Year · label · style</button>
-      <button class="ll" data-ll="drop"><b>Needle drop</b>Hear another part</button>
+      <button class="ll" data-ll="title"><b>Song name</b><span id="titlehint">Show the titles</span></button>
+      <button class="ll" data-ll="year"><b>Year</b>When it came out</button>
     </div>
     <div class="reveal" id="reveal">
       <div class="v" id="verdict"></div>
@@ -150,6 +162,15 @@ footer{font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;b
       <div class="det" id="src"></div>
       <button class="big" id="next">Next record</button>
     </div>
+  </section>
+
+  <!-- LEVEL UP -->
+  <section class="screen levelup" id="levelup">
+    <div class="kick">5 in a row · Level 2</div>
+    <h1>White<br>labels</h1>
+    <p>No more picture sleeves. From here on you see only the artists, the way a DJ gets an unmarked promo with nothing on the label but a name scrawled in marker.</p>
+    <p>Your Song name lifeline puts the titles back for one record.</p>
+    <button class="big" id="golevel">Drop the needle</button>
   </section>
 
   <!-- OVER -->
@@ -177,7 +198,7 @@ const STAGES = [null,
   {name:'Peak time', lab:'PEAK TIME'},
   {name:'After hours', lab:'AFTER HRS'},
   {name:'Deep crates', lab:'DEEP CRATES'}];
-const ARTIST_ONLY_AFTER = 10; // from record 11 the choices show the artist only
+const ARTIST_ONLY_AFTER = 5; // from record 6 the choices are white labels: artist only
 // questions 1–5 tier 1, 6–12 tier 2, 13–20 tier 3, 21–30 tier 4, 31+ tier 5
 const tierFor = q => q<=5?1 : q<=12?2 : q<=20?3 : q<=30?4 : 5;
 
@@ -208,7 +229,8 @@ loadBoard('board0');
 
 // ---------- run ----------
 function newRun(){
-  S = {q:0, streak:0, used:new Set(), lifelines:{fifty:true,notes:true,drop:true}, cur:null, answered:false};
+  document.body.classList.remove('white');
+  S = {q:0, streak:0, used:new Set(), lifelines:{fifty:true,title:true,year:true}, cur:null, answered:false};
   document.querySelectorAll('.ll').forEach(b=>b.disabled=false);
   show('game'); nextQuestion();
 }
@@ -245,6 +267,9 @@ function distractors(track){
 function norm(a){ return a.toLowerCase().replace(/derrick may|rhythim is rhythim/,'dm').replace(/[^a-z0-9]/g,''); }
 
 function nextQuestion(){
+  // crossing into white labels gets its own screen; its button comes back here
+  if (S.q===ARTIST_ONLY_AFTER && !S.leveled){ S.leveled=true; player.stopVideo(); setSpin(false); show('levelup'); return; }
+  document.body.classList.toggle('white', S.q>=ARTIST_ONLY_AFTER);
   S.q++;
   const tier = tierFor(S.q);
   const track = pickTrack(tier);
@@ -261,10 +286,12 @@ function nextQuestion(){
   $('status').textContent='Cueing…';
   $('notes').classList.remove('on'); $('reveal').classList.remove('on');
   $('lls').style.display='';
-  document.querySelectorAll('.ll').forEach(b=>b.disabled=!S.lifelines[b.dataset.ll]);
+  const white = S.q>ARTIST_ONLY_AFTER;
+  document.querySelectorAll('.ll').forEach(b=>b.disabled=!S.lifelines[b.dataset.ll] || (b.dataset.ll==='title' && !white));
+  $('titlehint').textContent = white || !S.lifelines.title ? 'Show the titles' : 'From record 6';
 
   $('opts').innerHTML = S.options.map((o,i)=>
-    `<button class="opt" data-id="${o.id}"><span class="l">${'ABCD'[i]}</span><span class="t">${S.q>ARTIST_ONLY_AFTER ? esc(o.artist) : `${esc(o.title)}<span class="a">${esc(o.artist)}</span>`}</span></button>`).join('');
+    `<button class="opt" data-id="${o.id}"><span class="l">${'ABCD'[i]}</span><span class="t">${white ? `${esc(o.artist)}<span class="a" hidden>${esc(o.title)}</span>` : `${esc(o.title)}<span class="a">${esc(o.artist)}</span>`}</span></button>`).join('');
 
   const start = Math.floor(track.dur * rand(.25,.6));
   player.loadVideoById({videoId:track.id, startSeconds:start});
@@ -332,12 +359,10 @@ $('lls').addEventListener('click', e=>{
   if (k==='fifty'){
     const wrong = shuffle([...document.querySelectorAll('.opt')].filter(o=>o.dataset.id!==S.cur.id)).slice(0,2);
     wrong.forEach(o=>{ o.classList.add('gone'); o.disabled=true; });
-  } else if (k==='notes'){
-    const t=S.cur; $('notes').textContent = [t.year, t.label, t.genre].filter(Boolean).join(' · '); $('notes').classList.add('on');
-  } else if (k==='drop'){
-    const now = player.getCurrentTime()||0, d=S.cur.dur;
-    let to; do { to = rand(.08,.85)*d; } while (Math.abs(to-now) < d*.15);
-    player.seekTo(Math.floor(to), true);
+  } else if (k==='title'){
+    document.querySelectorAll('.opt .a[hidden]').forEach(a=>a.hidden=false);
+  } else if (k==='year'){
+    $('notes').textContent = `Released in ${S.cur.year}`; $('notes').classList.add('on');
   }
 });
 
@@ -369,6 +394,7 @@ $('send').onclick = async ()=>{
 $('name').addEventListener('keydown', e=>{ if (e.key==='Enter') $('send').click(); });
 $('again').onclick = ()=>{ $('subwrap').querySelector('.submit').style.display=''; newRun(); };
 $('play').onclick = newRun;
+$('golevel').onclick = ()=>{ show('game'); nextQuestion(); };
 
 async function loadBoard(id){
   try{ const r=await fetch(API+'/top'); renderBoard(id, await r.json()); }
