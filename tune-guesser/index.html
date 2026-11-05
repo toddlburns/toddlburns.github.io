@@ -70,6 +70,9 @@ body.white .disc .lab{background-color:#f6f4ee;color:#1b1a17}
   background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),linear-gradient(180deg,rgba(255,255,255,.05),transparent 40%)}
 .vfd div{white-space:nowrap;overflow:hidden;text-overflow:clip}
 .vfd .l1{font-size:22px;line-height:1.15}
+.vfd.hero{display:flex;align-items:center}
+.vfd.hero .l1{font-size:42px;line-height:1.05;white-space:normal}
+.vfd.hero .l2,.vfd.hero .l3{display:none}
 .vfd .l2{font-size:17px;opacity:.85;margin-top:6px}
 .vfd .l3{font-size:17px;margin-top:4px;min-height:1.2em}
 .vfd .blink{animation:blink 1s steps(2) infinite}
@@ -127,7 +130,8 @@ body.white .pad .tape{clip-path:none;border-radius:2px}
   box-shadow:0 3px 0 #6d685d,0 4px 6px rgba(0,0,0,.5)}
 .fk button:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #6d685d}
 .fk button:disabled{background:linear-gradient(180deg,#8e897d,#77736a);color:#4b4840;cursor:default}
-.fk button{display:flex;align-items:center;justify-content:center;gap:9px}
+.fk button{display:flex;align-items:center;justify-content:center;gap:10px;height:50px;font-size:20px;letter-spacing:.06em}
+.fk button.locked{opacity:.3}
 .fk button .led{flex:none}
 .transport{display:flex;flex-direction:column;align-items:center;gap:7px}
 .transport button{min-width:132px;height:58px;border-radius:6px;padding:0 16px;font-weight:700;font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:#1a1007;
@@ -160,8 +164,12 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 .receipt.feed{animation:feed .9s steps(9) both}
 @keyframes feed{from{transform:translateY(-100%)}to{transform:translateY(0)}}
 .receipt p+p{margin-top:8px}
-.receipt h3{font-family:var(--mono);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:.06em}
-.receipt .big{font-family:var(--marker);font-size:26px;line-height:1.1;margin:10px 0 4px}
+.receipt h3{font-family:var(--mono);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:.06em;color:#d2381c}
+.receipt .red{color:#d2381c}.receipt .blue{color:#2346b0}
+.receipt .hl{background:linear-gradient(transparent 52%,#ffe45c 52%,#ffe45c 92%,transparent 92%);padding:0 2px}
+.receipt .big{font-family:var(--marker);font-size:26px;line-height:1.1;margin:10px 0 4px;color:#2346b0}
+.receipt ol li span:first-child{color:#d2381c}
+.receipt ol li span:last-child{color:#2346b0;font-weight:600}
 .receipt .rule{border:0;border-top:1px dashed #8b867a;margin:12px 0}
 .receipt .dim{color:#6b675e}
 .receipt .ok{color:#17702f}.receipt .no{color:#b4231a}
@@ -187,7 +195,8 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
   .fnrow{grid-template-columns:1fr}
   .transport button{width:100%}
   .paper,.slot{width:94%}
-  .vfd .l1{font-size:18px} .vfd .l2,.vfd .l3{font-size:14px}
+  .vfd .l1{font-size:18px} .vfd .l2,.vfd .l3{font-size:14px} .vfd.hero .l1{font-size:30px}
+  .fk button{font-size:16px;height:46px}
 }
 @media (prefers-reduced-motion:reduce){.disc.spin{animation:none}.receipt.feed{animation:none}}
 </style>
@@ -203,7 +212,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
       <div class="platter"><div class="disc" id="disc"><div class="lab"><span id="qn"></span></div></div></div>
     </div>
     <div class="right">
-      <div class="vfd"><div class="l1" id="l1">TG-1 READY</div><div class="l2" id="l2">LOADING CRATE…</div><div class="l3" id="l3"></div></div>
+      <div class="vfd hero" id="vfd"><div class="l1" id="l1">Loading…</div><div class="l2" id="l2"></div><div class="l3" id="l3"></div></div>
       <div class="meters">
         <div class="counter"><div class="seg" id="seg"></div><div class="silk">In a row</div></div>
         <div class="stages" id="ladder">
@@ -221,7 +230,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
   <div class="pads" id="opts"></div>
 
   <div class="fnrow">
-    <div class="hints"><span class="silk">Hints · one use each</span>
+    <div class="hints"><span class="silk">Hints</span>
       <div class="keys" id="lls">
         <div class="fk"><button data-ll="fifty"><i class="led amb" id="led-fifty"></i>50:50</button></div>
         <div class="fk"><button data-ll="year"><i class="led amb" id="led-year"></i>Year</button></div>
@@ -263,7 +272,7 @@ function setCounter(n){
   $('seg').innerHTML = [...s].map(ch=>`<svg viewBox="0 0 20 36">${Object.entries(SEGS).map(([k,p])=>
     `<polygon points="${p}" class="${DIGITS[ch].includes(k)?'on':'off'}"/>`).join('')}</svg>`).join('');
 }
-function vfd(l1,l2='',l3=''){ $('l1').innerHTML=l1; $('l2').innerHTML=l2; $('l3').innerHTML=l3; }
+function vfd(l1,l2='',l3=''){ $('vfd').classList.remove('hero'); $('l1').innerHTML=l1; $('l2').innerHTML=l2; $('l3').innerHTML=l3; }
 function setGo(label, fn){ $('go').textContent=label; $('go').disabled=!fn; GO=fn; }
 $('go').onclick = ()=>{ if (GO) GO(); };
 function setLadder(tier){ [...$('ladder').children].forEach((el,i)=>el.firstElementChild.classList.toggle('on', i<tier)); }
@@ -304,20 +313,18 @@ window.onYouTubeIframeAPIReady = () => {
 const tag=document.createElement('script'); tag.src='https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
 function maybeReady(){
   if (!(ytReady && TRACKS.length)) return;
-  vfd('TG-1 READY', `${TRACKS.length} RECORDS IN THE CRATE`, '<span class="blink">PRESS START</span>');
+  $('vfd').classList.add('hero'); $('l1').innerHTML = 'Press start<br><span class="blink">to play</span>';
   setGo('Start', newRun);
 }
 loadBoard().then(()=>{ if (!S) printIntro(); });
 printIntro();
 
 function printIntro(){
-  printOut(`<h3>TG-1 · operating notes</h3>
-    <p>The needle drops somewhere in the middle of a foundational house, techno or drum &amp; bass record. Hit the pad with the right answer. There's no clock, so listen as long as you like.</p>
-    <hr class="rule">
-    <p><b>Records 1–5 · picture sleeves.</b> Every pad shows the title and the artist.</p>
-    <p><b>Record 6 on · white labels.</b> The unit switches to WHT mode and the pads show only the artist, and the records get deeper.</p>
-    <p><b>Hints:</b> 50:50, Year, Song name. Each one works once per run, and Song name only works on white labels.</p>
-    <p><b>One wrong and you're back to record 1.</b></p>
+  printOut(`<h3>How to play</h3>
+    <p class="big">Name the record.</p>
+    <p>The needle drops mid-track. Hit the pad with the right answer.</p>
+    <p><span class="hl">Records 1–5</span> show song and artist. <span class="hl">From 6</span> it's <b class="blue">artists only</b>.</p>
+    <p>One wrong and you're <b class="red">back to record 1</b>.</p>
     <hr class="rule">
     ${boardHtml()}`);
 }
@@ -409,6 +416,7 @@ function syncLifelines(){
   document.querySelectorAll('#lls button').forEach(b=>{
     const k=b.dataset.ll, avail = !!S && S.lifelines[k] && !S.answered && (k!=='title' || white);
     b.disabled = !avail;
+    b.classList.toggle('locked', k==='title' && !white);
     $('led-'+k).classList.toggle('on', !!S ? S.lifelines[k] && (k!=='title' || white) : false);
   });
 }
