@@ -7,7 +7,7 @@
 <title>Accentuate</title>
 <meta name="description" content="Hear a local voice. Find it on the map. A game celebrating the many ways America says things.">
 <meta property="og:title" content="Accentuate: Guess the accent">
-<meta property="og:description" content="Check out this cool game about recognizing accents across the United States!">
+<meta property="og:description" content="Hear someone talk, guess where they&rsquo;re from.">
 <meta property="og:image" content="https://toddlburns.com/accentuate/og-play.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://toddlburns.com/accentuate/">
@@ -745,9 +745,9 @@ $('lbForm').onsubmit = async e => {
 };
 function copyResult() {
   const sq = m => m < CAP * .1 ? '🟩' : m < CAP * .3 ? '🟨' : m < CAP * .6 ? '🟧' : '⬜';   // one square per round, by miles off
-  const mine = `I was ${state.score.toLocaleString()} miles off on Accentuate. ${state.results.map(r => sq(r.p)).join('')}`;
+  const mine = `Accentuate: ${state.score.toLocaleString()} miles off ${state.results.map(r => sq(r.p)).join('')}`;
   const url = 'https://toddlburns.com/accentuate/';
-  const text = 'Check out this cool game about recognizing accents across the United States!';   // Todd's wording
+  const text = "Hear someone talk, guess where they’re from.";   // plain, says what the game is (Todd found the old line cheesy)
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
   if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: mine + '\n' + text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
