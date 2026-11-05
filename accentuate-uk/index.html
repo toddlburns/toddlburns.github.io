@@ -728,15 +728,13 @@ $('lbForm').onsubmit = async e => {
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 };
 function copyResult() {
-  const sq = m => m < CAP * .1 ? '🟩' : m < CAP * .3 ? '🟨' : m < CAP * .6 ? '🟧' : '⬜';   // one square per round, by miles off
-  // name + squares up top (the game in one glance), then one plain sentence that makes the number mean something
-  const text = `Accentuate UK ${state.results.map(r => sq(r.p)).join('')}`;
-  const mine = `I guessed where five people were from by their accents. Total miss: ${state.score.toLocaleString()} miles. Can you get closer?`;
+  // Todd picked the challenge line; no emoji squares (he didn't love the meter)
+  const text = `I was ${state.score.toLocaleString()} miles off placing five accents on Accentuate UK. Bet you can’t beat it.`;
   const url = 'https://toddlburns.com/accentuate-uk/';
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
-  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + mine + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
-  else navigator.clipboard?.writeText(text + '\n' + mine + '\n' + url).then(done);
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
+  else navigator.clipboard?.writeText(text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
 $('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
