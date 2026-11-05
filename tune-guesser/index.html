@@ -167,7 +167,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 .receipt h3{font-family:var(--mono);font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:.06em;color:#c4501c}
 .receipt .red{color:#c4501c}.receipt .blue{color:#1d6b63}
 .receipt .hl{color:#1d6b63;font-weight:600}
-.receipt .big{font-family:var(--silkfont);font-weight:700;font-size:30px;line-height:1;letter-spacing:.01em;text-transform:uppercase;margin:10px 0 6px;color:var(--ink)}
+.receipt .big{font-family:var(--silkfont);font-weight:700;font-size:30px;line-height:1;letter-spacing:.01em;text-transform:uppercase;margin:0 0 6px;color:var(--ink)}
 .receipt ol li span:first-child{color:#c4501c}
 .receipt ol li span:last-child{color:#1d6b63;font-weight:600}
 .receipt .rule{border:0;border-top:1px dashed #8b867a;margin:12px 0}
@@ -320,10 +320,9 @@ loadBoard().then(()=>{ if (!S) printIntro(); });
 printIntro();
 
 function printIntro(){
-  printOut(`<h3>How to play</h3>
-    <p class="big">Name the record.</p>
+  printOut(`<p class="big">Name the record.</p>
     <p>The needle drops mid-track. Hit the pad with the right answer.</p>
-    <p><span class="hl">Records 1–5</span> show song and artist. <span class="hl">From 6</span> it's <b class="blue">artists only</b>.</p>
+    <p><span class="hl">Records 1–5:</span> song and artist.<br><span class="hl">From record 6:</span> <b class="blue">artists only</b>.</p>
     <p>One wrong and you're <b class="red">back to record 1</b>.</p>
     <hr class="rule">
     ${boardHtml()}`);
