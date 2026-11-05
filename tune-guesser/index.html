@@ -64,9 +64,6 @@ ol.board li.empty{display:block;border:0}
 .ladder i.now{background:var(--hot)}
 .stats{display:flex;gap:18px;font-family:var(--mono);font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
 .stats b{display:block;color:var(--ink);font-size:20px;font-weight:600;letter-spacing:0}
-.timer{height:3px;background:var(--line);margin-bottom:16px;overflow:hidden}
-.timer div{height:100%;background:var(--ink);width:100%;transform-origin:left}
-.timer.low div{background:var(--bad)}
 .status{font-family:var(--mono);font-size:12px;color:var(--dim);min-height:1.5em;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
 .opts{display:grid;gap:8px}
 .opt{display:grid;grid-template-columns:2em 1fr;align-items:center;text-align:left;border:1px solid var(--line);padding:14px 14px;min-height:62px;transition:border-color .1s,background .1s}
@@ -118,7 +115,7 @@ footer{font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;b
     <h1>Tune<br><span>Guesser</span></h1>
     <p class="kicker">The needle drops somewhere in the middle of a foundational house, techno or drum &amp; bass record. Name it. Get one wrong and you're back at the beginning.</p>
     <div class="rules">
-      <div><b>Four choices</b>30 seconds each. Answer faster to score more. Miss one and you go back to the beginning.</div>
+      <div><b>Four choices</b>No clock: listen as long as you like. Miss one and you go back to the beginning. From record 11 you only see the artist names.</div>
       <div><b>It gets deeper</b>Starts at doors open and ends in the deep crates.</div>
       <div><b>Three lifelines</b>50:50, Sleeve notes, Needle drop. Each one works once per run.</div>
     </div>
@@ -134,17 +131,16 @@ footer{font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;b
       <div class="meta">
         <div class="stage" id="stage">Doors open</div>
         <div class="ladder" id="ladder"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="stats"><span>Score<b id="score">0</b></span><span>Streak<b id="streak">0</b></span></div>
+        <div class="stats"><span>In a row<b id="streak">0</b></span></div>
       </div>
     </div>
-    <div class="timer" id="timer"><div id="bar"></div></div>
     <div class="status" id="status">Cueing…</div>
     <div class="opts" id="opts"></div>
     <div class="notes" id="notes"></div>
     <div class="lifelines" id="lls">
       <button class="ll" data-ll="fifty"><b>50:50</b>Remove two</button>
       <button class="ll" data-ll="notes"><b>Sleeve</b>Year · label · style</button>
-      <button class="ll" data-ll="drop"><b>Needle drop</b>New spot, +10s</button>
+      <button class="ll" data-ll="drop"><b>Needle drop</b>Hear another part</button>
     </div>
     <div class="reveal" id="reveal">
       <div class="v" id="verdict"></div>
@@ -181,7 +177,7 @@ const STAGES = [null,
   {name:'Peak time', lab:'PEAK TIME'},
   {name:'After hours', lab:'AFTER HRS'},
   {name:'Deep crates', lab:'DEEP CRATES'}];
-const TIME = 30;
+const ARTIST_ONLY_AFTER = 10; // from record 11 the choices show the artist only
 // questions 1–5 tier 1, 6–12 tier 2, 13–20 tier 3, 21–30 tier 4, 31+ tier 5
 const tierFor = q => q<=5?1 : q<=12?2 : q<=20?3 : q<=30?4 : 5;
 
@@ -212,7 +208,7 @@ loadBoard('board0');
 
 // ---------- run ----------
 function newRun(){
-  S = {q:0, score:0, streak:0, used:new Set(), lifelines:{fifty:true,notes:true,drop:true}, cur:null, timeLeft:TIME, ticking:false, answered:false, timerId:null, playingSince:0};
+  S = {q:0, streak:0, used:new Set(), lifelines:{fifty:true,notes:true,drop:true}, cur:null, answered:false};
   document.querySelectorAll('.ll').forEach(b=>b.disabled=false);
   show('game'); nextQuestion();
 }
@@ -254,22 +250,21 @@ function nextQuestion(){
   const track = pickTrack(tier);
   if (!track) return gameOver(true);
   S.used.add(track.id);
-  S.cur = track; S.answered=false; S.timeLeft=TIME; S.ticking=false; S.playingSince=0;
+  S.cur = track; S.answered=false;
   S.options = shuffle([track, ...distractors(track)]);
 
   // header
   const st = STAGES[tier];
   $('stage').textContent = st.name; $('lablevel').textContent = st.lab; $('qn').textContent = S.q;
   [...$('ladder').children].forEach((el,i)=>{ el.className = i+1<tier?'done':i+1===tier?'now':''; });
-  $('score').textContent = S.score; $('streak').textContent = S.streak;
-  $('bar').style.transform='scaleX(1)'; $('timer').classList.remove('low');
+  $('streak').textContent = S.streak;
   $('status').textContent='Cueing…';
   $('notes').classList.remove('on'); $('reveal').classList.remove('on');
   $('lls').style.display='';
   document.querySelectorAll('.ll').forEach(b=>b.disabled=!S.lifelines[b.dataset.ll]);
 
   $('opts').innerHTML = S.options.map((o,i)=>
-    `<button class="opt" data-id="${o.id}"><span class="l">${'ABCD'[i]}</span><span class="t">${esc(o.title)}<span class="a">${esc(o.artist)}</span></span></button>`).join('');
+    `<button class="opt" data-id="${o.id}"><span class="l">${'ABCD'[i]}</span><span class="t">${S.q>ARTIST_ONLY_AFTER ? esc(o.artist) : `${esc(o.title)}<span class="a">${esc(o.artist)}</span>`}</span></button>`).join('');
 
   const start = Math.floor(track.dur * rand(.25,.6));
   player.loadVideoById({videoId:track.id, startSeconds:start});
@@ -280,39 +275,26 @@ function onState(e){
   if (!S || S.answered && e.data!==YT.PlayerState.PLAYING) { setSpin(e.data===YT.PlayerState.PLAYING); return; }
   if (e.data===YT.PlayerState.PLAYING){
     setSpin(true);
-    if (!S.answered){ $('status').textContent='Playing — name it'; startClock(); }
+    if (!S.answered){ $('status').textContent='Playing — name it'; }
   } else if (e.data===YT.PlayerState.BUFFERING){
-    $('status').textContent='Buffering…'; stopClock();
+    $('status').textContent='Buffering…';
   } else if (e.data===YT.PlayerState.PAUSED || e.data===YT.PlayerState.ENDED){
-    setSpin(false); if (!S.answered){ stopClock(); $('status').textContent = e.data===YT.PlayerState.PAUSED ? 'Paused — tap Resume' : 'Track ended'; if (e.data===YT.PlayerState.PAUSED) showResume(); }
+    setSpin(false); if (!S.answered) showResume(e.data===YT.PlayerState.ENDED);
   }
 }
-function showResume(){
-  $('status').innerHTML='<button class="ll" id="resume" style="border-style:solid"><b>Resume</b></button>';
-  $('resume').onclick=()=>player.playVideo();
+function showResume(ended){
+  $('status').innerHTML='<button class="ll" id="resume" style="border-style:solid"><b>'+(ended?'Play again':'Resume')+'</b></button>';
+  // a finished record restarts from somewhere in the middle
+  $('resume').onclick=()=>{ if (ended) player.seekTo(Math.floor(S.cur.dur*rand(.25,.6)), true); player.playVideo(); };
 }
 function onYtError(e){
   // a video that won't embed or has gone: swap it silently for another record of the same tier
   if (!S || S.answered) return;
   console.warn('[tune-guesser] skip', S.cur && S.cur.id, 'yt error', e.data);
-  S.q--; stopClock(); nextQuestion();
+  S.q--; nextQuestion();
 }
 function setSpin(on){ $('disc').classList.toggle('spin', on); }
 
-function startClock(){
-  if (S.ticking) return; S.ticking=true;
-  let last = performance.now();
-  S.timerId = setInterval(()=>{
-    const now=performance.now(); S.timeLeft -= (now-last)/1000; last=now;
-    if (S.timeLeft<=0){ S.timeLeft=0; renderClock(); answer(null); return; }
-    renderClock();
-  }, 100);
-}
-function stopClock(){ S.ticking=false; clearInterval(S.timerId); }
-function renderClock(){
-  $('bar').style.transform = `scaleX(${Math.max(0,S.timeLeft/TIME)})`;
-  $('timer').classList.toggle('low', S.timeLeft<8);
-}
 
 $('opts').addEventListener('click', e=>{
   const b = e.target.closest('.opt'); if (!b || b.disabled || S.answered) return;
@@ -320,22 +302,17 @@ $('opts').addEventListener('click', e=>{
 });
 
 function answer(id){
-  S.answered = true; stopClock();
+  S.answered = true;
   const t = S.cur, right = id===t.id;
   document.querySelectorAll('.opt').forEach(b=>{
     b.disabled=true;
     if (b.dataset.id===t.id) b.classList.add('right');
     else if (b.dataset.id===id) b.classList.add('wrong');
   });
-  let gained = 0;
-  if (right){
-    gained = t.tier*100 + Math.round(S.timeLeft)*10;
-    S.score += gained; S.streak++;
-    $('score').textContent=S.score; $('streak').textContent=S.streak;
-  }
+  if (right){ S.streak++; $('streak').textContent=S.streak; }
   $('lls').style.display='none'; $('notes').classList.remove('on');
   $('verdict').className = 'v ' + (right?'ok':'no');
-  $('verdict').textContent = right ? `Yes. +${gained}` : (id===null ? 'Out of time' : 'No.');
+  $('verdict').textContent = right ? `Yes. ${S.streak} in a row` : 'No.';
   $('what').textContent = `${t.artist} — ${t.title}`;
   $('det').textContent = [t.year, t.label, t.genre].filter(Boolean).join(' · ');
   $('note').textContent = t.note || '';
@@ -361,14 +338,13 @@ $('lls').addEventListener('click', e=>{
     const now = player.getCurrentTime()||0, d=S.cur.dur;
     let to; do { to = rand(.08,.85)*d; } while (Math.abs(to-now) < d*.15);
     player.seekTo(Math.floor(to), true);
-    S.timeLeft = Math.min(TIME+10, S.timeLeft+10); renderClock();
   }
 });
 
 // ---------- end ----------
 function gameOver(cleared){
   player.stopVideo(); setSpin(false);
-  $('fscore').textContent = S.score.toLocaleString();
+  $('fscore').textContent = S.streak;
   $('fsub').innerHTML = cleared
     ? `You cleared the whole crate: ${S.streak} records in a row.`
     : `Back to the beginning. ${S.streak} record${S.streak===1?'':'s'} in a row · reached ${STAGES[tierFor(S.q)].name.toLowerCase()}`;
@@ -382,7 +358,7 @@ $('send').onclick = async ()=>{
   try { localStorage.setItem('tg-name', name); } catch(e){}
   $('send').disabled=true; $('msg').textContent='Posting…';
   try{
-    const r = await fetch(API+'/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,score:S.score,streak:S.streak})});
+    const r = await fetch(API+'/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,streak:S.streak})});
     const j = await r.json();
     if (!r.ok) throw new Error(j.error||'error');
     $('msg').textContent = j.rank ? `You're #${j.rank}.` : 'Posted. Not top 100 yet.';
@@ -399,9 +375,9 @@ async function loadBoard(id){
   catch(e){ $(id).innerHTML='<li class="empty">Leaderboard unavailable.</li>'; }
 }
 function renderBoard(id, rows, myRank){
-  if (!rows || !rows.length){ $(id).innerHTML='<li class="empty">No scores yet. Be first.</li>'; return; }
+  if (!rows || !rows.length){ $(id).innerHTML='<li class="empty">No streaks yet. Be first.</li>'; return; }
   $(id).innerHTML = rows.slice(0,25).map((r,i)=>
-    `<li class="${myRank===i+1?'me':''}"><span class="r">${i+1}</span><span>${esc(r.name)}</span><span class="s">${r.score.toLocaleString()}</span><span class="k">${r.streak} in a row</span></li>`).join('');
+    `<li class="${myRank===i+1?'me':''}"><span class="r">${i+1}</span><span>${esc(r.name)}</span><span class="s">${r.streak}</span><span class="k">in a row</span></li>`).join('');
 }
 function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', s.id===id)); window.scrollTo(0,0); }
 </script>
