@@ -52,6 +52,11 @@ a{color:inherit}
 /* Phones: the dock covers the bottom corner, so the map buttons sit just above it. */
 @media (max-width:620px){.leaflet-bottom.leaflet-right{bottom:calc(96px + env(safe-area-inset-bottom))}}
 .leaflet-bar a.recenter{display:grid;place-items:center;color:#333}
+.leaflet-bar a.namesbtn{display:grid;place-items:center;color:#333;font:800 12px/1 Archivo,system-ui,sans-serif;letter-spacing:-.02em}
+.leaflet-bar a.namesbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.maplabel i{display:none;font-style:normal} .maplabel b{font-weight:inherit}
+.abbr .maplabel b{display:none} .abbr .maplabel i{display:inline}
+.maplabel span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;text-align:center;font:700 10px/1.15 Archivo,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#26323a;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 5px rgba(255,255,255,.9);pointer-events:none}
 .leaflet-control-attribution.mini:not(.open){font-size:0;width:20px;height:20px;padding:0;margin:0 6px 6px 0;border-radius:50%;background:rgba(20,24,28,.6)!important;opacity:.8;display:grid;place-items:center}
 .leaflet-control-attribution.mini:not(.open) *{display:none}
 .leaflet-control-attribution.mini:not(.open)::before{content:"i";font:700 12px/1 Georgia,serif;font-style:italic;color:#fff}
@@ -453,6 +458,18 @@ function aboutClip(c, a) {
   if (c.recorded) return `This recording was made in ${c.year} and later posted on YouTube. It features ${who}.`;
   return `This clip is from a YouTube video${c.year ? ' posted' + yr : ''}. It features ${who}.`;
 }
+// Where a state's name goes: the centroid of its biggest piece.
+function labelPoint(g) {
+  let best = null, top = 0;
+  for (const poly of g.type === 'Polygon' ? [g.coordinates] : g.coordinates) {
+    const r = poly[0]; let A = 0, x = 0, y = 0;
+    for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const k = r[j][0] * r[i][1] - r[i][0] * r[j][1]; A += k; x += (r[j][0] + r[i][0]) * k; y += (r[j][1] + r[i][1]) * k; }
+    if (Math.abs(A) > top) { top = Math.abs(A); best = [y / (3 * A), x / (3 * A)]; }
+  }
+  return best;
+}
+let labels = null, showNames = false;
+try { showNames = localStorage.getItem('accentuate-names') === '1'; } catch (_) {}
 function initMap() {
   map = L.map('map', { worldCopyJump: false, zoomSnap: 0.5, zoomControl: false, maxBounds: [[-45, -175], [72, -20]], maxBoundsViscosity: .8 });
   // Re-center sits above zoom: a stray drag or pinch on a phone is easy, finding the country again is not.
@@ -465,6 +482,16 @@ function initMap() {
     return b; } });
   new Recenter().addTo(map);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
+  // State names are off by default (the map is the puzzle); this button shows them for anyone who wants them.
+  const Names = L.Control.extend({ options: { position: 'bottomright' }, onAdd() {
+    const b = L.DomUtil.create('div', 'leaflet-bar'), a = L.DomUtil.create('a', 'namesbtn', b);
+    const sync = () => { a.setAttribute('aria-pressed', String(showNames)); a.title = (showNames ? 'Hide' : 'Show') + ' state names'; };
+    a.href = '#'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', 'State names'); a.textContent = 'Aa'; sync();
+    L.DomEvent.disableClickPropagation(b);
+    L.DomEvent.on(a, 'click', e => { L.DomEvent.preventDefault(e); showNames = !showNames; sync(); if (labels) showNames ? labels.addTo(map) : labels.remove();
+      try { localStorage.setItem('accentuate-names', showNames ? '1' : '0'); } catch (_) {} });
+    return b; } });
+  new Names().addTo(map);
   // Map credit is required on the map; keep it as a small "i" that opens on tap.
   const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
   ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
@@ -480,6 +507,13 @@ function initMap() {
     const outline = topojson.mesh(us, us.objects.states, (a, b) => a === b);
     L.geoJSON(lines, { interactive: false, style: { color: '#3b4a52', weight: 1, opacity: .45 } }).addTo(map);
     L.geoJSON(outline, { interactive: false, style: { color: '#3b4a52', weight: 1.2, opacity: .3 } }).addTo(map);
+    const POST = {Alabama:'AL',Arizona:'AZ',Arkansas:'AR',California:'CA',Colorado:'CO',Connecticut:'CT',Delaware:'DE',Florida:'FL',Georgia:'GA',Idaho:'ID',Illinois:'IL',Indiana:'IN',Iowa:'IA',Kansas:'KS',Kentucky:'KY',Louisiana:'LA',Maine:'ME',Maryland:'MD',Massachusetts:'MA',Michigan:'MI',Minnesota:'MN',Mississippi:'MS',Missouri:'MO',Montana:'MT',Nebraska:'NE',Nevada:'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND',Ohio:'OH',Oklahoma:'OK',Oregon:'OR',Pennsylvania:'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD',Tennessee:'TN',Texas:'TX',Utah:'UT',Vermont:'VT',Virginia:'VA',Washington:'WA','West Virginia':'WV',Wisconsin:'WI',Wyoming:'WY'};   // zoomed out (phones), full names would pile up, so postal codes stand in
+    const FIX = { Mississippi: [33.3, -89.7], Alabama: [32.3, -86.7], Illinois: [40.5, -89.3], Indiana: [39.6, -86.2], Florida: [28.4, -81.7], Michigan: [43.7, -84.7], Louisiana: [31.0, -92.4], Idaho: [44.2, -114.6], Kentucky: [37.5, -85.3], Virginia: [37.6, -78.6], 'West Virginia': [38.7, -80.6], Maryland: [39.2, -76.9], Massachusetts: [42.35, -72.0], 'New Jersey': [40.1, -74.5], Delaware: [38.95, -75.45], 'Rhode Island': [41.65, -71.5], Connecticut: [41.6, -72.7], 'New Hampshire': [43.6, -71.6], Vermont: [44.0, -72.7] }, ABBR = { Maryland: 'MD', Massachusetts: 'MA', 'New Jersey': 'NJ', Delaware: 'DE', 'Rhode Island': 'RI', Connecticut: 'CT', 'New Hampshire': 'NH', Vermont: 'VT' };   // odd shapes and the small Northeast states
+    const OFF = ['Alaska', 'Hawaii', 'Puerto Rico', 'District of Columbia', 'American Samoa', 'Guam', 'Commonwealth of the Northern Mariana Islands', 'United States Virgin Islands'];
+    labels = L.layerGroup(topojson.feature(us, us.objects.states).features.filter(f => !OFF.includes(f.properties.name))
+      .map(f => { const nm = f.properties.name, n = ABBR[nm] || nm, at = FIX[nm] || labelPoint(f.geometry); return L.marker(at, { interactive: false, keyboard: false, icon: L.divIcon({ className: 'maplabel', iconSize: [0, 0], html: `<span><b>${n}</b><i>${POST[nm]}</i></span>` }) }); }));
+    const fit = () => map.getContainer().classList.toggle('abbr', map.getZoom() < 3.75); map.on('zoomend', fit); fit();
+    if (showNames) labels.addTo(map);
   }).catch(() => {});
   map.on('click', e => {
     if (state.revealed || $('stage').hidden) return;
@@ -710,13 +744,14 @@ $('lbForm').onsubmit = async e => {
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 };
 function copyResult() {
-  const sq = m => m < 100 ? '🟩' : m < 300 ? '🟨' : m < 600 ? '🟧' : '⬜';
+  const sq = m => m < CAP * .1 ? '🟩' : m < CAP * .3 ? '🟨' : m < CAP * .6 ? '🟧' : '⬜';   // one square per round, by miles off
+  const mine = `I was ${state.score.toLocaleString()} miles off on Accentuate. ${state.results.map(r => sq(r.p)).join('')}`;
   const url = 'https://toddlburns.com/accentuate/';
   const text = 'Check out this cool game about recognizing accents across the United States!';   // Todd's wording
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
-  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
-  else navigator.clipboard?.writeText(text + '\n' + url).then(done);
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: mine + '\n' + text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
+  else navigator.clipboard?.writeText(mine + '\n' + text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
 $('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game

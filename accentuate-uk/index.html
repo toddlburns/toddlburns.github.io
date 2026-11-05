@@ -52,6 +52,9 @@ a{color:inherit}
 /* Phones: the dock covers the bottom corner, so the map buttons sit just above it. */
 @media (max-width:620px){.leaflet-bottom.leaflet-right{bottom:calc(96px + env(safe-area-inset-bottom))}}
 .leaflet-bar a.recenter{display:grid;place-items:center;color:#333}
+.leaflet-bar a.namesbtn{display:grid;place-items:center;color:#333;font:800 12px/1 Archivo,system-ui,sans-serif;letter-spacing:-.02em}
+.leaflet-bar a.namesbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.maplabel span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;text-align:center;font:700 10px/1.15 Archivo,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#26323a;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 5px rgba(255,255,255,.9);pointer-events:none}
 .leaflet-control-attribution.mini:not(.open){font-size:0;width:20px;height:20px;padding:0;margin:0 6px 6px 0;border-radius:50%;background:rgba(20,24,28,.6)!important;opacity:.8;display:grid;place-items:center}
 .leaflet-control-attribution.mini:not(.open) *{display:none}
 .leaflet-control-attribution.mini:not(.open)::before{content:"i";font:700 12px/1 Georgia,serif;font-style:italic;color:#fff}
@@ -453,6 +456,8 @@ function aboutClip(c, a) {
   if (c.recorded) return `This recording was made in ${c.year} and later posted on YouTube. It features ${who}.`;
   return `This clip is from a YouTube video${c.year ? ' posted' + yr : ''}. It features ${who}.`;
 }
+let labels = null, showNames = false;
+try { showNames = localStorage.getItem('accentuate-uk-names') === '1'; } catch (_) {}
 function initMap() {
   map = L.map('map', { worldCopyJump: false, zoomSnap: 0.25, zoomControl: false, maxBounds: [[44, -20], [66, 12]], maxBoundsViscosity: .8 });
   // Re-center sits above zoom: a stray drag or pinch on a phone is easy, finding the country again is not.
@@ -465,6 +470,16 @@ function initMap() {
     return b; } });
   new Recenter().addTo(map);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
+  // Region names are off by default (the map is the puzzle); this button shows them for anyone who wants them.
+  const Names = L.Control.extend({ options: { position: 'bottomright' }, onAdd() {
+    const b = L.DomUtil.create('div', 'leaflet-bar'), a = L.DomUtil.create('a', 'namesbtn', b);
+    const sync = () => { a.setAttribute('aria-pressed', String(showNames)); a.title = (showNames ? 'Hide' : 'Show') + ' region names'; };
+    a.href = '#'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', 'Region names'); a.textContent = 'Aa'; sync();
+    L.DomEvent.disableClickPropagation(b);
+    L.DomEvent.on(a, 'click', e => { L.DomEvent.preventDefault(e); showNames = !showNames; sync(); if (labels) showNames ? labels.addTo(map) : labels.remove();
+      try { localStorage.setItem('accentuate-uk-names', showNames ? '1' : '0'); } catch (_) {} });
+    return b; } });
+  new Names().addTo(map);
   // Map credit is required on the map; keep it as a small "i" that opens on tap.
   const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
   ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
@@ -480,6 +495,9 @@ function initMap() {
     const outline = topojson.mesh(us, us.objects.regions, (a, b) => a === b);
     L.geoJSON(lines, { interactive: false, style: { color: '#2a3560', weight: 1, opacity: .45 } }).addTo(map);
     L.geoJSON(outline, { interactive: false, style: { color: '#2a3560', weight: 1.2, opacity: .3 } }).addTo(map);
+    const AT = { TLC: ['North<br>East', 55.05, -1.95], TLD: ['North<br>West', 54.4, -3.0], TLE: ['Yorkshire and<br>the Humber', 53.95, -1.05], TLF: ['East<br>Midlands', 52.95, -0.95], TLG: ['West<br>Midlands', 52.45, -2.2], TLH: ['East of<br>England', 52.35, 0.55], TLI: ['London', 51.5, -0.12], TLJ: ['South<br>East', 51.05, -0.85], TLK: ['South<br>West', 50.85, -3.6], TLL: ['Wales', 52.3, -3.75], TLM: ['Scotland', 56.9, -4.3], TLN: ['Northern<br>Ireland', 54.62, -6.75] };   // hand-placed: the South East wraps round London
+    labels = L.layerGroup(Object.values(AT).map(([n, ...at]) => L.marker(at, { interactive: false, keyboard: false, icon: L.divIcon({ className: 'maplabel', iconSize: [0, 0], html: `<span>${n}</span>` }) })));
+    if (showNames) labels.addTo(map);
   }).catch(() => {});
   map.on('click', e => {
     if (state.revealed || $('stage').hidden) return;
@@ -710,13 +728,14 @@ $('lbForm').onsubmit = async e => {
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 };
 function copyResult() {
-  const sq = m => m < 100 ? '🟩' : m < 300 ? '🟨' : m < 600 ? '🟧' : '⬜';
+  const sq = m => m < CAP * .1 ? '🟩' : m < CAP * .3 ? '🟨' : m < CAP * .6 ? '🟧' : '⬜';   // one square per round, by miles off
+  const mine = `I was ${state.score.toLocaleString()} miles off on Accentuate UK. ${state.results.map(r => sq(r.p)).join('')}`;
   const url = 'https://toddlburns.com/accentuate-uk/';
   const text = 'Check out this cool game about recognizing accents across the UK!';   // Todd's wording
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
-  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
-  else navigator.clipboard?.writeText(text + '\n' + url).then(done);
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: mine + '\n' + text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
+  else navigator.clipboard?.writeText(mine + '\n' + text + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
 $('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
