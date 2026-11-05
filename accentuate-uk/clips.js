@@ -16,7 +16,8 @@ window.CLIPS = [
   "words": [],
   "born": 1978,
   "st": "NW",
-  "year": 2009
+  "year": 2009,
+  "vol": 100
  },
  {
   "id": "Hr0lbP3o-1s",
@@ -34,7 +35,8 @@ window.CLIPS = [
   "words": [],
   "born": 1961,
   "st": "NW",
-  "year": 2024
+  "year": 2024,
+  "vol": 100
  },
  {
   "id": "LF5fiCbceRs",
@@ -52,7 +54,8 @@ window.CLIPS = [
   "words": [],
   "born": 1956,
   "st": "NW",
-  "year": 2010
+  "year": 2010,
+  "vol": 59
  },
  {
   "id": "mjLLoBKv670",
@@ -70,7 +73,8 @@ window.CLIPS = [
   "words": [],
   "born": 1947,
   "st": "NW",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "i36DHDzCWHs",
@@ -88,7 +92,8 @@ window.CLIPS = [
   "words": [],
   "born": 1975,
   "st": "NE",
-  "year": 2019
+  "year": 2019,
+  "vol": 100
  },
  {
   "id": "qWo-lAHHP9c",
@@ -106,7 +111,8 @@ window.CLIPS = [
   "words": [],
   "born": 1963,
   "st": "NE",
-  "year": 2018
+  "year": 2018,
+  "vol": 100
  },
  {
   "id": "dT6kuu1O8DI",
@@ -124,7 +130,8 @@ window.CLIPS = [
   "words": [],
   "born": 1965,
   "st": "NE",
-  "year": 2019
+  "year": 2019,
+  "vol": 100
  },
  {
   "id": "AUGIbmfQYfQ",
@@ -142,7 +149,8 @@ window.CLIPS = [
   "words": [],
   "born": 1965,
   "st": "NE",
-  "year": 2026
+  "year": 2026,
+  "vol": 81
  },
  {
   "id": "rjQiKDcroCM",
@@ -160,7 +168,8 @@ window.CLIPS = [
   "words": [],
   "born": 1957,
   "st": "NE",
-  "year": 2026
+  "year": 2026,
+  "vol": 47
  },
  {
   "id": "PjdRplh1w58",
@@ -178,7 +187,8 @@ window.CLIPS = [
   "words": [],
   "born": 1957,
   "st": "NE",
-  "year": 2019
+  "year": 2019,
+  "vol": 100
  },
  {
   "id": "NNZOPfAvCCc",
@@ -196,7 +206,8 @@ window.CLIPS = [
   "words": [],
   "born": 1975,
   "st": "NE",
-  "year": 2024
+  "year": 2024,
+  "vol": 100
  },
  {
   "id": "-yqoviQXsVY",
@@ -214,7 +225,8 @@ window.CLIPS = [
   "words": [],
   "born": 1967,
   "st": "NE",
-  "year": 2018
+  "year": 2018,
+  "vol": 100
  },
  {
   "id": "7hezfoTNOqE",
@@ -232,7 +244,8 @@ window.CLIPS = [
   "words": [],
   "born": 1970,
   "st": "NE",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "g9EWGX3O8cE",
@@ -250,7 +263,8 @@ window.CLIPS = [
   "words": [],
   "born": 1983,
   "st": "NE",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "aRXp7LoHy5g",
@@ -268,7 +282,8 @@ window.CLIPS = [
   "words": [],
   "born": 1983,
   "st": "NE",
-  "year": 2011
+  "year": 2011,
+  "vol": 100
  },
  {
   "id": "_o2qeXDAYKw",
@@ -286,7 +301,8 @@ window.CLIPS = [
   "words": [],
   "born": 1982,
   "st": "NE",
-  "year": 2024
+  "year": 2024,
+  "vol": 97
  },
  {
   "id": "aZ7lxzdoVp8",
@@ -304,7 +320,8 @@ window.CLIPS = [
   "words": [],
   "born": 1986,
   "st": "NE",
-  "year": 2019
+  "year": 2019,
+  "vol": 100
  },
  {
   "id": "JByflci8EYE",
@@ -322,7 +339,8 @@ window.CLIPS = [
   "words": [],
   "born": 1975,
   "st": "NW",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "icljXo7qW2s",
@@ -340,7 +358,8 @@ window.CLIPS = [
   "words": [],
   "born": 1975,
   "st": "NW",
-  "year": 2025
+  "year": 2025,
+  "vol": 100
  },
  {
   "id": "gbOXs91jEdg",
@@ -358,7 +377,8 @@ window.CLIPS = [
   "words": [],
   "born": 1980,
   "st": "NW",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "mMnVf3jBwsE",
@@ -376,7 +396,8 @@ window.CLIPS = [
   "words": [],
   "born": 1980,
   "st": "NW",
-  "year": 2017
+  "year": 2017,
+  "vol": 100
  },
  {
   "id": "Lzc-ucJFkqo",
@@ -394,7 +415,8 @@ window.CLIPS = [
   "words": [],
   "born": 1962,
   "st": "NW",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "1r-IxIrTbWU",
@@ -412,7 +434,8 @@ window.CLIPS = [
   "words": [],
   "born": 1997,
   "st": "NW",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "MhVJZIWUsAE",
@@ -430,7 +453,8 @@ window.CLIPS = [
   "words": [],
   "born": 1997,
   "st": "NW",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "aYs7Gf3DoEc",
@@ -448,7 +472,8 @@ window.CLIPS = [
   "words": [],
   "born": 1949,
   "st": "NW",
-  "year": 2012
+  "year": 2012,
+  "vol": 100
  },
  {
   "id": "HNVUwsTsrHA",
@@ -466,7 +491,8 @@ window.CLIPS = [
   "words": [],
   "born": 1982,
   "st": "NW",
-  "year": 2025
+  "year": 2025,
+  "vol": 52
  },
  {
   "id": "6nlsBHfP9Dk",
@@ -484,7 +510,8 @@ window.CLIPS = [
   "words": [],
   "born": 1940,
   "st": "YH",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "Y_GwmVBoyjI",
@@ -502,7 +529,8 @@ window.CLIPS = [
   "words": [],
   "born": 1933,
   "st": "YH",
-  "year": 2023
+  "year": 2023,
+  "vol": 100
  },
  {
   "id": "wOizifrfpXM",
@@ -520,7 +548,8 @@ window.CLIPS = [
   "words": [],
   "born": 1986,
   "st": "YH",
-  "year": 2017
+  "year": 2017,
+  "vol": 100
  },
  {
   "id": "i_WH2KXVGig",
@@ -538,7 +567,8 @@ window.CLIPS = [
   "words": [],
   "born": 1936,
   "st": "YH",
-  "year": 2017
+  "year": 2017,
+  "vol": 100
  },
  {
   "id": "eo3xt_9mUgY",
@@ -556,7 +586,8 @@ window.CLIPS = [
   "words": [],
   "born": 1936,
   "st": "YH",
-  "year": 2022
+  "year": 2022,
+  "vol": 100
  },
  {
   "id": "nsHpj5FJXjI",
@@ -574,7 +605,8 @@ window.CLIPS = [
   "words": [],
   "born": 1959,
   "st": "YH",
-  "year": 2019
+  "year": 2019,
+  "vol": 90
  },
  {
   "id": "pwqVQoBWl6M",
@@ -592,7 +624,8 @@ window.CLIPS = [
   "words": [],
   "born": 1931,
   "st": "YH",
-  "year": 2023
+  "year": 2023,
+  "vol": 100
  },
  {
   "id": "7cmGAVx5i5A",
@@ -610,7 +643,8 @@ window.CLIPS = [
   "words": [],
   "born": 1938,
   "st": "YH",
-  "year": 2016
+  "year": 2016,
+  "vol": 100
  },
  {
   "id": "h6AiuQ1C18M",
@@ -628,7 +662,8 @@ window.CLIPS = [
   "words": [],
   "born": 1981,
   "st": "WM",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "Nq2vdawV1wE",
@@ -646,7 +681,8 @@ window.CLIPS = [
   "words": [],
   "born": 1981,
   "st": "WM",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "gImJUmNuoCA",
@@ -664,7 +700,8 @@ window.CLIPS = [
   "words": [],
   "born": 1944,
   "st": "WM",
-  "year": 2024
+  "year": 2024,
+  "vol": 53
  },
  {
   "id": "CMAN9MxfA9k",
@@ -682,7 +719,8 @@ window.CLIPS = [
   "words": [],
   "born": 1946,
   "st": "WM",
-  "year": 2024
+  "year": 2024,
+  "vol": 32
  },
  {
   "id": "cmKGH9sx3vQ",
@@ -700,7 +738,8 @@ window.CLIPS = [
   "words": [],
   "born": 1946,
   "st": "WM",
-  "year": 2025
+  "year": 2025,
+  "vol": 92
  },
  {
   "id": "2Gkiw7zpULo",
@@ -718,7 +757,8 @@ window.CLIPS = [
   "words": [],
   "born": 1988,
   "st": "WM",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "fTtGt2kOToo",
@@ -736,7 +776,8 @@ window.CLIPS = [
   "words": [],
   "born": 1980,
   "st": "WM",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "somb6Zdpehc",
@@ -754,7 +795,8 @@ window.CLIPS = [
   "words": [],
   "born": 1980,
   "st": "WM",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "Y4JDo6eajT8",
@@ -772,7 +814,8 @@ window.CLIPS = [
   "words": [],
   "born": 1958,
   "st": "WM",
-  "year": 2018
+  "year": 2018,
+  "vol": 94
  },
  {
   "id": "8rzHKABhsJ8",
@@ -790,7 +833,8 @@ window.CLIPS = [
   "words": [],
   "born": 1932,
   "st": "EM",
-  "year": 2014
+  "year": 2014,
+  "vol": 54
  },
  {
   "id": "ZBwe8rYmAkc",
@@ -808,7 +852,8 @@ window.CLIPS = [
   "words": [],
   "born": 1940,
   "st": "EM",
-  "year": 2019
+  "year": 2019,
+  "vol": 100
  },
  {
   "id": "6AegxZePiYs",
@@ -826,7 +871,8 @@ window.CLIPS = [
   "words": [],
   "born": 1940,
   "st": "EM",
-  "year": 2017
+  "year": 2017,
+  "vol": 100
  },
  {
   "id": "_kavkyYXCyQ",
@@ -844,7 +890,8 @@ window.CLIPS = [
   "words": [],
   "born": 1947,
   "st": "LDN",
-  "year": 2025
+  "year": 2025,
+  "vol": 73
  },
  {
   "id": "g1kuwE3ijcM",
@@ -862,7 +909,8 @@ window.CLIPS = [
   "words": [],
   "born": 1947,
   "st": "LDN",
-  "year": 2020
+  "year": 2020,
+  "vol": 100
  },
  {
   "id": "8jMo4Vnkd0A",
@@ -880,7 +928,8 @@ window.CLIPS = [
   "words": [],
   "born": 1947,
   "st": "LDN",
-  "year": 2023
+  "year": 2023,
+  "vol": 100
  },
  {
   "id": "OSge8_DQJrE",
@@ -898,7 +947,8 @@ window.CLIPS = [
   "words": [],
   "born": 1937,
   "st": "LDN",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "AoEGTc0XybQ",
@@ -916,7 +966,8 @@ window.CLIPS = [
   "words": [],
   "born": 1933,
   "st": "LDN",
-  "year": 2018
+  "year": 2018,
+  "vol": 100
  },
  {
   "id": "vTLJLW-pxck",
@@ -934,7 +985,8 @@ window.CLIPS = [
   "words": [],
   "born": 1957,
   "st": "LDN",
-  "year": 2015
+  "year": 2015,
+  "vol": 33
  },
  {
   "id": "JDqFUO2_L7U",
@@ -952,7 +1004,8 @@ window.CLIPS = [
   "words": [],
   "born": 1963,
   "st": "SW",
-  "year": 2026
+  "year": 2026,
+  "vol": 33
  },
  {
   "id": "x8FfRfp3JDI",
@@ -970,7 +1023,8 @@ window.CLIPS = [
   "words": [],
   "born": 1975,
   "st": "SW",
-  "year": 2023
+  "year": 2023,
+  "vol": 33
  },
  {
   "id": "PtKZy3K2ShI",
@@ -988,7 +1042,8 @@ window.CLIPS = [
   "words": [],
   "born": 1947,
   "st": "SE",
-  "year": 2023
+  "year": 2023,
+  "vol": 41
  },
  {
   "id": "CUhPo0wXGjQ",
@@ -1006,7 +1061,8 @@ window.CLIPS = [
   "words": [],
   "born": 1971,
   "st": "WAL",
-  "year": 2019
+  "year": 2019,
+  "vol": 79
  },
  {
   "id": "xdNNFeJlIpM",
@@ -1024,7 +1080,8 @@ window.CLIPS = [
   "words": [],
   "born": 1974,
   "st": "WAL",
-  "year": 2021
+  "year": 2021,
+  "vol": 62
  },
  {
   "id": "8YTKKFR-a38",
@@ -1042,7 +1099,8 @@ window.CLIPS = [
   "words": [],
   "born": 1977,
   "st": "WAL",
-  "year": 2012
+  "year": 2012,
+  "vol": 64
  },
  {
   "id": "TvcfN6cEHT4",
@@ -1060,7 +1118,8 @@ window.CLIPS = [
   "words": [],
   "born": 1962,
   "st": "SCO",
-  "year": 2024
+  "year": 2024,
+  "vol": 100
  },
  {
   "id": "lZAmhB55_-k",
@@ -1078,7 +1137,8 @@ window.CLIPS = [
   "words": [],
   "born": 1994,
   "st": "SCO",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "Wrbr07KbW04",
@@ -1096,7 +1156,8 @@ window.CLIPS = [
   "words": [],
   "born": 1958,
   "st": "SCO",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "JMZD2f6Tyeg",
@@ -1114,7 +1175,8 @@ window.CLIPS = [
   "words": [],
   "born": 1970,
   "st": "SCO",
-  "year": 2014
+  "year": 2014,
+  "vol": 85
  },
  {
   "id": "zq26viUbfYk",
@@ -1132,7 +1194,8 @@ window.CLIPS = [
   "words": [],
   "born": 1976,
   "st": "SCO",
-  "year": 2025
+  "year": 2025,
+  "vol": 100
  },
  {
   "id": "5SmmM3KgVgc",
@@ -1150,7 +1213,8 @@ window.CLIPS = [
   "words": [],
   "born": 1976,
   "st": "SCO",
-  "year": 2024
+  "year": 2024,
+  "vol": 100
  },
  {
   "id": "Gne46qNMLlg",
@@ -1168,7 +1232,8 @@ window.CLIPS = [
   "words": [],
   "born": 1958,
   "st": "SCO",
-  "year": 2026
+  "year": 2026,
+  "vol": 41
  },
  {
   "id": "EMU6HY-TbLc",
@@ -1186,7 +1251,8 @@ window.CLIPS = [
   "words": [],
   "born": 1958,
   "st": "SCO",
-  "year": 2019
+  "year": 2019,
+  "vol": 77
  },
  {
   "id": "n33rHgXG7Wg",
@@ -1204,7 +1270,8 @@ window.CLIPS = [
   "words": [],
   "born": 1967,
   "st": "SCO",
-  "year": 2012
+  "year": 2012,
+  "vol": 48
  },
  {
   "id": "ORI_ItxTZQY",
@@ -1222,7 +1289,8 @@ window.CLIPS = [
   "words": [],
   "born": 1951,
   "st": "SCO",
-  "year": 2025
+  "year": 2025,
+  "vol": 100
  },
  {
   "id": "3kifeWjxF8E",
@@ -1240,7 +1308,8 @@ window.CLIPS = [
   "words": [],
   "born": 1951,
   "st": "SCO",
-  "year": 2025
+  "year": 2025,
+  "vol": 100
  },
  {
   "id": "_qw_dk0toRw",
@@ -1258,7 +1327,8 @@ window.CLIPS = [
   "words": [],
   "born": 1987,
   "st": "NI",
-  "year": 2026
+  "year": 2026,
+  "vol": 52
  },
  {
   "id": "A5Nz2AnOusA",
@@ -1276,7 +1346,8 @@ window.CLIPS = [
   "words": [],
   "born": 1948,
   "st": "NI",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "zHSafX8m-DE",
@@ -1294,7 +1365,8 @@ window.CLIPS = [
   "words": [],
   "born": 1946,
   "st": "NI",
-  "year": 2022
+  "year": 2022,
+  "vol": 100
  },
  {
   "id": "wOU6Lmj0zvM",
@@ -1312,7 +1384,8 @@ window.CLIPS = [
   "words": [],
   "born": 1970,
   "st": "NI",
-  "year": 2021
+  "year": 2021,
+  "vol": 79
  },
  {
   "id": "_Ci9eg-dZPM",
@@ -1330,7 +1403,8 @@ window.CLIPS = [
   "words": [],
   "born": 1977,
   "st": "NI",
-  "year": 2026
+  "year": 2026,
+  "vol": 90
  },
  {
   "id": "lVdvjBI3ZEc",
@@ -1348,7 +1422,8 @@ window.CLIPS = [
   "words": [],
   "born": 1977,
   "st": "NI",
-  "year": 2026
+  "year": 2026,
+  "vol": 100
  },
  {
   "id": "BzKg-oK1zpw",
@@ -1366,7 +1441,8 @@ window.CLIPS = [
   "words": [],
   "born": 1937,
   "st": "NI",
-  "year": 2022
+  "year": 2022,
+  "vol": 100
  },
  {
   "id": "jDQFsajIry8",
@@ -1384,7 +1460,8 @@ window.CLIPS = [
   "words": [],
   "born": 1939,
   "st": "NW",
-  "year": 2015
+  "year": 2015,
+  "vol": 100
  },
  {
   "id": "e3t9_UwuE9E",
@@ -1402,7 +1479,8 @@ window.CLIPS = [
   "words": [],
   "born": 1939,
   "st": "NW",
-  "year": 2012
+  "year": 2012,
+  "vol": 100
  },
  {
   "id": "FKrhvQt60n8",
@@ -1420,7 +1498,8 @@ window.CLIPS = [
   "words": [],
   "born": 1954,
   "st": "WAL",
-  "year": 2021
+  "year": 2021,
+  "vol": 100
  },
  {
   "id": "english2",

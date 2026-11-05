@@ -374,7 +374,7 @@ const snd = {
       if (!au.src.endsWith(c.audio)) au.src = c.audio;
       auEnd = b; const go = () => { au.currentTime = a; au.play().catch(() => {}); };
       au.readyState >= 1 ? go() : au.addEventListener('loadedmetadata', go, { once: true });
-    } else if (playerReady) { au.pause(); player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); player.unMute(); player.setVolume(100); }
+    } else if (playerReady) { au.pause(); player.loadVideoById({ videoId: c.id, startSeconds: a, endSeconds: b }); player.unMute(); player.setVolume(c.vol || 100); }   // vol: per-clip level from qc_uk.py
   },
   pause() { au.pause(); if (playerReady) player.pauseVideo(); },
   isPlaying: c => c.audio ? !au.paused : !!(playerReady && player.getPlayerState && player.getPlayerState() === YT.PlayerState.PLAYING),
