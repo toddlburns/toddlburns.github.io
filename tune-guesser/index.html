@@ -40,7 +40,9 @@ a{color:inherit}
 .brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:1px solid #1a1917;box-shadow:0 1px 0 #3d3b37;padding:0 6px 10px;margin-bottom:16px}
 .brand b{font-weight:700;font-size:26px;letter-spacing:.02em;color:var(--silk);line-height:1}
 .brand b i{font-style:normal;color:var(--led)}
-.brand .silk{flex:1;min-width:200px}
+.brand .silk{flex:1}
+.brand a.silk{flex:none;text-decoration:none;border:1px solid #4a4843;padding:3px 8px;border-radius:3px;color:var(--silk)}
+.brand a.silk:hover{border-color:var(--silk)}
 
 /* ---------- top section ---------- */
 .top{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start}
@@ -101,14 +103,13 @@ body.white .toggle i{left:23px}
   box-shadow:0 4px 0 #141412,0 6px 10px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.08) inset;transition:transform .06s,box-shadow .06s,background-color .2s}
 .pad:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 #141412,0 2px 4px rgba(0,0,0,.5)}
 .pad .key{position:absolute;right:10px;bottom:8px;font-family:var(--silkfont);font-weight:700;font-size:13px;color:var(--silkdim);letter-spacing:.1em}
-.pad .tape{display:block;max-width:92%;padding:7px 12px 8px;color:#1d1b16;transform:rotate(var(--rot,-1deg));
+.pad .tape{display:block;max-width:calc(100% - 22px);padding:7px 12px 8px;color:#1d1b16;transform:rotate(var(--rot,-1deg));
   background:var(--noise),var(--tape);background-blend-mode:multiply;
   clip-path:polygon(0 4%,3% 0,7% 5%,12% 1%,20% 3%,30% 0,45% 4%,60% 1%,72% 4%,85% 0,94% 3%,100% 1%,99% 50%,100% 96%,95% 100%,88% 96%,75% 100%,60% 97%,45% 100%,30% 96%,18% 100%,8% 96%,0 100%,1% 50%);
   box-shadow:0 1px 2px rgba(0,0,0,.3)}
 body.white .pad .tape{clip-path:none;border-radius:2px}
-.pad .ti{display:block;font-family:var(--marker);font-size:19px;line-height:1.15}
+.pad .ti{display:block;font-family:var(--marker);font-size:19px;line-height:1.08;overflow-wrap:normal}
 .pad .ar{display:block;font-family:var(--marker);font-size:13.5px;opacity:.7;margin-top:2px}
-body.white .pad .ti{font-size:21px}
 .pad .ar[hidden]{display:none}
 .pad.lit{box-shadow:0 1px 0 #141412,0 0 0 2px var(--go),0 0 26px color-mix(in srgb,var(--go) 60%,transparent);background-color:#2f4a30}
 .pad.miss{box-shadow:0 1px 0 #141412,0 0 0 2px var(--led),0 0 26px color-mix(in srgb,var(--led) 60%,transparent)}
@@ -118,13 +119,16 @@ body.white .pad .ti{font-size:21px}
 
 /* ---------- function keys + transport ---------- */
 .fnrow{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end}
+.hints{position:relative;border:1px solid #1a1917;box-shadow:0 1px 0 #3d3b37,0 1px 0 #3d3b37 inset;border-radius:6px;padding:16px 12px 12px}
+.hints>.silk{position:absolute;top:-7px;left:12px;padding:0 6px;background:var(--chassis2);color:var(--silk);font-size:11px}
 .keys{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .fk{display:flex;flex-direction:column;align-items:center;gap:7px}
 .fk button{width:100%;height:38px;border-radius:4px;background:linear-gradient(180deg,#d9d4c6,#b4ae9f);color:#24221e;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
   box-shadow:0 3px 0 #6d685d,0 4px 6px rgba(0,0,0,.5)}
 .fk button:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #6d685d}
 .fk button:disabled{background:linear-gradient(180deg,#8e897d,#77736a);color:#4b4840;cursor:default}
-.fk .silk{font-size:9.5px}
+.fk button{display:flex;align-items:center;justify-content:center;gap:9px}
+.fk button .led{flex:none}
 .transport{display:flex;flex-direction:column;align-items:center;gap:7px}
 .transport button{min-width:132px;height:58px;border-radius:6px;padding:0 16px;font-weight:700;font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:#1a1007;
   background:linear-gradient(180deg,#ff7a3d,#e2531c);box-shadow:0 4px 0 #8a2f0d,0 6px 10px rgba(0,0,0,.5)}
@@ -169,7 +173,6 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 .receipt input:focus{outline:none;border-bottom-color:#e2531c}
 .receipt .post{font:600 13px var(--mono);text-transform:uppercase;border:1.5px solid var(--ink);padding:3px 10px;margin-left:8px}
 
-footer{max-width:560px;margin-top:26px;font-family:var(--mono);font-size:11px;line-height:1.6;color:#7d786c;text-align:center}
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
 
 @media (max-width:620px){
@@ -181,7 +184,6 @@ footer{max-width:560px;margin-top:26px;font-family:var(--mono);font-size:11px;li
   .mode{grid-column:1/-1;flex-direction:row;justify-content:flex-start}
   .pads{gap:10px}
   .pad{min-height:100px;padding:12px 10px}
-  .pad .ti{font-size:16.5px} body.white .pad .ti{font-size:18px}
   .fnrow{grid-template-columns:1fr}
   .transport button{width:100%}
   .paper,.slot{width:94%}
@@ -194,11 +196,11 @@ footer{max-width:560px;margin-top:26px;font-family:var(--mono);font-size:11px;li
 <div class="rig">
 <div class="unit">
   <i class="screw tl"></i><i class="screw tr"></i><i class="screw bl"></i><i class="screw br"></i>
-  <div class="brand"><b>TG<i>-</i>1</b><span class="silk">Tune Guesser · record identification unit · house / techno / drum &amp; bass · pre-2011</span></div>
+  <div class="brand"><b>TG<i>-</i>1</b><span class="silk">Tune Guesser</span><a class="silk" href="about.html">About</a></div>
 
   <div class="top">
     <div class="deck">
-      <div class="platter"><div class="disc" id="disc"><div class="lab"><span id="qn">TG</span></div></div></div>
+      <div class="platter"><div class="disc" id="disc"><div class="lab"><span id="qn"></span></div></div></div>
     </div>
     <div class="right">
       <div class="vfd"><div class="l1" id="l1">TG-1 READY</div><div class="l2" id="l2">LOADING CRATE…</div><div class="l3" id="l3"></div></div>
@@ -219,19 +221,20 @@ footer{max-width:560px;margin-top:26px;font-family:var(--mono);font-size:11px;li
   <div class="pads" id="opts"></div>
 
   <div class="fnrow">
-    <div class="keys" id="lls">
-      <div class="fk"><i class="led amb" id="led-fifty"></i><button data-ll="fifty">50:50</button><span class="silk">Remove two</span></div>
-      <div class="fk"><i class="led amb" id="led-title"></i><button data-ll="title">Song name</button><span class="silk" id="titlehint">White labels only</span></div>
-      <div class="fk"><i class="led amb" id="led-year"></i><button data-ll="year">Year</button><span class="silk">Release year</span></div>
+    <div class="hints"><span class="silk">Hints · one use each</span>
+      <div class="keys" id="lls">
+        <div class="fk"><button data-ll="fifty"><i class="led amb" id="led-fifty"></i>50:50</button></div>
+        <div class="fk"><button data-ll="year"><i class="led amb" id="led-year"></i>Year</button></div>
+        <div class="fk"><button data-ll="title"><i class="led amb" id="led-title"></i>Song name</button></div>
+      </div>
     </div>
-    <div class="transport"><i class="led grn" id="goled"></i><button id="go" disabled>Start</button><span class="silk" id="gohint">Transport</span></div>
+    <div class="transport"><button id="go" disabled>Start</button></div>
   </div>
 </div>
 
 <div class="printer"><div class="head"><b>PR-1</b><span class="silk">Thermal printout</span></div><div class="slot"></div><div class="paper" id="paper"></div></div>
 </div>
 
-<footer>Every track plays from the artist's official YouTube channel or a YouTube "Topic" channel (the auto-generated ones fed by labels and distributors). The printout after each answer links to the source.</footer>
 <div id="yt"></div>
 
 <script>
@@ -261,7 +264,7 @@ function setCounter(n){
     `<polygon points="${p}" class="${DIGITS[ch].includes(k)?'on':'off'}"/>`).join('')}</svg>`).join('');
 }
 function vfd(l1,l2='',l3=''){ $('l1').innerHTML=l1; $('l2').innerHTML=l2; $('l3').innerHTML=l3; }
-function setGo(label, fn, hint='Transport'){ $('go').textContent=label; $('go').disabled=!fn; GO=fn; $('goled').classList.toggle('on',!!fn); $('gohint').textContent=hint; }
+function setGo(label, fn){ $('go').textContent=label; $('go').disabled=!fn; GO=fn; }
 $('go').onclick = ()=>{ if (GO) GO(); };
 function setLadder(tier){ [...$('ladder').children].forEach((el,i)=>el.firstElementChild.classList.toggle('on', i<tier)); }
 function setWhite(on){ document.body.classList.toggle('white',on); $('mpic').classList.toggle('act',!on); $('mwht').classList.toggle('act',on); }
@@ -271,6 +274,19 @@ function printOut(html, scroll){
   // stacked layout: bring the printout up under the transport key so it can be read without hunting for it
   if (scroll && !matchMedia('(min-width:1130px)').matches) window.scrollTo({top: $('paper').getBoundingClientRect().top + scrollY - 150, behavior:'smooth'});
 }
+// marker as big as each pad allows: shrink until no word overflows and the tape fits inside the pad
+function fitTape(){
+  document.querySelectorAll('.pad').forEach(pad=>{
+    const tape=pad.querySelector('.tape'), ti=pad.querySelector('.ti'); if (!tape) return;
+    const ar=pad.querySelector('.ar'), room=pad.clientHeight-30;
+    for (let px=60; px>=14; px-=1){
+      ti.style.fontSize=px+'px'; if (ar) ar.style.fontSize=Math.max(13, Math.round(px*.5))+'px';
+      if (ti.scrollWidth<=ti.clientWidth+1 && tape.offsetHeight<=room) break;
+    }
+  });
+}
+addEventListener('resize', ()=>{ if (S && S.cur) fitTape(); });
+document.fonts?.ready.then(()=>{ if (S && S.cur) fitTape(); });
 function blankPads(){
   $('opts').innerHTML = ['A','B','C','D'].map((k,i)=>`<button class="pad" disabled style="--rot:${[-1.5,1,.6,-.8][i]}deg"><span class="key">${k}</span></button>`).join('');
 }
@@ -300,7 +316,7 @@ function printIntro(){
     <hr class="rule">
     <p><b>Records 1–5 · picture sleeves.</b> Every pad shows the title and the artist.</p>
     <p><b>Record 6 on · white labels.</b> The unit switches to WHT mode and the pads show only the artist, and the records get deeper.</p>
-    <p><b>Lifelines:</b> 50:50, Song name, Year. Each one works once per run.</p>
+    <p><b>Hints:</b> 50:50, Year, Song name. Each one works once per run, and Song name only works on white labels.</p>
     <p><b>One wrong and you're back to record 1.</b></p>
     <hr class="rule">
     ${boardHtml()}`);
@@ -361,7 +377,7 @@ function nextQuestion(){
   S.cur = track; S.answered=false;
   S.options = shuffle([track, ...distractors(track)]);
 
-  setLadder(tier); $('qn').textContent = S.q;
+  setLadder(tier);
   if (!matchMedia('(min-width:1130px)').matches) window.scrollTo({top:0, behavior:'smooth'});
   vfd(`REC ${String(S.q).padStart(2,'0')} · ${STAGES[tier]}`, 'Cueing…', '');
   syncLifelines();
@@ -371,6 +387,7 @@ function nextQuestion(){
         : `<span class="ti">${esc(o.title)}</span><span class="ar">${esc(o.artist)}</span>`}</span>
       <span class="key">${'ABCD'[i]}</span></button>`).join('');
   setGo('Pause', ()=>player.pauseVideo());
+  fitTape();
 
   player.loadVideoById({videoId:track.id, startSeconds:Math.floor(track.dur * rand(.25,.6))});
   player.unMute(); player.setVolume(100);
@@ -383,8 +400,8 @@ function levelUp(){
   printOut(`<h3>Level 2 · white labels</h3>
     <p class="big">No more picture sleeves.</p>
     <p>From here on the pads show only the artists, like an unmarked promo with nothing on the label but a name scrawled in marker. The records keep getting deeper too.</p>
-    <p>Your <b>Song name</b> key puts the titles back for one record.</p>`, true);
-  setGo('Continue', nextQuestion, 'Level 2');
+    <p>Your <b>Song name</b> hint puts the titles back for one record.</p>`, true);
+  setGo('Continue', nextQuestion);
 }
 
 function syncLifelines(){
@@ -427,6 +444,7 @@ function answer(id){
     else if (b.dataset.id===id) b.classList.add('miss');
     b.querySelector('.ar')?.removeAttribute('hidden');
   });
+  fitTape();
   if (right){ S.streak++; setCounter(S.streak); }
   syncLifelines();
   vfd(right ? `✓ Correct · ${S.streak} in a row` : '✗ Wrong record', `${esc(t.artist)} — ${esc(t.title)}`, right ? 'Keep it playing' : 'Back to record 1');
@@ -437,8 +455,8 @@ function answer(id){
     <p>${esc(t.note || '')}</p>
     <hr class="rule">
     <p class="dim">Source: <a href="https://www.youtube.com/watch?v=${t.id}" target="_blank" rel="noopener">${esc(t.channel)} on YouTube ↗</a></p>`, true);
-  if (right) setGo('Next', nextQuestion, 'Next record');
-  else setGo('Restart', ()=>gameOver(false), 'Back to 1');
+  if (right) setGo('Next', nextQuestion);
+  else setGo('Restart', ()=>gameOver(false));
 }
 
 // ---------- lifelines ----------
@@ -451,6 +469,7 @@ $('lls').addEventListener('click', e=>{
     wrong.forEach(o=>{ o.classList.add('gone'); o.disabled=true; });
   } else if (k==='title'){
     document.querySelectorAll('.pad .ar[hidden]').forEach(a=>a.hidden=false);
+    fitTape();
   } else if (k==='year'){
     $('l3').textContent = `Year ▸ ${S.cur.year}`;
   }
@@ -467,7 +486,7 @@ function gameOver(cleared){
     <p class="dim">${cleared ? 'You cleared the whole crate.' : `Reached ${STAGES[tierFor(S.q)].toLowerCase()}. Back to record 1.`}</p>
     ${n ? `<hr class="rule"><p id="logline">Name: <input id="name" maxlength="16" value="${esc(saved)}" autocomplete="nickname"><button class="post" id="send">Log</button></p><p class="dim" id="msg"></p>` : ''}
     <hr class="rule"><div id="boardslot">${boardHtml()}</div>`, true);
-  setGo('Start', newRun, 'From record 1');
+  setGo('Start', newRun);
   if (n){
     $('send').onclick = postRun;
     $('name').addEventListener('keydown', e=>{ if (e.key==='Enter') postRun(); });

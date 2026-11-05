@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>About Tune Guesser</title>
+<meta name="description" content="How Tune Guesser works, what's in the crate and where the music comes from.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Barlow+Condensed:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --room:#141311; --chassis:#2b2a27; --chassis2:#232220; --silk:#d8d1bf; --silkdim:#8f897b; --led:#ff3b26;
+  --paper:#f4f1e8; --ink:#1b1a17;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--room);color:var(--silk)}
+body{font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 12px 60px;
+  background:radial-gradient(ellipse at 50% 0%,#24221e,transparent 60%),var(--room)}
+a{color:inherit}
+.head{width:100%;max-width:640px;display:flex;align-items:baseline;gap:10px;padding:16px 18px 20px;border-radius:8px 8px 4px 4px;
+  background:var(--noise),linear-gradient(180deg,#34332f,var(--chassis2));background-blend-mode:soft-light,normal;box-shadow:0 1px 0 #4a4843 inset,0 20px 40px rgba(0,0,0,.5)}
+.head b{font-weight:700;font-size:26px;line-height:1}
+.head b i{font-style:normal;color:var(--led)}
+.silk{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--silkdim)}
+.head .silk:first-of-type{flex:1}
+.head a.silk{text-decoration:none;border:1px solid #4a4843;padding:3px 8px;border-radius:3px;color:var(--silk)}
+.head a.silk:hover{border-color:var(--silk)}
+.slot{width:92%;max-width:600px;height:12px;margin-top:-10px;border-radius:0 0 6px 6px;background:#0d0d0c;box-shadow:0 2px 0 #34322e;position:relative;z-index:2}
+.receipt{width:86%;max-width:560px;margin-top:-4px;background:var(--noise),var(--paper);background-blend-mode:multiply;color:var(--ink);
+  font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;padding:26px 24px 30px;box-shadow:0 10px 20px rgba(0,0,0,.45);
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x}
+h1{font-family:'Permanent Marker',cursive;font-weight:400;font-size:34px;line-height:1.05;margin-bottom:14px}
+h2{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin:4px 0 6px}
+p+p{margin-top:9px}
+hr{border:0;border-top:1px dashed #8b867a;margin:18px 0}
+.dim{color:#6b675e}
+@media (max-width:520px){.receipt{width:94%;padding:22px 18px 26px}.slot{width:98%}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="head"><b>TG<i>-</i>1</b><span class="silk">About</span><a class="silk" href="./">Back to the game</a></div>
+<div class="slot"></div>
+<div class="receipt">
+  <h1>Name the record.</h1>
+  <p>Tune Guesser drops you into the middle of a record and gives you four choices. Get it right and the next one comes up. Get one wrong and you're back to record 1. The leaderboard counts the longest run of right answers in a row.</p>
+
+  <hr>
+  <h2>How it works</h2>
+  <p><b>Records 1–5 are picture sleeves:</b> every pad shows the title and the artist.</p>
+  <p><b>From record 6 you're on white labels:</b> the pads show only the artist, the way an unmarked promo has nothing on it but a name in marker. The records also get more obscure as you go, from big crossover hits to deep cuts.</p>
+  <p><b>You get three hints per run, one use each.</b> 50:50 removes two wrong answers. Year shows when the record came out. Song name puts the titles back on the pads, and only works on white labels.</p>
+  <p>There's no clock. Listen for as long as you like.</p>
+
+  <hr>
+  <h2>The crate</h2>
+  <p>195 foundational house, techno and drum &amp; bass records, from Detroit electro in 1981 through to the late 2000s. Nothing released after 2010. That covers Chicago house and acid, Detroit techno, UK rave and bleep, jungle, French house and the vocal anthems.</p>
+  <p>After every answer the printer gives you a few lines on what the record is, who made it and why it matters.</p>
+
+  <hr>
+  <h2>Where the music comes from</h2>
+  <p>Every track streams from YouTube, and only from the artist's own official channel or a YouTube "Topic" channel. Topic channels are the auto-generated ones that labels and distributors feed with official releases. No fan uploads, and no rips.</p>
+  <p>Each printout links straight to the video it played, so you can go and hear the whole thing.</p>
+  <p class="dim">Some classics aren't in the crate because no official upload of them exists.</p>
+
+  <hr>
+  <p class="dim">Made by <a href="https://toddlburns.com">Todd L. Burns</a>. Spotted a mistake in the notes, or a record that should be in here? <a href="https://toddlburns.com/contact.html">Get in touch</a>.</p>
+</div>
+</body>
+</html>
