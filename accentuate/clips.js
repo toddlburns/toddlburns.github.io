@@ -21044,7 +21044,8 @@ window.CLIPS = [
   ],
   "born": 1957,
   "st": "PA",
-  "note_base": "Pittsburgh English."
+  "note_base": "Pittsburgh English.",
+  "drop": true
  },
  {
   "id": "Gr5R5fQIUzs",
