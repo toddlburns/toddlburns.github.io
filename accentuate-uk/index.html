@@ -729,7 +729,7 @@ $('lbForm').onsubmit = async e => {
 };
 function copyResult() {
   // Todd picked the challenge line; no emoji-square meter, just a pin to say "map game"
-  const text = `📍 I was ${state.score.toLocaleString()} miles off placing five accents on Accentuate UK. Bet you can’t beat it.`;
+  const text = `I was ${state.score.toLocaleString()} miles off placing five accents on Accentuate UK 📍 Can you beat me?`;
   const url = 'https://toddlburns.com/accentuate-uk/';
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
