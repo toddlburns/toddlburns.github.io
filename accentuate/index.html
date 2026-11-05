@@ -745,13 +745,14 @@ $('lbForm').onsubmit = async e => {
 };
 function copyResult() {
   const sq = m => m < CAP * .1 ? '🟩' : m < CAP * .3 ? '🟨' : m < CAP * .6 ? '🟧' : '⬜';   // one square per round, by miles off
-  const mine = `Accentuate: ${state.score.toLocaleString()} miles off ${state.results.map(r => sq(r.p)).join('')}`;
+  // what the game is, then the score with enough context to mean something (total miles off, lower is better)
+  const text = `Accentuate: you hear someone talk and drop a pin where you think they’re from.`;
+  const mine = `My guesses were ${state.score.toLocaleString()} miles off in total across five voices (lower is better). ${state.results.map(r => sq(r.p)).join('')}`;
   const url = 'https://toddlburns.com/accentuate/';
-  const text = "Hear someone talk, guess where they’re from.";   // plain, says what the game is (Todd found the old line cheesy)
   const done = () => { $('copyBtn').textContent = 'Copied! Paste it anywhere'; setTimeout(() => $('copyBtn').textContent = 'Share my score', 2000); };
   // Phones get the native share sheet (Messages, WhatsApp…); elsewhere the result is copied.
-  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: mine + '\n' + text + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
-  else navigator.clipboard?.writeText(mine + '\n' + text + '\n' + url).then(done);
+  if (navigator.share && matchMedia('(pointer:coarse)').matches) navigator.share({ text: text + '\n' + mine + '\n' + url })   /* iMessage drops `text` when `url` is passed separately */.catch(() => {});
+  else navigator.clipboard?.writeText(text + '\n' + mine + '\n' + url).then(done);
 }
 if (!CURATE) initMap();
 $('logoBtn').onclick = () => { snd.stop(); newGame(); };   // the logo always starts a fresh game
