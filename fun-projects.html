@@ -341,31 +341,7 @@
         #countdown .n.pop { animation: pop 0.9s ease-out; }
         @keyframes pop { from { transform: scale(2.2); opacity: 0; } 25% { opacity: 1; } to { transform: scale(0.9); opacity: 0.85; } }
 
-        /* "type tidy" banner */
-        #tidyNag {
-            position: fixed;
-            top: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 790;
-            display: none;
-            font: inherit;
-            font-size: 26px;
-            letter-spacing: 2px;
-            padding: 6px 18px;
-            border: 2px solid var(--hot);
-            background: #000;
-            color: var(--hot);
-            cursor: pointer;
-            white-space: nowrap;
-            animation: nag 0.6s steps(1) infinite;
-        }
-        #tidyNag.on { display: block; }
-        #tidyNag b { font-weight: normal; text-decoration: underline; }
-        @keyframes nag {
-            50% { background: var(--hot); color: #000; border-color: var(--amber); box-shadow: 0 0 24px var(--hot); }
-        }
-        @media (max-width: 600px) { #tidyNag { font-size: 20px; } #countdown .n { font-size: 180px; } }
+        @media (max-width: 600px) { #countdown .n { font-size: 180px; } }
         @keyframes quake {
             0%,100% { transform: translate(0); }
             20% { transform: translate(-12px, 6px) rotate(-0.6deg); }
@@ -615,7 +591,6 @@
     </div>
 
     <div id="countdown" aria-hidden="true"><div class="lbl">CHAOS IN</div><div class="n" id="cdn"></div></div>
-    <button id="tidyNag" type="button">&gt; TYPE <b>tidy</b> TO CLEAN UP</button>
 
     <div id="viewer" role="dialog" aria-modal="true"><div class="vwin" id="vwin"></div></div>
 
@@ -697,8 +672,6 @@
 
     /* ---------- actions ---------- */
     const say = html => { out.innerHTML = html; };
-    const nag = document.getElementById('tidyNag');
-    nag.addEventListener('click', () => typeOut('tidy'));
 
     /* ---------- arrival: tidy, then rumble + 3-2-1, then chaos ---------- */
     const cd = document.getElementById('countdown');
@@ -748,13 +721,11 @@
             clearTimeout(chaosTimer);
             chaosTimer = setTimeout(() => document.body.classList.remove('chaos'), 3000);
             say('<b>CHAOS.</b> Type <b>tidy</b> to clean up.');
-            nag.classList.add('on');
         },
         tidy() {
             cancelCountdown();
             projects.forEach(p => { p.x = p.y = p.r = 0; place(p); p.el.style.zIndex = ''; });
             document.body.classList.remove('chaos');
-            nag.classList.remove('on');
             say('Tidied. Your mother would be proud.');
         },
         shuffle() {
