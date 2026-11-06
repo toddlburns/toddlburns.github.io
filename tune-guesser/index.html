@@ -263,7 +263,6 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 
 <script>
 const API = 'https://tune-guesser-scores.todd-burns.workers.dev';
-const STAGES = [null,'Doors open','Warm-up','Peak time','After hours','Deep crates'];
 const VOL_BASE = 40; // headroom so quiet uploads can be raised to match (tracks.json vol)
 const ARTIST_ONLY_AFTER = 5; // from record 6 the choices are white labels: artist only
 // questions 1–5 tier 1, 6–12 tier 2, 13–20 tier 3, 21–30 tier 4, 31+ tier 5
@@ -401,7 +400,7 @@ function nextQuestion(){
 
   setLadder(tier);
   if (!matchMedia('(min-width:1130px)').matches) window.scrollTo({top:0, behavior:'smooth'});
-  vfd(`REC ${String(S.q).padStart(2,'0')} · ${STAGES[tier]}`, 'Cueing…', '');
+  vfd(`Record ${String(S.q).padStart(3,'0')}`, 'Cueing…', '');
   syncLifelines();
   $('opts').innerHTML = S.options.map((o,i)=>`<button class="pad" data-id="${o.id}" style="--rot:${rand(-2,2).toFixed(1)}deg">
       <span class="tape">${white
@@ -439,7 +438,7 @@ function syncLifelines(){
 function onState(e){
   const P = YT.PlayerState;
   if (!S || S.answered){ setSpin(e.data===P.PLAYING); return; }
-  if (e.data===P.PLAYING){ setSpin(true); $('l2').textContent='▶ Playing — name it'; setGo('Pause', ()=>player.pauseVideo()); }
+  if (e.data===P.PLAYING){ setSpin(true); $('l2').textContent='▶ What is it?'; setGo('Pause', ()=>player.pauseVideo()); }
   else if (e.data===P.BUFFERING){ $('l2').textContent='Buffering…'; }
   else if (e.data===P.PAUSED){ setSpin(false); $('l2').textContent='❚❚ Paused'; setGo('Play', ()=>player.playVideo()); }
   else if (e.data===P.ENDED){ setSpin(false); $('l2').textContent='■ Run-out groove';
@@ -506,7 +505,7 @@ function gameOver(cleared){
   vfd(cleared ? 'Crate cleared' : 'Run over', `${n} in a row`, n ? 'Log your run below' : '');
   printOut(`<h3>Run summary</h3>
     <p class="big">${n} in a row</p>
-    <p class="dim">${cleared ? 'You cleared the whole crate.' : `Reached ${STAGES[tierFor(S.q)].toLowerCase()}. Back to record 1.`}</p>
+    <p class="dim">${cleared ? 'You cleared the whole crate.' : 'Back to record 1.'}</p>
     ${n ? `<hr class="rule"><p id="logline">Name: <input id="name" maxlength="16" value="${esc(saved)}" autocomplete="nickname"><button class="post" id="send">Log</button></p><p class="dim" id="msg"></p>` : ''}
     <hr class="rule"><div id="boardslot">${boardHtml()}</div>`, true);
   setGo('Start', newRun);
