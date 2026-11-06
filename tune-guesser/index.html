@@ -191,17 +191,26 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 @media (max-width:620px){
   .unit{padding:18px 14px 22px}
   .top{grid-template-columns:1fr}
-  .deck{flex-direction:row;justify-content:center}
-  .platter{width:150px}
-  .meters{grid-template-columns:auto 1fr}
-  .mode{grid-column:1/-1;flex-direction:row;justify-content:flex-start}
-  .pads{gap:10px}
+  .deck{display:none}
+  .brand{margin-bottom:12px}
+  .top{gap:10px}
+  .vfd{min-height:0;padding:8px 10px}
+  .meters{grid-template-columns:auto 1fr auto;gap:10px;margin-top:10px}
+  .seg{padding:5px 7px;gap:4px}
+  .seg svg{width:15px;height:26px}
+  .stages{padding:5px}
+  .stages i{height:10px}
+  .toggle{width:44px;height:22px}
+  .toggle i{top:5px;left:5px;width:15px;height:12px}
+  body.white .toggle i{left:24px}
+  .meters .silk{font-size:9px;letter-spacing:.12em}
+  .pads{gap:10px;margin:14px 0 14px}
   .pad{min-height:100px;padding:12px 10px}
   .fnrow{grid-template-columns:1fr}
   .transport button{width:100%}
   .paper,.slot{width:94%}
-  .vfd .l1{font-size:18px} .vfd .l2,.vfd .l3{font-size:14px} .vfd.hero .l1{font-size:30px}
-  .fk button{font-size:16px;height:46px}
+  .vfd .l1{font-size:16px} .vfd .l2,.vfd .l3{font-size:13px;margin-top:2px} .vfd.hero .l1{font-size:24px}
+  .fk button{font-size:14px;height:42px;gap:6px;padding:0 6px}
 }
 @media (prefers-reduced-motion:reduce){.disc.spin{animation:none}.receipt.feed{animation:none}}
 </style>
