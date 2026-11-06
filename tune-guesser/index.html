@@ -189,13 +189,18 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
 
 @media (max-width:620px){
-  .unit{padding:18px 14px 22px}
+  body{padding:10px 8px 40px}
+  .unit{padding:14px 12px 16px}
+  .hints{padding:12px 8px 8px} .keys{gap:8px}
+  .brand{padding:0 4px 8px} .brand b{font-size:22px}
   .top{grid-template-columns:1fr}
   .deck{display:none}
-  .brand{margin-bottom:12px}
-  .top{gap:10px}
-  .vfd{min-height:0;padding:8px 10px}
-  .meters{grid-template-columns:auto 1fr auto;gap:10px;margin-top:10px}
+  .brand{margin-bottom:10px}
+  .top{gap:8px}
+  .vfd{min-height:0;padding:7px 10px}
+  .vfd .l3:empty{display:none}
+  .meters{grid-template-columns:auto 1fr auto;gap:10px;margin-top:8px;min-width:0}
+  .meters>*{min-width:0}
   .seg{padding:5px 7px;gap:4px}
   .seg svg{width:15px;height:26px}
   .stages{padding:5px}
@@ -204,13 +209,15 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
   .toggle i{top:5px;left:5px;width:15px;height:12px}
   body.white .toggle i{left:24px}
   .meters .silk{font-size:9px;letter-spacing:.12em}
-  .pads{gap:10px;margin:14px 0 14px}
-  .pad{min-height:100px;padding:12px 10px}
+  .pads{gap:8px;margin:10px 0}
+  .pad{min-height:0;height:96px;padding:8px 8px}
   .fnrow{grid-template-columns:1fr}
   .transport button{width:100%}
   .paper,.slot{width:94%}
   .vfd .l1{font-size:16px} .vfd .l2,.vfd .l3{font-size:13px;margin-top:2px} .vfd.hero .l1{font-size:24px}
-  .fk button{font-size:14px;height:42px;gap:6px;padding:0 6px}
+  .fk button{font-size:14px;height:38px;gap:6px;padding:0 6px}
+  .fnrow{gap:10px}
+  .transport button{height:48px}
 }
 @media (prefers-reduced-motion:reduce){.disc.spin{animation:none}.receipt.feed{animation:none}}
 </style>
