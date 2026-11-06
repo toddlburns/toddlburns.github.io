@@ -317,7 +317,7 @@ function blankPads(){
 
 // ---------- boot ----------
 setCounter(0); blankPads(); syncLifelines();
-fetch('tracks.json?v=2').then(r=>r.json()).then(t=>{ TRACKS=t; maybeReady(); });
+fetch('tracks.json?v=3').then(r=>r.json()).then(t=>{ TRACKS=t; maybeReady(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', {
     width:200, height:200,
