@@ -7,166 +7,280 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+        :root {
+            --g: #00ff41;
+            --g2: #00cc33;
+            --dim: #00ff4144;
+            --bg: #0a0a0a;
+            --hot: #ff2bd6;
+            --amber: #ffb000;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            background: #0a0a0a;
-            color: #00ff41;
+            background: var(--bg);
+            color: var(--g);
             font-family: 'VT323', monospace;
             min-height: 100vh;
             overflow-x: hidden;
             cursor: crosshair;
         }
 
-        /* CRT scanlines */
+        /* CRT scanlines + vignette */
         body::after {
             content: '';
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            inset: 0;
             pointer-events: none;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0,0,0,0.15) 0px,
-                rgba(0,0,0,0.15) 1px,
-                transparent 1px,
-                transparent 3px
-            );
+            background:
+                radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.65) 100%),
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
             z-index: 1000;
         }
 
-        /* CRT flicker */
         @keyframes flicker {
             0%, 100% { opacity: 1; }
             92% { opacity: 1; }
             93% { opacity: 0.8; }
             94% { opacity: 1; }
         }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ---------- BOOT ---------- */
+        #boot {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 900;
+            padding: 40px 24px;
+            font-size: 20px;
+            line-height: 1.35;
+            white-space: pre-wrap;
+            overflow: hidden;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        #boot.gone { opacity: 0; transform: scaleY(0.005); pointer-events: none; }
+        #boot .skip { position: absolute; bottom: 24px; right: 24px; opacity: 0.5; font-size: 16px; }
 
         .screen {
             animation: flicker 4s infinite;
-            padding: 40px 20px;
-            max-width: 800px;
+            padding: 40px 20px 120px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
         .back {
             font-size: 18px;
-            color: #00ff41;
+            color: var(--g);
             text-decoration: none;
             opacity: 0.5;
         }
         .back:hover { opacity: 1; }
 
+        /* ---------- TITLE ---------- */
         h1 {
-            font-size: 48px;
-            margin: 30px 0;
-            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+            font-size: clamp(44px, 9vw, 110px);
+            line-height: 0.9;
+            margin: 26px 0 18px;
             letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--g), 0 0 24px var(--g);
+            position: relative;
+            user-select: none;
+        }
+        h1 .ch { display: inline-block; transition: transform 0.15s; }
+        h1:hover .ch { animation: jitter 0.25s steps(2) infinite; }
+        h1 .ch:nth-child(3n) { animation-delay: -0.1s; }
+        @keyframes jitter {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(-2px, 2px); }
+            100% { transform: translate(2px, -1px); }
+        }
+        h1::before, h1::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0; top: 0;
+            pointer-events: none;
+            opacity: 0;
+        }
+        h1.rgb::before { color: var(--hot); opacity: 0.8; transform: translate(-4px, 0); mix-blend-mode: screen; }
+        h1.rgb::after { color: #00e5ff; opacity: 0.8; transform: translate(4px, 1px); mix-blend-mode: screen; }
+
+        .intro {
+            font-size: 21px;
+            line-height: 1.5;
+            color: var(--g2);
+            max-width: 760px;
+            margin-bottom: 26px;
         }
 
-        .prompt {
-            font-size: 20px;
+        /* ---------- TICKER ---------- */
+        .ticker {
+            border-top: 1px solid var(--dim);
+            border-bottom: 1px solid var(--dim);
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 22px;
+            padding: 6px 0;
+            margin-bottom: 26px;
+            color: var(--amber);
+            text-shadow: 0 0 6px var(--amber);
+        }
+        .ticker-inner { display: inline-block; animation: tick 60s linear infinite; }
+        .ticker:hover .ticker-inner { animation-play-state: paused; }
+        .ticker span { margin-right: 48px; }
+        .ticker span::before { content: '\25B2 '; color: var(--g); text-shadow: 0 0 6px var(--g); }
+        .ticker span:nth-child(3n)::before { content: '\25BC '; color: var(--hot); text-shadow: 0 0 6px var(--hot); }
+        @keyframes tick { to { transform: translateX(-50%); } }
+
+        /* ---------- TERMINAL ---------- */
+        .term {
+            border: 1px solid var(--g);
+            box-shadow: 0 0 18px rgba(0,255,65,0.15), inset 0 0 30px rgba(0,255,65,0.05);
+            padding: 12px 14px;
             margin-bottom: 30px;
-            opacity: 0.7;
+            font-size: 20px;
+            position: sticky;
+            top: 10px;
+            z-index: 50;
+            background: rgba(5,5,5,0.94);
         }
-
-        .prompt .cursor {
-            animation: blink 1s step-end infinite;
+        .term-line { display: flex; align-items: center; gap: 8px; }
+        .term-line label { white-space: nowrap; opacity: 0.8; }
+        #cmd {
+            flex: 1;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: var(--g);
+            font: inherit;
+            caret-color: var(--g);
+            min-width: 0;
         }
+        #out { min-height: 22px; color: var(--g2); font-size: 18px; margin-top: 4px; }
+        #out b { color: var(--amber); font-weight: normal; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .chip {
+            font: inherit;
+            font-size: 16px;
+            background: transparent;
+            color: var(--g);
+            border: 1px solid var(--dim);
+            padding: 2px 10px;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .chip:hover, .chip.on { background: var(--g); color: #000; box-shadow: 0 0 10px var(--g); }
+        .chip.danger { color: var(--hot); border-color: #ff2bd666; }
+        .chip.danger:hover { background: var(--hot); color: #000; box-shadow: 0 0 14px var(--hot); }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* ---------- PROJECT WINDOWS ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
+            gap: 22px;
+            position: relative;
         }
 
         .project {
-            border: 1px solid #00ff4133;
-            padding: 20px;
-            margin-bottom: 16px;
-            transition: all 0.2s;
+            border: 1px solid var(--dim);
+            background: #070707;
             position: relative;
+            transition: transform 0.6s cubic-bezier(.2,1.4,.4,1), border-color 0.2s, box-shadow 0.2s, opacity 0.3s, filter 0.3s;
+            touch-action: none;
+            user-select: none;
+        }
+        .project.dragging { transition: border-color 0.2s, box-shadow 0.2s; cursor: grabbing; }
+        .project:hover { border-color: var(--g); box-shadow: 0 0 20px rgba(0,255,65,0.25); }
+        .project.hidden { opacity: 0.08; filter: blur(2px); pointer-events: none; }
+
+        .titlebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 3px 8px;
+            background: #0f1f12;
+            border-bottom: 1px solid var(--dim);
+            font-size: 17px;
+            cursor: grab;
+        }
+        .titlebar .file { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .titlebar .dots { display: flex; gap: 5px; flex-shrink: 0; }
+        .titlebar .dots i { width: 11px; height: 11px; border: 1px solid var(--g); display: block; }
+        .project:hover .titlebar { background: var(--g); color: #000; }
+        .project:hover .titlebar .dots i { border-color: #000; }
+
+        .status { font-size: 15px; letter-spacing: 1px; padding: 6px 10px 0; display: flex; justify-content: space-between; }
+        .status .live { color: var(--g); }
+        .status .live::before { content: '\25CF '; animation: blink 1s step-end infinite; }
+        .status .dead { color: #ff5f5f; opacity: 0.8; }
+        .status .num { opacity: 0.4; }
+
+        .thumb {
+            position: relative;
+            margin: 8px 10px 0;
             overflow: hidden;
+            border: 1px solid var(--dim);
+            aspect-ratio: 1.43;
+            cursor: pointer;
+            background: #000;
         }
-
-        .project::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,255,65,0.05), transparent);
-            transition: left 0.5s;
-        }
-
-        .project:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 15px rgba(0,255,65,0.15);
-        }
-
-        .project:hover::before {
-            left: 100%;
-        }
-
-        .project-name {
-            font-size: 28px;
-            margin-bottom: 8px;
-            text-shadow: 0 0 5px #00ff41;
-        }
-
-        .project-name a {
-            color: #00ff41;
-            text-decoration: none;
-        }
-        .project-name a:hover {
-            text-decoration: underline;
-        }
-
         .project-img {
             width: 100%;
-            margin-bottom: 12px;
-            border: 1px solid #00ff4133;
-            filter: grayscale(60%) brightness(0.8) contrast(1.1);
-            transition: filter 0.3s;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            filter: grayscale(100%) brightness(0.75) contrast(1.2) sepia(1) hue-rotate(70deg) saturate(3);
+            transition: filter 0.35s, transform 0.6s;
         }
+        .project:hover .project-img { filter: none; transform: scale(1.04); }
 
-        .project:hover .project-img {
-            filter: grayscale(0%) brightness(1) contrast(1);
+        /* static that rolls over archived projects */
+        .thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: screen;
+            transition: opacity 0.2s;
         }
-
-        .project-desc {
-            font-size: 18px;
-            color: #00cc33;
-            line-height: 1.5;
+        .project[data-live="0"]:hover .thumb::after { opacity: 0.35; animation: static 0.3s steps(3) infinite; }
+        @keyframes static {
+            0% { background-position: 0 0; }
+            33% { background-position: -40px 60px; }
+            66% { background-position: 70px -30px; }
+            100% { background-position: 10px 90px; }
         }
-
-        .project-tag {
-            display: inline-block;
-            font-size: 14px;
-            border: 1px solid #00ff4144;
-            padding: 2px 8px;
-            margin-top: 10px;
-            color: #00ff4188;
+        .thumb .open {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: #000;
+            border: 1px solid var(--g);
+            padding: 4px 14px;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            white-space: nowrap;
+            z-index: 2;
         }
+        .project:hover .thumb .open { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-        .section-label {
-            font-size: 16px;
-            color: #00ff4155;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin: 40px 0 20px;
-            border-bottom: 1px solid #00ff4122;
-            padding-bottom: 8px;
+        .project-name {
+            font-size: 30px;
+            line-height: 1;
+            padding: 10px 10px 4px;
+            text-shadow: 0 0 5px var(--g);
         }
-
-        .project-desc a, .project-tag a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* Random glitch on hover */
-        .project:hover .project-name {
-            animation: glitch 0.3s ease;
-        }
-
+        .project-name a { color: var(--g); text-decoration: none; }
+        .project-name a:hover { text-decoration: underline; }
+        .project:hover .project-name { animation: glitch 0.3s ease; }
         @keyframes glitch {
             0% { transform: translate(0); }
             20% { transform: translate(-2px, 1px); }
@@ -176,11 +290,116 @@
             100% { transform: translate(0); }
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 32px; }
-            .project-name { font-size: 22px; }
+        .project-desc {
+            font-size: 18px;
+            color: var(--g2);
+            line-height: 1.4;
+            padding: 0 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-    
+        .project-desc a, .project-tag a { color: inherit; text-decoration: none; }
+        .project-desc a { border-bottom: 1px dotted currentColor; }
+
+        .tags { padding: 8px 10px 12px; }
+        .project-tag {
+            display: inline-block;
+            font-size: 14px;
+            border: 1px solid var(--dim);
+            padding: 1px 7px;
+            margin: 4px 4px 0 0;
+            color: #00ff4199;
+        }
+
+        /* ---------- CHAOS MODE ---------- */
+        body.chaos { animation: hue 3s linear infinite; }
+        @keyframes hue { to { filter: hue-rotate(360deg); } }
+        body.chaos .project { box-shadow: 0 0 30px rgba(0,255,65,0.35); }
+        body.quake .screen { animation: quake 0.4s; }
+        @keyframes quake {
+            0%,100% { transform: translate(0); }
+            20% { transform: translate(-12px, 6px) rotate(-0.6deg); }
+            40% { transform: translate(10px, -8px) rotate(0.5deg); }
+            60% { transform: translate(-6px, 4px); }
+            80% { transform: translate(5px, -2px); }
+        }
+
+        /* ---------- VIEWER (modal) ---------- */
+        #viewer {
+            position: fixed;
+            inset: 0;
+            z-index: 800;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #viewer.on { display: flex; }
+        .vwin {
+            width: min(900px, 100%);
+            max-height: calc(100vh - 40px);
+            overflow: auto;
+            background: #050505;
+            border: 1px solid var(--g);
+            box-shadow: 0 0 40px rgba(0,255,65,0.3);
+            animation: crtOn 0.35s ease-out;
+        }
+        @keyframes crtOn {
+            0% { transform: scale(1, 0.004); filter: brightness(4); }
+            55% { transform: scale(1, 0.004); }
+            100% { transform: scale(1, 1); filter: brightness(1); }
+        }
+        .vwin .titlebar { background: var(--g); color: #000; cursor: default; font-size: 20px; position: sticky; top: 0; z-index: 2; }
+        .vwin .titlebar button { font: inherit; background: #000; color: var(--g); border: 0; padding: 0 10px; cursor: pointer; }
+        .vbody { padding: 18px; }
+        .vbody img, .vbody video { width: 100%; display: block; border: 1px solid var(--dim); margin-bottom: 16px; }
+        .vbody h2 { font-size: 46px; font-weight: normal; line-height: 1; margin-bottom: 10px; text-shadow: 0 0 8px var(--g); }
+        .vbody .vdesc { font-size: 21px; line-height: 1.5; color: var(--g2); }
+        .vbody .vdesc a { color: var(--g); }
+        .vbody .vtags { margin: 12px 0 18px; }
+        .vbody .vtags a { color: inherit; text-decoration: none; }
+        .launch {
+            display: inline-block;
+            font-size: 26px;
+            color: #000;
+            background: var(--g);
+            padding: 6px 22px;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--g);
+            margin-right: 10px;
+        }
+        .launch:hover { background: #fff; box-shadow: 0 0 30px #fff; }
+        .nolaunch { font-size: 20px; color: #ff5f5f; }
+        .vnav { display: flex; justify-content: space-between; margin-top: 22px; font-size: 20px; }
+        .vnav button { font: inherit; background: transparent; color: var(--g); border: 1px solid var(--dim); padding: 2px 12px; cursor: pointer; }
+        .vnav button:hover { background: var(--g); color: #000; }
+
+        /* cursor trail */
+        .trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 18px;
+            color: var(--g);
+            text-shadow: 0 0 6px var(--g);
+            animation: fall 0.9s linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(40px); opacity: 0; } }
+
+        .footer-note { margin-top: 40px; font-size: 18px; opacity: 0.5; text-align: center; }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .term { position: static; }
+            .project-name { font-size: 26px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-inner, .screen, h1 .ch { animation: none !important; }
+        }
+
     .page-toggle {
         position: fixed;
         bottom: 24px;
@@ -193,6 +412,8 @@
         font-size: 12px;
         letter-spacing: 1px;
         user-select: none;
+        background: #000;
+        padding: 6px 10px;
     }
     .page-toggle a {
         text-decoration: none;
@@ -227,97 +448,111 @@
     </style>
 </head>
 <body>
+    <div id="boot"><span id="bootText"></span><span style="animation:blink 1s step-end infinite">&#9608;</span><div class="skip">[ ANY KEY TO SKIP ]</div></div>
+
     <div class="screen">
         <a href="/" class="back">&lt; BACK</a>
-        <h1>DIGITAL PROJECTS</h1>
+        <h1 data-text="DIGITAL PROJECTS">DIGITAL PROJECTS</h1>
 
-        <div class="project-desc" style="margin: 20px 0 30px; font-size: 20px; line-height: 1.6;">I've been building things on the web for over two decades now. Whether it's interactive experiments, data visualizations, or archival deep dives, I love finding new ways to bring ideas to life online. Here's a selection of some of that work.</div>
+        <div class="intro">I've been building things on the web for over two decades now. Whether it's interactive experiments, data visualizations, or archival deep dives, I love finding new ways to bring ideas to life online. Here's a selection of some of that work.</div>
 
-        <div class="project">
+        <div class="ticker"><div class="ticker-inner" id="ticker">
+            <span>232 RECORDS 1981&ndash;2010</span><span>12 RADIO STATIONS</span><span>31 ARTISTS &middot; 24 HOURS &middot; THEN GONE</span><span>200-ODD STYLUS WRITERS RESTORED</span><span>700+ IMAGES OF 80s NEW YORK</span><span>INSTRUMENTS FROM THE YEAR 2214</span><span>4 ANIMATED COMICS</span><span>LOWEST TOTAL MILES WINS</span><span>VINYL: STOCK TICKER FOR RECORDS</span><span>INNER PEACE OR TOTAL ABSURDITY</span>
+        </div></div>
+
+        <div class="term">
+            <div class="term-line"><label for="cmd">guest@toddlburns:~$</label><input id="cmd" autocomplete="off" spellcheck="false" placeholder="type help"></div>
+            <div id="out">13 files found. Drag the windows around. Type <b>help</b> or press a button.</div>
+            <div class="chips" id="chips"></div>
+        </div>
+
+        <div class="grid" id="grid">
+
+        <div class="project" data-live="1">
             <img class="project-img" src="images/tune-guesser.png" alt="Tune Guesser">
             <div class="project-name"><a href="https://toddlburns.com/tune-guesser/">Tune Guesser</a></div>
             <div class="project-desc">A name-that-tune game for house, techno and drum &amp; bass. The needle drops into the middle of a record and you pick it from four pads. Get one wrong and you're back to record 1. From record 6 the titles disappear and you have to name the artist by ear. There are 232 records from 1981 to 2010, and each comes with a few lines on why it matters.</div>
             <span class="project-tag">GAME</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="1">
             <img class="project-img" src="images/accentuate.png" alt="Accentuate">
             <div class="project-name"><a href="https://toddlburns.com/accentuate/">Accentuate</a></div>
             <div class="project-desc">A game about how Americans sound. You hear someone talk for a few seconds — a NASCAR driver, a Brooklyn borough president, a woman reading the same paragraph as everyone else in the Speech Accent Archive — and drop a pin where you think they grew up. Lowest total miles wins. After each guess it points you to the exact words that gave the accent away. There's a <a href="https://toddlburns.com/accentuate-uk/">UK version</a>, too.</div>
             <span class="project-tag">GAME</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="1">
             <img class="project-img" src="images/crambe-repetita-radio.png" alt="Crambe Repetita Radio">
             <div class="project-name"><a href="https://toddlburns.com/crambe-repetita-radio/">Crambe Repetita Radio</a></div>
             <div class="project-desc">My Stylus Magazine record reviews, turned into music that's generated live in the browser from the words themselves. Each piece lasts exactly as long as the album it reviewed. There are twelve stations, from quiet classical and ambient in my own voice to New Age, Berlin School, jazz fusion, IDM, dub techno, 303 acid, electro and Italo disco.</div>
             <span class="project-tag">AUDIO</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="1">
             <img class="project-img" src="images/stylus-archive.png" alt="Stylus Magazine Archive">
             <div class="project-name"><a href="https://stylusmagazinearchive.com/">Stylus Magazine Archive</a></div>
             <div class="project-desc">Stylus Magazine ran from 2002 to 2007, and after it shut down the only way to read any of it was through the Wayback Machine — pages loading slowly, images missing, links broken. In 2026 I rebuilt the whole thing in its original design, so the work of the 200-odd writers who passed through reads the way it did at the time. The message board came back with it, which means those writers can now annotate their own reviews two decades on.</div>
             <span class="project-tag">ARCHIVE</span> <span class="project-tag">STYLUS</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/album-art-iq.png" alt="Album Art IQ">
             <div class="project-name">Album Art IQ</div>
             <div class="project-desc">This was an online game meant to test your memory of iconic album covers. Once you started the game, album covers would slowly became less pixelated. The faster you identified the record sleeve, the more points you got.</div>
             <span class="project-tag">GAME</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/future-instruments.png" alt="Future Instruments 2214">
             <div class="project-name">Future Instruments 2214</div>
             <div class="project-desc">For this project, Red Bull Music Academy asked future-inclined artists and thinkers like Tyler, The Creator, Jeff Mills, and Konstantin Grcic to describe what type of musical instruments would exist in 200 years. <a href="https://laughton.kim/">Kim Laughton</a> then brought their descriptions to life.</div>
             <span class="project-tag">INTERACTIVE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ ANIMADE (<a href="https://www.official.business/">MIKE GUPPY</a> & JAMES CHAMBERS)</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/eternal-bliss.png" alt="Eternal Bliss">
             <div class="project-name">Eternal Bliss</div>
             <div class="project-desc">This was a tongue-in-cheek guided meditation website. Visitors could swap out the soothing narration and background music on the fly, mixing and matching their way to inner peace — or total absurdity.</div>
             <span class="project-tag">SATIRE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://www.jamespants.com/">JAMES PANTS</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/shattered-streams.png" alt="Shattered Streams">
             <div class="project-name">Shattered Streams</div>
             <div class="project-desc">An experiment in musical ephemerality. We presented original music from 31 artists — including William Basinski, Fennesz, and Wolf Eyes — each track available to stream on a loop for a maximum of 24 hours. Over that time, the audio slowly degraded until it simply disappeared. You either caught it or you didn't.</div>
             <span class="project-tag">EXPERIMENT</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/online-comics.png" alt="Online Comics">
             <div class="project-name">Online Comics</div>
             <div class="project-desc">I commissioned four animated comic works celebrating musicians with strong ties to Japan. The lineup: MF DOOM (written by Gabe Soria, art by Dean Haspiel), DJ Krush (by Haruhisa Nakata), Damo Suzuki (written by Zack Soto, art by Connor Willumsen), and Isao Tomita (written by Jordan Ferguson, art by Yuko Ichijo). The project was managed by Marc Weidenbaum. Each comic was then animated for the web.</div>
             <span class="project-tag">ANIMATION</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ ANIMADE (<a href="https://www.official.business/">MIKE GUPPY</a> & JAMES CHAMBERS)</span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/mixing-board.png" alt="Mixing Board">
             <div class="project-name">Mixing Board</div>
             <div class="project-desc">An interactive audio toy that let visitors control the BPM and volume of individual parts within different tracks. As you adjusted the mix, the visual environment shifted in response — the emotional intensity of the page followed the music.</div>
             <span class="project-tag">AUDIO</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/vinyl-marketwatch.jpg" alt="Vinyl Marketwatch">
             <div class="project-name">Vinyl Marketwatch</div>
             <div class="project-desc">A daily data visualization tracking market movers by genre within the Discogs vinyl marketplace — think stock ticker, but for records. Teki Latex anchored the project with regular video commentary on the trends.</div>
             <span class="project-tag">DATA</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://www.jamespants.com/">JAMES PANTS</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <img class="project-img" src="images/endless-80s-nyc.jpg" alt="Endless 80s NYC">
             <div class="project-name">Endless 80s NYC</div>
             <div class="project-desc">An infinite scroll through ten of the most influential New York independent record labels of the 1980s. Folder Studio curated over 700 images — album covers, found footage, and original content — to celebrate the vibrant energy and blending of cultures that defined the era.</div>
             <span class="project-tag">INTERACTIVE</span> <span class="project-tag">RBMA</span> <span class="project-tag">w/ <a href="https://folder.studio/">FOLDER STUDIO</a></span>
         </div>
 
-        <div class="project">
+        <div class="project" data-live="0">
             <video class="project-img" src="images/rbma-daily.mp4" autoplay loop muted playsinline></video>
             <div class="project-name">RBMA Daily</div>
             <div class="project-desc">I worked with <a href="https://www.acolorbright.com/en">A Color Bright</a> to launch RBMA Daily, a music editorial site built to be flexible enough to accommodate ambitious visual storytelling. That meant I could commission illustrators and animators for individual features — like the <a href="https://daily.redbullmusicacademy.com/2017/03/meredith-monk-feature">pigtail illustrations by Megan Bishop for a Meredith Monk profile</a> or the <a href="https://daily.redbullmusicacademy.com/2016/01/jean-michel-jarre-live-feature">animated GIFs by Benedikt Rugar woven through a Jean-Michel Jarre live feature</a> — knowing the platform could handle whatever we threw at it.</div>
@@ -326,12 +561,320 @@
 
         <!-- Future: Music Journalism Insider Archive -->
 
+        </div>
+
+        <div class="footer-note">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</div>
     </div>
+
+    <div id="viewer" role="dialog" aria-modal="true"><div class="vwin" id="vwin"></div></div>
 
     <div class="page-toggle" onclick='window.location.href="/projects.html"'>
         <span class="toggle-label-left">Serious</span>
         <div class="toggle-track"><div class="knob"></div></div>
         <span class="toggle-label-right">Fun</span>
     </div>
+
+<script>
+(() => {
+    const EXT = { GAME: 'EXE', AUDIO: 'WAV', ARCHIVE: 'DB', INTERACTIVE: 'SWF', SATIRE: 'OM', EXPERIMENT: 'TMP', ANIMATION: 'GIF', DATA: 'CSV', EDITORIAL: 'TXT' };
+    const grid = document.getElementById('grid');
+    const out = document.getElementById('out');
+    const cmd = document.getElementById('cmd');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const touch = matchMedia('(pointer: coarse)').matches;
+
+    /* ---------- build windows around the existing markup ---------- */
+    const projects = [...grid.querySelectorAll('.project')].map((el, i) => {
+        const img = el.querySelector('.project-img');
+        const nameEl = el.querySelector('.project-name');
+        const descEl = el.querySelector('.project-desc');
+        const tagEls = [...el.querySelectorAll('.project-tag')];
+        const tags = tagEls.map(t => t.textContent.trim());
+        const link = nameEl.querySelector('a');
+        const name = nameEl.textContent.trim();
+        const file = name.toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/_$/, '') + '.' + (EXT[tags[0]] || 'BIN');
+        const live = el.dataset.live === '1';
+
+        const bar = document.createElement('div');
+        bar.className = 'titlebar';
+        bar.innerHTML = `<span class="file">${file}</span><span class="dots"><i></i><i></i><i></i></span>`;
+
+        const status = document.createElement('div');
+        status.className = 'status';
+        status.innerHTML = `<span class="${live ? 'live' : 'dead'}">${live ? 'LIVE' : 'SIGNAL LOST'}</span><span class="num">${String(i + 1).padStart(2, '0')}/${String(13).padStart(2, '0')}</span>`;
+
+        const thumb = document.createElement('div');
+        thumb.className = 'thumb';
+        img.replaceWith(thumb);
+        thumb.appendChild(img);
+        thumb.insertAdjacentHTML('beforeend', '<span class="open">[ OPEN ]</span>');
+
+        const tagWrap = document.createElement('div');
+        tagWrap.className = 'tags';
+        tagEls.forEach(t => tagWrap.appendChild(t));
+        [...el.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); });
+
+        el.prepend(bar, status);
+        el.insertBefore(thumb, nameEl);
+        el.appendChild(tagWrap);
+
+        const p = { el, i, name, file, tags, live, link: link && link.href, descHTML: descEl.innerHTML, img, x: 0, y: 0, r: 0 };
+        thumb.addEventListener('click', () => openViewer(p.i));
+        return p;
+    });
+    const total = projects.length;
+    projects.forEach(p => p.el.querySelector('.num').textContent = `${String(p.i + 1).padStart(2, '0')}/${String(total).padStart(2, '0')}`);
+
+    /* ---------- drag ---------- */
+    let z = 10;
+    const place = p => { p.el.style.transform = (p.x || p.y || p.r) ? `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg)` : ''; };
+    projects.forEach(p => {
+        const bar = p.el.querySelector('.titlebar');
+        bar.addEventListener('pointerdown', e => {
+            if (touch) return;
+            e.preventDefault();
+            const sx = e.clientX - p.x, sy = e.clientY - p.y;
+            p.el.classList.add('dragging');
+            p.el.style.zIndex = ++z;
+            const move = ev => { p.x = ev.clientX - sx; p.y = ev.clientY - sy; place(p); };
+            const up = () => { p.el.classList.remove('dragging'); removeEventListener('pointermove', move); removeEventListener('pointerup', up); };
+            addEventListener('pointermove', move);
+            addEventListener('pointerup', up);
+        });
+        bar.addEventListener('dblclick', () => openViewer(p.i));
+    });
+
+    /* ---------- actions ---------- */
+    const say = html => { out.innerHTML = html; };
+    let chaosTimer;
+    const actions = {
+        all() { filter(null); say(`${total} files. Everything I could find.`); },
+        live() {
+            projects.forEach(p => p.el.classList.toggle('hidden', !p.live));
+            say(`${projects.filter(p => p.live).length} still online. Click one, it works.`);
+        },
+        dead() {
+            projects.forEach(p => p.el.classList.toggle('hidden', p.live));
+            say(`${projects.filter(p => !p.live).length} gone dark. Red Bull Music Academy closed in 2019; these went with it.`);
+        },
+        chaos() {
+            const w = innerWidth, h = innerHeight;
+            projects.forEach(p => {
+                p.x = Math.round((Math.random() - 0.5) * w * 0.6);
+                p.y = Math.round((Math.random() - 0.5) * h * 0.7);
+                p.r = Math.round((Math.random() - 0.5) * 50);
+                p.el.style.zIndex = ++z;
+                place(p);
+            });
+            document.body.classList.add('chaos', 'quake');
+            setTimeout(() => document.body.classList.remove('quake'), 450);
+            clearTimeout(chaosTimer);
+            chaosTimer = setTimeout(() => document.body.classList.remove('chaos'), 3000);
+            say('<b>CHAOS.</b> Type <b>tidy</b> to clean up.');
+        },
+        tidy() {
+            projects.forEach(p => { p.x = p.y = p.r = 0; place(p); p.el.style.zIndex = ''; });
+            document.body.classList.remove('chaos');
+            say('Tidied. Your mother would be proud.');
+        },
+        shuffle() {
+            const nodes = projects.map(p => p.el).sort(() => Math.random() - 0.5);
+            nodes.forEach(n => grid.appendChild(n));
+            say('Shuffled.');
+        },
+        random() {
+            const pool = projects.filter(p => !p.el.classList.contains('hidden'));
+            const p = pool[Math.floor(Math.random() * pool.length)];
+            say(`Rolling the dice&hellip; <b>${p.file}</b>`);
+            setTimeout(() => openViewer(p.i), 350);
+        },
+        help() {
+            say('<b>ls</b> [game|audio|rbma|&hellip;] &middot; <b>open</b> name &middot; <b>live</b> &middot; <b>dead</b> &middot; <b>random</b> &middot; <b>shuffle</b> &middot; <b>chaos</b> &middot; <b>tidy</b> &middot; <b>whoami</b> &middot; <b>clear</b>');
+        },
+        whoami() { say('guest. The owner is <a href="/fun-bio.html" style="color:inherit">Todd L. Burns</a>.'); },
+        clear() { filter(null); actions.tidy(); say(''); },
+        sudo() { say('Nice try.'); },
+        exit() { location.href = '/'; },
+    };
+
+    function filter(tag) {
+        projects.forEach(p => p.el.classList.toggle('hidden', !!tag && !p.tags.some(t => t.toUpperCase().includes(tag))));
+        document.querySelectorAll('.chip[data-tag]').forEach(c => c.classList.toggle('on', c.dataset.tag === (tag || 'ALL')));
+    }
+
+    function run(line) {
+        const [c, ...rest] = line.trim().toLowerCase().split(/\s+/);
+        const arg = rest.join(' ');
+        if (!c) return;
+        if (c === 'ls' || c === 'dir') {
+            if (!arg || arg === '-a' || arg === '--all') return actions.all();
+            const tag = arg.toUpperCase().replace(/S$/, '');
+            const n = projects.filter(p => p.tags.some(t => t.toUpperCase().includes(tag))).length;
+            if (!n) return say(`ls: ${arg}: No such file or directory`);
+            filter(tag);
+            return say(`${n} match${n === 1 ? '' : 'es'} for <b>${tag}</b>.`);
+        }
+        if (c === 'open' || c === 'cat' || c === 'run') {
+            const p = projects.find(p => p.name.toLowerCase().includes(arg) || p.file.toLowerCase().includes(arg));
+            return p && arg ? openViewer(p.i) : say(`${c}: ${arg || '?'}: not found`);
+        }
+        if (c === 'rm') { actions.chaos(); return say('<b>rm: permission denied.</b> But you did make a mess.'); }
+        if (actions[c]) return actions[c]();
+        say(`command not found: ${c}. Try <b>help</b>.`);
+    }
+
+    cmd.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { run(cmd.value); cmd.value = ''; }
+    });
+
+    /* chips */
+    const chips = document.getElementById('chips');
+    const tagCounts = {};
+    projects.forEach(p => p.tags.forEach(t => { if (!t.startsWith('w/')) tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+    const mk = (label, fn, extra) => {
+        const b = document.createElement('button');
+        b.className = 'chip' + (extra ? ' ' + extra : '');
+        b.textContent = label;
+        b.addEventListener('click', fn);
+        chips.appendChild(b);
+        return b;
+    };
+    mk('ALL', () => { typeOut('ls --all'); }).dataset.tag = 'ALL';
+    Object.keys(tagCounts).filter(t => tagCounts[t] > 1).sort((a, b) => tagCounts[b] - tagCounts[a]).forEach(t => {
+        mk(`${t} (${tagCounts[t]})`, () => typeOut('ls ' + t.toLowerCase())).dataset.tag = t;
+    });
+    mk('● LIVE', () => typeOut('live'));
+    mk('RANDOM', () => typeOut('random'));
+    mk('CHAOS', () => typeOut('chaos'), 'danger');
+    mk('TIDY', () => typeOut('tidy'));
+    chips.querySelector('[data-tag="ALL"]').classList.add('on');
+
+    // chips "type" their command into the prompt before running it
+    let typing;
+    function typeOut(text) {
+        clearInterval(typing);
+        cmd.value = '';
+        let k = 0;
+        typing = setInterval(() => {
+            cmd.value = text.slice(0, ++k);
+            if (k >= text.length) { clearInterval(typing); setTimeout(() => { run(text); cmd.value = ''; }, 90); }
+        }, reduce ? 0 : 22);
+    }
+
+    /* ---------- viewer ---------- */
+    const viewer = document.getElementById('viewer');
+    const vwin = document.getElementById('vwin');
+    let current = -1;
+    function openViewer(i) {
+        current = (i + total) % total;
+        const p = projects[current];
+        const media = p.img.tagName === 'VIDEO'
+            ? `<video src="${p.img.getAttribute('src')}" autoplay loop muted playsinline></video>`
+            : `<img src="${p.img.getAttribute('src')}" alt="${p.name}">`;
+        const tagsHTML = p.el.querySelector('.tags').innerHTML;
+        vwin.innerHTML = `
+            <div class="titlebar"><span class="file">C:\\TODD\\PROJECTS\\${p.file}</span><button id="vclose" aria-label="Close">X</button></div>
+            <div class="vbody">
+                ${media}
+                <h2>${p.name}</h2>
+                <div class="vdesc">${p.descHTML}</div>
+                <div class="vtags">${tagsHTML}</div>
+                ${p.live ? `<a class="launch" href="${p.link}" target="_blank" rel="noopener">&gt; LAUNCH</a>` : `<span class="nolaunch">[ SIGNAL LOST &mdash; this one is no longer online ]</span>`}
+                <div class="vnav"><button id="vprev">&lt; PREV</button><button id="vnext">NEXT &gt;</button></div>
+            </div>`;
+        viewer.classList.remove('on'); void viewer.offsetWidth;
+        viewer.classList.add('on');
+        document.getElementById('vclose').onclick = closeViewer;
+        document.getElementById('vprev').onclick = () => openViewer(current - 1);
+        document.getElementById('vnext').onclick = () => openViewer(current + 1);
+    }
+    function closeViewer() { viewer.classList.remove('on'); current = -1; }
+    viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(); });
+
+    /* ---------- keys: viewer nav, konami, type-anywhere ---------- */
+    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let kpos = 0;
+    addEventListener('keydown', e => {
+        if (current >= 0) {
+            if (e.key === 'Escape') closeViewer();
+            if (e.key === 'ArrowRight') openViewer(current + 1);
+            if (e.key === 'ArrowLeft') openViewer(current - 1);
+        }
+        kpos = (e.key === konami[kpos]) ? kpos + 1 : (e.key === konami[0] ? 1 : 0);
+        if (kpos === konami.length) { kpos = 0; actions.chaos(); setTimeout(actions.chaos, 700); setTimeout(actions.chaos, 1400); say('<b>30 LIVES.</b> Type tidy when you are done.'); }
+    });
+
+    /* ---------- title: letters + rgb split ---------- */
+    const h1 = document.querySelector('h1');
+    h1.innerHTML = [...h1.textContent].map(c => c === ' ' ? ' ' : `<span class="ch">${c}</span>`).join('');
+    h1.addEventListener('mouseenter', () => h1.classList.add('rgb'));
+    h1.addEventListener('mouseleave', () => h1.classList.remove('rgb'));
+    h1.addEventListener('click', actions.chaos);
+
+    /* ---------- ticker: duplicate for a seamless loop ---------- */
+    const tk = document.getElementById('ticker');
+    tk.innerHTML += tk.innerHTML;
+
+    /* ---------- cursor trail ---------- */
+    if (!touch && !reduce) {
+        const glyphs = '01アイウエオカキクケコ<>/\\#$%&*+=';
+        let last = 0;
+        addEventListener('pointermove', e => {
+            const now = performance.now();
+            if (now - last < 45) return;
+            last = now;
+            const s = document.createElement('span');
+            s.className = 'trail';
+            s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+            s.style.left = e.clientX + 'px';
+            s.style.top = e.clientY + 'px';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 900);
+        });
+    }
+
+    /* ---------- boot sequence (once per session) ---------- */
+    const boot = document.getElementById('boot');
+    const bootText = document.getElementById('bootText');
+    let seen = false;
+    try { seen = sessionStorage.getItem('tlb-boot') === '1'; sessionStorage.setItem('tlb-boot', '1'); } catch (e) {}
+    const lines = [
+        'TLB-BIOS v2.0.26  (C) 2002-2026',
+        'MEMORY TEST ........ 640K OK',
+        'DETECTING TURNTABLES ........ 2 FOUND',
+        'MOUNTING /RBMA ........ READ ONLY',
+        'MOUNTING /STYLUS ........ RESTORED',
+        `LOADING ${total} PROJECTS ` ,
+        '',
+        'READY.',
+    ];
+    let done = false;
+    const finish = () => { if (done) return; done = true; boot.classList.add('gone'); setTimeout(() => boot.remove(), 450); };
+    if (seen || reduce) { boot.remove(); done = true; }
+    else {
+        let li = 0;
+        const step = () => {
+            if (done) return;
+            if (li < lines.length) {
+                let line = lines[li++];
+                if (line.startsWith('LOADING')) {
+                    let n = 0;
+                    const bar = setInterval(() => {
+                        n++;
+                        bootText.textContent = lines.slice(0, li - 1).join('\n') + '\n' + line + '[' + '#'.repeat(n) + '.'.repeat(20 - n) + ']';
+                        if (n >= 20) { clearInterval(bar); bootText.textContent += '\n'; setTimeout(step, 60); }
+                    }, 25);
+                    return;
+                }
+                bootText.textContent += line + '\n';
+                setTimeout(step, 90 + Math.random() * 90);
+            } else setTimeout(finish, 350);
+        };
+        step();
+        addEventListener('keydown', finish, { once: true });
+        boot.addEventListener('click', finish);
+    }
+})();
+</script>
 </body>
 </html>
