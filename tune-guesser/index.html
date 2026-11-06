@@ -335,9 +335,9 @@ loadBoard().then(()=>{ if (!S) printIntro(); });
 printIntro();
 
 function printIntro(){
-  printOut(`<p class="big">Name the record.</p>
-    <p>The needle drops mid-track. Hit the pad with the right answer.</p>
-    <p><span class="hl">Records 1–5:</span> song and artist.<br><span class="hl">From record 6:</span> <b class="blue">artists only</b>.</p>
+  printOut(`<p class="big">Tune Guesser</p>
+    <p>The needle drops mid-track.<br>Hit the pad with the right answer.</p>
+    <p><span class="hl">Records 1–5:</span> song and artist.<br><span class="hl">Records 6–∞:</span> artists only.</p>
     <p>One wrong and you're <b class="red">back to record 1</b>.</p>
     <hr class="rule">
     ${boardHtml()}`);
