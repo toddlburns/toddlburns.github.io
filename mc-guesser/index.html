@@ -68,6 +68,14 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .key:active{transform:translateY(2px);box-shadow:0 1px 0 #22211e}
 .key.go{background:linear-gradient(180deg,#e0622b,var(--orange));color:#fff4ea;box-shadow:0 3px 0 #7a2f0f,0 4px 6px rgba(0,0,0,.4)}
 .key:disabled{opacity:.4;cursor:default}
+.choices{display:none;grid-template-columns:1fr 1fr;gap:8px}
+.entry.mcq{grid-template-columns:1fr auto}
+.entry.mcq .slot{display:none}.entry.mcq .choices{display:grid}.entry.mcq .pass{grid-column:2;grid-row:1}.entry.mcq #enter{grid-column:2;grid-row:1;display:none}
+.entry.mcq.done .pass{display:none}.entry.mcq.done #enter{display:block;align-self:stretch}
+.choice{font-size:16px;letter-spacing:.06em;padding:10px 8px;line-height:1.05;min-height:46px}
+.choice.right{background:linear-gradient(180deg,#9fbf3b,#7f9c2a);color:#1f2a0c;box-shadow:0 3px 0 #4d5f19}
+.choice.wrong{background:linear-gradient(180deg,#a8442a,#7d2f1c);color:#f6dccf}
+.choice:disabled{opacity:1}.entry.done .choice:not(.right):not(.wrong){opacity:.35}
 .sugg{position:absolute;left:5px;top:100%;margin-top:2px;width:calc(100% - 190px);min-width:220px;background:#151410;border:1px solid #3e3b35;border-radius:4px;z-index:5;display:none;
   font-family:'VT323',monospace;font-size:22px;color:#cfe08f;max-height:240px;overflow:auto}
 .sugg div{padding:4px 10px;cursor:pointer;text-transform:uppercase}
@@ -160,6 +168,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
       </div>
     </div>
     <div class="entry">
+      <div class="choices" id="choices"></div>
       <div class="slot"><input id="guess" placeholder="WHO IS IT?" autocomplete="off" autocapitalize="characters" spellcheck="false" disabled></div>
       <button class="key go" id="enter" disabled>Enter</button>
       <button class="key pass" id="pass" disabled>Pass</button>
@@ -180,7 +189,8 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 <script>
 const $ = id => document.getElementById(id);
 const COST = [0,1,1,2,2,2,3,3,3,3];   // pad 1 (hardest) is free; all ten together cost the round's 20
-const ROUND_PTS = 20, ROUNDS = 5, CLIP = 8;
+const ROUND_PTS = 20, ROUNDS = 5, CLIP = 8, CHOICE_ROUNDS = 2;   // rounds 1–2: pick from four names; 3–5: type it
+const WOMEN = new Set(['Queen Latifah','MC Lyte',"Lil' Kim",'Missy Elliott']);
 const ROT = [-2,1.5,-1,2,-1.5,1,-2,1.5,-.5,2];
 let MCS = [], player, ytReady = false, S = null, clipTimer = null, barRAF = null;
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,'and').replace(/\$/g,'s').replace(/^the /,'').replace(/[^a-z0-9]/g,'');
@@ -319,6 +329,25 @@ function submit(){
 }
 
 // ---------- game flow ----------
+function median(m){ const y = m.clips.map(c => c.y).sort((a,b)=>a-b); return y[y.length>>1]; }
+function decoys(mc){
+  // same voice register and roughly the same era, so the choices don't give it away
+  const pool = MCS.filter(m => m !== mc && WOMEN.has(m.mc) === WOMEN.has(mc.mc));
+  const near = shuffle(pool.filter(m => Math.abs(median(m) - median(mc)) <= 6));
+  const rest = shuffle(pool.filter(m => !near.includes(m)));
+  return near.concat(rest).slice(0,3);
+}
+function drawChoices(){
+  const mcq = S.r < CHOICE_ROUNDS;
+  document.querySelector('.entry').classList.toggle('mcq', mcq);
+  document.querySelector('.entry').classList.remove('done');
+  $('choices').innerHTML = mcq ? shuffle([S.mc, ...decoys(S.mc)]).map(m => `<button class="key choice" data-mc="${esc(m.mc)}">${esc(m.mc)}</button>`).join('') : '';
+}
+$('choices').addEventListener('click', e => {
+  const b = e.target.closest('.choice'); if (!b || !S || !S.mc || S.revealed) return;
+  if (S.bought.size === 0) { status('HIT A PAD FIRST'); return; }
+  finishRound(b.dataset.mc);
+});
 function newGame(){
   S = { order: shuffle(MCS).slice(0, ROUNDS), r: 0, results: [] };
   startRound();
@@ -329,11 +358,13 @@ function startRound(){
   drawPads(); lights(); seg(total());
   $('guess').value = ''; $('guess').disabled = false; $('pass').disabled = false;
   $('enter').disabled = false; $('enter').textContent = 'Enter';
+  drawChoices();
   status('HIT A PAD<span class="blink">_</span>');
   printOut(`<p class="kick">Round ${S.r+1} of ${ROUNDS}</p>
     <p class="big">Who's on the mic?</p>
     <p>Ten clips of one MC, ${CLIP} seconds each. The price is on the tape.</p>
-    <p>Pot: <b>${ROUND_PTS}</b>. What you spend comes out of it. Name the MC and you bank what's left.</p>`);
+    <p>Pot: <b>${ROUND_PTS}</b>. What you spend comes out of it. ${S.r < CHOICE_ROUNDS ? 'Pick the MC from the four names' : 'Type the MC'} and you bank what's left.</p>
+    ${S.r === CHOICE_ROUNDS ? '<p><b>No more choices.</b> From here on, you type the name.</p>' : ''}`);
 }
 function total(){ return S ? S.results.reduce((a,r) => a + r.pts, 0) : 0; }
 function finishRound(choice){
@@ -344,6 +375,8 @@ function finishRound(choice){
   S.revealed = true;
   drawPads(); lights(); seg(total());
   $('guess').disabled = true; $('pass').disabled = true; $('guess').value = S.mc.mc;
+  document.querySelector('.entry').classList.add('done');
+  [...$('choices').children].forEach(b => { b.disabled = true; if (b.dataset.mc === S.mc.mc) b.classList.add('right'); else if (b.dataset.mc === choice) b.classList.add('wrong'); });
   $('enter').textContent = S.r === ROUNDS-1 ? 'Score' : 'Next';
   lcd(`ROUND ${S.r+1}/${ROUNDS}`, right ? `+${pts}` : '+0', right ? 'CORRECT · PADS FREE' : 'NO · PADS FREE');
   const m = S.mc;
@@ -366,6 +399,7 @@ function endGame(){
   stopClip();
   const t = total();
   S.mc = null; drawPads(); lights();
+  document.querySelector('.entry').classList.remove('mcq','done');
   $('enter').textContent = 'Again'; $('enter').onclick = null;
   $('enter').disabled = false;
   lcd('GAME OVER', `${t}/100`, 'ENTER TO PLAY AGAIN');
@@ -389,7 +423,8 @@ function printIntro(){
   printOut(`<p class="big">MC Guesser</p>
     <p>Fifty-seven MCs, 1980–2005. Five of them per game. Can you tell who it is from the voice alone?</p>
     <p><span class="kick">Ten pads.</span><br>Each holds an ${CLIP}-second verse from the same MC. The hardest clip is free; the easier the clip, the more it costs.</p>
-    <p><span class="kick">20 a round.</span><br>Spend from the pot, then type your guess. Right: you keep what's left. Wrong: zero. One guess.</p>
+    <p><span class="kick">20 a round.</span><br>Spend from the pot, then guess. Right: you keep what's left. Wrong: zero. One guess.</p>
+    <p><span class="kick">Rounds 1–2:</span> pick from four names.<br><span class="kick">Rounds 3–5:</span> type it.</p>
     <p><span class="kick">100 is perfect.</span><br>Get all five off the free pad.</p>`);
 }
 
