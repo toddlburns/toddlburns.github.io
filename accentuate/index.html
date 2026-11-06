@@ -50,7 +50,10 @@ a{color:inherit}
 :root[data-theme="dark"] .leaflet-tile-pane{filter:brightness(.78) saturate(.9)}
 .leaflet-control-attribution{font-size:10px;opacity:.7;cursor:pointer}
 /* Phones: the dock covers the bottom corner, so the map buttons sit just above it. */
-@media (max-width:620px){.leaflet-bottom.leaflet-right{bottom:calc(96px + env(safe-area-inset-bottom))}}
+/* Phones: pinch does the zooming, so the +/- buttons go; re-center and names sit under the score, clear of the play bar (Todd 2026-11-05: they were getting lost behind it). */
+@media (max-width:620px){.leaflet-control-zoom{display:none}
+  .leaflet-bottom.leaflet-right,body.revealed .leaflet-bottom.leaflet-right,body.ended .leaflet-bottom.leaflet-right{top:calc(72px + env(safe-area-inset-top));bottom:auto}
+  .leaflet-bottom.leaflet-right .leaflet-control{margin-top:8px}}
 .leaflet-bar a.recenter{display:grid;place-items:center;color:#333}
 .leaflet-bar a.namesbtn{display:grid;place-items:center;color:#333;font:800 12px/1 Archivo,system-ui,sans-serif;letter-spacing:-.02em}
 .leaflet-bar a.namesbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
@@ -213,7 +216,6 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
   .final.collapsed .actions button{width:auto;padding:12px 20px}
   .final.collapsed .verdict,.final.collapsed .board,.final.collapsed #copyBtn,.final.collapsed #fBand{display:none}
   .card.reveal > .grab{width:calc(100% + 28px);margin:-14px -14px 0}
-  body.revealed .leaflet-bottom.leaflet-right,body.ended .leaflet-bottom.leaflet-right{bottom:calc(178px + env(safe-area-inset-bottom))}
   .reveal .grab + .verdictband{margin-top:0}
   .reveal.collapsed{overflow:hidden}
   .reveal.collapsed > :not(.grab):not(.verdictband):not(.place){display:none}
@@ -612,7 +614,7 @@ const VERDICT = mi => mi < 25 ? [5, 'Bullseye!', 'You found their hometown.'] : 
 function countUp(el, to, prefix = '+') {
   if (CALM) { el.textContent = prefix + to.toLocaleString(); return; }
   const t0 = performance.now(), dur = 650;
-  const tick = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = prefix + Math.round(to * e).toLocaleString(); if (k < 1) requestAnimationFrame(tick); };
+  const tick = now => { const k = Math.max(0, Math.min(1, (now - t0) / dur)), e = 1 - Math.pow(1 - k, 3); el.textContent = prefix + Math.round(to * e).toLocaleString(); if (k < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
 }
 // Confetti from a point on screen: one burst, gone in 1.2 s.
