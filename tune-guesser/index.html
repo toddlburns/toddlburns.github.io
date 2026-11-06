@@ -353,7 +353,7 @@ async function loadBoard(){ try{ BOARD = await (await fetch(API+'/top')).json();
 function newRun(){
   setWhite(false);
   S = {q:0, streak:0, used:new Set(), lifelines:{fifty:true,title:true,year:true}, cur:null, answered:false, leveled:false};
-  setCounter(0); printOut(`<h3 class="center">— new run —</h3><p class="center dim">record 1 loading</p>`);
+  setCounter(0);
   nextQuestion();
 }
 
@@ -401,6 +401,7 @@ function nextQuestion(){
   setLadder(tier);
   if (!matchMedia('(min-width:1130px)').matches) window.scrollTo({top:0, behavior:'smooth'});
   vfd(`Record ${String(S.q).padStart(3,'0')}`, 'Cueing…', '');
+  printOut(`<h3 class="center">Record ${String(S.q).padStart(3,'0')}</h3><p class="center dim">Playing</p>`);
   syncLifelines();
   $('opts').innerHTML = S.options.map((o,i)=>`<button class="pad" data-id="${o.id}" style="--rot:${rand(-2,2).toFixed(1)}deg">
       <span class="tape">${white
