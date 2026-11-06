@@ -132,7 +132,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
   .top{grid-template-columns:1fr auto;gap:10px}
   .lcd{font-size:20px;min-height:80px;padding:6px 9px}.lcd .msg{font-size:22px}
   .seg{font-size:36px;min-width:72px;padding:5px 8px}.meter{min-width:72px}
-  .entry{grid-template-columns:1fr auto;gap:8px}.entry .pass{grid-column:1/-1}
+  .entry{gap:6px}.entry .pass{padding:11px 9px}.foot .grille{display:none}
   .sugg{width:calc(100% - 10px)}
   .key{padding:11px 12px;font-size:15px}
   .padzone{padding:10px}.pads{gap:8px}
@@ -353,8 +353,10 @@ function finishRound(choice){
     <p class="kick t">On the pads</p>
     <ol>${m.clips.map(c => `<li><a href="https://www.youtube.com/watch?v=${c.id}&t=${Math.floor(c.s)}s" target="_blank" rel="noopener">${esc(c.t)}</a> <span class="meta">${c.y}</span></li>`).join('')}</ol>
     <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>`);
+  if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
 }
 function next(){
+  if (innerWidth <= 1100) scrollTo({top:0, behavior:'smooth'});
   if (S.r < ROUNDS-1) { S.r++; startRound(); }
   else endGame();
 }
