@@ -257,6 +257,7 @@ body.white .transport button{background:linear-gradient(180deg,#f3efe4,#cfc9b9);
 <script>
 const API = 'https://tune-guesser-scores.todd-burns.workers.dev';
 const STAGES = [null,'Doors open','Warm-up','Peak time','After hours','Deep crates'];
+const VOL_BASE = 40; // headroom so quiet uploads can be raised to match (tracks.json vol)
 const ARTIST_ONLY_AFTER = 5; // from record 6 the choices are white labels: artist only
 // questions 1–5 tier 1, 6–12 tier 2, 13–20 tier 3, 21–30 tier 4, 31+ tier 5
 const tierFor = q => q<=5?1 : q<=12?2 : q<=20?3 : q<=30?4 : 5;
@@ -310,7 +311,7 @@ function blankPads(){
 
 // ---------- boot ----------
 setCounter(0); blankPads(); syncLifelines();
-fetch('tracks.json').then(r=>r.json()).then(t=>{ TRACKS=t; maybeReady(); });
+fetch('tracks.json?v=2').then(r=>r.json()).then(t=>{ TRACKS=t; maybeReady(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', {
     width:200, height:200,
@@ -404,7 +405,7 @@ function nextQuestion(){
   fitTape();
 
   player.loadVideoById({videoId:track.id, startSeconds:Math.floor(track.dur * rand(.25,.6))});
-  player.unMute(); player.setVolume(100);
+  player.unMute(); player.setVolume(track.vol || VOL_BASE); // per-track volume evens out loudness (YouTube only turns loud tracks down)
 }
 
 function levelUp(){
