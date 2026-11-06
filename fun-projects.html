@@ -711,6 +711,9 @@
     }
     function countdown() {
         if (reduce) return;
+        let counted = false;
+        try { counted = sessionStorage.getItem('tlb-countdown') === '1'; sessionStorage.setItem('tlb-countdown', '1'); } catch (e) {}
+        if (counted) return actions.chaos();
         const at = (ms, fn) => cdTimers.push(setTimeout(fn, ms));
         at(900, () => { document.body.classList.add('rumble'); cd.classList.add('on'); });
         [3, 2, 1].forEach((n, k) => at(900 + k * 900, () => {
