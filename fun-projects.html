@@ -314,10 +314,58 @@
         }
 
         /* ---------- CHAOS MODE ---------- */
-        body.chaos { animation: hue 3s linear infinite; }
+        body.chaos .screen { animation: flicker 4s infinite, hue 3s linear infinite; }
         @keyframes hue { to { filter: hue-rotate(360deg); } }
         body.chaos .project { box-shadow: 0 0 30px rgba(0,255,65,0.35); }
+        body.rumble .screen { animation: quake 0.3s infinite; }
+        body.rumble.r2 .screen { animation-duration: 0.18s; }
+        body.rumble.r3 .screen { animation-duration: 0.1s; }
         body.quake .screen { animation: quake 0.4s; }
+
+        /* arrival countdown */
+        #countdown {
+            position: fixed;
+            inset: 0;
+            z-index: 850;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            color: var(--hot);
+            text-shadow: 0 0 20px var(--hot), 0 0 50px var(--hot);
+        }
+        #countdown.on { display: flex; }
+        #countdown .lbl { font-size: 28px; letter-spacing: 6px; }
+        #countdown .n { font-size: 260px; line-height: 0.9; }
+        #countdown .n.pop { animation: pop 0.9s ease-out; }
+        @keyframes pop { from { transform: scale(2.2); opacity: 0; } 25% { opacity: 1; } to { transform: scale(0.9); opacity: 0.85; } }
+
+        /* "type tidy" banner */
+        #tidyNag {
+            position: fixed;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 790;
+            display: none;
+            font: inherit;
+            font-size: 26px;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border: 2px solid var(--hot);
+            background: #000;
+            color: var(--hot);
+            cursor: pointer;
+            white-space: nowrap;
+            animation: nag 0.6s steps(1) infinite;
+        }
+        #tidyNag.on { display: block; }
+        #tidyNag b { font-weight: normal; text-decoration: underline; }
+        @keyframes nag {
+            50% { background: var(--hot); color: #000; border-color: var(--amber); box-shadow: 0 0 24px var(--hot); }
+        }
+        @media (max-width: 600px) { #tidyNag { font-size: 20px; } #countdown .n { font-size: 180px; } }
         @keyframes quake {
             0%,100% { transform: translate(0); }
             20% { transform: translate(-12px, 6px) rotate(-0.6deg); }
@@ -566,6 +614,9 @@
         <div class="footer-note">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</div>
     </div>
 
+    <div id="countdown" aria-hidden="true"><div class="lbl">CHAOS IN</div><div class="n" id="cdn"></div></div>
+    <button id="tidyNag" type="button">&gt; TYPE <b>tidy</b> TO CLEAN UP</button>
+
     <div id="viewer" role="dialog" aria-modal="true"><div class="vwin" id="vwin"></div></div>
 
     <div class="page-toggle" onclick='window.location.href="/projects.html"'>
@@ -646,6 +697,29 @@
 
     /* ---------- actions ---------- */
     const say = html => { out.innerHTML = html; };
+    const nag = document.getElementById('tidyNag');
+    nag.addEventListener('click', () => typeOut('tidy'));
+
+    /* ---------- arrival: tidy, then rumble + 3-2-1, then chaos ---------- */
+    const cd = document.getElementById('countdown');
+    const cdn = document.getElementById('cdn');
+    let cdTimers = [];
+    function cancelCountdown() {
+        cdTimers.forEach(clearTimeout); cdTimers = [];
+        cd.classList.remove('on');
+        document.body.classList.remove('rumble', 'r2', 'r3');
+    }
+    function countdown() {
+        if (reduce) return;
+        const at = (ms, fn) => cdTimers.push(setTimeout(fn, ms));
+        at(900, () => { document.body.classList.add('rumble'); cd.classList.add('on'); });
+        [3, 2, 1].forEach((n, k) => at(900 + k * 900, () => {
+            cdn.textContent = n;
+            cdn.classList.remove('pop'); void cdn.offsetWidth; cdn.classList.add('pop');
+            if (n < 3) document.body.classList.add('r' + (4 - n));
+        }));
+        at(900 + 3 * 900, () => { cancelCountdown(); actions.chaos(); });
+    }
     let chaosTimer;
     const actions = {
         all() { filter(null); say(`${total} files. Everything I could find.`); },
@@ -671,10 +745,13 @@
             clearTimeout(chaosTimer);
             chaosTimer = setTimeout(() => document.body.classList.remove('chaos'), 3000);
             say('<b>CHAOS.</b> Type <b>tidy</b> to clean up.');
+            nag.classList.add('on');
         },
         tidy() {
+            cancelCountdown();
             projects.forEach(p => { p.x = p.y = p.r = 0; place(p); p.el.style.zIndex = ''; });
             document.body.classList.remove('chaos');
+            nag.classList.remove('on');
             say('Tidied. Your mother would be proud.');
         },
         shuffle() {
@@ -793,12 +870,16 @@
 
     /* ---------- keys: viewer nav, konami, type-anywhere ---------- */
     const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let kpos = 0;
+    let kpos = 0, typed = '';
     addEventListener('keydown', e => {
         if (current >= 0) {
             if (e.key === 'Escape') closeViewer();
             if (e.key === 'ArrowRight') openViewer(current + 1);
             if (e.key === 'ArrowLeft') openViewer(current - 1);
+        }
+        if (e.target !== cmd && e.key.length === 1) {
+            typed = (typed + e.key.toLowerCase()).slice(-4);
+            if (typed === 'tidy') { typed = ''; typeOut('tidy'); }
         }
         kpos = (e.key === konami[kpos]) ? kpos + 1 : (e.key === konami[0] ? 1 : 0);
         if (kpos === konami.length) { kpos = 0; actions.chaos(); setTimeout(actions.chaos, 700); setTimeout(actions.chaos, 1400); say('<b>30 LIVES.</b> Type tidy when you are done.'); }
@@ -849,8 +930,8 @@
         'READY.',
     ];
     let done = false;
-    const finish = () => { if (done) return; done = true; boot.classList.add('gone'); setTimeout(() => boot.remove(), 450); };
-    if (seen || reduce) { boot.remove(); done = true; }
+    const finish = () => { if (done) return; done = true; boot.classList.add('gone'); setTimeout(() => boot.remove(), 450); countdown(); };
+    if (seen || reduce) { boot.remove(); done = true; countdown(); }
     else {
         let li = 0;
         const step = () => {
