@@ -1,20 +1,6 @@
 // Next Door clips: ordinary local voices, built by vox_build.py
 window.NEXTDOOR = [
  {
-  "key": "fR-Jii74164@2",
-  "id": "fR-Jii74164",
-  "start": 2,
-  "end": 22,
-  "place": "birmingham",
-  "label": "Birmingham",
-  "where": "",
-  "title": "Elizabeth Cross remembers the end of the war",
-  "text": "war was over and the bonfire was lit outside the house and in those days what they used to use on the beds they were straw pally asses you used to have two on the bed for a full-size bed and they were",
-  "reviewed": true,
-  "lat": 52.48,
-  "lng": -1.9
- },
- {
   "key": "GBw4INNMwQ4@2",
   "id": "GBw4INNMwQ4",
   "start": 2,
@@ -26,7 +12,8 @@ window.NEXTDOOR = [
   "text": "the most vivid memory that i have of the war the day it master called everyone out into the playground which school was it the steward street which was just off spring hill we didn't know the reason w",
   "reviewed": true,
   "lat": 52.48,
-  "lng": -1.9
+  "lng": -1.9,
+  "vol": 100
  },
  {
   "key": "2YxWGIqBSeQ@2",
@@ -40,21 +27,8 @@ window.NEXTDOOR = [
   "text": "this was a general thing obvious well mainly didn't occur in isolated areas a monkey runs everywhere the one that i recollect owing to the fact that i lived in that area was the canal banker to the to",
   "reviewed": true,
   "lat": 52.48,
-  "lng": -1.9
- },
- {
-  "key": "M3TTA6qTsnc@2",
-  "id": "M3TTA6qTsnc",
-  "start": 2,
-  "end": 22,
-  "place": "birmingham",
-  "label": "Birmingham",
-  "where": "",
-  "title": "Elizabeth Cross remembers food shortages in Small Heath",
-  "text": "when i was very young and we didn't have russians in the beginning part of the war sometimes at the maypole and places like that and small league that's it would go around there was margarine well i w",
-  "reviewed": true,
-  "lat": 52.48,
-  "lng": -1.9
+  "lng": -1.9,
+  "vol": 100
  },
  {
   "key": "PFGPJ-GjdUg@2",
@@ -68,21 +42,8 @@ window.NEXTDOOR = [
   "text": "was a pacifist so was his wife very keen now mr grim news wasn't satisfied with us just meeting on a sunday afternoon suggested we used to come on a thursday evening as well to his home in northfield ",
   "reviewed": true,
   "lat": 52.48,
-  "lng": -1.9
- },
- {
-  "key": "FgpLqssZQII@344",
-  "id": "FgpLqssZQII",
-  "start": 344,
-  "end": 359,
-  "place": "east_london",
-  "label": "East London",
-  "where": "",
-  "title": "30 Years of Living with HIV",
-  "text": "to some extent public sympathy but with hiv you were really not only ill but an outcast and you know i knew my life was never going to be the same again i had just turned 22 my partner was 19",
-  "reviewed": true,
-  "lat": 51.54,
-  "lng": 0.1
+  "lng": -1.9,
+  "vol": 100
  },
  {
   "key": "yWS6nZZpv00@269",
@@ -96,7 +57,8 @@ window.NEXTDOOR = [
   "text": "it because this is the first time on in the uk that they've used riot shoes and that's allegedly i'm bear on the loudhailer saying defend the clocktower and i think that's because that was like the ce",
   "reviewed": true,
   "lat": 51.54,
-  "lng": 0.1
+  "lng": 0.1,
+  "vol": 97
  },
  {
   "key": "yWS6nZZpv00@103",
@@ -110,7 +72,8 @@ window.NEXTDOOR = [
   "text": "because in before the days of birth the hope phones that people running up and down to see whether where they would gather in and what their likely routes were them running back to us but the earth th",
   "reviewed": true,
   "lat": 51.54,
-  "lng": 0.1
+  "lng": 0.1,
+  "vol": 92
  },
  {
   "key": "4avrF5hiV-E@192",
@@ -124,21 +87,8 @@ window.NEXTDOOR = [
   "text": "after that i kind of realized that i didn't want to be on herron anymore and i finally got in contact we saw drug services that was the first time i shot a bit of acceptance and i felt i found some fo",
   "reviewed": true,
   "lat": 51.54,
-  "lng": 0.1
- },
- {
-  "key": "QS4OxWUCHE8@567",
-  "id": "QS4OxWUCHE8",
-  "start": 567,
-  "end": 587,
-  "place": "west_london",
-  "label": "West London",
-  "where": "",
-  "title": "Southall on Film | Oral History Interview - Ameet Chana",
-  "text": "more than once you know it's one of those films that will cross generations as well um young kids still come up to me that wouldn't even been born when the film came out 15 years ago saying that they'",
-  "reviewed": true,
-  "lat": 51.51,
-  "lng": -0.38
+  "lng": 0.1,
+  "vol": 100
  },
  {
   "key": "QS4OxWUCHE8@158",
@@ -152,7 +102,8 @@ window.NEXTDOOR = [
   "text": "of cinemas in south for i didn't i don't have any connection with that but i do still to this day and even then as a child remember my dad and saying to me we used to come here on a sunday we get a bu",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "qtJTttvocx0@229",
@@ -166,7 +117,8 @@ window.NEXTDOOR = [
   "text": "my mum's like a great cook so we didn't really used to like eat out a lot there wasn't that many restaurants around there there was quite a few like mostly take aways and stuff like that also like ent",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "qtJTttvocx0@524",
@@ -180,7 +132,8 @@ window.NEXTDOOR = [
   "text": "recorded and again not everybody had a video player and that lot so sometimes you'd go around to this person's house and see it all you get part of the family coming or you bring it around so you can ",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "EdQjPx-fTxM@515",
@@ -194,7 +147,8 @@ window.NEXTDOOR = [
   "text": "attack and the other side said it wasn't a racist attack and i've talked to people who were there who were involved in various aspect and i still don't have the full story so for me it's an open book ",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "EiN-6nkcVCk@321",
@@ -208,7 +162,8 @@ window.NEXTDOOR = [
   "text": "also we were also intrinsic first my parents and then asked me from a boat i was doing volunteer work from about the age of seven eight my mum said this word teddy boys and it was quite interesting be",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "EiN-6nkcVCk@447",
@@ -222,21 +177,8 @@ window.NEXTDOOR = [
   "text": "in you know it's injustice and whatever but when the world outside is saying we are the you know we are the right and you are the wrong you internalized that so you become the wrong one constantly or ",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
- },
- {
-  "key": "HYET0xq3ESw@363",
-  "id": "HYET0xq3ESw",
-  "start": 363,
-  "end": 383,
-  "place": "west_london",
-  "label": "West London",
-  "where": "",
-  "title": "Southall on Film | Oral History Interview - Janpal Basran",
-  "text": "four and they were younger and they throw stones at the house they'd shout that's where they were aggressive and very fortunately for us we had really lovely neighbors who english and they were very s",
-  "reviewed": true,
-  "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "HYET0xq3ESw@572",
@@ -250,7 +192,8 @@ window.NEXTDOOR = [
   "text": "and then it's a kind of snowballed and you know over time now children use all kinds of words which you know it takes you a dictionary and hours to figure out what they're saying but yeah i think that",
   "reviewed": true,
   "lat": 51.51,
-  "lng": -0.38
+  "lng": -0.38,
+  "vol": 100
  },
  {
   "key": "lc7hCwv-0V8@464",
@@ -264,7 +207,8 @@ window.NEXTDOOR = [
   "text": "of just worked on the on the way so &gt;&gt; i don't think there was any much call most the time you would if you had a job to go at the time you would tow ship to the bar and you would leave go becau",
   "reviewed": true,
   "lat": 54.91,
-  "lng": -1.38
+  "lng": -1.38,
+  "vol": 100
  },
  {
   "key": "k2Z527njMh8@33",
@@ -278,7 +222,8 @@ window.NEXTDOOR = [
   "text": "i was personally disappointed with them i heard my voice for the first time on on a professional recording and i wasn't very happy the backing was fantastic they had all the deck of backing on it but ",
   "reviewed": true,
   "lat": 52.41,
-  "lng": -1.51
+  "lng": -1.51,
+  "vol": 62
  },
  {
   "key": "ROy4dZzZls8@412",
@@ -292,7 +237,8 @@ window.NEXTDOOR = [
   "text": "and the blasts sent all the glass from the back kitchen in over dad and the next door neighbor he was pulling bits of glass from his coat pocket for months afterwards",
   "reviewed": true,
   "lat": 52.41,
-  "lng": -1.51
+  "lng": -1.51,
+  "vol": 81
  },
  {
   "key": "0N775oOgeLQ@0",
@@ -306,7 +252,8 @@ window.NEXTDOOR = [
   "text": "obviously after the first um paper mashy helmets the black ones the next ones to come in were the same but painted white as i said and then these were the the later ones that came in obviously made of",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 32
  },
  {
   "key": "0N775oOgeLQ@189",
@@ -320,7 +267,8 @@ window.NEXTDOOR = [
   "text": "i had this phone call from a local farmer and he said keith i know you're collecting and there's a chop up there with a lot of mining memorabilia but mainly a sylvester and i thought if i could get my",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 31
  },
  {
   "key": "OTyI4FFmXD8@72",
@@ -334,7 +282,8 @@ window.NEXTDOOR = [
   "text": "clogs um and also a lot of the old men preferred clogs my daddy worked up until he was 65 and he never wore anything else but cola clogs but memories and things that people told you about in those day",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 31
  },
  {
   "key": "OTyI4FFmXD8@142",
@@ -348,7 +297,8 @@ window.NEXTDOOR = [
   "text": "i had the boots off a chap that uh he worked at w stanton cury and when he left school of course he was issued with the boots and the helmet and for some reason he was issued with two pair of boots an",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 30
  },
  {
   "key": "ENOfgLkVAo8@137",
@@ -362,7 +312,8 @@ window.NEXTDOOR = [
   "text": "a bulb an electric there were far better illumination than the the oil lamp and of course they there was such a great invention obviously safety lamps they were they were safe underground um and they ",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 31
  },
  {
   "key": "ENOfgLkVAo8@50",
@@ -376,7 +327,8 @@ window.NEXTDOOR = [
   "text": "that you could relight again it has a striker on it and you'd re light it but the the workers just the ordinary pitmen they not everybody but those that were allocated an oil lamp would have one that ",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 32
  },
  {
   "key": "wKk0QHVqUbA@10",
@@ -390,7 +342,8 @@ window.NEXTDOOR = [
   "text": "father leslie roberts and my uncle kenneth roberts they both served in the second world war my father joined the royal pioneer corps he was involved in engineering tasks you know repairing bridges and",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 100
  },
  {
   "key": "VKAoZInSJQo@4",
@@ -404,7 +357,8 @@ window.NEXTDOOR = [
   "text": "worked at the glaston museum it was around about 1987 uh we used to do the demonstrating upstairs i'm used to the gilding and we used to do um painting flowers jewelry painting the jewelry and also li",
   "reviewed": true,
   "lat": 53.0,
-  "lng": -2.18
+  "lng": -2.18,
+  "vol": 58
  },
  {
   "key": "cAJsXaJNqhM@30",
@@ -418,7 +372,8 @@ window.NEXTDOOR = [
   "text": "do try and use these sometimes it depends what mood i'm in sometimes i put them away sometimes i um take them out and tend to sort of when wearing a ring i tend to just put my ring in it and use it fo",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 100
  },
  {
   "key": "cAJsXaJNqhM@203",
@@ -432,7 +387,8 @@ window.NEXTDOOR = [
   "text": "that signifies that that you know that link between me being born and brought up here and then having a peace which is actually sort of labeled as a raw crown piece as well",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 100
  },
  {
   "key": "2rcmfxWwnlk@35",
@@ -446,7 +402,8 @@ window.NEXTDOOR = [
   "text": "she's done weeding and digging oh she's great anyway before i take you up to the allotment i just want to give you a little tip to all of you when all you've watched all the allotment programs",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 35
  },
  {
   "key": "59TQUNDnOqs@213",
@@ -460,7 +417,8 @@ window.NEXTDOOR = [
   "text": "all with black polishing a little bit awkward around the corners because i want the keyboard all in one to make it waterproof now all i've got to do now is put two inches of sand on",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 30
  },
  {
   "key": "Qruo4Q-ysZ0@29",
@@ -474,7 +432,8 @@ window.NEXTDOOR = [
   "text": "on farms and on the land and there weren't much he didn't know about growing fruit and veg crops looking after animals and livestock and if anybody needed healing or something he'd be able to grab out",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 31
  },
  {
   "key": "Qruo4Q-ysZ0@127",
@@ -488,7 +447,8 @@ window.NEXTDOOR = [
   "text": "in all fairness and all honesty i had already had the biscuits and because obviously when you go to your grandparents' house in the main you're going to get fed i'd already had biscuits or cake and ye",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 32
  },
  {
   "key": "GFmpNxJPMgg@124",
@@ -502,7 +462,8 @@ window.NEXTDOOR = [
   "text": "to the point where people were starting to get cuts and bruises um and it was getting a bit of a hard landing because obviously we're starting to squash and flatten all the hay then that's when you kn",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 44
  },
  {
   "key": "GFmpNxJPMgg@1",
@@ -516,7 +477,8 @@ window.NEXTDOOR = [
   "text": "video is memories from my childhood again and it's one which i know there's going to be quite a few people out there who also remember this old pastime that us kids used to have um when you live near ",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 46
  },
  {
   "key": "aLnHWnGHPw0@63",
@@ -530,7 +492,8 @@ window.NEXTDOOR = [
   "text": "a few see that's the key to scrumping not taking enough that they know that you've took them whereas i know some people used to take too many and that sort of thing and then you're going to get caught",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 46
  },
  {
   "key": "aLnHWnGHPw0@169",
@@ -544,7 +507,8 @@ window.NEXTDOOR = [
   "text": "i will say that i do know of people who when they were scrumping plums they didn't realize just what effect those plums were going to have on them in a very short space of time and even though it's hi",
   "reviewed": true,
   "lat": 52.06,
-  "lng": 1.16
+  "lng": 1.16,
+  "vol": 47
  },
  {
   "key": "oTEw8owbnIc@165",
@@ -558,7 +522,8 @@ window.NEXTDOOR = [
   "text": "um really excited about it which is totally different i mean you look when you look around uh see it's colorful it's totally different in of the influenced by swedish architecture the the main archite",
   "reviewed": true,
   "lat": 54.97,
-  "lng": -1.61
+  "lng": -1.61,
+  "vol": 58
  },
  {
   "key": "oTEw8owbnIc@34",
@@ -572,7 +537,8 @@ window.NEXTDOOR = [
   "text": "bucket list of things to do before i get so old so this was one of them and it took about i think two years to get the money together because when you look around you can see it's quite a bad state th",
   "reviewed": true,
   "lat": 54.97,
-  "lng": -1.61
+  "lng": -1.61,
+  "vol": 62
  },
  {
   "key": "s6sBgmDbALs@411",
@@ -586,7 +552,8 @@ window.NEXTDOOR = [
   "text": "i mean a lot of the guys used to pry themselves in the fact that they never ever lost any time at all and i just have visions coming back for if we were transferred to the wall's end big yard and you ",
   "reviewed": true,
   "lat": 54.97,
-  "lng": -1.61
+  "lng": -1.61,
+  "vol": 70
  },
  {
   "key": "mJEUmgp7vg4@186",
@@ -600,7 +567,8 @@ window.NEXTDOOR = [
   "text": "you can get messages across the players um analysis and all that kind of stuff but um when i did it it was it was quite interesting because um i did it on you've got like ray wilkins who's on the same",
   "reviewed": true,
   "lat": 53.74,
-  "lng": -0.33
+  "lng": -0.33,
+  "vol": 100
  },
  {
   "key": "mJEUmgp7vg4@310",
@@ -614,7 +582,8 @@ window.NEXTDOOR = [
   "text": "um like with the fa getting behind it you know when you turn up it is everything's you know so professional we've got psychologists we've got doctor physio analyst um strength and conditioning um when",
   "reviewed": true,
   "lat": 53.74,
-  "lng": -0.33
+  "lng": -0.33,
+  "vol": 100
  },
  {
   "key": "LehiLOOjW1Y@393",
@@ -628,7 +597,8 @@ window.NEXTDOOR = [
   "text": "every day the whole the whole team everybody nobody was better than anybody else it was it was a family and they really looked at you know within within the force everybody was nice to everybody nobod",
   "reviewed": true,
   "lat": 53.74,
-  "lng": -0.33
+  "lng": -0.33,
+  "vol": 100
  },
  {
   "key": "LehiLOOjW1Y@331",
@@ -642,7 +612,8 @@ window.NEXTDOOR = [
   "text": "but he was lovely he was just such a nice person and he loved that ground so much he was so proud of it and he wouldn't let anybody practice on there at all they all had to go to the gym or down to uh",
   "reviewed": true,
   "lat": 53.74,
-  "lng": -0.33
+  "lng": -0.33,
+  "vol": 100
  },
  {
   "key": "VjsipPUSJFo@514",
@@ -656,21 +627,8 @@ window.NEXTDOOR = [
   "text": "interact with them and you'd have a bit of cheek with them and you know but um you kind of knew where you stood and there was a line and you that you didn't want to cross and the dream was to make it ",
   "reviewed": true,
   "lat": 53.74,
-  "lng": -0.33
- },
- {
-  "key": "Zvm8Adm_MSY@131",
-  "id": "Zvm8Adm_MSY",
-  "start": 131,
-  "end": 146,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "Nothing to Lose - The Women Chainmakers Strike of 1910 Cradley Heath",
-  "text": "me since well everybody and seemed to be making it a thought i'd like ago it was nothing else really if you went to service you as a prisoner you're",
-  "reviewed": true,
-  "lat": 52.55,
-  "lng": -2.07
+  "lng": -0.33,
+  "vol": 100
  },
  {
   "key": "6d7axrP6X0g@99",
@@ -684,7 +642,8 @@ window.NEXTDOOR = [
   "text": "places to walk the people at the forge are one of the best things about it people are always friendly always talking to you you have local stores like this greengrocer's where you can buy fresh produc",
   "reviewed": true,
   "lat": 52.55,
-  "lng": -2.07
+  "lng": -2.07,
+  "vol": 100
  },
  {
   "key": "Uu33m1VN9Is@113",
@@ -698,7 +657,8 @@ window.NEXTDOOR = [
   "text": "the summer and yeah i mean look he's come to the job knowing knowing what's you know he knows that we're abandoned the pressure he knows that he it was going to be a massive task to keep us up you kno",
   "reviewed": true,
   "lat": 52.55,
-  "lng": -2.07
+  "lng": -2.07,
+  "vol": 33
  },
  {
   "key": "z1BAo9kiK9M@88",
@@ -712,7 +672,8 @@ window.NEXTDOOR = [
   "text": "is it they're going to be safe it's never over till it's over but i think once we've played ipsswitch and and leicester and we picked some points up against them i think i'll feel a bit more comfortab",
   "reviewed": true,
   "lat": 52.55,
-  "lng": -2.07
+  "lng": -2.07,
+  "vol": 32
  },
  {
   "key": "h-9hkNFU_UE@105",
@@ -726,21 +687,8 @@ window.NEXTDOOR = [
   "text": "how the stone itself came into being is of dispute and there are uh three possible theories one that it is a natural object so it's a natural geological feature formed by erosion and what is called di",
   "reviewed": true,
   "lat": 52.95,
-  "lng": -1.15
- },
- {
-  "key": "gApLw1pzDjg@414",
-  "id": "gApLw1pzDjg",
-  "start": 414,
-  "end": 434,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Reaction to surprise Sunderland's surprise CEO announcement and what it might mean - #onthewhistle",
-  "text": "i think a lot of good things have happened especially on the pitch but off it as well and i think some really good things have happened during the club's return to the premier league there are quite a",
-  "reviewed": true,
-  "lat": 54.91,
-  "lng": -1.38
+  "lng": -1.15,
+  "vol": 100
  },
  {
   "key": "bBqel5XXBOU@69",
@@ -754,7 +702,8 @@ window.NEXTDOOR = [
   "text": "the course of 90 minutes i think we just about deserved it i thought the first half we were excellent without creating a lot but really limited arsenal yeah they had a spell in the second half and lik",
   "reviewed": true,
   "lat": 54.91,
-  "lng": -1.38
+  "lng": -1.38,
+  "vol": 68
  },
  {
   "key": "dYwl9aGYI2A@115",
@@ -768,7 +717,8 @@ window.NEXTDOOR = [
   "text": "&gt;&gt; i just feel that um there's there's too many quick changes being made we've had this for the from the tories for so long and um while some i'm very much a labour man myself um i don't feel i ",
   "reviewed": true,
   "lat": 54.97,
-  "lng": -1.61
+  "lng": -1.61,
+  "vol": 100
  },
  {
   "key": "HTC9h7W2uj4@289",
@@ -782,7 +732,8 @@ window.NEXTDOOR = [
   "text": "second half as you say we simply slowed down as we usually do and the red card didn't do us any favors at all and i just thought we were going to lose but zetterstrom good for him made some incredible",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 80
  },
  {
   "key": "WD0j4Ugf1vE@267",
@@ -796,7 +747,8 @@ window.NEXTDOOR = [
   "text": "over the weekend we was 2-2 and he brings on n'gandu when we need a goal i know johnson's on a yellow card and we can't really afford to lose him even though he didn't have a good game at all but you'",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 83
  },
  {
   "key": "h7r_mDzP5LY@116",
@@ -810,7 +762,8 @@ window.NEXTDOOR = [
   "text": "yeah it's a it's a really funny one because like you say from when we was like bound for relegation eustace comes in saves us moves up and then we've gone from this season now to playoff contenders it",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 81
  },
  {
   "key": "gwGhwIEDZxU@153",
@@ -824,7 +777,8 @@ window.NEXTDOOR = [
   "text": "it was a bit of a mad one cuz i i took a friend yesterday with me cuz i thought we'd absolutely demolish sheffield wednesday and i i must have jinxed us cuz i said if we don't score more than three th",
   "reviewed": true,
   "lat": 52.92,
-  "lng": -1.48
+  "lng": -1.48,
+  "vol": 44
  },
  {
   "key": "TTVkXKOV7rY@45",
@@ -838,7 +792,8 @@ window.NEXTDOOR = [
   "text": "go and finish their chances coming up we're going to go through the game we're going to go through my thoughts the team sheet the usual stuff on this video so make sure you've liked make sure you've s",
   "reviewed": true,
   "lat": 52.95,
-  "lng": -1.15
+  "lng": -1.15,
+  "vol": 91
  },
  {
   "key": "tA7SPNdjp1E@172",
@@ -852,7 +807,8 @@ window.NEXTDOOR = [
   "text": "their goal and you've got to say one of the reasons those defenders are panicking is cuz the guy behind them he's never commanding that box he never comes out he's never authoritative he's anchored to",
   "reviewed": true,
   "lat": 52.95,
-  "lng": -1.15
+  "lng": -1.15,
+  "vol": 56
  },
  {
   "key": "zu0AYH0_vE4@308",
@@ -866,6 +822,592 @@ window.NEXTDOOR = [
   "text": "the way they are playing with personality and the progression since the first few weeks when we went to arsenal and it was like ah this is the premier league now we go and play more like a premier lea",
   "reviewed": true,
   "lat": 52.41,
-  "lng": -1.51
+  "lng": -1.51,
+  "vol": 100
+ },
+ {
+  "key": "esrRuYxzsIE@195",
+  "id": "esrRuYxzsIE",
+  "start": 195,
+  "end": 215,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Brenda Murray - Liverpool Memories",
+  "text": "it was a very enjoyable ride the so much to see from the train as a child and i used to enjoy going with my mother to rita's milk bar and reese's was a big",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 100
+ },
+ {
+  "key": "esrRuYxzsIE@132",
+  "id": "esrRuYxzsIE",
+  "start": 132,
+  "end": 152,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Brenda Murray - Liverpool Memories",
+  "text": "playhouse theatre no wheantr that often and when i went with my student friends and we didn't want to buy the expensive tickets so we would",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 100
+ },
+ {
+  "key": "AhKn1BUePrE@49",
+  "id": "AhKn1BUePrE",
+  "start": 49,
+  "end": 69,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "A four-year old in Liverpool, 1940",
+  "text": "she used to sit us all under the kitchen table which is a big wooden table and she'd packed the chester field and the easy chairs around the outside night and we sited there until the all clear sounde",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 62
+ },
+ {
+  "key": "AhKn1BUePrE@134",
+  "id": "AhKn1BUePrE",
+  "start": 134,
+  "end": 154,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "A four-year old in Liverpool, 1940",
+  "text": "warden through the streets to her mothers which is my grandmother to her house to see if they would take us in when we got there the a blast from the bombs had blown in the windows of the house which ",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 60
+ },
+ {
+  "key": "AMLS-7R31X8@563",
+  "id": "AMLS-7R31X8",
+  "start": 563,
+  "end": 583,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Cowkeeping in Liverpool",
+  "text": "going around the backs of these yards he knew every yard because some of them he couldn't get his laurri up and he said was a right trouble because he said we got to shift the m twice you go inside an",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 79
+ },
+ {
+  "key": "bcAQfH4gl5k@406",
+  "id": "bcAQfH4gl5k",
+  "start": 406,
+  "end": 426,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Oral History Project Merseyside. Femi Sowande",
+  "text": "and they tried to arrest him and at one point then the community rebelled against that and the riots lasted well over a week it it it it it stopped and then sat again but it was significant for me in ",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 80
+ },
+ {
+  "key": "bcAQfH4gl5k@245",
+  "id": "bcAQfH4gl5k",
+  "start": 245,
+  "end": 265,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Oral History Project Merseyside. Femi Sowande",
+  "text": "of incidences that happened i remember on one occas a little young boy must have been about six seven no more than that uh was calling me honky um which is the wrong terminology altogether but in my v",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 80
+ },
+ {
+  "key": "pV5ukURsV0M@60",
+  "id": "pV5ukURsV0M",
+  "start": 60,
+  "end": 75,
+  "place": "scouse",
+  "label": "Liverpool",
+  "where": "",
+  "title": "Stories from Liverpool during WW2",
+  "text": "days and we would pray a lot and although we were scared inwardly we had a lot of faith in god and so that did happen",
+  "reviewed": false,
+  "lat": 53.41,
+  "lng": -2.98,
+  "vol": 80
+ },
+ {
+  "key": "cbyTucMj_TY@497",
+  "id": "cbyTucMj_TY",
+  "start": 497,
+  "end": 512,
+  "place": "glasgow",
+  "label": "Glasgow",
+  "where": "",
+  "title": "Glasgow's Highstreets: an oral history of stores, shopping and spectacles!",
+  "text": "oneway streets it's been such a long time but used to be a bus that do would take you around george square and of course you had all the christmas decorations lights of there and would do up the cente",
+  "reviewed": false,
+  "lat": 55.86,
+  "lng": -4.25,
+  "vol": 50
+ },
+ {
+  "key": "oMu1nM3aHxc@415",
+  "id": "oMu1nM3aHxc",
+  "start": 415,
+  "end": 435,
+  "place": "glasgow",
+  "label": "Glasgow",
+  "where": "",
+  "title": "No Mean City: Childhood memories of the Gorbals in the twenties",
+  "text": "you i remember an orange day procession and i went to see this and they were all marching through the sea and i remember leading this procession there was a man who held up a a large sword",
+  "reviewed": false,
+  "lat": 55.86,
+  "lng": -4.25,
+  "vol": 97
+ },
+ {
+  "key": "oMu1nM3aHxc@137",
+  "id": "oMu1nM3aHxc",
+  "start": 137,
+  "end": 157,
+  "place": "glasgow",
+  "label": "Glasgow",
+  "where": "",
+  "title": "No Mean City: Childhood memories of the Gorbals in the twenties",
+  "text": "um curious um piece of wood which was um um a wood about 3 in long with sharpened points at at the end we'd have a a bat a wooden bat and we would strike the edge of this piece of wood and",
+  "reviewed": false,
+  "lat": 55.86,
+  "lng": -4.25,
+  "vol": 100
+ },
+ {
+  "key": "CSr2xxuzGgc@264",
+  "id": "CSr2xxuzGgc",
+  "start": 264,
+  "end": 279,
+  "place": "glasgow",
+  "label": "Glasgow",
+  "where": "",
+  "title": "THE GORBALS - A Brief History",
+  "text": "housing and that sort of thing that clearly had to be dealt with but i just i i really do think that in most cases that was used as an excuse to carry out what i can only describe as blanket demolitio",
+  "reviewed": false,
+  "lat": 55.86,
+  "lng": -4.25,
+  "vol": 42
+ },
+ {
+  "key": "9OLl1WwPdZ4@47",
+  "id": "9OLl1WwPdZ4",
+  "start": 47,
+  "end": 67,
+  "place": "manc",
+  "label": "Manchester",
+  "where": "",
+  "title": "Labour Party Memories in Stockport",
+  "text": "i think pretty disappointing for the local party since they've been quite well organized and again in 1950 they just failed but it was getting pretty close by the 1951 election of course then it was s",
+  "reviewed": false,
+  "lat": 53.48,
+  "lng": -2.24,
+  "vol": 90
+ },
+ {
+  "key": "VZw1Pe0Jpc4@362",
+  "id": "VZw1Pe0Jpc4",
+  "start": 362,
+  "end": 382,
+  "place": "manc",
+  "label": "Manchester",
+  "where": "",
+  "title": "'The story of the Bradford Pit project' - online talk by Lauren Murphy, 24.3.21",
+  "text": "that's an image of um a breath of color being kind of the head of gay being dismantled so it actually closed down in 1968 and was kind of demolished if you like uh seems filled in um in in 1973 so um",
+  "reviewed": false,
+  "lat": 53.48,
+  "lng": -2.24,
+  "vol": 100
+ },
+ {
+  "key": "VZw1Pe0Jpc4@231",
+  "id": "VZw1Pe0Jpc4",
+  "start": 231,
+  "end": 246,
+  "place": "manc",
+  "label": "Manchester",
+  "where": "",
+  "title": "'The story of the Bradford Pit project' - online talk by Lauren Murphy, 24.3.21",
+  "text": "did it close uh why did it close what happened since that time um and my a lot of my family live still live around mauston um and this uh still an active mining community at masterminders state there ",
+  "reviewed": false,
+  "lat": 53.48,
+  "lng": -2.24,
+  "vol": 100
+ },
+ {
+  "key": "y9YO5qza_Ic@195",
+  "id": "y9YO5qza_Ic",
+  "start": 195,
+  "end": 215,
+  "place": "yorkshire",
+  "label": "Yorkshire",
+  "where": "",
+  "title": "Mining - Memory Keeper Part 1 -Introduction",
+  "text": "you could go to the local petrol station and buy national benzoil petrol which was again produced from coal many pharmaceuticals are also we're also produced from coal particularly aspirins and quite ",
+  "reviewed": false,
+  "lat": 53.6,
+  "lng": -1.5,
+  "vol": 100
+ },
+ {
+  "key": "cIhQpBjnufQ@160",
+  "id": "cIhQpBjnufQ",
+  "start": 160,
+  "end": 180,
+  "place": "yorkshire",
+  "label": "Yorkshire",
+  "where": "",
+  "title": "Mining - Memory Keeper Part 2 - Getting to Work",
+  "text": "uh there was two cages in the in the shaft obviously when one was at the top the other one was at the bottom and the winding engine has twin ropes on it uh one going off the top of the drum one coming",
+  "reviewed": false,
+  "lat": 53.6,
+  "lng": -1.5,
+  "vol": 100
+ },
+ {
+  "key": "cIhQpBjnufQ@295",
+  "id": "cIhQpBjnufQ",
+  "start": 295,
+  "end": 310,
+  "place": "yorkshire",
+  "label": "Yorkshire",
+  "where": "",
+  "title": "Mining - Memory Keeper Part 2 - Getting to Work",
+  "text": "forget to do something then the protection system would come in he's got over spe protection he's got end of wind protection which stops him over winding uh and obviously it he does get a warning befo",
+  "reviewed": false,
+  "lat": 53.6,
+  "lng": -1.5,
+  "vol": 100
+ },
+ {
+  "key": "yCsHc_9ab-A@200",
+  "id": "yCsHc_9ab-A",
+  "start": 200,
+  "end": 215,
+  "place": "south_wales",
+  "label": "South Wales",
+  "where": "",
+  "title": "Back to the Rhondda Valleys: The Places and People I Won’t Forget",
+  "text": "here so quite disappointed with that there was talks of opening that tunnel back up as a cycle track a few years ago i don't know whether that's still happening but with funding and costs and everythi",
+  "reviewed": false,
+  "lat": 51.65,
+  "lng": -3.45,
+  "vol": 93
+ },
+ {
+  "key": "-x_QmlK__xM@241",
+  "id": "-x_QmlK__xM",
+  "start": 241,
+  "end": 261,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - BBP21 Alec Murray",
+  "text": "and all our people and the the airaid shatter was totally destroyed and the story behind that was that and in those days when the signs went all places of entertainment had to be evacuated and people ",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 100
+ },
+ {
+  "key": "-x_QmlK__xM@94",
+  "id": "-x_QmlK__xM",
+  "start": 94,
+  "end": 114,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - BBP21 Alec Murray",
+  "text": "we were put up in the school behind a couple of streets away and everybody had to put the gas mask on and at the bottom of each people stairs the stairs came down to the door there was a bag called a ",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 100
+ },
+ {
+  "key": "FeJlbxViBiA@191",
+  "id": "FeJlbxViBiA",
+  "start": 191,
+  "end": 211,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - WM0826 Elizabeth Jean McIlroy",
+  "text": "books they must have brought a handbag with them and one particular was a rather funny incident opened the ration book and a flea a flea flew out of it was more than the flea floated so then",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 70
+ },
+ {
+  "key": "FeJlbxViBiA@0",
+  "id": "FeJlbxViBiA",
+  "start": 0,
+  "end": 20,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - WM0826 Elizabeth Jean McIlroy",
+  "text": "i was one of the first pupils at d high school when it opened in 1933 i was there until 1939 and passed my senior certificate i was award the king's scholarship for training astronomis college during ",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 89
+ },
+ {
+  "key": "31OMzdQ0jQ0@60",
+  "id": "31OMzdQ0jQ0",
+  "start": 60,
+  "end": 75,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - BBP7 Anonymous",
+  "text": "my he wasn't my husband my boyfriend moved the sofa and got my invalid sister behind it and somebody else who else was nice got onto the table and the next thing we had",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 100
+ },
+ {
+  "key": "hhVfTqrUMyM@191",
+  "id": "hhVfTqrUMyM",
+  "start": 191,
+  "end": 211,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - US2 Renee McAllister",
+  "text": "and the memorial used to read birthday parties first and they came and entered in the funnel things all the simple parties which you've got to know them well with the same ones have come first the sam",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 41
+ },
+ {
+  "key": "hhVfTqrUMyM@15",
+  "id": "hhVfTqrUMyM",
+  "start": 15,
+  "end": 30,
+  "place": "belfast",
+  "label": "Belfast",
+  "where": "",
+  "title": "NIWM Oral History Project - US2 Renee McAllister",
+  "text": "sat said that the following year would probably be evacuating the children if there was any danger of the war and in 1940 we got word to say we were going to be evacuated if we wanted to and",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -5.93,
+  "vol": 50
+ },
+ {
+  "key": "bcDwJkDnpkc@475",
+  "id": "bcDwJkDnpkc",
+  "start": 475,
+  "end": 495,
+  "place": "edinburgh",
+  "label": "Edinburgh",
+  "where": "",
+  "title": "The Seagrove Sessions- Episode 26. More memories from Daisy. Leith and Edinburgh.",
+  "text": "capital but if you went to along the we opening before that you turned and went along and there was a hole in the wall you could go through that hole in the wall and turn and it was fairer street ther",
+  "reviewed": false,
+  "lat": 55.95,
+  "lng": -3.19,
+  "vol": 56
+ },
+ {
+  "key": "bcDwJkDnpkc@352",
+  "id": "bcDwJkDnpkc",
+  "start": 352,
+  "end": 372,
+  "place": "edinburgh",
+  "label": "Edinburgh",
+  "where": "",
+  "title": "The Seagrove Sessions- Episode 26. More memories from Daisy. Leith and Edinburgh.",
+  "text": "up conu street for the r tram lines they found a lot of dead bodies because they buried a lot of folk that was in the plague or something and they buried the bodies there and then if you went up to wi",
+  "reviewed": false,
+  "lat": 55.95,
+  "lng": -3.19,
+  "vol": 67
+ },
+ {
+  "key": "6-KXN2oRtv8@574",
+  "id": "6-KXN2oRtv8",
+  "start": 574,
+  "end": 594,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "Albert Rogers - Childhood Memories of Fermanagh During WWII",
+  "text": "they came in small groups you know and we got to know some of them but then i think in 1941 or early '42 the americans came to us  they came by the hundreds and ovva and they immediately began to buil",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 100
+ },
+ {
+  "key": "-pHIQoOGhy8@129",
+  "id": "-pHIQoOGhy8",
+  "start": 129,
+  "end": 149,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "The Rare Ould Times Part 1 / Fermanagh TV",
+  "text": "with paulie sitting here there was memories coming back at growing up in water street we were at the center of the town which was excellent you know um it was a sad time my father had died and he died",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 100
+ },
+ {
+  "key": "wptRHnHFkq8@48",
+  "id": "wptRHnHFkq8",
+  "start": 48,
+  "end": 68,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "Discovering Fermanagh's Railways: Enniskillen Railway Station - Great Northern Railway (Ireland)",
+  "text": "we're standing beside leda's supermarket but for many years this was the site of inner skills good store a massive cut stone building it survived well over 40 years after the railway closed and the fa",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 84
+ },
+ {
+  "key": "hUmSDzrycD4@580",
+  "id": "hUmSDzrycD4",
+  "start": 580,
+  "end": 595,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "Joe O'Loughlin - Memories of Thatched Living in Co. Fermanagh",
+  "text": "and we got up the thing was what actually happened i discovered later the family were in this bedroom father and mother were in this bedroom here and they woke up with a fire they got through the kitc",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 100
+ },
+ {
+  "key": "NK7XI1J5mms@27",
+  "id": "NK7XI1J5mms",
+  "start": 27,
+  "end": 47,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "Brian Gallagher Townland Campaigner Film 02 - Fermanagh TV",
+  "text": "his world you know gallagher's field and that was it and patrick cavender says the same thing he says he says you know that the parish the town land is a microcosm of the universe at large you know an",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 81
+ },
+ {
+  "key": "-eP9EAS2SSs@0",
+  "id": "-eP9EAS2SSs",
+  "start": 0,
+  "end": 20,
+  "place": "ni_rural",
+  "label": "Fermanagh & Tyrone",
+  "where": "",
+  "title": "#UFU100 James Riddle, Co Tyrone #UFUmembersmemories",
+  "text": "i suppose the big change was some horse farming his horses to the tractors that was that was in the early forties my father bought tractor and 43 and i was about 16",
+  "reviewed": false,
+  "lat": 54.4,
+  "lng": -7.3,
+  "vol": 43
+ },
+ {
+  "key": "Xy1A-sr4AL8@166",
+  "id": "Xy1A-sr4AL8",
+  "start": 166,
+  "end": 186,
+  "place": "derry",
+  "label": "Derry",
+  "where": "",
+  "title": "William King – The Forgotten Beginning of the Troubles (Londonderry, 1969)",
+  "text": "murdered uh he was badly beaten by a mob he died the 24th of september 1969 aged 49 years uh at the base of the headstone it says worthy of remembrance william has largely been forgotten his his his m",
+  "reviewed": false,
+  "lat": 55.0,
+  "lng": -7.32,
+  "vol": 52
+ },
+ {
+  "key": "IxEd31eg5cI@88",
+  "id": "IxEd31eg5cI",
+  "start": 88,
+  "end": 103,
+  "place": "cumbria",
+  "label": "Cumbria",
+  "where": "",
+  "title": "Boyhood memories of watching boat-building at Crossfield's, Arnside",
+  "text": "brass handles on it so we thought you don't put brass handles like that on a boat they used to have an old hand cat didn't they and they used to cut all the timber along the prom didn't they by",
+  "reviewed": false,
+  "lat": 54.6,
+  "lng": -3.1,
+  "vol": 100
+ },
+ {
+  "key": "_97ZRmDnbS0@532",
+  "id": "_97ZRmDnbS0",
+  "start": 532,
+  "end": 547,
+  "place": "fife",
+  "label": "Fife",
+  "where": "",
+  "title": "Mining for Memories Witness Seminar part 1: Introduction/Nicky Wilson, NUM",
+  "text": "weren't fit then as a younger person when you had time you mocked in and helped him along and that was what always impressed me about miners and it was a very very important key factor in protecting s",
+  "reviewed": false,
+  "lat": 56.1,
+  "lng": -3.2,
+  "vol": 100
+ },
+ {
+  "key": "en36vN2dQu0@336",
+  "id": "en36vN2dQu0",
+  "start": 336,
+  "end": 356,
+  "place": "west_wales",
+  "label": "West Wales",
+  "where": "",
+  "title": "LLanelli a town in Wales with a surprising history ... and great ice cream!",
+  "text": "we've got an acer there let's have a look at this i love these mainly in the autumn that's my favorite time for anisa they look wonderful look at those fluffy leaves this could have me and acer fluffi",
+  "reviewed": false,
+  "lat": 51.86,
+  "lng": -4.31,
+  "vol": 69
+ },
+ {
+  "key": "0KYLbSpKRQI@369",
+  "id": "0KYLbSpKRQI",
+  "start": 369,
+  "end": 384,
+  "place": "west_wales",
+  "label": "West Wales",
+  "where": "",
+  "title": "Llanelli Voices 2019",
+  "text": "china on the beach so they've made these absolutely massive pieces of work and what was really touched about that it was one time i raise that they knew that whatever they put into the ground whatever",
+  "reviewed": false,
+  "lat": 51.86,
+  "lng": -4.31,
+  "vol": 45
  }
 ];
