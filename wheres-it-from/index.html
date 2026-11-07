@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Where's It From?</title>
+<meta name="description" content="Hear a piece of music, drop a pin where it's from. Detroit techno to Ethiopian jazz, Croydon dubstep to Peruvian chicha. Five rounds.">
+<meta property="og:title" content="Where's It From?">
+<meta property="og:description" content="Hear the music. Drop a pin. Five rounds, 25,000 points.">
+<meta property="og:url" content="https://toddlburns.com/wheres-it-from/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--ink:#16181b;--ink2:#4a4f57;--paper:#fbfaf7;--line:#e3e0d8;--red:#d6261c;--blue:#1f5fbf;--font:'Archivo',system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#cfd6d9;color:var(--ink);font-family:var(--font)}
+#map{position:fixed;inset:0;background:#b9c7cc}
+.leaflet-container{font-family:var(--font)}
+.leaflet-control-attribution{font-size:9px}
+/* top bar */
+.top{position:fixed;top:calc(12px + env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:500}
+.brand,.stats{pointer-events:auto;background:var(--paper);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.18);padding:9px 14px}
+.brand{font-weight:800;font-stretch:125%;font-size:17px;letter-spacing:-.01em;line-height:1}
+.brand a{color:inherit;text-decoration:none}
+.brand small{display:block;font-stretch:100%;font-weight:500;font-size:11px;color:var(--ink2);margin-top:4px;letter-spacing:.02em}
+.stats{display:flex;gap:18px;font-size:11px;color:var(--ink2);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.stats b{display:block;color:var(--ink);font-size:20px;font-weight:800;letter-spacing:-.01em;font-stretch:110%;text-transform:none;margin-top:1px}
+/* dock */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));z-index:500;display:flex;align-items:center;gap:10px;
+  background:var(--paper);border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.25);padding:8px;max-width:calc(100% - 24px)}
+.play{width:52px;height:52px;border-radius:10px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.play svg{width:22px;height:22px}
+.viz{display:flex;align-items:center;gap:3px;height:36px;width:120px;padding:0 4px}
+.viz i{flex:1;background:var(--ink);border-radius:2px;height:12%;transition:height .12s}
+.hint{font-size:13px;color:var(--ink2);font-weight:500;padding:0 6px;min-width:120px;max-width:200px;line-height:1.25}
+.guess{height:52px;border:0;border-radius:10px;padding:0 22px;background:var(--red);color:#fff;font:800 15px/1 var(--font);font-stretch:115%;letter-spacing:.02em;cursor:pointer;flex:none}
+.guess:disabled{background:#c9c6be;color:#f4f2ec;cursor:default}
+/* card */
+.card{position:fixed;z-index:600;left:16px;top:84px;width:380px;max-height:calc(100% - 110px);overflow:auto;background:var(--paper);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.28);padding:20px 22px 22px;display:none}
+.card.on{display:block}
+.band{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+.band .lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.band .pts{font-size:34px;font-weight:800;font-stretch:115%;letter-spacing:-.02em}
+.band .verdict{font-size:13px;font-weight:700;color:var(--red)}
+.place{font-size:30px;font-weight:800;font-stretch:120%;letter-spacing:-.02em;line-height:1.02}
+.country{font-size:14px;color:var(--ink2);font-weight:600;margin-top:3px}
+.track{margin:14px 0 0;font-size:15px;font-weight:700;line-height:1.3}
+.track span{font-weight:500;color:var(--ink2)}
+.note{font-size:14.5px;line-height:1.5;margin:10px 0 0}
+.yours{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink2);line-height:1.45}
+.yours b{color:var(--ink)}
+.btn{display:inline-block;margin-top:16px;border:0;border-radius:10px;background:var(--ink);color:#fff;font:800 15px/1 var(--font);font-stretch:112%;padding:14px 20px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);margin-left:8px}
+.src{display:block;margin-top:12px;font-size:12px;color:var(--ink2)}
+.src a{color:var(--ink2)}
+.big{font-size:56px;font-weight:800;font-stretch:120%;letter-spacing:-.03em;line-height:1}
+.big small{font-size:22px;color:var(--ink2)}
+.rows{margin-top:14px;border-top:1px solid var(--line)}
+.rows div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.rows div span:last-child{font-weight:700;white-space:nowrap}
+.rows small{color:var(--ink2)}
+.intro p{font-size:15px;line-height:1.5;margin:10px 0 0}
+.intro h1{font-size:34px;font-weight:800;font-stretch:122%;letter-spacing:-.025em;line-height:1;margin:0}
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+.pin.me{background:var(--blue)}.pin.ans{background:var(--red)}
+#yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
+@media (max-width:700px){
+  .brand small{display:none}
+  .stats{gap:12px;padding:8px 12px}.stats b{font-size:17px}
+  .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62%;border-radius:16px 16px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}
+  .place{font-size:26px}
+  .viz{width:70px}.hint{display:none}
+  body.revealed .dock,body.ended .dock{display:none}
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="top">
+  <div class="brand"><a href="about.html">Where's It From?</a><small>Hear it. Pin it.</small></div>
+  <div class="stats"><div>Round<b id="s-round">–/5</b></div><div>Score<b id="s-score">0</b></div></div>
+</div>
+<div class="dock" id="dock">
+  <button class="play" id="play" aria-label="Play"></button>
+  <div class="viz" id="viz"></div>
+  <div class="hint" id="hint">Loading…</div>
+  <button class="guess" id="guess" disabled>Guess</button>
+</div>
+<div class="card" id="card"></div>
+<div id="yt"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const ROUNDS = 5, MAX = 5000, KM = 600, LADDER = [1,1,2,2,3];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const ICON = { play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg>', pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>' };
+let PLACES = [], player, ytReady = false, S = null, map, meMark = null, ansMark = null, line = null, playing = false;
+
+// ---------- map ----------
+map = L.map('map', { zoomControl:false, worldCopyJump:true, minZoom:2, zoomSnap:.5, maxBounds:[[-70,-260],[84,260]], maxBoundsViscosity:.7 }).setView([28, 10], 2.5);
+L.control.zoom({ position:'bottomright' }).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:8, maxZoom:12, attribution:'Esri, US National Park Service' }).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:13, maxZoom:12, opacity:.35, className:'relief' }).addTo(map);
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()).then(w => {
+  L.geoJSON(topojson.mesh(w, w.objects.countries, (a,b) => a !== b), { style:{ color:'#3b3f45', weight:.8, opacity:.55 }, interactive:false }).addTo(map);
+});
+const pin = cls => L.divIcon({ className:'', html:`<div class="pin ${cls}"></div>`, iconSize:[18,18], iconAnchor:[9,9] });
+map.on('click', e => {
+  if (!S || S.revealed || S.over) return;
+  S.guess = e.latlng;
+  if (meMark) meMark.setLatLng(e.latlng); else meMark = L.marker(e.latlng, { icon:pin('me') }).addTo(map);
+  $('guess').disabled = false;
+  hint('Move the pin or hit Guess');
+});
+
+// ---------- audio ----------
+for (let i=0;i<14;i++) $('viz').appendChild(document.createElement('i'));
+function vizTick(){
+  const bars = $('viz').children, t = performance.now()/1000;
+  for (let i=0;i<bars.length;i++) {
+    const h = playing ? 15 + 85*Math.abs(Math.sin(t*(2.2+i*.37) + i)*Math.sin(t*1.3 + i*.8)) : 12;
+    bars[i].style.height = h + '%';
+  }
+  requestAnimationFrame(vizTick);
+}
+vizTick();
+function setPlaying(p){ playing = p; $('play').innerHTML = p ? ICON.pause : ICON.play; }
+setPlaying(false);
+$('play').addEventListener('click', () => {
+  if (!ytReady || !S || S.over) return;
+  if (!S.loaded) { load(); return; }
+  if (playing) player.pauseVideo(); else player.playVideo();
+});
+function load(){
+  const c = S.clip;
+  S.start = Math.floor(c.dur * (0.25 + Math.random()*0.35));
+  player.loadVideoById({ videoId:c.id, startSeconds:S.start });
+  player.unMute(); player.setVolume(85);
+  S.loaded = true;
+}
+function onState(e){
+  if (e.data === YT.PlayerState.PLAYING) setPlaying(true);
+  else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) setPlaying(false);
+  if (e.data === YT.PlayerState.ENDED && S && !S.revealed) { player.seekTo(S.start, true); player.playVideo(); }
+}
+function onYtError(){
+  // a clip that won't play: swap in another from the same tier
+  if (!S || S.revealed) return;
+  S.bad.add(S.clip.id);
+  const pick = drawClip(LADDER[S.r], S.used);
+  if (pick) { S.place = pick.place; S.clip = pick.clip; S.loaded = false; load(); }
+}
+
+// ---------- game ----------
+function hint(t){ $('hint').textContent = t; }
+function stats(){ $('s-round').textContent = S ? `${Math.min(S.r+1,ROUNDS)}/${ROUNDS}` : '–/5'; $('s-score').textContent = S ? S.results.reduce((a,r)=>a+r.pts,0).toLocaleString() : '0'; }
+function drawClip(tier, used){
+  // used = place names already in this game; prefer the tier, fall back to neighbours
+  for (const t of [tier, tier===1?2:tier-1, 3, 2, 1]) {
+    const cands = [];
+    PLACES.forEach(p => { if (used.has(p.p)) return; p.clips.forEach(c => { if (c.tier === t && !S.bad.has(c.id)) cands.push({ place:p, clip:c }); }); });
+    if (cands.length) return cands[Math.floor(Math.random()*cands.length)];
+  }
+  return null;
+}
+function newGame(){
+  S = { r:0, results:[], used:new Set(), countries:new Set(), bad:(S && S.bad) || new Set() };
+  document.body.classList.remove('ended');
+  startRound();
+}
+function startRound(){
+  let pick, tries = 0;
+  do { pick = drawClip(LADDER[S.r], S.used); tries++; } while (pick && S.countries.has(pick.place.c) && tries < 30);
+  S.place = pick.place; S.clip = pick.clip; S.used.add(pick.place.p); S.countries.add(pick.place.c);
+  Object.assign(S, { guess:null, revealed:false, loaded:false });
+  [meMark, ansMark, line].forEach(m => m && map.removeLayer(m)); meMark = ansMark = line = null;
+  document.body.classList.remove('revealed'); $('card').classList.remove('on');
+  $('guess').disabled = true; $('guess').textContent = 'Guess';
+  map.flyTo([28, 10], innerWidth < 700 ? 1.5 : 2.5, { duration:.6 });
+  stats(); setPlaying(false); load();
+  hint('Listen, then click the map');
+}
+function km(a, b){
+  const R = 6371, rad = x => x*Math.PI/180;
+  const dLat = rad(b.lat-a.lat), dLng = rad(b.lng-a.lng);
+  const h = Math.sin(dLat/2)**2 + Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+const score = d => d < 25 ? MAX : Math.round(MAX * Math.exp(-d/KM));
+function verdict(p){ return p >= 4800 ? 'Spot on' : p >= 3500 ? 'Close' : p >= 1500 ? 'Right region' : p >= 300 ? 'Right continent, maybe' : 'Miles off'; }
+$('guess').addEventListener('click', () => {
+  if (!S || S.revealed || !S.guess) return;
+  const ans = L.latLng(S.place.lat, S.place.lng);
+  // compare against the nearest copy of the answer so guesses across the date line work
+  let g = S.guess; const wrap = g.lng - ans.lng; if (wrap > 180) g = L.latLng(g.lat, g.lng-360); if (wrap < -180) g = L.latLng(g.lat, g.lng+360);
+  const d = km(g, ans), pts = score(d);
+  S.results.push({ place:S.place, clip:S.clip, d, pts });
+  S.revealed = true; document.body.classList.add('revealed');
+  ansMark = L.marker(ans, { icon:pin('ans') }).addTo(map);
+  line = L.polyline([g, ans], { color:'#16181b', weight:2, dashArray:'5 6' }).addTo(map);
+  const pad = innerWidth < 700 ? { paddingTopLeft:[30,80], paddingBottomRight:[30, innerHeight*.62] } : { paddingTopLeft:[420,90], paddingBottomRight:[60,110] };
+  if (d < 5) map.flyTo(ans, 8, { duration:.8 }); else map.flyToBounds(L.latLngBounds([g, ans]), { ...pad, maxZoom:9, duration:.8 });
+  stats(); showReveal(d, pts, g);
+});
+function fmtKm(d){ return d < 10 ? d.toFixed(1)+' km' : Math.round(d).toLocaleString()+' km'; }
+function showReveal(d, pts, g){
+  const p = S.place, c = S.clip, last = S.r === ROUNDS-1, total = S.results.reduce((a,r)=>a+r.pts,0);
+  $('card').innerHTML = `<div class="band"><div><div class="lab">Points · round ${S.r+1}</div><div class="pts">${pts.toLocaleString()}</div></div><div class="verdict">${verdict(pts)}</div></div>
+    <div class="place">${esc(p.p)}</div><div class="country">${esc(p.c)}</div>
+    <div class="track">${esc(c.a)} — ${esc(c.t)} <span>(${c.y})</span></div>
+    <p class="note">${esc(p.note)}</p>
+    <div class="yours">Your guess: <b id="where">…</b> · ${fmtKm(d)} away<br>Total: <b>${total.toLocaleString()}</b> / ${(MAX*(S.r+1)).toLocaleString()}</div>
+    <button class="btn" id="next">${last ? 'See your score' : 'Next round'}</button>
+    <span class="src"><a href="https://www.youtube.com/watch?v=${c.id}&t=${S.start}s" target="_blank" rel="noopener">Hear it on YouTube</a></span>`;
+  $('card').classList.add('on'); $('card').scrollTop = 0;
+  $('next').onclick = () => { if (last) endGame(); else { S.r++; startRound(); } };
+  const lng = ((g.lng + 540) % 360) - 180;
+  fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&langCode=en&featureTypes=Locality&location=${lng},${g.lat}`)
+    .then(r => r.json()).then(j => { const a = j.address || {}; const s = [a.City || a.Subregion || a.Region, a.CntryName].filter(Boolean).join(', '); $('where').textContent = s || 'the middle of nowhere'; })
+    .catch(() => { $('where').textContent = 'your pin'; });
+}
+function endGame(){
+  player.pauseVideo(); S.over = true;
+  document.body.classList.add('ended');
+  const total = S.results.reduce((a,r)=>a+r.pts,0);
+  [meMark, ansMark, line].forEach(m => m && map.removeLayer(m)); meMark = ansMark = line = null;
+  S.endLayers = S.results.map(r => L.marker([r.place.lat, r.place.lng], { icon:pin('ans') }).addTo(map).bindTooltip(r.place.p));
+  map.flyToBounds(L.latLngBounds(S.results.map(r => [r.place.lat, r.place.lng])), innerWidth < 700 ? { paddingTopLeft:[30,80], paddingBottomRight:[30, innerHeight*.62], maxZoom:5 } : { paddingTopLeft:[420,90], paddingBottomRight:[60,60], maxZoom:5 });
+  S.share = `I scored ${total.toLocaleString()}/25,000 on Where's It From?\n${S.results.map(r => r.pts >= 4800 ? '🎯' : r.pts >= 3500 ? '🟢' : r.pts >= 1500 ? '🟡' : '⚪').join('')}\ntoddlburns.com/wheres-it-from`;
+  $('card').innerHTML = `<div class="band"><div class="lab">Final score</div></div>
+    <div class="big">${total.toLocaleString()}<small> / 25,000</small></div>
+    <div class="rows">${S.results.map(r => `<div><span>${esc(r.place.p)} <small>${esc(r.place.c)} · ${fmtKm(r.d)}</small></span><span>${r.pts.toLocaleString()}</span></div>`).join('')}</div>
+    <button class="btn" id="again">Play again</button><button class="btn ghost" id="share">Share</button>`;
+  $('card').classList.add('on');
+  $('again').onclick = () => { S.endLayers.forEach(m => map.removeLayer(m)); newGame(); };
+  $('share').onclick = async () => {
+    try { if (navigator.share) { await navigator.share({ text:S.share }); return; } } catch(e) { return; }
+    try { await navigator.clipboard.writeText(S.share); $('share').textContent = 'Copied'; } catch(e) {}
+  };
+  stats(); $('s-round').textContent = 'Done';
+}
+function intro(){
+  $('card').innerHTML = `<div class="intro"><h1>Where's It From?</h1>
+    <p>A piece of music plays: Detroit techno, Ethiopian jazz, Croydon dubstep, Peruvian chicha, Balinese gamelan. No lyrics to give it away.</p>
+    <p>Drop a pin where you think it comes from. The closer you are, the more points: 5,000 a round, five rounds.</p>
+    <button class="btn" id="start" disabled>Loading…</button> <a class="btn ghost" href="about.html">About</a></div>`;
+  $('card').classList.add('on');
+}
+intro();
+
+// ---------- boot ----------
+fetch('places.json?v=1').then(r => r.json()).then(d => { PLACES = d; ready(); });
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player('yt', { width:200, height:200,
+    playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
+    events:{ onReady:() => { ytReady = true; ready(); }, onStateChange:onState, onError:onYtError } });
+};
+const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
+function ready(){
+  if (!(ytReady && PLACES.length)) return;
+  hint('Press start');
+  const b = $('start'); b.disabled = false; b.textContent = 'Start';
+  b.onclick = newGame;
+}
+</script>
+</body>
+</html>
