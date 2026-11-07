@@ -10,7 +10,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Elizabeth Cross remembers the end of the war",
   "text": "war was over and the bonfire was lit outside the house and in those days what they used to use on the beds they were straw pally asses you used to have two on the bed for a full-size bed and they were",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.48,
+  "lng": -1.9
  },
  {
   "key": "GBw4INNMwQ4@2",
@@ -22,7 +24,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Ernie Lewis recalls the end of the war",
   "text": "the most vivid memory that i have of the war the day it master called everyone out into the playground which school was it the steward street which was just off spring hill we didn't know the reason w",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.48,
+  "lng": -1.9
  },
  {
   "key": "2YxWGIqBSeQ@2",
@@ -34,7 +38,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Ernie Lewis remembers the \"monkey runs\" used during the war.",
   "text": "this was a general thing obvious well mainly didn't occur in isolated areas a monkey runs everywhere the one that i recollect owing to the fact that i lived in that area was the canal banker to the to",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.48,
+  "lng": -1.9
  },
  {
   "key": "M3TTA6qTsnc@2",
@@ -46,7 +52,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Elizabeth Cross remembers food shortages in Small Heath",
   "text": "when i was very young and we didn't have russians in the beginning part of the war sometimes at the maypole and places like that and small league that's it would go around there was margarine well i w",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.48,
+  "lng": -1.9
  },
  {
   "key": "PFGPJ-GjdUg@2",
@@ -58,7 +66,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Wilfred Beswick recalls discussing pacifism",
   "text": "was a pacifist so was his wife very keen now mr grim news wasn't satisfied with us just meeting on a sunday afternoon suggested we used to come on a thursday evening as well to his home in northfield ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.48,
+  "lng": -1.9
  },
  {
   "key": "FgpLqssZQII@344",
@@ -70,7 +80,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "30 Years of Living with HIV",
   "text": "to some extent public sympathy but with hiv you were really not only ill but an outcast and you know i knew my life was never going to be the same again i had just turned 22 my partner was 19",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.54,
+  "lng": 0.1
  },
  {
   "key": "yWS6nZZpv00@269",
@@ -82,7 +94,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "London Against Racism: Ted Parker",
   "text": "it because this is the first time on in the uk that they've used riot shoes and that's allegedly i'm bear on the loudhailer saying defend the clocktower and i think that's because that was like the ce",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.54,
+  "lng": 0.1
  },
  {
   "key": "yWS6nZZpv00@103",
@@ -94,7 +108,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "London Against Racism: Ted Parker",
   "text": "because in before the days of birth the hope phones that people running up and down to see whether where they would gather in and what their likely routes were them running back to us but the earth th",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.54,
+  "lng": 0.1
  },
  {
   "key": "4avrF5hiV-E@192",
@@ -106,7 +122,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Journey to Recovery",
   "text": "after that i kind of realized that i didn't want to be on herron anymore and i finally got in contact we saw drug services that was the first time i shot a bit of acceptance and i felt i found some fo",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.54,
+  "lng": 0.1
  },
  {
   "key": "QS4OxWUCHE8@567",
@@ -118,7 +136,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Ameet Chana",
   "text": "more than once you know it's one of those films that will cross generations as well um young kids still come up to me that wouldn't even been born when the film came out 15 years ago saying that they'",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "QS4OxWUCHE8@158",
@@ -130,7 +150,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Ameet Chana",
   "text": "of cinemas in south for i didn't i don't have any connection with that but i do still to this day and even then as a child remember my dad and saying to me we used to come here on a sunday we get a bu",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "qtJTttvocx0@229",
@@ -142,7 +164,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Sarb Kaur",
   "text": "my mum's like a great cook so we didn't really used to like eat out a lot there wasn't that many restaurants around there there was quite a few like mostly take aways and stuff like that also like ent",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "qtJTttvocx0@524",
@@ -154,7 +178,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Sarb Kaur",
   "text": "recorded and again not everybody had a video player and that lot so sometimes you'd go around to this person's house and see it all you get part of the family coming or you bring it around so you can ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "EdQjPx-fTxM@515",
@@ -166,7 +192,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Aimee Phull",
   "text": "attack and the other side said it wasn't a racist attack and i've talked to people who were there who were involved in various aspect and i still don't have the full story so for me it's an open book ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "EiN-6nkcVCk@321",
@@ -178,7 +206,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Parminder Chadha",
   "text": "also we were also intrinsic first my parents and then asked me from a boat i was doing volunteer work from about the age of seven eight my mum said this word teddy boys and it was quite interesting be",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "EiN-6nkcVCk@447",
@@ -190,7 +220,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Parminder Chadha",
   "text": "in you know it's injustice and whatever but when the world outside is saying we are the you know we are the right and you are the wrong you internalized that so you become the wrong one constantly or ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "HYET0xq3ESw@363",
@@ -202,7 +234,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Janpal Basran",
   "text": "four and they were younger and they throw stones at the house they'd shout that's where they were aggressive and very fortunately for us we had really lovely neighbors who english and they were very s",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "HYET0xq3ESw@572",
@@ -214,7 +248,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Southall on Film | Oral History Interview - Janpal Basran",
   "text": "and then it's a kind of snowballed and you know over time now children use all kinds of words which you know it takes you a dictionary and hours to figure out what they're saying but yeah i think that",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 51.51,
+  "lng": -0.38
  },
  {
   "key": "lc7hCwv-0V8@464",
@@ -226,7 +262,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Voices of the river - Part Eight, Geoff Moon",
   "text": "of just worked on the on the way so &gt;&gt; i don't think there was any much call most the time you would if you had a job to go at the time you would tow ship to the bar and you would leave go becau",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.91,
+  "lng": -1.38
  },
  {
   "key": "k2Z527njMh8@33",
@@ -238,7 +276,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "More Than 2 Tones: In the Beginning",
   "text": "i was personally disappointed with them i heard my voice for the first time on on a professional recording and i wasn't very happy the backing was fantastic they had all the deck of backing on it but ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.41,
+  "lng": -1.51
  },
  {
   "key": "ROy4dZzZls8@412",
@@ -250,7 +290,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Moonlight Sonata",
   "text": "and the blasts sent all the glass from the back kitchen in over dad and the next door neighbor he was pulling bits of glass from his coat pocket for months afterwards",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.41,
+  "lng": -1.51
  },
  {
   "key": "0N775oOgeLQ@0",
@@ -262,7 +304,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson's Mining Memories 2",
   "text": "obviously after the first um paper mashy helmets the black ones the next ones to come in were the same but painted white as i said and then these were the the later ones that came in obviously made of",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "0N775oOgeLQ@189",
@@ -274,7 +318,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson's Mining Memories 2",
   "text": "i had this phone call from a local farmer and he said keith i know you're collecting and there's a chop up there with a lot of mining memorabilia but mainly a sylvester and i thought if i could get my",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "OTyI4FFmXD8@72",
@@ -286,7 +332,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson's Mining Memories",
   "text": "clogs um and also a lot of the old men preferred clogs my daddy worked up until he was 65 and he never wore anything else but cola clogs but memories and things that people told you about in those day",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "OTyI4FFmXD8@142",
@@ -298,7 +346,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson's Mining Memories",
   "text": "i had the boots off a chap that uh he worked at w stanton cury and when he left school of course he was issued with the boots and the helmet and for some reason he was issued with two pair of boots an",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "ENOfgLkVAo8@137",
@@ -310,7 +360,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson Mining Memories 3",
   "text": "a bulb an electric there were far better illumination than the the oil lamp and of course they there was such a great invention obviously safety lamps they were they were safe underground um and they ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "ENOfgLkVAo8@50",
@@ -322,7 +374,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Keith Meeson Mining Memories 3",
   "text": "that you could relight again it has a striker on it and you'd re light it but the the workers just the ordinary pitmen they not everybody but those that were allocated an oil lamp would have one that ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "wKk0QHVqUbA@10",
@@ -334,7 +388,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "WW2 Stories: The Roberts Family",
   "text": "father leslie roberts and my uncle kenneth roberts they both served in the second world war my father joined the royal pioneer corps he was involved in engineering tasks you know repairing bridges and",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "VKAoZInSJQo@4",
@@ -346,7 +402,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Gladstone Pottery Museum",
   "text": "worked at the glaston museum it was around about 1987 uh we used to do the demonstrating upstairs i'm used to the gilding and we used to do um painting flowers jewelry painting the jewelry and also li",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.0,
+  "lng": -2.18
  },
  {
   "key": "cAJsXaJNqhM@30",
@@ -358,7 +416,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Yvonne's Story",
   "text": "do try and use these sometimes it depends what mood i'm in sometimes i put them away sometimes i um take them out and tend to sort of when wearing a ring i tend to just put my ring in it and use it fo",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "cAJsXaJNqhM@203",
@@ -370,7 +430,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Yvonne's Story",
   "text": "that signifies that that you know that link between me being born and brought up here and then having a peace which is actually sort of labeled as a raw crown piece as well",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "2rcmfxWwnlk@35",
@@ -382,7 +444,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Old Suffolk Boy",
   "text": "she's done weeding and digging oh she's great anyway before i take you up to the allotment i just want to give you a little tip to all of you when all you've watched all the allotment programs",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "59TQUNDnOqs@213",
@@ -394,7 +458,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Old Suffolk Boy",
   "text": "all with black polishing a little bit awkward around the corners because i want the keyboard all in one to make it waterproof now all i've got to do now is put two inches of sand on",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "Qruo4Q-ysZ0@29",
@@ -406,7 +472,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Old Rural Suffolk Childhood Memories. My Grandparents neighbour and the biscuit (Old Broad Suffolk)",
   "text": "on farms and on the land and there weren't much he didn't know about growing fruit and veg crops looking after animals and livestock and if anybody needed healing or something he'd be able to grab out",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "Qruo4Q-ysZ0@127",
@@ -418,7 +486,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Old Rural Suffolk Childhood Memories. My Grandparents neighbour and the biscuit (Old Broad Suffolk)",
   "text": "in all fairness and all honesty i had already had the biscuits and because obviously when you go to your grandparents' house in the main you're going to get fed i'd already had biscuits or cake and ye",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "GFmpNxJPMgg@124",
@@ -430,7 +500,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "The Hay Jump - Suffolk Countryside Childhood Memories | East Anglia",
   "text": "to the point where people were starting to get cuts and bruises um and it was getting a bit of a hard landing because obviously we're starting to squash and flatten all the hay then that's when you kn",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "GFmpNxJPMgg@1",
@@ -442,7 +514,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "The Hay Jump - Suffolk Countryside Childhood Memories | East Anglia",
   "text": "video is memories from my childhood again and it's one which i know there's going to be quite a few people out there who also remember this old pastime that us kids used to have um when you live near ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "aLnHWnGHPw0@63",
@@ -454,7 +528,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Scrumping - Suffolk Countryside Childhood Memories | East Anglia",
   "text": "a few see that's the key to scrumping not taking enough that they know that you've took them whereas i know some people used to take too many and that sort of thing and then you're going to get caught",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "aLnHWnGHPw0@169",
@@ -466,7 +542,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Scrumping - Suffolk Countryside Childhood Memories | East Anglia",
   "text": "i will say that i do know of people who when they were scrumping plums they didn't realize just what effect those plums were going to have on them in a very short space of time and even though it's hi",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.06,
+  "lng": 1.16
  },
  {
   "key": "oTEw8owbnIc@165",
@@ -478,7 +556,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Byker Community Archive: What's New for 2026",
   "text": "um really excited about it which is totally different i mean you look when you look around uh see it's colorful it's totally different in of the influenced by swedish architecture the the main archite",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.97,
+  "lng": -1.61
  },
  {
   "key": "oTEw8owbnIc@34",
@@ -490,7 +570,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Byker Community Archive: What's New for 2026",
   "text": "bucket list of things to do before i get so old so this was one of them and it took about i think two years to get the money together because when you look around you can see it's quite a bad state th",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.97,
+  "lng": -1.61
  },
  {
   "key": "s6sBgmDbALs@411",
@@ -502,7 +584,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Tyneside Lost Industry - VANISHED (Alikivi 9mins 2012)",
   "text": "i mean a lot of the guys used to pry themselves in the fact that they never ever lost any time at all and i just have visions coming back for if we were transferred to the wall's end big yard and you ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.97,
+  "lng": -1.61
  },
  {
   "key": "mJEUmgp7vg4@186",
@@ -514,7 +598,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Sam Sharman (Interview 2022)",
   "text": "you can get messages across the players um analysis and all that kind of stuff but um when i did it it was it was quite interesting because um i did it on you've got like ray wilkins who's on the same",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.74,
+  "lng": -0.33
  },
  {
   "key": "mJEUmgp7vg4@310",
@@ -526,7 +612,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Sam Sharman (Interview 2022)",
   "text": "um like with the fa getting behind it you know when you turn up it is everything's you know so professional we've got psychologists we've got doctor physio analyst um strength and conditioning um when",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.74,
+  "lng": -0.33
  },
  {
   "key": "LehiLOOjW1Y@393",
@@ -538,7 +626,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Barbara Ives talks about her time as Hull City secretary & receptionist",
   "text": "every day the whole the whole team everybody nobody was better than anybody else it was it was a family and they really looked at you know within within the force everybody was nice to everybody nobod",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.74,
+  "lng": -0.33
  },
  {
   "key": "LehiLOOjW1Y@331",
@@ -550,7 +640,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Barbara Ives talks about her time as Hull City secretary & receptionist",
   "text": "but he was lovely he was just such a nice person and he loved that ground so much he was so proud of it and he wouldn't let anybody practice on there at all they all had to go to the gym or down to uh",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.74,
+  "lng": -0.33
  },
  {
   "key": "VjsipPUSJFo@514",
@@ -562,7 +654,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Neil Allison (Interview 2022)",
   "text": "interact with them and you'd have a bit of cheek with them and you know but um you kind of knew where you stood and there was a line and you that you didn't want to cross and the dream was to make it ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 53.74,
+  "lng": -0.33
  },
  {
   "key": "Zvm8Adm_MSY@131",
@@ -574,7 +668,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Nothing to Lose - The Women Chainmakers Strike of 1910 Cradley Heath",
   "text": "me since well everybody and seemed to be making it a thought i'd like ago it was nothing else really if you went to service you as a prisoner you're",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.55,
+  "lng": -2.07
  },
  {
   "key": "6d7axrP6X0g@99",
@@ -586,7 +682,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "I took to the streets of 'friendly' Black Country village to find out what residents love #Gornal",
   "text": "places to walk the people at the forge are one of the best things about it people are always friendly always talking to you you have local stores like this greengrocer's where you can buy fresh produc",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.55,
+  "lng": -2.07
  },
  {
   "key": "Uu33m1VN9Is@113",
@@ -598,7 +696,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "'They gave it a go': Wolves fan reaction and January sale view after Liverpool defeat",
   "text": "the summer and yeah i mean look he's come to the job knowing knowing what's you know he knows that we're abandoned the pressure he knows that he it was going to be a massive task to keep us up you kno",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.55,
+  "lng": -2.07
  },
  {
   "key": "z1BAo9kiK9M@88",
@@ -610,7 +710,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "'There's life after Cunha!' Wolves fans delighted following crucial win over West Ham",
   "text": "is it they're going to be safe it's never over till it's over but i think once we've played ipsswitch and and leicester and we picked some points up against them i think i'll feel a bit more comfortab",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.55,
+  "lng": -2.07
  },
  {
   "key": "h-9hkNFU_UE@105",
@@ -622,7 +724,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Hemlock Stone and The Three Stones Project",
   "text": "how the stone itself came into being is of dispute and there are uh three possible theories one that it is a natural object so it's a natural geological feature formed by erosion and what is called di",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.95,
+  "lng": -1.15
  },
  {
   "key": "gApLw1pzDjg@414",
@@ -634,7 +738,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Reaction to surprise Sunderland's surprise CEO announcement and what it might mean - #onthewhistle",
   "text": "i think a lot of good things have happened especially on the pitch but off it as well and i think some really good things have happened during the club's return to the premier league there are quite a",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.91,
+  "lng": -1.38
  },
  {
   "key": "bBqel5XXBOU@69",
@@ -646,7 +752,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Sunderland 2-2 Arsenal: WOW! What a point! James Copley and Phil Smith react at the Stadium of Light",
   "text": "the course of 90 minutes i think we just about deserved it i thought the first half we were excellent without creating a lot but really limited arsenal yeah they had a spell in the second half and lik",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.91,
+  "lng": -1.38
  },
  {
   "key": "dYwl9aGYI2A@115",
@@ -658,7 +766,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "We Asked Newcastle About Keir Starmer's Resignation",
   "text": "&gt;&gt; i just feel that um there's there's too many quick changes being made we've had this for the from the tories for so long and um while some i'm very much a labour man myself um i don't feel i ",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 54.97,
+  "lng": -1.61
  },
  {
   "key": "HTC9h7W2uj4@289",
@@ -670,7 +780,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Derby Improved | Did Zetterstrom Just Save Someones Job?",
   "text": "second half as you say we simply slowed down as we usually do and the red card didn't do us any favors at all and i just thought we were going to lose but zetterstrom good for him made some incredible",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "WD0j4Ugf1vE@267",
@@ -682,7 +794,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "How Worrying Is Derby's Lack Of Depth?",
   "text": "over the weekend we was 2-2 and he brings on n'gandu when we need a goal i know johnson's on a yellow card and we can't really afford to lose him even though he didn't have a good game at all but you'",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "h7r_mDzP5LY@116",
@@ -694,7 +808,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Is This Season Now Done For Derby?",
   "text": "yeah it's a it's a really funny one because like you say from when we was like bound for relegation eustace comes in saves us moves up and then we've gone from this season now to playoff contenders it",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "gwGhwIEDZxU@153",
@@ -706,7 +822,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Is Matt Clarke  Now The First Name on The Team Sheet for Derby?",
   "text": "it was a bit of a mad one cuz i i took a friend yesterday with me cuz i thought we'd absolutely demolish sheffield wednesday and i i must have jinxed us cuz i said if we don't score more than three th",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.92,
+  "lng": -1.48
  },
  {
   "key": "TTVkXKOV7rY@45",
@@ -718,7 +836,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "We Always Beat Brentford! Bench Time For Ndoye & Co! | Brentford Vs Nottingham Forest Match Preview",
   "text": "go and finish their chances coming up we're going to go through the game we're going to go through my thoughts the team sheet the usual stuff on this video so make sure you've liked make sure you've s",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.95,
+  "lng": -1.15
  },
  {
   "key": "tA7SPNdjp1E@172",
@@ -730,7 +850,9 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Wasted Chances & Leaky Defence! Are We Worse Than Spurs? Palace 3-1 Nottingham Forest Reaction",
   "text": "their goal and you've got to say one of the reasons those defenders are panicking is cuz the guy behind them he's never commanding that box he never comes out he's never authoritative he's anchored to",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.95,
+  "lng": -1.15
  },
  {
   "key": "zu0AYH0_vE4@308",
@@ -742,6 +864,8 @@ window.NEXTDOOR = [
   "where": "",
   "title": "EVERTON v COVENTRY | Live post-match reaction",
   "text": "the way they are playing with personality and the progression since the first few weeks when we went to arsenal and it was like ah this is the premier league now we go and play more like a premier lea",
-  "reviewed": true
+  "reviewed": true,
+  "lat": 52.41,
+  "lng": -1.51
  }
 ];

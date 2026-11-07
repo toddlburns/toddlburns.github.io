@@ -102,6 +102,13 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
 #viz{flex:1;min-width:0;height:52px;display:block}
 .dock .label{display:none}
 #guessBtn{flex:none;height:52px;padding:0 22px}
+/* Next Door: a close pin on a local voice earns a two-way follow-up before the answer shows */
+.nd{position:absolute;z-index:25;left:50%;top:50%;transform:translate(-50%,-50%);width:min(380px,calc(100vw - 32px));padding:22px 20px;text-align:center}
+.nd .ndkick{margin:0;font:800 13px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.nd .ndq{margin:6px 0 16px;font:800 22px/1.2 var(--font)}
+.nd .ndbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nd .ndbtns button{min-height:64px;font-size:17px;background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.nd .ndsmall{margin:12px 0 0;font-size:13px;color:var(--muted)}
 .hint{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(98px + env(safe-area-inset-bottom));margin:0;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--paper-a);box-shadow:0 2px 10px var(--shade);white-space:nowrap}
 .ages{position:absolute;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:4px;padding:5px 6px 5px 12px;border-radius:999px;white-space:nowrap}
 .ages span{font-size:13px;font-weight:650;margin-right:4px}
@@ -281,6 +288,12 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
       <span class="label" id="listenLabel">Press play to listen</span>
       <button id="guessBtn" disabled>Guess</button>
     </div>
+    <div class="card nd" id="nd" hidden role="dialog" aria-labelledby="ndQ">
+      <p class="ndkick">Close!</p>
+      <p class="ndq" id="ndQ">Now, which is it?</p>
+      <div class="ndbtns"><button id="nd0"></button><button id="nd1"></button></div>
+      <p class="ndsmall">Get it right and this round’s miles are halved.</p>
+    </div>
     <div class="card reveal" id="reveal">
       <button class="grab" id="rGrab" data-more="Details" aria-expanded="false"><span>Details</span></button>
       <div class="verdictband" id="rVerdict"><div class="ptsrow"><div><div class="kicker" id="rKicker">Miles off · Round 1</div><div class="pts" id="rPts">0</div></div><button id="nextTop" class="nexttop">Next round →</button></div></div>
@@ -342,7 +355,7 @@ button.logo{border:0;color:var(--ink);cursor:pointer;text-align:left}   /* the i
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-<script src="clips.js"></script>
+<script src="clips.js?v=local1"></script>
 <script>if (/[?&]review/.test(location.search)) document.write('<script src="candidates.js"><\/script>');</script>
 <script>
 const $ = id => document.getElementById(id);
@@ -502,7 +515,7 @@ function initMap() {
     if (showNames) labels.addTo(map);
   }).catch(() => {});
   map.on('click', e => {
-    if (state.revealed || $('stage').hidden) return;
+    if (state.revealed || $('stage').hidden || !$('nd').hidden) return;
     if (!guessMarker) guessMarker = L.marker(e.latlng, { icon: pinIcon('g') }).addTo(map); else guessMarker.setLatLng(e.latlng);
     $('guessBtn').disabled = false; $('hint').textContent = 'Move your pin, or press Guess';
   });
@@ -567,7 +580,7 @@ function newGame() {
   startRound();
 }
 function startRound() {
-  state.revealed = false; state.heard = false; state.age = null; state.fullListen = false;
+  state.revealed = false; state.heard = false; state.age = null; state.fullListen = false; $('nd').hidden = true;
   const c = state.picks[state.round];
   document.querySelectorAll('#ages button').forEach(x => x.classList.remove('sel'));
   $('ages').hidden = true;
@@ -629,13 +642,30 @@ async function nearestPlace(lat, lng) {
   } catch (e) {}
   return 'Somewhere off the map';
 }
+// Neighbour pairs for the local voices: [region, label]. A close pin (under ND_MI) asks which of two neighbours it is.
+const ND_MI = 40;
+const ND_LABEL = { brummie:'Birmingham', black_country:'the Black Country', cockney:'East London', west_london:'West London', mackem:'Sunderland', geordie:'Newcastle',
+  east_mids:'Derby', nottingham:'Nottingham', stoke:'Stoke', coventry:'Coventry' };
+const ND_NEAR = { brummie:['black_country','coventry'], black_country:['brummie'], coventry:['brummie'], cockney:['west_london'], west_london:['cockney'],
+  mackem:['geordie'], geordie:['mackem'], east_mids:['nottingham'], nottingham:['east_mids'], stoke:['east_mids'] };
 function guess() {
+  if (!guessMarker || state.revealed || !$('nd').hidden) return;
+  const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c);
+  const near = c.local && ND_NEAR[c.region];
+  if (!near || mi >= ND_MI) return reveal(null);
+  const other = near[Math.floor(Math.random() * near.length)], opts = Math.random() < .5 ? [c.region, other] : [other, c.region];
+  const cap = t => t[0].toUpperCase() + t.slice(1);
+  snd.pause(); $('guessBtn').disabled = true;
+  [0, 1].forEach(k => { const b = $('nd' + k); b.textContent = cap(ND_LABEL[opts[k]]); b.onclick = () => { $('nd').hidden = true; reveal({ pick: opts[k], ok: opts[k] === c.region }); }; });
+  $('nd').hidden = false; $('nd0').focus();
+}
+function reveal(nd) {
   if (!guessMarker || state.revealed) return;
   state.revealed = true;
-  const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = points(mi);
+  const c = state.picks[state.round], g = guessMarker.getLatLng(), mi = miles({ lat: g.lat, lng: g.lng }, c), p = nd && nd.ok ? Math.round(points(mi) / 2) : points(mi);
   const ab = 0, a = ageOf(c);   // age is shown, not scored (age bonus retired 2026-11-03)
   const fb = 0;   // first-listen bonus retired 2026-11-03
-  state.score += p + ab + fb; state.results.push({ c, mi, p, ab, fb, g: [g.lat, g.lng] });
+  state.score += p + ab + fb; state.results.push({ c, mi, p, ab, fb, nd, g: [g.lat, g.lng] });
   answerMarker = L.marker([c.lat, c.lng], { icon: pinIcon('a') }).addTo(map).bindTooltip(c.place, { permanent: true, direction: 'top', offset: [0, -10], className: 'place' });
   line = L.polyline([g, [c.lat, c.lng]], { color: css('--ink'), weight: 2, dashArray: '4 6', opacity: .7 }).addTo(map);
   $('hScore').textContent = state.score.toLocaleString();
@@ -655,8 +685,9 @@ function guess() {
   $('rNote').querySelectorAll('.ts').forEach(b => b.onclick = () => { const at = c.start + +b.dataset.t; snd.play(c, Math.max(0, at - 0.6), at + 1.6); });
   $('rWords').innerHTML = '';
   const dist = (mi < 1 ? 'right on top of it' : `${Math.round(mi).toLocaleString()} miles away`) + (mi > CAP ? `, counts as ${CAP.toLocaleString()}` : '');
-  $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>`;
-  nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>`; });
+  const ndLine = nd ? `<br><b>Next door:</b> you said ${esc(ND_LABEL[nd.pick])}. ${nd.ok ? 'Right, miles halved.' : 'Not this time.'}` : '';
+  $('rGuess').innerHTML = `Finding the nearest town… <span>(${dist})</span>${ndLine}`;
+  nearestPlace(g.lat, g.lng).then(t => { if (state.results.at(-1)?.c === c) $('rGuess').innerHTML = `${esc(t)} <span>(${dist})</span>${ndLine}`; });
   // newest round first, then the earlier ones, then the running total
   const rounds = state.results.map((r, i) => [i + 1, r.p + (r.ab || 0) + (r.fb || 0)]).reverse();
   $('rTally').innerHTML = rounds.map(([n, v], i) => `<span class="${i ? 'run' : 'cur'}">Round ${n}</span><span class="${i ? 'run' : 'cur'}">${v.toLocaleString()} mi</span>`).join('')
@@ -760,7 +791,7 @@ $('playBtn').onclick = playClip; $('guessBtn').onclick = guess; $('nextBtn').onc
 document.addEventListener('keydown', e => {
   if (CURATE || $('stage').hidden) return;
   if (e.code === 'Space' && !state.revealed) { e.preventDefault(); playClip(); }
-  if (e.key === 'Enter') state.revealed ? next() : guess();
+  if (e.key === 'Enter' && $('nd').hidden) state.revealed ? next() : guess();
 });
 
 /* ---------- Curate ---------- */
