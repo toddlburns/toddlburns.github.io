@@ -13,83 +13,83 @@
 <meta name="twitter:image" content="https://toddlburns.com/wheres-it-from/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-:root{--ink:#16181b;--ink2:#4a4f57;--paper:#fbfaf7;--line:#e3e0d8;--red:#d6261c;--blue:#1f5fbf;--font:'Archivo',system-ui,sans-serif}
+/* Night-sky globe (not Accentuate's flat cream map): a real orthographic globe you spin, plain hyper-legible type. */
+:root{--night:#0a0f1e;--night2:#141b31;--ink:#131722;--ink2:#555c69;--paper:#fbf7ee;--line:#e6dfcf;--ans:#ff5a36;--me:#3ec5ff;--star:#f4efe2;--font:'Atkinson Hyperlegible',system-ui,sans-serif}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#cfd6d9;color:var(--ink);font-family:var(--font)}
-#map{position:fixed;inset:0;background:#b9c7cc}
-.leaflet-container{font-family:var(--font)}
-/* map credits hide behind a small ⓘ button (Todd) */
-.leaflet-control-attribution{display:none;font-size:10px;max-width:70vw}
-.leaflet-control-attribution.open{display:block}
-.info-btn{width:24px;height:24px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:var(--ink2);font:700 13px/24px Georgia,serif;font-style:italic;cursor:pointer;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-@media (max-width:700px){body.revealed .leaflet-bottom,body.ended .leaflet-bottom{display:none}}
+html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18213d 0%,var(--night) 70%);color:var(--ink);font-family:var(--font);overflow:hidden}
+#globe{position:fixed;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
+#globe.drag{cursor:grabbing}
+/* controls: zoom + map credits behind an i (Todd) */
+.ctrls{position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:500;display:flex;flex-direction:column;gap:8px}
+.ctrls button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(20,27,49,.85);color:var(--star);font:700 20px/1 var(--font);cursor:pointer;padding:0}
+.ctrls .info-btn{font:italic 700 16px/1 Georgia,serif}
+.credits{position:fixed;right:62px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:500;background:rgba(20,27,49,.92);color:#cfd5e2;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:10px;max-width:260px;display:none}
+.credits.open{display:block}.credits a{color:#fff}
+@media (max-width:700px){body.revealed .ctrls,body.ended .ctrls{display:none}}
 /* leaderboard */
 .board{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
-.board h3{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
+.board h3{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
 .board form{display:flex;gap:8px}
-.board input{flex:1;min-width:0;font:15px var(--font);height:42px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
-.board form .btn{margin:0;height:42px;padding:0 14px;font-size:14px}
-.lbmsg{font-size:13px;color:var(--ink2);margin:8px 0 0}.lbmsg:empty{display:none}
+.board input{flex:1;min-width:0;font:16px var(--font);height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.board form .btn{margin:0;height:44px;padding:0 14px;font-size:15px}
+.lbmsg{font-size:14px;color:var(--ink2);margin:8px 0 0}.lbmsg:empty{display:none}
 .board ol{list-style:none;margin:10px 0 0;padding:0;counter-reset:lb}
-.board li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px;counter-increment:lb}
+.board li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:16px;counter-increment:lb}
 .board li:last-child{border-bottom:0}
 .board li::before{content:counter(lb);width:2ch;color:var(--ink2);font-weight:700}
 .board li.m::before{content:''}
 .board li span{flex:1}.board li b{font-weight:700;white-space:nowrap}
-.board li.me{color:var(--red);font-weight:700}
-/* top bar */
-.top{position:fixed;top:calc(12px + env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:500}
-.brand,.stats{pointer-events:auto;background:var(--paper);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.18);padding:9px 14px}
-.brand{font-weight:800;font-stretch:125%;font-size:17px;letter-spacing:-.01em;line-height:1}
+.board li.me{color:var(--ans);font-weight:700}
+/* top bar: straight on the night sky, no boxes */
+.top{position:fixed;top:calc(12px + env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:500;color:var(--star)}
+.brand,.stats{pointer-events:auto;background:rgba(10,15,30,.72);border-radius:12px;padding:9px 14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.brand{font-weight:700;font-size:22px;line-height:1}
 .brand a{color:inherit;text-decoration:none}
-.brand small{display:block;font-stretch:100%;font-weight:500;font-size:11px;color:var(--ink2);margin-top:4px;letter-spacing:.02em}
-.stats{display:flex;gap:18px;font-size:11px;color:var(--ink2);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.stats b{display:block;color:var(--ink);font-size:20px;font-weight:800;letter-spacing:-.01em;font-stretch:110%;text-transform:none;margin-top:1px}
+.brand small{display:block;font-weight:400;font-size:13px;color:#9aa3b8;margin-top:5px}
+.stats{display:flex;gap:22px;font-size:12px;color:#9aa3b8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:right}
+.stats b{display:block;color:var(--star);font-size:22px;letter-spacing:0;text-transform:none;margin-top:2px}
 /* dock */
 .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));z-index:500;display:flex;align-items:center;gap:10px;
-  background:var(--paper);border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.25);padding:8px;max-width:calc(100% - 24px)}
-.play{width:52px;height:52px;border-radius:10px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+  background:rgba(20,27,49,.92);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.4);padding:8px;max-width:calc(100% - 24px);color:var(--star)}
+.play{width:52px;height:52px;border-radius:12px;border:0;background:var(--star);color:var(--night);display:grid;place-items:center;cursor:pointer;flex:none}
 .play svg{width:22px;height:22px}
 .viz{display:flex;align-items:center;gap:3px;height:36px;width:120px;padding:0 4px}
-.viz i{flex:1;background:var(--ink);border-radius:2px;height:12%;transition:height .12s}
-.hint{font-size:13px;color:var(--ink2);font-weight:500;padding:0 6px;min-width:120px;max-width:200px;line-height:1.25}
-.guess{height:52px;border:0;border-radius:10px;padding:0 22px;background:var(--red);color:#fff;font:800 15px/1 var(--font);font-stretch:115%;letter-spacing:.02em;cursor:pointer;flex:none}
-.guess:disabled{background:#c9c6be;color:#f4f2ec;cursor:default}
+.viz i{flex:1;background:var(--me);border-radius:2px;height:12%;transition:height .12s}
+.hint{font-size:14px;color:#c3c9d6;padding:0 6px;min-width:120px;max-width:210px;line-height:1.25}
+.guess{height:52px;border:0;border-radius:12px;padding:0 24px;background:var(--ans);color:#fff;font:700 17px/1 var(--font);cursor:pointer;flex:none}
+.guess:disabled{background:#3a4258;color:#7e879c;cursor:default}
 /* card */
-.card{position:fixed;z-index:600;left:16px;top:84px;width:380px;max-height:calc(100% - 110px);overflow:auto;background:var(--paper);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.28);padding:20px 22px 22px;display:none}
+.card{position:fixed;z-index:600;left:18px;top:88px;width:380px;max-height:calc(100% - 116px);overflow:auto;background:var(--paper);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.45);padding:20px 22px 22px;display:none}
 .card.on{display:block}
 .band{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
-.band .lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
-.band .pts{font-size:34px;font-weight:800;font-stretch:115%;letter-spacing:-.02em}
-.place{font-size:30px;font-weight:800;font-stretch:120%;letter-spacing:-.02em;line-height:1.02}
-.country{font-size:14px;color:var(--ink2);font-weight:600;margin-top:3px}
-.track{margin:14px 0 0;font-size:15px;font-weight:700;line-height:1.3}
-.track span{font-weight:500;color:var(--ink2)}
-.note{font-size:14.5px;line-height:1.5;margin:10px 0 0}
-.yours{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink2);line-height:1.45}
+.band .lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.band .pts{font-size:38px;font-weight:700;line-height:1.1}
+.place{font-size:30px;font-weight:700;line-height:1.05}
+.country{font-size:16px;color:var(--ink2);margin-top:4px}
+.track{margin:14px 0 0;font-size:16px;font-weight:700;line-height:1.3}
+.track span{font-weight:400;color:var(--ink2)}
+.note{font-size:16px;line-height:1.5;margin:10px 0 0}
+.yours{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--ink2);line-height:1.5}
 .yours b{color:var(--ink)}
-.btn{display:inline-block;margin-top:16px;border:0;border-radius:10px;background:var(--ink);color:#fff;font:800 15px/1 var(--font);font-stretch:112%;padding:14px 20px;cursor:pointer;text-decoration:none}
+.btn{display:inline-block;margin-top:16px;border:0;border-radius:12px;background:var(--ink);color:#fff;font:700 16px/1 var(--font);padding:14px 20px;cursor:pointer;text-decoration:none}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);margin-left:8px}
-.src{display:block;margin-top:12px;font-size:12px;color:var(--ink2)}
+.src{display:block;margin-top:12px;font-size:13px;color:var(--ink2)}
 .src a{color:var(--ink2)}
-.big{font-size:56px;font-weight:800;font-stretch:120%;letter-spacing:-.03em;line-height:1}
+.big{font-size:60px;font-weight:700;line-height:1}
 .big small{font-size:22px;color:var(--ink2)}
 .rows{margin-top:14px;border-top:1px solid var(--line)}
-.rows div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.rows div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:16px}
 .rows div span:last-child{font-weight:700;white-space:nowrap}
 .rows small{color:var(--ink2)}
-.intro p{font-size:15px;line-height:1.5;margin:10px 0 0}
-.intro h1{font-size:34px;font-weight:800;font-stretch:122%;letter-spacing:-.025em;line-height:1;margin:0}
-.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
-.pin.me{background:var(--blue)}.pin.ans{background:var(--red)}
+.intro p{font-size:16px;line-height:1.5;margin:10px 0 0}
+.intro h1{font-size:34px;font-weight:700;line-height:1.05;margin:0}
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
 @media (max-width:700px){
-  .brand small{display:none}
-  .stats{gap:12px;padding:8px 12px}.stats b{font-size:17px}
-  .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62%;border-radius:16px 16px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}
+  .brand{font-size:19px}.brand small{display:none}
+  .stats{gap:14px}.stats b{font-size:19px}
+  .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62%;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}
   .place{font-size:26px}
   .viz{width:70px}.hint{display:none}
   body.revealed .dock,body.ended .dock{display:none}
@@ -97,7 +97,9 @@ html,body{margin:0;height:100%;background:#cfd6d9;color:var(--ink);font-family:v
 </style>
 </head>
 <body>
-<div id="map"></div>
+<canvas id="globe"></canvas>
+<div class="ctrls"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button class="info-btn" id="info" aria-label="Credits">i</button></div>
+<div class="credits" id="credits">Map: Natural Earth via world-atlas. Place names: Esri. Audio streams from YouTube.</div>
 <div class="top">
   <div class="brand"><a href="about.html">Where's It From?</a><small>Hear it. Pin it.</small></div>
   <div class="stats"><div>Round<b id="s-round">–/5</b></div><div>Miles off<b id="s-score">0</b></div></div>
@@ -110,7 +112,7 @@ html,body{margin:0;height:100%;background:#cfd6d9;color:var(--ink);font-family:v
 </div>
 <div class="card" id="card"></div>
 <div id="yt"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script>
 const $ = id => document.getElementById(id);
@@ -118,28 +120,153 @@ const ROUNDS = 5, LADDER = [1,1,2,2,3];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 const ICON = { play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg>', pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>' };
-let PLACES = [], player, ytReady = false, S = null, map, meMark = null, ansMark = null, line = null, playing = false;
+let PLACES = [], player, ytReady = false, S = null, playing = false;
 
-// ---------- map ----------
-map = L.map('map', { zoomControl:false, worldCopyJump:true, minZoom:2, zoomSnap:.5, maxBounds:[[-70,-260],[84,260]], maxBoundsViscosity:.7 }).setView([28, 10], 2.5);
-const Info = L.Control.extend({ options:{ position:'bottomright' }, onAdd(){
-  const b = L.DomUtil.create('button', 'info-btn'); b.textContent = 'i'; b.title = 'Map credits'; b.setAttribute('aria-label', 'Map credits');
-  L.DomEvent.disableClickPropagation(b); b.onclick = () => document.querySelector('.leaflet-control-attribution').classList.toggle('open'); return b; } });
-new Info().addTo(map);
-L.control.zoom({ position:'bottomright' }).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:8, maxZoom:12, attribution:'Esri, US National Park Service' }).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:13, maxZoom:12, opacity:.35, className:'relief' }).addTo(map);
-fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()).then(w => {
-  L.geoJSON(topojson.mesh(w, w.objects.countries, (a,b) => a !== b), { style:{ color:'#3b3f45', weight:.8, opacity:.55 }, interactive:false }).addTo(map);
+// ---------- globe ----------
+// An orthographic globe on a canvas. Drag to spin, wheel/pinch/buttons to zoom, tap to drop the pin.
+const cv = $('globe'), ctx = cv.getContext('2d');
+const proj = d3.geoOrthographic().clipAngle(90).precision(.3), gpath = d3.geoPath(proj, ctx);
+const GRAT = d3.geoGraticule10();
+let W = 0, H = 0, DPR = 1, WORLD = null, WORLD_LO = null, moving = false;
+// k = zoom (1 = whole globe fits the free area); cx/cy/avail = the free area not covered by the card
+const V = { rot:[-15, -22, 0], k:1, cx:0, cy:0, avail:300 };
+// what to draw on top: guess pin, answer pin, the arc between them, end-of-game pins
+const MARK = { me:null, ans:null, arc:false, ends:[] };
+function freeArea(){
+  const mobile = innerWidth < 700, card = $('card').classList.contains('on');
+  let x0 = 0, y0 = 70, x1 = W, y1 = H - 90;
+  if (card && mobile) y1 = H * .38; else if (card) { x0 = 410; y1 = H - 20; }
+  return { cx:(x0 + x1) / 2, cy:(y0 + y1) / 2, avail:Math.max(60, Math.min(x1 - x0, y1 - y0) / 2 - 12) };
+}
+function resize(){
+  DPR = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+  cv.width = W * DPR; cv.height = H * DPR;
+  if (!anim) Object.assign(V, freeArea());
+  draw();
+}
+addEventListener('resize', resize);
+const visible = ll => d3.geoDistance(ll, [-V.rot[0], -V.rot[1]]) < Math.PI / 2 - .01;
+function dot(ll, color, r){
+  if (!visible(ll)) return null;
+  const [x, y] = proj(ll);
+  ctx.beginPath(); ctx.arc(x, y, r + 6, 0, 2 * Math.PI); ctx.fillStyle = color + '40'; ctx.fill();
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fillStyle = color; ctx.fill();
+  ctx.lineWidth = 3; ctx.strokeStyle = '#fff'; ctx.stroke();
+  return [x, y];
+}
+function label(xy, text){
+  if (!xy) return;
+  ctx.font = '700 15px "Atkinson Hyperlegible", system-ui, sans-serif'; ctx.textBaseline = 'middle';
+  ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(10,15,30,.85)'; ctx.strokeText(text, xy[0] + 14, xy[1]);
+  ctx.fillStyle = '#fff'; ctx.fillText(text, xy[0] + 14, xy[1]);
+}
+function draw(){
+  const R = V.avail * V.k;
+  proj.rotate(V.rot).scale(R).translate([V.cx, V.cy]);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+  // atmosphere glow
+  const halo = ctx.createRadialGradient(V.cx, V.cy, R * .96, V.cx, V.cy, R * 1.14);
+  halo.addColorStop(0, 'rgba(90,160,255,.35)'); halo.addColorStop(1, 'rgba(90,160,255,0)');
+  ctx.fillStyle = halo; ctx.fillRect(0, 0, W, H);
+  // ocean, lit from the upper left
+  const sea = ctx.createRadialGradient(V.cx - R * .35, V.cy - R * .4, R * .1, V.cx, V.cy, R);
+  sea.addColorStop(0, '#2d5a8c'); sea.addColorStop(1, '#13294b');
+  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = sea; ctx.fill();
+  ctx.beginPath(); gpath(GRAT); ctx.lineWidth = .6; ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
+  const w = (moving && WORLD_LO && V.k < 4) ? WORLD_LO : WORLD;
+  if (w) {
+    ctx.beginPath(); gpath(w.land); ctx.fillStyle = '#efe6cf'; ctx.fill();
+    ctx.beginPath(); gpath(w.borders); ctx.lineWidth = .8; ctx.strokeStyle = 'rgba(70,58,36,.45)'; ctx.stroke();
+    ctx.beginPath(); gpath(w.land); ctx.lineWidth = .7; ctx.strokeStyle = 'rgba(70,58,36,.55)'; ctx.stroke();
+  }
+  // terminator-free shading: darken the limb a touch so it reads as a ball
+  const limb = ctx.createRadialGradient(V.cx, V.cy, R * .7, V.cx, V.cy, R);
+  limb.addColorStop(0, 'rgba(0,0,0,0)'); limb.addColorStop(1, 'rgba(0,10,30,.28)');
+  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = limb; ctx.fill();
+  if (MARK.arc && MARK.me && MARK.ans) {
+    ctx.beginPath(); gpath({ type:'LineString', coordinates:[MARK.me, MARK.ans] });
+    ctx.setLineDash([7, 6]); ctx.lineWidth = 2.5; ctx.strokeStyle = '#fff'; ctx.stroke(); ctx.setLineDash([]);
+  }
+  MARK.ends.forEach(e => label(dot(e.ll, '#ff5a36', 7), e.name));
+  if (MARK.me) dot(MARK.me, '#3ec5ff', 8);
+  if (MARK.ans) label(dot(MARK.ans, '#ff5a36', 8), MARK.ansName);
+}
+// ---- animation ----
+let anim = null;
+function flyTo(t, ms = 900){
+  const from = { rot:V.rot.slice(), k:V.k, cx:V.cx, cy:V.cy, avail:V.avail };
+  const to = Object.assign({}, from, freeArea(), t);
+  let dl = to.rot[0] - from.rot[0]; dl = ((dl + 540) % 360) - 180; to.rot = [from.rot[0] + dl, to.rot[1], 0];
+  const t0 = performance.now(); moving = true;
+  const step = now => {
+    const p = Math.min(1, (now - t0) / ms), e = d3.easeCubicInOut(p);
+    V.rot = [from.rot[0] + (to.rot[0] - from.rot[0]) * e, from.rot[1] + (to.rot[1] - from.rot[1]) * e, 0];
+    V.k = Math.exp(Math.log(from.k) + (Math.log(to.k) - Math.log(from.k)) * e);
+    ['cx', 'cy', 'avail'].forEach(f => V[f] = from[f] + (to[f] - from[f]) * e);
+    if (p < 1) anim = requestAnimationFrame(step); else { anim = null; moving = false; }
+    draw();
+  };
+  cancelAnimationFrame(anim); anim = requestAnimationFrame(step);
+}
+const stopAnim = () => { if (anim) { cancelAnimationFrame(anim); anim = null; } spin = false; };
+// centre on a set of points and zoom so they all fit
+function fit(pts, maxK = 12){
+  const v = pts.map(([lng, lat]) => { const l = lng * Math.PI / 180, f = lat * Math.PI / 180; return [Math.cos(f) * Math.cos(l), Math.cos(f) * Math.sin(l), Math.sin(f)]; });
+  const m = [0, 1, 2].map(i => v.reduce((a, x) => a + x[i], 0));
+  const c = [Math.atan2(m[1], m[0]) * 180 / Math.PI, Math.atan2(m[2], Math.hypot(m[0], m[1])) * 180 / Math.PI];
+  const ang = Math.max(...pts.map(p => d3.geoDistance(c, p)));
+  const k = ang > 1.3 ? 1 : Math.min(maxK, Math.max(1, .82 / Math.sin(Math.max(ang, .0005))));
+  flyTo({ rot:[-c[0], -c[1], 0], k });
+}
+// ---- input ----
+const PTR = new Map(); let drag = null;
+const KMAX = 60, clampK = k => Math.min(KMAX, Math.max(.9, k));
+cv.addEventListener('pointerdown', e => {
+  stopAnim(); cv.setPointerCapture(e.pointerId); PTR.set(e.pointerId, [e.clientX, e.clientY]);
+  if (PTR.size === 1) drag = { x:e.clientX, y:e.clientY, rot:V.rot.slice(), moved:false };
+  if (PTR.size === 2) { const [a, b] = [...PTR.values()]; drag = { pinch:Math.hypot(a[0] - b[0], a[1] - b[1]), k:V.k, moved:true }; }
 });
-const pin = cls => L.divIcon({ className:'', html:`<div class="pin ${cls}"></div>`, iconSize:[18,18], iconAnchor:[9,9] });
-map.on('click', e => {
+cv.addEventListener('pointermove', e => {
+  if (!PTR.has(e.pointerId) || !drag) return;
+  PTR.set(e.pointerId, [e.clientX, e.clientY]);
+  if (drag.pinch) { const [a, b] = [...PTR.values()]; V.k = clampK(drag.k * Math.hypot(a[0] - b[0], a[1] - b[1]) / drag.pinch); moving = true; draw(); return; }
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (!drag.moved && Math.hypot(dx, dy) < 5) return;
+  drag.moved = true; moving = true; cv.classList.add('drag');
+  const s = 57.3 / (V.avail * V.k);   // degrees per pixel, so the ground follows the finger
+  V.rot = [drag.rot[0] + dx * s, Math.max(-89, Math.min(89, drag.rot[1] - dy * s)), 0];
+  draw();
+});
+const end = e => {
+  if (!PTR.has(e.pointerId)) return;
+  PTR.delete(e.pointerId); cv.classList.remove('drag');
+  if (drag && !drag.moved && !drag.pinch && PTR.size === 0) pick(e.clientX, e.clientY);
+  if (PTR.size === 0) { drag = null; if (moving) { moving = false; draw(); } }
+};
+cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+let wheelT;
+cv.addEventListener('wheel', e => { e.preventDefault(); stopAnim(); V.k = clampK(V.k * Math.exp(-e.deltaY * .0016)); moving = true; draw();
+  clearTimeout(wheelT); wheelT = setTimeout(() => { moving = false; draw(); }, 150); }, { passive:false });
+$('zin').onclick = () => flyTo({ k:clampK(V.k * 2), cx:V.cx, cy:V.cy, avail:V.avail }, 350);
+$('zout').onclick = () => flyTo({ k:clampK(V.k / 2), cx:V.cx, cy:V.cy, avail:V.avail }, 350);
+$('info').onclick = () => $('credits').classList.toggle('open');
+function pick(x, y){
   if (!S || S.revealed || S.over) return;
-  S.guess = e.latlng;
-  if (meMark) meMark.setLatLng(e.latlng); else meMark = L.marker(e.latlng, { icon:pin('me') }).addTo(map);
+  if (Math.hypot(x - V.cx, y - V.cy) > V.avail * V.k) return;   // off the globe
+  const ll = proj.invert([x, y]); if (!ll) return;
+  S.guess = { lat:ll[1], lng:ll[0] }; MARK.me = ll; draw();
   $('guess').disabled = false;
   hint('Move the pin or hit Guess');
+}
+// slow spin behind the intro card
+let spin = true;
+(function idle(){ if (spin && !anim && !drag) { V.rot[0] += .06; draw(); } requestAnimationFrame(idle); })();
+Promise.all([fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()),
+             fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json())]).then(([hi, lo]) => {
+  const mk = w => ({ land:topojson.feature(w, w.objects.land), borders:topojson.mesh(w, w.objects.countries, (a, b) => a !== b) });
+  WORLD = mk(hi); WORLD_LO = mk(lo); draw();
 });
+resize();
 
 // ---------- audio ----------
 for (let i=0;i<14;i++) $('viz').appendChild(document.createElement('i'));
@@ -201,12 +328,12 @@ function startRound(){
   do { pick = drawClip(LADDER[S.r], S.used); tries++; } while (pick && S.countries.has(pick.place.c) && tries < 30);
   S.place = pick.place; S.clip = pick.clip; S.used.add(pick.place.p); S.countries.add(pick.place.c);
   Object.assign(S, { guess:null, revealed:false, loaded:false });
-  [meMark, ansMark, line].forEach(m => m && map.removeLayer(m)); meMark = ansMark = line = null;
+  Object.assign(MARK, { me:null, ans:null, arc:false, ends:[] }); spin = false;
   document.body.classList.remove('revealed'); $('card').classList.remove('on');
   $('guess').disabled = true; $('guess').textContent = 'Guess';
-  map.flyTo([28, 10], innerWidth < 700 ? 1.5 : 2.5, { duration:.6 });
+  flyTo({ k:1, rot:[V.rot[0], -20, 0] }, 700);
   stats(); setPlaying(false); load();
-  hint('Listen, then click the map');
+  hint('Listen, then spin the globe and tap where it’s from');
 }
 function km(a, b){
   const R = 6371, rad = x => x*Math.PI/180;
@@ -218,18 +345,14 @@ function km(a, b){
 const score = d => Math.round(d * 0.621371);
 $('guess').addEventListener('click', () => {
   if (!S || S.revealed || !S.guess) return;
-  const ans = L.latLng(S.place.lat, S.place.lng);
-  // compare against the nearest copy of the answer so guesses across the date line work
-  let g = S.guess; const wrap = g.lng - ans.lng; if (wrap > 180) g = L.latLng(g.lat, g.lng-360); if (wrap < -180) g = L.latLng(g.lat, g.lng+360);
+  const ans = { lat:S.place.lat, lng:S.place.lng }, g = S.guess;
   const d = km(g, ans), pts = score(d);
   S.results.push({ place:S.place, clip:S.clip, d, pts });
   S.revealed = true; document.body.classList.add('revealed');
-  ansMark = L.marker(ans, { icon:pin('ans') }).addTo(map);
-  line = L.polyline([g, ans], { color:'#16181b', weight:2, dashArray:'5 6' }).addTo(map);
-  const pad = innerWidth < 700 ? { paddingTopLeft:[30,80], paddingBottomRight:[30, innerHeight*.62] } : { paddingTopLeft:[420,90], paddingBottomRight:[60,110] };
-  if (d < 5) map.flyTo(ans, 8, { duration:.8 }); else map.flyToBounds(L.latLngBounds([g, ans]), { ...pad, maxZoom:9, duration:.8 });
+  MARK.ans = [ans.lng, ans.lat]; MARK.ansName = S.place.p; MARK.arc = true;
   $('guess').disabled = true; hint('Still playing. Now you know.');
   stats(); showReveal(d, pts, g);
+  fit([MARK.me, MARK.ans]);
 });
 function fmtMi(m){ return m.toLocaleString() + (m === 1 ? ' mile' : ' miles'); }
 function showReveal(d, pts, g){
@@ -254,9 +377,7 @@ function endGame(){
   player.pauseVideo(); S.over = true;
   document.body.classList.add('ended');
   const total = S.results.reduce((a,r)=>a+r.pts,0);
-  [meMark, ansMark, line].forEach(m => m && map.removeLayer(m)); meMark = ansMark = line = null;
-  S.endLayers = S.results.map(r => L.marker([r.place.lat, r.place.lng], { icon:pin('ans') }).addTo(map).bindTooltip(r.place.p));
-  map.flyToBounds(L.latLngBounds(S.results.map(r => [r.place.lat, r.place.lng])), innerWidth < 700 ? { paddingTopLeft:[30,80], paddingBottomRight:[30, innerHeight*.62], maxZoom:5 } : { paddingTopLeft:[420,90], paddingBottomRight:[60,60], maxZoom:5 });
+  Object.assign(MARK, { me:null, ans:null, arc:false, ends:S.results.map(r => ({ ll:[r.place.lng, r.place.lat], name:r.place.p })) });
   S.share = `I was ${fmtMi(total)} off on Where's It From?\n${S.results.map(r => r.pts < 20 ? '🎯' : r.pts < 300 ? '🟢' : r.pts < 1000 ? '🟡' : '⚪').join('')}\ntoddlburns.com/wheres-it-from`;
   $('card').innerHTML = `<div class="band"><div class="lab">Total miles off</div></div>
     <div class="big">${total.toLocaleString()}</div>
@@ -269,7 +390,8 @@ function endGame(){
   try { $('lbName').value = localStorage.getItem('wif-name') || ''; } catch (_) {}
   $('lbForm').onsubmit = submitScore; loadBoard();
   $('card').classList.add('on');
-  $('again').onclick = () => { S.endLayers.forEach(m => map.removeLayer(m)); newGame(); };
+  fit(MARK.ends.map(e => e.ll), 5);
+  $('again').onclick = () => newGame();
   $('share').onclick = async () => {
     try { if (navigator.share) { await navigator.share({ text:S.share }); return; } } catch(e) { return; }
     try { await navigator.clipboard.writeText(S.share); $('share').textContent = 'Copied'; } catch(e) {}
@@ -310,7 +432,7 @@ function intro(){
 intro();
 
 // ---------- boot ----------
-fetch('places.json?v=4').then(r => r.json()).then(d => { PLACES = d; ready(); });
+fetch('places.json?v=5').then(r => r.json()).then(d => { PLACES = d; ready(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', { width:200, height:200,
     playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
