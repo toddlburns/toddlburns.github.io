@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-/* Night-sky globe (not Accentuate's flat cream map): a real orthographic globe you spin, plain hyper-legible type. */
+/* Night-sky flat map (not Accentuate's cream map): equirectangular, wraps sideways, plain hyper-legible type. */
 :root{--night:#0a0f1e;--night2:#141b31;--ink:#131722;--ink2:#555c69;--paper:#fbf7ee;--line:#e6dfcf;--ans:#ff5a36;--me:#3ec5ff;--star:#f4efe2;--font:'Atkinson Hyperlegible',system-ui,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18213d 0%,var(--night) 70%);color:var(--ink);font-family:var(--font);overflow:hidden}
@@ -123,20 +123,26 @@ const ICON = { play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l
 let PLACES = [], player, ytReady = false, S = null, playing = false;
 
 // ---------- globe ----------
-// An orthographic globe on a canvas. Drag to spin, wheel/pinch/buttons to zoom, tap to drop the pin.
+// A flat (equirectangular) world map on a canvas that wraps sideways. Drag to pan, wheel/pinch/buttons to zoom, tap to drop the pin.
 const cv = $('globe'), ctx = cv.getContext('2d');
-const proj = d3.geoOrthographic().clipAngle(90).precision(.3), gpath = d3.geoPath(proj, ctx);
+const proj = d3.geoEquirectangular().precision(.3), gpath = d3.geoPath(proj, ctx);
 const GRAT = d3.geoGraticule10();
 let W = 0, H = 0, DPR = 1, WORLD = null, WORLD_LO = null, moving = false;
-// k = zoom (1 = whole globe fits the free area); cx/cy/avail = the free area not covered by the card
-const V = { rot:[-15, -22, 0], k:1, cx:0, cy:0, avail:300 };
+// k = zoom (1 = whole world fits the free area); rot = -[centre lng, centre lat]; cx/cy/fw/fh = the free area not covered by the card
+const V = { rot:[-15, -20, 0], k:1, cx:0, cy:0, fw:600, fh:300 };
+// scale at k = 1: whole world on wide screens; on tall phones fill the height and let it wrap sideways
+const baseOf = (fw, fh) => fw < fh * 1.2 ? fh / Math.PI : Math.min(fw / (2 * Math.PI), fh / Math.PI);
+const base = () => baseOf(V.fw, V.fh);
+const scl = () => base() * V.k;
+// keep the map from sliding off the top or bottom
+const clampLat = (lat, k = V.k) => { const s = base() * k, m = Math.max(0, 90 - V.fh / 2 / s * 57.2958); return Math.max(-m, Math.min(m, lat)); };
 // what to draw on top: guess pin, answer pin, the arc between them, end-of-game pins
 const MARK = { me:null, ans:null, arc:false, ends:[] };
 function freeArea(){
   const mobile = innerWidth < 700, card = $('card').classList.contains('on');
   let x0 = 0, y0 = 70, x1 = W, y1 = H - 90;
   if (card && mobile) y1 = H * .38; else if (card) { x0 = 410; y1 = H - 20; }
-  return { cx:(x0 + x1) / 2, cy:(y0 + y1) / 2, avail:Math.max(60, Math.min(x1 - x0, y1 - y0) / 2 - 12) };
+  return { cx:(x0 + x1) / 2, cy:(y0 + y1) / 2, fw:Math.max(120, x1 - x0 - 16), fh:Math.max(60, y1 - y0 - 16) };
 }
 function resize(){
   DPR = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
@@ -145,7 +151,7 @@ function resize(){
   draw();
 }
 addEventListener('resize', resize);
-const visible = ll => d3.geoDistance(ll, [-V.rot[0], -V.rot[1]]) < Math.PI / 2 - .01;
+const visible = ll => true;
 function dot(ll, color, r){
   if (!visible(ll)) return null;
   const [x, y] = proj(ll);
@@ -161,28 +167,18 @@ function label(xy, text){
   ctx.fillStyle = '#fff'; ctx.fillText(text, xy[0] + 14, xy[1]);
 }
 function draw(){
-  const R = V.avail * V.k;
-  proj.rotate(V.rot).scale(R).translate([V.cx, V.cy]);
+  const R = scl(), lat0 = clampLat(-V.rot[1]);
+  proj.rotate([V.rot[0], 0, 0]).scale(R).translate([V.cx, V.cy + R * lat0 / 57.2958]);
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
-  // atmosphere glow
-  const halo = ctx.createRadialGradient(V.cx, V.cy, R * .96, V.cx, V.cy, R * 1.14);
-  halo.addColorStop(0, 'rgba(90,160,255,.35)'); halo.addColorStop(1, 'rgba(90,160,255,0)');
-  ctx.fillStyle = halo; ctx.fillRect(0, 0, W, H);
-  // ocean, lit from the upper left
-  const sea = ctx.createRadialGradient(V.cx - R * .35, V.cy - R * .4, R * .1, V.cx, V.cy, R);
-  sea.addColorStop(0, '#2d5a8c'); sea.addColorStop(1, '#13294b');
-  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = sea; ctx.fill();
+  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = '#1d4170'; ctx.fill();
   ctx.beginPath(); gpath(GRAT); ctx.lineWidth = .6; ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
-  const w = (moving && WORLD_LO && V.k < 4) ? WORLD_LO : WORLD;
+  const w = (moving && WORLD_LO && V.k < 12) ? WORLD_LO : WORLD;
   if (w) {
     ctx.beginPath(); gpath(w.land); ctx.fillStyle = '#efe6cf'; ctx.fill();
     ctx.beginPath(); gpath(w.borders); ctx.lineWidth = .8; ctx.strokeStyle = 'rgba(70,58,36,.45)'; ctx.stroke();
     ctx.beginPath(); gpath(w.land); ctx.lineWidth = .7; ctx.strokeStyle = 'rgba(70,58,36,.55)'; ctx.stroke();
   }
-  // terminator-free shading: darken the limb a touch so it reads as a ball
-  const limb = ctx.createRadialGradient(V.cx, V.cy, R * .7, V.cx, V.cy, R);
-  limb.addColorStop(0, 'rgba(0,0,0,0)'); limb.addColorStop(1, 'rgba(0,10,30,.28)');
-  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = limb; ctx.fill();
+  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(140,190,255,.35)'; ctx.stroke();
   if (MARK.arc && MARK.me && MARK.ans) {
     ctx.beginPath(); gpath({ type:'LineString', coordinates:[MARK.me, MARK.ans] });
     ctx.setLineDash([7, 6]); ctx.lineWidth = 2.5; ctx.strokeStyle = '#fff'; ctx.stroke(); ctx.setLineDash([]);
@@ -194,7 +190,7 @@ function draw(){
 // ---- animation ----
 let anim = null;
 function flyTo(t, ms = 900){
-  const from = { rot:V.rot.slice(), k:V.k, cx:V.cx, cy:V.cy, avail:V.avail };
+  const from = { rot:V.rot.slice(), k:V.k, cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh };
   const to = Object.assign({}, from, freeArea(), t);
   let dl = to.rot[0] - from.rot[0]; dl = ((dl + 540) % 360) - 180; to.rot = [from.rot[0] + dl, to.rot[1], 0];
   const t0 = performance.now(); moving = true;
@@ -202,7 +198,7 @@ function flyTo(t, ms = 900){
     const p = Math.min(1, (now - t0) / ms), e = d3.easeCubicInOut(p);
     V.rot = [from.rot[0] + (to.rot[0] - from.rot[0]) * e, from.rot[1] + (to.rot[1] - from.rot[1]) * e, 0];
     V.k = Math.exp(Math.log(from.k) + (Math.log(to.k) - Math.log(from.k)) * e);
-    ['cx', 'cy', 'avail'].forEach(f => V[f] = from[f] + (to[f] - from[f]) * e);
+    ['cx', 'cy', 'fw', 'fh'].forEach(f => V[f] = from[f] + (to[f] - from[f]) * e);
     if (p < 1) anim = requestAnimationFrame(step); else { anim = null; moving = false; }
     draw();
   };
@@ -210,17 +206,20 @@ function flyTo(t, ms = 900){
 }
 const stopAnim = () => { if (anim) { cancelAnimationFrame(anim); anim = null; } spin = false; };
 // centre on a set of points and zoom so they all fit
-function fit(pts, maxK = 7){
+function fit(pts, maxK = 20){
   const v = pts.map(([lng, lat]) => { const l = lng * Math.PI / 180, f = lat * Math.PI / 180; return [Math.cos(f) * Math.cos(l), Math.cos(f) * Math.sin(l), Math.sin(f)]; });
   const m = [0, 1, 2].map(i => v.reduce((a, x) => a + x[i], 0));
   const c = [Math.atan2(m[1], m[0]) * 180 / Math.PI, Math.atan2(m[2], Math.hypot(m[0], m[1])) * 180 / Math.PI];
-  const ang = Math.max(...pts.map(p => d3.geoDistance(c, p)));
-  const k = ang > 1.3 ? 1 : Math.min(maxK, Math.max(1, .5 / Math.sin(Math.max(ang, .0005))));
+  const lat = pts.map(p => p[1]), c1 = (Math.max(...lat) + Math.min(...lat)) / 2;
+  const dlng = Math.max(2, ...pts.map(p => Math.abs(((p[0] - c[0] + 540) % 360) - 180))), dlat = Math.max(2, ...lat.map(l => Math.abs(l - c1)));
+  const f = freeArea(), b0 = baseOf(f.fw, f.fh);
+  const need = Math.min(f.fw * .38 / (dlng / 57.2958), f.fh * .38 / (dlat / 57.2958));
+  const k = Math.min(maxK, Math.max(1, need / b0)); c[1] = c1;
   flyTo({ rot:[-c[0], -c[1], 0], k });
 }
 // ---- input ----
 const PTR = new Map(); let drag = null;
-const KMAX = 60, clampK = k => Math.min(KMAX, Math.max(.9, k));
+const KMAX = 200, clampK = k => Math.min(KMAX, Math.max(1, k));
 cv.addEventListener('pointerdown', e => {
   stopAnim(); cv.setPointerCapture(e.pointerId); PTR.set(e.pointerId, [e.clientX, e.clientY]);
   if (PTR.size === 1) drag = { x:e.clientX, y:e.clientY, rot:V.rot.slice(), moved:false };
@@ -229,12 +228,12 @@ cv.addEventListener('pointerdown', e => {
 cv.addEventListener('pointermove', e => {
   if (!PTR.has(e.pointerId) || !drag) return;
   PTR.set(e.pointerId, [e.clientX, e.clientY]);
-  if (drag.pinch) { const [a, b] = [...PTR.values()]; V.k = clampK(drag.k * Math.hypot(a[0] - b[0], a[1] - b[1]) / drag.pinch); moving = true; draw(); return; }
+  if (drag.pinch) { const [a, b] = [...PTR.values()]; V.k = clampK(drag.k * Math.hypot(a[0] - b[0], a[1] - b[1]) / drag.pinch); V.rot[1] = -clampLat(-V.rot[1]); moving = true; draw(); return; }
   const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
   if (!drag.moved && Math.hypot(dx, dy) < 5) return;
   drag.moved = true; moving = true; cv.classList.add('drag');
-  const s = 57.3 / (V.avail * V.k);   // degrees per pixel, so the ground follows the finger
-  V.rot = [drag.rot[0] + dx * s, Math.max(-89, Math.min(89, drag.rot[1] - dy * s)), 0];
+  const s = 57.2958 / scl();   // degrees per pixel, so the ground follows the finger
+  V.rot = [drag.rot[0] + dx * s, -clampLat(-(drag.rot[1] - dy * s)), 0];
   draw();
 });
 const end = e => {
@@ -245,20 +244,19 @@ const end = e => {
 };
 cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
 let wheelT;
-cv.addEventListener('wheel', e => { e.preventDefault(); stopAnim(); V.k = clampK(V.k * Math.exp(-e.deltaY * .0016)); moving = true; draw();
+cv.addEventListener('wheel', e => { e.preventDefault(); stopAnim(); V.k = clampK(V.k * Math.exp(-e.deltaY * .0016)); V.rot[1] = -clampLat(-V.rot[1]); moving = true; draw();
   clearTimeout(wheelT); wheelT = setTimeout(() => { moving = false; draw(); }, 150); }, { passive:false });
-$('zin').onclick = () => flyTo({ k:clampK(V.k * 2), cx:V.cx, cy:V.cy, avail:V.avail }, 350);
-$('zout').onclick = () => flyTo({ k:clampK(V.k / 2), cx:V.cx, cy:V.cy, avail:V.avail }, 350);
+$('zin').onclick = () => flyTo({ k:clampK(V.k * 2), cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh }, 350);
+$('zout').onclick = () => { const k = clampK(V.k / 2); flyTo({ k, rot:[V.rot[0], -clampLat(-V.rot[1], k), 0], cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh }, 350); };
 $('info').onclick = () => $('credits').classList.toggle('open');
 function pick(x, y){
   if (!S || S.revealed || S.over) return;
-  if (Math.hypot(x - V.cx, y - V.cy) > V.avail * V.k) return;   // off the globe
-  const ll = proj.invert([x, y]); if (!ll) return;
+  const ll = proj.invert([x, y]); if (!ll || Math.abs(ll[1]) > 90) return;   // off the map
   S.guess = { lat:ll[1], lng:ll[0] }; MARK.me = ll; draw();
   $('guess').disabled = false;
   hint('Move the pin or hit Guess');
 }
-// slow spin behind the intro card
+// slow drift behind the intro card
 let spin = true;
 (function idle(){ if (spin && !anim && !drag) { V.rot[0] += .06; draw(); } requestAnimationFrame(idle); })();
 Promise.all([fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()),
@@ -331,9 +329,9 @@ function startRound(){
   Object.assign(MARK, { me:null, ans:null, arc:false, ends:[] }); spin = false;
   document.body.classList.remove('revealed'); $('card').classList.remove('on');
   $('guess').disabled = true; $('guess').textContent = 'Guess';
-  flyTo({ k:1, rot:[V.rot[0], -20, 0] }, 700);
+  flyTo({ k:1, rot:[V.rot[0], 0, 0] }, 700);
   stats(); setPlaying(false); load();
-  hint('Listen, then spin the globe and tap where it’s from');
+  hint('Listen, then drag the map and tap where it’s from');
 }
 function km(a, b){
   const R = 6371, rad = x => x*Math.PI/180;
