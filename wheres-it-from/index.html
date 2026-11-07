@@ -21,7 +21,25 @@
 html,body{margin:0;height:100%;background:#cfd6d9;color:var(--ink);font-family:var(--font)}
 #map{position:fixed;inset:0;background:#b9c7cc}
 .leaflet-container{font-family:var(--font)}
-.leaflet-control-attribution{font-size:9px}
+/* map credits hide behind a small ⓘ button (Todd) */
+.leaflet-control-attribution{display:none;font-size:10px;max-width:70vw}
+.leaflet-control-attribution.open{display:block}
+.info-btn{width:24px;height:24px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:var(--ink2);font:700 13px/24px Georgia,serif;font-style:italic;cursor:pointer;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+@media (max-width:700px){body.revealed .leaflet-bottom,body.ended .leaflet-bottom{display:none}}
+/* leaderboard */
+.board{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+.board h3{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
+.board form{display:flex;gap:8px}
+.board input{flex:1;min-width:0;font:15px var(--font);height:42px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.board form .btn{margin:0;height:42px;padding:0 14px;font-size:14px}
+.lbmsg{font-size:13px;color:var(--ink2);margin:8px 0 0}.lbmsg:empty{display:none}
+.board ol{list-style:none;margin:10px 0 0;padding:0;counter-reset:lb}
+.board li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px;counter-increment:lb}
+.board li:last-child{border-bottom:0}
+.board li::before{content:counter(lb);width:2ch;color:var(--ink2);font-weight:700}
+.board li.m::before{content:''}
+.board li span{flex:1}.board li b{font-weight:700;white-space:nowrap}
+.board li.me{color:var(--red);font-weight:700}
 /* top bar */
 .top{position:fixed;top:calc(12px + env(safe-area-inset-top));left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:500}
 .brand,.stats{pointer-events:auto;background:var(--paper);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.18);padding:9px 14px}
@@ -104,6 +122,10 @@ let PLACES = [], player, ytReady = false, S = null, map, meMark = null, ansMark 
 
 // ---------- map ----------
 map = L.map('map', { zoomControl:false, worldCopyJump:true, minZoom:2, zoomSnap:.5, maxBounds:[[-70,-260],[84,260]], maxBoundsViscosity:.7 }).setView([28, 10], 2.5);
+const Info = L.Control.extend({ options:{ position:'bottomright' }, onAdd(){
+  const b = L.DomUtil.create('button', 'info-btn'); b.textContent = 'i'; b.title = 'Map credits'; b.setAttribute('aria-label', 'Map credits');
+  L.DomEvent.disableClickPropagation(b); b.onclick = () => document.querySelector('.leaflet-control-attribution').classList.toggle('open'); return b; } });
+new Info().addTo(map);
 L.control.zoom({ position:'bottomright' }).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:8, maxZoom:12, attribution:'Esri, US National Park Service' }).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', { maxNativeZoom:13, maxZoom:12, opacity:.35, className:'relief' }).addTo(map);
@@ -239,7 +261,13 @@ function endGame(){
   $('card').innerHTML = `<div class="band"><div class="lab">Total miles off</div></div>
     <div class="big">${total.toLocaleString()}</div>
     <div class="rows">${S.results.map(r => `<div><span>${esc(r.place.p)} <small>${esc(r.place.c)}</small></span><span>${r.pts.toLocaleString()}</span></div>`).join('')}</div>
-    <button class="btn" id="again">Play again</button><button class="btn ghost" id="share">Share</button>`;
+    <button class="btn" id="again">Play again</button><button class="btn ghost" id="share">Share</button>
+    <div class="board"><h3>All-time leaderboard · fewest miles</h3>
+      <form id="lbForm"><input id="lbName" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name"><button class="btn" id="lbBtn">Add my score</button></form>
+      <p class="lbmsg" id="lbMsg"></p><ol id="lbList"><li class="m"><span>Loading…</span></li></ol></div>`;
+  S.total = total; S.submitted = false; myEntry = null;
+  try { $('lbName').value = localStorage.getItem('wif-name') || ''; } catch (_) {}
+  $('lbForm').onsubmit = submitScore; loadBoard();
   $('card').classList.add('on');
   $('again').onclick = () => { S.endLayers.forEach(m => map.removeLayer(m)); newGame(); };
   $('share').onclick = async () => {
@@ -247,6 +275,30 @@ function endGame(){
     try { await navigator.clipboard.writeText(S.share); $('share').textContent = 'Copied'; } catch(e) {}
   };
   stats(); $('s-round').textContent = 'Done';
+}
+/* all-time leaderboard: shares Accentuate's Cloudflare Worker + D1, on the /wif/ route (table scores_wif) */
+const LB = 'https://accentuate-leaderboard.todd-burns.workers.dev/wif';
+let myEntry = null;
+async function loadBoard(){
+  try {
+    const { top, total } = await (await fetch(LB + '/top?n=10')).json();
+    $('lbList').innerHTML = top.length ? top.map(r => `<li class="${myEntry && r.name === myEntry.name && r.score === myEntry.score ? 'me' : ''}"><span>${esc(r.name)}</span><b>${r.score.toLocaleString()} mi</b></li>`).join('') : '<li class="m"><span>No scores yet. Be the first.</span></li>';
+    if (myEntry?.rank) $('lbMsg').textContent = `You're #${myEntry.rank} of ${total.toLocaleString()} all time.`;
+  } catch (e) { $('lbList').innerHTML = '<li class="m"><span>The leaderboard is unreachable right now.</span></li>'; }
+}
+async function submitScore(e){
+  e.preventDefault();
+  const name = $('lbName').value.trim();
+  if (!name || S.submitted) return;
+  $('lbBtn').disabled = true; $('lbMsg').textContent = 'Saving…';
+  try { localStorage.setItem('wif-name', name); } catch (_) {}
+  try {
+    const r = await fetch(LB + '/score', { method:'POST', headers:{ 'content-type':'application/json' },
+      body: JSON.stringify({ name, score:S.total, max:62500, rounds:S.results.map(r => [r.place.p, r.clip.id, r.pts]) }) });
+    const d = await r.json();
+    if (!r.ok) { $('lbMsg').textContent = d.error && d.error.length > 8 ? d.error : 'That score could not be saved.'; $('lbBtn').disabled = false; return; }
+    S.submitted = true; myEntry = { name, score:S.total, rank:d.rank }; $('lbForm').hidden = true; loadBoard();
+  } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 }
 function intro(){
   $('card').innerHTML = `<div class="intro"><h1>Where's It From?</h1>
