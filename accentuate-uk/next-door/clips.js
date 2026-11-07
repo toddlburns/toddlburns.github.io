@@ -571,5 +571,137 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Hemlock Stone and The Three Stones Project",
   "text": "how the stone itself came into being is of dispute and there are uh three possible theories one that it is a natural object so it's a natural geological feature formed by erosion and what is called di"
+ },
+ {
+  "key": "gApLw1pzDjg@414",
+  "id": "gApLw1pzDjg",
+  "start": 414,
+  "end": 434,
+  "place": "sunderland",
+  "label": "Sunderland",
+  "where": "",
+  "title": "Reaction to surprise Sunderland's surprise CEO announcement and what it might mean - #onthewhistle",
+  "text": "i think a lot of good things have happened especially on the pitch but off it as well and i think some really good things have happened during the club's return to the premier league there are quite a"
+ },
+ {
+  "key": "bBqel5XXBOU@69",
+  "id": "bBqel5XXBOU",
+  "start": 69,
+  "end": 89,
+  "place": "sunderland",
+  "label": "Sunderland",
+  "where": "",
+  "title": "Sunderland 2-2 Arsenal: WOW! What a point! James Copley and Phil Smith react at the Stadium of Light",
+  "text": "the course of 90 minutes i think we just about deserved it i thought the first half we were excellent without creating a lot but really limited arsenal yeah they had a spell in the second half and lik"
+ },
+ {
+  "key": "dYwl9aGYI2A@115",
+  "id": "dYwl9aGYI2A",
+  "start": 115,
+  "end": 135,
+  "place": "newcastle",
+  "label": "Newcastle",
+  "where": "",
+  "title": "We Asked Newcastle About Keir Starmer's Resignation",
+  "text": "&gt;&gt; i just feel that um there's there's too many quick changes being made we've had this for the from the tories for so long and um while some i'm very much a labour man myself um i don't feel i "
+ },
+ {
+  "key": "Ik4GdRacS_o@48",
+  "id": "Ik4GdRacS_o",
+  "start": 48,
+  "end": 68,
+  "place": "newcastle",
+  "label": "Newcastle",
+  "where": "",
+  "title": "Newcastle United fans react to Alexander Isak leave",
+  "text": "one i wish him all the best i hope i'm not a nasty person wish him all the best but i hope he succeeds in what he does i would like to have kept him make him rot just for the for football cuz players "
+ },
+ {
+  "key": "pK81rczzKak@116",
+  "id": "pK81rczzKak",
+  "start": 116,
+  "end": 136,
+  "place": "newcastle",
+  "label": "Newcastle",
+  "where": "",
+  "title": "Newcastle United fans react following Isak statement",
+  "text": "mind who he is in terms of the goals he scores etc i just wish now that uh liverpool had come back with an offer what the club said has been they've all been singing off the same him same him sheet um"
+ },
+ {
+  "key": "HTC9h7W2uj4@289",
+  "id": "HTC9h7W2uj4",
+  "start": 289,
+  "end": 309,
+  "place": "derby",
+  "label": "Derby",
+  "where": "",
+  "title": "Derby Improved | Did Zetterstrom Just Save Someones Job?",
+  "text": "second half as you say we simply slowed down as we usually do and the red card didn't do us any favors at all and i just thought we were going to lose but zetterstrom good for him made some incredible"
+ },
+ {
+  "key": "WD0j4Ugf1vE@267",
+  "id": "WD0j4Ugf1vE",
+  "start": 267,
+  "end": 287,
+  "place": "derby",
+  "label": "Derby",
+  "where": "",
+  "title": "How Worrying Is Derby's Lack Of Depth?",
+  "text": "over the weekend we was 2-2 and he brings on n'gandu when we need a goal i know johnson's on a yellow card and we can't really afford to lose him even though he didn't have a good game at all but you'"
+ },
+ {
+  "key": "h7r_mDzP5LY@116",
+  "id": "h7r_mDzP5LY",
+  "start": 116,
+  "end": 136,
+  "place": "derby",
+  "label": "Derby",
+  "where": "",
+  "title": "Is This Season Now Done For Derby?",
+  "text": "yeah it's a it's a really funny one because like you say from when we was like bound for relegation eustace comes in saves us moves up and then we've gone from this season now to playoff contenders it"
+ },
+ {
+  "key": "gwGhwIEDZxU@153",
+  "id": "gwGhwIEDZxU",
+  "start": 153,
+  "end": 173,
+  "place": "derby",
+  "label": "Derby",
+  "where": "",
+  "title": "Is Matt Clarke  Now The First Name on The Team Sheet for Derby?",
+  "text": "it was a bit of a mad one cuz i i took a friend yesterday with me cuz i thought we'd absolutely demolish sheffield wednesday and i i must have jinxed us cuz i said if we don't score more than three th"
+ },
+ {
+  "key": "TTVkXKOV7rY@45",
+  "id": "TTVkXKOV7rY",
+  "start": 45,
+  "end": 65,
+  "place": "nottingham",
+  "label": "Nottingham",
+  "where": "",
+  "title": "We Always Beat Brentford! Bench Time For Ndoye & Co! | Brentford Vs Nottingham Forest Match Preview",
+  "text": "go and finish their chances coming up we're going to go through the game we're going to go through my thoughts the team sheet the usual stuff on this video so make sure you've liked make sure you've s"
+ },
+ {
+  "key": "tA7SPNdjp1E@172",
+  "id": "tA7SPNdjp1E",
+  "start": 172,
+  "end": 192,
+  "place": "nottingham",
+  "label": "Nottingham",
+  "where": "",
+  "title": "Wasted Chances & Leaky Defence! Are We Worse Than Spurs? Palace 3-1 Nottingham Forest Reaction",
+  "text": "their goal and you've got to say one of the reasons those defenders are panicking is cuz the guy behind them he's never commanding that box he never comes out he's never authoritative he's anchored to"
+ },
+ {
+  "key": "zu0AYH0_vE4@308",
+  "id": "zu0AYH0_vE4",
+  "start": 308,
+  "end": 328,
+  "place": "coventry",
+  "label": "Coventry",
+  "where": "",
+  "title": "EVERTON v COVENTRY | Live post-match reaction",
+  "text": "the way they are playing with personality and the progression since the first few weeks when we went to arsenal and it was like ah this is the premier league now we go and play more like a premier lea"
  }
 ];
