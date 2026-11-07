@@ -215,7 +215,7 @@ function showReveal(d, pts, g){
   const p = S.place, c = S.clip, last = S.r === ROUNDS-1, total = S.results.reduce((a,r)=>a+r.pts,0);
   $('card').innerHTML = `<div class="band"><div><div class="lab">Points · round ${S.r+1}</div><div class="pts">${pts.toLocaleString()}</div></div><div class="verdict">${verdict(pts)}</div></div>
     <div class="place">${esc(p.p)}</div><div class="country">${esc(p.c)}</div>
-    <div class="track">${esc(c.a)} — ${esc(c.t)} <span>(${c.y})</span></div>
+    <div class="track">${esc(c.a)} — ${esc(c.t)} ${c.y ? `<span>(${c.y})</span>` : ''}</div>
     <p class="note">${esc(p.note)}</p>
     <div class="yours">Your guess: <b id="where">…</b> · ${fmtKm(d)} away<br>Total: <b>${total.toLocaleString()}</b> / ${(MAX*(S.r+1)).toLocaleString()}</div>
     <button class="btn" id="next">${last ? 'See your score' : 'Next round'}</button>
@@ -259,7 +259,7 @@ function intro(){
 intro();
 
 // ---------- boot ----------
-fetch('places.json?v=2').then(r => r.json()).then(d => { PLACES = d; ready(); });
+fetch('places.json?v=3').then(r => r.json()).then(d => { PLACES = d; ready(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', { width:200, height:200,
     playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
