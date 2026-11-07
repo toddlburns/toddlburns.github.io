@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Next Door</title>
+<meta name="description" content="Two places a few miles apart. One local voice. Which one is it?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<style>
+/* Next Door: Accentuate UK's neighbour mode. Same palette and type as the map game, no map: hear a voice, pick one of two nearby places. */
+:root{
+  --paper:#fbf9f4; --ink:#13213c; --muted:#5c6478; --rule:#e3e0d8; --accent:#6a2bd9; --accent-ink:#fff;
+  --right:#1f8a4c; --wrong:#c2372b; --font:"Archivo",system-ui,-apple-system,sans-serif; --bg:#f3f0e8;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#161a2e; --ink:#f1f0ec; --muted:#9da3b8; --rule:#2a3050; --accent:#a77bff; --accent-ink:#161a2e;
+  --right:#4cc27f; --wrong:#ff7a6b; --bg:#0e1122; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#161a2e; --ink:#f1f0ec; --muted:#9da3b8; --rule:#2a3050; --accent:#a77bff; --accent-ink:#161a2e;
+  --right:#4cc27f; --wrong:#ff7a6b; --bg:#0e1122; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font:17px/1.45 var(--font);font-variant-numeric:tabular-nums;
+  display:flex;flex-direction:column;align-items:center;padding:calc(16px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom))}
+a{color:inherit}
+button{font:700 17px var(--font);border-radius:12px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:14px 22px;cursor:pointer;min-height:52px}
+button.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+button:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+header{width:100%;max-width:560px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+header h1{font:800 26px/1 var(--font);font-stretch:112%;margin:0;letter-spacing:-.01em}
+header h1 small{display:block;font:600 13px var(--font);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.stats{text-align:right;font:600 12px var(--font);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.stats b{display:block;font:800 22px var(--font);color:var(--ink);letter-spacing:0}
+.card{width:100%;max-width:560px;background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:24px 20px}
+.lede{margin:0 0 18px;color:var(--muted)}
+.play{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.play button{width:72px;height:72px;border-radius:50%;padding:0;display:grid;place-items:center;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.play svg{width:28px;height:28px}
+.play .bar{flex:1;height:6px;border-radius:3px;background:var(--rule);overflow:hidden}
+.play .bar i{display:block;height:100%;width:0;background:var(--accent)}
+.q{font:700 15px var(--font);color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin:0 0 10px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choices button{font-size:19px;padding:18px 10px;min-height:76px;background:transparent;color:var(--ink);border:2px solid var(--ink);line-height:1.15}
+.choices button.right{background:var(--right);border-color:var(--right);color:#fff}
+.choices button.wrong{background:var(--wrong);border-color:var(--wrong);color:#fff}
+.verdict{margin:18px 0 0;font:800 24px/1.2 var(--font)}
+.verdict.ok{color:var(--right)} .verdict.no{color:var(--wrong)}
+.src{margin:6px 0 16px;color:var(--muted);font-size:15px}
+.end h2{font:800 56px/1 var(--font);margin:0 0 6px}
+.end p{margin:0 0 18px;color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.foot{max-width:560px;width:100%;margin-top:16px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between}
+#yt{position:fixed;left:-9999px;top:0;width:320px;height:180px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Next Door<small>Accentuate UK</small></h1>
+  <div class="stats">Round<b id="round">–/10</b></div>
+  <div class="stats">Right<b id="score">0</b></div>
+</header>
+
+<main class="card">
+  <section id="intro">
+    <p class="lede">Two places a few miles apart. One local voice. Birmingham or the Black Country? Sunderland or Newcastle? East London or West? Ten rounds.</p>
+    <button id="start" disabled>Loading…</button>
+  </section>
+
+  <section id="game" hidden>
+    <div class="play"><button id="pp" aria-label="Play"></button><div class="bar"><i id="prog"></i></div></div>
+    <p class="q">Where is this voice from?</p>
+    <div class="choices"><button id="c0"></button><button id="c1"></button></div>
+    <div id="after" hidden>
+      <p class="verdict" id="verdict"></p>
+      <p class="src" id="src"></p>
+      <button id="next">Next</button>
+    </div>
+  </section>
+
+  <section id="end" class="end" hidden>
+    <h2 id="final"></h2>
+    <p id="finalNote"></p>
+    <div class="row"><button id="again">Play again</button><button class="ghost" id="share">Copy result</button></div>
+  </section>
+</main>
+<div class="foot"><a href="../">Play the map game</a><span id="msg"></span></div>
+<div id="yt"><div id="ytp"></div></div>
+
+<script src="clips.js?v=1"></script>
+<script>
+const $ = id => document.getElementById(id);
+const ICON = { play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg>', pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>' };
+// Which towns count as each other's neighbours. A round plays a clip from one town and offers one of its neighbours as the other choice.
+const NEAR = {
+  birmingham:['wolverhampton','coventry'], wolverhampton:['birmingham','stoke'], coventry:['birmingham'],
+  east_london:['west_london'], west_london:['east_london'],
+  sunderland:['newcastle'], newcastle:['sunderland'],
+  derby:['nottingham','stoke'], nottingham:['derby'], stoke:['derby','wolverhampton'],
+  hull:['sunderland'], ipswich:['east_london'], plymouth:[],
+};
+const ROUNDS = 10;
+const CL = (window.NEXTDOOR || []).filter(c => (NEAR[c.place] || []).some(n => (window.NEXTDOOR || []).some(d => d.place === n)));
+const NAME = Object.fromEntries((window.NEXTDOOR || []).map(c => [c.place, c.label]));
+let player, ready = false, S, timer;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player('ytp', { playerVars:{ controls:0, disablekb:1, rel:0, playsinline:1, iv_load_policy:3 },
+    events:{ onReady:() => { ready = true; $('start').disabled = false; $('start').textContent = 'Start'; },
+             onStateChange:e => { setPP(); if (e.data === YT.PlayerState.ENDED) setPP(); } } });
+};
+const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s);
+
+function playing(){ return ready && player.getPlayerState && player.getPlayerState() === YT.PlayerState.PLAYING; }
+function setPP(){ $('pp').innerHTML = playing() ? ICON.pause : ICON.play; $('pp').setAttribute('aria-label', playing() ? 'Pause' : 'Play'); }
+function tick(){
+  const c = S && S.clip; if (!c || !ready) return;
+  const t = player.getCurrentTime ? player.getCurrentTime() : 0;
+  $('prog').style.width = Math.max(0, Math.min(100, (t - c.start) / (c.end - c.start) * 100)) + '%';
+  if (playing() && t >= c.end - .2) player.pauseVideo();
+}
+function newGame(){
+  // spread rounds across towns: shuffle, then take one clip per town before repeating any
+  const by = {}; shuffle(CL).forEach(c => (by[c.place] = by[c.place] || []).push(c));
+  const order = []; let more = true;
+  while (more && order.length < ROUNDS) { more = false; shuffle(Object.keys(by)).forEach(k => { if (by[k].length && order.length < ROUNDS) { order.push(by[k].pop()); more = true; } }); }
+  S = { order, i:-1, right:0, log:[] };
+  $('intro').hidden = true; $('end').hidden = true; $('game').hidden = false;
+  next();
+}
+function next(){
+  S.i++; if (S.i >= S.order.length) return end();
+  const c = S.clip = S.order[S.i];
+  const others = (NEAR[c.place] || []).filter(n => NAME[n]);
+  const other = others[Math.floor(Math.random() * others.length)];
+  S.opts = shuffle([c.place, other]);
+  [0, 1].forEach(k => { const b = $('c' + k); b.textContent = NAME[S.opts[k]]; b.className = ''; b.disabled = false; b.onclick = () => choose(k); });
+  $('after').hidden = true; $('round').textContent = `${S.i + 1}/${S.order.length}`; $('score').textContent = S.right;
+  $('prog').style.width = '0';
+  player.loadVideoById({ videoId:c.id, startSeconds:c.start, endSeconds:c.end }); player.unMute(); player.setVolume(c.vol || 100);
+  clearInterval(timer); timer = setInterval(tick, 100);
+}
+function choose(k){
+  const c = S.clip, ok = S.opts[k] === c.place;
+  if (ok) S.right++;
+  S.log.push(ok);
+  [0, 1].forEach(j => { const b = $('c' + j); b.disabled = true; if (S.opts[j] === c.place) b.classList.add('right'); else if (j === k) b.classList.add('wrong'); });
+  $('verdict').textContent = ok ? `Yes, ${c.label}.` : `No, ${c.label}.`;
+  $('verdict').className = 'verdict ' + (ok ? 'ok' : 'no');
+  $('src').innerHTML = `${c.where ? c.where + '. ' : ''}<a href="https://youtu.be/${c.id}?t=${c.start}" target="_blank" rel="noopener">${c.title ? c.title.replace(/[<>&]/g, '') : 'Source'}</a>`;
+  $('score').textContent = S.right; $('after').hidden = false; $('next').textContent = S.i + 1 >= S.order.length ? 'See score' : 'Next';
+  $('next').focus();
+}
+function end(){
+  if (ready) player.pauseVideo(); clearInterval(timer);
+  $('game').hidden = true; $('end').hidden = false;
+  $('final').textContent = `${S.right}/${S.order.length}`;
+  $('finalNote').textContent = S.right >= 9 ? 'You can hear the next town over.' : S.right >= 7 ? 'A good ear.' : S.right >= 5 ? 'Better than a coin toss.' : 'Harder than it sounds.';
+}
+$('pp').onclick = () => { if (!ready || !S) return; if (playing()) player.pauseVideo(); else { if (player.getCurrentTime() >= S.clip.end - .3) player.seekTo(S.clip.start, true); player.playVideo(); } };
+$('start').onclick = newGame; $('again').onclick = newGame; $('next').onclick = next;
+$('share').onclick = () => {
+  const t = `Next Door (Accentuate UK): ${S.right}/${S.order.length}\n${S.log.map(x => x ? '🟪' : '⬜').join('')}\ntoddlburns.com/accentuate-uk/next-door/`;
+  navigator.clipboard.writeText(t).then(() => { $('msg').textContent = 'Copied'; setTimeout(() => $('msg').textContent = '', 1500); });
+};
+if (!CL.length) { $('start').textContent = 'No clips yet'; }
+</script>
+</body>
+</html>
