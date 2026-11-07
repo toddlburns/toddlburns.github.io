@@ -423,6 +423,23 @@
         @media (prefers-reduced-motion: reduce) {
             .ticker-inner, .screen, h1 .ch { animation: none !important; }
         }
+        /* phones and tablets: big thumbs, no hover, let the page scroll */
+        @media (pointer: coarse) {
+            .project { touch-action: auto; user-select: auto; }
+            .titlebar { cursor: default; }
+            .chips { gap: 8px; }
+            .chip { font-size: 19px; min-height: 44px; padding: 6px 14px; }
+            .thumb .open { opacity: 1; left: auto; top: auto; right: 8px; bottom: 8px; transform: none; font-size: 17px; padding: 2px 10px; }
+            .project:hover .thumb .open { transform: none; }
+            .project-name a { display: inline-block; padding: 4px 0; }
+            .vwin .titlebar button { min-width: 48px; min-height: 44px; font-size: 22px; }
+            .vnav button { min-height: 48px; padding: 6px 18px; }
+            .launch { padding: 12px 24px; }
+            .page-toggle { font-size: 15px; padding: 10px 16px; gap: 10px; bottom: calc(16px + env(safe-area-inset-bottom)); }
+            .page-toggle .toggle-track { width: 46px; height: 26px; border-radius: 13px; }
+            .page-toggle .knob { width: 22px; height: 22px; left: 22px; }
+            .screen { padding-bottom: 140px; }
+        }
 
     .page-toggle {
         position: fixed;
@@ -679,6 +696,7 @@
 
     /* ---------- actions ---------- */
     const say = html => { out.innerHTML = html; };
+    if (touch) say(`${total} files found. Tap a picture to open it, or press a button.`);
 
     /* ---------- arrival: tidy, then rumble + 3-2-1, then chaos ---------- */
     const cd = document.getElementById('countdown');
@@ -690,7 +708,7 @@
         document.body.classList.remove('rumble', 'r2', 'r3');
     }
     function countdown() {
-        if (reduce) return;
+        if (reduce || touch) return;
         let counted = false;
         try { counted = sessionStorage.getItem('tlb-countdown') === '1'; sessionStorage.setItem('tlb-countdown', '1'); } catch (e) {}
         if (counted) return actions.chaos();
@@ -716,10 +734,11 @@
         },
         chaos() {
             const w = innerWidth, h = innerHeight;
+            const m = touch ? 0.35 : 1;
             projects.forEach(p => {
-                p.x = Math.round((Math.random() - 0.5) * w * 0.6);
-                p.y = Math.round((Math.random() - 0.5) * h * 0.7);
-                p.r = Math.round((Math.random() - 0.5) * 50);
+                p.x = Math.round((Math.random() - 0.5) * w * 0.6 * m);
+                p.y = Math.round((Math.random() - 0.5) * h * 0.7 * m);
+                p.r = Math.round((Math.random() - 0.5) * 50 * m);
                 p.el.style.zIndex = ++z;
                 place(p);
             });
@@ -727,7 +746,7 @@
             setTimeout(() => document.body.classList.remove('quake'), 450);
             clearTimeout(chaosTimer);
             chaosTimer = setTimeout(() => document.body.classList.remove('chaos'), 3000);
-            say('<b>CHAOS.</b> Type <b>tidy</b> to clean up.');
+            say(touch ? '<b>CHAOS.</b> Tap <b>TIDY</b> to clean up.' : '<b>CHAOS.</b> Type <b>tidy</b> to clean up.');
         },
         tidy() {
             cancelCountdown();
@@ -933,6 +952,7 @@
             } else setTimeout(finish, 350);
         };
         step();
+        if (touch) boot.querySelector('.skip').textContent = '[ TAP TO SKIP ]';
         addEventListener('keydown', finish, { once: true });
         boot.addEventListener('click', finish);
     }
