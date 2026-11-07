@@ -194,7 +194,7 @@
         }
         .project.dragging { transition: border-color 0.2s, box-shadow 0.2s; cursor: grabbing; }
         .project:hover { border-color: var(--g); box-shadow: 0 0 20px rgba(0,255,65,0.25); }
-        .project.hidden { opacity: 0.08; filter: blur(2px); pointer-events: none; }
+        .project.hidden { display: none; }   /* filtered out: collapse so matches sit right under the terminal */
 
         .titlebar {
             display: flex;
