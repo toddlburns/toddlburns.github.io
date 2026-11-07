@@ -45,17 +45,6 @@ window.NEXTDOOR = [
   "text": "when i was very young and we didn't have russians in the beginning part of the war sometimes at the maypole and places like that and small league that's it would go around there was margarine well i w"
  },
  {
-  "key": "fYtQYWNISDw@14",
-  "id": "fYtQYWNISDw",
-  "start": 14,
-  "end": 34,
-  "place": "birmingham",
-  "label": "Birmingham",
-  "where": "",
-  "title": "William Jones's memory of surprising his fiancé",
-  "text": "and caught what i thought would be the train it uh turned out to be correct i got out a chester road station i saw her standing on the station she was looking at the train just went up to her and said"
- },
- {
   "key": "PFGPJ-GjdUg@2",
   "id": "PFGPJ-GjdUg",
   "start": 2,
@@ -109,17 +98,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Journey to Recovery",
   "text": "after that i kind of realized that i didn't want to be on herron anymore and i finally got in contact we saw drug services that was the first time i shot a bit of acceptance and i felt i found some fo"
- },
- {
-  "key": "N9002lmShTs@119",
-  "id": "N9002lmShTs",
-  "start": 119,
-  "end": 139,
-  "place": "east_london",
-  "label": "East London",
-  "where": "",
-  "title": "Being Civil in Redbridge",
-  "text": "that was sort of socially acceptable it was you know it was viewed very much as an abnormality um sort of when i was forcing the the the things were very strong and so i was often called sort of queer"
  },
  {
   "key": "QS4OxWUCHE8@567",
@@ -221,61 +199,6 @@ window.NEXTDOOR = [
   "text": "and then it's a kind of snowballed and you know over time now children use all kinds of words which you know it takes you a dictionary and hours to figure out what they're saying but yeah i think that"
  },
  {
-  "key": "mHjT3_z-k0M@198",
-  "id": "mHjT3_z-k0M",
-  "start": 198,
-  "end": 213,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part One, Bobby Thompson (not the Little Waster!)",
-  "text": "and uh we always used to go down to me and another couple of lads used to get on the key side and talking to them and sometimes go on the tour and just sit there while they were doing nothing you know"
- },
- {
-  "key": "QlSfJqz9GJ8@339",
-  "id": "QlSfJqz9GJ8",
-  "start": 339,
-  "end": 354,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part Two, Bobby Thompson (not the Little Waster!)",
-  "text": "came down and you come on the board and uh how many years you been doing this and told her he said well you automatically qualify without going for any exams or anything like that were you working on "
- },
- {
-  "key": "RpaJ7cqfBco@300",
-  "id": "RpaJ7cqfBco",
-  "start": 300,
-  "end": 315,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part Four, Bobby Thompson (not the Little Waster!)",
-  "text": "and we would usually take a candy jar not a plastic one you know the ones you get at the store  and say can you fill this with peas and gravy —\"oh two shillings for that you know so all the past tacos"
- },
- {
-  "key": "bSwov8vDdF4@367",
-  "id": "bSwov8vDdF4",
-  "start": 367,
-  "end": 382,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part Five, Bobby Thompson (not the Little Waster!)",
-  "text": "on the lifeboat &gt;&gt; i was on it two two years two years or so so then i went from fishing while i was at fishing on the lifeboat because i knew on fishing fishing a couple so i was in all the tim"
- },
- {
-  "key": "lc7hCwv-0V8@327",
-  "id": "lc7hCwv-0V8",
-  "start": 327,
-  "end": 347,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part Eight, Geoff Moon",
-  "text": "then they were launching quite a lot and you know you would find yourself as far up the river which a lot of people now would wouldn't believe that you can actually do and you'll be swapping ships aro"
- },
- {
   "key": "lc7hCwv-0V8@464",
   "id": "lc7hCwv-0V8",
   "start": 464,
@@ -285,17 +208,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Voices of the river - Part Eight, Geoff Moon",
   "text": "of just worked on the on the way so &gt;&gt; i don't think there was any much call most the time you would if you had a job to go at the time you would tow ship to the bar and you would leave go becau"
- },
- {
-  "key": "estK8mCHtEY@502",
-  "id": "estK8mCHtEY",
-  "start": 502,
-  "end": 522,
-  "place": "sunderland",
-  "label": "Sunderland",
-  "where": "",
-  "title": "Voices of the river - Part Nine, Geoff Moon",
-  "text": "running the paint and decorating he said that is like three quarters of a paint and decorating &gt;&gt; so if you want &gt;&gt; just jump on and you'll you'll only do like half a year and you'll get y"
  },
  {
   "key": "k2Z527njMh8@33",
@@ -320,21 +232,10 @@ window.NEXTDOOR = [
   "text": "and the blasts sent all the glass from the back kitchen in over dad and the next door neighbor he was pulling bits of glass from his coat pocket for months afterwards"
  },
  {
-  "key": "n6W4IzF3PmQ@91",
-  "id": "n6W4IzF3PmQ",
-  "start": 91,
-  "end": 111,
-  "place": "plymouth",
-  "label": "Plymouth",
-  "where": "",
-  "title": "Plymouth Cinema Memories",
-  "text": "it was not uncommon for there to be cues outside all cinemas as a seven-year-old and eager to see films my widow mother who had to work and was not a film fan used to walk me along the queue until she"
- },
- {
   "key": "0N775oOgeLQ@0",
   "id": "0N775oOgeLQ",
-  "start": 0,
-  "end": 20,
+  "start": 4,
+  "end": 24,
   "place": "stoke",
   "label": "Stoke",
   "where": "",
@@ -439,17 +340,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Yvonne's Story",
   "text": "that signifies that that you know that link between me being born and brought up here and then having a peace which is actually sort of labeled as a raw crown piece as well"
- },
- {
-  "key": "mMPVsP8oO3c@259",
-  "id": "mMPVsP8oO3c",
-  "start": 259,
-  "end": 274,
-  "place": "nottingham",
-  "label": "Nottingham",
-  "where": "",
-  "title": "Memories Of Teversal Colliery.",
-  "text": "so no decision has been taken to close down not at all when i fit as profitable as traversal can be closed and then nobody in northeast is safe"
  },
  {
   "key": "2rcmfxWwnlk@35",
@@ -562,28 +452,6 @@ window.NEXTDOOR = [
   "text": "bucket list of things to do before i get so old so this was one of them and it took about i think two years to get the money together because when you look around you can see it's quite a bad state th"
  },
  {
-  "key": "CtPQVbo-HcI@317",
-  "id": "CtPQVbo-HcI",
-  "start": 317,
-  "end": 337,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "Wesley Perrins - A Black Country | Staffordshire Memories",
-  "text": "art boys  then they would go to chain shops to make larger and more important chains don't have any illusions about this this is a task that demands enormous "
- },
- {
-  "key": "CtPQVbo-HcI@144",
-  "id": "CtPQVbo-HcI",
-  "start": 144,
-  "end": 164,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "Wesley Perrins - A Black Country | Staffordshire Memories",
-  "text": "a fundamental without which the and steel not exist can find coal you may have iron  but before melting iron the vessels in which it is melted must have a fire"
- },
- {
   "key": "s6sBgmDbALs@411",
   "id": "s6sBgmDbALs",
   "start": 411,
@@ -593,28 +461,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Tyneside Lost Industry - VANISHED (Alikivi 9mins 2012)",
   "text": "i mean a lot of the guys used to pry themselves in the fact that they never ever lost any time at all and i just have visions coming back for if we were transferred to the wall's end big yard and you "
- },
- {
-  "key": "Vl7pwjpJlGo@478",
-  "id": "Vl7pwjpJlGo",
-  "start": 478,
-  "end": 498,
-  "place": "newcastle",
-  "label": "Newcastle",
-  "where": "",
-  "title": "I Hitchhiked Across Europe at 16 — Life in Britain After the War",
-  "text": "sixpence of bacon bones so i'd go down to the shop and the the butcher there at the the the butcher was separate but there was a place where you could buy meat and and they would drop all these bones "
- },
- {
-  "key": "Vl7pwjpJlGo@553",
-  "id": "Vl7pwjpJlGo",
-  "start": 553,
-  "end": 573,
-  "place": "newcastle",
-  "label": "Newcastle",
-  "where": "",
-  "title": "I Hitchhiked Across Europe at 16 — Life in Britain After the War",
-  "text": "go into &gt;&gt; i lived in litton street which is not far from here they pulled it down but i lived there when i got married a few years and then we bought a house in morby and i named me company mor"
  },
  {
   "key": "mJEUmgp7vg4@186",
@@ -637,28 +483,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Sam Sharman (Interview 2022)",
   "text": "um like with the fa getting behind it you know when you turn up it is everything's you know so professional we've got psychologists we've got doctor physio analyst um strength and conditioning um when"
- },
- {
-  "key": "BHHiXX0t9zg@189",
-  "id": "BHHiXX0t9zg",
-  "start": 189,
-  "end": 209,
-  "place": "hull",
-  "label": "Hull",
-  "where": "",
-  "title": "Gavin Gordon (Interview 2022)",
-  "text": "yeah pretty much it was um and and because you all know yt so you're basically just looking at let's say getting in just growing basically so you're just learning and getting into a new club and first"
- },
- {
-  "key": "BHHiXX0t9zg@105",
-  "id": "BHHiXX0t9zg",
-  "start": 105,
-  "end": 125,
-  "place": "hull",
-  "label": "Hull",
-  "where": "",
-  "title": "Gavin Gordon (Interview 2022)",
-  "text": "they then have a um did that for a couple of years and they've got like a contact with because i weren't getting kept on after that i don't think so and they said do you want me to put you well ask a "
  },
  {
   "key": "LehiLOOjW1Y@393",
@@ -694,17 +518,6 @@ window.NEXTDOOR = [
   "text": "interact with them and you'd have a bit of cheek with them and you know but um you kind of knew where you stood and there was a line and you that you didn't want to cross and the dream was to make it "
  },
  {
-  "key": "a0l4R3skY3E@100",
-  "id": "a0l4R3skY3E",
-  "start": 100,
-  "end": 115,
-  "place": "nottingham",
-  "label": "Nottingham",
-  "where": "",
-  "title": "Life 8 - 15. Nottingham Lace (Bullfrog Films clip)",
-  "text": "lace and i'm i'm now with the last in this country and i'm proud to say that but isn't it a"
- },
- {
   "key": "Zvm8Adm_MSY@131",
   "id": "Zvm8Adm_MSY",
   "start": 131,
@@ -716,17 +529,6 @@ window.NEXTDOOR = [
   "text": "me since well everybody and seemed to be making it a thought i'd like ago it was nothing else really if you went to service you as a prisoner you're"
  },
  {
-  "key": "H0Z5iwx0gEQ@75",
-  "id": "H0Z5iwx0gEQ",
-  "start": 75,
-  "end": 95,
-  "place": "coventry",
-  "label": "Coventry",
-  "where": "",
-  "title": "Coventry music museum",
-  "text": "history here i tell you what the lovely thing about somewhere like a museum is he can skip through time really quickly from the 60s and john lenin who went to c cathedral to plant an acon to the 70s a"
- },
- {
   "key": "6d7axrP6X0g@99",
   "id": "6d7axrP6X0g",
   "start": 99,
@@ -736,39 +538,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "I took to the streets of 'friendly' Black Country village to find out what residents love #Gornal",
   "text": "places to walk the people at the forge are one of the best things about it people are always friendly always talking to you you have local stores like this greengrocer's where you can buy fresh produc"
- },
- {
-  "key": "SfL0ooRAJ24@98",
-  "id": "SfL0ooRAJ24",
-  "start": 98,
-  "end": 113,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "'The football is dire': Wolves fans react to draw with ten man Sunderland",
-  "text": "to say isn't it i mean when he came in i'd have wished for a little bit more i'll be honest um i don't know how many points behind we were when he came in but it feels like we've gone backwards a litt"
- },
- {
-  "key": "bl4lq_HJlsc@88",
-  "id": "bl4lq_HJlsc",
-  "start": 88,
-  "end": 108,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "'A double? No reason why not': Wolves fans react after latest sensational win over Liverpool",
-  "text": "said before we've got to do it all day friday's the key now we're going down but we want to have a good cup run as always yeah friday is the game we've got to win tonight will do but we want to win fr"
- },
- {
-  "key": "bl4lq_HJlsc@198",
-  "id": "bl4lq_HJlsc",
-  "start": 198,
-  "end": 213,
-  "place": "wolverhampton",
-  "label": "Black Country",
-  "where": "",
-  "title": "'A double? No reason why not': Wolves fans react after latest sensational win over Liverpool",
-  "text": "home and away they're so down and depressed this season they're not coming but you know as you say you've got to you've got to judge everybody on these results we beat liverpool whether it's today or "
  },
  {
   "key": "Uu33m1VN9Is@113",
@@ -802,16 +571,5 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Hemlock Stone and The Three Stones Project",
   "text": "how the stone itself came into being is of dispute and there are uh three possible theories one that it is a natural object so it's a natural geological feature formed by erosion and what is called di"
- },
- {
-  "key": "DwwbiaBJ3Ew@55",
-  "id": "DwwbiaBJ3Ew",
-  "start": 55,
-  "end": 75,
-  "place": "nottingham",
-  "label": "Nottingham",
-  "where": "",
-  "title": "Robin Hood comes from Nottingham... or does he?",
-  "text": "of the world so in the 1600s um a surveyor called john harrison found a reference um and reference robin hood and a birthplace called little haggas croft near to that was a place called bow wood this "
  }
 ];
