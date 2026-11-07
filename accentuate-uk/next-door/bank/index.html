@@ -34,9 +34,9 @@ input{font:inherit;padding:8px;border:1px solid var(--rule);border-radius:8px;ba
 <body>
 <h1>Next Door bank</h1>
 <p class="meta">Every Next Door clip, by town. Play it, then mark Drop (wrong person, reporter, says the place, not local) or Good. Your marks stay in this browser. Copy changes and paste them to Claude.</p>
-<div class="top"><button id="copy">Copy changes</button><button class="ghost" id="clear">Clear marks</button><span id="count" class="meta"></span><span id="msg"></span></div>
+<div class="top"><button id="copy">Copy changes</button><button class="ghost" id="clear">Clear marks</button><label class="meta"><input type="checkbox" id="all" style="flex:none;min-width:0"> Show reviewed too</label><span id="count" class="meta"></span><span id="msg"></span></div>
 <div id="list"></div>
-<script src="../clips.js?v=4"></script>
+<script src="../clips.js?v=5"></script>
 <script>
 const $ = id => document.getElementById(id);
 const KEY = 'nd-bank-v1';
@@ -44,9 +44,11 @@ let E = {}; try { E = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e)
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(E)); } catch (e) {} count(); };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const C = window.NEXTDOOR || [];
-function count(){ const n = Object.keys(E).length; $('count').textContent = `${C.length} clips · ${n} marked`; }
+// Clips already sent back and applied carry reviewed:true (vox_build.py), so by default only new ones show, on any device.
+const todo = () => C.filter(c => $('all').checked || !c.reviewed);
+function count(){ const left = C.filter(c => !c.reviewed && !(E[c.key] && (E[c.key].ok || E[c.key].drop))).length; $('count').textContent = `${C.filter(c => !c.reviewed).length} new to review · ${left} still unmarked`; }
 function render(){
-  const by = {}; C.forEach(c => (by[c.label] = by[c.label] || []).push(c));
+  const by = {}; todo().forEach(c => (by[c.label] = by[c.label] || []).push(c));
   $('list').innerHTML = Object.keys(by).sort().map(l => `<h2>${esc(l)} (${by[l].length})</h2>` + by[l].map(c => {
     const e = E[c.key] || {};
     return `<div class="clip${e.drop ? ' dropped' : ''}" data-k="${esc(c.key)}">
@@ -73,7 +75,9 @@ $('list').addEventListener('change', ev => { if (ev.target.dataset.a !== 'note')
   const k = ev.target.closest('.clip').dataset.k; E[k] = E[k] || {}; E[k].note = ev.target.value; save(); });
 $('copy').onclick = () => navigator.clipboard.writeText(JSON.stringify({ bank:E })).then(() => { $('msg').textContent = 'Copied'; setTimeout(() => $('msg').textContent = '', 1500); });
 $('clear').onclick = () => { E = {}; save(); render(); };
+$('all').onchange = render;
 render(); count();
+if (!todo().length) $('list').innerHTML = '<p class="meta">Nothing new to review.</p>';
 </script>
 </body>
 </html>
