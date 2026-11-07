@@ -205,6 +205,7 @@ $('guess').addEventListener('click', () => {
   line = L.polyline([g, ans], { color:'#16181b', weight:2, dashArray:'5 6' }).addTo(map);
   const pad = innerWidth < 700 ? { paddingTopLeft:[30,80], paddingBottomRight:[30, innerHeight*.62] } : { paddingTopLeft:[420,90], paddingBottomRight:[60,110] };
   if (d < 5) map.flyTo(ans, 8, { duration:.8 }); else map.flyToBounds(L.latLngBounds([g, ans]), { ...pad, maxZoom:9, duration:.8 });
+  $('guess').disabled = true; hint('Still playing. Now you know.');
   stats(); showReveal(d, pts, g);
 });
 function fmtKm(d){ return d < 10 ? d.toFixed(1)+' km' : Math.round(d).toLocaleString()+' km'; }
@@ -220,8 +221,10 @@ function showReveal(d, pts, g){
   $('card').classList.add('on'); $('card').scrollTop = 0;
   $('next').onclick = () => { if (last) endGame(); else { S.r++; startRound(); } };
   const lng = ((g.lng + 540) % 360) - 180;
-  fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&langCode=en&featureTypes=Locality&location=${lng},${g.lat}`)
-    .then(r => r.json()).then(j => { const a = j.address || {}; const s = [a.City || a.Subregion || a.Region, a.CntryName].filter(Boolean).join(', '); $('where').textContent = s || 'the middle of nowhere'; })
+  const geo = ft => fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&langCode=en${ft}&location=${lng},${g.lat}`).then(r => r.json());
+  const label = j => { const a = (j && j.address) || {}; return [a.City || a.Subregion || a.Region, a.CntryName].filter(Boolean).join(', '); };
+  geo('&featureTypes=Locality').then(j => label(j) || geo('').then(label))
+    .then(s => { $('where').textContent = s || 'open water'; })
     .catch(() => { $('where').textContent = 'your pin'; });
 }
 function endGame(){
@@ -254,7 +257,7 @@ function intro(){
 intro();
 
 // ---------- boot ----------
-fetch('places.json?v=1').then(r => r.json()).then(d => { PLACES = d; ready(); });
+fetch('places.json?v=2').then(r => r.json()).then(d => { PLACES = d; ready(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', { width:200, height:200,
     playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
