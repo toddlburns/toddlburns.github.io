@@ -703,5 +703,115 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Life 8 - 15. Nottingham Lace (Bullfrog Films clip)",
   "text": "lace and i'm i'm now with the last in this country and i'm proud to say that but isn't it a"
+ },
+ {
+  "key": "Zvm8Adm_MSY@131",
+  "id": "Zvm8Adm_MSY",
+  "start": 131,
+  "end": 146,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "Nothing to Lose - The Women Chainmakers Strike of 1910 Cradley Heath",
+  "text": "me since well everybody and seemed to be making it a thought i'd like ago it was nothing else really if you went to service you as a prisoner you're"
+ },
+ {
+  "key": "H0Z5iwx0gEQ@75",
+  "id": "H0Z5iwx0gEQ",
+  "start": 75,
+  "end": 95,
+  "place": "coventry",
+  "label": "Coventry",
+  "where": "",
+  "title": "Coventry music museum",
+  "text": "history here i tell you what the lovely thing about somewhere like a museum is he can skip through time really quickly from the 60s and john lenin who went to c cathedral to plant an acon to the 70s a"
+ },
+ {
+  "key": "6d7axrP6X0g@99",
+  "id": "6d7axrP6X0g",
+  "start": 99,
+  "end": 114,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "I took to the streets of 'friendly' Black Country village to find out what residents love #Gornal",
+  "text": "places to walk the people at the forge are one of the best things about it people are always friendly always talking to you you have local stores like this greengrocer's where you can buy fresh produc"
+ },
+ {
+  "key": "SfL0ooRAJ24@98",
+  "id": "SfL0ooRAJ24",
+  "start": 98,
+  "end": 113,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "'The football is dire': Wolves fans react to draw with ten man Sunderland",
+  "text": "to say isn't it i mean when he came in i'd have wished for a little bit more i'll be honest um i don't know how many points behind we were when he came in but it feels like we've gone backwards a litt"
+ },
+ {
+  "key": "bl4lq_HJlsc@88",
+  "id": "bl4lq_HJlsc",
+  "start": 88,
+  "end": 108,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "'A double? No reason why not': Wolves fans react after latest sensational win over Liverpool",
+  "text": "said before we've got to do it all day friday's the key now we're going down but we want to have a good cup run as always yeah friday is the game we've got to win tonight will do but we want to win fr"
+ },
+ {
+  "key": "bl4lq_HJlsc@198",
+  "id": "bl4lq_HJlsc",
+  "start": 198,
+  "end": 213,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "'A double? No reason why not': Wolves fans react after latest sensational win over Liverpool",
+  "text": "home and away they're so down and depressed this season they're not coming but you know as you say you've got to you've got to judge everybody on these results we beat liverpool whether it's today or "
+ },
+ {
+  "key": "Uu33m1VN9Is@113",
+  "id": "Uu33m1VN9Is",
+  "start": 113,
+  "end": 133,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "'They gave it a go': Wolves fan reaction and January sale view after Liverpool defeat",
+  "text": "the summer and yeah i mean look he's come to the job knowing knowing what's you know he knows that we're abandoned the pressure he knows that he it was going to be a massive task to keep us up you kno"
+ },
+ {
+  "key": "z1BAo9kiK9M@88",
+  "id": "z1BAo9kiK9M",
+  "start": 88,
+  "end": 103,
+  "place": "wolverhampton",
+  "label": "Black Country",
+  "where": "",
+  "title": "'There's life after Cunha!' Wolves fans delighted following crucial win over West Ham",
+  "text": "is it they're going to be safe it's never over till it's over but i think once we've played ipsswitch and and leicester and we picked some points up against them i think i'll feel a bit more comfortab"
+ },
+ {
+  "key": "h-9hkNFU_UE@105",
+  "id": "h-9hkNFU_UE",
+  "start": 105,
+  "end": 125,
+  "place": "nottingham",
+  "label": "Nottingham",
+  "where": "",
+  "title": "Hemlock Stone and The Three Stones Project",
+  "text": "how the stone itself came into being is of dispute and there are uh three possible theories one that it is a natural object so it's a natural geological feature formed by erosion and what is called di"
+ },
+ {
+  "key": "DwwbiaBJ3Ew@55",
+  "id": "DwwbiaBJ3Ew",
+  "start": 55,
+  "end": 75,
+  "place": "nottingham",
+  "label": "Nottingham",
+  "where": "",
+  "title": "Robin Hood comes from Nottingham... or does he?",
+  "text": "of the world so in the 1600s um a surveyor called john harrison found a reference um and reference robin hood and a birthplace called little haggas croft near to that was a place called bow wood this "
  }
 ];
