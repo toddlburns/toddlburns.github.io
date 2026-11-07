@@ -634,7 +634,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Reaction to surprise Sunderland's surprise CEO announcement and what it might mean - #onthewhistle",
   "text": "i think a lot of good things have happened especially on the pitch but off it as well and i think some really good things have happened during the club's return to the premier league there are quite a",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "bBqel5XXBOU@69",
@@ -646,43 +646,19 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Sunderland 2-2 Arsenal: WOW! What a point! James Copley and Phil Smith react at the Stadium of Light",
   "text": "the course of 90 minutes i think we just about deserved it i thought the first half we were excellent without creating a lot but really limited arsenal yeah they had a spell in the second half and lik",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "dYwl9aGYI2A@115",
   "id": "dYwl9aGYI2A",
-  "start": 115,
-  "end": 135,
+  "start": 117,
+  "end": 137,
   "place": "newcastle",
   "label": "Newcastle",
   "where": "",
   "title": "We Asked Newcastle About Keir Starmer's Resignation",
   "text": "&gt;&gt; i just feel that um there's there's too many quick changes being made we've had this for the from the tories for so long and um while some i'm very much a labour man myself um i don't feel i ",
-  "reviewed": false
- },
- {
-  "key": "Ik4GdRacS_o@48",
-  "id": "Ik4GdRacS_o",
-  "start": 48,
-  "end": 68,
-  "place": "newcastle",
-  "label": "Newcastle",
-  "where": "",
-  "title": "Newcastle United fans react to Alexander Isak leave",
-  "text": "one i wish him all the best i hope i'm not a nasty person wish him all the best but i hope he succeeds in what he does i would like to have kept him make him rot just for the for football cuz players ",
-  "reviewed": false
- },
- {
-  "key": "pK81rczzKak@116",
-  "id": "pK81rczzKak",
-  "start": 116,
-  "end": 136,
-  "place": "newcastle",
-  "label": "Newcastle",
-  "where": "",
-  "title": "Newcastle United fans react following Isak statement",
-  "text": "mind who he is in terms of the goals he scores etc i just wish now that uh liverpool had come back with an offer what the club said has been they've all been singing off the same him same him sheet um",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "HTC9h7W2uj4@289",
@@ -694,7 +670,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Derby Improved | Did Zetterstrom Just Save Someones Job?",
   "text": "second half as you say we simply slowed down as we usually do and the red card didn't do us any favors at all and i just thought we were going to lose but zetterstrom good for him made some incredible",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "WD0j4Ugf1vE@267",
@@ -706,7 +682,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "How Worrying Is Derby's Lack Of Depth?",
   "text": "over the weekend we was 2-2 and he brings on n'gandu when we need a goal i know johnson's on a yellow card and we can't really afford to lose him even though he didn't have a good game at all but you'",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "h7r_mDzP5LY@116",
@@ -718,7 +694,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Is This Season Now Done For Derby?",
   "text": "yeah it's a it's a really funny one because like you say from when we was like bound for relegation eustace comes in saves us moves up and then we've gone from this season now to playoff contenders it",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "gwGhwIEDZxU@153",
@@ -730,7 +706,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Is Matt Clarke  Now The First Name on The Team Sheet for Derby?",
   "text": "it was a bit of a mad one cuz i i took a friend yesterday with me cuz i thought we'd absolutely demolish sheffield wednesday and i i must have jinxed us cuz i said if we don't score more than three th",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "TTVkXKOV7rY@45",
@@ -742,7 +718,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "We Always Beat Brentford! Bench Time For Ndoye & Co! | Brentford Vs Nottingham Forest Match Preview",
   "text": "go and finish their chances coming up we're going to go through the game we're going to go through my thoughts the team sheet the usual stuff on this video so make sure you've liked make sure you've s",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "tA7SPNdjp1E@172",
@@ -754,7 +730,7 @@ window.NEXTDOOR = [
   "where": "",
   "title": "Wasted Chances & Leaky Defence! Are We Worse Than Spurs? Palace 3-1 Nottingham Forest Reaction",
   "text": "their goal and you've got to say one of the reasons those defenders are panicking is cuz the guy behind them he's never commanding that box he never comes out he's never authoritative he's anchored to",
-  "reviewed": false
+  "reviewed": true
  },
  {
   "key": "zu0AYH0_vE4@308",
@@ -766,6 +742,6 @@ window.NEXTDOOR = [
   "where": "",
   "title": "EVERTON v COVENTRY | Live post-match reaction",
   "text": "the way they are playing with personality and the progression since the first few weeks when we went to arsenal and it was like ah this is the premier league now we go and play more like a premier lea",
-  "reviewed": false
+  "reviewed": true
  }
 ];
