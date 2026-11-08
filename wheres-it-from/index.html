@@ -3,31 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Where's It From?</title>
+<title>Genre Guesser</title>
 <meta name="description" content="Hear a piece of music, drop a pin where it's from. Detroit techno to Ethiopian jazz, Croydon dubstep to Peruvian chicha. Five rounds.">
-<meta property="og:title" content="Where's It From?">
+<meta property="og:title" content="Genre Guesser">
 <meta property="og:description" content="Hear the music. Drop a pin. Lowest total miles wins.">
 <meta property="og:url" content="https://toddlburns.com/wheres-it-from/">
-<meta property="og:image" content="https://toddlburns.com/wheres-it-from/og.png">
+<meta property="og:image" content="https://toddlburns.com/wheres-it-from/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://toddlburns.com/wheres-it-from/og.png">
+<meta name="twitter:image" content="https://toddlburns.com/wheres-it-from/og.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-/* Night-sky flat map (not Accentuate's cream map): equirectangular, wraps sideways, plain hyper-legible type. */
+/* Accentuate's flat terrain map (Leaflet, Esri physical + hillshade, no labels), wrapping sideways, with the night-sky chrome. */
 :root{--night:#0a0f1e;--night2:#141b31;--ink:#131722;--ink2:#555c69;--paper:#fbf7ee;--line:#e6dfcf;--ans:#ff5a36;--me:#3ec5ff;--star:#f4efe2;--font:'Atkinson Hyperlegible',system-ui,sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18213d 0%,var(--night) 70%);color:var(--ink);font-family:var(--font);overflow:hidden}
-#globe{position:fixed;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
-#globe.drag{cursor:grabbing}
-/* controls: zoom + map credits behind an i (Todd) */
-.ctrls{position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:500;display:flex;flex-direction:column;gap:8px}
-.ctrls button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(20,27,49,.85);color:var(--star);font:700 20px/1 var(--font);cursor:pointer;padding:0}
-.ctrls .info-btn{font:italic 700 16px/1 Georgia,serif}
-.credits{position:fixed;right:62px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:500;background:rgba(20,27,49,.92);color:#cfd5e2;font-size:12px;line-height:1.4;padding:8px 12px;border-radius:10px;max-width:260px;display:none}
-.credits.open{display:block}.credits a{color:#fff}
-@media (max-width:700px){body.revealed .ctrls,body.ended .ctrls{display:none}}
+#map{position:fixed;inset:0;z-index:1;background:#7ea6c9}
+.leaflet-container{font-family:var(--font)}
+.leaflet-tile-container img{width:257px!important;height:257px!important;mix-blend-mode:normal!important}  /* hide hairline seams at fractional zoom */
+.relief{mix-blend-mode:multiply}
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+.pin.me{background:var(--me)}.pin.ans{background:var(--ans)}.pin.sm{width:13px;height:13px;border-width:2px}
+.leaflet-tooltip.place{font:700 14px var(--font);background:var(--paper);color:var(--ink);border:0;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:4px 8px}
+.leaflet-tooltip.place::before{display:none}
+.leaflet-bar a.recenter{display:grid;place-items:center;color:#333}
+/* map credits behind a small i (Todd) */
+.leaflet-control-attribution{font-size:11px;cursor:pointer}
+.leaflet-control-attribution.mini:not(.open){font-size:0;width:22px;height:22px;padding:0;margin:0 10px 10px 0;border-radius:50%;background:rgba(20,27,49,.85)!important;display:grid;place-items:center}
+.leaflet-control-attribution.mini:not(.open) *{display:none}
+.leaflet-control-attribution.mini:not(.open)::before{content:"i";font:italic 700 13px/1 Georgia,serif;color:#fff}
+.leaflet-bottom.leaflet-right{bottom:env(safe-area-inset-bottom)}
 /* leaderboard */
 .board{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
 .board h3{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}
@@ -89,19 +96,25 @@ html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18
 @media (max-width:700px){
   .brand{font-size:19px}.brand small{display:none}
   .stats{gap:14px}.stats b{font-size:19px}
-  .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:62%;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}
+  .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:50%;border-radius:18px 18px 0 0;padding:14px 18px calc(16px + env(safe-area-inset-bottom))}
+  .band{padding-bottom:6px;margin-bottom:8px}.band .pts{font-size:30px}.place{font-size:24px}.track{margin-top:8px;font-size:15px}.note{font-size:15px;margin-top:6px}
+  .yours{margin-top:10px;padding-top:8px;font-size:14px}.btn{margin-top:12px;padding:12px 18px}.src{margin-top:8px}
+  .intro h1{font-size:28px}.intro p{font-size:15px}
   .place{font-size:26px}
   .viz{width:70px}.hint{display:none}
-  body.revealed .dock,body.ended .dock{display:none}
+  body.revealed .dock,body.ended .dock,body.intro .dock{display:none}
+  .leaflet-control-zoom{display:none}
+  .leaflet-bottom.leaflet-right{top:calc(66px + env(safe-area-inset-top));bottom:auto}
+  .leaflet-bottom.leaflet-right .leaflet-control{margin-top:8px}
+  .dock{left:12px;right:12px;transform:none;max-width:none;justify-content:space-between}.viz{flex:1;width:auto}
+  .top{left:10px;right:10px}.brand,.stats{padding:8px 12px}
 }
 </style>
 </head>
 <body>
-<canvas id="globe"></canvas>
-<div class="ctrls"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button class="info-btn" id="info" aria-label="Credits">i</button></div>
-<div class="credits" id="credits">Map: Natural Earth via world-atlas. Place names: Esri. Audio streams from YouTube.</div>
+<div id="map"></div>
 <div class="top">
-  <div class="brand"><a href="about.html">Where's It From?</a><small>Hear it. Pin it.</small></div>
+  <div class="brand"><a href="about.html">Genre Guesser</a><small>Hear it. Pin it.</small></div>
   <div class="stats"><div>Round<b id="s-round">–/5</b></div><div>Miles off<b id="s-score">0</b></div></div>
 </div>
 <div class="dock" id="dock">
@@ -112,7 +125,7 @@ html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18
 </div>
 <div class="card" id="card"></div>
 <div id="yt"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 <script>
 const $ = id => document.getElementById(id);
@@ -122,149 +135,51 @@ const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Ma
 const ICON = { play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg>', pause:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>' };
 let PLACES = [], player, ytReady = false, S = null, playing = false;
 
-// ---------- globe ----------
-// A flat (equirectangular) world map on a canvas that wraps sideways. Drag to pan, wheel/pinch/buttons to zoom, tap to drop the pin.
-const cv = $('globe'), ctx = cv.getContext('2d');
-const proj = d3.geoEquirectangular().precision(.3), gpath = d3.geoPath(proj, ctx);
-const GRAT = d3.geoGraticule10();
-let W = 0, H = 0, DPR = 1, WORLD = null, WORLD_LO = null, moving = false;
-// k = zoom (1 = whole world fits the free area); rot = -[centre lng, centre lat]; cx/cy/fw/fh = the free area not covered by the card
-const V = { rot:[-15, -20, 0], k:1, cx:0, cy:0, fw:600, fh:300 };
-// scale at k = 1: whole world on wide screens; on tall phones fill the height and let it wrap sideways
-const baseOf = (fw, fh) => fw < fh * 1.2 ? fh / Math.PI : Math.min(fw / (2 * Math.PI), fh / Math.PI);
-const base = () => baseOf(V.fw, V.fh);
-const scl = () => base() * V.k;
-// keep the map from sliding off the top or bottom
-const clampLat = (lat, k = V.k) => { const s = base() * k, m = Math.max(0, 90 - V.fh / 2 / s * 57.2958); return Math.max(-m, Math.min(m, lat)); };
-// what to draw on top: guess pin, answer pin, the arc between them, end-of-game pins
-const MARK = { me:null, ans:null, arc:false, ends:[] };
-function freeArea(){
-  const mobile = innerWidth < 700, card = $('card').classList.contains('on');
-  let x0 = 0, y0 = 70, x1 = W, y1 = H - 90;
-  if (card && mobile) y1 = H * .38; else if (card) { x0 = 410; y1 = H - 20; }
-  return { cx:(x0 + x1) / 2, cy:(y0 + y1) / 2, fw:Math.max(120, x1 - x0 - 16), fh:Math.max(60, y1 - y0 - 16) };
+// ---------- map ----------
+// Accentuate's flat map: Esri terrain + hillshade, no labels, wraps sideways. Tap to drop the pin.
+const map = L.map('map', { zoomControl:false, worldCopyJump:true, zoomSnap:.25, maxBounds:[[-85,-720],[85,720]], maxBoundsViscosity:1 });
+// never zoom out past the point where the world fills the screen height: no empty strip above or below
+const fillZoom = () => Math.ceil(Math.log2(innerHeight / 256) * 4) / 4;
+const homeZoom = () => Math.max(fillZoom(), innerWidth < 700 ? 0 : Math.log2(innerWidth / 256 / 1.15));
+const HOME = [25, 12];
+function setMin(){ map.setMinZoom(fillZoom()); }
+setMin(); map.setView(HOME, homeZoom());
+addEventListener('resize', () => { setMin(); if (map.getZoom() < fillZoom()) map.setZoom(fillZoom()); });
+let home = () => map.flyTo(HOME, homeZoom(), { duration:.6 });
+const Recenter = L.Control.extend({ options:{ position:'bottomright' }, onAdd(){
+  const b = L.DomUtil.create('div', 'leaflet-bar'), a = L.DomUtil.create('a', 'recenter', b);
+  a.href = '#'; a.title = 'Re-center map'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', 'Re-center map');
+  a.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>';
+  L.DomEvent.disableClickPropagation(b); L.DomEvent.on(a, 'click', e => { L.DomEvent.preventDefault(e); home(); }); return b; } });
+new Recenter().addTo(map);
+L.control.zoom({ position:'bottomright' }).addTo(map);
+map.attributionControl.setPrefix(false);
+const ac = map.attributionControl.getContainer(); ac.classList.add('mini'); ac.title = 'Map credits';
+ac.addEventListener('click', e => { if (e.target.tagName !== 'A') ac.classList.toggle('open'); });
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+  { maxNativeZoom:8, maxZoom:11, attribution:'Terrain © Esri, US National Park Service · Borders: Natural Earth · Audio: YouTube' }).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+  { maxNativeZoom:13, maxZoom:11, opacity:.35, className:'relief' }).addTo(map);
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()).then(w => {
+  L.geoJSON(topojson.mesh(w, w.objects.countries, (a, b) => a !== b), { interactive:false, style:{ color:'#3b4a52', weight:.9, opacity:.5 } }).addTo(map);
+}).catch(() => {});
+const pinIcon = k => L.divIcon({ className:'', html:`<div class="pin ${k}"></div>`, iconSize:[18,18], iconAnchor:[9,9] });
+let meMark = null, ansMark = null, line = null, ends = [];
+function clearMarks(){ [meMark, ansMark, line, ...ends].forEach(m => m && map.removeLayer(m)); meMark = ansMark = line = null; ends = []; }
+// keep the card from covering what the map is showing: side card on desktop, bottom sheet on phones
+function pad(){
+  const r = $('card').classList.contains('on') ? $('card').getBoundingClientRect() : null;
+  if (!r) return { paddingTopLeft:[24, 80], paddingBottomRight:[24, 100] };
+  return innerWidth < 700 ? { paddingTopLeft:[36, 84], paddingBottomRight:[36, innerHeight - r.top + 28] }
+                          : { paddingTopLeft:[r.right + 30, 90], paddingBottomRight:[60, 60] };
 }
-function resize(){
-  DPR = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
-  cv.width = W * DPR; cv.height = H * DPR;
-  if (!anim) Object.assign(V, freeArea());
-  draw();
-}
-addEventListener('resize', resize);
-const visible = ll => true;
-function dot(ll, color, r){
-  if (!visible(ll)) return null;
-  const [x, y] = proj(ll);
-  ctx.beginPath(); ctx.arc(x, y, r + 6, 0, 2 * Math.PI); ctx.fillStyle = color + '40'; ctx.fill();
-  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fillStyle = color; ctx.fill();
-  ctx.lineWidth = 3; ctx.strokeStyle = '#fff'; ctx.stroke();
-  return [x, y];
-}
-function label(xy, text){
-  if (!xy) return;
-  ctx.font = '700 15px "Atkinson Hyperlegible", system-ui, sans-serif'; ctx.textBaseline = 'middle';
-  ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(10,15,30,.85)'; ctx.strokeText(text, xy[0] + 14, xy[1]);
-  ctx.fillStyle = '#fff'; ctx.fillText(text, xy[0] + 14, xy[1]);
-}
-function draw(){
-  const R = scl(), lat0 = clampLat(-V.rot[1]);
-  proj.rotate([V.rot[0], 0, 0]).scale(R).translate([V.cx, V.cy + R * lat0 / 57.2958]);
-  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
-  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.fillStyle = '#1d4170'; ctx.fill();
-  ctx.beginPath(); gpath(GRAT); ctx.lineWidth = .6; ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
-  const w = (moving && WORLD_LO && V.k < 12) ? WORLD_LO : WORLD;
-  if (w) {
-    ctx.beginPath(); gpath(w.land); ctx.fillStyle = '#efe6cf'; ctx.fill();
-    ctx.beginPath(); gpath(w.borders); ctx.lineWidth = .8; ctx.strokeStyle = 'rgba(70,58,36,.45)'; ctx.stroke();
-    ctx.beginPath(); gpath(w.land); ctx.lineWidth = .7; ctx.strokeStyle = 'rgba(70,58,36,.55)'; ctx.stroke();
-  }
-  ctx.beginPath(); gpath({ type:'Sphere' }); ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(140,190,255,.35)'; ctx.stroke();
-  if (MARK.arc && MARK.me && MARK.ans) {
-    ctx.beginPath(); gpath({ type:'LineString', coordinates:[MARK.me, MARK.ans] });
-    ctx.setLineDash([7, 6]); ctx.lineWidth = 2.5; ctx.strokeStyle = '#fff'; ctx.stroke(); ctx.setLineDash([]);
-  }
-  MARK.ends.forEach(e => label(dot(e.ll, '#ff5a36', 7), e.name));
-  if (MARK.me) dot(MARK.me, '#3ec5ff', 8);
-  if (MARK.ans) label(dot(MARK.ans, '#ff5a36', 8), MARK.ansName);
-}
-// ---- animation ----
-let anim = null;
-function flyTo(t, ms = 900){
-  const from = { rot:V.rot.slice(), k:V.k, cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh };
-  const to = Object.assign({}, from, freeArea(), t);
-  let dl = to.rot[0] - from.rot[0]; dl = ((dl + 540) % 360) - 180; to.rot = [from.rot[0] + dl, to.rot[1], 0];
-  const t0 = performance.now(); moving = true;
-  const step = now => {
-    const p = Math.min(1, (now - t0) / ms), e = d3.easeCubicInOut(p);
-    V.rot = [from.rot[0] + (to.rot[0] - from.rot[0]) * e, from.rot[1] + (to.rot[1] - from.rot[1]) * e, 0];
-    V.k = Math.exp(Math.log(from.k) + (Math.log(to.k) - Math.log(from.k)) * e);
-    ['cx', 'cy', 'fw', 'fh'].forEach(f => V[f] = from[f] + (to[f] - from[f]) * e);
-    if (p < 1) anim = requestAnimationFrame(step); else { anim = null; moving = false; }
-    draw();
-  };
-  cancelAnimationFrame(anim); anim = requestAnimationFrame(step);
-}
-const stopAnim = () => { if (anim) { cancelAnimationFrame(anim); anim = null; } spin = false; };
-// centre on a set of points and zoom so they all fit
-function fit(pts, maxK = 20){
-  const v = pts.map(([lng, lat]) => { const l = lng * Math.PI / 180, f = lat * Math.PI / 180; return [Math.cos(f) * Math.cos(l), Math.cos(f) * Math.sin(l), Math.sin(f)]; });
-  const m = [0, 1, 2].map(i => v.reduce((a, x) => a + x[i], 0));
-  const c = [Math.atan2(m[1], m[0]) * 180 / Math.PI, Math.atan2(m[2], Math.hypot(m[0], m[1])) * 180 / Math.PI];
-  const lat = pts.map(p => p[1]), c1 = (Math.max(...lat) + Math.min(...lat)) / 2;
-  const dlng = Math.max(2, ...pts.map(p => Math.abs(((p[0] - c[0] + 540) % 360) - 180))), dlat = Math.max(2, ...lat.map(l => Math.abs(l - c1)));
-  const f = freeArea(), b0 = baseOf(f.fw, f.fh);
-  const need = Math.min(f.fw * .38 / (dlng / 57.2958), f.fh * .38 / (dlat / 57.2958));
-  const k = Math.min(maxK, Math.max(1, need / b0)); c[1] = c1;
-  flyTo({ rot:[-c[0], -c[1], 0], k });
-}
-// ---- input ----
-const PTR = new Map(); let drag = null;
-const KMAX = 200, clampK = k => Math.min(KMAX, Math.max(1, k));
-cv.addEventListener('pointerdown', e => {
-  stopAnim(); cv.setPointerCapture(e.pointerId); PTR.set(e.pointerId, [e.clientX, e.clientY]);
-  if (PTR.size === 1) drag = { x:e.clientX, y:e.clientY, rot:V.rot.slice(), moved:false };
-  if (PTR.size === 2) { const [a, b] = [...PTR.values()]; drag = { pinch:Math.hypot(a[0] - b[0], a[1] - b[1]), k:V.k, moved:true }; }
-});
-cv.addEventListener('pointermove', e => {
-  if (!PTR.has(e.pointerId) || !drag) return;
-  PTR.set(e.pointerId, [e.clientX, e.clientY]);
-  if (drag.pinch) { const [a, b] = [...PTR.values()]; V.k = clampK(drag.k * Math.hypot(a[0] - b[0], a[1] - b[1]) / drag.pinch); V.rot[1] = -clampLat(-V.rot[1]); moving = true; draw(); return; }
-  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-  if (!drag.moved && Math.hypot(dx, dy) < 5) return;
-  drag.moved = true; moving = true; cv.classList.add('drag');
-  const s = 57.2958 / scl();   // degrees per pixel, so the ground follows the finger
-  V.rot = [drag.rot[0] + dx * s, -clampLat(-(drag.rot[1] - dy * s)), 0];
-  draw();
-});
-const end = e => {
-  if (!PTR.has(e.pointerId)) return;
-  PTR.delete(e.pointerId); cv.classList.remove('drag');
-  if (drag && !drag.moved && !drag.pinch && PTR.size === 0) pick(e.clientX, e.clientY);
-  if (PTR.size === 0) { drag = null; if (moving) { moving = false; draw(); } }
-};
-cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
-let wheelT;
-cv.addEventListener('wheel', e => { e.preventDefault(); stopAnim(); V.k = clampK(V.k * Math.exp(-e.deltaY * .0016)); V.rot[1] = -clampLat(-V.rot[1]); moving = true; draw();
-  clearTimeout(wheelT); wheelT = setTimeout(() => { moving = false; draw(); }, 150); }, { passive:false });
-$('zin').onclick = () => flyTo({ k:clampK(V.k * 2), cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh }, 350);
-$('zout').onclick = () => { const k = clampK(V.k / 2); flyTo({ k, rot:[V.rot[0], -clampLat(-V.rot[1], k), 0], cx:V.cx, cy:V.cy, fw:V.fw, fh:V.fh }, 350); };
-$('info').onclick = () => $('credits').classList.toggle('open');
-function pick(x, y){
+map.on('click', e => {
   if (!S || S.revealed || S.over) return;
-  const ll = proj.invert([x, y]); if (!ll || Math.abs(ll[1]) > 90) return;   // off the map
-  S.guess = { lat:ll[1], lng:ll[0] }; MARK.me = ll; draw();
+  S.guess = { lat:e.latlng.lat, lng:e.latlng.lng };
+  if (meMark) meMark.setLatLng(e.latlng); else meMark = L.marker(e.latlng, { icon:pinIcon('me') }).addTo(map);
   $('guess').disabled = false;
   hint('Move the pin or hit Guess');
-}
-// slow drift behind the intro card
-let spin = true;
-(function idle(){ if (spin && !anim && !drag) { V.rot[0] += .06; draw(); } requestAnimationFrame(idle); })();
-Promise.all([fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json').then(r => r.json()),
-             fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json())]).then(([hi, lo]) => {
-  const mk = w => ({ land:topojson.feature(w, w.objects.land), borders:topojson.mesh(w, w.objects.countries, (a, b) => a !== b) });
-  WORLD = mk(hi); WORLD_LO = mk(lo); draw();
 });
-resize();
 
 // ---------- audio ----------
 for (let i=0;i<14;i++) $('viz').appendChild(document.createElement('i'));
@@ -286,7 +201,8 @@ $('play').addEventListener('click', () => {
 });
 function load(){
   const c = S.clip;
-  S.start = Math.floor(c.dur * (0.25 + Math.random()*0.35));
+  const [f0, f1] = c.from || [0.25, 0.6];   // where in the track a round may start; some clips only sound like themselves later
+  S.start = Math.floor(c.dur * (f0 + Math.random() * (f1 - f0)));
   player.loadVideoById({ videoId:c.id, startSeconds:S.start });
   player.unMute(); player.setVolume(85);
   S.loaded = true;
@@ -326,10 +242,9 @@ function startRound(){
   do { pick = drawClip(LADDER[S.r], S.used); tries++; } while (pick && S.countries.has(pick.place.c) && tries < 30);
   S.place = pick.place; S.clip = pick.clip; S.used.add(pick.place.p); S.countries.add(pick.place.c);
   Object.assign(S, { guess:null, revealed:false, loaded:false });
-  Object.assign(MARK, { me:null, ans:null, arc:false, ends:[] }); spin = false;
-  document.body.classList.remove('revealed'); $('card').classList.remove('on');
+  clearMarks(); document.body.classList.remove('revealed', 'intro'); $('card').classList.remove('on');
   $('guess').disabled = true; $('guess').textContent = 'Guess';
-  flyTo({ k:1, rot:[V.rot[0], 0, 0] }, 700);
+  home = () => map.flyTo(HOME, homeZoom(), { duration:.6 }); home();
   stats(); setPlaying(false); load();
   hint('Listen, then drag the map and tap where it’s from');
 }
@@ -347,10 +262,15 @@ $('guess').addEventListener('click', () => {
   const d = km(g, ans), pts = score(d);
   S.results.push({ place:S.place, clip:S.clip, d, pts });
   S.revealed = true; document.body.classList.add('revealed');
-  MARK.ans = [ans.lng, ans.lat]; MARK.ansName = S.place.p; MARK.arc = true;
   $('guess').disabled = true; hint('Still playing. Now you know.');
   stats(); showReveal(d, pts, g);
-  fit([MARK.me, MARK.ans]);
+  // draw the line to the nearer copy of the answer, so it never runs the long way round the world
+  let gl = L.latLng(g.lat, g.lng); const wrap = gl.lng - ans.lng; if (wrap > 180) gl = L.latLng(gl.lat, gl.lng - 360); if (wrap < -180) gl = L.latLng(gl.lat, gl.lng + 360);
+  meMark.setLatLng(gl);
+  ansMark = L.marker(ans, { icon:pinIcon('ans') }).addTo(map).bindTooltip(S.place.p, { permanent:true, direction:'top', offset:[0, -10], className:'place' });
+  line = L.polyline([gl, ans], { color:'#16181b', weight:2.5, dashArray:'6 7', opacity:.8 }).addTo(map);
+  home = () => d < 5 ? map.flyTo(ans, 8, { duration:.8 }) : map.flyToBounds(L.latLngBounds([gl, ans]), { ...pad(), maxZoom:9, duration:.8 });
+  home();
 });
 function fmtMi(m){ return m.toLocaleString() + (m === 1 ? ' mile' : ' miles'); }
 function showReveal(d, pts, g){
@@ -375,8 +295,9 @@ function endGame(){
   player.pauseVideo(); S.over = true;
   document.body.classList.add('ended');
   const total = S.results.reduce((a,r)=>a+r.pts,0);
-  Object.assign(MARK, { me:null, ans:null, arc:false, ends:S.results.map(r => ({ ll:[r.place.lng, r.place.lat], name:r.place.p })) });
-  S.share = `I was ${fmtMi(total)} off on Where's It From?\n${S.results.map(r => r.pts < 20 ? '🎯' : r.pts < 300 ? '🟢' : r.pts < 1000 ? '🟡' : '⚪').join('')}\ntoddlburns.com/wheres-it-from`;
+  clearMarks();
+  ends = S.results.map(r => L.marker([r.place.lat, r.place.lng], { icon:pinIcon('ans sm') }).addTo(map).bindTooltip(r.place.p, { permanent:true, direction:'top', offset:[0, -8], className:'place' }));
+  S.share = `I was ${fmtMi(total)} off on Genre Guesser\n${S.results.map(r => r.pts < 20 ? '🎯' : r.pts < 300 ? '🟢' : r.pts < 1000 ? '🟡' : '⚪').join('')}\ntoddlburns.com/wheres-it-from`;
   $('card').innerHTML = `<div class="band"><div class="lab">Total miles off</div></div>
     <div class="big">${total.toLocaleString()}</div>
     <div class="rows">${S.results.map(r => `<div><span>${esc(r.place.p)} <small>${esc(r.place.c)}</small></span><span>${r.pts.toLocaleString()}</span></div>`).join('')}</div>
@@ -388,7 +309,7 @@ function endGame(){
   try { $('lbName').value = localStorage.getItem('wif-name') || ''; } catch (_) {}
   $('lbForm').onsubmit = submitScore; loadBoard();
   $('card').classList.add('on');
-  fit(MARK.ends.map(e => e.ll), 5);
+  home = () => map.flyToBounds(L.latLngBounds(S.results.map(r => [r.place.lat, r.place.lng])), { ...pad(), maxZoom:5, duration:.8 }); home();
   $('again').onclick = () => newGame();
   $('share').onclick = async () => {
     try { if (navigator.share) { await navigator.share({ text:S.share }); return; } } catch(e) { return; }
@@ -421,16 +342,16 @@ async function submitScore(e){
   } catch (_) { $('lbMsg').textContent = 'Could not reach the leaderboard. Try again in a moment.'; $('lbBtn').disabled = false; }
 }
 function intro(){
-  $('card').innerHTML = `<div class="intro"><h1>Where's It From?</h1>
+  $('card').innerHTML = `<div class="intro"><h1>Genre Guesser</h1>
     <p>A piece of music plays: Detroit techno, Ethiopian jazz, Croydon dubstep, Peruvian chicha, Balinese gamelan. No lyrics to give it away.</p>
     <p>Drop a pin where you think it comes from. Your score is how many miles off you are, added up over five rounds. Lowest wins.</p>
     <button class="btn" id="start" disabled>Loading…</button> <a class="btn ghost" href="about.html">About</a></div>`;
-  $('card').classList.add('on');
+  $('card').classList.add('on'); document.body.classList.add('intro');
 }
 intro();
 
 // ---------- boot ----------
-fetch('places.json?v=6').then(r => r.json()).then(d => { PLACES = d; ready(); });
+fetch('places.json?v=7').then(r => r.json()).then(d => { PLACES = d; ready(); });
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('yt', { width:200, height:200,
     playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
