@@ -106,6 +106,7 @@ html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18
   .card{padding-bottom:0}.card>.intro,.card>.board{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
   .head .pts{font-size:28px}.head{padding-bottom:8px}
   .actions{position:sticky;bottom:0;background:var(--paper);margin:10px -18px 0;padding:10px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+  body.ended .big{font-size:52px;line-height:1.05}body.ended .rows div{padding:7px 0}
   .intro h1{font-size:28px}.intro p{font-size:15px}
   .place{font-size:26px}
   .viz{width:70px}.hint{display:none}
@@ -308,7 +309,7 @@ function endGame(){
   $('card').innerHTML = `<div class="band"><div class="lab">Total miles off</div></div>
     <div class="big">${total.toLocaleString()}</div>
     <div class="rows">${S.results.map(r => `<div><span>${esc(r.place.p)} <small>${esc(r.place.c)}</small></span><span>${r.pts.toLocaleString()}</span></div>`).join('')}</div>
-    <button class="btn" id="again">Play again</button><button class="btn ghost" id="share">Share</button>
+    <div class="actions"><button class="btn" id="again">Play again</button><button class="btn ghost" id="share">Share</button></div>
     <div class="board"><h3>All-time leaderboard · fewest miles</h3>
       <form id="lbForm"><input id="lbName" maxlength="20" placeholder="Your name" autocomplete="nickname" aria-label="Your name"><button class="btn" id="lbBtn">Add my score</button></form>
       <p class="lbmsg" id="lbMsg"></p><ol id="lbList"><li class="m"><span>Loading…</span></li></ol></div>`;
