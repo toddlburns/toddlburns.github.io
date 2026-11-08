@@ -1,25 +1,6 @@
 // Accentuate UK clip pool. tier: 1 easy, 2 medium, 3 hard. Built by build_uk.py.
 window.CLIPS = [
  {
-  "id": "JMZD2f6Tyeg",
-  "region": "ayrshire",
-  "tier": 3,
-  "start": 138,
-  "end": 158,
-  "name": "Nicola Sturgeon",
-  "role": "First Minister of Scotland",
-  "place": "Dreghorn, Ayrshire",
-  "lat": 55.61,
-  "lng": -4.62,
-  "note": "Ayrshire Scottish English: a tapped r and short Scottish vowels, so “good” and “food” rhyme.",
-  "verified": true,
-  "words": [],
-  "born": 1970,
-  "st": "SCO",
-  "year": 2014,
-  "vol": 85
- },
- {
   "id": "english2",
   "audio": "audio/saa/english2.mp3",
   "region": "uk_wm",
@@ -3312,6 +3293,24 @@ window.CLIPS = [
   "st": "SCO",
   "local": true,
   "vol": 84
+ },
+ {
+  "id": "OHd5EnbSE-U",
+  "region": "ayrshire",
+  "tier": 2,
+  "start": 24,
+  "end": 39,
+  "name": "A local voice",
+  "role": "",
+  "place": "Ayrshire",
+  "lat": 55.6,
+  "lng": -4.5,
+  "note": "Ayrshire Scottish English: a tapped r and short Scottish vowels, so “good” and “food” rhyme.",
+  "verified": true,
+  "words": [],
+  "st": "SCO",
+  "local": true,
+  "vol": 51
  },
  {
   "id": "le3cBRlWSE8",
