@@ -70,6 +70,10 @@ html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18
 /* card */
 .card{position:fixed;z-index:600;left:18px;top:88px;width:380px;max-height:calc(100% - 116px);overflow:auto;background:var(--paper);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.45);padding:20px 22px 22px;display:none}
 .card.on{display:block}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:4px}
+.head .mi{text-align:right;flex:none}.head .lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}.head .pts{font-size:34px;font-weight:700;line-height:1.05}
+/* Next round always in reach: the actions row sticks to the bottom of the card */
+.actions{display:flex;align-items:center;gap:16px;margin-top:16px}.actions .btn{margin:0}.actions .src{margin:0}
 .band{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
 .band .lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
 .band .pts{font-size:38px;font-weight:700;line-height:1.1}
@@ -99,6 +103,9 @@ html,body{margin:0;height:100%;background:radial-gradient(ellipse at 50% 40%,#18
   .card{left:0;right:0;top:auto;bottom:0;width:auto;max-height:50%;border-radius:18px 18px 0 0;padding:14px 18px calc(16px + env(safe-area-inset-bottom))}
   .band{padding-bottom:6px;margin-bottom:8px}.band .pts{font-size:30px}.place{font-size:24px}.track{margin-top:8px;font-size:15px}.note{font-size:15px;margin-top:6px}
   .yours{margin-top:10px;padding-top:8px;font-size:14px}.btn{margin-top:12px;padding:12px 18px}.src{margin-top:8px}
+  .card{padding-bottom:0}.card>.intro,.card>.board{padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+  .head .pts{font-size:28px}.head{padding-bottom:8px}
+  .actions{position:sticky;bottom:0;background:var(--paper);margin:10px -18px 0;padding:10px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
   .intro h1{font-size:28px}.intro p{font-size:15px}
   .place{font-size:26px}
   .viz{width:70px}.hint{display:none}
@@ -275,13 +282,13 @@ $('guess').addEventListener('click', () => {
 function fmtMi(m){ return m.toLocaleString() + (m === 1 ? ' mile' : ' miles'); }
 function showReveal(d, pts, g){
   const p = S.place, c = S.clip, last = S.r === ROUNDS-1, total = S.results.reduce((a,r)=>a+r.pts,0);
-  $('card').innerHTML = `<div class="band"><div><div class="lab">Miles off · round ${S.r+1}</div><div class="pts">${pts.toLocaleString()}</div></div></div>
-    <div class="place">${esc(p.p)}</div><div class="country">${esc(p.c)}</div>
+  $('card').innerHTML = `<div class="head"><div><div class="place">${esc(p.p)}</div><div class="country">${esc(p.c)}</div></div>
+      <div class="mi"><div class="lab">Miles off</div><div class="pts">${pts.toLocaleString()}</div></div></div>
     <div class="track">${esc(c.a)} — ${esc(c.t)} ${c.y ? `<span>(${c.y})</span>` : ''}</div>
     <p class="note">${esc(p.note)}</p>
     <div class="yours">Your guess: <b id="where">…</b><br>Total so far: <b>${fmtMi(total)}</b> off</div>
-    <button class="btn" id="next">${last ? 'See your score' : 'Next round'}</button>
-    <span class="src"><a href="https://www.youtube.com/watch?v=${c.id}&t=${S.start}s" target="_blank" rel="noopener">Hear it on YouTube</a></span>`;
+    <div class="actions"><button class="btn" id="next">${last ? 'See your score' : 'Next round'}</button>
+      <span class="src"><a href="https://www.youtube.com/watch?v=${c.id}&t=${S.start}s" target="_blank" rel="noopener">Hear it on YouTube</a></span></div>`;
   $('card').classList.add('on'); $('card').scrollTop = 0;
   $('next').onclick = () => { if (last) endGame(); else { S.r++; startRound(); } };
   const lng = ((g.lng + 540) % 360) - 180;
