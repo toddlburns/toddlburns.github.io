@@ -1371,7 +1371,7 @@ window.CLIPS = [
  {
   "id": "QS4OxWUCHE8",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 158,
   "end": 178,
   "name": "A local voice",
@@ -1389,7 +1389,7 @@ window.CLIPS = [
  {
   "id": "qtJTttvocx0",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 229,
   "end": 249,
   "name": "A local voice",
@@ -1407,7 +1407,7 @@ window.CLIPS = [
  {
   "id": "qtJTttvocx0",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 524,
   "end": 544,
   "name": "A local voice",
@@ -1425,7 +1425,7 @@ window.CLIPS = [
  {
   "id": "EdQjPx-fTxM",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 515,
   "end": 535,
   "name": "A local voice",
@@ -1443,7 +1443,7 @@ window.CLIPS = [
  {
   "id": "EiN-6nkcVCk",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 321,
   "end": 341,
   "name": "A local voice",
@@ -1461,7 +1461,7 @@ window.CLIPS = [
  {
   "id": "EiN-6nkcVCk",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 447,
   "end": 462,
   "name": "A local voice",
@@ -1479,7 +1479,7 @@ window.CLIPS = [
  {
   "id": "HYET0xq3ESw",
   "region": "west_london",
-  "tier": 2,
+  "tier": 3,
   "start": 572,
   "end": 592,
   "name": "A local voice",
@@ -1497,7 +1497,7 @@ window.CLIPS = [
  {
   "id": "lc7hCwv-0V8",
   "region": "mackem",
-  "tier": 2,
+  "tier": 3,
   "start": 464,
   "end": 484,
   "name": "A local voice",
@@ -1515,7 +1515,7 @@ window.CLIPS = [
  {
   "id": "k2Z527njMh8",
   "region": "coventry",
-  "tier": 2,
+  "tier": 3,
   "start": 33,
   "end": 53,
   "name": "A local voice",
@@ -1533,7 +1533,7 @@ window.CLIPS = [
  {
   "id": "ROy4dZzZls8",
   "region": "coventry",
-  "tier": 2,
+  "tier": 3,
   "start": 412,
   "end": 427,
   "name": "A local voice",
@@ -1551,7 +1551,7 @@ window.CLIPS = [
  {
   "id": "0N775oOgeLQ",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 4,
   "end": 24,
   "name": "A local voice",
@@ -1569,7 +1569,7 @@ window.CLIPS = [
  {
   "id": "0N775oOgeLQ",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 189,
   "end": 209,
   "name": "A local voice",
@@ -1587,7 +1587,7 @@ window.CLIPS = [
  {
   "id": "OTyI4FFmXD8",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 72,
   "end": 92,
   "name": "A local voice",
@@ -1605,7 +1605,7 @@ window.CLIPS = [
  {
   "id": "OTyI4FFmXD8",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 142,
   "end": 162,
   "name": "A local voice",
@@ -1623,7 +1623,7 @@ window.CLIPS = [
  {
   "id": "ENOfgLkVAo8",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 137,
   "end": 157,
   "name": "A local voice",
@@ -1641,7 +1641,7 @@ window.CLIPS = [
  {
   "id": "ENOfgLkVAo8",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 50,
   "end": 70,
   "name": "A local voice",
@@ -1659,7 +1659,7 @@ window.CLIPS = [
  {
   "id": "wKk0QHVqUbA",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 10,
   "end": 30,
   "name": "A local voice",
@@ -1677,7 +1677,7 @@ window.CLIPS = [
  {
   "id": "VKAoZInSJQo",
   "region": "stoke",
-  "tier": 2,
+  "tier": 3,
   "start": 4,
   "end": 24,
   "name": "A local voice",
@@ -1731,7 +1731,7 @@ window.CLIPS = [
  {
   "id": "2rcmfxWwnlk",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 35,
   "end": 50,
   "name": "A local voice",
@@ -1749,7 +1749,7 @@ window.CLIPS = [
  {
   "id": "59TQUNDnOqs",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 213,
   "end": 228,
   "name": "A local voice",
@@ -1767,7 +1767,7 @@ window.CLIPS = [
  {
   "id": "Qruo4Q-ysZ0",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 29,
   "end": 49,
   "name": "A local voice",
@@ -1785,7 +1785,7 @@ window.CLIPS = [
  {
   "id": "Qruo4Q-ysZ0",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 127,
   "end": 147,
   "name": "A local voice",
@@ -1803,7 +1803,7 @@ window.CLIPS = [
  {
   "id": "GFmpNxJPMgg",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 124,
   "end": 144,
   "name": "A local voice",
@@ -1821,7 +1821,7 @@ window.CLIPS = [
  {
   "id": "GFmpNxJPMgg",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 1,
   "end": 21,
   "name": "A local voice",
@@ -1839,7 +1839,7 @@ window.CLIPS = [
  {
   "id": "aLnHWnGHPw0",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 63,
   "end": 83,
   "name": "A local voice",
@@ -1857,7 +1857,7 @@ window.CLIPS = [
  {
   "id": "aLnHWnGHPw0",
   "region": "suffolk",
-  "tier": 2,
+  "tier": 3,
   "start": 169,
   "end": 189,
   "name": "A local voice",
@@ -2019,7 +2019,7 @@ window.CLIPS = [
  {
   "id": "6d7axrP6X0g",
   "region": "black_country",
-  "tier": 2,
+  "tier": 3,
   "start": 99,
   "end": 114,
   "name": "A local voice",
@@ -2037,7 +2037,7 @@ window.CLIPS = [
  {
   "id": "Uu33m1VN9Is",
   "region": "black_country",
-  "tier": 2,
+  "tier": 3,
   "start": 113,
   "end": 133,
   "name": "A local voice",
@@ -2055,7 +2055,7 @@ window.CLIPS = [
  {
   "id": "z1BAo9kiK9M",
   "region": "black_country",
-  "tier": 2,
+  "tier": 3,
   "start": 88,
   "end": 103,
   "name": "A local voice",
@@ -2073,7 +2073,7 @@ window.CLIPS = [
  {
   "id": "h-9hkNFU_UE",
   "region": "nottingham",
-  "tier": 2,
+  "tier": 3,
   "start": 105,
   "end": 125,
   "name": "A local voice",
@@ -2091,7 +2091,7 @@ window.CLIPS = [
  {
   "id": "bBqel5XXBOU",
   "region": "mackem",
-  "tier": 2,
+  "tier": 3,
   "start": 69,
   "end": 89,
   "name": "A local voice",
@@ -2199,7 +2199,7 @@ window.CLIPS = [
  {
   "id": "TTVkXKOV7rY",
   "region": "nottingham",
-  "tier": 2,
+  "tier": 3,
   "start": 45,
   "end": 65,
   "name": "A local voice",
@@ -2217,7 +2217,7 @@ window.CLIPS = [
  {
   "id": "tA7SPNdjp1E",
   "region": "nottingham",
-  "tier": 2,
+  "tier": 3,
   "start": 172,
   "end": 192,
   "name": "A local voice",
@@ -2235,7 +2235,7 @@ window.CLIPS = [
  {
   "id": "zu0AYH0_vE4",
   "region": "coventry",
-  "tier": 2,
+  "tier": 3,
   "start": 308,
   "end": 328,
   "name": "A local voice",
@@ -2757,7 +2757,7 @@ window.CLIPS = [
  {
   "id": "6-KXN2oRtv8",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 574,
   "end": 594,
   "name": "A local voice",
@@ -2775,7 +2775,7 @@ window.CLIPS = [
  {
   "id": "-pHIQoOGhy8",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 129,
   "end": 149,
   "name": "A local voice",
@@ -2793,7 +2793,7 @@ window.CLIPS = [
  {
   "id": "wptRHnHFkq8",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 48,
   "end": 68,
   "name": "A local voice",
@@ -2811,7 +2811,7 @@ window.CLIPS = [
  {
   "id": "hUmSDzrycD4",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 580,
   "end": 595,
   "name": "A local voice",
@@ -2829,7 +2829,7 @@ window.CLIPS = [
  {
   "id": "NK7XI1J5mms",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 27,
   "end": 47,
   "name": "A local voice",
@@ -2847,7 +2847,7 @@ window.CLIPS = [
  {
   "id": "-eP9EAS2SSs",
   "region": "ni_rural",
-  "tier": 2,
+  "tier": 3,
   "start": 0,
   "end": 20,
   "name": "A local voice",
@@ -2883,7 +2883,7 @@ window.CLIPS = [
  {
   "id": "IxEd31eg5cI",
   "region": "cumbria",
-  "tier": 2,
+  "tier": 3,
   "start": 88,
   "end": 103,
   "name": "A local voice",
@@ -2901,7 +2901,7 @@ window.CLIPS = [
  {
   "id": "_97ZRmDnbS0",
   "region": "fife",
-  "tier": 2,
+  "tier": 3,
   "start": 532,
   "end": 547,
   "name": "A local voice",
@@ -2919,7 +2919,7 @@ window.CLIPS = [
  {
   "id": "en36vN2dQu0",
   "region": "west_wales",
-  "tier": 2,
+  "tier": 3,
   "start": 336,
   "end": 356,
   "name": "A local voice",
@@ -2937,7 +2937,7 @@ window.CLIPS = [
  {
   "id": "0KYLbSpKRQI",
   "region": "west_wales",
-  "tier": 2,
+  "tier": 3,
   "start": 369,
   "end": 384,
   "name": "A local voice",
@@ -3261,7 +3261,7 @@ window.CLIPS = [
  {
   "id": "ofWA7ERRwzs",
   "region": "cumbria",
-  "tier": 2,
+  "tier": 3,
   "start": 120,
   "end": 140,
   "name": "A local voice",
@@ -3279,7 +3279,7 @@ window.CLIPS = [
  {
   "id": "85BUH0zuoUQ",
   "region": "fife",
-  "tier": 2,
+  "tier": 3,
   "start": 158,
   "end": 178,
   "name": "A local voice",
@@ -3297,7 +3297,7 @@ window.CLIPS = [
  {
   "id": "OHd5EnbSE-U",
   "region": "ayrshire",
-  "tier": 2,
+  "tier": 3,
   "start": 24,
   "end": 39,
   "name": "A local voice",
