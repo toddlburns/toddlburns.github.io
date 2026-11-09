@@ -1,0 +1,635 @@
+{
+ "launch": "2026-11-03",
+ "puzzles": [
+  {
+   "n": 1,
+   "groups": [
+    {
+     "name": "Black Hippy, Clocked In",
+     "level": 1,
+     "tiles": [
+      "Kendrick Lamar",
+      "ScHoolboy Q",
+      "Ab-Soul",
+      "Jay Rock"
+     ]
+    },
+    {
+     "name": "Odd Future, Golf Wang Division",
+     "level": 2,
+     "tiles": [
+      "Tyler, the Creator",
+      "Earl Sweatshirt",
+      "Domo Genesis",
+      "Hodgy"
+     ]
+    },
+    {
+     "name": "Project Blowed Alumni",
+     "level": 3,
+     "tiles": [
+      "Aceyalone",
+      "Abstract Rude",
+      "Myka 9",
+      "Busdriver"
+     ]
+    },
+    {
+     "name": "Long Beach, Not Snoop",
+     "level": 4,
+     "tiles": [
+      "Vince Staples",
+      "Warren G",
+      "Nate Dogg",
+      "RBX"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "groups": [
+    {
+     "name": "Geto Boys, All Eras",
+     "level": 1,
+     "tiles": [
+      "Scarface",
+      "Willie D",
+      "Bushwick Bill",
+      "Big Mike"
+     ]
+    },
+    {
+     "name": "Screwed Up Click",
+     "level": 2,
+     "tiles": [
+      "Fat Pat",
+      "Big Hawk",
+      "Lil Keke",
+      "Big Moe"
+     ]
+    },
+    {
+     "name": "Came Up on Swishahouse",
+     "level": 3,
+     "tiles": [
+      "Mike Jones",
+      "Paul Wall",
+      "Chamillionaire",
+      "Archie Lee"
+     ]
+    },
+    {
+     "name": "Slab Spec Sheet",
+     "level": 4,
+     "tiles": [
+      "Swangas",
+      "Candy Paint",
+      "Fifth Wheel",
+      "Pop Trunk"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "groups": [
+    {
+     "name": "Hieroglyphics",
+     "level": 1,
+     "tiles": [
+      "Del the Funky Homosapien",
+      "Casual",
+      "Pep Love",
+      "Domino"
+     ]
+    },
+    {
+     "name": "The Click: Family Business, Vallejo",
+     "level": 2,
+     "tiles": [
+      "E-40",
+      "B-Legit",
+      "D-Shot",
+      "Suga-T"
+     ]
+    },
+    {
+     "name": "Say It Like You're From Oakland",
+     "level": 3,
+     "tiles": [
+      "Hella",
+      "Hyphy",
+      "Scraper",
+      "Ghost Ride"
+     ]
+    },
+    {
+     "name": "The Pack, Before Anyone Was Based",
+     "level": 4,
+     "tiles": [
+      "Lil B",
+      "Young L",
+      "Stunna Bam",
+      "Lil Uno"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "groups": [
+    {
+     "name": "D12, Dirty Dozen",
+     "level": 1,
+     "tiles": [
+      "Eminem",
+      "Proof",
+      "Bizarre",
+      "Kuniva"
+     ]
+    },
+    {
+     "name": "Slum Village, Any Lineup",
+     "level": 2,
+     "tiles": [
+      "J Dilla",
+      "T3",
+      "Baatin",
+      "Elzhi"
+     ]
+    },
+    {
+     "name": "Marshall's Other Names",
+     "level": 3,
+     "tiles": [
+      "Slim Shady",
+      "Ken Kaniff",
+      "M&M",
+      "B-Rabbit"
+     ]
+    },
+    {
+     "name": "Bruiser Brigade",
+     "level": 4,
+     "tiles": [
+      "Danny Brown",
+      "ZelooperZ",
+      "Bruiser Wolf",
+      "Dopehead"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "groups": [
+    {
+     "name": "Griselda, Buffalo's Finest",
+     "level": 1,
+     "tiles": [
+      "Westside Gunn",
+      "Conway the Machine",
+      "Benny the Butcher",
+      "Armani Caesar"
+     ]
+    },
+    {
+     "name": "Def Jux, Back When",
+     "level": 2,
+     "tiles": [
+      "El-P",
+      "Aesop Rock",
+      "Cannibal Ox",
+      "Mr. Lif"
+     ]
+    },
+    {
+     "name": "Every Beat by Madlib",
+     "level": 3,
+     "tiles": [
+      "Madvillainy",
+      "Piñata",
+      "Bandana",
+      "Sound Ancestors"
+     ]
+    },
+    {
+     "name": "Every Beat by The Alchemist",
+     "level": 4,
+     "tiles": [
+      "Alfredo",
+      "Haram",
+      "Return of the Mac",
+      "Covert Coup"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "groups": [
+    {
+     "name": "Three 6 Mafia",
+     "level": 1,
+     "tiles": [
+      "Juicy J",
+      "DJ Paul",
+      "Lord Infamous",
+      "Gangsta Boo"
+     ]
+    },
+    {
+     "name": "Hypnotize Minds, Not in the Group",
+     "level": 2,
+     "tiles": [
+      "Project Pat",
+      "La Chat",
+      "Lil Wyte",
+      "Frayser Boy"
+     ]
+    },
+    {
+     "name": "Yo Gotti's CMG",
+     "level": 3,
+     "tiles": [
+      "Moneybagg Yo",
+      "42 Dugg",
+      "EST Gee",
+      "GloRilla"
+     ]
+    },
+    {
+     "name": "Paper Route Empire",
+     "level": 4,
+     "tiles": [
+      "Young Dolph",
+      "Key Glock",
+      "Kenny Muney",
+      "Big Moochie Grape"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "groups": [
+    {
+     "name": "Hot Boys",
+     "level": 1,
+     "tiles": [
+      "Lil Wayne",
+      "Juvenile",
+      "B.G.",
+      "Turk"
+     ]
+    },
+    {
+     "name": "No Limit Soldiers",
+     "level": 2,
+     "tiles": [
+      "Master P",
+      "Silkk the Shocker",
+      "C-Murder",
+      "Mystikal"
+     ]
+    },
+    {
+     "name": "Bounce Lifers",
+     "level": 3,
+     "tiles": [
+      "Big Freedia",
+      "Katey Red",
+      "Cheeky Blakk",
+      "DJ Jubilee"
+     ]
+    },
+    {
+     "name": "Mannie Fresh Made the Beats",
+     "level": 4,
+     "tiles": [
+      "400 Degreez",
+      "Tha Block Is Hot",
+      "Chopper City in the Ghetto",
+      "Guerrilla Warfare"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "groups": [
+    {
+     "name": "Wu-Tang, Minus the Obvious Star",
+     "level": 1,
+     "tiles": [
+      "RZA",
+      "GZA",
+      "Raekwon",
+      "Masta Killa"
+     ]
+    },
+    {
+     "name": "N.W.A, No Cube",
+     "level": 2,
+     "tiles": [
+      "Eazy-E",
+      "MC Ren",
+      "DJ Yella",
+      "Dr. Dre"
+     ]
+    },
+    {
+     "name": "Debuted the Same Year as Illmatic",
+     "level": 3,
+     "tiles": [
+      "OutKast",
+      "Warren G",
+      "Da Brat",
+      "Bone Thugs-n-Harmony"
+     ]
+    },
+    {
+     "name": "Real Name Is Christopher",
+     "level": 4,
+     "tiles": [
+      "The Notorious B.I.G.",
+      "Big Pun",
+      "Ludacris",
+      "Kid (of Kid 'n Play)"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "groups": [
+    {
+     "name": "The Pharcyde",
+     "level": 1,
+     "tiles": [
+      "Fatlip",
+      "Slimkid3",
+      "Imani",
+      "Bootie Brown"
+     ]
+    },
+    {
+     "name": "Out on Stones Throw",
+     "level": 2,
+     "tiles": [
+      "Madvillainy",
+      "Donuts",
+      "The Unseen",
+      "Champion Sound"
+     ]
+    },
+    {
+     "name": "Brainfeeder",
+     "level": 3,
+     "tiles": [
+      "Flying Lotus",
+      "Thundercat",
+      "Teebs",
+      "Lapalux"
+     ]
+    },
+    {
+     "name": "Dilla Was Behind the Boards",
+     "level": 4,
+     "tiles": [
+      "Runnin'",
+      "The Light",
+      "Stakes Is High",
+      "Didn't Cha Know"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "groups": [
+    {
+     "name": "Death Row, Doggystyle Era",
+     "level": 1,
+     "tiles": [
+      "Snoop Dogg",
+      "Kurupt",
+      "Daz Dillinger",
+      "Nate Dogg"
+     ]
+    },
+    {
+     "name": "Compton, Not Kendrick",
+     "level": 2,
+     "tiles": [
+      "MC Eiht",
+      "DJ Quik",
+      "The Game",
+      "YG"
+     ]
+    },
+    {
+     "name": "Mustard on the Beat",
+     "level": 3,
+     "tiles": [
+      "Rack City",
+      "I'm Different",
+      "Paranoid",
+      "Not Like Us"
+     ]
+    },
+    {
+     "name": "West Coast Diss Records",
+     "level": 4,
+     "tiles": [
+      "No Vaseline",
+      "Hit 'Em Up",
+      "Dollaz + Sense",
+      "Real Muthaphuckkin G's"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "groups": [
+    {
+     "name": "DOOM, Other Masks",
+     "level": 1,
+     "tiles": [
+      "Viktor Vaughn",
+      "King Geedorah",
+      "Zev Love X",
+      "Metal Face"
+     ]
+    },
+    {
+     "name": "RZA, Other Names",
+     "level": 2,
+     "tiles": [
+      "Bobby Digital",
+      "Prince Rakeem",
+      "The Abbot",
+      "Ruler Zig-Zag-Zig Allah"
+     ]
+    },
+    {
+     "name": "Madlib, Other Rooms",
+     "level": 3,
+     "tiles": [
+      "Quasimoto",
+      "Yesterdays New Quintet",
+      "DJ Rels",
+      "Beat Konducta"
+     ]
+    },
+    {
+     "name": "Kool Keith, Other Personalities",
+     "level": 4,
+     "tiles": [
+      "Dr. Octagon",
+      "Black Elvis",
+      "Dr. Dooom",
+      "Mr. Gerbik"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "groups": [
+    {
+     "name": "Rappers You Could Order",
+     "level": 1,
+     "tiles": [
+      "Yung Gravy",
+      "Bun B",
+      "Salt-N-Pepa",
+      "Scallops Hotel"
+     ]
+    },
+    {
+     "name": "Rhymesayers",
+     "level": 2,
+     "tiles": [
+      "Atmosphere",
+      "Brother Ali",
+      "Eyedea & Abilities",
+      "Grieves"
+     ]
+    },
+    {
+     "name": "Stones Throw Signees",
+     "level": 3,
+     "tiles": [
+      "Madlib",
+      "Jonwayne",
+      "Knxwledge",
+      "Mndsgn"
+     ]
+    },
+    {
+     "name": "Doomtree, Not P.O.S",
+     "level": 4,
+     "tiles": [
+      "Dessa",
+      "Sims",
+      "Cecil Otter",
+      "Mike Mictlan"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "groups": [
+    {
+     "name": "Dungeon Family",
+     "level": 1,
+     "tiles": [
+      "André 3000",
+      "Big Boi",
+      "CeeLo Green",
+      "Big Gipp"
+     ]
+    },
+    {
+     "name": "Quality Control",
+     "level": 2,
+     "tiles": [
+      "Lil Baby",
+      "City Girls",
+      "Lil Yachty",
+      "Migos"
+     ]
+    },
+    {
+     "name": "Gucci's 1017",
+     "level": 3,
+     "tiles": [
+      "Waka Flocka Flame",
+      "Young Thug",
+      "Pooh Shiesty",
+      "Foogiano"
+     ]
+    },
+    {
+     "name": "So So Def",
+     "level": 4,
+     "tiles": [
+      "Da Brat",
+      "Bow Wow",
+      "Xscape",
+      "Jagged Edge"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "groups": [
+    {
+     "name": "Shoreline Mafia, Original Lineup",
+     "level": 1,
+     "tiles": [
+      "OhGeesy",
+      "Fenix Flexin",
+      "Rob Vicious",
+      "Master Kato"
+     ]
+    },
+    {
+     "name": "Birth Certificate Says Sean",
+     "level": 2,
+     "tiles": [
+      "JAY-Z",
+      "Diddy",
+      "Big Sean",
+      "Sean Price"
+     ]
+    },
+    {
+     "name": "TDE, Second Wave",
+     "level": 3,
+     "tiles": [
+      "SZA",
+      "Isaiah Rashad",
+      "SiR",
+      "Reason"
+     ]
+    },
+    {
+     "name": "Name's a Number",
+     "level": 4,
+     "tiles": [
+      "03 Greedo",
+      "E-40",
+      "42 Dugg",
+      "Mack 10"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Cypher</title>
+<meta name="description" content="A daily rap puzzle. Sixteen names, four hidden groups. New one at midnight Pacific.">
+<meta property="og:title" content="The Cypher — a daily rap puzzle">
+<meta property="og:description" content="Sixteen names, four hidden groups. Built for Passion of the Weiss readers. New one at midnight Pacific.">
+<meta property="og:image" content="https://toddlburns.com/the-cypher/og.png">
+<meta property="og:url" content="https://toddlburns.com/the-cypher/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Cypher — a daily rap puzzle">
+<meta name="twitter:description" content="Sixteen names, four hidden groups. New one at midnight Pacific.">
+<meta name="twitter:image" content="https://toddlburns.com/the-cypher/og.png">
+<meta name="theme-color" content="#f2ede2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='7' height='7' fill='%23f3c623'/%3E%3Crect x='9' width='7' height='7' fill='%235fa35f'/%3E%3Crect y='9' width='7' height='7' fill='%234f7fd1'/%3E%3Crect x='9' y='9' width='7' height='7' fill='%238e5cc9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div><p class="kicker">Passion of the Weiss · Daily</p><h1><a href="./">The Cypher</a></h1></div>
+    <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="archive.html">Archive</a><a href="about.html">About</a></nav>
+  </header>
+  <div class="strip"><span id="pnum">The Cypher</span><span id="pdate"></span></div>
+  <p class="lede" id="lede">Find four groups of four. Pick four tiles, hit Submit. Four strikes and you're out.</p>
+
+  <div id="board" role="group" aria-label="Puzzle tiles"></div>
+  <div class="lives" aria-live="polite"><span>Lives</span><span id="lives" aria-hidden="true"></span><span class="sr" id="lives-sr"></span></div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <div class="controls">
+    <button class="btn" id="shuffle" type="button">Shuffle</button>
+    <button class="btn" id="deselect" type="button">Deselect</button>
+    <button class="btn primary" id="submit" type="button" disabled>Submit</button>
+  </div>
+  <p class="hint">Keys: Tab to a tile, Space to pick · Enter submits · Esc clears</p>
+
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2>
+    <p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="grid" aria-label="Your guesses"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <div class="stats" id="stats"></div>
+    <p class="next" id="next"></p>
+    <div class="reading">
+      <h3>Do the reading</h3>
+      <p class="sub">Every name on the board, searched in the POW archive.</p>
+      <div id="reading"></div>
+    </div>
+  </section>
+
+  <footer>A demo built for <a href="https://www.passionweiss.com/">Passion of the Weiss</a>, independent rap writing since 2005. <a href="about.html">About The Cypher</a>.</footer>
+</div>
+<script src="cypher.js"></script>
+<script>
+(async () => {
+  const $ = id => document.getElementById(id);
+  const EMO = { 1: '🟨', 2: '🟩', 3: '🟦', 4: '🟪' };
+  const WRONG = ['Nope. Not a group. Not even a mixtape.', 'Respectfully, no.', "That's a reach.", 'Wrong crew.', 'Somebody in there is lying to you.'];
+  const WIN = ['Flawless. Put it on a tee.', 'Clean. One brick and nobody saw it.', "Got there. Not pretty, but it counts.", 'Survived on fumes, like a sophomore album.'];
+  const LOSS = ['Out of lives. The archive is right below. Study up.', 'Fell off. It happens to the best of us, and also to you.', 'Four bricks. Put the phone down and go read something.'];
+
+  const data = await Cy.load();
+  const q = new URLSearchParams(location.search);
+  let n = Cy.todayNum(data), practice = false, label = 'Today';
+  if (q.get('date') && /^\d{4}-\d{2}-\d{2}$/.test(q.get('date'))) { n = Cy.numFor(data, q.get('date')); practice = true; label = 'Preview ' + q.get('date'); }
+  else if (q.get('n')) { const k = parseInt(q.get('n'), 10); if (k >= 1 && k <= data.puzzles.length && k <= Cy.todayNum(data)) { n = k; practice = k !== Cy.todayNum(data); label = practice ? 'Archive' : 'Today'; } }
+  const P = data.puzzles[n - 1];
+  const groupOf = {}; P.groups.forEach(g => g.tiles.forEach(t => groupOf[t] = g));
+
+  $('pnum').innerHTML = `The Cypher #${n} ${practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = practice ? label : Cy.dateFor(data.launch, n);
+
+  const key = 'p' + n;
+  const saved = Cy.store.get(key, null);
+  const S = saved || { order: shuffle(P.groups.flatMap(g => g.tiles)), solved: [], guesses: [], lives: 4, done: false, won: false };
+  let sel = [];
+
+  function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  const save = () => Cy.store.set(key, S);
+  const levelOf = t => groupOf[t].level;
+
+  function toast(msg, ms = 1800) { $('toast').innerHTML = msg ? `<span>${msg}</span>` : ''; clearTimeout(toast.t); if (msg && ms) toast.t = setTimeout(() => $('toast').innerHTML = '', ms); }
+
+  function render(popLevel) {
+    const b = $('board'); b.innerHTML = '';
+    S.solved.map(l => P.groups.find(g => g.level === l)).forEach(g => {
+      const d = document.createElement('div');
+      d.className = `solved L${g.level}` + (g.level === popLevel ? ' pop' : '');
+      d.setAttribute('role', 'group');
+      d.setAttribute('aria-label', `Group ${g.level} of 4, ${g.name}: ${g.tiles.join(', ')}`);
+      d.innerHTML = `<span class="lvl" aria-hidden="true">${g.level}</span><h3>${g.name}</h3><p>${g.tiles.join(' · ')}</p>`;
+      b.appendChild(d);
+    });
+    S.order.filter(t => !S.solved.includes(levelOf(t))).forEach(t => {
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'tile'; btn.textContent = t;
+      btn.setAttribute('aria-pressed', sel.includes(t));
+      btn.disabled = S.done;
+      btn.onclick = () => toggle(t);
+      b.appendChild(btn);
+      fit(btn);
+    });
+    $('lives').innerHTML = [0, 1, 2, 3].map(i => `<i class="${i < S.lives ? '' : 'gone'}"></i>`).join('');
+    $('lives-sr').textContent = `${S.lives} of 4 lives left`;
+    $('submit').disabled = sel.length !== 4 || S.done;
+    $('deselect').disabled = !sel.length || S.done;
+    $('shuffle').disabled = S.done;
+  }
+  // shrink long names so they never break the grid
+  function fit(el) {
+    requestAnimationFrame(() => {
+      let fs = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = '';
+      fs = parseFloat(getComputedStyle(el).fontSize);
+      let i = 0;
+      while ((el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1) && fs > 9 && i++ < 12) { fs -= 1; el.style.fontSize = fs + 'px'; }
+    });
+  }
+  function toggle(t) {
+    if (S.done) return;
+    if (sel.includes(t)) sel = sel.filter(x => x !== t);
+    else if (sel.length < 4) sel.push(t);
+    else { toast('Four max. This isn\'t a posse cut.'); return; }
+    const focusText = t;
+    render();
+    [...document.querySelectorAll('.tile')].find(x => x.textContent === focusText)?.focus();
+  }
+  function submit() {
+    if (sel.length !== 4 || S.done) return;
+    const sig = sel.slice().sort().join('|');
+    if (S.guesses.some(g => g.slice().sort().join('|') === sig)) { toast('You tried that already. Bold.'); return; }
+    S.guesses.push(sel.slice());
+    const lv = sel.map(levelOf);
+    const counts = {}; lv.forEach(l => counts[l] = (counts[l] || 0) + 1);
+    const top = Math.max(...Object.values(counts));
+    if (top === 4) {
+      S.solved.push(lv[0]); sel = [];
+      if (S.solved.length === 4) { S.done = true; S.won = true; }
+      save(); render(lv[0]);
+      toast(groupOf[S.guesses.at(-1)[0]].name, 1400);
+      if (S.done) finish();
+      return;
+    }
+    S.lives--;
+    const tiles = [...document.querySelectorAll('.tile[aria-pressed="true"]')];
+    tiles.forEach(x => { x.classList.remove('shake'); void x.offsetWidth; x.classList.add('shake'); });
+    if (top === 3) toast('One away. So close it\'s embarrassing.', 2200);
+    else toast(WRONG[(S.guesses.length) % WRONG.length]);
+    if (S.lives <= 0) { S.done = true; S.won = false; sel = []; }
+    save();
+    if (S.done) { setTimeout(revealAll, 700); } else render();
+  }
+  function revealAll() {
+    const left = P.groups.filter(g => !S.solved.includes(g.level)).sort((a, b) => a.level - b.level);
+    let i = 0;
+    (function step() {
+      if (i >= left.length) { save(); finish(); return; }
+      S.solved.push(left[i].level); render(left[i].level); i++; setTimeout(step, 650);
+    })();
+  }
+  function recordStats() {
+    if (practice || S.counted) return;
+    const st = Cy.store.get('stats', { played: 0, wins: 0, streak: 0, max: 0, last: 0 });
+    st.played++;
+    if (S.won) { st.wins++; st.streak = st.last === n - 1 ? st.streak + 1 : 1; st.last = n; st.max = Math.max(st.max, st.streak); }
+    else { st.streak = 0; st.last = 0; }
+    Cy.store.set('stats', st); S.counted = true; save();
+  }
+  function shareText() {
+    return `The Cypher #${n}\n` + S.guesses.map(g => g.map(t => EMO[levelOf(t)]).join('')).join('\n') + '\npassionweiss.com';
+  }
+  function finish() {
+    recordStats();
+    render();
+    const mistakes = 4 - S.lives;
+    $('res-h').textContent = S.won ? (mistakes === 0 ? 'Perfect.' : 'Solved.') : 'Game over.';
+    $('verdict').textContent = S.won ? WIN[Math.min(mistakes, 3)] : LOSS[n % LOSS.length];
+    $('grid').textContent = S.guesses.map(g => g.map(t => EMO[levelOf(t)]).join('')).join('\n');
+    const st = Cy.store.get('stats', { played: 0, wins: 0, streak: 0, max: 0 });
+    $('stats').innerHTML = [['Played', st.played], ['Win %', st.played ? Math.round(100 * st.wins / st.played) : 0], ['Streak', st.streak], ['Max', st.max]]
+      .map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
+    $('reading').innerHTML = P.groups.slice().sort((a, b) => a.level - b.level).map(g =>
+      `<div class="grp g${g.level}"><h4>${g.level} · ${g.name}</h4><ul>${g.tiles.map(t => `<li><a href="${Cy.search(t)}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>`).join('');
+    $('results').hidden = false;
+    tick(); clearInterval(finish.iv); finish.iv = setInterval(tick, 1000);
+    setTimeout(() => $('res-h').scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    $('res-h').setAttribute('tabindex', '-1'); $('res-h').focus({ preventScroll: true });
+  }
+  function tick() {
+    const ms = Cy.msToMidnightLA(), h = ms / 36e5 | 0, m = ms / 6e4 % 60 | 0, s = ms / 1e3 % 60 | 0;
+    $('next').innerHTML = `Next Cypher in <b>${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}</b>`;
+  }
+  $('share').onclick = async () => {
+    const txt = shareText();
+    try { await navigator.clipboard.writeText(txt); toast('Copied. Go start some beef.'); }
+    catch (e) {
+      const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); toast('Copied. Go start some beef.'); } catch (e2) { toast('Couldn\'t copy. Screenshot it like it\'s 2012.'); }
+      ta.remove();
+    }
+  };
+  $('shuffle').onclick = () => { const solvedT = S.order.filter(t => S.solved.includes(levelOf(t))); S.order = solvedT.concat(shuffle(S.order.filter(t => !solvedT.includes(t)))); save(); render(); };
+  $('deselect').onclick = () => { sel = []; render(); };
+  $('submit').onclick = submit;
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && sel.length === 4 && !(e.target.closest && e.target.closest('a,#share,#shuffle,#deselect'))) { e.preventDefault(); submit(); }
+    if (e.key === 'Escape') { sel = []; render(); }
+  });
+  render();
+  if (S.done) finish();
+  window.CypherDebug = { P, S, n, shareText };
+})();
+</script>
+</body>
+</html>
