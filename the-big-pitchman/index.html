@@ -301,9 +301,7 @@ function show(k){
   var g=$('lglass'); g.classList.remove('pow'); void g.offsetWidth; g.classList.add('pow');
   $('lt').textContent=it.t===it.b?it.b:it.b+': '+it.t;
   $('lstar').textContent='starring '+bigName(it.b);
-  $('lby').innerHTML=(it.y?it.y+' · ':'')+'<a href="https://www.youtube.com/watch?v='+esc(it.i)+'" target="_blank" rel="noopener">YouTube</a> · '+(cur+1)+' of '+CH.length+' in order of air date'+
-    (surfOn?'<br><span class="order">Playing them all in order · <a id="stopall" role="button" tabindex="0">stop</a></span>':'');
-  if(surfOn) $('stopall').onclick=function(){ setSurf(false); show(cur); };
+  $('lby').innerHTML=(it.y?esc(it.y)+'<br>':'')+(cur+1)+' of '+CH.length;
   load(it.i);
 }
 function setSurf(on){ surfOn=on; }
