@@ -169,6 +169,17 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 #nag-close{border:0;color:#a3a3a3;text-decoration:none;background:none}
 #nag-close:hover{color:#fff;background:none}
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
+/* desktop: the printout pops to centre after a round; closing sends it back to the printer */
+.pback{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.pback.on{opacity:1;pointer-events:auto}
+.printer.pop{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:45;max-width:440px}
+.printer.pop .paper{max-height:calc(100vh - 150px);overflow:auto}
+.printer .x,.printer .go-on{display:none}
+.printer.pop .x{display:block;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:1px solid #57534c;color:#d9d4c7;font:700 12px 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:4px;cursor:pointer;z-index:3}
+.printer.pop .x:hover{color:#fff;border-color:#9b968b}
+.printer.pop .head .led{display:none}
+.printer.pop .go-on{display:block;position:sticky;bottom:-14px;width:100%;margin-top:14px;background:var(--ink);color:var(--paper);padding:10px 12px}
+.printer.pop .go-on:hover{background:#000}
 @media (max-width:1100px){.printer{max-width:600px}.paper{margin:-4px 18px 0}}
 @media (max-width:620px){
   .stage{padding:16px 10px 40px;gap:22px}
@@ -228,11 +239,12 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
     </div>
     <div class="foot"><div class="grille"><i></i><i></i><i></i><i></i></div><span>New crate daily · midnight PT</span><a href="../about.html">About</a></div>
   </div>
-  <div class="printer">
-    <div class="head"><span>PR-2 · LINER NOTES</span><span class="led on"></span><div class="slotline"></div></div>
+  <div class="pslot" id="pslot"><div class="printer" id="printer">
+    <div class="head"><span>PR-2 · LINER NOTES</span><span class="led on"></span><button class="x" id="px">Close ✕</button><div class="slotline"></div></div>
     <div class="paper" id="paper"></div>
-  </div>
+  </div></div>
 </div>
+<div class="pback" id="pback"></div>
 <div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG">
   <div class="nag-card"><img class="nag-mark" src="pow-wordmark.png" alt="POW MAG"><div id="nag-body"></div>
     <div class="nag-row"><button class="btn" id="nag-on">I'm on the list</button><button class="btn quiet" id="nag-close">Not now, keep playing</button></div>
@@ -505,6 +517,35 @@ function startRound(){
     <p>Ten clips of one MC, ${CLIP} seconds each. The price is on the tape.</p>
     <p>Pot: <b>${ROUND_PTS}</b>. What you spend comes out of it. Name the MC and you bank what's left.</p>`);
 }
+// ---------- pop-out printout (desktop) ----------
+const wide = () => innerWidth > 1100;
+let popped = false, afterPop = null;
+function flip(el, change){
+  const a = el.getBoundingClientRect(); change(); const b = el.getBoundingClientRect();
+  const base = popped ? 'translate(-50%,-50%) ' : '';
+  el.animate([{ transform: `${base}translate(${a.left-b.left}px,${a.top-b.top}px) scale(${a.width/b.width})`, transformOrigin:'top left' },
+              { transform: base || 'none', transformOrigin:'top left' }], { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
+}
+function popPrint(){
+  if (!wide() || popped) return;
+  const pr = $('printer'), r = pr.getBoundingClientRect();
+  $('pslot').style.width = r.width + 'px'; $('pslot').style.minHeight = r.height + 'px';
+  flip(pr, () => { popped = true; pr.classList.add('pop'); });
+  $('pback').classList.add('on'); $('paper').scrollTop = 0;
+}
+function unpop(){
+  if (!popped) return;
+  const pr = $('printer');
+  flip(pr, () => { popped = false; pr.classList.remove('pop'); });
+  $('pback').classList.remove('on');
+  setTimeout(() => { $('pslot').style.width = ''; $('pslot').style.minHeight = ''; }, 400);
+  const f = afterPop; afterPop = null; if (f) setTimeout(f, 500);
+}
+// sign-up pop-ups wait until the printout is back in the printer
+function later(f){ if (popped) afterPop = f; else setTimeout(f, 1600); }
+$('px').onclick = unpop;
+$('pback').onclick = unpop;
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && popped && $('nag').hidden) unpop(); });
 function total(){ return S && S.results ? S.results.reduce((a,r) => a + r.pts, 0) : 0; }
 function finishRound(choice){
   stopClip(); $('sugg').style.display = 'none';
@@ -525,20 +566,24 @@ function finishRound(choice){
     <div class="rule"></div>
     <p class="kick t">On the pads</p>
     <ol>${m.clips.map(c => `<li><a href="https://www.youtube.com/watch?v=${c.id}&t=${Math.floor(c.s)}s" target="_blank" rel="noopener">${esc(c.t)}</a> <span class="meta">${c.y}</span></li>`).join('')}</ol>
-    <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>`);
+    <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>
+    <button class="btn go-on" id="go-on">${S.r === ROUNDS-1 ? 'See your score' : 'Next round'} →</button>`);
+  $('go-on').onclick = () => { unpop(); next(); };
+  popPrint();
   if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
   // let the answer land before the pop-up
-  if (!right) setTimeout(() => nag('miss', m), 1600);
-  else if (S.r === 0) setTimeout(() => nag('first'), 1600);
+  if (!right) later(() => nag('miss', m));
+  else if (S.r === 0) later(() => nag('first'));
 }
 function next(){
+  unpop(); afterPop = null;
   if (innerWidth <= 1100) scrollTo({top:0, behavior:'smooth'});
   if (S.r < ROUNDS-1) { S.r++; startRound(); }
   else endGame();
 }
 function endGame(){
   const p = plays(); p[S.day] = { score: total(), results: S.results }; savePlays(p);
-  render();
+  render(); setTimeout(popPrint, 60);
   if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
 }
 async function doShare(){
@@ -554,8 +599,8 @@ function demoBar(){
   $('demo').innerHTML = `<b>Demo</b> · ${s ? 'on the list' : 'not signed up'} · ${n} crate${n===1?'':'s'} played · day offset +${offset()}
     <button id="d-next">Jump to tomorrow</button><button id="d-reset">Reset demo</button>`;
   // pop-ups reset with the day, so "Jump to tomorrow" shows them again
-  $('d-next').onclick = () => { MEM.offset = offset() + 1; store.set('offset', MEM.offset); render(); setTimeout(() => nag('land'), 600); };
-  $('d-reset').onclick = () => { store.clear(); MEM = { plays:{}, sub:false, offset:0 }; render(); };
+  $('d-next').onclick = () => { unpop(); afterPop = null; MEM.offset = offset() + 1; store.set('offset', MEM.offset); render(); setTimeout(() => nag('land'), 600); };
+  $('d-reset').onclick = () => { unpop(); afterPop = null; store.clear(); MEM = { plays:{}, sub:false, offset:0 }; render(); };
 }
 
 // ---------- boot ----------
