@@ -14,16 +14,30 @@
 <meta name="twitter:title" content="The Cypher — a daily rap puzzle">
 <meta name="twitter:description" content="Sixteen names, four hidden groups. New one at midnight Pacific.">
 <meta name="twitter:image" content="https://toddlburns.com/the-cypher/og.png">
-<meta name="theme-color" content="#f2ede2">
+<meta name="theme-color" content="#171717">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='7' height='7' fill='%23f3c623'/%3E%3Crect x='9' width='7' height='7' fill='%235fa35f'/%3E%3Crect y='9' width='7' height='7' fill='%234f7fd1'/%3E%3Crect x='9' y='9' width='7' height='7' fill='%238e5cc9'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="powbar">
+  <div class="pb-top">
+    <div class="lab"><b>The Cypher</b> · Daily</div>
+    <a class="mark" href="https://www.powmag.net/" aria-label="POW MAG"><img src="pow-wordmark.png" alt="POW MAG"></a>
+    <a class="cta" href="https://www.powmag.net/subscribe" target="_blank" rel="noopener">Subscribe</a>
+  </div>
+  <nav>
+    <a href="https://www.powmag.net/" target="_blank" rel="noopener">Home</a>
+    <a href="https://www.powmag.net/archive" target="_blank" rel="noopener">Archive</a>
+    <a href="https://www.powmag.net/s/podcast" target="_blank" rel="noopener">Truth Hurts Podcast</a>
+    <a class="on" href="./">Games</a>
+    <a href="https://www.powmag.net/about" target="_blank" rel="noopener">About</a>
+  </nav>
+</header>
 <div class="wrap">
   <header class="mast">
-    <div><p class="kicker">Passion of the Weiss · Daily</p><h1><a href="./">The Cypher</a></h1></div>
+    <div><p class="kicker">POW MAG · Daily puzzle</p><h1><a href="./">The Cypher</a></h1></div>
     <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="archive.html">Archive</a><a href="about.html">About</a></nav>
   </header>
   <div class="strip"><span id="pnum">The Cypher</span><span id="pdate"></span></div>
@@ -40,12 +54,14 @@
   <p class="hint">Keys: Tab to a tile, Space to pick · Enter submits · Esc clears</p>
 
   <section id="results" hidden aria-labelledby="res-h">
+    <button class="btn rx" id="rx" type="button">Close ✕</button>
     <h2 id="res-h"></h2>
     <p class="verdict" id="verdict"></p>
     <div class="grid-share" id="grid" aria-label="Your guesses"></div>
     <button class="btn primary" id="share" type="button">Copy result</button>
     <div class="stats" id="stats"></div>
     <p class="next" id="next"></p>
+    <div id="signup"></div>
     <div class="reading">
       <h3>Do the reading</h3>
       <p class="sub">Every name on the board, searched in the POW archive.</p>
@@ -53,13 +69,19 @@
     </div>
   </section>
 
-  <footer>A demo built for <a href="https://www.passionweiss.com/">Passion of the Weiss</a>, independent rap writing since 2005. <a href="about.html">About The Cypher</a>.</footer>
+  <footer>A demo built for <a href="https://www.powmag.net/">POW MAG</a>, independent rap writing since 2005. <a href="about.html">About The Cypher</a>.</footer>
+</div>
+<div class="rback" id="rback"></div>
+<div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG">
+  <div class="nag-card"><img class="nag-mark" src="pow-wordmark.png" alt="POW MAG"><div id="nag-body"></div>
+    <div class="nag-row"><button class="btn" id="nag-on" type="button">I'm on the list</button><button class="btn" id="nag-close" type="button">Not now, keep playing</button></div>
+  </div>
 </div>
 <script src="cypher.js"></script>
 <script>
 (async () => {
   const $ = id => document.getElementById(id);
-  const EMO = { 1: '🟨', 2: '🟩', 3: '🟦', 4: '🟪' };
+  const EMO = { 1: '🟧', 2: '🟩', 3: '🟪', 4: '🟦' };
   const WRONG = ['Nope. Not a group. Not even a mixtape.', 'Respectfully, no.', "That's a reach.", 'Wrong crew.', 'Somebody in there is lying to you.'];
   const WIN = ['Flawless. Put it on a tee.', 'Clean. One brick and nobody saw it.', "Got there. Not pretty, but it counts.", 'Survived on fumes, like a sophomore album.'];
   const LOSS = ['Out of lives. The archive is right below. Study up.', 'Fell off. It happens to the best of us, and also to you.', 'Four bricks. Put the phone down and go read something.'];
@@ -83,6 +105,58 @@
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
   const save = () => Cy.store.set(key, S);
   const levelOf = t => groupOf[t].level;
+
+  // ---------- POW sign-up pop-ups: never block play; each kind once a day; gone for good after "I'm on the list" ----------
+  const NAG_OFF = q.has('nonag');
+  const subbed = () => Cy.store.get('sub', false);
+  const EMBED = '<iframe class="ss" src="https://www.powmag.net/embed" title="Sign up for POW MAG" scrolling="no"></iframe>';
+  const NAG = {
+    land:  () => ({ kick: `The Cypher #${n}`, head: 'A new board every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into, and never miss a Cypher. Free.' }),
+    first: () => ({ kick: 'One group down', head: 'Like this?', body: 'POW MAG has been writing about every name on this board since 2005. Get it in your inbox, free.' }),
+    miss:  () => ({ kick: 'Wrong crew', head: 'Do the reading', body: 'Twenty years of interviews, reviews and features on the rappers on this board. Get POW MAG in your inbox, free.' }),
+  };
+  function nag(kind) {
+    if (NAG_OFF || subbed() || Cy.store.get('nag-' + kind, '') === Cy.laDate()) return;
+    if (!$('nag').hidden || popped) return;
+    // once the board is finished the results card carries the sign-up, so no mid-game pop-up
+    if (S.done && kind !== 'land') return;
+    Cy.store.set('nag-' + kind, Cy.laDate());
+    const c = NAG[kind]();
+    $('nag-body').innerHTML = `<p class="kick">${c.kick}</p><p class="big">${c.head}</p><p>${c.body}</p>${EMBED}`;
+    $('nag').hidden = false; $('nag-close').focus();
+  }
+  function closeNag() { $('nag').hidden = true; $('nag-body').innerHTML = ''; }
+  const markSubbed = () => { Cy.store.set('sub', true); $('signup').innerHTML = ''; };
+  $('nag-close').onclick = closeNag;
+  $('nag-on').onclick = () => { markSubbed(); closeNag(); };
+  $('nag').addEventListener('click', e => { if (e.target === $('nag')) closeNag(); });
+  // pop-ups wait until the results card is back in place
+  function later(f, ms = 1400) { if (popped) afterPop = f; else setTimeout(f, ms); }
+
+  // ---------- desktop: results pop to centre; Close sends them back under the board ----------
+  const wide = () => innerWidth > 900;
+  let popped = false, afterPop = null;
+  function flip(el, change) {
+    const a = el.getBoundingClientRect(); change(); const b = el.getBoundingClientRect();
+    const base = popped ? 'translate(-50%,-50%) ' : '';
+    el.animate([{ transform: `${base}translate(${a.left - b.left}px,${a.top - b.top}px) scale(${a.width / b.width})`, transformOrigin: 'top left' },
+                { transform: base || 'none', transformOrigin: 'top left' }], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
+  }
+  function popResults() {
+    if (!wide() || popped) return;
+    const r = $('results');
+    flip(r, () => { popped = true; r.classList.add('pop'); });
+    $('rback').classList.add('on'); r.scrollTop = 0;
+  }
+  function unpop() {
+    if (!popped) return;
+    const r = $('results');
+    flip(r, () => { popped = false; r.classList.remove('pop'); });
+    $('rback').classList.remove('on');
+    const f = afterPop; afterPop = null; if (f) setTimeout(f, 500);
+  }
+  $('rx').onclick = unpop;
+  $('rback').onclick = unpop;
 
   function toast(msg, ms = 1800) { $('toast').innerHTML = msg ? `<span>${msg}</span>` : ''; clearTimeout(toast.t); if (msg && ms) toast.t = setTimeout(() => $('toast').innerHTML = '', ms); }
 
@@ -144,6 +218,7 @@
       save(); render(lv[0]);
       toast(groupOf[S.guesses.at(-1)[0]].name, 1400);
       if (S.done) finish();
+      else if (S.solved.length === 1) later(() => nag('first'));
       return;
     }
     S.lives--;
@@ -153,7 +228,7 @@
     else toast(WRONG[(S.guesses.length) % WRONG.length]);
     if (S.lives <= 0) { S.done = true; S.won = false; sel = []; }
     save();
-    if (S.done) { setTimeout(revealAll, 700); } else render();
+    if (S.done) { setTimeout(revealAll, 700); } else { render(); later(() => nag('miss'), 1800); }
   }
   function revealAll() {
     const left = P.groups.filter(g => !S.solved.includes(g.level)).sort((a, b) => a.level - b.level);
@@ -174,7 +249,7 @@
   function shareText() {
     return `The Cypher #${n}\n` + S.guesses.map(g => g.map(t => EMO[levelOf(t)]).join('')).join('\n') + '\npassionweiss.com';
   }
-  function finish() {
+  function finish(fresh = true) {
     recordStats();
     render();
     const mistakes = 4 - S.lives;
@@ -186,9 +261,12 @@
       .map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
     $('reading').innerHTML = P.groups.slice().sort((a, b) => a.level - b.level).map(g =>
       `<div class="grp g${g.level}"><h4>${g.level} · ${g.name}</h4><ul>${g.tiles.map(t => `<li><a href="${Cy.search(t)}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>`).join('');
+    $('signup').innerHTML = subbed() ? '' : `<div class="signup"><h3>Get tomorrow's Cypher in your inbox</h3><p>POW MAG, free. Rap writing since 2005.</p>${EMBED}<button class="btn" id="su-on" type="button">I'm on the list</button></div>`;
+    if ($('su-on')) $('su-on').onclick = markSubbed;
     $('results').hidden = false;
     tick(); clearInterval(finish.iv); finish.iv = setInterval(tick, 1000);
-    setTimeout(() => $('res-h').scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    if (fresh && wide()) setTimeout(popResults, 250);
+    else if (fresh) setTimeout(() => $('res-h').scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
     $('res-h').setAttribute('tabindex', '-1'); $('res-h').focus({ preventScroll: true });
   }
   function tick() {
@@ -209,10 +287,12 @@
   $('submit').onclick = submit;
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && sel.length === 4 && !(e.target.closest && e.target.closest('a,#share,#shuffle,#deselect'))) { e.preventDefault(); submit(); }
-    if (e.key === 'Escape') { sel = []; render(); }
+    if (e.key === 'Escape') { if (!$('nag').hidden) closeNag(); else if (popped) unpop(); else { sel = []; render(); } }
   });
   render();
-  if (S.done) finish();
+  // a finished board on reload stays in place; only a fresh finish pops
+  if (S.done) finish(false);
+  setTimeout(() => nag('land'), 1200);
   window.CypherDebug = { P, S, n, shareText };
 })();
 </script>
