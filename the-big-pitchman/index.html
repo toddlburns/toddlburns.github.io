@@ -296,8 +296,8 @@ function load(id){
 function lab(c){ c=(c+CH.length)%CH.length; var y=A[CH[c]].y; return y||'?'; }
 function show(k){
   cur=(k+CH.length)%CH.length; var it=A[CH[cur]];
-  $('prev').innerHTML='<span class="arr">‹</span><span class="yr">Earlier<br>'+lab(cur-1)+'</span>'; $('prev').setAttribute('aria-label','Earlier ad, '+lab(cur-1));
-  $('next').innerHTML='<span class="arr">›</span><span class="yr">Later<br>'+lab(cur+1)+'</span>'; $('next').setAttribute('aria-label','Later ad, '+lab(cur+1));
+  $('prev').innerHTML='<span class="arr">‹</span><span class="yr">Earlier</span>'; $('prev').setAttribute('aria-label','Earlier ad');
+  $('next').innerHTML='<span class="arr">›</span><span class="yr">Later</span>'; $('next').setAttribute('aria-label','Later ad');
   var g=$('lglass'); g.classList.remove('pow'); void g.offsetWidth; g.classList.add('pow');
   $('lt').textContent=it.t===it.b?it.b:it.b+': '+it.t;
   $('lstar').textContent='starring '+bigName(it.b);
