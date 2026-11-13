@@ -94,17 +94,22 @@ main{padding:8px 16px 140px}
 .ltv .glass.pow>div{animation:pow .45s ease-out}
 @keyframes pow{0%{transform:scale(1,.004);filter:brightness(6)}45%{transform:scale(1,.004);filter:brightness(6)}100%{transform:none;filter:none}}
 .ltv .ch{position:absolute;top:10px;right:14px;font:bold 22px/1 "Courier New",monospace;color:#7dff7d;text-shadow:0 0 8px #3f3;z-index:3;pointer-events:none;transition:opacity .6s}
-#look h2{margin:22px 0 6px;font-weight:bold;font-size:clamp(1.2rem,2.8vw,1.7rem);text-align:center;text-shadow:3px 3px 0 var(--ink)}
+#look h2{margin:22px 0 6px;font-weight:bold;font-size:clamp(1.2rem,2.8vw,1.7rem);text-align:center;text-shadow:2px 2px 0 var(--ink)}
 #look .starring{margin:0 0 8px;font-style:italic;font-weight:bold;font-size:16px;text-align:center;color:var(--ink);background:var(--bg);border:2px solid var(--ink);border-radius:6px;padding:2px 12px;transform:rotate(-2deg)}
 #look p{margin:0;font-size:15px;text-align:center}
 #look button{all:unset;cursor:pointer;color:#fff;position:absolute}
-#look .nav{font-size:60px;font-weight:bold;line-height:1;padding:20px;top:calc(50% - 70px);text-shadow:4px 4px 0 var(--ink)}
+#look .nav{font-weight:bold;line-height:1;padding:20px;top:calc(50% - 70px);text-shadow:4px 4px 0 var(--ink)}
 #look #prev{left:4px}
 #look #next{right:4px}
 #look #close,#look #surfing{top:12px;font-size:13px;font-weight:bold;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink)}
 #look #close{right:14px}
 #look #surfing{left:14px}
-#look #surfing.on{background:var(--magic);color:#fff}
+#look #surfing:hover{background:var(--bg)}
+#look .nav{display:flex;flex-direction:column;align-items:center;gap:2px}
+#look .nav .arr{font-size:60px;line-height:.9}
+#look .nav .yr{text-align:center;font-size:13px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;text-shadow:2px 2px 0 var(--ink)}
+#look .order{margin-top:6px;font-size:13px;opacity:.85}
+#look .order a{cursor:pointer}
 #look .nav:hover,#look .nav:focus-visible{color:var(--bg)}
 
 /* Serious/Fun: the same switch as toddlburns.com */
@@ -166,14 +171,14 @@ main{padding:8px 16px 140px}
 </main>
 
 <div id="look" hidden role="dialog" aria-modal="true" aria-labelledby="lt">
-  <button id="surfing" type="button" aria-pressed="false">Autoplay: off</button>
+  <button id="surfing" type="button">Random ad</button>
   <button id="close" type="button">Close</button>
-  <button id="prev" class="nav" type="button" aria-label="Channel down">‹</button>
-  <div class="ltv"><div class="glass" id="lglass"><div id="player"></div><span class="ch" id="lch"></span></div></div>
+  <button id="prev" class="nav" type="button"></button>
+  <div class="ltv"><div class="glass" id="lglass"><div id="player"></div></div></div>
   <h2 id="lt"></h2>
   <p class="starring" id="lstar"></p>
   <p id="lby"></p>
-  <button id="next" class="nav" type="button" aria-label="Channel up">›</button>
+  <button id="next" class="nav" type="button"></button>
 </div>
 
 <div class="bottom">
@@ -228,7 +233,7 @@ function surfBig(dir){
 }
 $('dial').onclick=function(){ surfBig(1); confetti(30); };
 $('bigglass').style.cursor='pointer';
-$('bigglass').onclick=function(){ var k=order.indexOf(bi); open(k<0?0:k); };
+$('bigglass').onclick=function(){ open(bi); };
 
 /* ---------- the wall ---------- */
 var CASES=[['#0077c0','#005f99'],['#552583','#41196a'],['#98002e','#7a0025'],['#e56020','#c44c12'],['#860038','#6b002d'],['#007a33','#005f28'],['#fffaf0','#efe6d2']];
@@ -269,7 +274,7 @@ function lay(m){
     b.style.setProperty('--r',((Math.random()-.5)*7).toFixed(1)+'deg');
     b.setAttribute('aria-label',it.b+': '+it.t+(it.y?', '+it.y:''));
     b.innerHTML=tvSVG(it,k)+'<span class="cap">'+esc(it.b)+(it.y?' <i>'+it.y+'</i>':'')+'</span>';
-    b.addEventListener('click',function(){ open(k); });
+    b.addEventListener('click',function(){ open(si); });
     wall.appendChild(b);
     var at=reduce?0:Math.round(260+1100*Math.pow(k/order.length,.55)*Math.sqrt(order.length/40));
     timers.push(setTimeout(function(){ b.classList.add('in'); $('n').textContent=k+1; if(k===order.length-1) confetti(120); },at));
@@ -278,7 +283,7 @@ function lay(m){
 }
 
 /* ---------- up close: the YouTube set ---------- */
-var cur=0,last=null,player=null,ytReady=false,surfOn=false,pendingId=null,chT=null;
+var CH=[],cur=0,last=null,player=null,ytReady=false,surfOn=false,pendingId=null,chT=null;
 window.onYouTubeIframeAPIReady=function(){ ytReady=true; if(pendingId) load(pendingId); };
 function load(id){
   if(!ytReady){ pendingId=id; return; }
@@ -288,21 +293,25 @@ function load(id){
               onError:function(){ if(surfOn) setTimeout(function(){show(cur+1)},800); }}});
   } else player.loadVideoById(id);
 }
+function lab(c){ c=(c+CH.length)%CH.length; var y=A[CH[c]].y; return y||'?'; }
 function show(k){
-  cur=(k+order.length)%order.length; var it=A[order[cur]];
+  cur=(k+CH.length)%CH.length; var it=A[CH[cur]];
+  $('prev').innerHTML='<span class="arr">‹</span><span class="yr">Earlier<br>'+lab(cur-1)+'</span>'; $('prev').setAttribute('aria-label','Earlier ad, '+lab(cur-1));
+  $('next').innerHTML='<span class="arr">›</span><span class="yr">Later<br>'+lab(cur+1)+'</span>'; $('next').setAttribute('aria-label','Later ad, '+lab(cur+1));
   var g=$('lglass'); g.classList.remove('pow'); void g.offsetWidth; g.classList.add('pow');
-  $('lch').textContent='CH '+(cur+1); $('lch').style.opacity=1; clearTimeout(chT); chT=setTimeout(function(){ $('lch').style.opacity=0; },1800);
   $('lt').textContent=it.t===it.b?it.b:it.b+': '+it.t;
   $('lstar').textContent='starring '+bigName(it.b);
-  $('lby').innerHTML=(it.y?it.y+' · ':'')+'<a href="https://www.youtube.com/watch?v='+esc(it.i)+'" target="_blank" rel="noopener">YouTube</a> · channel '+(cur+1)+' of '+order.length;
+  $('lby').innerHTML=(it.y?it.y+' · ':'')+'<a href="https://www.youtube.com/watch?v='+esc(it.i)+'" target="_blank" rel="noopener">YouTube</a> · '+(cur+1)+' of '+CH.length+' in order of air date'+
+    (surfOn?'<br><span class="order">Playing them all in order · <a id="stopall" role="button" tabindex="0">stop</a></span>':'');
+  if(surfOn) $('stopall').onclick=function(){ setSurf(false); show(cur); };
   load(it.i);
 }
-function setSurf(on){ surfOn=on; var b=$('surfing'); b.textContent='Autoplay: '+(on?'on':'off'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); }
-function open(k){ last=document.activeElement; var l=$('look'); l.hidden=false; show(k); requestAnimationFrame(function(){ l.classList.add('on'); }); $('close').focus(); }
+function setSurf(on){ surfOn=on; }
+function open(ai){ last=document.activeElement; var l=$('look'); l.hidden=false; show(CH.indexOf(ai)); requestAnimationFrame(function(){ l.classList.add('on'); }); $('close').focus(); }
 function close(){ var l=$('look'); l.classList.remove('on'); l.hidden=true; setSurf(false); if(player&&player.stopVideo) player.stopVideo(); if(last) last.focus(); }
 $('close').onclick=close; $('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
-$('surfing').onclick=function(){ setSurf(!surfOn); };
-$('surf').onclick=function(){ setSurf(true); open(0); };
+$('surfing').onclick=function(){ var r; do{ r=Math.floor(Math.random()*CH.length); }while(r===cur&&CH.length>1); show(r); };
+$('surf').onclick=function(){ setSurf(true); open(CH[0]); };
 $('look').addEventListener('click',function(e){ if(e.target===this) close(); });
 document.addEventListener('keydown',function(e){ if($('look').hidden) return;
   if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1); });
@@ -312,7 +321,7 @@ $('look').addEventListener('touchend',function(e){ if(tx===null) return; var d=e
 $('shuffle').onclick=function(){lay('shuffle')}; $('byyear').onclick=function(){lay('byyear')}; $('bybrand').onclick=function(){lay('bybrand')};
 
 fetch('ads.json').then(function(r){return r.json()}).then(function(d){
-  A=d; lay('byyear');
+  A=d; CH=A.map(function(_,i){return i}).sort(function(a,b){ return yr(A[a])-yr(A[b])||A[a].b.localeCompare(A[b].b); }); lay('byyear');
   var s=A.reduce(function(t,x){return t+x.s},0), h=Math.floor(s/3600), m=Math.round(s%3600/60);
   $('rt').textContent=(h?h+' hour'+(h>1?'s':'')+' ':'')+m+' minutes of a seven-foot-one man selling you things';
   bi=Math.floor(Math.random()*A.length); surfBig(1);
