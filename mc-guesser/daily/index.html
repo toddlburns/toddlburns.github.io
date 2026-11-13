@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MC Guesser Daily: POW Edition</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Ten pads, one MC. Name the rapper from the sound of their voice. A new crate of five every day.">
+<meta property="og:title" content="MC Guesser Daily: POW Edition">
+<meta property="og:description" content="Ten pads, one MC. Name the voice. Five rounds, 100 points.">
+<meta property="og:url" content="https://toddlburns.com/mc-guesser/daily/">
+<meta property="og:image" content="https://toddlburns.com/mc-guesser/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://toddlburns.com/mc-guesser/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Permanent+Marker&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --room:#1b1a18; --chassis:#c9c4b8; --chassis-hi:#ddd8cc; --chassis-lo:#a8a397; --print:#2a2824; --print-soft:#5b574f;
+  --panel:#34322e; --pad:#3d3b38; --pad-hi:#4c4a46; --pad-lit:#ff6a2a; --pad-glow:rgba(255,106,42,.55);
+  --lcd:#9fbf3b; --lcd-dark:#7f9c2a; --lcd-ink:#1f2a0c; --red:#c8321e; --tape:#efe6c8; --tape-ink:#1e1c19;
+  --paper:#f6f3ea; --ink:#22201c; --orange:#c4501c; --teal:#1d6b63;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sans-serif;min-height:100vh;
+  background-image:radial-gradient(ellipse at 50% 0%,#2b2925 0%,var(--room) 70%)}
+.stage{display:flex;gap:36px;justify-content:center;align-items:flex-start;padding:36px 16px 60px;flex-wrap:wrap}
+/* ---------- the unit ---------- */
+.unit{width:100%;max-width:600px;background:linear-gradient(180deg,var(--chassis-hi),var(--chassis) 30%,var(--chassis-lo));
+  border-radius:14px;padding:22px 24px 20px;box-shadow:0 2px 0 #eee8da inset,0 -3px 0 #8d887c inset,0 30px 60px rgba(0,0,0,.55),0 4px 0 #6f6b62;position:relative}
+.screw{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9e5da,#8c877b);box-shadow:0 1px 1px rgba(0,0,0,.4)}
+.screw::after{content:'';position:absolute;left:2px;right:2px;top:5px;height:1.5px;background:#6d695f;transform:rotate(35deg)}
+.s1{top:9px;left:9px}.s2{top:9px;right:9px}.s3{bottom:9px;left:9px}.s4{bottom:9px;right:9px}
+.brand{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 14px}
+.brand .name{font-weight:700;font-size:28px;letter-spacing:.04em;color:var(--print)}
+.brand .name b{color:var(--red);font-weight:700}
+.brand .sub{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--print-soft);font-weight:600}
+.led{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5a1a10;margin-left:8px;vertical-align:middle;box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
+.led.on{background:#ff3b1f;box-shadow:0 0 8px #ff3b1f}
+.top{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch}
+.bezel{background:var(--panel);border-radius:8px;padding:10px;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.lcd{background:linear-gradient(180deg,var(--lcd),var(--lcd-dark));border-radius:3px;padding:8px 12px 6px;font-family:'VT323',monospace;color:var(--lcd-ink);
+  font-size:25px;line-height:1.05;min-height:96px;box-shadow:inset 0 0 12px rgba(0,0,0,.25);position:relative;overflow:hidden}
+.lcd::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+.lcd .row{display:flex;justify-content:space-between;white-space:nowrap}
+.lcd .msg{margin-top:6px;font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blink{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.meter{display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-width:92px}
+.meter .lab{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--print-soft)}
+.seg{background:#120b09;border-radius:6px;padding:6px 10px;font-family:'VT323',monospace;font-size:46px;line-height:1;color:#ff3b1f;text-shadow:0 0 10px rgba(255,59,31,.7);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.8);min-width:92px;text-align:right;letter-spacing:.04em}
+.seg .ghost{color:#3a130c;text-shadow:none}
+.knobrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px}
+.rounds{display:flex;gap:6px}
+.rounds i{width:18px;height:6px;border-radius:2px;background:#6e6a60;box-shadow:inset 0 1px 1px rgba(0,0,0,.4)}
+.rounds i.done{background:#ff6a2a;box-shadow:0 0 5px var(--pad-glow)}
+.rounds i.zero{background:#3c3a35}
+.rounds i.cur{background:#f0c040;box-shadow:0 0 5px rgba(240,192,64,.6)}
+/* entry */
+.entry{margin-top:16px;display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;position:relative}
+.slot{background:var(--panel);border-radius:6px;padding:5px;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.slot input{width:100%;border:0;outline:0;background:#151410;color:#e9f3c8;font-family:'VT323',monospace;font-size:26px;padding:6px 10px;border-radius:3px;text-transform:uppercase}
+.slot input::placeholder{color:#5f6a43}
+.slot input:disabled{opacity:.5}
+.key{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:.12em;text-transform:uppercase;border:0;border-radius:6px;padding:12px 16px;cursor:pointer;
+  background:linear-gradient(180deg,#58554f,#3b3935);color:#eae5d8;box-shadow:0 3px 0 #22211e,0 4px 6px rgba(0,0,0,.4);transition:transform .05s}
+.key:active{transform:translateY(2px);box-shadow:0 1px 0 #22211e}
+.key.go{background:linear-gradient(180deg,#e0622b,var(--orange));color:#fff4ea;box-shadow:0 3px 0 #7a2f0f,0 4px 6px rgba(0,0,0,.4)}
+.key:disabled{opacity:.4;cursor:default}
+.sugg{position:absolute;left:5px;top:100%;margin-top:2px;width:calc(100% - 190px);min-width:220px;background:#151410;border:1px solid #3e3b35;border-radius:4px;z-index:5;display:none;
+  font-family:'VT323',monospace;font-size:22px;color:#cfe08f;max-height:240px;overflow:auto}
+.sugg div{padding:4px 10px;cursor:pointer;text-transform:uppercase}
+.sugg div.on,.sugg div:hover{background:#9fbf3b;color:#151410}
+.sugg small{opacity:.6;font-size:17px}
+/* pads */
+.padzone{margin-top:20px;background:var(--panel);border-radius:10px;padding:14px;box-shadow:inset 0 2px 5px rgba(0,0,0,.6)}
+.pads{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.pad{position:relative;aspect-ratio:1/1.08;border:0;border-radius:7px;cursor:pointer;padding:0;
+  background:linear-gradient(180deg,var(--pad-hi),var(--pad));box-shadow:0 4px 0 #1f1e1b,0 5px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .04s, box-shadow .04s}
+.pad:active,.pad.hit{transform:translateY(3px);box-shadow:0 1px 0 #1f1e1b,inset 0 1px 0 rgba(255,255,255,.05)}
+.pad .num{position:absolute;top:6px;left:8px;font-size:11px;letter-spacing:.12em;color:#9a958a;font-weight:700}
+.pad .tape{position:absolute;left:8%;right:8%;bottom:14%;background:var(--tape);color:var(--tape-ink);font-family:'Permanent Marker',cursive;font-size:clamp(14px,3.6vw,22px);
+  padding:3px 2px;border-radius:1px;transform:rotate(var(--rot,0deg));box-shadow:0 1px 2px rgba(0,0,0,.35);line-height:1.05;text-align:center;
+  background-image:linear-gradient(90deg,rgba(0,0,0,.03),transparent 30%,rgba(0,0,0,.04));}
+.pad .tape.song{font-size:clamp(9px,1.9vw,12px);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.01em;padding:3px 3px;text-transform:uppercase}
+.pad .tape.song span{display:block;font-weight:500;opacity:.7}
+.pad .bar{position:absolute;left:10%;right:10%;top:44%;height:3px;border-radius:2px;background:rgba(0,0,0,.35);overflow:hidden;opacity:0}
+.pad .bar i{display:block;height:100%;width:0;background:#ffd2b8}
+.pad .paid{position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:50%;background:#2a2826;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
+.pad.bought .paid{background:#f0c040;box-shadow:0 0 6px rgba(240,192,64,.8)}
+.pad.playing{background:radial-gradient(circle at 50% 40%,#ff9b6a,var(--pad-lit) 55%,#c94612);box-shadow:0 1px 0 #1f1e1b,0 0 22px var(--pad-glow)}
+.pad.playing .num{color:#5a1e06}
+.pad.playing .bar{opacity:1}
+.pad.loading{animation:pulse .5s ease-in-out infinite alternate}
+@keyframes pulse{from{background:linear-gradient(180deg,var(--pad-hi),var(--pad))}to{background:linear-gradient(180deg,#7a4a33,#5a3626)}}
+.pad.dead{opacity:.35;cursor:default}
+.pad:disabled{cursor:default}
+.legend{display:flex;justify-content:space-between;margin:10px 2px 0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9a958a;font-weight:600}
+.foot{display:flex;justify-content:space-between;align-items:center;margin:14px 4px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--print-soft);font-weight:600}
+.foot a{color:var(--print-soft)}
+.grille{display:flex;gap:4px}.grille i{width:26px;height:4px;border-radius:2px;background:#8f8a7e;box-shadow:inset 0 1px 1px rgba(0,0,0,.4)}
+/* ---------- printer ---------- */
+.printer{width:100%;max-width:340px;position:relative}
+.printer .head{background:linear-gradient(180deg,#3a3834,#262522);border-radius:10px 10px 4px 4px;height:46px;box-shadow:0 10px 20px rgba(0,0,0,.5);position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;padding:0 14px;color:#9b968b;font-size:12px;letter-spacing:.2em;font-weight:700}
+.printer .slotline{position:absolute;left:18px;right:18px;bottom:6px;height:4px;background:#0c0b0a;border-radius:2px}
+.paper{background:var(--paper);color:var(--ink);margin:-4px 14px 0;padding:22px 20px 26px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.5;
+  box-shadow:0 10px 20px rgba(0,0,0,.35);position:relative;min-height:140px;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x}
+.paper.feed{animation:feed .5s ease-out}@keyframes feed{from{transform:translateY(-30px);opacity:.3}to{transform:none;opacity:1}}
+.paper p{margin:0 0 12px}
+.paper .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.01em;margin-bottom:10px}
+.paper .kick{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.paper .kick.t{color:var(--teal)}
+.paper .rule{border-top:1px dashed #b9b3a4;margin:14px 0}
+.paper .score{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:64px;line-height:.9;color:var(--orange)}
+.paper .score small{font-size:28px;color:var(--ink)}
+.paper ol{margin:0;padding-left:22px}.paper li{margin:2px 0}
+.paper a{color:var(--teal)}
+.paper .meta{color:#6f6a5f;font-size:12px}
+.paper table{width:100%;border-collapse:collapse}.paper td{padding:2px 0}.paper td:last-child{text-align:right;font-weight:600}
+.paper .btn{display:inline-block;margin-top:6px;margin-right:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:2px}
+.paper .btn:hover{background:var(--ink);color:var(--paper)}
+.paper .squares{font-size:22px;letter-spacing:.1em;margin:4px 0 10px}
+.paper iframe.ss{display:block;width:100%;height:150px;border:1px solid #d8d2c2;background:#fff;border-radius:3px;margin:4px 0 6px}
+.demo{max-width:980px;margin:0 auto 40px;padding:10px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a39e92;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;border-top:1px dashed #4a4741}
+.demo b{color:#e0622b;letter-spacing:.1em;text-transform:uppercase}
+.demo button{font:inherit;color:#eae5d8;background:#3b3935;border:1px solid #58554f;border-radius:3px;padding:4px 10px;cursor:pointer}
+.demo button:hover{background:#58554f}
+#yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
+@media (max-width:1100px){.printer{max-width:600px}.paper{margin:-4px 18px 0}}
+@media (max-width:620px){
+  .stage{padding:16px 10px 40px;gap:22px}
+  .unit{padding:18px 14px 16px;border-radius:12px}
+  .brand .name{font-size:23px}.brand .sub{font-size:11px;letter-spacing:.14em}
+  .top{grid-template-columns:1fr auto;gap:10px}
+  .lcd{font-size:20px;min-height:80px;padding:6px 9px}.lcd .msg{font-size:22px}
+  .seg{font-size:36px;min-width:72px;padding:5px 8px}.meter{min-width:72px}
+  .entry{gap:6px}.entry .pass{padding:11px 9px}.foot .grille{display:none}
+  .sugg{width:calc(100% - 10px)}
+  .key{padding:11px 12px;font-size:15px}
+  .padzone{padding:10px}.pads{gap:8px}
+  .pad .num{font-size:9px;top:4px;left:5px}
+  .legend{font-size:10px;letter-spacing:.1em}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="unit">
+    <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
+    <div class="brand"><div class="name">MC<b>·</b>Guesser<span class="led" id="pwr"></span></div><div class="sub">Daily crate · 10 pads</div></div>
+    <div class="top">
+      <div class="bezel"><div class="lcd" id="lcd">
+        <div class="row"><span id="l-round">ROUND -/5</span><span id="l-pot">POT --</span></div>
+        <div class="msg" id="l-msg">LOADING CRATE<span class="blink">_</span></div>
+      </div></div>
+      <div class="meter">
+        <div class="lab">TOTAL</div>
+        <div class="seg" id="seg"><span class="ghost">888</span></div>
+        <div class="rounds" id="rounds"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="slot"><input id="guess" placeholder="WHO IS IT?" autocomplete="off" autocapitalize="characters" spellcheck="false" disabled></div>
+      <button class="key go" id="enter" disabled>Enter</button>
+      <button class="key pass" id="pass" disabled>Pass</button>
+      <div class="sugg" id="sugg"></div>
+    </div>
+    <div class="padzone">
+      <div class="pads" id="pads"></div>
+      <div class="legend"><span>◀ Harder · cheaper</span><span>Easier · dearer ▶</span></div>
+    </div>
+    <div class="foot"><div class="grille"><i></i><i></i><i></i><i></i></div><span>New crate daily · midnight PT</span><a href="../about.html">About</a></div>
+  </div>
+  <div class="printer">
+    <div class="head"><span>PR-2 · LINER NOTES</span><span class="led on"></span><div class="slotline"></div></div>
+    <div class="paper" id="paper"></div>
+  </div>
+</div>
+<div class="demo" id="demo"></div>
+<div id="yt"></div>
+<script>
+const $ = id => document.getElementById(id);
+const COST = [0,1,1,2,2,2,3,3,3,3];   // pad 1 (hardest) is free; all ten together cost the round's 20
+const ROUND_PTS = 20, ROUNDS = 5, CLIP = 8;
+const ROT = [-2,1.5,-1,2,-1.5,1,-2,1.5,-.5,2];
+let MCS = [], player, ytReady = false, S = null, clipTimer = null, barRAF = null;
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,'and').replace(/\$/g,'s').replace(/^the /,'').replace(/[^a-z0-9]/g,'');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+
+// ---------- display ----------
+function seg(n){ const s = String(n).padStart(3,' '); $('seg').innerHTML = s.split('').map(c => c===' ' ? '<span class="ghost">8</span>' : c).join(''); }
+function lcd(round, pot, msg){ $('l-round').textContent = round; $('l-pot').textContent = pot; $('l-msg').innerHTML = msg; }
+function lights(){
+  [...$('rounds').children].forEach((el,i) => {
+    el.className = '';
+    if (!S) return;
+    if (i < S.results.length) el.className = S.results[i].pts > 0 ? 'done' : 'zero';
+    else if (i === S.r) el.className = 'cur';
+  });
+}
+function printOut(html){ const p = $('paper'); p.classList.remove('feed'); void p.offsetWidth; p.innerHTML = html; p.classList.add('feed'); }
+function pot(){ return ROUND_PTS - S.spent; }
+function status(msg){ lcd(`ROUND ${S.r+1}/${ROUNDS}`, `POT ${String(pot()).padStart(2,' ')}`, msg); }
+
+// ---------- pads ----------
+function drawPads(){
+  const reveal = S && S.revealed, mc = S && S.mc;
+  $('pads').innerHTML = COST.map((c,i) => {
+    const clip = mc && mc.clips[i];
+    const tape = reveal && clip
+      ? `<span class="tape song" style="--rot:${ROT[i]*.5}deg">${esc(clip.t)}<span>${clip.y}</span></span>`
+      : `<span class="tape" style="--rot:${ROT[i]}deg">${c ? '−'+c : 'Free'}</span>`;
+    const cls = ['pad', S && S.bought.has(i) ? 'bought' : '', S && S.dead.has(i) ? 'dead' : ''].join(' ');
+    return `<button class="${cls}" data-i="${i}" ${!S || !mc ? 'disabled' : ''}><span class="num">PAD ${String(i+1).padStart(2,'0')}</span><span class="paid"></span><span class="bar"><i></i></span>${tape}</button>`;
+  }).join('');
+}
+$('pads').addEventListener('click', e => {
+  const b = e.target.closest('.pad'); if (!b || b.disabled) return;
+  hitPad(+b.dataset.i);
+});
+document.addEventListener('keydown', e => {
+  if (document.activeElement === $('guess')) return;
+  const k = '1234567890'.indexOf(e.key); if (k >= 0 && S && S.mc) hitPad(k);
+});
+
+function hitPad(i){
+  if (!ytReady || S.dead.has(i)) return;
+  const el = $('pads').children[i];
+  el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 90);
+  if (!S.revealed && !S.bought.has(i)) {
+    if (COST[i] > pot()) { status(`NOT ENOUGH IN POT`); return; }
+    S.bought.add(i); S.spent += COST[i]; el.classList.add('bought');
+  }
+  play(i);
+}
+function stopClip(){
+  clearTimeout(clipTimer); cancelAnimationFrame(barRAF);
+  [...$('pads').children].forEach(p => { p.classList.remove('playing','loading'); const b = p.querySelector('.bar i'); if (b) b.style.width = 0; });
+  if (player && player.pauseVideo) player.pauseVideo();
+  S && (S.playing = null);
+}
+function play(i){
+  stopClip();
+  const clip = S.mc.clips[i];
+  S.playing = i; S.waiting = true;
+  $('pads').children[i].classList.add('loading');
+  player.loadVideoById({videoId: clip.id, startSeconds: clip.s});
+  player.unMute(); player.setVolume(clip.v || 55);
+  if (!S.revealed) status(`PAD ${String(i+1).padStart(2,'0')} ${COST[i] ? '−'+COST[i] : 'FREE'}`);
+}
+function onState(e){
+  if (!S || S.playing == null) return;
+  if (e.data === YT.PlayerState.PLAYING && S.waiting) {
+    S.waiting = false;
+    const i = S.playing, el = $('pads').children[i];
+    el.classList.remove('loading'); el.classList.add('playing');
+    const t0 = performance.now(), bar = el.querySelector('.bar i');
+    const tick = () => { const f = Math.min(1,(performance.now()-t0)/(CLIP*1000)); bar.style.width = (f*100)+'%'; if (f < 1) barRAF = requestAnimationFrame(tick); };
+    tick();
+    clipTimer = setTimeout(() => { stopClip(); if (!S.revealed && S.mc) status('NAME THE MC'); }, CLIP*1000);
+  }
+}
+function onYtError(){
+  if (!S || S.playing == null) return;
+  const i = S.playing;
+  stopClip();
+  // a clip that won't play is refunded and switched off
+  if (!S.revealed && S.bought.has(i)) { S.spent -= COST[i]; S.bought.delete(i); }
+  S.dead.add(i); drawPads();
+  if (!S.revealed) status(`PAD ${i+1} NO SIGNAL · REFUND`);
+}
+
+// ---------- guessing ----------
+let NAMES = [];   // {key, label, mc}
+let suggIdx = -1, suggList = [];
+function buildNames(){
+  NAMES = [];
+  MCS.forEach(m => { NAMES.push({key:norm(m.mc), label:m.mc, mc:m.mc}); m.aka.forEach(a => NAMES.push({key:norm(a), label:a, mc:m.mc})); });
+}
+function lookup(q){
+  const k = norm(q); if (!k) return [];
+  const seen = new Set(), out = [];
+  const push = n => { if (!seen.has(n.mc)) { seen.add(n.mc); out.push(n); } };
+  NAMES.filter(n => n.key === k).forEach(push);
+  NAMES.filter(n => n.key.startsWith(k)).forEach(push);
+  if (k.length > 1) NAMES.filter(n => n.key.includes(k)).forEach(push);
+  return out.slice(0,6);
+}
+function showSugg(){
+  suggList = lookup($('guess').value); suggIdx = suggList.length ? 0 : -1;
+  const box = $('sugg');
+  if (!suggList.length) { box.style.display = 'none'; return; }
+  box.innerHTML = suggList.map((n,i) => `<div data-i="${i}" class="${i===suggIdx?'on':''}">${esc(n.mc)}${n.label!==n.mc?` <small>(${esc(n.label)})</small>`:''}</div>`).join('');
+  box.style.display = 'block';
+}
+$('guess').addEventListener('input', showSugg);
+$('guess').addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    if (!suggList.length) return; e.preventDefault();
+    suggIdx = (suggIdx + (e.key==='ArrowDown'?1:-1) + suggList.length) % suggList.length;
+    [...$('sugg').children].forEach((d,i) => d.classList.toggle('on', i===suggIdx));
+  } else if (e.key === 'Enter') { e.preventDefault(); submit(); }
+  else if (e.key === 'Escape') { $('sugg').style.display = 'none'; }
+});
+$('sugg').addEventListener('pointerdown', e => { const d = e.target.closest('div[data-i]'); if (!d) return; e.preventDefault(); suggIdx = +d.dataset.i; $('guess').value = suggList[suggIdx].mc; submit(); });
+document.addEventListener('pointerdown', e => { if (!e.target.closest('.entry')) $('sugg').style.display = 'none'; });
+$('enter').addEventListener('click', () => S && S.revealed ? next() : submit());
+$('pass').addEventListener('click', () => { if (S && S.mc && !S.revealed) finishRound(null); });
+
+function submit(){
+  if (!S || !S.mc || S.revealed) return;
+  const list = suggList.length ? suggList : lookup($('guess').value);
+  const pick = list[Math.max(0,suggIdx)] ;
+  const exact = NAMES.find(n => n.key === norm($('guess').value));
+  const choice = exact ? exact.mc : pick && pick.mc;
+  if (!choice) { status('NOT IN THE CRATE'); return; }
+  if (S.bought.size === 0) { status('HIT A PAD FIRST'); return; }
+  finishRound(choice);
+}
+
+// ---------- game flow ----------
+const powBlock = m => {
+  const p = m.pow, head = `<div class="rule"></div><p class="kick t">Read POW on ${esc(m.mc)}</p>`;
+  if (!p) return head + `<p><a href="https://www.powmag.net/archive?sort=search&search=${encodeURIComponent(m.mc)}" target="_blank" rel="noopener">Search the POW archive</a></p>`;
+  return head + `<p><a href="${p.u}" target="_blank" rel="noopener"><b>${esc(p.t)}</b></a><br><span class="meta">${({interview:'Interview',feature:'Feature',review:'Review'})[p.k] || 'Column'} · ${p.d.slice(0,4)}${p.a === 'only_paid' ? ' · paid subscribers' : ''}</span></p>`;
+};
+
+// ---------- daily crate + newsletter gate ----------
+// One crate a day (five MCs, the same for everyone), turning over at midnight Pacific.
+// The first crate is free. After that, a new crate needs the free POW MAG newsletter.
+const EPOCH = Date.UTC(2026,10,12);
+const store = {
+  get(k, d){ try { const v = localStorage.getItem('mcgd-'+k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem('mcgd-'+k, JSON.stringify(v)); } catch(e){} },
+  clear(){ try { Object.keys(localStorage).filter(k => k.startsWith('mcgd-')).forEach(k => localStorage.removeItem(k)); } catch(e){} }
+};
+let MEM = { plays:{}, sub:false, offset:0 };   // fallback when storage is blocked
+const plays = () => store.get('plays', MEM.plays);
+const subbed = () => store.get('sub', MEM.sub);
+const offset = () => store.get('offset', MEM.offset);
+function savePlays(p){ MEM.plays = p; store.set('plays', p); }
+function laParts(){
+  const f = new Intl.DateTimeFormat('en-CA',{timeZone:'America/Los_Angeles', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hourCycle:'h23'});
+  const o = {}; f.formatToParts(new Date()).forEach(p => o[p.type] = p.value); return o;
+}
+function today(){ const o = laParts(); return Math.round((Date.UTC(+o.year, +o.month-1, +o.day) - EPOCH)/864e5) + offset(); }
+function untilNext(){ const o = laParts(); const mins = 24*60 - (+o.hour*60 + +o.minute); return `${Math.floor(mins/60)}h ${String(mins%60).padStart(2,'0')}m`; }
+function rng(seed){ return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+let ORDER = null;
+function crate(day){
+  if (!ORDER) { const r = rng(1905); ORDER = MCS.map((_, i) => i); for (let i = ORDER.length-1; i > 0; i--) { const j = Math.floor(r()*(i+1)); [ORDER[i], ORDER[j]] = [ORDER[j], ORDER[i]]; } }
+  const n = ORDER.length;
+  return Array.from({length: ROUNDS}, (_, k) => MCS[ORDER[(((day*ROUNDS + k) % n) + n) % n]]);
+}
+const crateNo = d => d + 1;
+function access(){
+  const d = today(), p = plays();
+  if (p[d]) return 'done';
+  if (subbed() || !Object.keys(p).length) return 'open';
+  return 'gated';
+}
+function streak(){
+  const p = plays(); let d = today(), n = 0;
+  if (!p[d]) d--;
+  while (p[d]) { n++; d--; }
+  return n;
+}
+const squares = rs => rs.map(r => r.pts >= 15 ? '🟧' : r.pts > 0 ? '🟨' : '⬛').join('');
+
+function signupBlock(lead){
+  return `<div class="rule"></div><p class="kick t">${lead}</p>
+    <p>A new crate of five MCs drops every night at midnight Pacific. It's free. You just need to be on the POW MAG list, the newsletter Passion of the Weiss has turned into.</p>
+    <p>Sign up and you get tomorrow's crate, your streak, and the best rap writing anywhere in your inbox.</p>
+    <iframe class="ss" src="https://www.powmag.net/embed" title="Sign up for POW MAG" scrolling="no"></iframe>
+    <p class="meta">Free. One click to unsubscribe.</p>
+    <button class="btn" id="subbed">I'm on the list</button>`;
+}
+function wireSignup(){ const b = $('subbed'); if (b) b.onclick = () => { MEM.sub = true; store.set('sub', true); render(); }; }
+
+function render(){
+  S = null; stopClip(); drawPads(); lights();
+  $('guess').disabled = true; $('pass').disabled = true;
+  const d = today(), a = access(), st = streak();
+  seg(a === 'done' ? plays()[d].score : 0);
+  $('enter').disabled = a !== 'open';
+  $('enter').textContent = a === 'open' ? 'Start' : a === 'done' ? 'Done' : 'Locked';
+  if (a === 'open') {
+    lcd(`CRATE #${crateNo(d)}`, '5 x 20', 'PRESS START<span class="blink">_</span>');
+    printOut(`<p class="kick">Daily crate #${crateNo(d)}${st ? ` · ${st}-day streak` : ''}</p><p class="big">Today's five MCs</p>
+      <p>The same five voices for everyone today, drawn from the corners of rap Passion of the Weiss has covered since 2005. Name each one from the voice alone.</p>
+      ${!subbed() ? '<p class="meta">Your first crate is on us.</p>' : ''}
+      <p><span class="kick">Ten pads.</span><br>Each holds an ${CLIP}-second verse from the same MC. The hardest clip is free; the easier the clip, the more it costs.</p>
+      <p><span class="kick">20 a round.</span><br>Spend from the pot, then type your guess. Right: you keep what's left. Wrong: zero. One guess.</p>
+      <p><span class="kick">After each round</span><br>Who it was, and the best POW piece on them.</p>`);
+  } else if (a === 'done') {
+    const r = plays()[d];
+    lcd(`CRATE #${crateNo(d)}`, `${r.score}/100`, `NEXT IN ${untilNext().toUpperCase()}`);
+    S = { share: shareText(d, r) };
+    printOut(`<p class="kick">Crate #${crateNo(d)} · done${st ? ` · ${st}-day streak` : ''}</p>
+      <p class="score">${r.score}<small>/100</small></p>
+      <p class="squares">${squares(r.results)}</p>
+      <table>${r.results.map((x,i) => `<tr><td>${i+1}. ${esc(x.mc)}${x.pts ? '' : ` <span class="meta">${x.guess ? '✗' : 'pass'}</span>`}</td><td>${x.pts}</td></tr>`).join('')}</table>
+      <button class="btn" id="share">Share</button>
+      <p class="meta" style="margin-top:12px">Next crate in ${untilNext()}.</p>
+      ${subbed() ? '<p class="meta">You\'re on the POW list, so tomorrow\'s crate is yours.</p>' : signupBlock('Want tomorrow\'s crate?')}`);
+    $('share').onclick = doShare; wireSignup();
+  } else {
+    lcd(`CRATE #${crateNo(d)}`, 'LOCKED', 'JOIN THE LIST TO PLAY');
+    printOut(`<p class="kick">Crate #${crateNo(d)} is ready</p><p class="big">Five new MCs are waiting</p>
+      <p>You've had your free crate. Every crate after that comes with the free POW MAG newsletter.</p>
+      ${signupBlock('Unlock today\'s crate')}`);
+    wireSignup();
+  }
+  demoBar();
+}
+function shareText(d, r){ return `MC Guesser Daily #${crateNo(d)} · ${r.score}/100\n${squares(r.results)}${streak() > 1 ? `\n${streak()}-day streak` : ''}\ntoddlburns.com/mc-guesser/daily`; }
+
+function newGame(){
+  if (access() !== 'open') return render();
+  S = { day: today(), order: crate(today()), r: 0, results: [] };
+  startRound();
+}
+function startRound(){
+  stopClip();
+  Object.assign(S, { mc: S.order[S.r], bought: new Set(), dead: new Set(), spent: 0, revealed: false, playing: null });
+  for (let i = S.mc.clips.length; i < COST.length; i++) S.dead.add(i);
+  drawPads(); lights(); seg(total());
+  $('guess').value = ''; $('guess').disabled = false; $('pass').disabled = false;
+  $('enter').disabled = false; $('enter').textContent = 'Enter';
+  status('HIT A PAD<span class="blink">_</span>');
+  printOut(`<p class="kick">Crate #${crateNo(S.day)} · round ${S.r+1} of ${ROUNDS}</p>
+    <p class="big">Who's on the mic?</p>
+    <p>Ten clips of one MC, ${CLIP} seconds each. The price is on the tape.</p>
+    <p>Pot: <b>${ROUND_PTS}</b>. What you spend comes out of it. Name the MC and you bank what's left.</p>`);
+}
+function total(){ return S && S.results ? S.results.reduce((a,r) => a + r.pts, 0) : 0; }
+function finishRound(choice){
+  stopClip(); $('sugg').style.display = 'none';
+  const right = choice === S.mc.mc;
+  const pts = right ? pot() : 0;
+  S.results.push({ mc: S.mc.mc, guess: choice, pts, pads: S.bought.size });
+  S.revealed = true;
+  drawPads(); lights(); seg(total());
+  $('guess').disabled = true; $('pass').disabled = true; $('guess').value = S.mc.mc;
+  $('enter').textContent = S.r === ROUNDS-1 ? 'Score' : 'Next';
+  lcd(`ROUND ${S.r+1}/${ROUNDS}`, right ? `+${pts}` : '+0', right ? 'CORRECT · PADS FREE' : 'NO · PADS FREE');
+  const m = S.mc;
+  printOut(`<p class="kick ${right?'':'t'}">${right ? `Correct · +${pts}` : choice ? `Not ${esc(choice)} · +0` : 'Passed · +0'}</p>
+    <p class="big">${esc(m.mc)}</p>
+    <p class="meta">${esc(m.from_)} · ${S.bought.size} pad${S.bought.size===1?'':'s'} played</p>
+    <p>${esc(m.note)}</p>
+    ${powBlock(m)}
+    <div class="rule"></div>
+    <p class="kick t">On the pads</p>
+    <ol>${m.clips.map(c => `<li><a href="https://www.youtube.com/watch?v=${c.id}&t=${Math.floor(c.s)}s" target="_blank" rel="noopener">${esc(c.t)}</a> <span class="meta">${c.y}</span></li>`).join('')}</ol>
+    <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>`);
+  if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
+}
+function next(){
+  if (innerWidth <= 1100) scrollTo({top:0, behavior:'smooth'});
+  if (S.r < ROUNDS-1) { S.r++; startRound(); }
+  else endGame();
+}
+function endGame(){
+  const p = plays(); p[S.day] = { score: total(), results: S.results }; savePlays(p);
+  render();
+  if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
+}
+async function doShare(){
+  try { if (navigator.share) { await navigator.share({ text: S.share }); return; } } catch(e) { return; }
+  try { await navigator.clipboard.writeText(S.share); $('share').textContent = 'Copied'; } catch(e) { $('share').textContent = 'Copy failed'; }
+}
+// Start / Enter: start today's crate when nothing is in play
+$('enter').addEventListener('click', e => { if (!S || !S.order) { e.stopImmediatePropagation(); newGame(); } }, true);
+
+// ---------- pitch demo controls ----------
+function demoBar(){
+  const s = subbed(), n = Object.keys(plays()).length;
+  $('demo').innerHTML = `<b>Demo</b> · ${s ? 'on the list' : 'not signed up'} · ${n} crate${n===1?'':'s'} played · day offset +${offset()}
+    <button id="d-next">Jump to tomorrow</button><button id="d-reset">Reset demo</button>`;
+  $('d-next').onclick = () => { MEM.offset = offset() + 1; store.set('offset', MEM.offset); render(); };
+  $('d-reset').onclick = () => { store.clear(); MEM = { plays:{}, sub:false, offset:0 }; render(); };
+}
+
+// ---------- boot ----------
+seg(0); drawPads();
+lcd('MC GUESSER', 'DAILY', 'LOADING CRATE<span class="blink">_</span>');
+fetch('../pow/mcs.json?v=1').then(r => r.json()).then(d => { MCS = d; buildNames(); maybeReady(); });
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player('yt', { width:200, height:200,
+    playerVars:{ playsinline:1, controls:0, disablekb:1, rel:0, fs:0, iv_load_policy:3 },
+    events:{ onReady:() => { ytReady = true; maybeReady(); }, onStateChange:onState, onError:onYtError } });
+};
+const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
+function maybeReady(){
+  if (!(ytReady && MCS.length)) return;
+  $('pwr').classList.add('on');
+  render();
+}
+</script>
+</body>
+</html>
