@@ -132,16 +132,42 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .demo b{color:#e0622b;letter-spacing:.1em;text-transform:uppercase}
 .demo button{font:inherit;color:#eae5d8;background:#3b3935;border:1px solid #58554f;border-radius:3px;padding:4px 10px;cursor:pointer}
 .demo button:hover{background:#58554f}
-.nag{position:fixed;inset:0;background:rgba(15,14,12,.72);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
-.nag-card{background:var(--paper);color:var(--ink);width:100%;max-width:420px;padding:22px 22px 18px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.5;border-radius:3px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
-.nag-card p{margin:0 0 10px}
-.nag-card .kick{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
-.nag-card .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1;text-transform:uppercase}
-.nag-card iframe.ss{display:block;width:100%;height:150px;border:1px solid #d8d2c2;background:#fff;border-radius:3px;margin:6px 0 12px}
-.nag-row{display:flex;flex-wrap:wrap;gap:8px}
 .btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:2px}
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn.quiet{border-color:transparent;text-decoration:underline}
+/* ---------- POW masthead + pop-up ---------- */
+.powbar{background:#171717;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;border-bottom:1px solid #2e2e2e}
+.powbar .pb-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;max-width:1240px;margin:0 auto;padding:18px 24px 14px}
+.powbar .mark img{display:block;height:84px;width:auto}
+.powbar .lab{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#a3a3a3}
+.powbar .lab b{color:#fff}
+.powbar .cta{justify-self:end;background:#ff6719;color:#fff;font-weight:600;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:8px;border:0;cursor:pointer}
+.powbar .cta:hover{background:#ff7d3b}
+.powbar nav{display:flex;justify-content:center;gap:24px;border-top:1px solid #2e2e2e;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.powbar nav a{color:#d4d4d4;text-decoration:none;font-size:14.5px;font-weight:500;padding:13px 0 11px;border-bottom:2px solid transparent;white-space:nowrap}
+.powbar nav a:hover{color:#fff}
+.powbar nav a.on{color:#fff;font-weight:700;border-bottom-color:#fff}
+@media (max-width:620px){
+  .powbar .pb-top{grid-template-columns:auto 1fr auto;padding:12px 16px 10px;gap:10px}
+  .powbar .mark{order:-1}.powbar .mark img{height:46px}
+  .powbar .lab{font-size:10.5px;letter-spacing:.1em}
+  .powbar .cta{font-size:13px;padding:8px 11px}
+  .powbar nav{justify-content:flex-start;gap:18px}
+}
+.nag[hidden]{display:none}
+.nag{position:fixed;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.nag-card{background:#171717;color:#e5e5e5;width:100%;max-width:440px;padding:26px 24px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5;border-radius:14px;border:1px solid #2e2e2e;box-shadow:0 24px 60px rgba(0,0,0,.7);text-align:center}
+.nag-card .nag-mark{display:block;height:64px;width:auto;margin:0 auto 14px;transform:rotate(-3deg)}
+.nag-card p{margin:0 0 10px}
+.nag-card .kick{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#ff6719}
+.nag-card .big{font-weight:800;font-size:26px;line-height:1.15;color:#fff;letter-spacing:-.01em}
+.nag-card iframe.ss{display:block;width:100%;height:150px;border:0;background:#fff;border-radius:10px;margin:8px 0 14px}
+.nag-row{display:flex;flex-direction:column;gap:6px;align-items:center}
+.nag-row .btn{font-family:inherit;letter-spacing:0;text-transform:none;font-size:15px;font-weight:600;border-radius:8px;padding:10px 18px;width:100%}
+#nag-on{background:transparent;border:1px solid #404040;color:#e5e5e5}
+#nag-on:hover{background:#262626;color:#fff}
+#nag-close{border:0;color:#a3a3a3;text-decoration:none;background:none}
+#nag-close:hover{color:#fff;background:none}
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
 @media (max-width:1100px){.printer{max-width:600px}.paper{margin:-4px 18px 0}}
 @media (max-width:620px){
@@ -161,6 +187,20 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 </style>
 </head>
 <body>
+<header class="powbar">
+  <div class="pb-top">
+    <div class="lab"><b>MC Guesser</b> · Daily</div>
+    <a class="mark" href="https://www.powmag.net/" aria-label="POW MAG"><img src="pow-wordmark.png" alt="POW MAG"></a>
+    <a class="cta" href="https://www.powmag.net/subscribe" target="_blank" rel="noopener">Subscribe</a>
+  </div>
+  <nav>
+    <a href="https://www.powmag.net/" target="_blank" rel="noopener">Home</a>
+    <a href="https://www.powmag.net/archive" target="_blank" rel="noopener">Archive</a>
+    <a href="https://www.powmag.net/s/podcast" target="_blank" rel="noopener">Truth Hurts Podcast</a>
+    <a class="on" href="./">Games</a>
+    <a href="https://www.powmag.net/about" target="_blank" rel="noopener">About</a>
+  </nav>
+</header>
 <div class="stage">
   <div class="unit">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
@@ -194,7 +234,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
   </div>
 </div>
 <div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG">
-  <div class="nag-card"><div id="nag-body"></div>
+  <div class="nag-card"><img class="nag-mark" src="pow-wordmark.png" alt="POW MAG"><div id="nag-body"></div>
     <div class="nag-row"><button class="btn" id="nag-on">I'm on the list</button><button class="btn quiet" id="nag-close">Not now, keep playing</button></div>
   </div>
 </div>
