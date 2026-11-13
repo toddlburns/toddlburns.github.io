@@ -266,7 +266,7 @@ function lay(m){
   var lastSec=null;
   order.forEach(function(si,k){
     var it=A[si];
-    var sec=mode==='byyear'?(it.y?(it.y.slice(0,3)+'0s'):'Year unknown'):mode==='bybrand'?(cnt1(it.b)>1?it.b:'One-Offs'):null;
+    var sec=mode==='byyear'?(it.y?(it.y.slice(0,3)+'0s'):'Unknown Year'):mode==='bybrand'?(cnt1(it.b)>1?it.b:'One-Offs'):null;
     if(sec&&sec!==lastSec){ var h=document.createElement('div'); h.className='sec';
       h.textContent=mode==='bybrand'?(sec==='One-Offs'?'One-Offs · '+order.filter(function(j){return cnt1(A[j].b)===1}).length:sec+' · '+bigName(sec)+' · '+cnt1(sec)):sec; wall.appendChild(h); lastSec=sec; }
     var b=document.createElement('button');
@@ -301,7 +301,7 @@ function show(k){
   var g=$('lglass'); g.classList.remove('pow'); void g.offsetWidth; g.classList.add('pow');
   $('lt').textContent=it.t===it.b?it.b:it.b+': '+it.t;
   $('lstar').textContent='starring '+bigName(it.b);
-  $('lby').innerHTML=(it.y?esc(it.y)+'<br>':'')+(cur+1)+' of '+CH.length;
+  $('lby').innerHTML=(it.y?esc(it.y):'Unknown Year')+'<br>'+(cur+1)+' of '+CH.length;
   load(it.i);
 }
 function setSurf(on){ surfOn=on; }
