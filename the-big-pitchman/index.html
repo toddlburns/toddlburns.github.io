@@ -24,7 +24,7 @@ header{position:relative;min-height:min(90vh,820px);display:flex;flex-direction:
 .big .case{position:relative;background:var(--lak);border:5px solid var(--ink);border-radius:30px;padding:22px 118px 22px 22px;box-shadow:12px 12px 0 var(--ink)}
 .big .glass{position:relative;aspect-ratio:4/3;border-radius:30px/24px;overflow:hidden;background:#000;border:5px solid var(--ink)}
 .big .glass img,.big .glass canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.big .glass img{filter:saturate(1.35) contrast(1.1);transform:scale(1.34)}
+.big .glass img{filter:saturate(1.35) contrast(1.1)}
 .big .glass canvas{opacity:0;transition:opacity .08s}
 .big .glass.static canvas{opacity:1}
 .big .glass::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 2px,transparent 2px 4px),radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.25),transparent 40%);pointer-events:none}
@@ -57,7 +57,8 @@ h1 span.l{display:inline-block;color:var(--c);-webkit-text-stroke:2px var(--ink)
 
 /* the wall of sets */
 main{padding:8px 16px 140px}
-.tools{text-align:center;margin:0 0 34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.tools{text-align:center;margin:0 0 34px;display:flex;gap:14px;justify-content:center;flex-wrap:nowrap}
+.tools button{white-space:nowrap}
 .tools button{all:unset;cursor:pointer;font-size:14px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:8px 18px;box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
 .tools button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .tools button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
@@ -120,6 +121,7 @@ main{padding:8px 16px 140px}
 
 @media (max-width:520px){
   #wall{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+  .tools{gap:7px;margin-left:-8px;margin-right:-8px}.tools button{font-size:11px;letter-spacing:.06em;padding:7px 10px;box-shadow:3px 3px 0 var(--ink)}
   .tv .cap{font-size:11px}
   .big .case{padding:14px 70px 14px 14px;border-radius:20px;box-shadow:8px 8px 0 var(--ink)}
   .big .panel{right:12px;top:14px;bottom:14px;width:48px;gap:10px}
@@ -155,17 +157,16 @@ main{padding:8px 16px 140px}
 
 <main>
   <div class="tools">
-    <button id="shuffle" type="button" class="sel">Shuffle</button>
-    <button id="byyear" type="button">By year</button>
+    <button id="byyear" type="button" class="sel">By year</button>
     <button id="bybrand" type="button">By brand</button>
-    <button id="surf" type="button" class="surf">Surf ▸</button>
+    <button id="shuffle" type="button">Shuffle</button>
+    <button id="surf" type="button" class="surf">Play all ▸</button>
   </div>
   <div id="wall" role="list"></div>
-  <p class="note">Every commercial we could find that somebody paid Shaquille O'Neal to be in, from the 1992 rookie Reebok spot to the ones still airing. No network promos, no PSAs, no Kazaam. The nicknames up top are his. The ones on the TVs are ours. All found on YouTube, uploaded by the people who taped them off the TV; click a set to watch, or hit Surf and let it play through. More on the way.</p>
 </main>
 
 <div id="look" hidden role="dialog" aria-modal="true" aria-labelledby="lt">
-  <button id="surfing" type="button" aria-pressed="false">Surf: off</button>
+  <button id="surfing" type="button" aria-pressed="false">Autoplay: off</button>
   <button id="close" type="button">Close</button>
   <button id="prev" class="nav" type="button" aria-label="Channel down">‹</button>
   <div class="ltv"><div class="glass" id="lglass"><div id="player"></div><span class="ch" id="lch"></span></div></div>
@@ -188,7 +189,7 @@ main{padding:8px 16px 140px}
 var $=function(id){return document.getElementById(id)};
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
-function thumb(id,hq){ return 'https://i.ytimg.com/vi/'+id+'/'+(hq?'hqdefault':'mqdefault')+'.jpg'; }
+function thumb(id){ return 'img/'+id+'.webp'; }
 
 /* ---------- his names (real) ---------- */
 var NICKS=["Shaquille O'Neal","Shaq","The Big Aristotle","Shaq Diesel","The Diesel","Superman","The Big Cactus","The Big Shamrock","The Big Leprechaun","The Big Baryshnikov","Wilt Chamberneezy","The Big Shaqtus","The Big Daddy","Shaq Fu","Dr. Shaq","The MDE"];
@@ -237,31 +238,32 @@ function tvSVG(it,k){
     (ant?'<path d="M100 26 L68 2 M100 26 L134 4" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/><circle cx="68" cy="2" r="3" fill="#1a1a1a"/><circle cx="134" cy="4" r="3" fill="#1a1a1a"/><ellipse cx="100" cy="27" rx="12" ry="3.5" fill="#1a1a1a"/>':'')+
     '<rect x="6" y="26" width="188" height="122" rx="18" fill="url(#'+id+')" stroke="#1a1a1a" stroke-width="4"/>'+
     '<rect x="14" y="32" width="130" height="104" rx="18" fill="#1a1a1a"/>'+
-    '<g class="scr" clip-path="url(#s'+id+')"><rect x="18" y="36" width="122" height="96" fill="#000"/><image href="'+thumb(it.i)+'" x="-2" y="36" width="162" height="96" preserveAspectRatio="xMidYMid slice"/></g>'+
+    '<g class="scr" clip-path="url(#s'+id+')"><rect x="18" y="36" width="122" height="96" fill="#000"/><image href="'+thumb(it.i)+'" x="15" y="36" width="128" height="96" preserveAspectRatio="xMidYMid slice"/></g>'+
     '<rect x="18" y="36" width="122" height="96" rx="16" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="2"/>'+
     '<path d="M24 44 Q60 38 90 42" stroke="rgba(255,255,255,.18)" stroke-width="5" fill="none" stroke-linecap="round"/>'+
     '<circle cx="168" cy="56" r="9" fill="#fdb927" stroke="#1a1a1a" stroke-width="3"/><circle cx="168" cy="84" r="7" fill="#fffaf0" stroke="#1a1a1a" stroke-width="3"/>'+
     '<g stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round">'+[0,1,2,3,4].map(function(j){return '<line x1="156" x2="180" y1="'+(102+j*6)+'" y2="'+(102+j*6)+'"/>'}).join('')+'</g>'+
     '<path d="M30 150 L24 166 M170 150 L176 166" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/></svg>';
 }
-var order=[],timers=[],mode='shuffle';
+var order=[],timers=[],mode='byyear';
 function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), x=a[i]; a[i]=a[j]; a[j]=x; } return a; }
+function cnt1(b){ var n=0; A.forEach(function(x){ if(x.b===b) n++; }); return n; }
 function yr(it){ return it.y?+it.y:9999; }
 function lay(m){
-  mode=m||mode; ['shuffle','byyear','bybrand'].forEach(function(b){ $(b).classList.toggle('sel',b===mode); });
+  mode=m||mode; ['byyear','bybrand','shuffle'].forEach(function(b){ $(b).classList.toggle('sel',b===mode); });
   timers.forEach(clearTimeout); timers=[];
   var wall=$('wall'); wall.innerHTML=''; $('n').textContent='0';
   var idx=A.map(function(_,i){return i});
   if(mode==='shuffle') order=shuffle(idx);
   else if(mode==='byyear') order=idx.sort(function(a,b){ return yr(A[a])-yr(A[b])||A[a].b.localeCompare(A[b].b); });
-  else { var cnt={}; A.forEach(function(it){cnt[it.b]=(cnt[it.b]||0)+1});
-    order=idx.sort(function(a,b){ return cnt[A[b].b]-cnt[A[a].b]||A[a].b.localeCompare(A[b].b)||yr(A[a])-yr(A[b]); }); }
+  else { var g=function(i){ return cnt1(A[i].b)>1?A[i].b:'One-Offs'; }, w=function(i){ var c=cnt1(A[i].b); return c>1?c:0; };
+    order=idx.sort(function(a,b){ return w(b)-w(a)||g(a).localeCompare(g(b))||A[a].b.localeCompare(A[b].b)||yr(A[a])-yr(A[b]); }); }
   var lastSec=null;
   order.forEach(function(si,k){
     var it=A[si];
-    var sec=mode==='byyear'?(it.y?(it.y.slice(0,3)+'0s'):'Year unknown'):mode==='bybrand'?it.b:null;
+    var sec=mode==='byyear'?(it.y?(it.y.slice(0,3)+'0s'):'Year unknown'):mode==='bybrand'?(cnt1(it.b)>1?it.b:'One-Offs'):null;
     if(sec&&sec!==lastSec){ var h=document.createElement('div'); h.className='sec';
-      h.textContent=mode==='bybrand'?sec+' · '+bigName(sec)+' · '+order.filter(function(j){return A[j].b===sec}).length:sec; wall.appendChild(h); lastSec=sec; }
+      h.textContent=mode==='bybrand'?(sec==='One-Offs'?'One-Offs · '+order.filter(function(j){return cnt1(A[j].b)===1}).length:sec+' · '+bigName(sec)+' · '+cnt1(sec)):sec; wall.appendChild(h); lastSec=sec; }
     var b=document.createElement('button');
     b.className='tv'; b.type='button'; b.setAttribute('role','listitem');
     b.style.setProperty('--r',((Math.random()-.5)*7).toFixed(1)+'deg');
@@ -295,7 +297,7 @@ function show(k){
   $('lby').innerHTML=(it.y?it.y+' · ':'')+'<a href="https://www.youtube.com/watch?v='+esc(it.i)+'" target="_blank" rel="noopener">YouTube</a> · channel '+(cur+1)+' of '+order.length;
   load(it.i);
 }
-function setSurf(on){ surfOn=on; var b=$('surfing'); b.textContent='Surf: '+(on?'on':'off'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); }
+function setSurf(on){ surfOn=on; var b=$('surfing'); b.textContent='Autoplay: '+(on?'on':'off'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); }
 function open(k){ last=document.activeElement; var l=$('look'); l.hidden=false; show(k); requestAnimationFrame(function(){ l.classList.add('on'); }); $('close').focus(); }
 function close(){ var l=$('look'); l.classList.remove('on'); l.hidden=true; setSurf(false); if(player&&player.stopVideo) player.stopVideo(); if(last) last.focus(); }
 $('close').onclick=close; $('prev').onclick=function(){show(cur-1)}; $('next').onclick=function(){show(cur+1)};
@@ -310,7 +312,7 @@ $('look').addEventListener('touchend',function(e){ if(tx===null) return; var d=e
 $('shuffle').onclick=function(){lay('shuffle')}; $('byyear').onclick=function(){lay('byyear')}; $('bybrand').onclick=function(){lay('bybrand')};
 
 fetch('ads.json').then(function(r){return r.json()}).then(function(d){
-  A=d; lay('shuffle');
+  A=d; lay('byyear');
   var s=A.reduce(function(t,x){return t+x.s},0), h=Math.floor(s/3600), m=Math.round(s%3600/60);
   $('rt').textContent=(h?h+' hour'+(h>1?'s':'')+' ':'')+m+' minutes of a seven-foot-one man selling you things';
   bi=Math.floor(Math.random()*A.length); surfBig(1);
