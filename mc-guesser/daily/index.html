@@ -132,6 +132,16 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .demo b{color:#e0622b;letter-spacing:.1em;text-transform:uppercase}
 .demo button{font:inherit;color:#eae5d8;background:#3b3935;border:1px solid #58554f;border-radius:3px;padding:4px 10px;cursor:pointer}
 .demo button:hover{background:#58554f}
+.nag{position:fixed;inset:0;background:rgba(15,14,12,.72);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.nag-card{background:var(--paper);color:var(--ink);width:100%;max-width:420px;padding:22px 22px 18px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.5;border-radius:3px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.nag-card p{margin:0 0 10px}
+.nag-card .kick{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.nag-card .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1;text-transform:uppercase}
+.nag-card iframe.ss{display:block;width:100%;height:150px;border:1px solid #d8d2c2;background:#fff;border-radius:3px;margin:6px 0 12px}
+.nag-row{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:2px}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.quiet{border-color:transparent;text-decoration:underline}
 #yt{position:fixed;left:-9999px;top:0;width:200px;height:200px}
 @media (max-width:1100px){.printer{max-width:600px}.paper{margin:-4px 18px 0}}
 @media (max-width:620px){
@@ -181,6 +191,11 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
   <div class="printer">
     <div class="head"><span>PR-2 · LINER NOTES</span><span class="led on"></span><div class="slotline"></div></div>
     <div class="paper" id="paper"></div>
+  </div>
+</div>
+<div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG">
+  <div class="nag-card"><div id="nag-body"></div>
+    <div class="nag-row"><button class="btn" id="nag-on">I'm on the list</button><button class="btn quiet" id="nag-close">Not now, keep playing</button></div>
   </div>
 </div>
 <div class="demo" id="demo"></div>
@@ -335,7 +350,8 @@ const powBlock = m => {
 
 // ---------- daily crate + newsletter gate ----------
 // One crate a day (five MCs, the same for everyone), turning over at midnight Pacific.
-// The first crate is free. After that, a new crate needs the free POW MAG newsletter.
+// Anyone can play. A dismissible POW MAG signup pops up at a few moments (landing,
+// after round one, after a miss), each at most once a day, never once you're on the list.
 const EPOCH = Date.UTC(2026,10,12);
 const store = {
   get(k, d){ try { const v = localStorage.getItem('mcgd-'+k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } },
@@ -361,12 +377,7 @@ function crate(day){
   return Array.from({length: ROUNDS}, (_, k) => MCS[ORDER[(((day*ROUNDS + k) % n) + n) % n]]);
 }
 const crateNo = d => d + 1;
-function access(){
-  const d = today(), p = plays();
-  if (p[d]) return 'done';
-  if (subbed() || !Object.keys(p).length) return 'open';
-  return 'gated';
-}
+function access(){ return plays()[today()] ? 'done' : 'open'; }
 function streak(){
   const p = plays(); let d = today(), n = 0;
   if (!p[d]) d--;
@@ -377,13 +388,33 @@ const squares = rs => rs.map(r => r.pts >= 15 ? '🟧' : r.pts > 0 ? '🟨' : '�
 
 function signupBlock(lead){
   return `<div class="rule"></div><p class="kick t">${lead}</p>
-    <p>A new crate of five MCs drops every night at midnight Pacific. It's free. You just need to be on the POW MAG list, the newsletter Passion of the Weiss has turned into.</p>
-    <p>Sign up and you get tomorrow's crate, your streak, and the best rap writing anywhere in your inbox.</p>
+    <p>A new crate of five MCs drops every night at midnight Pacific. Get the reminder, and Passion of the Weiss, in your inbox with POW MAG. Free.</p>
     <iframe class="ss" src="https://www.powmag.net/embed" title="Sign up for POW MAG" scrolling="no"></iframe>
-    <p class="meta">Free. One click to unsubscribe.</p>
     <button class="btn" id="subbed">I'm on the list</button>`;
 }
-function wireSignup(){ const b = $('subbed'); if (b) b.onclick = () => { MEM.sub = true; store.set('sub', true); render(); }; }
+function markSubbed(){ MEM.sub = true; store.set('sub', true); }
+function wireSignup(){ const b = $('subbed'); if (b) b.onclick = () => { markSubbed(); render(); }; }
+
+// ---------- the nag: a dismissible signup pop-up ----------
+const NAG = {
+  land:  () => ({ kick: `Daily crate #${crateNo(today())}`, head: 'Five new MCs every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into, and never miss a crate. Free.' }),
+  first: () => ({ kick: 'One down, four to go', head: 'Like this?', body: 'POW MAG has been writing about these MCs since 2005. Get it in your inbox, free.' }),
+  miss:  m  => ({ kick: `Not your guy?`, head: m.pow ? `POW has been on ${m.mc} since ${m.pow.d.slice(0,4)}` : `POW knows ${m.mc}`, body: 'Twenty years of interviews, reviews and features on the MCs in this crate. Get POW MAG in your inbox, free.' })
+};
+const NAG_OFF = new URLSearchParams(location.search).has('nonag');
+function nag(kind, m){
+  if (NAG_OFF || subbed() || store.get('nag-'+kind, -1) === today()) return;
+  store.set('nag-'+kind, today());
+  const c = NAG[kind](m);
+  $('nag-body').innerHTML = `<p class="kick">${esc(c.kick)}</p><p class="big">${esc(c.head)}</p><p>${esc(c.body)}</p>
+    <iframe class="ss" src="https://www.powmag.net/embed" title="Sign up for POW MAG" scrolling="no"></iframe>`;
+  $('nag').hidden = false; $('nag-close').focus();
+}
+function closeNag(){ $('nag').hidden = true; $('nag-body').innerHTML = ''; }
+$('nag-close').onclick = closeNag;
+$('nag-on').onclick = () => { markSubbed(); closeNag(); demoBar(); };
+$('nag').addEventListener('click', e => { if (e.target === $('nag')) closeNag(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('nag').hidden) closeNag(); });
 
 function render(){
   S = null; stopClip(); drawPads(); lights();
@@ -391,12 +422,11 @@ function render(){
   const d = today(), a = access(), st = streak();
   seg(a === 'done' ? plays()[d].score : 0);
   $('enter').disabled = a !== 'open';
-  $('enter').textContent = a === 'open' ? 'Start' : a === 'done' ? 'Done' : 'Locked';
+  $('enter').textContent = a === 'open' ? 'Start' : 'Done';
   if (a === 'open') {
     lcd(`CRATE #${crateNo(d)}`, '5 x 20', 'PRESS START<span class="blink">_</span>');
     printOut(`<p class="kick">Daily crate #${crateNo(d)}${st ? ` · ${st}-day streak` : ''}</p><p class="big">Today's five MCs</p>
       <p>The same five voices for everyone today, drawn from the corners of rap Passion of the Weiss has covered since 2005. Name each one from the voice alone.</p>
-      ${!subbed() ? '<p class="meta">Your first crate is on us.</p>' : ''}
       <p><span class="kick">Ten pads.</span><br>Each holds an ${CLIP}-second verse from the same MC. The hardest clip is free; the easier the clip, the more it costs.</p>
       <p><span class="kick">20 a round.</span><br>Spend from the pot, then type your guess. Right: you keep what's left. Wrong: zero. One guess.</p>
       <p><span class="kick">After each round</span><br>Who it was, and the best POW piece on them.</p>`);
@@ -410,14 +440,8 @@ function render(){
       <table>${r.results.map((x,i) => `<tr><td>${i+1}. ${esc(x.mc)}${x.pts ? '' : ` <span class="meta">${x.guess ? '✗' : 'pass'}</span>`}</td><td>${x.pts}</td></tr>`).join('')}</table>
       <button class="btn" id="share">Share</button>
       <p class="meta" style="margin-top:12px">Next crate in ${untilNext()}.</p>
-      ${subbed() ? '<p class="meta">You\'re on the POW list, so tomorrow\'s crate is yours.</p>' : signupBlock('Want tomorrow\'s crate?')}`);
+      ${subbed() ? '' : signupBlock('Get tomorrow\'s crate in your inbox')}`);
     $('share').onclick = doShare; wireSignup();
-  } else {
-    lcd(`CRATE #${crateNo(d)}`, 'LOCKED', 'JOIN THE LIST TO PLAY');
-    printOut(`<p class="kick">Crate #${crateNo(d)} is ready</p><p class="big">Five new MCs are waiting</p>
-      <p>You've had your free crate. Every crate after that comes with the free POW MAG newsletter.</p>
-      ${signupBlock('Unlock today\'s crate')}`);
-    wireSignup();
   }
   demoBar();
 }
@@ -463,6 +487,9 @@ function finishRound(choice){
     <ol>${m.clips.map(c => `<li><a href="https://www.youtube.com/watch?v=${c.id}&t=${Math.floor(c.s)}s" target="_blank" rel="noopener">${esc(c.t)}</a> <span class="meta">${c.y}</span></li>`).join('')}</ol>
     <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>`);
   if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
+  // let the answer land before the pop-up
+  if (!right) setTimeout(() => nag('miss', m), 1600);
+  else if (S.r === 0) setTimeout(() => nag('first'), 1600);
 }
 function next(){
   if (innerWidth <= 1100) scrollTo({top:0, behavior:'smooth'});
@@ -486,7 +513,8 @@ function demoBar(){
   const s = subbed(), n = Object.keys(plays()).length;
   $('demo').innerHTML = `<b>Demo</b> · ${s ? 'on the list' : 'not signed up'} · ${n} crate${n===1?'':'s'} played · day offset +${offset()}
     <button id="d-next">Jump to tomorrow</button><button id="d-reset">Reset demo</button>`;
-  $('d-next').onclick = () => { MEM.offset = offset() + 1; store.set('offset', MEM.offset); render(); };
+  // pop-ups reset with the day, so "Jump to tomorrow" shows them again
+  $('d-next').onclick = () => { MEM.offset = offset() + 1; store.set('offset', MEM.offset); render(); setTimeout(() => nag('land'), 600); };
   $('d-reset').onclick = () => { store.clear(); MEM = { plays:{}, sub:false, offset:0 }; render(); };
 }
 
@@ -504,6 +532,7 @@ function maybeReady(){
   if (!(ytReady && MCS.length)) return;
   $('pwr').classList.add('on');
   render();
+  setTimeout(() => nag('land'), 1200);
 }
 </script>
 </body>
