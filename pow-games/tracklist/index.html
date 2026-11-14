@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tracklist</title>
+<meta name="description" content="Name the album from its tracklist. Deep cuts first, the hits last.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.sleeve{border:2px solid #2e2e2e;border-radius:6px;padding:14px 14px 10px;margin:12px 0;background:linear-gradient(180deg,#1d1d1d,#151515)}
+.sleeve .hd{display:flex;justify-content:space-between;font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--mute);border-bottom:1px solid #333;padding-bottom:6px;margin-bottom:6px}
+.tl{list-style:none;margin:0;padding:0;columns:2;column-gap:18px}
+.tl li{break-inside:avoid;display:grid;grid-template-columns:24px 1fr;gap:6px;padding:4px 0;font-size:14px;border-bottom:1px dotted #2a2a2a;min-height:28px}
+.tl li .no{font:700 12px var(--mono);color:#666;text-align:right;padding-top:1px}
+.tl li.on{color:#fff;font-weight:600}
+.tl li.on .no{color:var(--red)}
+.tl li.new{animation:pop .35s}
+.tl li .bl{display:block;height:9px;background:#262626;margin-top:5px;border-radius:2px}
+.hints{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+.hints span{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:4px;background:#262626;color:#777}
+.hints span.on{background:var(--l4);color:#fff}
+.misses{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.misses span{font:600 12px var(--mono);text-transform:uppercase;background:#2a1414;color:#ff8a8a;padding:3px 8px;border-radius:4px;text-decoration:line-through}
+.reveal{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin:10px 0}
+.reveal .art{aspect-ratio:1;background:#262626 center/cover}
+.reveal b{font:400 28px/1 var(--display);text-transform:uppercase;display:block}
+.pts{font:400 44px/1 var(--display);color:var(--red)}
+@media (max-width:480px){.tl{columns:1}}
+</style>
+</head>
+<body data-game="tracklist" data-title="Tracklist" data-kicker="POW MAG · Name the album">
+<div class="wrap" id="wrap">
+  <div class="strip"><span id="pnum">Tracklist</span><span id="pdate"></span></div>
+  <p class="lede">A classic album, minus the skits. The songs show up one at a time, deep cuts first and the hits last. Each miss shows another song and a hint.</p>
+  <div class="hints" id="hints"></div>
+  <div class="sleeve"><div class="hd"><span>Side A / Side B</span><span id="count"></span></div><ol class="tl" id="tl"></ol></div>
+  <div class="misses" id="misses"></div>
+  <div id="play">
+    <div class="ac"><input class="guess" id="q" placeholder="Name the album…" aria-label="Album title"></div>
+    <button class="btn" id="skip" type="button" style="width:100%;margin-top:8px">Show another song</button>
+  </div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><div id="ans"></div><p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="emo"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
+    <div class="reading"><h3>Do the reading</h3><p class="sub">The album and the artist in the POW archive.</p><ul id="reading"></ul></div>
+  </section>
+</div>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('puzzles.json');
+  const D = PG.day(data.launch, data.puzzles.length), n = D.n, P = data.puzzles[n - 1];
+  $('pnum').innerHTML = `Tracklist #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
+  const SEQ = P.order.slice(-6), MAX = SEQ.length;
+  const key = 't' + n, S = PG.store.get(key, null) || { shown: 1, misses: [], done: false, won: false };
+  const save = () => PG.store.set(key, S);
+  $('count').textContent = `${P.n} tracks`;
+
+  function draw(fresh) {
+    const vis = S.done ? P.order : SEQ.slice(0, S.shown), at = {};
+    vis.forEach(t => at[P.pos[t]] = t);
+    const newest = SEQ[S.shown - 1];
+    $('tl').innerHTML = Array.from({ length: P.n }, (_, i) => i + 1).map(k => at[k]
+      ? `<li class="on ${fresh && at[k] === newest ? 'new' : ''}"><span class="no">${k}</span><span>${esc(at[k])}</span></li>`
+      : `<li><span class="no">${k}</span><span class="bl" style="width:${40 + (k * 37) % 50}%"></span></li>`).join('');
+    const m = S.done ? 9 : S.shown - 1;
+    $('hints').innerHTML = `<span class="${m >= 2 ? 'on' : ''}">Year: ${m >= 2 ? P.y : '····'}</span><span class="${m >= 4 ? 'on' : ''}">Artist: ${m >= 4 ? esc(P.a) : '········'}</span><span>${MAX - S.shown + 1} pt${MAX - S.shown ? 's' : ''} on the table</span>`;
+    $('misses').innerHTML = S.misses.map(x => `<span>${esc(x)}</span>`).join('');
+    $('play').hidden = S.done; $('skip').textContent = S.shown >= MAX ? 'Give up' : 'Show another song';
+  }
+  PG.autocomplete($('q'), data.albums.map(a => ({ label: a.t })), it => guess(it.label));
+  function guess(t) {
+    if (S.done) return;
+    if (PG.norm(t) === PG.norm(P.t)) { S.done = true; S.won = true; save(); draw(); finish(true); return; }
+    if (S.misses.includes(t)) { PG.toast('Already tried that one.'); return; }
+    S.misses.push(t); PG.toast(`Not ${t}.`); advance();
+  }
+  function advance() {
+    if (S.shown >= MAX) { S.done = true; save(); draw(); finish(true); return; }
+    S.shown++; save(); draw(true);
+    if (S.shown === 3) setTimeout(() => PG.nag('miss', { kick: 'Deep cuts', head: 'Do the reading', body: 'POW MAG has written about these records, deep cuts included, since 2005. Get it free.' }), 1500);
+  }
+  $('skip').onclick = () => { if (!S.done) advance(); };
+  function finish(fresh) {
+    const pts = S.won ? MAX - S.shown + 1 : 0, st = PG.record(n, S.won, D.practice);
+    $('res-h').innerHTML = S.won ? `<span class="pts">${pts}</span> point${pts === 1 ? '' : 's'}` : 'Missed it.';
+    $('ans').innerHTML = `<div class="reveal"><div class="art" style="${P.rg ? `background-image:url(https://coverartarchive.org/release-group/${P.rg}/front-250)` : ''}"></div><div><span class="kick">The album</span><b>${esc(P.t)}</b><span class="mute">${esc(P.a)} · ${P.y}</span></div></div>`;
+    $('verdict').textContent = S.won ? (S.shown === 1 ? 'From one song. You own this on vinyl.' : S.shown <= 3 ? 'Deep-cut certified.' : 'Got there once the hits showed up.') : 'The full tracklist is up top now.';
+    $('emo').textContent = Array.from({ length: MAX }, (_, i) => i < S.shown - 1 ? '🟥' : i === S.shown - 1 ? (S.won ? '🟩' : '🟥') : '⬛').join('');
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'album'); $('signup').innerHTML = PG.signupBox("Get tomorrow's tracklist in your inbox");
+    $('reading').innerHTML = [P.t, P.a].map(w => `<li><a href="${PG.search(w)}" target="_blank" rel="noopener">${esc(w)}</a></li>`).join('');
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Tracklist #${n}\n${$('emo').textContent}\npassionweiss.com`);
+  draw(); if (S.done) finish(false);
+  setTimeout(() => PG.nag('land', { kick: `Tracklist #${n}`, head: 'A new album every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>

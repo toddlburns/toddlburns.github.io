@@ -1,0 +1,1112 @@
+{
+"launch": "2026-11-14",
+"puzzles": [
+{
+"answer": "DJ Premier",
+"aka": [
+"Premier",
+"Preem",
+"Primo"
+],
+"home": "Brooklyn by way of Houston",
+"credits": [
+{
+"song": "Come Clean",
+"artist": "Jeru the Damaja",
+"year": 1993,
+"co": false
+},
+{
+"song": "D'Evils",
+"artist": "Jay-Z",
+"year": 1996,
+"co": false
+},
+{
+"song": "Nas Is Like",
+"artist": "Nas",
+"year": 1999,
+"co": false
+},
+{
+"song": "Unbelievable",
+"artist": "The Notorious B.I.G.",
+"year": 1994,
+"co": false
+},
+{
+"song": "Mass Appeal",
+"artist": "Gang Starr",
+"year": 1994,
+"co": false
+}
+]
+},
+{
+"answer": "J Dilla",
+"aka": [
+"Jay Dee",
+"Dilla"
+],
+"home": "Detroit",
+"credits": [
+{
+"song": "Runnin'",
+"artist": "The Pharcyde",
+"year": 1995,
+"co": false
+},
+{
+"song": "Stakes Is High",
+"artist": "De La Soul",
+"year": 1996,
+"co": false
+},
+{
+"song": "The Light",
+"artist": "Common",
+"year": 2000,
+"co": false
+},
+{
+"song": "Fall in Love",
+"artist": "Slum Village",
+"year": 2000,
+"co": false
+},
+{
+"song": "Workinonit",
+"artist": "J Dilla",
+"year": 2006,
+"co": false
+}
+]
+},
+{
+"answer": "Organized Noize",
+"aka": [
+"Organized Noise",
+"Rico Wade",
+"Sleepy Brown",
+"Ray Murray"
+],
+"home": "Atlanta",
+"credits": [
+{
+"song": "Don't Let Go (Love)",
+"artist": "En Vogue",
+"year": 1996,
+"co": false
+},
+{
+"song": "Waterfalls",
+"artist": "TLC",
+"year": 1995,
+"co": false
+},
+{
+"song": "Cell Therapy",
+"artist": "Goodie Mob",
+"year": 1995,
+"co": false
+},
+{
+"song": "Player's Ball",
+"artist": "OutKast",
+"year": 1993,
+"co": false
+},
+{
+"song": "Southernplayalisticadillacmuzik",
+"artist": "OutKast",
+"year": 1994,
+"co": false
+}
+]
+},
+{
+"answer": "Dr. Dre",
+"aka": [
+"Dre"
+],
+"home": "Compton",
+"credits": [
+{
+"song": "Family Affair",
+"artist": "Mary J. Blige",
+"year": 2001,
+"co": false
+},
+{
+"song": "In da Club",
+"artist": "50 Cent",
+"year": 2003,
+"co": true
+},
+{
+"song": "Gin and Juice",
+"artist": "Snoop Doggy Dogg",
+"year": 1994,
+"co": false
+},
+{
+"song": "California Love",
+"artist": "2Pac",
+"year": 1995,
+"co": false
+},
+{
+"song": "Nuthin' but a \"G\" Thang",
+"artist": "Dr. Dre",
+"year": 1992,
+"co": false
+}
+]
+},
+{
+"answer": "Pete Rock",
+"aka": [
+"Pete",
+"Soul Brother #1"
+],
+"home": "Mount Vernon",
+"credits": [
+{
+"song": "Be Easy",
+"artist": "Ghostface Killah",
+"year": 2006,
+"co": false
+},
+{
+"song": "Down with the King",
+"artist": "Run-DMC",
+"year": 1993,
+"co": false
+},
+{
+"song": "The World Is Yours",
+"artist": "Nas",
+"year": 1994,
+"co": false
+},
+{
+"song": "Straighten It Out",
+"artist": "Pete Rock & CL Smooth",
+"year": 1992,
+"co": false
+},
+{
+"song": "They Reminisce Over You (T.R.O.Y.)",
+"artist": "Pete Rock & CL Smooth",
+"year": 1992,
+"co": false
+}
+]
+},
+{
+"answer": "Mannie Fresh",
+"aka": [
+"Mannie"
+],
+"home": "New Orleans",
+"credits": [
+{
+"song": "Tha Block Is Hot",
+"artist": "Lil Wayne",
+"year": 1999,
+"co": false
+},
+{
+"song": "Go DJ",
+"artist": "Lil Wayne",
+"year": 2004,
+"co": false
+},
+{
+"song": "Bling Bling",
+"artist": "B.G.",
+"year": 1999,
+"co": false
+},
+{
+"song": "Back That Azz Up",
+"artist": "Juvenile",
+"year": 1998,
+"co": false
+},
+{
+"song": "Still Fly",
+"artist": "Big Tymers",
+"year": 2002,
+"co": false
+}
+]
+},
+{
+"answer": "The Neptunes",
+"aka": [
+"Neptunes",
+"Pharrell",
+"Pharrell Williams",
+"Chad Hugo"
+],
+"home": "Virginia Beach",
+"credits": [
+{
+"song": "Superthug",
+"artist": "Noreaga",
+"year": 1998,
+"co": false
+},
+{
+"song": "I'm a Slave 4 U",
+"artist": "Britney Spears",
+"year": 2001,
+"co": false
+},
+{
+"song": "Hot in Herre",
+"artist": "Nelly",
+"year": 2002,
+"co": false
+},
+{
+"song": "Grindin'",
+"artist": "Clipse",
+"year": 2002,
+"co": false
+},
+{
+"song": "Drop It Like It's Hot",
+"artist": "Snoop Dogg",
+"year": 2004,
+"co": false
+}
+]
+},
+{
+"answer": "Large Professor",
+"aka": [
+"Large Pro",
+"Extra P"
+],
+"home": "Queens",
+"credits": [
+{
+"song": "Keep It Rollin'",
+"artist": "A Tribe Called Quest",
+"year": 1993,
+"co": false
+},
+{
+"song": "Halftime",
+"artist": "Nas",
+"year": 1992,
+"co": false
+},
+{
+"song": "It Ain't Hard to Tell",
+"artist": "Nas",
+"year": 1994,
+"co": false
+},
+{
+"song": "Live at the Barbeque",
+"artist": "Main Source",
+"year": 1991,
+"co": false
+},
+{
+"song": "Looking at the Front Door",
+"artist": "Main Source",
+"year": 1990,
+"co": false
+}
+]
+},
+{
+"answer": "Timbaland",
+"aka": [
+"Timbo",
+"Tim Mosley"
+],
+"home": "Norfolk",
+"credits": [
+{
+"song": "Pony",
+"artist": "Ginuwine",
+"year": 1996,
+"co": false
+},
+{
+"song": "Are You That Somebody?",
+"artist": "Aaliyah",
+"year": 1998,
+"co": false
+},
+{
+"song": "Big Pimpin'",
+"artist": "Jay-Z",
+"year": 1999,
+"co": false
+},
+{
+"song": "Cry Me a River",
+"artist": "Justin Timberlake",
+"year": 2002,
+"co": false
+},
+{
+"song": "Get Ur Freak On",
+"artist": "Missy Elliott",
+"year": 2001,
+"co": false
+}
+]
+},
+{
+"answer": "Madlib",
+"aka": [
+"Quasimoto",
+"Beat Konducta"
+],
+"home": "Oxnard",
+"credits": [
+{
+"song": "No More Parties in LA",
+"artist": "Kanye West & Kendrick Lamar",
+"year": 2016,
+"co": true
+},
+{
+"song": "Crime Pays",
+"artist": "Freddie Gibbs",
+"year": 2019,
+"co": false
+},
+{
+"song": "Thuggin'",
+"artist": "Freddie Gibbs",
+"year": 2011,
+"co": false
+},
+{
+"song": "Accordion",
+"artist": "Madvillain",
+"year": 2004,
+"co": false
+},
+{
+"song": "Come On Feet",
+"artist": "Quasimoto",
+"year": 2000,
+"co": false
+}
+]
+},
+{
+"answer": "Kanye West",
+"aka": [
+"Kanye",
+"Ye"
+],
+"home": "Chicago",
+"credits": [
+{
+"song": "Get By",
+"artist": "Talib Kweli",
+"year": 2002,
+"co": false
+},
+{
+"song": "You Don't Know My Name",
+"artist": "Alicia Keys",
+"year": 2003,
+"co": true
+},
+{
+"song": "Takeover",
+"artist": "Jay-Z",
+"year": 2001,
+"co": false
+},
+{
+"song": "Izzo (H.O.V.A.)",
+"artist": "Jay-Z",
+"year": 2001,
+"co": false
+},
+{
+"song": "Through the Wire",
+"artist": "Kanye West",
+"year": 2003,
+"co": false
+}
+]
+},
+{
+"answer": "Marley Marl",
+"aka": [
+"Marley"
+],
+"home": "Queens",
+"credits": [
+{
+"song": "Raw",
+"artist": "Big Daddy Kane",
+"year": 1987,
+"co": false
+},
+{
+"song": "Road to the Riches",
+"artist": "Kool G Rap & DJ Polo",
+"year": 1989,
+"co": false
+},
+{
+"song": "The Bridge",
+"artist": "MC Shan",
+"year": 1986,
+"co": false
+},
+{
+"song": "Mama Said Knock You Out",
+"artist": "LL Cool J",
+"year": 1990,
+"co": false
+},
+{
+"song": "The Symphony",
+"artist": "Marley Marl",
+"year": 1988,
+"co": false
+}
+]
+},
+{
+"answer": "DJ Paul & Juicy J",
+"aka": [
+"DJ Paul",
+"Juicy J",
+"Three 6 Mafia"
+],
+"home": "Memphis",
+"credits": [
+{
+"song": "Int'l Players Anthem (I Choose You)",
+"artist": "UGK feat. OutKast",
+"year": 2007,
+"co": false
+},
+{
+"song": "Chickenhead",
+"artist": "Project Pat",
+"year": 2001,
+"co": false
+},
+{
+"song": "Sippin' on Some Syrup",
+"artist": "Three 6 Mafia",
+"year": 2000,
+"co": false
+},
+{
+"song": "It's Hard out Here for a Pimp",
+"artist": "Three 6 Mafia",
+"year": 2005,
+"co": false
+},
+{
+"song": "Stay Fly",
+"artist": "Three 6 Mafia",
+"year": 2005,
+"co": false
+}
+]
+},
+{
+"answer": "Just Blaze",
+"aka": [
+"Justin Smith"
+],
+"home": "Paterson",
+"credits": [
+{
+"song": "Pump It Up",
+"artist": "Joe Budden",
+"year": 2003,
+"co": false
+},
+{
+"song": "Oh Boy",
+"artist": "Cam'ron",
+"year": 2002,
+"co": false
+},
+{
+"song": "Touch the Sky",
+"artist": "Kanye West",
+"year": 2005,
+"co": false
+},
+{
+"song": "Girls, Girls, Girls",
+"artist": "Jay-Z",
+"year": 2001,
+"co": false
+},
+{
+"song": "Public Service Announcement",
+"artist": "Jay-Z",
+"year": 2003,
+"co": false
+}
+]
+},
+{
+"answer": "RZA",
+"aka": [
+"The RZA",
+"Bobby Digital"
+],
+"home": "Staten Island",
+"credits": [
+{
+"song": "Liquid Swords",
+"artist": "GZA",
+"year": 1995,
+"co": false
+},
+{
+"song": "Ice Cream",
+"artist": "Raekwon",
+"year": 1995,
+"co": false
+},
+{
+"song": "Shimmy Shimmy Ya",
+"artist": "Ol' Dirty Bastard",
+"year": 1995,
+"co": false
+},
+{
+"song": "Bring the Pain",
+"artist": "Method Man",
+"year": 1994,
+"co": false
+},
+{
+"song": "C.R.E.A.M.",
+"artist": "Wu-Tang Clan",
+"year": 1993,
+"co": false
+}
+]
+},
+{
+"answer": "Swizz Beatz",
+"aka": [
+"Swizz"
+],
+"home": "Bronx",
+"credits": [
+{
+"song": "Ring the Alarm",
+"artist": "Beyoncé",
+"year": 2006,
+"co": false
+},
+{
+"song": "Touch It",
+"artist": "Busta Rhymes",
+"year": 2005,
+"co": false
+},
+{
+"song": "On to the Next One",
+"artist": "Jay-Z",
+"year": 2009,
+"co": false
+},
+{
+"song": "Party Up (Up in Here)",
+"artist": "DMX",
+"year": 1999,
+"co": false
+},
+{
+"song": "Ruff Ryders' Anthem",
+"artist": "DMX",
+"year": 1998,
+"co": false
+}
+]
+},
+{
+"answer": "The Bomb Squad",
+"aka": [
+"Bomb Squad",
+"Hank Shocklee"
+],
+"home": "Long Island",
+"credits": [
+{
+"song": "AmeriKKKa's Most Wanted",
+"artist": "Ice Cube",
+"year": 1990,
+"co": false
+},
+{
+"song": "Rebel Without a Pause",
+"artist": "Public Enemy",
+"year": 1987,
+"co": false
+},
+{
+"song": "Don't Believe the Hype",
+"artist": "Public Enemy",
+"year": 1988,
+"co": false
+},
+{
+"song": "Bring the Noise",
+"artist": "Public Enemy",
+"year": 1987,
+"co": false
+},
+{
+"song": "Fight the Power",
+"artist": "Public Enemy",
+"year": 1989,
+"co": false
+}
+]
+},
+{
+"answer": "No I.D.",
+"aka": [
+"No ID",
+"Dion Wilson"
+],
+"home": "Chicago",
+"credits": [
+{
+"song": "Heartless",
+"artist": "Kanye West",
+"year": 2008,
+"co": true
+},
+{
+"song": "Run This Town",
+"artist": "Jay-Z",
+"year": 2009,
+"co": true
+},
+{
+"song": "D.O.A. (Death of Auto-Tune)",
+"artist": "Jay-Z",
+"year": 2009,
+"co": true
+},
+{
+"song": "The Story of O.J.",
+"artist": "Jay-Z",
+"year": 2017,
+"co": false
+},
+{
+"song": "I Used to Love H.E.R.",
+"artist": "Common Sense",
+"year": 1994,
+"co": false
+}
+]
+},
+{
+"answer": "Mustard",
+"aka": [
+"DJ Mustard"
+],
+"home": "Los Angeles",
+"credits": [
+{
+"song": "I'm Different",
+"artist": "2 Chainz",
+"year": 2012,
+"co": false
+},
+{
+"song": "Paranoid",
+"artist": "Ty Dolla $ign",
+"year": 2013,
+"co": false
+},
+{
+"song": "Rack City",
+"artist": "Tyga",
+"year": 2011,
+"co": false
+},
+{
+"song": "Ballin'",
+"artist": "Mustard feat. Roddy Ricch",
+"year": 2019,
+"co": false
+},
+{
+"song": "Not Like Us",
+"artist": "Kendrick Lamar",
+"year": 2024,
+"co": false
+}
+]
+},
+{
+"answer": "Metro Boomin",
+"aka": [
+"Metro"
+],
+"home": "St. Louis",
+"credits": [
+{
+"song": "Father Stretch My Hands Pt. 1",
+"artist": "Kanye West",
+"year": 2016,
+"co": true
+},
+{
+"song": "Jumpman",
+"artist": "Drake & Future",
+"year": 2015,
+"co": true
+},
+{
+"song": "Bad and Boujee",
+"artist": "Migos",
+"year": 2016,
+"co": true
+},
+{
+"song": "Mask Off",
+"artist": "Future",
+"year": 2017,
+"co": false
+},
+{
+"song": "Creepin'",
+"artist": "Metro Boomin, The Weeknd & 21 Savage",
+"year": 2022,
+"co": false
+}
+]
+},
+{
+"answer": "Scott Storch",
+"aka": [
+"Storch"
+],
+"home": "Philadelphia",
+"credits": [
+{
+"song": "Let Me Love You",
+"artist": "Mario",
+"year": 2004,
+"co": false
+},
+{
+"song": "Baby Boy",
+"artist": "Beyoncé",
+"year": 2003,
+"co": false
+},
+{
+"song": "Still D.R.E.",
+"artist": "Dr. Dre",
+"year": 1999,
+"co": true
+},
+{
+"song": "Candy Shop",
+"artist": "50 Cent",
+"year": 2005,
+"co": false
+},
+{
+"song": "Lean Back",
+"artist": "Terror Squad",
+"year": 2004,
+"co": false
+}
+]
+},
+{
+"answer": "Mike WiLL Made-It",
+"aka": [
+"Mike Will",
+"Mike WiLL"
+],
+"home": "Atlanta",
+"credits": [
+{
+"song": "We Can't Stop",
+"artist": "Miley Cyrus",
+"year": 2013,
+"co": false
+},
+{
+"song": "Formation",
+"artist": "Beyoncé",
+"year": 2016,
+"co": true
+},
+{
+"song": "Bandz a Make Her Dance",
+"artist": "Juicy J",
+"year": 2012,
+"co": false
+},
+{
+"song": "HUMBLE.",
+"artist": "Kendrick Lamar",
+"year": 2017,
+"co": false
+},
+{
+"song": "Black Beatles",
+"artist": "Rae Sremmurd",
+"year": 2016,
+"co": false
+}
+]
+},
+{
+"answer": "Boi-1da",
+"aka": [
+"Boi1da",
+"Boi 1da"
+],
+"home": "Toronto",
+"credits": [
+{
+"song": "Not Afraid",
+"artist": "Eminem",
+"year": 2010,
+"co": true
+},
+{
+"song": "Work",
+"artist": "Rihanna",
+"year": 2016,
+"co": true
+},
+{
+"song": "Forever",
+"artist": "Drake, Kanye West, Lil Wayne & Eminem",
+"year": 2009,
+"co": false
+},
+{
+"song": "Best I Ever Had",
+"artist": "Drake",
+"year": 2009,
+"co": false
+},
+{
+"song": "God's Plan",
+"artist": "Drake",
+"year": 2018,
+"co": true
+}
+]
+}
+],
+"names": [
+"40",
+"9th Wonder",
+"Apollo Brown",
+"Bangladesh",
+"Battlecat",
+"Black Milk",
+"Boi-1da",
+"Buckwild",
+"Cardiak",
+"Cardo",
+"Clark Kent",
+"Cool & Dre",
+"DJ Khaled",
+"DJ Khalil",
+"DJ Paul & Juicy J",
+"DJ Premier",
+"DJ Quik",
+"DJ Screw",
+"DJ Toomp",
+"Dame Grease",
+"Danja",
+"Daringer",
+"Daz Dillinger",
+"Dem Franchize Boyz",
+"Diamond D",
+"Dr. Dre",
+"Easy Mo Bee",
+"Erick Sermon",
+"Flying Lotus",
+"Frank Dukes",
+"Havoc",
+"Hi-Tek",
+"Hit-Boy",
+"Infamous",
+"Irv Gotti",
+"J Dilla",
+"J.U.S.T.I.C.E. League",
+"Jake One",
+"Jermaine Dupri",
+"Just Blaze",
+"Kanye West",
+"Kenny Beats",
+"Kev Brown",
+"Knxwledge",
+"Large Professor",
+"Larrance Dopson",
+"Lex Luger",
+"Lil Jon",
+"Lord Finesse",
+"Madlib",
+"Mannie Fresh",
+"Mario Winans",
+"Marley Marl",
+"Metro Boomin",
+"Mike Dean",
+"Mike WiLL Made-It",
+"Murda Beatz",
+"Mustard",
+"No I.D.",
+"Nottz",
+"Organized Noize",
+"Pete Rock",
+"Pi'erre Bourne",
+"Pimp C",
+"Polow da Don",
+"Prince Paul",
+"Q-Tip",
+"RZA",
+"Rick Rubin",
+"Rockwilder",
+"Rodney Jerkins",
+"Sap",
+"Scott Storch",
+"Showbiz",
+"Ski",
+"Ski Beatz",
+"Sounwave",
+"Southside",
+"Statik Selektah",
+"Stevie J",
+"StreetRunner",
+"Swizz Beatz",
+"TM88",
+"Tay Keith",
+"Teddy Riley",
+"Terrace Martin",
+"The Alchemist",
+"The Bomb Squad",
+"The Heatmakerz",
+"The Neptunes",
+"Timbaland",
+"Trackmasters",
+"Wheezy",
+"Wondagurl",
+"Zaytoven"
+],
+"aka": {
+"DJ Premier": [
+"Premier",
+"Preem",
+"Primo"
+],
+"J Dilla": [
+"Jay Dee",
+"Dilla"
+],
+"Organized Noize": [
+"Organized Noise",
+"Rico Wade",
+"Sleepy Brown",
+"Ray Murray"
+],
+"Dr. Dre": [
+"Dre"
+],
+"Pete Rock": [
+"Pete",
+"Soul Brother #1"
+],
+"Mannie Fresh": [
+"Mannie"
+],
+"The Neptunes": [
+"Neptunes",
+"Pharrell",
+"Pharrell Williams",
+"Chad Hugo"
+],
+"Large Professor": [
+"Large Pro",
+"Extra P"
+],
+"Timbaland": [
+"Timbo",
+"Tim Mosley"
+],
+"Madlib": [
+"Quasimoto",
+"Beat Konducta"
+],
+"Kanye West": [
+"Kanye",
+"Ye"
+],
+"Marley Marl": [
+"Marley"
+],
+"DJ Paul & Juicy J": [
+"DJ Paul",
+"Juicy J",
+"Three 6 Mafia"
+],
+"Just Blaze": [
+"Justin Smith"
+],
+"RZA": [
+"The RZA",
+"Bobby Digital"
+],
+"Swizz Beatz": [
+"Swizz"
+],
+"The Bomb Squad": [
+"Bomb Squad",
+"Hank Shocklee"
+],
+"No I.D.": [
+"No ID",
+"Dion Wilson"
+],
+"Mustard": [
+"DJ Mustard"
+],
+"Metro Boomin": [
+"Metro"
+],
+"Scott Storch": [
+"Storch"
+],
+"Mike WiLL Made-It": [
+"Mike Will",
+"Mike WiLL"
+],
+"Boi-1da": [
+"Boi1da",
+"Boi 1da"
+]
+}
+}

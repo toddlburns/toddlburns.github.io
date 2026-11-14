@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Which Came First</title>
+<meta name="description" content="Two classic rap albums. Tap the one that dropped first. Ten rounds a day.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.prog{display:flex;gap:4px;margin:12px 0}
+.prog i{flex:1;height:8px;background:#2e2e2e}
+.prog i.r{background:var(--l2)} .prog i.w{background:#c43c3c} .prog i.c{background:#777}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;position:relative}
+.vs::after{content:'VS';position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);font:400 22px var(--display);background:var(--red);color:#fff;padding:6px 8px;border-radius:50%;pointer-events:none}
+.alb{appearance:none;border:2px solid #3a3a3a;background:#1c1c1c;color:var(--ink);padding:0 0 10px;cursor:pointer;text-align:left;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.alb:hover:not(:disabled){border-color:var(--red)}
+.alb .art{aspect-ratio:1;width:100%;background:#262626 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font:400 20px/1 var(--display);text-transform:uppercase;text-align:center;padding:8px;color:#888}
+.alb b{display:block;font:400 18px/1.05 var(--display);text-transform:uppercase;margin:8px 10px 2px}
+.alb span{display:block;font-size:13px;color:var(--mute);margin:0 10px}
+.alb .when{display:block;font:700 15px var(--mono);margin:6px 10px 0;min-height:20px}
+.alb.right{border-color:var(--l2)} .alb.wrong{border-color:#c43c3c}
+.alb.first .when{color:var(--l2)}
+.alb:disabled{cursor:default}
+#nextbtn{width:100%;margin-top:6px}
+.log{list-style:none;padding:0;margin:0;font-size:14px}
+.log li{padding:6px 0;border-bottom:1px solid #2a2a2a}
+.log li b{font-weight:700}
+</style>
+</head>
+<body data-game="which-came-first" data-title="Which Came First" data-kicker="POW MAG · Classic albums">
+<div class="wrap" id="wrap">
+  <div class="strip"><span id="pnum">Which Came First</span><span id="pdate"></span></div>
+  <p class="lede">Two classic albums. Tap the one that dropped first. Ten rounds, and they get closer as you go.</p>
+  <div class="prog" id="prog"></div>
+  <div id="stage"></div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="emo"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
+    <div class="reading"><h3>The timeline</h3><p class="sub">Every album from today, in order. Tap one for POW's coverage.</p><ul class="log" id="log"></ul></div>
+  </section>
+</div>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('puzzles.json');
+  const D = PG.day(data.launch, data.days.length), n = D.n, R = data.days[n - 1], A = data.albums;
+  $('pnum').innerHTML = `Which Came First #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
+  const key = 'w' + n, S = PG.store.get(key, null) || { picks: [], done: false };
+  const save = () => PG.store.set(key, S);
+  const fmt = s => new Date(s + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  const firstOf = r => A[r[0]].d <= A[r[1]].d ? 0 : 1;
+  const art = a => a.rg ? `style="background-image:url(https://coverartarchive.org/release-group/${a.rg}/front-250)"` : '';
+  let revealed = false;
+  function prog() { $('prog').innerHTML = R.map((r, i) => `<i class="${i < S.picks.length ? (S.picks[i] === firstOf(r) ? 'r' : 'w') : i === S.picks.length ? 'c' : ''}"></i>`).join(''); }
+  function show() {
+    prog();
+    if (S.picks.length >= R.length) { $('stage').innerHTML = ''; return; }
+    const i = S.picks.length, r = R[i];
+    $('stage').innerHTML = `<p class="kick">Round ${i + 1} of ${R.length}</p><div class="vs">${r.map((ai, k) => { const a = A[ai];
+      return `<button class="alb" type="button" data-k="${k}"><div class="art" ${art(a)} role="img" aria-label="Cover of ${esc(a.t)}">${a.rg ? '' : esc(a.t)}</div><b>${esc(a.t)}</b><span>${esc(a.a)}</span><span class="when"></span></button>`; }).join('')}</div>`;
+    revealed = false;
+    document.querySelectorAll('.alb').forEach(b => b.onclick = () => pick(+b.dataset.k));
+  }
+  function pick(k) {
+    if (revealed || S.done) return; revealed = true;
+    const i = S.picks.length, r = R[i], f = firstOf(r);
+    S.picks.push(k); if (S.picks.length >= R.length) S.done = true; save();
+    document.querySelectorAll('.alb').forEach((b, j) => { b.disabled = true; b.querySelector('.when').textContent = fmt(A[r[j]].d); if (j === f) b.classList.add('first'); if (j === k) b.classList.add(k === f ? 'right' : 'wrong'); });
+    const days = Math.abs(new Date(A[r[0]].d) - new Date(A[r[1]].d)) / 864e5, gap = days > 700 ? `${Math.round(days / 365)} years` : days > 60 ? `${Math.round(days / 30.4)} months` : `${Math.round(days)} days`;
+    PG.toast(k === f ? `Right. ${gap} apart.` : `Nope. ${gap} apart.`, 1600);
+    prog();
+    const nx = document.createElement('button'); nx.className = 'btn primary'; nx.id = 'nextbtn'; nx.type = 'button';
+    nx.textContent = S.done ? 'See your score' : 'Next round'; nx.onclick = () => S.done ? finish(true) : show();
+    $('stage').appendChild(nx); nx.focus({ preventScroll: true });
+    if (i === 2) setTimeout(() => PG.nag('first', { kick: 'Three rounds in', head: 'Know your history?', body: 'POW MAG has reviewed, revisited and argued about these records since 2005. Get it free.' }), 1800);
+  }
+  function finish(fresh) {
+    $('stage').innerHTML = '';
+    const score = S.picks.filter((k, i) => k === firstOf(R[i])).length, st = PG.record(n, score >= 7, D.practice);
+    $('res-h').textContent = `${score} / ${R.length}`;
+    $('verdict').textContent = score === 10 ? 'Perfect. You were there, or you read everything.' : score >= 8 ? 'Crate-digger certified.' : score >= 6 ? 'Solid. A couple of release dates got you.' : 'History is hard. The timeline is below.';
+    $('emo').textContent = S.picks.map((k, i) => k === firstOf(R[i]) ? '🟩' : '🟥').join('');
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'set'); $('signup').innerHTML = PG.signupBox("Get tomorrow's albums in your inbox");
+    $('log').innerHTML = R.flat().map(i => A[i]).sort((a, b) => a.d.localeCompare(b.d)).map(a => `<li><span class="mono mute">${fmt(a.d)}</span> · <a href="${PG.search(a.t)}" target="_blank" rel="noopener"><b>${esc(a.t)}</b></a> · ${esc(a.a)}</li>`).join('');
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Which Came First #${n} · ${$('res-h').textContent}\n${$('emo').textContent}\npassionweiss.com`);
+  show(); if (S.done) finish(false);
+  setTimeout(() => PG.nag('land', { kick: `Which Came First #${n}`, head: 'New albums every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>

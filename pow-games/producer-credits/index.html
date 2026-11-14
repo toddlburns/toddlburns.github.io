@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Producer Credits</title>
+<meta name="description" content="A daily rap puzzle. Five production credits, one producer. Fewer clues, more points.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.credits{list-style:none;margin:14px 0;padding:0;display:grid;gap:6px;counter-reset:c}
+.credits li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;border:1px solid #2e2e2e;border-radius:10px;padding:11px 12px;background:#1c1c1c;min-height:58px}
+.credits li .k{font:400 26px/1 var(--display);color:var(--red);text-align:center}
+.credits li b{display:block;font:400 21px/1.05 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.credits li span{font-size:14px;color:var(--mute)}
+.credits li em{font-style:normal;font:700 10px var(--mono);background:#333;color:#ddd;padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:2px}
+.credits li .y{font:600 13px var(--mono);color:var(--mute)}
+.credits li.locked{background:repeating-linear-gradient(135deg,#1a1a1a 0 6px,#161616 6px 12px);color:#555;border-style:dashed}
+.credits li.locked b{color:#444}
+.credits li.new{animation:pop .35s}
+.misses{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.misses span{font:600 12px var(--mono);text-transform:uppercase;background:#2a1414;color:#ff8a8a;padding:3px 8px;border-radius:4px;text-decoration:line-through}
+.answer{border-left:8px solid var(--l2);padding:4px 0 4px 12px;margin:10px 0}
+.answer.lost{border-color:var(--l3)}
+.answer b{font:400 34px/1 var(--display);text-transform:uppercase;display:block}
+.pts{font:400 44px/1 var(--display);color:var(--red)}
+</style>
+</head>
+<body data-game="producer-credits" data-title="Producer Credits" data-kicker="POW MAG · Who made the beat">
+<div class="wrap" id="wrap">
+  <div class="strip"><span id="pnum">Producer Credits</span><span id="pdate"></span></div>
+  <p class="lede">Five records, one producer. Credits show up hardest first. Name the producer early for more points. A wrong guess, or a skip, opens the next credit.</p>
+  <ol class="credits" id="credits"></ol>
+  <div class="misses" id="misses"></div>
+  <div id="play">
+    <div class="ac"><input class="guess" id="q" placeholder="Who produced these?" aria-label="Producer name"></div>
+    <div class="row" style="margin-top:8px"><button class="btn" id="skip" type="button">Show the next credit</button></div>
+  </div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><div id="ans"></div><p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="emo"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
+    <div class="reading"><h3>Do the reading</h3><p class="sub">The producer and every artist on today's board, in the POW archive.</p><ul id="reading"></ul></div>
+  </section>
+</div>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('puzzles.json');
+  const D = PG.day(data.launch, data.puzzles.length), n = D.n, P = data.puzzles[n - 1];
+  $('pnum').innerHTML = `Producer Credits #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
+  const key = 'p' + n, S = PG.store.get(key, null) || { shown: 1, misses: [], done: false, won: false };
+  const save = () => PG.store.set(key, S);
+  const isAns = s => PG.norm(s) === PG.norm(P.answer) || (P.aka || []).some(a => PG.norm(a) === PG.norm(s));
+
+  function draw(fresh) {
+    $('credits').innerHTML = P.credits.map((c, i) => i < S.shown || S.done
+      ? `<li class="${fresh && i === S.shown - 1 ? 'new' : ''}"><span class="k">${i + 1}</span><div><b>${esc(c.song)}</b><span>${esc(c.artist)}</span>${c.co ? '<em>CO-PROD</em>' : ''}</div><span class="y">${c.year}</span></li>`
+      : `<li class="locked"><span class="k">${i + 1}</span><div><b>Locked</b><span>Worth ${5 - i} point${5 - i === 1 ? '' : 's'}</span></div><span class="y">····</span></li>`).join('');
+    $('misses').innerHTML = S.misses.map(m => `<span>${esc(m)}</span>`).join('');
+    $('play').hidden = S.done;
+    $('skip').textContent = S.shown >= 5 ? 'Give up' : 'Show the next credit';
+  }
+  const names = data.names.map(nm => ({ label: nm, keys: data.aka[nm] || [] }));
+  PG.autocomplete($('q'), names, it => guess(it.label));
+  $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && $('q').value.trim() && !document.querySelector('.ac li')) { guess($('q').value.trim()); $('q').value = ''; } });
+  function guess(name) {
+    if (S.done) return;
+    if (isAns(name)) { S.done = true; S.won = true; save(); draw(); finish(true); return; }
+    if (S.misses.includes(name)) { PG.toast('Already tried that one.'); return; }
+    S.misses.push(name); PG.toast(`Not ${name}.`); advance();
+  }
+  function advance() {
+    if (S.shown >= 5) { S.done = true; S.won = false; save(); draw(); finish(true); return; }
+    S.shown++; save(); draw(true);
+    if (S.shown === 3) setTimeout(() => PG.nag('miss', { kick: 'Still thinking?', head: 'Do the reading', body: 'POW MAG has written about the people behind the boards since 2005. Get it in your inbox, free.' }), 1500);
+  }
+  $('skip').onclick = () => { if (!S.done) advance(); };
+  function finish(fresh) {
+    const pts = S.won ? 6 - S.shown : 0, st = PG.record(n, S.won, D.practice);
+    $('res-h').innerHTML = S.won ? `<span class="pts">${pts}</span> point${pts === 1 ? '' : 's'}` : 'Missed it.';
+    $('ans').innerHTML = `<div class="answer ${S.won ? '' : 'lost'}"><span class="kick">The producer</span><b>${esc(P.answer)}</b><span class="mute">${esc(P.home)}</span></div>`;
+    $('verdict').textContent = S.won ? ['', 'You heard it in one. Liner-note royalty.', 'Two credits. You read the booklet.', 'Three in. Respectable.', 'Got there late, but it counts.', 'Last clue. Barely.'][S.shown] : 'The credits were right there. The archive is below.';
+    $('emo').textContent = [0, 1, 2, 3, 4].map(i => i < S.shown - 1 ? '🟥' : i === S.shown - 1 ? (S.won ? '🟩' : '🟥') : '⬛').join('');
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'producer'); $('signup').innerHTML = PG.signupBox("Get tomorrow's credits in your inbox");
+    const who = [P.answer, ...new Set(P.credits.flatMap(c => c.artist.replace(/ feat\. /, ', ').split(/, | & /)))];
+    $('reading').innerHTML = who.map(w => `<li><a href="${PG.search(w)}" target="_blank" rel="noopener">${esc(w)}</a></li>`).join('');
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Producer Credits #${n}\n${$('emo').textContent}\npassionweiss.com`);
+  draw(); if (S.done) finish(false);
+  setTimeout(() => PG.nag('land', { kick: `Producer Credits #${n}`, head: 'A new producer every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>

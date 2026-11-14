@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mount Rushmore</title>
+<meta name="description" content="Carve your four. Pick a city's rap Mount Rushmore, then see how every other POW reader voted.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.cities{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none;margin-top:8px}
+.cities button{flex:none;appearance:none;border:1px solid #404040;background:none;color:var(--ink);font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:8px 11px;border-radius:999px;cursor:pointer}
+.cities button[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.cities button .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--l2);margin-left:6px;vertical-align:1px}
+.mtn{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}
+.slot{aspect-ratio:3/4;border:2px dashed #444;border-radius:8px 8px 2px 2px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:6px;text-align:center;
+  font:400 15px/1 var(--display);text-transform:uppercase;color:#555;background:linear-gradient(#1c1c1c,#141414)}
+.slot.on{border:2px solid var(--red);color:#111;background:linear-gradient(180deg,#d9d2c5,#9f978a);cursor:pointer}
+.slot .face{font-size:30px;line-height:1;margin-bottom:auto;margin-top:8px;filter:grayscale(1)}
+.pool{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}
+.pool button{appearance:none;border:1px solid #3a3a3a;background:var(--tile);color:var(--ink);font:400 16px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;padding:10px 11px;border-radius:6px;cursor:pointer}
+.pool button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.pool button:disabled{opacity:.35;cursor:default}
+.bars{list-style:none;margin:10px 0;padding:0;display:grid;gap:5px}
+.bars li{position:relative;border:1px solid #2e2e2e;border-radius:6px;padding:8px 10px;overflow:hidden;display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.bars li .fill{position:absolute;inset:0 auto 0 0;background:#2a2a2a;z-index:0}
+.bars li.mine .fill{background:rgba(255,103,25,.35)}
+.bars li > *:not(.fill){position:relative;z-index:1}
+.bars li b{font-weight:700}
+.bars li .r{font:700 13px var(--mono)}
+.top4{border-left:8px solid var(--red);padding:2px 0 2px 12px;margin:12px 0}
+</style>
+</head>
+<body data-game="mount-rushmore" data-title="Mount Rushmore" data-kicker="POW MAG · Carve your four">
+<div class="wrap" id="wrap">
+  <div class="strip"><span id="pnum">Mount Rushmore</span><span id="pdate"></span></div>
+  <p class="lede">Four faces per city. Pick yours, carve it, then see how every other reader voted. One ballot per city. Today's city is first, and you can vote on any of them.</p>
+  <div class="cities" id="cities" role="tablist"></div>
+  <h2 class="big" id="cname" style="margin:6px 0 0"></h2><p class="mute" id="csub" style="margin:0"></p>
+  <div class="mtn" id="mtn"></div>
+  <div id="vote">
+    <div class="pool" id="pool"></div>
+    <button class="btn primary" id="carve" type="button" style="width:100%" disabled>Carve it</button>
+  </div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><p class="verdict" id="verdict"></p>
+    <div class="top4" id="top4"></div>
+    <button class="btn primary" id="share" type="button">Copy my Rushmore</button>
+    <h3 class="kick" style="margin-top:18px">Every vote so far</h3><ul class="bars" id="bars"></ul>
+    <div id="signup"></div>
+    <div class="reading"><h3>Make your case</h3><p class="sub">Your four, in the POW archive.</p><ul id="reading"></ul></div>
+  </section>
+</div>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('cities.json');
+  const D = PG.day(data.launch, data.cities.length);
+  let bid = PG.store.gget('bid', null); if (!bid) { bid = 'b' + crypto.getRandomValues(new Uint32Array(3)).join('-').slice(0, 30); PG.store.gset('bid', bid); }
+  const todayIdx = D.n - 1;
+  const order = data.cities.map((c, i) => i).sort((a, b) => (a === todayIdx ? -1 : b === todayIdx ? 1 : a - b));
+  const q = new URLSearchParams(location.search);
+  let ci = data.cities.findIndex(c => c.id === q.get('city')); if (ci < 0) ci = todayIdx;
+  let sel = [];
+  const mine = id => PG.store.get('v-' + id, null);
+  const FACES = ['🗿', '🗿', '🗿', '🗿'];
+  $('pdate').textContent = `Today: ${data.cities[todayIdx].name}`;
+
+  function tabs() {
+    $('cities').innerHTML = order.map(i => { const c = data.cities[i]; return `<button role="tab" type="button" data-i="${i}" aria-current="${i === ci}">${esc(c.name)}${i === todayIdx ? ' · today' : ''}${mine(c.id) ? '<span class="dot" aria-label="voted"></span>' : ''}</button>`; }).join('');
+    document.querySelectorAll('#cities button').forEach(b => b.onclick = () => { ci = +b.dataset.i; sel = []; render(); history.replaceState(null, '', '?city=' + data.cities[ci].id + (q.has('nonag') ? '&nonag' : '')); });
+  }
+  function mtn(picks) {
+    $('mtn').innerHTML = [0, 1, 2, 3].map(i => picks[i] ? `<div class="slot on" data-n="${esc(picks[i])}" title="Tap to remove"><span class="face">${FACES[i]}</span>${esc(picks[i])}</div>` : `<div class="slot"><span class="face">·</span>${i + 1}</div>`).join('');
+    if (!mine(data.cities[ci].id)) document.querySelectorAll('.slot.on').forEach(s => s.onclick = () => toggle(s.dataset.n));
+  }
+  function render() {
+    const c = data.cities[ci], v = mine(c.id);
+    tabs(); $('cname').textContent = c.name; $('csub').textContent = c.sub;
+    $('pnum').innerHTML = `Mount Rushmore · ${esc(c.name)} ${ci === todayIdx ? '<span class="tag">Today</span>' : ''}`;
+    if (v) { mtn(v); $('vote').hidden = true; results(c, v, false); return; }
+    $('results').hidden = true; $('vote').hidden = false; mtn(sel);
+    $('pool').innerHTML = c.pool.map(nm => `<button type="button" aria-pressed="${sel.includes(nm)}" ${sel.length >= 4 && !sel.includes(nm) ? 'disabled' : ''}>${esc(nm)}</button>`).join('');
+    document.querySelectorAll('#pool button').forEach(b => b.onclick = () => toggle(b.textContent));
+    $('carve').disabled = sel.length !== 4;
+    $('carve').textContent = sel.length === 4 ? 'Carve it' : `Pick ${4 - sel.length} more`;
+  }
+  function toggle(nm) { sel = sel.includes(nm) ? sel.filter(x => x !== nm) : sel.length < 4 ? [...sel, nm] : sel; render(); }
+  $('carve').onclick = async () => {
+    const c = data.cities[ci]; if (sel.length !== 4) return;
+    $('carve').disabled = true; $('carve').textContent = 'Carving…';
+    const t = await PG.api('/rush', { k: 'rush:' + c.id, bid, picks: sel });
+    PG.store.set('v-' + c.id, sel); const v = sel; sel = [];
+    render(); results(c, v, true, t);
+    setTimeout(() => PG.nag('first', { kick: 'Carved', head: 'Now defend it', body: 'POW MAG has covered every name on this mountain since 2005. Get it in your inbox, free.' }), 2500);
+  };
+  async function results(c, v, fresh, t) {
+    t = t || await PG.api('/rush?k=rush:' + c.id);
+    const T = t && t['rush:' + c.id] || { total: 0, counts: {} };
+    const ranked = Object.entries(T.counts).sort((a, b) => b[1] - a[1]);
+    const top = ranked.slice(0, 4).map(x => x[0]), match = v.filter(x => top.includes(x)).length;
+    $('res-h').textContent = `Your ${c.name}`;
+    $('verdict').textContent = T.total ? `${T.total} ballot${T.total === 1 ? '' : 's'} so far. You match ${match} of the readers' top four.` + (match === 4 ? ' Consensus pick.' : match === 0 ? ' Contrarian. Respect.' : '') : 'You\'re the first ballot. The mountain is yours for now.';
+    $('top4').innerHTML = top.length ? `<p class="kick">The readers' four</p><b class="big" style="font-size:26px;display:block">${top.map(esc).join(' · ')}</b>` : '';
+    $('bars').innerHTML = ranked.slice(0, 12).map(([nm, k]) => { const p = Math.round(100 * k / T.total); return `<li class="${v.includes(nm) ? 'mine' : ''}"><span class="fill" style="width:${p}%"></span><b>${esc(nm)}</b><span class="r">${p}%</span></li>`; }).join('');
+    $('signup').innerHTML = PG.signupBox('Get the next city in your inbox');
+    $('reading').innerHTML = v.map(nm => `<li><a href="${PG.search(nm)}" target="_blank" rel="noopener">${esc(nm)}</a></li>`).join('');
+    $('share').onclick = () => PG.copy(`My ${c.name} Mount Rushmore:\n${v.map((x, i) => `${i + 1}. ${x}`).join('\n')}\n${T.total ? `Matched ${match}/4 with POW readers` : ''}\npassionweiss.com`);
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  render();
+  setTimeout(() => PG.nag('land', { kick: 'Mount Rushmore', head: 'A new city every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>
