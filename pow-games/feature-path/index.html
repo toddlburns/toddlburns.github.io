@@ -3,53 +3,48 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Feature Path</title>
-<meta name="description" content="Get from one rapper to another through guest verses, in as few hops as you can.">
+<meta name="description" content="Six degrees of the guest verse. Connect two rappers through songs they made together.">
 <meta name="theme-color" content="#171717">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/pow.css">
 <style>
-.ends{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}
-.ends div{border:2px solid #3a3a3a;border-radius:10px;padding:10px;text-align:center}
-.ends div.t{border-color:var(--l2)}
-.ends b{display:block;font:400 22px/1 var(--display);text-transform:uppercase}
-.ends small{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.ends .arr{font:400 26px var(--display);color:var(--red)}
-.trail{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:13px}
-.trail span.n{font:400 15px var(--display);text-transform:uppercase;background:#262626;padding:4px 7px;border-radius:4px}
-.trail span.s{font:italic 12px var(--sans);color:var(--mute)}
-.cur{margin:14px 0 6px}
-.cur .big{margin:0}
-.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin:8px 0}
-.opts button{appearance:none;text-align:left;border:1px solid #3a3a3a;background:var(--tile);color:var(--ink);border-radius:8px;padding:9px 10px;cursor:pointer}
-.opts button:hover{border-color:var(--red)}
-.opts button b{display:block;font:400 17px/1 var(--display);text-transform:uppercase}
-.opts button span{display:block;font-size:12px;color:var(--mute);margin-top:3px}
-.opts button.goal{border-color:var(--l2);background:#1d2a1d}
-.opts button.been{opacity:.45}
-.bar{display:flex;justify-content:space-between;font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em}
-.filt{margin:6px 0}
+.goal{font-size:17px;line-height:1.4;margin:14px 0 6px}
+.goal b{font:400 22px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.goal b.s{color:var(--red)} .goal b.t{color:var(--l2)}
+.chain{list-style:none;margin:14px 0;padding:0}
+.node{border:2px solid #3a3a3a;background:var(--tile);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.node b{font:400 24px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.node small{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.node.start{border-color:var(--red)} .node.target{border-color:var(--l2);background:#1b281b}
+.node.new{animation:pop .35s}
+.link{margin-left:22px;border-left:3px solid var(--red);padding:8px 0 8px 14px;font-size:13px;color:var(--mute)}
+.link i{font-style:normal;color:var(--ink);font-weight:600}
+.gap{margin-left:22px;border-left:3px dashed #444;padding:10px 0 10px 14px}
+.gap.done{display:none}
+.ask{font:600 13px var(--mono);text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px}
+.ask b{color:var(--red)}
+.tools{display:flex;gap:6px;margin-top:6px}
+.tools .btn{flex:1;padding:9px 6px;font-size:13px}
+.bar{display:flex;justify-content:space-between;font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+.bar b{color:var(--ink)}
 </style>
 </head>
 <body data-game="feature-path" data-title="Feature Path" data-kicker="POW MAG · Six degrees of the guest verse">
 <div class="wrap" id="wrap">
   <div class="strip"><span id="pnum">Feature Path</span><span id="pdate"></span></div>
-  <p class="lede">Get from the first rapper to the second through songs they made together. Each hop goes to someone your current rapper has a track with. Try to match par.</p>
-  <div class="ends"><div><small>Start</small><b id="s"></b></div><span class="arr">→</span><div class="t"><small>Target</small><b id="t"></b></div></div>
-  <div class="bar"><span id="moves"></span><span id="par"></span></div>
-  <div class="trail" id="trail"></div>
-  <div class="cur"><p class="kick">You're on</p><h2 class="big" id="cur"></h2></div>
-  <div class="filt"><input class="guess" id="f" placeholder="Filter collaborators…" aria-label="Filter collaborators"></div>
-  <div class="opts" id="opts"></div>
-  <div class="row"><button class="btn" id="back" type="button">Back one hop</button><button class="btn" id="giveup" type="button">Show me a path</button></div>
+  <p class="goal" id="goal"></p>
+  <p class="lede" style="margin-top:0">Name a rapper who has a song with the last name in your chain. The game shows the song that links them. Keep going until you can link to the target.</p>
+  <div class="bar"><span id="score"></span><span id="par"></span></div>
+  <ol class="chain" id="chain"></ol>
   <div id="toast" role="status" aria-live="assertive"></div>
   <section id="results" hidden aria-labelledby="res-h">
     <h2 id="res-h"></h2><p class="verdict" id="verdict"></p>
-    <div class="trail" id="ftrail"></div>
+    <div id="best"></div>
     <div class="grid-share" id="emo"></div>
     <button class="btn primary" id="share" type="button">Copy result</button>
     <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
-    <div class="reading"><h3>Do the reading</h3><p class="sub">Everyone on your path, in the POW archive.</p><ul id="reading"></ul></div>
+    <div class="reading"><h3>Do the reading</h3><p class="sub">Everyone in your chain, in the POW archive.</p><ul id="reading"></ul></div>
   </section>
 </div>
 <script src="../shared/pow.js"></script>
@@ -60,50 +55,76 @@
   const D = PG.day(data.launch, data.puzzles.length), n = D.n, P = data.puzzles[n - 1], G = data.graph;
   $('pnum').innerHTML = `Feature Path #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
   $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
-  $('s').textContent = P.s; $('t').textContent = P.t; $('par').textContent = `Par ${P.par}`;
-  const key = 'x' + n, S = PG.store.get(key, null) || { path: [P.s], songs: [], moves: 0, done: false, won: false };
+  $('goal').innerHTML = `Connect <b class="s">${esc(P.s)}</b> to <b class="t">${esc(P.t)}</b>`;
+  const key = 'y' + n, S = PG.store.get(key, null) || { path: [P.s], songs: [], misses: [], hints: 0, done: false, won: false };
   const save = () => PG.store.set(key, S);
-  const cur = () => S.path[S.path.length - 1];
-  function trail(el, path, songs) { el.innerHTML = path.map((p, i) => `${i ? `<span class="s">“${esc(songs[i - 1])}”</span>` : ''}<span class="n">${esc(p)}</span>`).join(''); }
-  function draw() {
-    $('cur').textContent = cur(); $('moves').textContent = `${S.moves} hop${S.moves === 1 ? '' : 's'}`;
-    trail($('trail'), S.path, S.songs);
-    const f = PG.norm($('f').value), c = cur();
-    const opts = Object.entries(G[c]).filter(([a]) => !f || PG.norm(a).includes(f)).sort((a, b) => (b[0] === P.t) - (a[0] === P.t) || a[0].localeCompare(b[0]));
-    $('opts').innerHTML = opts.map(([a, song]) => `<button type="button" data-a="${esc(a)}" class="${a === P.t ? 'goal' : ''} ${S.path.includes(a) ? 'been' : ''}"><b>${esc(a)}</b><span>“${esc(song)}”</span></button>`).join('');
-    document.querySelectorAll('#opts button').forEach(b => b.onclick = () => hop(b.dataset.a));
-    $('back').disabled = S.path.length < 2 || S.done; [$('f'), $('opts'), $('back'), $('giveup')].forEach(x => x.hidden = S.done);
-  }
-  $('f').addEventListener('input', draw);
-  function hop(a) {
-    if (S.done) return;
-    S.songs.push(G[cur()][a]); S.path.push(a); S.moves++; $('f').value = '';
-    if (a === P.t) { S.done = true; S.won = true; }
-    save(); draw(); window.scrollTo({ top: $('trail').offsetTop - 80, behavior: 'smooth' });
-    if (S.done) finish(true);
-    else if (S.moves === P.par) setTimeout(() => PG.nag('miss', { kick: 'Past par', head: 'Still digging?', body: 'POW MAG has been connecting these dots since 2005. Get it in your inbox, free.' }), 1200);
-  }
-  $('back').onclick = () => { if (S.path.length > 1 && !S.done) { S.path.pop(); S.songs.pop(); S.moves++; save(); draw(); } };
-  function shortest() {
-    const prev = { [P.s]: null }, q = [P.s];
+  const last = () => S.path[S.path.length - 1];
+  const links = () => S.path.length - 1;
+  // shortest route from a rapper to the target (BFS over the song graph)
+  function route(from) {
+    const prev = { [from]: null }, q = [from];
     for (const x of q) { if (x === P.t) break; for (const y in G[x]) if (!(y in prev)) { prev[y] = x; q.push(y); } }
     const p = []; for (let x = P.t; x; x = prev[x]) p.unshift(x); return p;
   }
-  $('giveup').onclick = () => { S.done = true; S.won = false; save(); draw(); finish(true); };
-  function finish(fresh) {
-    const st = PG.record(n, S.won, D.practice), over = S.moves - P.par;
-    $('res-h').textContent = S.won ? (over <= 0 ? 'Par. Perfect.' : `${S.moves} hops (+${over})`) : 'Gave up.';
-    $('verdict').textContent = S.won ? (over <= 0 ? 'Shortest possible route. You know who\'s been in the booth together.' : over <= 2 ? 'Got there with a detour or two.' : 'Scenic route. You got there.') : 'Here\'s the shortest way through.';
-    const sp = S.won ? S.path : shortest(), ss = S.won ? S.songs : sp.slice(1).map((a, i) => G[sp[i]][a]);
-    trail($('ftrail'), sp, ss);
-    $('emo').textContent = `${P.s} → ${P.t}\n` + (S.won ? '🎤'.repeat(Math.min(S.moves, 12)) + (over <= 0 ? ' ⛳' : '') : '❌');
-    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'path'); $('signup').innerHTML = PG.signupBox("Get tomorrow's path in your inbox");
-    $('reading').innerHTML = [...new Set(sp)].map(a => `<li><a href="${PG.search(a)}" target="_blank" rel="noopener">${esc(a)}</a></li>`).join('');
-    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  let fresh = -1;
+  function draw() {
+    const rows = [];
+    S.path.forEach((a, i) => {
+      if (i) rows.push(`<li class="link">on <i>“${esc(S.songs[i - 1])}”</i></li>`);
+      const isT = a === P.t;
+      rows.push(`<li class="node ${i === 0 ? 'start' : ''} ${isT ? 'target' : ''} ${i === fresh ? 'new' : ''}"><b>${esc(a)}</b><small>${i === 0 ? 'Start' : isT ? 'Target ✓' : 'Link ' + i}</small></li>`);
+    });
+    if (!S.done) {
+      rows.push(`<li class="gap"><p class="ask">Who has a song with <b>${esc(last())}</b>?</p>
+        <div class="ac"><input class="guess" id="q" placeholder="Type a rapper…" aria-label="Rapper who has a song with ${esc(last())}"></div>
+        <div class="tools"><button class="btn" id="undo" type="button" ${links() ? '' : 'disabled'}>Undo last link</button><button class="btn" id="hint" type="button">Hint</button><button class="btn" id="giveup" type="button">Give up</button></div></li>`);
+      rows.push(`<li class="node target"><b>${esc(P.t)}</b><small>Target</small></li>`);
+    }
+    $('chain').innerHTML = rows.join('');
+    $('score').innerHTML = `Links <b>${links()}</b> · Misses <b>${S.misses.length}</b>${S.hints ? ` · Hints <b>${S.hints}</b>` : ''}`;
+    $('par').innerHTML = `Par <b>${P.par}</b>`;
+    if (!S.done) {
+      PG.autocomplete($('q'), Object.keys(G).sort().map(a => ({ label: a })), it => guess(it.label));
+      $('undo').onclick = () => { if (links()) { S.path.pop(); S.songs.pop(); save(); draw(); $('q').focus(); } };
+      $('hint').onclick = () => { const r = route(last()); S.hints++; save(); draw(); PG.toast(`Try ${r[1]}.`, 3500); };
+      $('giveup').onclick = () => { S.done = true; save(); draw(); finish(true); };
+      if (fresh >= 0) $('q').focus({ preventScroll: true });
+    }
+    fresh = -1;
   }
-  $('share').onclick = () => PG.copy(`Feature Path #${n} · ${S.won ? `${S.moves} hops (par ${P.par})` : 'DNF'}\n${$('emo').textContent}\npassionweiss.com`);
+  function guess(a) {
+    if (S.done) return;
+    const from = last();
+    if (S.path.includes(a)) { PG.toast(`${a} is already in your chain.`); return; }
+    const song = G[from][a];
+    if (!song) {
+      S.misses.push(a); save(); draw();
+      PG.toast(`No ${from} and ${a} song in our crate. Try someone else.`, 2600);
+      if (S.misses.length === 2) setTimeout(() => PG.nag('miss', { kick: 'Stuck?', head: 'Do the reading', body: 'POW MAG has been tracking who raps with who since 2005. Get it in your inbox, free.' }), 2800);
+      return;
+    }
+    S.path.push(a); S.songs.push(song); fresh = S.path.length - 1;
+    if (a === P.t) { S.done = true; S.won = true; }
+    save(); draw();
+    if (S.done) finish(true); else PG.toast(`“${song}.” Linked.`, 1600);
+  }
+  function chainHTML(path, songs) {
+    return `<ol class="chain">${path.map((a, i) => `${i ? `<li class="link">on <i>“${esc(songs[i - 1])}”</i></li>` : ''}<li class="node ${i === 0 ? 'start' : ''} ${a === P.t ? 'target' : ''}"><b>${esc(a)}</b></li>`).join('')}</ol>`;
+  }
+  function finish(isFresh) {
+    const st = PG.record(n, S.won, D.practice), over = links() - P.par;
+    $('res-h').textContent = S.won ? (over <= 0 ? 'Par. Perfect chain.' : `${links()} links (par ${P.par})`) : 'Gave up.';
+    $('verdict').textContent = S.won ? (over <= 0 && !S.misses.length ? 'Shortest route, no misses. You know who\'s been in the booth together.' : over <= 0 ? 'Shortest route.' : 'You got there, by the scenic route.') : 'Here\'s the shortest way through.';
+    const r = route(P.s);
+    $('best').innerHTML = S.won && over <= 0 ? '' : `<p class="kick">A shortest chain</p>${chainHTML(r, r.slice(1).map((a, i) => G[r[i]][a]))}`;
+    $('emo').textContent = `${P.s} → ${P.t}\n` + (S.won ? '🔗'.repeat(links()) : '❌') + (S.misses.length ? ' ' + '✖️'.repeat(Math.min(S.misses.length, 8)) : '') + (S.hints ? ' ' + '💡'.repeat(S.hints) : '') + (S.won && over <= 0 ? ' ⛳' : '');
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'chain'); $('signup').innerHTML = PG.signupBox("Get tomorrow's chain in your inbox");
+    $('reading').innerHTML = [...new Set(S.path.concat(S.won ? [] : r))].map(a => `<li><a href="${PG.search(a)}" target="_blank" rel="noopener">${esc(a)}</a></li>`).join('');
+    $('results').hidden = false; if (isFresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Feature Path #${n} · ${S.won ? `${links()} links (par ${P.par})` : 'DNF'}\n${$('emo').textContent}\npassionweiss.com`);
   draw(); if (S.done) finish(false);
-  setTimeout(() => PG.nag('land', { kick: `Feature Path #${n}`, head: 'A new path every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+  setTimeout(() => PG.nag('land', { kick: `Feature Path #${n}`, head: 'A new chain every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
 })();
 </script>
 </body>
