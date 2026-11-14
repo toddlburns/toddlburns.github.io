@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blind Review</title>
+<meta name="description" content="Guess the album from lines of a real POW review. Names redacted.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.paper{background:#f3efe6;color:#1b1b1b;border-radius:4px;padding:18px 18px 10px;margin:12px 0;box-shadow:0 10px 30px rgba(0,0,0,.4);position:relative}
+.paper .mh{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #1b1b1b;padding-bottom:6px;margin-bottom:10px;font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.1em}
+.paper .mh img{height:26px;transform:rotate(-3deg)}
+.paper .hed{font:400 26px/1 var(--display);text-transform:uppercase;margin:0 0 12px;letter-spacing:.01em}
+.paper .hed .x{background:#1b1b1b;color:#1b1b1b;border-radius:2px;padding:0 4px;user-select:none}
+.paper p.q{font:400 18px/1.5 'Source Serif 4',Georgia,serif;margin:0 0 12px}
+.paper p.q::before{content:'¶ ';color:#ff6719;font-weight:600}
+.paper p.q.new{animation:pop .4s}
+.paper p.lock{font:400 18px/1.5 'Source Serif 4',Georgia,serif;margin:0 0 12px;color:transparent;background:repeating-linear-gradient(#d8d2c4 0 12px,transparent 12px 27px);border-radius:2px;user-select:none}
+.facts{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}
+.facts span{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:4px;background:#262626;color:#777}
+.facts span.on{background:var(--l4);color:#fff}
+.misses{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.misses span{font:600 12px var(--mono);text-transform:uppercase;background:#2a1414;color:#ff8a8a;padding:3px 8px;border-radius:4px;text-decoration:line-through}
+.pts{font:400 44px/1 var(--display);color:var(--red)}
+.answer{border-left:8px solid var(--l2);padding:4px 0 4px 12px;margin:10px 0}.answer.lost{border-color:var(--l3)}
+.answer b{font:400 30px/1 var(--display);text-transform:uppercase;display:block}
+.readit{display:block;margin:12px 0;padding:14px;border:1px solid var(--red);border-radius:10px;text-decoration:none}
+.readit b{display:block;font:400 22px/1.05 var(--display);text-transform:uppercase}
+.readit span{font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body data-game="blind-review" data-title="Blind Review" data-kicker="POW MAG · From the archive">
+<div class="wrap" id="wrap">
+  <div class="strip"><span id="pnum">Blind Review</span><span id="pdate"></span></div>
+  <p class="lede">Real lines from a real POW review, with the names blacked out. Guess the album. Each miss shows another line, then the year, then the artist.</p>
+  <div class="paper"><div class="mh"><img src="../shared/pow-wordmark.png" alt="POW MAG"><span>Review · Redacted</span></div>
+    <h2 class="hed" id="hed"><span class="x">████████</span> — <span class="x">██████████</span></h2><div id="lines"></div></div>
+  <div class="facts" id="facts"></div>
+  <div class="misses" id="misses"></div>
+  <div id="play">
+    <div class="ac"><input class="guess" id="q" placeholder="Which album is this about?" aria-label="Album title"></div>
+    <button class="btn" id="skip" type="button" style="width:100%;margin-top:8px">Show the next clue</button>
+  </div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><div id="ans"></div><p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="emo"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <a class="readit" id="readit" target="_blank" rel="noopener"></a>
+    <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
+  </section>
+</div>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('puzzles.json');
+  const D = PG.day(data.launch, data.puzzles.length), n = D.n, P = data.puzzles[n - 1], MAX = 5;
+  $('pnum').innerHTML = `Blind Review #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
+  const key = 'b' + n, S = PG.store.get(key, null) || { shown: 1, misses: [], done: false, won: false };
+  const save = () => PG.store.set(key, S);
+  function draw(fresh) {
+    const k = S.done ? 5 : S.shown;
+    $('lines').innerHTML = P.lines.map((l, i) => i < k ? `<p class="q ${fresh && i === k - 1 ? 'new' : ''}">${esc(l)}</p>` : `<p class="lock">${'xxxxxx '.repeat(Math.ceil(l.length / 7))}</p>`).join('');
+    if (S.done) $('hed').textContent = `${P.a} — ${P.t}`;
+    $('facts').innerHTML = `<span class="${k >= 4 ? 'on' : ''}">Year: ${k >= 4 ? P.y : '····'}</span><span class="${k >= 5 ? 'on' : ''}">Artist: ${k >= 5 ? esc(P.a) : '········'}</span><span>${MAX - S.shown + 1} pt${MAX - S.shown ? 's' : ''} on the table</span>`;
+    $('misses').innerHTML = S.misses.map(x => `<span>${esc(x)}</span>`).join('');
+    $('play').hidden = S.done; $('skip').textContent = S.shown >= MAX ? 'Give up' : S.shown >= 3 ? 'Show the next hint' : 'Show another line';
+  }
+  PG.autocomplete($('q'), data.names.map(t => ({ label: t })), it => guess(it.label));
+  function guess(t) {
+    if (S.done) return;
+    if (PG.norm(t) === PG.norm(P.t)) { S.done = true; S.won = true; save(); draw(); finish(true); return; }
+    if (S.misses.includes(t)) { PG.toast('Already tried that one.'); return; }
+    S.misses.push(t); PG.toast(`Not ${t}.`); advance();
+  }
+  function advance() {
+    if (S.shown >= MAX) { S.done = true; save(); draw(); finish(true); return; }
+    S.shown++; save(); draw(true);
+    if (S.shown === 3) setTimeout(() => PG.nag('miss', { kick: 'Stumped?', head: 'Read the whole thing', body: 'Twenty years of POW reviews, in your inbox. Free.' }), 1500);
+  }
+  $('skip').onclick = () => { if (!S.done) advance(); };
+  function finish(fresh) {
+    const pts = S.won ? MAX - S.shown + 1 : 0, st = PG.record(n, S.won, D.practice);
+    $('res-h').innerHTML = S.won ? `<span class="pts">${pts}</span> point${pts === 1 ? '' : 's'}` : 'Missed it.';
+    $('ans').innerHTML = `<div class="answer ${S.won ? '' : 'lost'}"><span class="kick">The album</span><b>${esc(P.t)}</b><span class="mute">${esc(P.a)} · ${P.y}</span></div>`;
+    $('verdict').textContent = S.won ? (S.shown === 1 ? 'One line. You read POW closely.' : S.shown <= 3 ? 'Read between the lines. Nice.' : 'The hints got you there.') : 'It was right there in black and white. Mostly black.';
+    $('emo').textContent = Array.from({ length: MAX }, (_, i) => i < S.shown - 1 ? '🟥' : i === S.shown - 1 ? (S.won ? '🟩' : '🟥') : '⬛').join('');
+    $('readit').href = P.url; $('readit').innerHTML = `<span class="kick">Read the full review</span><b>${esc(P.hed)}</b><span>${P.by ? 'By ' + esc(P.by) + ' · ' : ''}POW MAG, ${P.y}</span>`;
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'review'); $('signup').innerHTML = PG.signupBox("Get tomorrow's blind review in your inbox");
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Blind Review #${n}\n${$('emo').textContent}\npassionweiss.com`);
+  draw(); if (S.done) finish(false);
+  setTimeout(() => PG.nag('land', { kick: `Blind Review #${n}`, head: 'From twenty years of POW', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>

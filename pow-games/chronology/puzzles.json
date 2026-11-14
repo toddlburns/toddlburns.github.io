@@ -1,0 +1,885 @@
+{
+"launch": "2026-11-14",
+"days": [
+[
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+},
+{
+"d": "1979-09-16",
+"t": "The Sugarhill Gang release \"Rapper's Delight\""
+},
+{
+"d": "2001-09-11",
+"t": "Jay-Z releases \"The Blueprint,\" with \"Takeover\" on it"
+}
+],
+[
+{
+"d": "1979-09-16",
+"t": "The Sugarhill Gang release \"Rapper's Delight\""
+},
+{
+"d": "2018-04-16",
+"t": "Kendrick Lamar wins the Pulitzer Prize for Music"
+},
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+},
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+},
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+}
+],
+[
+{
+"d": "2019-03-31",
+"t": "Nipsey Hussle is killed outside his Marathon Clothing store"
+},
+{
+"d": "1990-11-03",
+"t": "\"Ice Ice Baby\" hits No. 1 on the Hot 100"
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "2023-08-11",
+"t": "Hip-hop turns 50 on the anniversary of the Sedgwick Avenue party"
+}
+],
+[
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+},
+{
+"d": "2015-03-15",
+"t": "Kendrick Lamar releases \"To Pimp a Butterfly\""
+},
+{
+"d": "2023-08-11",
+"t": "Hip-hop turns 50 on the anniversary of the Sedgwick Avenue party"
+},
+{
+"d": "2008-06-10",
+"t": "Lil Wayne releases \"Tha Carter III\""
+},
+{
+"d": "1996-09-13",
+"t": "2Pac dies in Las Vegas"
+}
+],
+[
+{
+"d": "2018-12-03",
+"t": "Lil Nas X releases \"Old Town Road\""
+},
+{
+"d": "2015-03-15",
+"t": "Kendrick Lamar releases \"To Pimp a Butterfly\""
+},
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+},
+{
+"d": "1984-03-27",
+"t": "Run-DMC release their debut album"
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+}
+],
+[
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+},
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+},
+{
+"d": "2019-03-31",
+"t": "Nipsey Hussle is killed outside his Marathon Clothing store"
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+}
+],
+[
+{
+"d": "1999-02-24",
+"t": "Lauryn Hill wins Album of the Year at the Grammys"
+},
+{
+"d": "2020-08-07",
+"t": "Cardi B and Megan Thee Stallion release \"WAP\""
+},
+{
+"d": "2002-10-30",
+"t": "Jam Master Jay is killed in Queens"
+},
+{
+"d": "2025-02-09",
+"t": "Kendrick Lamar headlines the Super Bowl halftime show"
+},
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+}
+],
+[
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "1999-02-24",
+"t": "Lauryn Hill wins Album of the Year at the Grammys"
+},
+{
+"d": "1988-08-06",
+"t": "\"Yo! MTV Raps\" premieres"
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+},
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+}
+],
+[
+{
+"d": "2004-02-10",
+"t": "Kanye West releases \"The College Dropout\""
+},
+{
+"d": "1989-06-30",
+"t": "\"Do the Right Thing\" opens, with \"Fight the Power\" all over it"
+},
+{
+"d": "1992-12-15",
+"t": "Dr. Dre releases \"The Chronic\""
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "2020-08-07",
+"t": "Cardi B and Megan Thee Stallion release \"WAP\""
+}
+],
+[
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+},
+{
+"d": "2015-03-15",
+"t": "Kendrick Lamar releases \"To Pimp a Butterfly\""
+},
+{
+"d": "2025-02-09",
+"t": "Kendrick Lamar headlines the Super Bowl halftime show"
+},
+{
+"d": "1999-02-24",
+"t": "Lauryn Hill wins Album of the Year at the Grammys"
+},
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+}
+],
+[
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "1979-09-16",
+"t": "The Sugarhill Gang release \"Rapper's Delight\""
+},
+{
+"d": "2018-12-03",
+"t": "Lil Nas X releases \"Old Town Road\""
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "2002-10-30",
+"t": "Jam Master Jay is killed in Queens"
+}
+],
+[
+{
+"d": "2001-09-11",
+"t": "Jay-Z releases \"The Blueprint,\" with \"Takeover\" on it"
+},
+{
+"d": "1982-07-01",
+"t": "Grandmaster Flash and the Furious Five release \"The Message\""
+},
+{
+"d": "2018-12-03",
+"t": "Lil Nas X releases \"Old Town Road\""
+},
+{
+"d": "1987-03-07",
+"t": "\"Licensed to Ill\" becomes the first rap album to top the Billboard 200"
+},
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+}
+],
+[
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+},
+{
+"d": "1999-02-24",
+"t": "Lauryn Hill wins Album of the Year at the Grammys"
+},
+{
+"d": "2006-03-05",
+"t": "Three 6 Mafia win the Oscar for \"It's Hard out Here for a Pimp\""
+},
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "2019-03-31",
+"t": "Nipsey Hussle is killed outside his Marathon Clothing store"
+}
+],
+[
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "1992-12-15",
+"t": "Dr. Dre releases \"The Chronic\""
+},
+{
+"d": "1997-03-09",
+"t": "The Notorious B.I.G. is killed in Los Angeles"
+},
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+}
+],
+[
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+}
+],
+[
+{
+"d": "1992-12-15",
+"t": "Dr. Dre releases \"The Chronic\""
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+},
+{
+"d": "1979-09-16",
+"t": "The Sugarhill Gang release \"Rapper's Delight\""
+},
+{
+"d": "2019-03-31",
+"t": "Nipsey Hussle is killed outside his Marathon Clothing store"
+},
+{
+"d": "2024-05-04",
+"t": "Kendrick Lamar releases \"Not Like Us\""
+}
+],
+[
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "2001-09-11",
+"t": "Jay-Z releases \"The Blueprint,\" with \"Takeover\" on it"
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+}
+],
+[
+{
+"d": "1997-03-09",
+"t": "The Notorious B.I.G. is killed in Los Angeles"
+},
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+},
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+},
+{
+"d": "2004-02-10",
+"t": "Kanye West releases \"The College Dropout\""
+},
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+}
+],
+[
+{
+"d": "1984-03-27",
+"t": "Run-DMC release their debut album"
+},
+{
+"d": "1989-06-30",
+"t": "\"Do the Right Thing\" opens, with \"Fight the Power\" all over it"
+},
+{
+"d": "2003-03-23",
+"t": "Eminem's \"Lose Yourself\" wins the Oscar for Best Original Song"
+},
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "1994-04-19",
+"t": "Nas releases \"Illmatic\""
+}
+],
+[
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+},
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+}
+],
+[
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+},
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+},
+{
+"d": "1986-07-04",
+"t": "Run-DMC and Aerosmith release \"Walk This Way\""
+},
+{
+"d": "1994-04-19",
+"t": "Nas releases \"Illmatic\""
+},
+{
+"d": "1982-07-01",
+"t": "Grandmaster Flash and the Furious Five release \"The Message\""
+}
+],
+[
+{
+"d": "2010-11-22",
+"t": "Kanye West releases \"My Beautiful Dark Twisted Fantasy\""
+},
+{
+"d": "2018-12-03",
+"t": "Lil Nas X releases \"Old Town Road\""
+},
+{
+"d": "1997-03-09",
+"t": "The Notorious B.I.G. is killed in Los Angeles"
+},
+{
+"d": "2003-03-23",
+"t": "Eminem's \"Lose Yourself\" wins the Oscar for Best Original Song"
+},
+{
+"d": "2008-06-10",
+"t": "Lil Wayne releases \"Tha Carter III\""
+}
+],
+[
+{
+"d": "2020-08-07",
+"t": "Cardi B and Megan Thee Stallion release \"WAP\""
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+},
+{
+"d": "1982-07-01",
+"t": "Grandmaster Flash and the Furious Five release \"The Message\""
+},
+{
+"d": "2022-02-13",
+"t": "Dr. Dre, Snoop, Eminem, Mary J., 50 and Kendrick play the Super Bowl halftime show"
+},
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+}
+],
+[
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+},
+{
+"d": "1988-08-06",
+"t": "\"Yo! MTV Raps\" premieres"
+},
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+},
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+}
+],
+[
+{
+"d": "1991-07-12",
+"t": "\"Boyz n the Hood\" opens in theaters"
+},
+{
+"d": "2006-02-10",
+"t": "J Dilla dies, three days after \"Donuts\" comes out"
+},
+{
+"d": "2008-06-10",
+"t": "Lil Wayne releases \"Tha Carter III\""
+},
+{
+"d": "2020-08-07",
+"t": "Cardi B and Megan Thee Stallion release \"WAP\""
+},
+{
+"d": "2015-03-15",
+"t": "Kendrick Lamar releases \"To Pimp a Butterfly\""
+}
+],
+[
+{
+"d": "2018-04-16",
+"t": "Kendrick Lamar wins the Pulitzer Prize for Music"
+},
+{
+"d": "1986-07-04",
+"t": "Run-DMC and Aerosmith release \"Walk This Way\""
+},
+{
+"d": "1994-04-19",
+"t": "Nas releases \"Illmatic\""
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "1988-08-06",
+"t": "\"Yo! MTV Raps\" premieres"
+}
+],
+[
+{
+"d": "2002-10-30",
+"t": "Jam Master Jay is killed in Queens"
+},
+{
+"d": "2004-02-10",
+"t": "Kanye West releases \"The College Dropout\""
+},
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+},
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+}
+],
+[
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+},
+{
+"d": "2004-02-10",
+"t": "Kanye West releases \"The College Dropout\""
+},
+{
+"d": "2022-02-13",
+"t": "Dr. Dre, Snoop, Eminem, Mary J., 50 and Kendrick play the Super Bowl halftime show"
+},
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "1987-03-07",
+"t": "\"Licensed to Ill\" becomes the first rap album to top the Billboard 200"
+}
+],
+[
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+},
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+},
+{
+"d": "2025-02-09",
+"t": "Kendrick Lamar headlines the Super Bowl halftime show"
+},
+{
+"d": "2018-12-03",
+"t": "Lil Nas X releases \"Old Town Road\""
+}
+],
+[
+{
+"d": "1986-07-04",
+"t": "Run-DMC and Aerosmith release \"Walk This Way\""
+},
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "1999-02-24",
+"t": "Lauryn Hill wins Album of the Year at the Grammys"
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+}
+],
+[
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "1987-03-07",
+"t": "\"Licensed to Ill\" becomes the first rap album to top the Billboard 200"
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+}
+],
+[
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "2001-09-11",
+"t": "Jay-Z releases \"The Blueprint,\" with \"Takeover\" on it"
+},
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+}
+],
+[
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+},
+{
+"d": "2023-08-11",
+"t": "Hip-hop turns 50 on the anniversary of the Sedgwick Avenue party"
+},
+{
+"d": "2003-03-23",
+"t": "Eminem's \"Lose Yourself\" wins the Oscar for Best Original Song"
+},
+{
+"d": "1986-07-04",
+"t": "Run-DMC and Aerosmith release \"Walk This Way\""
+}
+],
+[
+{
+"d": "2023-08-11",
+"t": "Hip-hop turns 50 on the anniversary of the Sedgwick Avenue party"
+},
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "2019-03-31",
+"t": "Nipsey Hussle is killed outside his Marathon Clothing store"
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+}
+],
+[
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "1993-11-09",
+"t": "Wu-Tang Clan release \"Enter the Wu-Tang (36 Chambers)\""
+},
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+},
+{
+"d": "1988-08-06",
+"t": "\"Yo! MTV Raps\" premieres"
+},
+{
+"d": "2006-03-05",
+"t": "Three 6 Mafia win the Oscar for \"It's Hard out Here for a Pimp\""
+}
+],
+[
+{
+"d": "2015-07-29",
+"t": "Drake releases \"Back to Back\" at Meek Mill"
+},
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "2006-03-05",
+"t": "Three 6 Mafia win the Oscar for \"It's Hard out Here for a Pimp\""
+},
+{
+"d": "1979-09-16",
+"t": "The Sugarhill Gang release \"Rapper's Delight\""
+},
+{
+"d": "1984-03-27",
+"t": "Run-DMC release their debut album"
+}
+],
+[
+{
+"d": "1995-08-03",
+"t": "The second Source Awards, the night the coastal beef boils over"
+},
+{
+"d": "1983-11-01",
+"t": "\"Wild Style\" opens in US theaters"
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "1973-08-11",
+"t": "DJ Kool Herc throws the back-to-school party at 1520 Sedgwick Avenue"
+},
+{
+"d": "2000-11-16",
+"t": "DJ Screw dies in Houston"
+}
+],
+[
+{
+"d": "2024-05-04",
+"t": "Kendrick Lamar releases \"Not Like Us\""
+},
+{
+"d": "2011-08-08",
+"t": "Jay-Z and Kanye West release \"Watch the Throne\""
+},
+{
+"d": "1998-11-03",
+"t": "Juvenile releases \"400 Degreez\""
+},
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+},
+{
+"d": "2013-08-12",
+"t": "Kendrick Lamar's verse on Big Sean's \"Control\" leaks"
+}
+],
+[
+{
+"d": "1987-03-07",
+"t": "\"Licensed to Ill\" becomes the first rap album to top the Billboard 200"
+},
+{
+"d": "2009-09-13",
+"t": "Kanye West interrupts Taylor Swift at the VMAs"
+},
+{
+"d": "1984-03-27",
+"t": "Run-DMC release their debut album"
+},
+{
+"d": "1982-07-01",
+"t": "Grandmaster Flash and the Furious Five release \"The Message\""
+},
+{
+"d": "1989-06-30",
+"t": "\"Do the Right Thing\" opens, with \"Fight the Power\" all over it"
+}
+],
+[
+{
+"d": "2012-10-22",
+"t": "Kendrick Lamar releases \"good kid, m.A.A.d city\""
+},
+{
+"d": "1988-08-08",
+"t": "N.W.A release \"Straight Outta Compton\""
+},
+{
+"d": "2007-12-04",
+"t": "Pimp C dies"
+},
+{
+"d": "2022-02-13",
+"t": "Dr. Dre, Snoop, Eminem, Mary J., 50 and Kendrick play the Super Bowl halftime show"
+},
+{
+"d": "2020-12-31",
+"t": "MF DOOM's family announces his death"
+}
+]
+]
+}
