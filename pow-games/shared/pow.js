@@ -55,9 +55,11 @@ const PG = (() => {
         <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="../">All games</a></nav>`;
       w.prepend(m);
     }
-    const f = document.createElement('footer');
-    f.innerHTML = `A demo built for <a href="https://www.powmag.net/">POW MAG</a>, independent rap writing since 2005.${hub ? '' : ' <a href="../">More POW games</a>.'}`;
-    w.appendChild(f);
+    if (!hub) {
+      const f = document.createElement('footer');
+      f.innerHTML = '<a href="../">More POW games</a>.';
+      w.appendChild(f);
+    }
     document.body.insertAdjacentHTML('beforeend', `<div class="rback" id="rback"></div>
       <div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG"><div class="nag-card"><img class="nag-mark" src="${hub ? '' : '../'}shared/pow-wordmark.png" alt="POW MAG"><div id="nag-body"></div>
       <div class="nag-row"><button class="btn" id="nag-on" type="button">I'm on the list</button><button class="btn" id="nag-close" type="button">Not now, keep playing</button></div></div></div>`);
