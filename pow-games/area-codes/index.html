@@ -31,7 +31,7 @@
 <body data-game="where-they-from" data-title="Area Codes" data-kicker="POW MAG · Rap geography">
 <div class="wrap wide" id="wrap">
   <div class="strip"><span id="pnum">Area Codes</span><span id="pdate"></span></div>
-  <p class="lede">Five MCs. Drop a pin where each one came up (where they were raised, not born), then lock it in. Up to 1,000 points a round, and a pin within 25 km gets the full 1,000.</p>
+  <p class="lede">Five MCs. Drop a pin where each one came up (where they were raised, not born), then lock it in. Your score is how many miles off you were in total, so lowest wins. Each MC counts for 500 miles at most.</p>
   <div class="prog" id="prog"></div>
   <div class="who"><div><p class="kick" id="rnd"></p><h2 class="big" id="name"></h2><p class="mute" id="hint" style="margin:0"></p></div><div class="sc" id="sc"></div></div>
   <div id="map" role="application" aria-label="Map. Click to drop a pin."></div>
@@ -59,8 +59,11 @@
   const key = 'f' + n, S = PG.store.get(key, null) || { guesses: [], done: false };
   const save = () => PG.store.set(key, S);
   const km = (a, b, c, d) => { const r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 12742 * Math.asin(Math.sqrt(x)); };
-  const pts = k => k <= 25 ? 1000 : Math.round(1000 * Math.exp(-(k - 25) / 450));
-  const total = () => S.guesses.reduce((s, g) => s + g.p, 0);
+  // score = miles off, capped per MC; g.k is stored in km so saved games still read
+  const CAP = 500, rawMi = g => Math.round(g.k * 0.621371), mi = g => Math.min(CAP, rawMi(g));
+  const total = () => S.guesses.reduce((s, g) => s + mi(g), 0);
+  const sq = g => { const x = mi(g); return x <= 25 ? '🟩' : x <= 100 ? '🟨' : x <= 300 ? '🟧' : '🟥'; };
+  const scoreHTML = () => `${total().toLocaleString()}<small>miles off</small>`;
   const map = L.map('map', { zoomSnap: .25, minZoom: 2.5, maxBounds: [[-10, -200], [80, -20]] }).setView([38.5, -96], 4);
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12, attribution: 'Tiles &copy; Esri' }).addTo(map);
   const US = [[24.5, -125], [49.5, -66.5]], home = () => map.fitBounds(US, { padding: [10, 10] });
@@ -78,7 +81,7 @@
   function prog() { $('prog').innerHTML = R.map((_, i) => `<i class="${i < S.guesses.length ? 'd' : i === S.guesses.length ? 'c' : ''}"></i>`).join(''); }
   function round() {
     prog(); layer.clearLayers(); mine = null; locked = false;
-    $('sc').innerHTML = `${total().toLocaleString()}<small>points</small>`;
+    $('sc').innerHTML = scoreHTML();
     if (S.guesses.length >= R.length) return;
     const m = R[S.guesses.length];
     $('rnd').textContent = `MC ${S.guesses.length + 1} of ${R.length}`; $('name').textContent = m.n; $('hint').textContent = m.g ? `Member of ${m.g}` : ' ';
@@ -86,34 +89,34 @@
     home();
   }
   $('go').onclick = () => {
-    if (S.done) return;
+    if (S.done && !locked) return;
     if (locked) { if (S.guesses.length >= R.length) finish(true); else round(); return; }
     if (!mine) return;
     locked = true;
-    const m = R[S.guesses.length], g = mine.getLatLng(), k = km(g.lat, g.lng, m.lat, m.lon), p = pts(k);
-    S.guesses.push({ lat: g.lat, lon: g.lng, k: Math.round(k), p }); if (S.guesses.length >= R.length) S.done = true; save();
+    const m = R[S.guesses.length], g = mine.getLatLng(), k = km(g.lat, g.lng, m.lat, m.lon);
+    const G = { lat: g.lat, lon: g.lng, k: Math.round(k) }; S.guesses.push(G); if (S.guesses.length >= R.length) S.done = true; save();
     L.marker([m.lat, m.lon], { icon: icon('true') }).addTo(layer);
     L.polyline([[g.lat, g.lng], [m.lat, m.lon]], { color: '#ff6719', weight: 2, dashArray: '4 6' }).addTo(layer);
     map.fitBounds(L.latLngBounds([[g.lat, g.lng], [m.lat, m.lon]]).pad(.6), { maxZoom: 8 });
-    $('out').innerHTML = `<b>${esc(m.c)}</b>, ${esc(m.st)} · you were ${Math.round(k).toLocaleString()} km off · +${p}`;
-    $('sc').innerHTML = `${total().toLocaleString()}<small>points</small>`; prog();
+    $('out').innerHTML = `<b>${esc(m.c)}</b>, ${esc(m.st)} · you were ${rawMi(G).toLocaleString()} miles off${rawMi(G) > CAP ? ` (counts as ${CAP})` : ''}`;
+    $('sc').innerHTML = scoreHTML(); prog();
     $('go').textContent = S.done ? 'See your score' : 'Next MC';
     if (S.guesses.length === 2) setTimeout(() => PG.nag('first', { kick: 'Two down', head: 'Know your scenes?', body: 'POW MAG has covered regional rap, from Houston to the Bay, since 2005. Get it free.' }), 1800);
   };
   function finish(fresh) {
-    const t = total(), st = PG.record(n, t >= 3000, D.practice);
-    $('res-h').textContent = `${t.toLocaleString()} / 5,000`;
-    $('verdict').textContent = t >= 4700 ? 'You could give the tour.' : t >= 3500 ? 'Strong regional knowledge.' : t >= 2000 ? 'You know the coasts, at least.' : 'Rap geography is hard. The map is above.';
-    $('emo').textContent = S.guesses.map(g => g.p >= 900 ? '🟩' : g.p >= 500 ? '🟨' : g.p >= 150 ? '🟧' : '🟥').join('');
+    const t = total(), st = PG.record(n, t <= 800, D.practice);
+    $('res-h').textContent = `${t.toLocaleString()} miles off`;
+    $('verdict').textContent = t <= 100 ? 'You could give the tour.' : t <= 400 ? 'Strong regional knowledge.' : t <= 1200 ? 'You know the coasts, at least.' : 'Rap geography is hard. The map is above.';
+    $('emo').textContent = S.guesses.map(sq).join('');
     $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'five'); $('signup').innerHTML = PG.signupBox("Get tomorrow's five in your inbox");
-    $('log').innerHTML = R.map((m, i) => `<li><a href="${PG.search(m.n)}" target="_blank" rel="noopener"><b>${esc(m.n)}</b></a><span class="mono mute">${esc(m.c)} · ${S.guesses[i].k.toLocaleString()} km · +${S.guesses[i].p}</span></li>`).join('');
+    $('log').innerHTML = R.map((m, i) => `<li><a href="${PG.search(m.n)}" target="_blank" rel="noopener"><b>${esc(m.n)}</b></a><span class="mono mute">${esc(m.c)} · ${rawMi(S.guesses[i]).toLocaleString()} mi off</span></li>`).join('');
     layer.clearLayers();
     R.forEach((m, i) => { const g = S.guesses[i]; L.marker([m.lat, m.lon], { icon: icon('true') }).bindTooltip(m.n).addTo(layer); L.marker([g.lat, g.lon], { icon: icon('you') }).addTo(layer); L.polyline([[g.lat, g.lon], [m.lat, m.lon]], { color: '#ff6719', weight: 2, dashArray: '4 6' }).addTo(layer); });
     home();
     $('name').textContent = 'Done'; $('rnd').textContent = ''; $('hint').textContent = ' '; $('out').textContent = ''; $('go').hidden = true;
     $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
   }
-  $('share').onclick = () => PG.copy(`Area Codes #${n} · ${total().toLocaleString()}/5,000\n${$('emo').textContent}\npassionweiss.com`);
+  $('share').onclick = () => PG.copy(`Area Codes #${n} · ${total().toLocaleString()} miles off\n${$('emo').textContent}\npassionweiss.com`);
   round(); if (S.done) finish(false);
   setTimeout(() => PG.nag('land', { kick: `Area Codes #${n}`, head: 'Five MCs every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
 })();
