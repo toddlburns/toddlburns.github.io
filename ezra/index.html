@@ -176,6 +176,32 @@ const DRAWINGS=[
   ['Draw the brim',[rect(28,130,144,16,8,YE)]],
   ['Draw the bump on top',[rect(92,72,16,58,6,YE)]],
   ['Draw a round sticker',[circ(130,108,9,OR)]]]},
+ {name:'Skid Steer',steps:[
+  ['Draw a big box',[rect(40,60,90,90,10,YE)]],
+  ['Draw a window',[rect(55,72,50,40,4,WH)]],
+  ['Draw the arm',[rect(125,92,32,12,3,DK)]],
+  ['Draw the bucket',[path('M150 96 L170 96 L186 150 L150 150 Z',YE)]],
+  ['Draw two wheels',[circ(62,152,17,DK),circ(112,152,17,DK)]]]},
+ {name:'Dump Truck',steps:[
+  ['Draw a big box',[rect(15,62,105,68,4,YE)]],
+  ['Draw the front',[path('M125 80 L160 80 L182 105 L182 130 L125 130 Z',YE)]],
+  ['Draw a window',[path('M134 88 L156 88 L171 105 L134 105 Z',WH)]],
+  ['Draw a long bottom',[rect(15,130,167,12,3,DK)]],
+  ['Draw three wheels',[circ(42,150,16,DK),circ(82,150,16,DK),circ(155,150,16,DK)]]]},
+ {name:'Excavator',steps:[
+  ['Draw the tracks',[rect(20,140,115,32,16,DK)]],
+  ['Draw a box on top',[rect(28,98,100,42,6,YE)]],
+  ['Draw a little box',[rect(82,58,40,40,4,YE)]],
+  ['Draw a window',[rect(89,65,26,24,3,WH)]],
+  ['Draw a bent arm',[path('M118 100 L150 38 L186 96 L173 102 L150 64 L131 106 Z',YE)]],
+  ['Draw the bucket',[path('M166 102 L192 102 L186 130 L172 130 Z',DK)]]]},
+ {name:'Street Cleaner',steps:[
+  ['Draw a big box',[rect(18,55,115,85,8,WH)]],
+  ['Draw the front',[path('M133 80 L163 80 L182 105 L182 140 L133 140 Z',WH)]],
+  ['Draw a window',[path('M141 88 L160 88 L173 105 L141 105 Z','#B4D8F0')]],
+  ['Draw a stripe',[rect(18,108,164,10,0,OR)]],
+  ['Draw two wheels',[circ(48,146,16,DK),circ(158,146,16,DK)]],
+  ['Draw the round brush',[circ(103,146,14,AM)]]]},
 ];
 function stripes(y){return [30,62,94,126].map(x=>path(`M${x} ${y+24} L${x+12} ${y} L${x+28} ${y} L${x+16} ${y+24} Z`,OR))}
 
