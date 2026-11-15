@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Supergroup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&display=swap">
+<style>
+/* Gig-poster look: newsprint paper, black ink, one red. Spin a genre + decade, pick a musician, fill the band. */
+:root{
+  --paper:#F3EEE3; --ink:#141414; --red:#E0301E; --muted:#6E675B; --line:#D5CDBD; --card:#FFFDF8; --hi:#FFE3DD;
+  --display:"Archivo Black",Impact,sans-serif; --body:"Archivo",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#16140F; --ink:#F1ECE1; --red:#FF5A43; --muted:#A39B8C; --line:#3A352C; --card:#211E18; --hi:#3B1F19;}}
+:root[data-theme="dark"]{--paper:#16140F; --ink:#F1ECE1; --red:#FF5A43; --muted:#A39B8C; --line:#3A352C; --card:#211E18; --hi:#3B1F19;}
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{margin:0;font-family:var(--body);font-size:16px;padding:20px 16px 48px}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:4px solid var(--ink);padding-bottom:10px}
+h1{font-family:var(--display);font-size:clamp(40px,9vw,72px);line-height:.9;margin:0;letter-spacing:-.01em;text-transform:uppercase}
+h1 span{color:var(--red)}
+.round{font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+.goal{margin:0;color:var(--muted);max-width:60ch}
+.spin{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:stretch}
+.box{border:3px solid var(--ink);background:var(--card);padding:8px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.box small{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.box b{font-family:var(--display);font-size:clamp(20px,4.5vw,30px);line-height:1.1;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.box button{align-self:flex-start;margin-top:4px;background:none;border:2px solid var(--ink);padding:3px 8px;font-size:13px;font-weight:600}
+.box button:disabled{opacity:.35;cursor:default}
+.go{font-family:var(--display);font-size:26px;text-transform:uppercase;background:var(--red);color:#fff;border:3px solid var(--ink);padding:0 26px}
+.go:disabled{opacity:.35;cursor:default}
+.band{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.slot{border:3px solid var(--ink);background:var(--card);padding:8px;min-height:84px;display:flex;flex-direction:column;gap:2px;text-align:left;align-items:flex-start;justify-content:flex-start;min-width:0}
+.slot small{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.slot b{font-weight:800;line-height:1.15}
+.slot span{font-size:13px;color:var(--muted)}
+.slot.empty{border-style:dashed;background:transparent}
+.slot.pick{background:var(--hi);cursor:pointer}
+.hint{margin:0;font-weight:600;min-height:1.4em}
+.pool{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:8px}
+.m{border:2px solid var(--ink);background:var(--card);padding:10px;text-align:left;display:flex;flex-direction:column;gap:3px}
+.m[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.m[aria-pressed="true"] span{color:var(--paper)}
+.m:disabled{opacity:.35;cursor:default}
+.m b{font-weight:800}
+.m span{font-size:13px;color:var(--muted)}
+.m i{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.empty-note{color:var(--muted);border:2px dashed var(--line);padding:24px;text-align:center;margin:0}
+.end{border:4px solid var(--ink);background:var(--card);padding:20px;display:flex;flex-direction:column;gap:12px}
+.end[hidden],.play[hidden]{display:none}
+.big{font-family:var(--display);font-size:clamp(44px,11vw,88px);line-height:.9;margin:0}
+.big small{font-size:.35em;color:var(--muted)}
+.end p{margin:0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td,th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:left}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:3px solid var(--ink);background:var(--card);padding:10px 16px;font-weight:800}
+.btn.red{background:var(--red);color:#fff}
+.toggle{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted)}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+@media (max-width:620px){
+  .spin{grid-template-columns:1fr 1fr}
+  .go{grid-column:1/-1;padding:12px}
+  .band{grid-template-columns:1fr 1fr}
+  .slot:last-child{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Super<span>group</span></h1>
+    <div class="round" id="round">Pick 1 of 5</div>
+  </header>
+  <p class="goal">Spin a genre and a decade, pick one musician, put them in your band. Five picks. Biggest total monthly listeners wins.</p>
+
+  <section class="play" id="play">
+    <div class="spin">
+      <div class="box"><small>Genre</small><b id="genre">???</b><button id="rg" disabled>New genre (1 left)</button></div>
+      <div class="box"><small>Decade</small><b id="decade">???</b><button id="rd" disabled>New decade (1 left)</button></div>
+      <button class="go" id="go">Spin</button>
+    </div>
+  </section>
+
+  <div class="band" id="band"></div>
+  <p class="hint" id="hint"></p>
+  <div class="play" id="poolwrap"><div class="pool" id="pool"></div></div>
+
+  <section class="end" id="end" hidden></section>
+
+  <label class="toggle"><input type="checkbox" id="shownums"> Show listener numbers while picking (easier)</label>
+  <footer>Numbers are rough monthly listeners for each musician's best-known act, in millions. A musician counts once, even if you pick two from the same band.</footer>
+</div>
+
+<script>
+const SLOTS=[['V','Vocals'],['G','Guitar'],['B','Bass'],['D','Drums'],['K','Keys / Beats']];
+// genre|decade, then name;act;slots;monthly listeners (M)
+const RAW=`
+Rock|1960s
+John Lennon;The Beatles;VG;35|Paul McCartney;The Beatles;VB;35|George Harrison;The Beatles;G;35|Ringo Starr;The Beatles;D;35|Mick Jagger;The Rolling Stones;V;22|Keith Richards;The Rolling Stones;G;22|Charlie Watts;The Rolling Stones;D;22|Jimi Hendrix;The Jimi Hendrix Experience;VG;12|Jim Morrison;The Doors;V;16|Ray Manzarek;The Doors;K;16|Roger Daltrey;The Who;V;11|Pete Townshend;The Who;G;11|John Entwistle;The Who;B;11|Keith Moon;The Who;D;11
+Pop|1960s
+Brian Wilson;The Beach Boys;VBK;15|Bob Dylan;Bob Dylan;VG;12|Paul Simon;Simon & Garfunkel;VG;10|Art Garfunkel;Simon & Garfunkel;V;10|Carole King;Carole King;VK;6|Dusty Springfield;Dusty Springfield;V;5|Ronnie Spector;The Ronettes;V;4|Micky Dolenz;The Monkees;VD;4
+R&B / Soul|1960s
+Stevie Wonder;Stevie Wonder;VK;20|Marvin Gaye;Marvin Gaye;VK;15|Aretha Franklin;Aretha Franklin;VK;11|Ray Charles;Ray Charles;VK;8|Diana Ross;The Supremes;V;8|Otis Redding;Otis Redding;V;6|Smokey Robinson;The Miracles;V;6|Booker T. Jones;Booker T. & the M.G.'s;K;2|Steve Cropper;Booker T. & the M.G.'s;G;2|Donald 'Duck' Dunn;Booker T. & the M.G.'s;B;2|Al Jackson Jr.;Booker T. & the M.G.'s;D;2
+Alternative|1960s
+Lou Reed;The Velvet Underground;VG;6|John Cale;The Velvet Underground;BK;6|Moe Tucker;The Velvet Underground;D;6|Nico;The Velvet Underground;V;6|Syd Barrett;Pink Floyd;VG;20|Arthur Lee;Love;VG;2
+Rock|1970s
+Freddie Mercury;Queen;VK;50|Brian May;Queen;G;50|John Deacon;Queen;B;50|Roger Taylor;Queen;D;50|Robert Plant;Led Zeppelin;V;21|Jimmy Page;Led Zeppelin;G;21|John Paul Jones;Led Zeppelin;BK;21|John Bonham;Led Zeppelin;D;21|David Gilmour;Pink Floyd;VG;20|Roger Waters;Pink Floyd;VB;20|Rick Wright;Pink Floyd;K;20|Nick Mason;Pink Floyd;D;20|Bon Scott;AC/DC;V;30|Angus Young;AC/DC;G;30|Steven Tyler;Aerosmith;VK;20|Joe Perry;Aerosmith;G;20
+Pop|1970s
+Elton John;Elton John;VK;40|Stevie Nicks;Fleetwood Mac;V;35|Lindsey Buckingham;Fleetwood Mac;VG;35|Christine McVie;Fleetwood Mac;VK;35|John McVie;Fleetwood Mac;B;35|Mick Fleetwood;Fleetwood Mac;D;35|Agnetha Fältskog;ABBA;V;28|Björn Ulvaeus;ABBA;G;28|Benny Andersson;ABBA;K;28|Billy Joel;Billy Joel;VK;22|Barry Gibb;Bee Gees;VG;15|Karen Carpenter;Carpenters;VD;9|Richard Carpenter;Carpenters;K;9
+R&B / Soul|1970s
+Maurice White;Earth, Wind & Fire;VD;15|Verdine White;Earth, Wind & Fire;B;15|Al McKay;Earth, Wind & Fire;G;15|Al Green;Al Green;V;9|Donna Summer;Donna Summer;V;8|Nile Rodgers;Chic;G;8|Bernard Edwards;Chic;B;8|Tony Thompson;Chic;D;8|George Clinton;Parliament-Funkadelic;V;5|Bootsy Collins;Parliament-Funkadelic;B;5|Bernie Worrell;Parliament-Funkadelic;K;5
+Metal|1970s
+Ozzy Osbourne;Black Sabbath;V;15|Tony Iommi;Black Sabbath;G;15|Geezer Butler;Black Sabbath;B;15|Bill Ward;Black Sabbath;D;15|Ian Gillan;Deep Purple;V;8|Ritchie Blackmore;Deep Purple;G;8|Jon Lord;Deep Purple;K;8|Ian Paice;Deep Purple;D;8|Lemmy;Motörhead;VB;6|Rob Halford;Judas Priest;V;6
+Alternative|1970s
+Debbie Harry;Blondie;V;9|Joe Strummer;The Clash;VG;9|Paul Simonon;The Clash;B;9|Topper Headon;The Clash;D;9|Joey Ramone;Ramones;V;8|Johnny Ramone;Ramones;G;8|Dee Dee Ramone;Ramones;B;8|David Byrne;Talking Heads;VG;8|Tina Weymouth;Talking Heads;B;8|Jerry Harrison;Talking Heads;K;8
+Rock|1980s
+Axl Rose;Guns N' Roses;V;38|Slash;Guns N' Roses;G;38|Duff McKagan;Guns N' Roses;B;38|Steven Adler;Guns N' Roses;D;38|Steve Perry;Journey;V;25|Neal Schon;Journey;G;25|Jonathan Cain;Journey;K;25|Jon Bon Jovi;Bon Jovi;V;24|Richie Sambora;Bon Jovi;G;24|Tico Torres;Bon Jovi;D;24|Bruce Springsteen;Bruce Springsteen;VG;18|Joe Elliott;Def Leppard;V;15|Rick Allen;Def Leppard;D;15|Eddie Van Halen;Van Halen;GK;12|David Lee Roth;Van Halen;V;12
+Pop|1980s
+Michael Jackson;Michael Jackson;V;45|Madonna;Madonna;V;20|Whitney Houston;Whitney Houston;V;20|Phil Collins;Phil Collins;VDK;20|Sting;The Police;VB;15|Andy Summers;The Police;G;15|Stewart Copeland;The Police;D;15|George Michael;Wham!;VK;14|Prince;Prince;VGBDK;11|Annie Lennox;Eurythmics;VK;10|Dave Stewart;Eurythmics;G;10|Cyndi Lauper;Cyndi Lauper;V;8
+Hip-Hop|1980s
+Dr. Dre;Dr. Dre;K;30|Ice Cube;Ice Cube;V;15|Eazy-E;Eazy-E;V;10|Ad-Rock;Beastie Boys;VG;8|Mike D;Beastie Boys;VD;8|MCA;Beastie Boys;VB;8|LL Cool J;LL Cool J;V;6|Run;Run-DMC;V;5|Jam Master Jay;Run-DMC;K;5|Rakim;Eric B. & Rakim;V;3|Eric B.;Eric B. & Rakim;K;3|Chuck D;Public Enemy;V;3
+R&B / Soul|1980s
+Lionel Richie;Lionel Richie;VK;20|Sade Adu;Sade;V;14|Stuart Matthewman;Sade;G;14|Paul S. Denman;Sade;B;14|Andrew Hale;Sade;K;14|Janet Jackson;Janet Jackson;V;12|Luther Vandross;Luther Vandross;V;8|Rick James;Rick James;VB;6|Anita Baker;Anita Baker;V;5
+Metal|1980s
+James Hetfield;Metallica;VG;30|Kirk Hammett;Metallica;G;30|Cliff Burton;Metallica;B;30|Lars Ulrich;Metallica;D;30|Randy Rhoads;Ozzy Osbourne;G;15|Vince Neil;Mötley Crüe;V;10|Nikki Sixx;Mötley Crüe;B;10|Tommy Lee;Mötley Crüe;D;10|Bruce Dickinson;Iron Maiden;V;10|Steve Harris;Iron Maiden;B;10|Dave Mustaine;Megadeth;VG;7|Tom Araya;Slayer;VB;5
+Alternative|1980s
+Bono;U2;V;18|The Edge;U2;GK;18|Adam Clayton;U2;B;18|Larry Mullen Jr.;U2;D;18|Robert Smith;The Cure;VG;15|Dave Gahan;Depeche Mode;V;14|Martin Gore;Depeche Mode;GK;14|Michael Stipe;R.E.M.;V;12|Peter Buck;R.E.M.;G;12|Mike Mills;R.E.M.;BK;12|Bill Berry;R.E.M.;D;12|Morrissey;The Smiths;V;10|Johnny Marr;The Smiths;G;10|Peter Hook;New Order;B;7
+Rock|1990s
+Anthony Kiedis;Red Hot Chili Peppers;V;35|Flea;Red Hot Chili Peppers;B;35|John Frusciante;Red Hot Chili Peppers;G;35|Chad Smith;Red Hot Chili Peppers;D;35|Kurt Cobain;Nirvana;VG;30|Krist Novoselic;Nirvana;B;30|Dave Grohl;Nirvana;D;30|Billie Joe Armstrong;Green Day;VG;30|Mike Dirnt;Green Day;B;30|Tré Cool;Green Day;D;30|Eddie Vedder;Pearl Jam;V;12|Chris Cornell;Soundgarden;VG;8
+Pop|1990s
+Britney Spears;Britney Spears;V;30|Mariah Carey;Mariah Carey;V;30|Justin Timberlake;*NSYNC;V;25|Nick Carter;Backstreet Boys;V;20|Celine Dion;Celine Dion;V;20|Shania Twain;Shania Twain;VG;15|Gwen Stefani;No Doubt;V;10|Tony Kanal;No Doubt;B;10|Tom Dumont;No Doubt;G;10|Adrian Young;No Doubt;D;10|Rob Thomas;Matchbox Twenty;VG;8
+Hip-Hop|1990s
+Tupac;2Pac;V;30|Snoop Dogg;Snoop Dogg;V;30|Jay-Z;Jay-Z;V;25|André 3000;OutKast;VG;20|Big Boi;OutKast;V;20|The Notorious B.I.G.;The Notorious B.I.G.;V;20|Lauryn Hill;Fugees;VG;15|Wyclef Jean;Fugees;VG;15|Timbaland;Timbaland;K;15|Nas;Nas;V;10|RZA;Wu-Tang Clan;VK;10|Missy Elliott;Missy Elliott;VK;10|Q-Tip;A Tribe Called Quest;VK;5|Questlove;The Roots;D;4|DJ Premier;Gang Starr;K;3
+R&B / Soul|1990s
+Aaliyah;Aaliyah;V;10|T-Boz;TLC;V;10|Mary J. Blige;Mary J. Blige;V;8|Shawn Stockman;Boyz II Men;V;8|Erykah Badu;Erykah Badu;V;6|Brandy;Brandy;V;6|D'Angelo;D'Angelo;VGK;5|Pino Palladino;D'Angelo;B;5|Babyface;Babyface;VGK;4
+Metal|1990s
+Serj Tankian;System of a Down;VK;20|Daron Malakian;System of a Down;VG;20|Shavo Odadjian;System of a Down;B;20|John Dolmayan;System of a Down;D;20|Jonathan Davis;Korn;V;12|Fieldy;Korn;B;12|Zack de la Rocha;Rage Against the Machine;V;10|Tom Morello;Rage Against the Machine;G;10|Tim Commerford;Rage Against the Machine;B;10|Brad Wilk;Rage Against the Machine;D;10|Maynard James Keenan;Tool;V;7|Danny Carey;Tool;D;7|Dimebag Darrell;Pantera;G;6|Vinnie Paul;Pantera;D;6
+Alternative|1990s
+Liam Gallagher;Oasis;V;30|Noel Gallagher;Oasis;VG;30|Thom Yorke;Radiohead;VGK;25|Jonny Greenwood;Radiohead;GK;25|Colin Greenwood;Radiohead;B;25|Phil Selway;Radiohead;D;25|Rivers Cuomo;Weezer;VG;12|Patrick Wilson;Weezer;D;12|Billy Corgan;The Smashing Pumpkins;VG;10|Jimmy Chamberlin;The Smashing Pumpkins;D;10|Damon Albarn;Blur;VK;8|Beck;Beck;VGK;7|Butch Vig;Garbage;D;4
+Rock|2000s
+Chris Martin;Coldplay;VK;70|Jonny Buckland;Coldplay;G;70|Guy Berryman;Coldplay;B;70|Will Champion;Coldplay;D;70|Chester Bennington;Linkin Park;V;50|Mike Shinoda;Linkin Park;VK;50|Brad Delson;Linkin Park;G;50|Rob Bourdon;Linkin Park;D;50|Brandon Flowers;The Killers;VK;30|Ronnie Vannucci Jr.;The Killers;D;30|Matt Bellamy;Muse;VGK;15|Julian Casablancas;The Strokes;V;12|Albert Hammond Jr.;The Strokes;G;12|Jack White;The White Stripes;VG;8|Meg White;The White Stripes;D;8
+Pop|2000s
+Lady Gaga;Lady Gaga;VK;90|Rihanna;Rihanna;V;70|Adam Levine;Maroon 5;VG;50|Jesse Carmichael;Maroon 5;K;50|Ryan Tedder;OneRepublic;VK;40|Katy Perry;Katy Perry;V;35|will.i.am;Black Eyed Peas;VK;25|Fergie;Black Eyed Peas;V;25|P!nk;P!nk;V;25|Kelly Clarkson;Kelly Clarkson;V;20
+Hip-Hop|2000s
+Eminem;Eminem;V;80|Kanye West;Kanye West;VK;60|50 Cent;50 Cent;V;30|Lil Wayne;Lil Wayne;V;25|Pharrell Williams;Pharrell Williams;VK;25|Kid Cudi;Kid Cudi;V;20|Ludacris;Ludacris;V;12|T.I.;T.I.;V;10|J Dilla;J Dilla;K;3
+R&B / Soul|2000s
+Beyoncé;Beyoncé;V;45|Chris Brown;Chris Brown;V;45|Usher;Usher;V;40|Alicia Keys;Alicia Keys;VK;30|John Legend;John Legend;VK;20|Ne-Yo;Ne-Yo;V;20|Amy Winehouse;Amy Winehouse;VG;20|Mark Ronson;Mark Ronson;GBK;20
+Metal|2000s
+Corey Taylor;Slipknot;V;15|Mick Thomson;Slipknot;G;15|Joey Jordison;Slipknot;D;15|Amy Lee;Evanescence;VK;12|M. Shadows;Avenged Sevenfold;V;10|Synyster Gates;Avenged Sevenfold;G;10|The Rev;Avenged Sevenfold;D;10|David Draiman;Disturbed;V;10|Troy Sanders;Mastodon;VB;2|Brann Dailor;Mastodon;VD;2
+Alternative|2000s
+Alex Turner;Arctic Monkeys;VG;45|Jamie Cook;Arctic Monkeys;G;45|Nick O'Malley;Arctic Monkeys;B;45|Matt Helders;Arctic Monkeys;D;45|Tom DeLonge;Blink-182;VG;20|Mark Hoppus;Blink-182;VB;20|Travis Barker;Blink-182;D;20|Hayley Williams;Paramore;V;20|Zac Farro;Paramore;D;20|Gerard Way;My Chemical Romance;V;15|Karen O;Yeah Yeah Yeahs;V;6|Nick Zinner;Yeah Yeah Yeahs;G;6
+Rock|2010s
+Dan Reynolds;Imagine Dragons;V;50|Wayne Sermon;Imagine Dragons;G;50|Ben McKee;Imagine Dragons;B;50|Daniel Platzman;Imagine Dragons;D;50|Tyler Joseph;Twenty One Pilots;VBK;30|Josh Dun;Twenty One Pilots;D;30|Hozier;Hozier;VG;30|Kevin Parker;Tame Impala;VGBDK;25|Damiano David;Måneskin;V;15|Victoria De Angelis;Måneskin;B;15|Dan Auerbach;The Black Keys;VG;10|Patrick Carney;The Black Keys;D;10
+Pop|2010s
+Bruno Mars;Bruno Mars;VDK;120|Billie Eilish;Billie Eilish;V;90|Finneas;Billie Eilish;K;90|Taylor Swift;Taylor Swift;VG;85|Ed Sheeran;Ed Sheeran;VG;80|Ariana Grande;Ariana Grande;V;80|Dua Lipa;Dua Lipa;V;70|Harry Styles;Harry Styles;VG;60|Sia;Sia;V;50|Shawn Mendes;Shawn Mendes;VG;40|Jack Antonoff;Bleachers;GK;5
+Hip-Hop|2010s
+Drake;Drake;V;80|Kendrick Lamar;Kendrick Lamar;V;80|Post Malone;Post Malone;VG;65|Travis Scott;Travis Scott;V;60|Metro Boomin;Metro Boomin;K;40|Nicki Minaj;Nicki Minaj;V;40|Tyler, the Creator;Tyler, the Creator;VK;40|J. Cole;J. Cole;V;35|Cardi B;Cardi B;V;30|Childish Gambino;Childish Gambino;VGK;20|Anderson .Paak;Anderson .Paak;VD;10
+R&B / Soul|2010s
+The Weeknd;The Weeknd;V;100|SZA;SZA;V;60|Khalid;Khalid;V;35|Frank Ocean;Frank Ocean;VK;25|Daniel Caesar;Daniel Caesar;VG;25|Steve Lacy;Steve Lacy;VGB;20|Brent Faiyaz;Brent Faiyaz;V;20|H.E.R.;H.E.R.;VG;10|Thundercat;Thundercat;VB;5
+Metal|2010s
+Oli Sykes;Bring Me the Horizon;V;10|Jordan Fish;Bring Me the Horizon;K;10|Tobias Forge;Ghost;V;10|Vessel;Sleep Token;VK;10|II;Sleep Token;D;10|Courtney LaPlante;Spiritbox;V;5|Tim Henson;Polyphia;G;4|Joe Duplantier;Gojira;VG;4|Mario Duplantier;Gojira;D;4
+Alternative|2010s
+Lana Del Rey;Lana Del Rey;V;50|Lorde;Lorde;V;30|Dave Bayley;Glass Animals;VG;20|Matty Healy;The 1975;VG;15|George Daniel;The 1975;D;15|Phoebe Bridgers;Phoebe Bridgers;VG;10|Ezra Koenig;Vampire Weekend;VG;8|Rostam Batmanglij;Vampire Weekend;K;8|Mac DeMarco;Mac DeMarco;VG;8
+`;
+const CELLS={};
+{let key=null;for(const ln of RAW.trim().split('\n')){
+  if(!ln.includes(';')){key=ln;CELLS[key]=[];continue}
+  CELLS[key]=ln.split('|').map(e=>{const [name,act,slots,m]=e.split(';');return {name,act,slots,m:+m}});
+}}
+const GENRES=[...new Set(Object.keys(CELLS).map(k=>k.split('|')[0]))];
+const DECADES=[...new Set(Object.keys(CELLS).map(k=>k.split('|')[1]))].sort();
+
+const $=id=>document.getElementById(id);
+const rand=a=>a[Math.floor(Math.random()*a.length)];
+let S;
+function reset(){S={genre:null,decade:null,band:{},used:new Set(),boards:[],sel:null,rg:1,rd:1};$('end').hidden=true;
+  $('play').hidden=false;$('poolwrap').hidden=false;$('genre').textContent='???';$('decade').textContent='???';render()}
+const picks=()=>Object.keys(S.band).length;
+const open=()=>SLOTS.map(s=>s[0]).filter(k=>!S.band[k]);
+const fits=m=>!S.used.has(m.name)&&[...m.slots].some(k=>!S.band[k]);
+const board=()=>S.genre?CELLS[S.genre+'|'+S.decade]:null;
+// Spin a genre+decade that has at least one musician who fits an open slot
+function spin(keepG,keepD){
+  const ok=Object.keys(CELLS).filter(k=>{const [g,d]=k.split('|');
+    return (!keepG||g===S.genre)&&(!keepD||d===S.decade)&&k!==S.genre+'|'+S.decade&&CELLS[k].some(fits)});
+  if(!ok.length) return false;
+  [S.genre,S.decade]=rand(ok).split('|');S.sel=null;$('genre').textContent=S.genre;$('decade').textContent=S.decade;render();return true;
+}
+function place(k){const m=S.sel;if(!m||!m.slots.includes(k)||S.band[k])return;
+  S.band[k]=m;S.used.add(m.name);S.boards.push(board());S.genre=null;S.sel=null;
+  $('genre').textContent='???';$('decade').textContent='???';
+  if(picks()===5) finish(); else render();}
+function choose(m){
+  const free=[...m.slots].filter(k=>!S.band[k]);
+  S.sel=m; if(free.length===1){place(free[0]);return} render();
+}
+const fmt=n=>n+'M';
+const show=()=>$('shownums').checked;
+function render(){
+  const n=picks();
+  $('round').textContent=n<5?`Pick ${n+1} of 5`:'Done';
+  $('go').disabled=!!S.genre||n===5;
+  $('rg').disabled=!S.genre||!S.rg;$('rg').textContent=`New genre (${S.rg} left)`;
+  $('rd').disabled=!S.genre||!S.rd;$('rd').textContent=`New decade (${S.rd} left)`;
+  $('band').replaceChildren(...SLOTS.map(([k,label])=>{
+    const m=S.band[k],d=document.createElement(S.sel&&!m&&S.sel.slots.includes(k)?'button':'div');
+    d.className='slot'+(m?'':' empty')+(d.tagName==='BUTTON'?' pick':'');
+    d.innerHTML=`<small>${label}</small>`+(m?`<b>${m.name}</b><span>${m.act}${show()||n===5?' · '+fmt(m.m):''}</span>`:'');
+    if(d.tagName==='BUTTON') d.onclick=()=>place(k);
+    return d;}));
+  $('hint').textContent=S.sel?`Where does ${S.sel.name} play? Tap a red box.`:S.genre?'Pick a musician.':n<5?'Tap Spin.':'';
+  const b=board();
+  if(!b){$('pool').replaceChildren(Object.assign(document.createElement('p'),{className:'empty-note',textContent:'Spin to see who you can pick.'}));return}
+  $('pool').replaceChildren(...b.map(m=>{const e=document.createElement('button');e.className='m';
+    e.disabled=!fits(m);e.setAttribute('aria-pressed',S.sel===m);
+    const can=SLOTS.filter(([k])=>m.slots.includes(k)).map(s=>s[1]).join(' / ');
+    e.innerHTML=`<b>${m.name}</b><span>${m.act}${show()?' · '+fmt(m.m):''}</span><i>${can}</i>`;
+    e.onclick=()=>choose(m);return e}));
+}
+// Best possible band from the five boards you were dealt: one musician per board, one per slot
+function best(){
+  let top=0,lineup=null;const keys=SLOTS.map(s=>s[0]);
+  const perm=(a,i)=>{if(i===a.length){let t=0,l=[];const seen=new Set();
+      for(let j=0;j<5;j++){const c=S.boards[j].filter(m=>m.slots.includes(a[j])&&!seen.has(m.name)).sort((x,y)=>y.m-x.m)[0];
+        if(!c)return; seen.add(c.name);t+=c.m;l.push([a[j],c])}
+      if(t>top){top=t;lineup=l}return}
+    for(let j=i;j<a.length;j++){[a[i],a[j]]=[a[j],a[i]];perm(a,i+1);[a[i],a[j]]=[a[j],a[i]]}};
+  perm(keys,0);lineup.sort((a,b)=>keys.indexOf(a[0])-keys.indexOf(b[0]));return {top,lineup};
+}
+function finish(){
+  render();
+  const total=Object.values(S.band).reduce((t,m)=>t+m.m,0),{top,lineup}=best(),pct=total/top;
+  const g=pct>=1?['Headliner','The best band you could have made.']:pct>=.85?['Main stage','Close to the best.']:pct>=.65?['Second stage','Solid. A few bigger names were there.']:pct>=.45?['Club tour','Room to grow.']:['Open mic','The big names got away.'];
+  const lab=k=>SLOTS.find(s=>s[0]===k)[1];
+  $('play').hidden=true;$('poolwrap').hidden=true;$('hint').textContent='';
+  const e=$('end');e.hidden=false;
+  e.innerHTML=`<p class="big">${total}M <small>/ ${top}M best</small></p>
+    <p><b>${g[0]}.</b> ${g[1]}</p>
+    <table><tr><th>Best band from your spins</th><th></th><th class="n">Listeners</th></tr>
+    ${lineup.map(([k,m])=>`<tr><td>${lab(k)}</td><td>${m.name} <span style="color:var(--muted)">(${m.act})</span></td><td class="n">${fmt(m.m)}</td></tr>`).join('')}</table>
+    <div class="row"><button class="btn red" id="again">Play again</button><button class="btn" id="share">Copy score</button></div>`;
+  $('again').onclick=reset;
+  $('share').onclick=()=>{const t=`Supergroup: ${total}M of ${top}M\n${SLOTS.map(([k,l])=>`${l}: ${S.band[k].name}`).join('\n')}\n${location.href}`;
+    navigator.clipboard?.writeText(t).then(()=>{$('share').textContent='Copied'},()=>{});};
+}
+$('go').onclick=()=>spin(false,false);
+$('rg').onclick=()=>{if(spin(false,true)) {S.rg--;render()}};
+$('rd').onclick=()=>{if(spin(true,false)) {S.rd--;render()}};
+$('shownums').onchange=render;
+reset();
+</script>
+</body>
+</html>
