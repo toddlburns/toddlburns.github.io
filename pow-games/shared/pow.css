@@ -166,3 +166,6 @@ input.guess:focus{outline:none;border-color:var(--red)}
 /* Game pages: title only, no kicker, Today/All games links or number/date strip */
 body:not([data-game="hub"]) .mast .kicker,body:not([data-game="hub"]) .mast nav,body:not([data-game="hub"]) .strip{display:none}
 .powbar .lab{visibility:hidden}
+
+/* keep Leaflet panes (z 400-1000) under the pop-ups */
+.leaflet-container{isolation:isolate;z-index:0}
