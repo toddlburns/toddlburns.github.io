@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sketchbook">
+<title>Work Zone Sketchbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700;900&display=swap">
+<style>
+*{box-sizing:border-box}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.board{touch-action:pan-y}
+body{margin:0}
+/* Layout: a sign-shop header, a grid of picture cards, then one big drawing pad with giant back/next buttons. */
+:root{
+  --paper:#FBF8F1; --ink:#1B1B1B; --orange:#F26B1D; --yellow:#F5C400;
+  --grid:#E4DED0; --muted:#6B6458; --blue:#1E5BD8;
+  --display:"Overpass","Arial Narrow",Arial,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--display);font-size:18px;padding-inline:16px;padding-block:20px 40px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.badge{background:var(--orange);color:var(--ink);border:4px solid var(--ink);border-radius:10px;padding:10px 18px 6px;
+  font-weight:900;font-size:clamp(26px,6vw,44px);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+header p{margin:0;color:var(--muted);font-size:18px;max-width:30ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.card{background:#fff;border:3px solid var(--ink);border-radius:12px;padding:10px 10px 12px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:6px;font:inherit;color:inherit;text-align:center}
+.card:hover,.card:focus-visible{background:#FFF3D6;outline:none;box-shadow:0 0 0 4px var(--yellow)}
+.card svg{width:100%;max-width:150px;aspect-ratio:1}
+.card b{font-size:18px;line-height:1.1}
+.card span{font-size:14px;color:var(--muted)}
+#pad[hidden],#gallery[hidden]{display:none}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.back{font:inherit;font-weight:700;font-size:18px;background:#fff;border:3px solid var(--ink);border-radius:10px;padding:8px 14px 5px;cursor:pointer;color:var(--ink)}
+.back:focus-visible,.nav:focus-visible{outline:4px solid var(--blue);outline-offset:2px}
+.top h2{margin:0;font-size:28px;font-weight:900;text-wrap:balance}
+.stage{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.board{position:relative;background-color:#fff;border:3px solid var(--ink);border-radius:14px;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:20px 20px;aspect-ratio:1;max-width:min(560px,100%);width:100%;justify-self:center}
+.board svg.big{width:100%;height:100%;display:block}
+.goal{position:absolute;top:8px;right:8px;width:22%;background:#fff;border:2px solid var(--ink);border-radius:8px;padding:4px}
+.goal svg{display:block;width:100%}
+.nav{width:72px;height:72px;border-radius:50%;border:4px solid var(--ink);background:var(--yellow);color:var(--ink);
+  font-size:40px;font-weight:900;cursor:pointer;display:grid;place-items:center;line-height:1}
+.nav:disabled{opacity:.3;cursor:default}
+.say{text-align:center;display:flex;flex-direction:column;gap:4px;min-height:84px}
+.step{font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.do{font-size:clamp(24px,5vw,34px);font-weight:900;text-wrap:balance}
+.dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:#fff}
+.dots i.on{background:var(--orange)}
+@media (max-width:560px){
+  .stage{grid-template-columns:1fr 1fr}
+  .board{grid-column:1/-1;grid-row:1}
+  .nav{justify-self:center}
+}
+@media (prefers-reduced-motion:no-preference){
+  .now{animation:pop .5s ease-out}
+  @keyframes pop{from{opacity:.2}to{opacity:1}}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="badge">Work Zone Sketchbook</div>
+    <p>Pick a sign. Draw it one line at a time.</p>
+  </header>
+
+  <section id="gallery" class="grid" aria-label="Pictures to draw"></section>
+
+  <section id="pad" hidden>
+    <div class="top">
+      <button class="back" id="back">← All pictures</button>
+      <h2 id="name"></h2>
+    </div>
+    <div class="stage">
+      <button class="nav" id="prev" aria-label="Back one step">‹</button>
+      <div class="board"><svg class="big" id="big" viewBox="0 0 200 200"></svg><div class="goal" id="goal" hidden></div></div>
+      <button class="nav" id="next" aria-label="Next step">›</button>
+    </div>
+    <div class="say"><div class="step" id="stepno"></div><div class="do" id="do"></div></div>
+    <div class="dots" id="dots"></div>
+  </section>
+</div>
+
+<script>
+// Colors used inside the drawings
+const OR='#F26B1D', YE='#F5C400', BK='#1D1D1D', WH='#FFFFFF', GR='#9A9A9A', RD='#D7261E', AM='#FFB000', DK='#2B2B2B';
+const rect=(x,y,width,height,rx,fill)=>({el:'rect',a:{x,y,width,height,rx},fill});
+const path=(d,fill)=>({el:'path',a:{d},fill});
+const circ=(cx,cy,r,fill)=>({el:'circle',a:{cx,cy,r},fill});
+const line=(d,ln,sw)=>({el:'path',a:{d},ln,sw});           // a drawn line, not a filled shape
+const border=(s,ln)=>({...s,fill:undefined,ln,sw:3});       // thin line inside a sign
+const text=(x,y,t,size,fill)=>({el:'text',a:{x,y,'font-size':size},t,fill});
+const diamond=path('M100 15 L185 100 L100 185 L15 100 Z',YE);
+const diamondIn=border(path('M100 29 L171 100 L100 171 L29 100 Z'),BK);
+
+const DRAWINGS=[
+ {name:'Traffic Cone',steps:[
+  ['Draw a tall triangle',[path('M92 30 L108 30 L140 160 L60 160 Z',OR)]],
+  ['Draw a flat base',[rect(45,160,110,16,3,OR)]],
+  ['Draw a stripe',[path('M82 70 L118 70 L123 90 L77 90 Z',WH)]],
+  ['Draw one more stripe',[path('M72 110 L128 110 L133 130 L67 130 Z',WH)]]]},
+ {name:'Traffic Barrel',steps:[
+  ['Draw a tall box with round corners',[rect(55,30,90,138,14,OR)]],
+  ['Draw a little handle on top',[rect(85,20,30,10,3,DK)]],
+  ['Draw a flat base',[rect(45,166,110,14,3,DK)]],
+  ['Draw two stripes',[rect(55,48,90,16,0,WH),rect(55,78,90,16,0,WH)]],
+  ['Draw two more stripes',[rect(55,108,90,16,0,WH),rect(55,138,90,16,0,WH)]]]},
+ {name:'Chevron Sign',steps:[
+  ['Draw a tall rectangle',[rect(55,20,90,120,6,YE)]],
+  ['Draw a thin line inside',[border(rect(61,26,78,108,4),BK)]],
+  ['Draw a big pointy shape',[path('M75 45 L105 80 L75 115 L95 115 L125 80 L95 45 Z',BK)]],
+  ['Draw the post',[rect(94,140,12,52,2,GR)]]]},
+ {name:'Arrow Truck',steps:[
+  ['Draw a wide rectangle',[rect(20,30,160,80,6,BK)]],
+  ['Draw the arrow line',[rect(42,64,88,12,2,AM)]],
+  ['Draw the arrow point',[path('M125 48 L162 70 L125 92 Z',AM)]],
+  ['Draw the pole',[rect(94,110,12,40,2,GR)]],
+  ['Draw the truck',[rect(30,150,140,28,5,OR)]],
+  ['Draw two wheels',[circ(62,182,13,DK),circ(138,182,13,DK)]]]},
+ {name:'Two-Way Arrow',steps:[
+  ['Draw a wide rectangle',[rect(20,30,160,80,6,BK)]],
+  ['Draw the arrow line',[rect(58,64,84,12,2,AM)]],
+  ['Draw the left point',[path('M62 48 L28 70 L62 92 Z',AM)]],
+  ['Draw the right point',[path('M138 48 L172 70 L138 92 Z',AM)]],
+  ['Draw the pole',[rect(94,110,12,46,2,GR)]],
+  ['Draw the trailer',[rect(40,156,120,14,4,OR)]],
+  ['Draw two wheels',[circ(68,181,12,DK),circ(132,181,12,DK)]]]},
+ {name:'Lane Shift',steps:[
+  ['Draw a diamond',[diamond]],
+  ['Draw a thin diamond inside',[diamondIn]],
+  ['Draw a bent line',[line('M85 152 L85 118 L115 92 L115 74',BK,12)]],
+  ['Draw the arrow point',[path('M100 76 L115 50 L130 76 Z',BK)]]]},
+ {name:'Merge Sign',steps:[
+  ['Draw a diamond',[diamond]],
+  ['Draw a thin diamond inside',[diamondIn]],
+  ['Draw a straight line up',[line('M92 155 L92 74',BK,12)]],
+  ['Draw the arrow point',[path('M77 76 L92 48 L107 76 Z',BK)]],
+  ['Draw a curvy line that joins it',[line('M132 150 Q132 112 96 100',BK,12)]]]},
+ {name:'Road Barricade',steps:[
+  ['Draw two tall legs',[rect(40,40,10,150,2,'#DDDDDD'),rect(150,40,10,150,2,'#DDDDDD')]],
+  ['Draw three boards',[rect(25,50,150,24,2,WH),rect(25,95,150,24,2,WH),rect(25,140,150,24,2,WH)]],
+  ['Draw slanted stripes on the top board',stripes(50)],
+  ['Draw stripes on the other two boards',[...stripes(95),...stripes(140)]]]},
+ {name:'STOP Paddle',steps:[
+  ['Draw a shape with 8 sides',[path('M76 23 L124 23 L157 56 L157 104 L124 137 L76 137 L43 104 L43 56 Z',RD)]],
+  ['Draw a thin line inside',[border(path('M79 30 L121 30 L150 59 L150 101 L121 130 L79 130 L50 101 L50 59 Z'),WH)]],
+  ['Write STOP',[text(100,95,'STOP',38,WH)]],
+  ['Draw the handle',[rect(93,137,14,55,3,'#8A6A44')]]]},
+ {name:'Detour Sign',steps:[
+  ['Draw a wide rectangle',[rect(15,55,170,80,6,OR)]],
+  ['Draw a thin line inside',[border(rect(22,62,156,66,4),BK)]],
+  ['Write DETOUR',[text(100,92,'DETOUR',28,BK)]],
+  ['Draw the arrow line',[rect(45,107,85,8,1,BK)]],
+  ['Draw the arrow point',[path('M128 100 L152 111 L128 122 Z',BK)]],
+  ['Draw the post',[rect(94,135,12,57,2,GR)]]]},
+ {name:'Keep Right',steps:[
+  ['Draw a tall rectangle',[rect(50,15,100,145,6,WH)]],
+  ['Draw a thin line inside',[border(rect(57,22,86,131,4),BK)]],
+  ['Draw a little block',[rect(68,104,28,40,4,BK)]],
+  ['Draw a curvy line',[line('M84 38 C84 72 122 66 122 100 L122 120',BK,11)]],
+  ['Draw the arrow point',[path('M108 118 L122 142 L136 118 Z',BK)]],
+  ['Draw the post',[rect(94,160,12,34,2,GR)]]]},
+ {name:'Hard Hat',steps:[
+  ['Draw a big half circle',[path('M45 130 A55 55 0 0 1 155 130 Z',YE)]],
+  ['Draw the brim',[rect(28,130,144,16,8,YE)]],
+  ['Draw the bump on top',[rect(92,72,16,58,6,YE)]],
+  ['Draw a round sticker',[circ(130,108,9,OR)]]]},
+];
+function stripes(y){return [30,62,94,126].map(x=>path(`M${x} ${y+24} L${x+12} ${y} L${x+28} ${y} L${x+16} ${y+24} Z`,OR))}
+
+const NS='http://www.w3.org/2000/svg';
+function shapeEl(s,style){
+  const e=document.createElementNS(NS,s.el);
+  for(const k in s.a) e.setAttribute(k,s.a[k]);
+  if(s.el==='text'){e.textContent=s.t;e.setAttribute('text-anchor','middle');e.setAttribute('font-weight','900');e.setAttribute('font-family','Overpass, Arial, sans-serif')}
+  e.setAttribute('stroke-linejoin','round');e.setAttribute('stroke-linecap','round');
+  if(style==='color'){
+    if(s.el==='text') e.setAttribute('fill',s.fill);
+    else if(s.ln){e.setAttribute('fill','none');e.setAttribute('stroke',s.ln);e.setAttribute('stroke-width',s.sw)}
+    else {e.setAttribute('fill',s.fill);e.setAttribute('stroke','#222');e.setAttribute('stroke-width',2.5)}
+  } else {
+    const c=style==='now'?'#1E5BD8':'#B9B3A6', w=style==='now'?4:3;
+    if(s.el==='text') e.setAttribute('fill',c);
+    else {e.setAttribute('fill','none');e.setAttribute('stroke',c);e.setAttribute('stroke-width',s.ln&&s.sw>3?s.sw:w)}
+  }
+  return e;
+}
+// cur = -1 shows the finished picture in color; otherwise steps before cur are grey and step cur is blue
+function draw(svg,d,cur){
+  svg.replaceChildren();
+  d.steps.forEach(([,shapes],i)=>{
+    if(cur>=0&&i>cur) return;
+    const style=cur<0?'color':i===cur?'now':'done';
+    const g=document.createElementNS(NS,'g'); if(style==='now') g.setAttribute('class','now');
+    shapes.forEach(s=>g.appendChild(shapeEl(s,style))); svg.appendChild(g);
+  });
+}
+function mini(d){const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 0 200 200');s.setAttribute('aria-hidden','true');draw(s,d,-1);return s}
+
+const $=id=>document.getElementById(id);
+DRAWINGS.forEach((d,i)=>{
+  const b=document.createElement('button');b.className='card';
+  b.append(mini(d));b.insertAdjacentHTML('beforeend',`<b>${d.name}</b><span>${d.steps.length} steps</span>`);
+  b.onclick=()=>open(i);$('gallery').append(b);
+});
+
+let D=null, pos=0; // pos 0 = whole picture, 1..n = steps, n+1 = color it in
+function open(i){D=DRAWINGS[i];pos=0;$('gallery').hidden=true;$('pad').hidden=false;$('name').textContent=D.name;
+  $('goal').replaceChildren(mini(D));render();window.scrollTo(0,0)}
+function close(){$('pad').hidden=true;$('gallery').hidden=false;D=null}
+function render(){
+  const n=D.steps.length;
+  if(pos===0){draw($('big'),D,-1);$('stepno').textContent='Here is what you will draw';$('do').textContent='Tap › to start';}
+  else if(pos<=n){draw($('big'),D,pos-1);$('stepno').textContent=`Step ${pos} of ${n}`;$('do').textContent=D.steps[pos-1][0];}
+  else {draw($('big'),D,-1);$('stepno').textContent='You drew it!';$('do').textContent='Now color it in';}
+  $('goal').hidden=pos===0||pos>n;
+  $('prev').disabled=pos===0;$('next').disabled=pos>n;
+  $('dots').replaceChildren(...D.steps.map((_,i)=>{const e=document.createElement('i');if(i<pos)e.className='on';return e}));
+}
+$('prev').onclick=()=>{if(pos>0){pos--;render()}};
+$('next').onclick=()=>{if(pos<=D.steps.length){pos++;render()}};
+$('back').onclick=close;
+document.addEventListener('keydown',e=>{if(!D)return;
+  if(e.key==='ArrowRight')$('next').click(); else if(e.key==='ArrowLeft')$('prev').click(); else if(e.key==='Escape')close();});
+// Swipe left/right on the drawing to change steps
+let sx=null;
+document.querySelector('.board').addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+document.querySelector('.board').addEventListener('touchend',e=>{if(sx===null||!D)return;const dx=e.changedTouches[0].clientX-sx;sx=null;
+  if(dx<-50)$('next').click(); else if(dx>50)$('prev').click();});
+</script>
+</body>
+</html>
