@@ -14,12 +14,13 @@
   <header class="mast"><div><p class="kicker">POW MAG · Daily games</p><h1>POW Games</h1></div></header>
   <p class="lede">New puzzles every day at midnight Pacific. Built for people who read the liner notes.</p>
   <ul class="hub" id="hub"></ul>
+  <h2 class="kick" style="margin-top:34px;padding-top:14px;border-top:1px solid var(--rule)">More games</h2>
+  <ul class="hub" id="hub2"></ul>
 </div>
 <script src="shared/pow.js"></script>
 <script>
 const G = [
   ['../the-cypher/', 'The Cypher', 'Sixteen names, four hidden groups.', 'L1', '16'],
-  ['rap-grid/', 'Rap Grid', 'Nine squares. Name an MC who fits both clues.', 'L2', '3×3', 1],
   ['producer-credits/', 'Producer Credits', 'Five records, one producer. Fewer clues, more points.', 'L3', '5', 1],
   ['which-came-first/', 'Which Came First', 'Two classic albums. Tap the one that dropped first.', 'L4', 'VS', 1],
   ['tracklist/', 'Tracklist', 'Name the album from its songs.', 'L2', '#', 1],
@@ -29,7 +30,12 @@ const G = [
   ['feature-path/', 'Feature Path', 'Get from one rapper to another through guest verses.', 'L2', '→', 1],
   ['../mc-guesser/daily/', 'MC Guesser Daily', 'Name the rapper by the sound of their voice.', 'L3', '🎤'],
 ];
-document.getElementById('hub').innerHTML = G.map(([h, t, d, c, ic, nw]) => `<li><a href="${h}"><span class="ic ${c}">${ic}</span><span><h3>${t}${nw ? '<span class="new">NEW</span>' : ''}</h3><p>${d}</p></span></a></li>`).join('');
+const G2 = [
+  ['rap-grid/', 'Rap Grid', 'Nine squares. Name an MC who fits both clues.', 'L2', '3×3', 1],
+];
+const card = ([h, t, d, c, ic, nw]) => `<li><a href="${h}"><span class="ic ${c}">${ic}</span><span><h3>${t}${nw ? '<span class="new">NEW</span>' : ''}</h3><p>${d}</p></span></a></li>`;
+document.getElementById('hub').innerHTML = G.map(card).join('');
+document.getElementById('hub2').innerHTML = G2.map(card).join('');
 </script>
 </body>
 </html>
