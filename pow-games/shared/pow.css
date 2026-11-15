@@ -163,3 +163,5 @@ input.guess:focus{outline:none;border-color:var(--red)}
 .hub p{margin:3px 0 0;font-size:14px;color:var(--mute)}
 .hub .new{font:700 10px var(--mono);background:var(--red);color:#fff;padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:middle;letter-spacing:.06em}
 .wrap.wide{max-width:760px}
+/* Game pages: title only, no kicker, Today/All games links or number/date strip */
+body:not([data-game="hub"]) .mast .kicker,body:not([data-game="hub"]) .mast nav,body:not([data-game="hub"]) .strip{display:none}
