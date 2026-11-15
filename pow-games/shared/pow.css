@@ -165,4 +165,4 @@ input.guess:focus{outline:none;border-color:var(--red)}
 .wrap.wide{max-width:760px}
 /* Game pages: title only, no kicker, Today/All games links or number/date strip */
 body:not([data-game="hub"]) .mast .kicker,body:not([data-game="hub"]) .mast nav,body:not([data-game="hub"]) .strip{display:none}
-body:not([data-game="hub"]) .powbar .lab{visibility:hidden}
+.powbar .lab{visibility:hidden}
