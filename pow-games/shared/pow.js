@@ -51,7 +51,7 @@ const PG = (() => {
     const w = $('wrap');
     if (!hub) {
       const m = document.createElement('header'); m.className = 'mast';
-      m.innerHTML = `<div><p class="kicker">${esc(kicker)}</p><h1><a href="./">${esc(title)}</a></h1></div>
+      m.innerHTML = `<div><h1><a href="./">${esc(title)}</a></h1></div>
         <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="../">All games</a></nav>`;
       w.prepend(m);
     }
