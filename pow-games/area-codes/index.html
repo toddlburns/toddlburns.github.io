@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Area Codes</title>
+<meta name="description" content="Five MCs a day. Drop a pin on where each one is from. Closer is better.">
+<meta name="theme-color" content="#171717">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="../shared/pow.css">
+<style>
+.wrap.wide{max-width:900px}
+.who{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:12px 0 8px}
+.who .big{margin:0}
+.who .sc{font:400 30px/1 var(--display);color:var(--red);text-align:right}
+.who .sc small{display:block;font:600 11px var(--mono);color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+#map{height:min(62vh,520px);border:2px solid #2e2e2e;border-radius:10px;background:#0e0e0e}
+.leaflet-container{font-family:var(--sans)}
+.leaflet-control-attribution{background:rgba(0,0,0,.6)!important;color:#888!important}.leaflet-control-attribution a{color:#aaa!important}
+.pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.6)}
+.pin.you{background:var(--red)} .pin.true{background:var(--l2)}
+.ctl{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+.out{font:600 14px var(--mono);margin:8px 0;min-height:22px}
+.out b{color:var(--l2)}
+.prog{display:flex;gap:4px;margin:10px 0 0}
+.prog i{flex:1;height:8px;background:#2e2e2e}.prog i.d{background:var(--l2)}.prog i.c{background:#777}
+.log{list-style:none;padding:0;margin:0;font-size:14px}.log li{padding:6px 0;border-bottom:1px solid #2a2a2a;display:flex;justify-content:space-between;gap:8px}
+</style>
+</head>
+<body data-game="where-they-from" data-title="Area Codes" data-kicker="POW MAG · Rap geography">
+<div class="wrap wide" id="wrap">
+  <div class="strip"><span id="pnum">Area Codes</span><span id="pdate"></span></div>
+  <p class="lede">Five MCs. Drop a pin where each one came up (where they were raised, not born), then lock it in. Up to 1,000 points a round, and a pin within 25 km gets the full 1,000.</p>
+  <div class="prog" id="prog"></div>
+  <div class="who"><div><p class="kick" id="rnd"></p><h2 class="big" id="name"></h2><p class="mute" id="hint" style="margin:0"></p></div><div class="sc" id="sc"></div></div>
+  <div id="map" role="application" aria-label="Map. Click to drop a pin."></div>
+  <p class="out" id="out"></p>
+  <div class="ctl"><button class="btn primary" id="go" type="button" disabled>Drop a pin on the map</button></div>
+  <div id="toast" role="status" aria-live="assertive"></div>
+  <section id="results" hidden aria-labelledby="res-h">
+    <h2 id="res-h"></h2><p class="verdict" id="verdict"></p>
+    <div class="grid-share" id="emo"></div>
+    <button class="btn primary" id="share" type="button">Copy result</button>
+    <div id="stats"></div><p class="next" id="next"></p><div id="signup"></div>
+    <div class="reading"><h3>Know your scenes</h3><p class="sub">Today's five, in the POW archive.</p><ul class="log" id="log"></ul></div>
+  </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="../shared/pow.js"></script>
+<script>
+(async () => {
+  const { $, esc } = PG;
+  const data = await PG.load('puzzles.json');
+  const D = PG.day(data.launch, data.days.length), n = D.n, R = data.days[n - 1];
+  $('pnum').innerHTML = `Area Codes #${n} ${D.practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
+  $('pdate').textContent = D.practice ? D.label : PG.dateFor(data.launch, n);
+  const key = 'f' + n, S = PG.store.get(key, null) || { guesses: [], done: false };
+  const save = () => PG.store.set(key, S);
+  const km = (a, b, c, d) => { const r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 12742 * Math.asin(Math.sqrt(x)); };
+  const pts = k => k <= 25 ? 1000 : Math.round(1000 * Math.exp(-(k - 25) / 450));
+  const total = () => S.guesses.reduce((s, g) => s + g.p, 0);
+  const map = L.map('map', { zoomSnap: .25, minZoom: 2.5, maxBounds: [[-10, -200], [80, -20]] }).setView([38.5, -96], 4);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 12, attribution: 'Tiles &copy; Esri' }).addTo(map);
+  const US = [[24.5, -125], [49.5, -66.5]], home = () => map.fitBounds(US, { padding: [10, 10] });
+  fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(r => r.json()).then(t => {
+    L.geoJSON(topojson.mesh(t, t.objects.states, (a, b) => a !== b), { style: { color: '#6b6b6b', weight: 1, opacity: .8 }, interactive: false }).addTo(map);
+    L.geoJSON(topojson.mesh(t, t.objects.nation), { style: { color: '#9a9a9a', weight: 1.4, opacity: .9 }, interactive: false }).addTo(map);
+  }).catch(() => {});
+  const icon = c => L.divIcon({ className: '', html: `<div class="pin ${c}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+  let mine = null, layer = L.layerGroup().addTo(map), locked = false;
+  map.on('click', e => {
+    if (locked || S.done) return;
+    if (mine) mine.setLatLng(e.latlng); else mine = L.marker(e.latlng, { icon: icon('you') }).addTo(layer);
+    $('go').disabled = false; $('go').textContent = 'Lock it in';
+  });
+  function prog() { $('prog').innerHTML = R.map((_, i) => `<i class="${i < S.guesses.length ? 'd' : i === S.guesses.length ? 'c' : ''}"></i>`).join(''); }
+  function round() {
+    prog(); layer.clearLayers(); mine = null; locked = false;
+    $('sc').innerHTML = `${total().toLocaleString()}<small>points</small>`;
+    if (S.guesses.length >= R.length) return;
+    const m = R[S.guesses.length];
+    $('rnd').textContent = `MC ${S.guesses.length + 1} of ${R.length}`; $('name').textContent = m.n; $('hint').textContent = m.g ? `Member of ${m.g}` : ' ';
+    $('out').textContent = ''; $('go').disabled = true; $('go').textContent = 'Drop a pin on the map';
+    home();
+  }
+  $('go').onclick = () => {
+    if (S.done) return;
+    if (locked) { if (S.guesses.length >= R.length) finish(true); else round(); return; }
+    if (!mine) return;
+    locked = true;
+    const m = R[S.guesses.length], g = mine.getLatLng(), k = km(g.lat, g.lng, m.lat, m.lon), p = pts(k);
+    S.guesses.push({ lat: g.lat, lon: g.lng, k: Math.round(k), p }); if (S.guesses.length >= R.length) S.done = true; save();
+    L.marker([m.lat, m.lon], { icon: icon('true') }).addTo(layer);
+    L.polyline([[g.lat, g.lng], [m.lat, m.lon]], { color: '#ff6719', weight: 2, dashArray: '4 6' }).addTo(layer);
+    map.fitBounds(L.latLngBounds([[g.lat, g.lng], [m.lat, m.lon]]).pad(.6), { maxZoom: 8 });
+    $('out').innerHTML = `<b>${esc(m.c)}</b>, ${esc(m.st)} · you were ${Math.round(k).toLocaleString()} km off · +${p}`;
+    $('sc').innerHTML = `${total().toLocaleString()}<small>points</small>`; prog();
+    $('go').textContent = S.done ? 'See your score' : 'Next MC';
+    if (S.guesses.length === 2) setTimeout(() => PG.nag('first', { kick: 'Two down', head: 'Know your scenes?', body: 'POW MAG has covered regional rap, from Houston to the Bay, since 2005. Get it free.' }), 1800);
+  };
+  function finish(fresh) {
+    const t = total(), st = PG.record(n, t >= 3000, D.practice);
+    $('res-h').textContent = `${t.toLocaleString()} / 5,000`;
+    $('verdict').textContent = t >= 4700 ? 'You could give the tour.' : t >= 3500 ? 'Strong regional knowledge.' : t >= 2000 ? 'You know the coasts, at least.' : 'Rap geography is hard. The map is above.';
+    $('emo').textContent = S.guesses.map(g => g.p >= 900 ? '🟩' : g.p >= 500 ? '🟨' : g.p >= 150 ? '🟧' : '🟥').join('');
+    $('stats').innerHTML = PG.statsHTML(st); PG.countdown($('next'), 'five'); $('signup').innerHTML = PG.signupBox("Get tomorrow's five in your inbox");
+    $('log').innerHTML = R.map((m, i) => `<li><a href="${PG.search(m.n)}" target="_blank" rel="noopener"><b>${esc(m.n)}</b></a><span class="mono mute">${esc(m.c)} · ${S.guesses[i].k.toLocaleString()} km · +${S.guesses[i].p}</span></li>`).join('');
+    layer.clearLayers();
+    R.forEach((m, i) => { const g = S.guesses[i]; L.marker([m.lat, m.lon], { icon: icon('true') }).bindTooltip(m.n).addTo(layer); L.marker([g.lat, g.lon], { icon: icon('you') }).addTo(layer); L.polyline([[g.lat, g.lon], [m.lat, m.lon]], { color: '#ff6719', weight: 2, dashArray: '4 6' }).addTo(layer); });
+    home();
+    $('name').textContent = 'Done'; $('rnd').textContent = ''; $('hint').textContent = ' '; $('out').textContent = ''; $('go').hidden = true;
+    $('results').hidden = false; if (fresh) setTimeout(() => PG.popResults(), 300);
+  }
+  $('share').onclick = () => PG.copy(`Area Codes #${n} · ${total().toLocaleString()}/5,000\n${$('emo').textContent}\npassionweiss.com`);
+  round(); if (S.done) finish(false);
+  setTimeout(() => PG.nag('land', { kick: `Area Codes #${n}`, head: 'Five MCs every day', body: 'Get POW MAG, the newsletter Passion of the Weiss has turned into. Free.' }), 1500);
+})();
+</script>
+</body>
+</html>
