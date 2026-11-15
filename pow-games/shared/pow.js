@@ -41,7 +41,7 @@ const PG = (() => {
     const b = document.body, title = b.dataset.title || 'POW Games', kicker = b.dataset.kicker || 'POW MAG · Games';
     const hub = slug === 'hub';
     const top = document.createElement('header'); top.className = 'powbar';
-    top.innerHTML = `<div class="pb-top"><div class="lab"><b>${esc(hub ? 'POW Games' : title)}</b> · ${hub ? 'Play' : 'Daily'}</div>
+    top.innerHTML = `<div class="pb-top"><div class="lab"></div>
       <a class="mark" href="https://www.powmag.net/" aria-label="POW MAG"><img src="${hub ? '' : '../'}shared/pow-wordmark.png" alt="POW MAG"></a>
       <a class="cta" href="https://www.powmag.net/subscribe" target="_blank" rel="noopener">Subscribe</a></div>
       <nav><a href="https://www.powmag.net/" target="_blank" rel="noopener">Home</a><a href="https://www.powmag.net/archive" target="_blank" rel="noopener">Archive</a>
