@@ -114,9 +114,11 @@
     R.runId = run; run = null; store.set('ml-run', null); // the name post still needs the finished run's id
     $('score').textContent = res.streak; R.final = res.streak;
     $('nm').value = store.get('ml-name', '');
-    const url = location.origin + location.pathname, txt = `I got ${res.streak} in a row on Memory Lane. Rap history, five at a time.`, e = encodeURIComponent;
-    const links = { x: `https://x.com/intent/post?text=${e(txt)}&url=${e(url)}`, threads: `https://www.threads.net/intent/post?text=${e(txt + ' ' + url)}`, bsky: `https://bsky.app/intent/compose?text=${e(txt + ' ' + url)}` };
-    document.querySelectorAll('#shr [data-s]').forEach(a => { if (links[a.dataset.s]) a.href = links[a.dataset.s]; else a.onclick = () => PG.copy(txt + '\n' + url); });
+    // each platform tags POW's own handle there; the copied text has no handle since it can go anywhere
+    const url = location.origin + location.pathname, e = encodeURIComponent;
+    const txt = who => `I got ${res.streak} in a row on ${who} Memory Lane. Think you know more about rap history?`;
+    const links = { x: `https://x.com/intent/post?text=${e(txt("@Passionweiss's"))}&url=${e(url)}`, threads: `https://www.threads.net/intent/post?text=${e(txt("@passionweiss's") + ' ' + url)}`, bsky: `https://bsky.app/intent/compose?text=${e(txt("@passionweiss.bsky.social's") + ' ' + url)}` };
+    document.querySelectorAll('#shr [data-s]').forEach(a => { if (links[a.dataset.s]) a.href = links[a.dataset.s]; else a.onclick = () => PG.copy(txt("Passion of the Weiss's") + '\n' + url); });
     B = res.board; board();
     const show = () => { $('results').hidden = false; $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     // non-subscribers see the score and the leaderboard only after signing up
