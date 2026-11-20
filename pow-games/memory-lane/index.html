@@ -35,17 +35,20 @@
 .post input{flex:1;min-width:0;background:#171717;border:0;color:#eee;border-radius:6px;padding:10px;font:600 15px var(--mono)}
 .post .btn{background:#171717;border-color:#171717;color:#fff}
 .btn.go{background:var(--l2);border-color:var(--l2);color:#111}
-.lbh{display:flex;align-items:center;justify-content:center;gap:10px;margin:44px 0 8px}
-.lbh h3{margin:0;font:400 30px/1 var(--display);text-transform:uppercase;letter-spacing:.01em}
-.lb{list-style:none;margin:0 0 16px;padding:0;text-align:left}
-.lb li{display:flex;align-items:baseline;gap:12px;padding:9px 6px;border-bottom:1px solid #2a2a2a;font:600 15px var(--mono)}
-.lb li .r{font:400 22px/1 var(--display);color:var(--mute);width:22px;text-align:center}
-.lb li .n{flex:1}
-.lb li b{font:400 26px/1 var(--display);color:var(--l2)}
-.lb li:first-child .r,.lb li:first-child b{color:var(--l1)}
-.lb li.me{background:#1b281b}
-.lb li.me .n{color:var(--l2)}
-.lb .none{color:var(--mute);font:600 13px var(--mono);text-align:center;border:0}
+.arc{border:2px solid #555;border-radius:6px;margin:44px 0 18px;text-align:left;font:700 15px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.arc h3{margin:0;padding:12px 10px;border-bottom:2px solid #555;text-align:center;font:400 26px/1 var(--display);letter-spacing:.02em}
+.lb{list-style:none;margin:0;padding:8px 12px}
+.lb li{display:flex;align-items:baseline;gap:10px;padding:5px 0}
+.lb .r{width:42px;color:var(--mute)}
+.lb .n{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:55%}
+.lb .dots{flex:1;border-bottom:2px dotted #444;transform:translateY(-4px)}
+.lb b{min-width:2ch;text-align:right}
+.lb li:first-child{color:var(--l1)}
+.lb li:first-child .r{color:var(--l1)}
+.lb li.me,.lb li.me .r{color:var(--l2)}
+.lb .none{justify-content:center;color:var(--mute)}
+.shr{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.shr .btn{padding:9px 4px;font-size:13px;text-align:center;text-decoration:none}
 </style>
 </head>
 <body data-game="memory-lane" data-title="Memory Lane" data-nofoot>
@@ -57,11 +60,11 @@
   <button class="btn primary" id="go" type="button" style="width:100%" disabled>Dealing…</button>
   <section id="results" hidden>
     <div class="score"><span>You got</span><b id="score">0</b><span>in a row</span></div>
-    <div class="lbh"><h3>Numbers on the board</h3></div>
-    <ol class="lb" id="board"></ol>
+    <div class="arc"><h3>Numbers on the board</h3><ol class="lb" id="board"></ol></div>
     <div id="qual" hidden><p class="qual">You’re now in the Top 10! Add your name to the leaderboard.</p>
     <form class="post" id="post"><input id="nm" maxlength="16" placeholder="Your name" autocomplete="off" aria-label="Your name"><button class="btn" type="submit">Post</button></form></div>
     <button class="btn go" id="again" type="button" style="width:100%">Play again</button>
+    <div class="shr" id="shr"><a class="btn" data-s="x" target="_blank" rel="noopener">X</a><a class="btn" data-s="threads" target="_blank" rel="noopener">Threads</a><a class="btn" data-s="bsky" target="_blank" rel="noopener">Bluesky</a><button class="btn" type="button" data-s="copy">Copy link</button></div>
   </section>
 </div>
 <script src="../shared/pow.js"></script>
@@ -110,15 +113,19 @@
     R.runId = run; run = null; store.set('ml-run', null); // the name post still needs the finished run's id
     $('score').textContent = res.streak; R.final = res.streak;
     $('nm').value = store.get('ml-name', '');
+    const url = location.origin + location.pathname, txt = `I got ${res.streak} in a row on Memory Lane. Rap history, five at a time.`, e = encodeURIComponent;
+    const links = { x: `https://x.com/intent/post?text=${e(txt)}&url=${e(url)}`, threads: `https://www.threads.net/intent/post?text=${e(txt + ' ' + url)}`, bsky: `https://bsky.app/intent/compose?text=${e(txt + ' ' + url)}` };
+    document.querySelectorAll('#shr [data-s]').forEach(a => { if (links[a.dataset.s]) a.href = links[a.dataset.s]; else a.onclick = () => PG.copy(txt + '\n' + url); });
     B = res.board; board();
     const show = () => { $('results').hidden = false; $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     // non-subscribers see the score and the leaderboard only after signing up
     if (PG.subbed()) show();
     else PG.nag('end', { every: true, gate: show, head: 'Subscribe to POW Magazine', body: 'Support independent music journalism' });
   }
+  const ord = n => n + (n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th');
   function board() {
     const me = R && R.posted, list = B ? B.all.slice(0, 10) : [];
-    $('board').innerHTML = list.length ? list.map((x, k) => `<li class="${me && x.name.toLowerCase() === me.toLowerCase() ? 'me' : ''}"><span class="r">${k + 1}</span><span class="n">${esc(x.name)}</span><b>${x.streak}</b></li>`).join('')
+    $('board').innerHTML = list.length ? list.map((x, k) => `<li class="${me && x.name.toLowerCase() === me.toLowerCase() ? 'me' : ''}"><span class="r">${ord(k + 1)}</span><span class="n">${esc(x.name)}</span><span class="dots"></span><b>${x.streak}</b></li>`).join('')
       : '<li class="none">Nobody on the board yet. Be first.</li>';
     // only a top-10 score gets the name box
     const n = R ? R.final : 0, top = n >= 1 && (list.length < 10 || n > list[9].streak);
