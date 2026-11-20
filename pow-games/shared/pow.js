@@ -55,7 +55,7 @@ const PG = (() => {
         <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="../">All games</a></nav>`;
       w.prepend(m);
     }
-    if (!hub) {
+    if (!hub && !b.hasAttribute('data-nofoot')) {
       const f = document.createElement('footer');
       f.innerHTML = '<a href="../">More POW games</a>.';
       w.appendChild(f);
@@ -63,22 +63,26 @@ const PG = (() => {
     document.body.insertAdjacentHTML('beforeend', `<div class="rback" id="rback"></div>
       <div class="nag" id="nag" hidden role="dialog" aria-modal="true" aria-label="Sign up for POW MAG"><div class="nag-card"><img class="nag-mark" src="${hub ? '' : '../'}shared/pow-wordmark.png" alt="POW MAG"><div id="nag-body"></div>
       <div class="nag-row"><button class="btn" id="nag-on" type="button">I'm on the list</button><button class="btn" id="nag-close" type="button">Not now, keep playing</button></div></div></div>`);
-    $('nag-close').onclick = closeNag; $('nag-on').onclick = () => { markSubbed(); closeNag(); };
-    $('nag').addEventListener('click', e => { if (e.target === $('nag')) closeNag(); });
+    $('nag-close').onclick = closeNag; $('nag-on').onclick = () => { const f = gate; gate = null; markSubbed(); closeNag(); if (f) f(); };
+    $('nag').addEventListener('click', e => { if (e.target === $('nag') && !gate) closeNag(); });
     $('rback').onclick = unpop;
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('nag').hidden) closeNag(); else if (popped) unpop(); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('nag').hidden) { if (!gate) closeNag(); } else if (popped) unpop(); } });
   }
 
   // ---------- POW sign-up pop-ups: never block play; each kind once a day; gone for good after "I'm on the list" ----------
   const NAG_OFF = new URLSearchParams(location.search).has('nonag');
+  if (new URLSearchParams(location.search).has('resetsub')) try { localStorage.removeItem('powg:sub'); } catch (e) {} // testing: see the sign-up pop-ups again
   const EMBED = '<iframe class="ss" src="https://www.powmag.net/embed" title="Sign up for POW MAG" scrolling="no"></iframe>';
   const subbed = () => store.gget('sub', false);
+  // c.every: show on every visit, not once a day. c.gate(fn): no way out but "I'm on the list", which then runs fn.
+  let gate = null;
   function nag(kind, c) {
-    if (NAG_OFF || subbed() || store.get('nag-' + kind, '') === laDate()) return;
+    if (NAG_OFF || subbed() || (!c.every && store.get('nag-' + kind, '') === laDate())) return;
     if (!$('nag').hidden || popped) { if (popped) afterPop = () => nag(kind, c); return; }
     store.set('nag-' + kind, laDate());
-    $('nag-body').innerHTML = `<p class="kick">${esc(c.kick)}</p><p class="big">${esc(c.head)}</p><p>${esc(c.body)}</p>${EMBED}`;
-    $('nag').hidden = false; $('nag-close').focus();
+    $('nag-body').innerHTML = `${c.kick ? `<p class="kick">${esc(c.kick)}</p>` : ''}<p class="big">${esc(c.head)}</p><p>${esc(c.body)}</p>${EMBED}`;
+    gate = c.gate || null; $('nag-close').hidden = !!gate;
+    $('nag').hidden = false; (gate ? $('nag-on') : $('nag-close')).focus();
   }
   function closeNag() { $('nag').hidden = true; $('nag-body').innerHTML = ''; }
   function markSubbed() { store.gset('sub', true); document.querySelectorAll('.signup').forEach(x => x.remove()); }
@@ -165,5 +169,5 @@ const PG = (() => {
   const load = f => fetch(f, { cache: 'no-cache' }).then(r => r.json());
 
   chrome();
-  return { $, esc, store, laDate, dateFor, numFor, day, msToMidnightLA, search, rng, shuffle, norm, nag, signupBox, popResults, unpop, toast, copy, countdown, record, statsHTML, autocomplete, api, load, slug };
+  return { $, esc, store, subbed, laDate, dateFor, numFor, day, msToMidnightLA, search, rng, shuffle, norm, nag, signupBox, popResults, unpop, toast, copy, countdown, record, statsHTML, autocomplete, api, load, slug };
 })();
