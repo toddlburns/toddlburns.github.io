@@ -43,7 +43,7 @@ const PG = (() => {
     const top = document.createElement('header'); top.className = 'powbar';
     top.innerHTML = `<div class="pb-top"><div class="lab"></div>
       <a class="mark" href="https://www.powmag.net/" aria-label="POW MAG"><img src="${hub ? '' : '../'}shared/pow-wordmark.png" alt="POW MAG"></a>
-      <a class="cta" href="https://www.powmag.net/subscribe" target="_blank" rel="noopener">Subscribe</a></div>
+      <a class="cta" href="https://www.powmag.net/subscribe?utm_source=play" target="_blank" rel="noopener">Subscribe</a></div>
       <nav><a href="https://www.powmag.net/" target="_blank" rel="noopener">Home</a><a href="https://www.powmag.net/archive" target="_blank" rel="noopener">Archive</a>
       <a href="https://www.powmag.net/s/podcast" target="_blank" rel="noopener">Podcast</a><a class="on" href="${hub ? './' : '../'}">Games</a>
       <a href="https://www.powmag.net/about" target="_blank" rel="noopener">About</a></nav>`;

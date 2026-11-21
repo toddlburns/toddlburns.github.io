@@ -131,7 +131,7 @@
     const show = () => { $('results').hidden = false; $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     // non-subscribers see the score and the leaderboard only after signing up
     if (PG.subbed()) show();
-    else PG.nag('end', { every: true, gate: show, head: 'Subscribe to POW Magazine', body: 'Support independent music journalism' });
+    else PG.nag('end', { every: true, gate: show, head: 'Subscribe to POW Magazine', body: 'We know the truth. Get it in your inbox.' });
   }
   const ord = n => n + (n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th');
   function board() {
@@ -151,7 +151,7 @@
   };
   $('again').onclick = () => { start(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   start();
-  PG.nag('arrive', { every: true, head: 'Subscribe to POW Magazine', body: 'Support independent music journalism' });
+  PG.nag('arrive', { every: true, head: 'Subscribe to POW Magazine', body: 'We know the truth. Get it in your inbox.' });
 })();
 </script>
 </body>
