@@ -387,7 +387,7 @@ function picker() {
   $('modes').querySelectorAll('.mode[data-k]').forEach(b => b.classList.toggle('on', b.dataset.k === S.mode));
   const el = $('pick'), hoopBox = `<label><input type="checkbox" id="hoops"${S.hoops ? ' checked' : ''}> include athletes<span class="ast">*</span></label>`;
   if (S.mode === 'match') el.innerHTML = `<select id="msel" aria-label="Matchup">${MATCHUPS.map(([t, ns], i) => `<option value="${i}"${i === S.m ? ' selected' : ''}>${esc(t)}${ns.length > 3 ? ` (${ns.length})` : ''}</option>`).join('')}</select><button class="chip" id="rnd">Surprise me</button>`;
-  else if (S.mode === 'city') el.innerHTML = `<select id="sel" aria-label="City">${counts('c', 2).map(([k, n]) => `<option value="${esc(k)}"${k === S.city ? ' selected' : ''}>${esc(k)} (${n})</option>`).join('')}</select>` + hoopBox;
+  else if (S.mode === 'city') el.innerHTML = `<select id="sel" aria-label="City">${counts('c', 5, d => general(d) && !d.a).map(([k, n]) => `<option value="${esc(k)}"${k === S.city ? ' selected' : ''}>${esc(k)} (${n})</option>`).join('')}</select>` + hoopBox;
   else if (S.mode === 'crew') el.innerHTML = counts('k', 2, () => true).filter(([k]) => worthIt(DATA.filter(d => d.k === k))).map(([k, n]) => `<button class="chip${k === S.crew ? ' on' : ''}" data-crew="${esc(k)}">${esc(k)} <small>${n}</small></button>`).join('');
   else if (S.mode === 'era') el.innerHTML = ERAS.map(e => `<button class="chip${e === S.era ? ' on' : ''}" data-era="${e}">${e} <small>${ERA_YEARS[e]}</small></button>`).join('') + hoopBox;
   else if (S.mode === 'find') el.innerHTML = `<input type="search" id="q" placeholder="Type a name, then Enter…" list="names" autocomplete="off"><datalist id="names">${DATA.map(d => `<option value="${esc(d.n)}">`).join('')}</datalist>` +
@@ -442,7 +442,7 @@ function showCard(d) {
   else if (d.you) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>You</h3><div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm</small></div><p>Change it with the slider below.</p>`; }
   else {
     const R = rappers(), rank = R.filter(x => x.h > d.h).length + 1, tw = DATA.filter(x => Math.abs(x.h - d.h) < .6 && x !== d && !x.a);
-    const city = DATA.filter(x => x.c === d.c).length;
+    const city = DATA.filter(x => x.c === d.c && general(x) && !x.a).length >= 5 ? 2 : 0;
     $('card').innerHTML = `<button class="x" aria-label="Close">×</button>${d.p ? `<div class="pic" style="background-image:url(../img/${d.p}.webp)"></div>` : ''}
       <h3>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}</h3>
       <div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm${d.a ? '' : ` · no. ${rank} of ${R.length}`}</small></div>
