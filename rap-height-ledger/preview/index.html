@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="How tall is every rapper? 265 reported heights, charted. Sort by city, era, crew and more.">
+<title>The Rap Height Ledger</title>
+<style>
+/* Editorial print chart: cream stock, black ink, one column per rapper. Times New Roman like the rest of toddlburns.com. */
+:root{--paper:#f3eee3;--paper2:#ebe4d5;--ink:#161616;--dim:#6b655a;--hair:rgba(22,22,22,.13);--rule:#161616;--accent:#a3261b;
+  --East:#1f3a5f;--South:#a3261b;--Midwest:#b5832a;--West:#2e6a4f;--International:#6d5a82;--site:"Times New Roman",Times,serif}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);font-family:var(--site);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip;font-size:17px;line-height:1.4}
+button,select,input{font:inherit;color:inherit}
+a{color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+.sc{font-variant:small-caps;letter-spacing:.06em;text-transform:lowercase}
+
+header{padding:26px 0 0}
+.kicker{display:flex;justify-content:space-between;gap:12px;font-size:13px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.kicker a{text-decoration:none}
+h1{margin:16px 0 0;font-weight:400;font-size:clamp(44px,8.4vw,108px);line-height:.9;letter-spacing:-.035em}
+h1 i{letter-spacing:-.045em}
+.dek{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;border-top:3px double var(--rule);padding:10px 0 0;margin-top:14px}
+.dek p{margin:0;font-size:19px;line-height:1.35;max-width:34em}
+.key{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px}
+.key span{display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:opacity .15s}
+.key i{width:10px;height:10px;display:inline-block}
+
+/* one quiet control bar */
+.bar-ctl{position:sticky;top:0;z-index:20;background:rgba(243,238,227,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);margin-top:14px;border-top:1px solid var(--rule)}
+.bar-ctl .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:9px;padding-bottom:9px}
+.opt{background:none;border:0;padding:2px 8px;cursor:pointer;font-size:16px;white-space:nowrap;border-bottom:1px solid transparent}
+.opt:hover{border-bottom-color:var(--ink)}
+.opt.on{background:var(--ink);color:var(--paper)}
+.opt .yr{color:var(--dim);font-size:13px}
+.opt.on .yr{color:#cfc7b6}
+.btn{border:1px solid var(--ink);background:none;padding:3px 12px;cursor:pointer;font-size:16px;white-space:nowrap}
+.btn:hover,.btn.on{background:var(--ink);color:var(--paper)}
+.btn.accent{border-color:var(--accent);color:var(--accent)}
+.btn.accent:hover{background:var(--accent);color:var(--paper)}
+select,input[type=search]{border:0;border-bottom:1px solid var(--ink);background:transparent;padding:2px;font-size:16px;max-width:210px;border-radius:0}
+input[type=search]{width:200px}
+input[type=search]::placeholder{color:var(--dim);font-style:italic}
+.spacer{flex:1}
+@media (max-width:640px){input[type=search]{width:100%;max-width:none;flex:1 1 100%}.spacer{display:none}}
+
+.drawer{border-top:1px solid var(--hair);background:var(--paper)}
+.drawer .wrap{padding-top:10px;padding-bottom:12px}
+.drow{display:flex;gap:6px 12px;align-items:baseline;margin-bottom:6px}
+.drow .lbl{flex:0 0 64px;font-size:13px;color:var(--dim)}
+.drow .opts{display:flex;flex-wrap:wrap;gap:2px 4px;align-items:baseline}
+@media (max-width:640px){.drow{flex-direction:column;gap:2px}}
+
+.picksbar{background:var(--ink);color:var(--paper)}
+.picksbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding-top:7px;padding-bottom:7px;font-size:16px}
+.picksbar .btn{border-color:var(--paper);color:var(--paper);font-size:15px;padding:1px 10px}
+.picksbar .btn:hover,.picksbar .btn.on{background:var(--paper);color:var(--ink)}
+
+.summary{display:flex;flex-wrap:wrap;gap:4px 26px;padding:14px 0 8px;font-size:16px;color:var(--dim)}
+.summary b{font-weight:400;font-size:22px;font-style:italic;color:var(--ink)}
+
+/* chart */
+.chartwrap{position:relative}
+.scale{position:absolute;left:0;top:0;width:44px;z-index:4;pointer-events:none;background:linear-gradient(90deg,var(--paper) 72%,rgba(243,238,227,0))}
+.scale span{position:absolute;left:22px;transform:translateY(-50%);font-size:14px;font-style:italic}
+.chart{overflow-x:auto;overflow-y:hidden;position:relative;-webkit-overflow-scrolling:touch;scrollbar-color:var(--ink) var(--paper2)}
+.stage{position:relative;display:flex;align-items:flex-end;gap:3px;padding:0 48px 0 68px;min-width:100%;width:max-content;border-bottom:2px solid var(--rule)}
+.lines{position:absolute;inset:0;pointer-events:none}
+.lines i{position:absolute;left:0;right:0;border-top:1px solid var(--hair)}
+.lines i.ft{border-top:1px solid rgba(22,22,22,.45)}
+.you-line{position:absolute;left:0;right:0;border-top:1px dashed var(--accent);z-index:3;pointer-events:none}
+.you-line em{position:sticky;left:52px;display:inline-block;transform:translateY(-115%);color:var(--accent);font-size:14px;background:var(--paper);padding:0 4px}
+
+.col{position:relative;flex:0 0 auto;width:24px;cursor:pointer;outline:none}
+.col .bar{position:relative;width:100%;background:var(--c);transition:filter .15s}
+.col .bar:before{content:"";position:absolute;left:50%;top:-11px;width:9px;height:9px;border-radius:50%;background:var(--c);transform:translateX(-50%)}
+.col.ph{width:34px}
+.col .head{position:absolute;left:0;top:0;width:100%;aspect-ratio:1;border-radius:50%;background:var(--paper) center/cover no-repeat;box-shadow:0 0 0 2px var(--c);z-index:1}
+.col.ph .bar:before{display:none}
+.col.ph .nm{line-height:34px}
+.card .pic{float:right;width:112px;height:112px;border-radius:50%;margin:2px 26px 6px 12px;background:var(--paper2) center/cover no-repeat;box-shadow:0 0 0 2px var(--c)}
+.card .credit{clear:both;font-size:12px;color:var(--dim)}
+.card .credit a{color:var(--dim)}
+.looks{display:flex;gap:4px;align-items:center;font-size:14px;color:var(--dim)}
+.col .nm{position:absolute;left:0;right:0;bottom:6px;writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:13px;white-space:nowrap;line-height:24px}
+.col .nm small{opacity:.75;margin-inline-start:.45em;font-size:12px}
+.col:hover .bar,.col:focus-visible .bar{filter:brightness(1.25)}
+.col.pick .bar{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--ink)}
+.col.pick .bar:before{background:var(--ink)}
+.col.you .bar{background:repeating-linear-gradient(135deg,var(--accent) 0 3px,transparent 3px 7px);outline:1.5px solid var(--accent);outline-offset:-1.5px}
+.col.you .nm{color:var(--accent);font-weight:700}
+.col.flash .bar{animation:flash .5s ease 3}
+@keyframes flash{50%{filter:brightness(1.7)}}
+.empty{position:absolute;left:0;right:0;top:40%;text-align:center;font-size:22px;font-style:italic}
+.axisnote{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--dim);padding:6px 0 0;font-style:italic}
+
+/* card */
+.card{position:fixed;z-index:40;left:50%;bottom:18px;transform:translateX(-50%) translateY(160%);transition:transform .25s ease;background:var(--paper);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(22,22,22,.18);width:min(460px,calc(100vw - 32px));padding:16px 18px 14px}
+.card.show{transform:translateX(-50%) translateY(0)}
+.card .reg{font-size:13px;display:flex;align-items:center;gap:6px}
+.card .reg i{width:10px;height:10px;display:inline-block}
+.card h3{margin:2px 30px 0 0;font-size:30px;font-weight:400;line-height:1.05;letter-spacing:-.01em}
+.card .ht{font-size:46px;font-style:italic;line-height:1.05;margin:2px 0 4px}
+.card .ht small{font-size:15px;font-style:normal;color:var(--dim)}
+.card p{margin:3px 0;font-size:16px}
+.card .x{position:absolute;right:10px;top:6px;border:0;background:none;font-size:26px;cursor:pointer;line-height:1}
+.card .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;border-top:1px solid var(--hair);padding-top:10px}
+.card .acts .btn{font-size:15px;padding:1px 10px}
+.card .note{font-size:14px;color:var(--dim);font-style:italic}
+
+/* tables */
+.sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px 40px;padding:48px 0 30px}
+.sec h2{margin:0;font-weight:400;font-size:26px;letter-spacing:-.01em;border-top:3px double var(--rule);padding-top:8px}
+.sec .sub{font-size:14px;color:var(--dim);font-style:italic;margin:0 0 8px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.tr{display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:baseline;gap:0 8px;padding:5px 0 4px;border-bottom:1px solid var(--hair);cursor:pointer;font-size:16px}
+.tr:hover{background:var(--paper2)}
+.tr .n{color:var(--dim);font-size:13px;font-style:italic}
+.tr .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tr .nm span{color:var(--dim);font-size:14px}
+.tr .v{font-style:italic;font-variant-numeric:tabular-nums}
+.tr .track{grid-column:2/-1;height:3px;margin-top:4px;background:var(--hair)}
+.tr .track i{display:block;height:100%}
+.big-n{font-size:64px;font-style:italic;line-height:1;letter-spacing:-.02em;margin:6px 0}
+.sec p{margin:4px 0}
+.you-box{display:flex;gap:14px;align-items:center;margin:8px 0 6px}
+.you-box input[type=range]{flex:1;accent-color:var(--accent)}
+.you-box output{font-size:44px;font-style:italic;min-width:96px;line-height:1}
+.twins span[data-id]{cursor:pointer;border-bottom:1px solid var(--dim)}
+footer{border-top:3px double var(--rule);padding:14px 0 50px;font-size:14px;line-height:1.55;color:var(--dim)}
+footer p{max-width:60em;margin:0 0 6px}
+
+/* game */
+.game{position:fixed;inset:0;z-index:60;background:rgba(243,238,227,.98);display:none;align-items:center;justify-content:center;padding:16px}
+.game.show{display:flex}
+.gbox{width:min(760px,100%);max-height:100%;overflow:auto;position:relative;text-align:center;padding:8px}
+.gbox h2{margin:0;font-size:clamp(34px,6vw,60px);font-weight:400;letter-spacing:-.03em;font-style:italic}
+.gbox .sub{margin:4px 0 14px;font-size:18px;min-height:27px}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-bottom:2px solid var(--rule);position:relative;height:330px;align-items:end}
+.duel .glines{position:absolute;inset:0;pointer-events:none}
+.duel .glines i{position:absolute;left:0;right:0;border-top:1px solid var(--hair)}
+.side{cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
+.side .gbar{width:64px;background:var(--c);transition:height .6s cubic-bezier(.2,.8,.2,1);position:relative}
+.side .gbar:before{content:"";position:absolute;left:50%;top:-16px;width:13px;height:13px;border-radius:50%;background:var(--c);transform:translateX(-50%)}
+.side .gh{font-size:34px;font-style:italic;height:44px;margin-bottom:18px}
+.side:hover .gbar{filter:brightness(1.2)}
+.side.right .gh{color:var(--West)}
+.side.wrong .gh{color:var(--accent)}
+.gnames{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:8px}
+.gnames div{font-size:24px;line-height:1.1}
+.gnames small{display:block;font-size:14px;color:var(--dim);font-style:italic}
+.score{display:flex;justify-content:center;gap:26px;font-size:15px;margin-top:14px;color:var(--dim)}
+.score b{font-size:26px;font-weight:400;font-style:italic;color:var(--ink)}
+.gbox .x{position:absolute;right:0;top:0;border:0;background:none;font-size:32px;cursor:pointer}
+#gNext{margin-top:12px;font-size:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="kicker"><span class="sc">A reference table</span><a href="/" class="sc">toddlburns.com</a></div>
+  <h1>The Rap <i>Height</i> Ledger</h1>
+  <div class="dek">
+    <p><span id="caseN">265</span> rappers, by reported height.</p>
+    <div class="key" id="key"></div>
+  </div>
+</header>
+
+<div class="bar-ctl">
+  <div class="wrap">
+    <input type="search" id="q" placeholder="Find a rapper…" autocomplete="off" list="names"><datalist id="names"></datalist>
+    <select id="sort" aria-label="Order"></select>
+    <button class="btn" id="filtersBtn" aria-expanded="false">Filters</button>
+    <span class="looks" id="looks" hidden>Look: <button class="opt" data-look="a">Photo</button><button class="opt" data-look="b">Print</button></span>
+    <span class="spacer"></span>
+    <button class="btn accent" id="playBtn">Play: Who’s taller?</button>
+  </div>
+  <div class="drawer" id="drawer" hidden>
+    <div class="wrap">
+      <div class="drow"><span class="lbl sc">Era</span><div class="opts" id="eras"></div></div>
+      <div class="drow"><span class="lbl sc">Where</span><div class="opts"><select id="city" aria-label="City"></select><select id="crew" aria-label="Crew"></select></div></div>
+      <div class="drow"><span class="lbl sc">Only</span><div class="opts" id="flags"></div></div>
+      <div class="drow"><span class="lbl sc">Or</span><div class="opts"><button class="opt" id="randomSix">Six at random</button><button class="opt" id="reset">Clear everything</button></div></div>
+    </div>
+  </div>
+  <div class="picksbar" id="picksbar" hidden>
+    <div class="wrap"><span id="picksTxt"></span><button class="btn" id="picksOnly">Show only these</button><button class="btn" id="share">Copy link</button><button class="btn" id="clearPicks">Clear</button></div>
+  </div>
+</div>
+
+<div class="wrap"><div class="summary" id="status"></div></div>
+<div class="chartwrap">
+  <div class="scale" id="scale"></div>
+  <div class="chart" id="chart"><div class="stage" id="stage"></div></div>
+</div>
+<div class="wrap"><div class="axisnote"><span>Tap a column for details.</span><span id="scrollHint"></span></div></div>
+
+<div class="card" id="card" role="dialog" aria-live="polite"></div>
+
+<div class="wrap">
+  <div class="sections">
+    <section class="sec">
+      <h2>How tall are you?</h2><p class="sub">Drag to your height.</p>
+      <div class="you-box"><input type="range" id="you" min="48" max="90" step="1" value="69" aria-label="Your height"><output id="youOut">5′9″</output></div>
+      <button class="btn" id="youToggle">Put me on the chart</button>
+      <div class="twins" id="twins"></div>
+    </section>
+    <section class="sec"><h2>Stacked</h2><p class="sub">Everyone on the chart, head to toe.</p><div id="stack"></div></section>
+    <section class="sec"><h2>Tallest</h2><p class="sub">Of those on the chart.</p><div id="tallest"></div></section>
+    <section class="sec"><h2>Shortest</h2><p class="sub">Of those on the chart.</p><div id="shortest"></div></section>
+    <section class="sec"><h2>Tallest cities</h2><p class="sub">Average height, three or more rappers.</p><div id="cities"></div></section>
+    <section class="sec"><h2>By era</h2><p class="sub">Average height by debut year.</p><div id="eraStats"></div></section>
+    <section class="sec"><h2>Crews</h2><p class="sub">Average height, three or more members.</p><div id="crews"></div></section>
+    <section class="sec"><h2>Odd couples</h2><p class="sub">The biggest height gap inside one crew.</p><div id="gaps"></div></section>
+  </div>
+  <footer>
+    <p>Heights are as reported, not measured: shoes, posture and the odd generous lyric all play a part, so read every figure as ± an inch or two. Figures marked Wikidata come from <a href="https://www.wikidata.org/">Wikidata</a>; the rest are the commonly reported ones. A few long-running arguments (Drake, 2Pac, Biggie, Lil Wayne, RZA) are marked disputed.</p>
+    <p>City is roughly where they rep; era is set by debut year. Athletes, actors and wrestlers who put out rap records are included. Spotted a wrong one? <a href="/contact.html">Tell me.</a></p>
+  </footer>
+</div>
+
+<div class="game" id="game" role="dialog" aria-label="Who's taller?">
+  <div class="gbox">
+    <button class="x" id="gClose" aria-label="Close">×</button>
+    <h2>Who’s taller?</h2>
+    <div class="sub" id="gSub">Pick the taller rapper.</div>
+    <div class="duel"><div class="glines" id="gLines"></div><div class="side" id="gA"></div><div class="side" id="gB"></div></div>
+    <div class="gnames"><div id="gAn"></div><div id="gBn"></div></div>
+    <div class="score"><span>Streak <b id="gStreak">0</b></span><span>Best <b id="gBest">0</b></span><span>Played <b id="gPlayed">0</b></span></div>
+    <button class="btn" id="gNext" hidden>Next pair →</button>
+  </div>
+</div>
+
+<script>
+const DATA = [{"n":"Jay-Z","h":74.0,"c":"Brooklyn","r":"East","y":1996,"e":"Jiggy Era","k":"Roc-A-Fella","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"jay-z","cr":{"a":"Photo Courtesy of NYS Senate Media Services","l":"CC BY 2.0","u":"https://commons.wikimedia.org/wiki/File:Jay-Z_meets_with_New_York_Senate_Majority_Leader_in_Albany_(cropped).webp"}},{"n":"Lil' Kim","h":59.0,"c":"Brooklyn","r":"East","y":1995,"e":"Jiggy Era","k":"Junior M.A.F.I.A.","f":true,"a":false,"s":false,"wd":false,"d":false,"p":"lil-kim","cr":{"a":"Monique Tatum","l":"CC BY-SA 2.0","u":"https://commons.wikimedia.org/wiki/File:Lil_Kim_Mercedes_Benz_Fashion_Week_2012_(modified).jpg"}},{"n":"Busta Rhymes","h":70.0,"c":"Brooklyn","r":"East","y":1991,"e":"Golden Age","k":"Leaders of the New School","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"busta-rhymes","cr":{"a":"All-Pro Reels","l":"CC BY-SA 2.0","u":"https://commons.wikimedia.org/wiki/File:Busta_Rhymes_(52380599657)_(cropped).jpg"}},{"n":"Method Man","h":72.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"method-man","cr":{"a":"Alyssa Tomfohrde from Oakland, USA","l":"CC BY 2.0","u":"https://commons.wikimedia.org/wiki/File:Method_Man_at_Shattuck_Down_Low.jpg"}},{"n":"DMX","h":70.0,"c":"Yonkers","r":"East","y":1998,"e":"Jiggy Era","k":"Ruff Ryders","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"dmx","cr":{"a":"Mika-photography","l":"CC BY-SA 3.0","u":"https://commons.wikimedia.org/wiki/File:DMX.rapper_(cropped).jpg"}},{"n":"Nicki Minaj","h":62.0,"c":"Queens","r":"East","y":2010,"e":"Blog Era","k":"Young Money","f":true,"a":false,"s":false,"wd":false,"d":false,"p":"nicki-minaj","cr":{"a":"Gage Skidmore from Surprise, AZ, United States of America","l":"CC BY-SA 4.0","u":"https://commons.wikimedia.org/wiki/File:Nicki_Minaj_2025_(3x4_cropped).jpg"}},{"n":"Cardi B","h":63.0,"c":"The Bronx","r":"East","y":2017,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":true,"d":false,"p":"cardi-b","cr":{"a":"Runawaymo","l":"CC BY-SA 4.0","u":"https://commons.wikimedia.org/wiki/File:Cardi_B_at_2026_Essence_Festival_of_Culture_02_(cropped)_(cropped).jpg"}},{"n":"André 3000","h":70.0,"c":"Atlanta","r":"South","y":1994,"e":"Jiggy Era","k":"OutKast","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"andr-3000","cr":{"a":"Gage","l":"CC BY 3.0","u":"https://commons.wikimedia.org/wiki/File:Andre_Benjamin.jpg"}},{"n":"Bushwick Bill","h":44.0,"c":"Houston","r":"South","y":1988,"e":"Golden Age","k":"Geto Boys","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"bushwick-bill","cr":{"a":"photo taken by flickr user photoren","l":"CC BY 2.0","u":"https://commons.wikimedia.org/wiki/File:Bushwick_Bill_pic.jpg"}},{"n":"Megan Thee Stallion","h":70.0,"c":"Houston","r":"South","y":2016,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"p":"megan-thee-stallion","cr":{"a":"ADWEEK","l":"CC BY 3.0","u":"https://commons.wikimedia.org/wiki/File:Megan_Thee_Stallion_Adweek_02.jpg"}},{"n":"J. Cole","h":75.0,"c":"Fayetteville","r":"South","y":2007,"e":"Mixtape Era","k":"Dreamville","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"j-cole","cr":{"a":"HOTSPOTATL","l":"CC BY 3.0","u":"https://commons.wikimedia.org/wiki/File:HOTSPOTATL_-_21_Savage_%26_J.Cole_Light_Birthday_Bash_ATL_2023_On_FIRE_(xu6HKf40MX0_-_2m38s)_(cropped).jpg"}},{"n":"Kanye West","h":68.0,"c":"Chicago","r":"Midwest","y":2004,"e":"Mixtape Era","k":"G.O.O.D. Music","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"kanye-west","cr":{"a":"David Shankbone","l":"Public domain","u":"https://commons.wikimedia.org/wiki/File:Kanye_West_at_the_2009_Tribeca_Film_Festival_(crop_2).jpg"}},{"n":"Eminem","h":68.0,"c":"Detroit","r":"Midwest","y":1996,"e":"Jiggy Era","k":"D12","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"eminem","cr":{"a":"Brendan_linden","l":"CC0","u":"https://commons.wikimedia.org/wiki/File:Eminem_2021_Color_Corrected.jpg"}},{"n":"Kendrick Lamar","h":66.0,"c":"Compton","r":"West","y":2004,"e":"Mixtape Era","k":"TDE","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"kendrick-lamar","cr":{"a":"Fuzheado","l":"CC BY-SA 4.0","u":"https://commons.wikimedia.org/wiki/File:Pulitzer2018-portraits-kendrick-lamar.jpg"}},{"n":"Dr. Dre","h":73.0,"c":"Compton","r":"West","y":1986,"e":"Golden Age","k":"N.W.A","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"dr-dre","cr":{"a":"Commondr3ads","l":"CC BY-SA 3.0","u":"https://commons.wikimedia.org/wiki/File:Dr._Dre_in_2011.jpg"}},{"n":"Ice Cube","h":68.0,"c":"South Central L.A.","r":"West","y":1986,"e":"Golden Age","k":"N.W.A","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"ice-cube","cr":{"a":"Adam Bielawski","l":"CC BY-SA 3.0","u":"https://commons.wikimedia.org/wiki/File:Ice-Cube_2014-01-09-Chicago-photoby-Adam-Bielawski.jpg"}},{"n":"Snoop Dogg","h":76.0,"c":"Long Beach","r":"West","y":1992,"e":"Golden Age","k":"Death Row","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"snoop-dogg","cr":{"a":"Toglenn","l":"CC BY-SA 4.0","u":"https://commons.wikimedia.org/wiki/File:Snoop_Dogg_2019_by_Glenn_Francis.jpg"}},{"n":"Shaquille O'Neal","h":85.0,"c":"Los Angeles","r":"West","y":1993,"e":"Golden Age","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"p":"shaquille-o-neal","cr":{"a":"MarkScottAustinTX","l":"CC BY-SA 2.0","u":"https://commons.wikimedia.org/wiki/File:Shaquille_O%27Neal_October_2017_(cropped).jpg"}},{"n":"2Pac","h":70.0,"c":"Oakland","r":"West","y":1991,"e":"Golden Age","k":"Death Row","f":false,"a":false,"s":false,"wd":false,"d":true,"p":"2pac","cr":{"a":"Unknown authorUnknown author","l":"Public domain","u":"https://commons.wikimedia.org/wiki/File:2pac_edit_cropped_further.jpg"}},{"n":"Too $hort","h":74.0,"c":"Oakland","r":"West","y":1985,"e":"Old School","k":"Dangerous Crew","f":false,"a":false,"s":false,"wd":false,"d":false,"p":"too-hort","cr":{"a":"Seher Sikandar for rehes creative","l":"CC BY-SA 3.0","u":"https://commons.wikimedia.org/wiki/File:Tooshort_(300dpi).jpg"}},{"n":"Drake","h":72.0,"c":"Toronto","r":"International","y":2006,"e":"Mixtape Era","k":"OVO","f":false,"a":false,"s":false,"wd":false,"d":true,"p":"drake","cr":{"a":"The Come Up Show","l":"CC BY 2.0","u":"https://commons.wikimedia.org/wiki/File:Drake_July_2016.jpg"}}];
+DATA.forEach((d, i) => d.id = i);
+const ERAS = ['Old School', 'Golden Age', 'Jiggy Era', 'Mixtape Era', 'Blog Era', 'Streaming Era'];
+const ERA_YEARS = {'Old School': '–1985', 'Golden Age': '1986–93', 'Jiggy Era': '1994–2001', 'Mixtape Era': '2002–09', 'Blog Era': '2010–15', 'Streaming Era': '2016–'};
+const REGIONS = ['East', 'South', 'Midwest', 'West', 'International'];
+const SORTS = [['tall', 'Tallest first'], ['short', 'Shortest first'], ['az', 'A–Z'], ['old', 'Oldest debut first'], ['new', 'Newest debut first'], ['region', 'By region'], ['city', 'By city'], ['shuffle', 'Shuffled']];
+const FLAGS = [['f', 'Women'], ['a', 'Athletes'], ['s', 'Actors & celebs'], ['d', 'Disputed'], ['wd', 'Wikidata figures']];
+const $ = id => document.getElementById(id);
+const fmt = h => { const f = Math.floor(h / 12), i = h - f * 12; return `${f}′${i}″`; };
+const cm = h => Math.round(h * 2.54);
+const col = r => `var(--${r || 'International'})`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+let LOOK = /*__LOOK__*/'b';
+const pic = (d, look) => `img/${d.p}-${look || LOOK}.webp`;
+const S = { sort: 'tall', region: new Set(), era: new Set(), city: '', crew: '', flags: new Set(), picks: new Set(), picksOnly: false, you: 69, youOn: false, seed: 1 };
+
+/* --- filtering + sorting --- */
+function rand(seed) { return () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }; }
+function view() {
+  let v = DATA.filter(d =>
+    (!S.region.size || S.region.has(d.r)) && (!S.era.size || S.era.has(d.e)) &&
+    (!S.city || d.c === S.city) && (!S.crew || d.k === S.crew) &&
+    [...S.flags].every(f => d[f]) && (!S.picksOnly || S.picks.has(d.id)));
+  const by = {
+    tall: (a, b) => b.h - a.h || a.n.localeCompare(b.n), short: (a, b) => a.h - b.h || a.n.localeCompare(b.n),
+    az: (a, b) => a.n.localeCompare(b.n), old: (a, b) => a.y - b.y || b.h - a.h, new: (a, b) => b.y - a.y || b.h - a.h,
+    region: (a, b) => REGIONS.indexOf(a.r) - REGIONS.indexOf(b.r) || b.h - a.h,
+    city: (a, b) => a.c.localeCompare(b.c) || b.h - a.h }[S.sort];
+  if (S.sort === 'shuffle') { const R = rand(S.seed); v = v.map(d => [R(), d]).sort((a, b) => a[0] - b[0]).map(x => x[1]); }
+  else v.sort(by);
+  return v;
+}
+const nFilters = () => S.era.size + S.flags.size + (S.city ? 1 : 0) + (S.crew ? 1 : 0);
+
+/* --- the chart --- */
+const MAXIN = 90;
+function ppi() { return Math.max(3.4, Math.min(5.6, (window.innerHeight - 250) / MAXIN)); }
+let current = [];
+function render() {
+  const P = ppi(), stage = $('stage'), H = MAXIN * P;
+  stage.style.height = H + 'px'; $('scale').style.height = H + 'px';
+  current = view();
+  const list = current.slice();
+  if (S.youOn) {
+    const you = { n: 'You', h: S.you, id: -1, you: true };
+    const at = S.sort === 'tall' ? list.findIndex(d => d.h <= S.you) : S.sort === 'short' ? list.findIndex(d => d.h >= S.you) : Math.floor(list.length / 2);
+    list.splice(at < 0 ? list.length : at, 0, you);
+  }
+  let lines = '', scale = '';
+  for (let i = 24; i < MAXIN; i += 2) {
+    const y = (MAXIN - i) * P;
+    lines += `<i class="${i % 12 === 0 ? 'ft' : ''}" style="top:${y}px"></i>`;
+    if (i % 12 === 0) scale += `<span style="top:${y}px">${i / 12}′</span>`;
+  }
+  $('scale').innerHTML = scale;
+  stage.innerHTML = `<div class="lines">${lines}</div>` +
+    (S.youOn ? `<div class="you-line" style="top:${(MAXIN - S.you) * P}px"><em>You, ${fmt(S.you)}</em></div>` : '') +
+    (list.map(d => `<div class="col${d.p ? ' ph' : ''}${d.you ? ' you' : ''}${S.picks.has(d.id) ? ' pick' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--c:${d.you ? 'var(--accent)' : col(d.r)}">` +
+      `<div class="bar" style="height:${(d.h * P).toFixed(1)}px">${d.p ? `<div class="head" style="background-image:url(${pic(d)})"></div>` : ''}</div><div class="nm">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>`).join('')
+      || '<div class="empty">Nobody matches that. Loosen the filters.</div>');
+  $('scrollHint').textContent = list.length > 30 ? `Scroll sideways for all ${current.length} →` : '';
+  status(); panels(); syncControls(); saveHash();
+}
+
+function status() {
+  const v = current, n = v.length;
+  if (!n) { $('status').innerHTML = '<span>Nobody on the chart.</span>'; return; }
+  const avg = v.reduce((a, d) => a + d.h, 0) / n, t = v.reduce((a, d) => d.h > a.h ? d : a), s = v.reduce((a, d) => d.h < a.h ? d : a);
+  $('status').innerHTML = `<span><b>${n}</b> on the chart</span><span>average <b>${fmt(Math.round(avg * 2) / 2)}</b></span><span>tallest <b>${esc(t.n)}</b></span><span>shortest <b>${esc(s.n)}</b></span>`;
+}
+
+/* --- tables --- */
+function table(el, rows, onClick) {
+  const max = Math.max(1, ...rows.map(r => r[3])), min = Math.min(...rows.map(r => r[3]));
+  el.innerHTML = rows.map((r, i) => `<div class="tr" data-i="${i}"><span class="n">${i + 1}</span><span class="nm">${r[0]}</span><span class="v">${r[1]}</span>` +
+    `<span class="track"><i style="width:${Math.max(3, 100 * (r[3] - min * .9) / (max - min * .9))}%;background:${r[2] || 'var(--ink)'}"></i></span></div>`).join('') || '<p><i>Not enough rappers here.</i></p>';
+  el.querySelectorAll('.tr').forEach(b => b.onclick = () => onClick(+b.dataset.i));
+}
+function avgBy(list, key, min) {
+  const g = {}; list.forEach(d => { if (d[key]) (g[d[key]] = g[d[key]] || []).push(d); });
+  return Object.entries(g).filter(([, a]) => a.length >= min).map(([k, a]) => [k, a.reduce((s, d) => s + d.h, 0) / a.length, a]);
+}
+const half = a => fmt(Math.round(a * 2) / 2);
+function panels() {
+  const v = current, who = d => `${esc(d.n)} <span>${esc(d.c)}</span>`;
+  const t = v.slice().sort((a, b) => b.h - a.h).slice(0, 10), s = v.slice().sort((a, b) => a.h - b.h).slice(0, 10);
+  table($('tallest'), t.map(d => [who(d), fmt(d.h), col(d.r), d.h]), i => focusOn(t[i]));
+  table($('shortest'), s.map(d => [who(d), fmt(d.h), col(d.r), 100 - d.h]), i => focusOn(s[i]));
+  const cities = avgBy(DATA, 'c', 3).sort((a, b) => b[1] - a[1]).slice(0, 12);
+  table($('cities'), cities.map(([k, a, l]) => [`${esc(k)} <span>${l.length}</span>`, half(a), col(l[0].r), a]), i => { clearFilters(); S.city = cities[i][0]; render(); toChart(); });
+  const eras = ERAS.map(e => { const l = DATA.filter(d => d.e === e); return [e, l.reduce((s, d) => s + d.h, 0) / l.length, l]; });
+  table($('eraStats'), eras.map(([k, a, l]) => [`${k} <span>${ERA_YEARS[k]}, ${l.length}</span>`, half(a), '', a]), i => { clearFilters(); S.era = new Set([eras[i][0]]); render(); toChart(); });
+  const crews = avgBy(DATA, 'k', 3).sort((a, b) => b[1] - a[1]);
+  table($('crews'), crews.map(([k, a, l]) => [`${esc(k)} <span>${l.length}</span>`, half(a), col(l[0].r), a]), i => { clearFilters(); S.crew = crews[i][0]; render(); toChart(); });
+  const gaps = Object.values(DATA.reduce((g, d) => { if (d.k) (g[d.k] = g[d.k] || []).push(d); return g; }, {})).filter(a => a.length > 1)
+    .map(a => { const hi = a.reduce((x, d) => d.h > x.h ? d : x), lo = a.reduce((x, d) => d.h < x.h ? d : x); return [hi, lo, hi.h - lo.h]; }).sort((a, b) => b[2] - a[2]).slice(0, 10);
+  table($('gaps'), gaps.map(([hi, lo, g]) => [`${esc(hi.n)} and ${esc(lo.n)} <span>${esc(hi.k)}</span>`, `${g}″`, col(hi.r), g]), i => { clearFilters(); S.picks = new Set([gaps[i][0].id, gaps[i][1].id]); S.picksOnly = true; render(); toChart(); });
+  stack(); twins();
+}
+function stack() {
+  const v = current; if (!v.length) { $('stack').innerHTML = '<p><i>Nobody to stack.</i></p>'; return; }
+  const inches = v.reduce((a, d) => a + d.h, 0);
+  const comps = [['Shaqs', 85], ['regulation basketball hoops', 120], ['Statues of Liberty, torch included', 1812], ['Empire State Buildings', 17472]];
+  $('stack').innerHTML = `<div class="big-n">${Math.round(inches / 12).toLocaleString()} ft</div><p>${v.length} rappers, ${cm(inches) >= 100000 ? (cm(inches) / 100000).toFixed(2) + ' km' : Math.round(cm(inches) / 100) + ' metres'} in all.</p>` +
+    comps.map(([n, x]) => [n, inches / x]).filter(([, k]) => k >= 0.1).map(([n, k]) => `<p>That’s <i>${k >= 10 ? Math.round(k) : k.toFixed(1)}</i> ${n}.</p>`).join('');
+}
+function twins() {
+  const y = S.you, same = DATA.filter(d => Math.abs(d.h - y) < 0.6), taller = DATA.filter(d => d.h > y).length;
+  $('youOut').textContent = fmt(y);
+  $('twins').innerHTML = `<p>Taller than <i>${DATA.length - taller - same.length}</i> rappers, shorter than <i>${taller}</i>.</p>` +
+    (same.length ? `<p>Eye to eye with ${same.slice(0, 12).map(d => `<span data-id="${d.id}">${esc(d.n)}</span>`).join(', ')}${same.length > 12 ? ` and ${same.length - 12} more` : ''}.</p>` : '<p>Nobody on file is exactly your height.</p>');
+  $('twins').querySelectorAll('span[data-id]').forEach(s => s.onclick = () => focusOn(DATA[+s.dataset.id]));
+}
+
+/* --- card --- */
+function closeCard() { $('card').classList.remove('show'); }
+function showCard(d) {
+  if (d.you) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>You</h3><div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm</small></div><p>Change it with the slider under the chart.</p>`; }
+  else {
+    const rank = DATA.filter(x => x.h > d.h).length + 1, same = DATA.filter(x => x.h === d.h && x !== d), pk = S.picks.has(d.id);
+    $('card').innerHTML = `<button class="x" aria-label="Close">×</button>
+      ${d.p ? `<div class="pic" style="--c:${col(d.r)};background-image:url(${pic(d)})"></div>` : ''}<div class="reg sc"><i style="background:${col(d.r)}"></i>${d.r}${d.d ? ' · disputed' : ''}</div>
+      <h3>${esc(d.n)}</h3>
+      <div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm · ${rank === 1 ? 'the tallest' : `no. ${rank} of ${DATA.length}`}</small></div>
+      <p>${esc(d.c)}, debut ${d.y} (${d.e})${d.k ? ` · ${esc(d.k)}` : ''}</p>
+      ${same.length ? `<p class="note">Same height as ${same.slice(0, 5).map(x => esc(x.n)).join(', ')}${same.length > 5 ? ` and ${same.length - 5} more` : ''}.</p>` : ''}
+      <p class="note">${d.wd ? 'Source: Wikidata.' : 'Commonly reported figure.'}${d.a ? ' Better known as an athlete.' : ''}${d.s ? ' Better known for other things.' : ''}</p>
+      <div class="acts"><button class="btn${pk ? ' on' : ''}" data-act="pick">${pk ? 'Picked ✓' : '+ Pick'}</button>
+      <button class="btn" data-act="city">${esc(d.c)}</button>${d.k ? `<button class="btn" data-act="crew">${esc(d.k)}</button>` : ''}
+      <button class="btn" data-act="era">${d.e}</button><button class="btn" data-act="near">Within an inch</button></div>${d.cr ? `<p class="credit">Photo: ${esc(d.cr.a)}, <a href="${esc(d.cr.u)}" target="_blank" rel="noopener">${esc(d.cr.l)}, via Wikimedia Commons</a>${LOOK === 'b' ? ', halftone treatment by this site' : ', cropped'}</p>` : ''}`;
+  }
+  $('card').classList.add('show');
+  $('card').querySelector('.x').onclick = closeCard;
+  $('card').querySelectorAll('[data-act]').forEach(b => b.onclick = () => {
+    const a = b.dataset.act;
+    if (a === 'pick') { S.picks.has(d.id) ? S.picks.delete(d.id) : S.picks.add(d.id); render(); showCard(d); return; }
+    clearFilters();
+    if (a === 'city') S.city = d.c; if (a === 'crew') S.crew = d.k; if (a === 'era') S.era = new Set([d.e]);
+    if (a === 'near') { S.picks = new Set(DATA.filter(x => Math.abs(x.h - d.h) <= 1).map(x => x.id)); S.picksOnly = true; }
+    render(); toChart(); setTimeout(() => flash(d.id), 300);
+  });
+}
+function flash(id) { const f = $('stage').querySelector(`.col[data-id="${id}"]`); if (!f) return; const c = $('chart'); c.scrollLeft = f.offsetLeft - c.clientWidth / 2; f.classList.add('flash'); setTimeout(() => f.classList.remove('flash'), 1600); }
+function toChart() { window.scrollTo({ top: Math.max(0, $('status').getBoundingClientRect().top + scrollY - 120), behavior: 'smooth' }); }
+function focusOn(d) { if (!current.includes(d)) { clearFilters(); render(); } toChart(); setTimeout(() => flash(d.id), 300); showCard(d); }
+function clearFilters() { S.region.clear(); S.era.clear(); S.city = ''; S.crew = ''; S.flags.clear(); S.picksOnly = false; }
+
+/* --- controls --- */
+function opts(el, items, isOn, onTap) {
+  el.innerHTML = items.map(([k, label]) => `<button class="opt" data-k="${esc(k)}">${label}</button>`).join('');
+  el.querySelectorAll('.opt').forEach(b => b.onclick = () => onTap(b.dataset.k));
+  el._isOn = isOn;
+}
+function syncControls() {
+  for (const id of ['eras', 'flags']) $(id).querySelectorAll('.opt').forEach(b => b.classList.toggle('on', $(id)._isOn(b.dataset.k)));
+  $('key').querySelectorAll('span').forEach(s => s.style.opacity = !S.region.size || S.region.has(s.dataset.k) ? 1 : .3);
+  $('sort').value = S.sort; $('city').value = S.city; $('crew').value = S.crew;
+  const n = nFilters(); $('filtersBtn').textContent = n ? `Filters (${n})` : 'Filters';
+  $('picksbar').hidden = !S.picks.size;
+  $('picksTxt').textContent = `${S.picks.size} picked`;
+  $('picksOnly').classList.toggle('on', S.picksOnly); $('picksOnly').textContent = S.picksOnly ? 'Show everyone' : 'Show only these';
+  $('youToggle').textContent = S.youOn ? 'Take me off the chart' : 'Put me on the chart'; $('youToggle').classList.toggle('on', S.youOn);
+}
+function toggle(set, k) { set.has(k) ? set.delete(k) : set.add(k); render(); }
+$('key').innerHTML = REGIONS.map(r => `<span data-k="${r}" role="button" tabindex="0" title="Show only ${r}"><i style="background:${col(r)}"></i>${r}</span>`).join('');
+$('key').querySelectorAll('span').forEach(s => s.onclick = () => toggle(S.region, s.dataset.k));
+$('sort').innerHTML = SORTS.map(([k, l]) => `<option value="${k}">${l}</option>`).join('');
+$('sort').onchange = e => { S.sort = e.target.value; if (S.sort === 'shuffle') S.seed = (Math.random() * 1e9) | 0; render(); $('chart').scrollLeft = 0; };
+$('filtersBtn').onclick = () => { const d = $('drawer'); d.hidden = !d.hidden; $('filtersBtn').setAttribute('aria-expanded', !d.hidden); $('filtersBtn').classList.toggle('on', !d.hidden); };
+opts($('eras'), ERAS.map(e => [e, `${e} <span class="yr">${ERA_YEARS[e]}</span>`]), k => S.era.has(k), k => toggle(S.era, k));
+opts($('flags'), FLAGS, k => S.flags.has(k), k => toggle(S.flags, k));
+function fillSelect(el, key, all) {
+  const g = {}; DATA.forEach(d => { if (d[key]) g[d[key]] = (g[d[key]] || 0) + 1; });
+  el.innerHTML = `<option value="">${all}</option>` + Object.entries(g).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([k, n]) => `<option value="${esc(k)}">${esc(k)} (${n})</option>`).join('');
+  el.onchange = () => { S[key === 'c' ? 'city' : 'crew'] = el.value; S.picksOnly = false; render(); };
+}
+fillSelect($('city'), 'c', 'Any city'); fillSelect($('crew'), 'k', 'Any crew');
+$('names').innerHTML = DATA.map(d => `<option value="${esc(d.n)}">`).join('');
+$('q').addEventListener('change', e => { const v = e.target.value.trim().toLowerCase(); const d = DATA.find(x => x.n.toLowerCase() === v) || DATA.find(x => x.n.toLowerCase().includes(v)); if (d) focusOn(d); e.target.value = ''; });
+$('picksOnly').onclick = () => { S.picksOnly = !S.picksOnly; render(); };
+$('clearPicks').onclick = () => { S.picks.clear(); S.picksOnly = false; render(); };
+$('randomSix').onclick = () => { const pool = view().length > 6 ? view() : DATA; S.picks = new Set(pool.slice().sort(() => Math.random() - .5).slice(0, 6).map(d => d.id)); clearFilters(); S.picksOnly = true; S.sort = 'tall'; render(); };
+$('reset').onclick = () => { clearFilters(); S.picks.clear(); S.sort = 'tall'; S.youOn = false; render(); $('chart').scrollLeft = 0; };
+$('share').onclick = () => { saveHash(); const u = location.href; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(() => notice('Link copied, picks and all.'), () => notice(u)); };
+$('you').oninput = e => { S.you = +e.target.value; twins(); if (S.youOn) render(); else saveHash(); };
+$('youToggle').onclick = () => { S.youOn = !S.youOn; render(); if (S.youOn) { toChart(); setTimeout(() => flash(-1), 300); } };
+$('stage').addEventListener('click', e => { const f = e.target.closest('.col'); if (!f) return; const id = +f.dataset.id; showCard(id < 0 ? { you: true, h: S.you } : DATA[id]); });
+$('stage').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const f = e.target.closest('.col'); if (f) { e.preventDefault(); f.click(); } } });
+function notice(msg) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><p style="margin-right:24px">${esc(msg)}</p>`; $('card').classList.add('show'); $('card').querySelector('.x').onclick = closeCard; }
+let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(render, 150); });
+
+/* --- share state in the URL hash --- */
+function saveHash() {
+  const p = new URLSearchParams();
+  if (S.sort !== 'tall') p.set('sort', S.sort); if (S.region.size) p.set('region', [...S.region].join(','));
+  if (S.era.size) p.set('era', [...S.era].join(',')); if (S.city) p.set('city', S.city); if (S.crew) p.set('crew', S.crew);
+  if (S.flags.size) p.set('only', [...S.flags].join(',')); if (S.picks.size) p.set('picks', [...S.picks].map(i => DATA[i].n).join('|'));
+  if (S.picksOnly) p.set('mine', '1'); if (S.youOn) p.set('you', S.you); if (DATA.some(d => d.p) && LOOK !== 'b') p.set('look', LOOK);
+  history.replaceState(null, '', p.toString() ? '#' + p.toString() : location.pathname);
+}
+function loadHash() {
+  const p = new URLSearchParams(location.hash.slice(1)), ids = {}; DATA.forEach(d => ids[d.n] = d.id);
+  if (SORTS.some(s => s[0] === p.get('sort'))) S.sort = p.get('sort');
+  (p.get('region') || '').split(',').filter(x => REGIONS.includes(x)).forEach(x => S.region.add(x));
+  (p.get('era') || '').split(',').filter(x => ERAS.includes(x)).forEach(x => S.era.add(x));
+  S.city = p.get('city') || ''; S.crew = p.get('crew') || '';
+  (p.get('only') || '').split(',').filter(x => FLAGS.some(f => f[0] === x)).forEach(x => S.flags.add(x));
+  (p.get('picks') || p.get('lineup') || '').split('|').forEach(n => { if (n in ids) S.picks.add(ids[n]); });
+  S.picksOnly = p.get('mine') === '1' && S.picks.size > 0;
+  if (p.get('you')) { S.you = Math.min(90, Math.max(48, +p.get('you') || 69)); S.youOn = true; $('you').value = S.you; }
+}
+
+/* --- game --- */
+const G = { a: null, b: null, streak: 0, best: +(store.get('rhl-best') || 0), played: 0, done: false };
+const GH = 330, GMAX = 90;
+function gDraw(reveal) {
+  [['gA', G.a], ['gB', G.b]].forEach(([id, d]) => {
+    $(id).style.setProperty('--c', col(d.r));
+    $(id).innerHTML = `<div class="gh">${reveal ? fmt(d.h) : ''}</div><div class="gbar" style="height:${reveal ? d.h / GMAX * (GH - 60) : (GH - 60) * .55}px;${reveal ? '' : 'opacity:.25'}"></div>`;
+  });
+  $('gAn').innerHTML = `${esc(G.a.n)}<small>${esc(G.a.c)}, ${G.a.y}</small>`; $('gBn').innerHTML = `${esc(G.b.n)}<small>${esc(G.b.c)}, ${G.b.y}</small>`;
+}
+function gNew() {
+  const pool = current.length >= 2 && current.length < DATA.length ? current : DATA.filter(d => d.r !== 'International' && !d.s);
+  let a, b, tries = 0;
+  do { a = pool[(Math.random() * pool.length) | 0]; b = pool[(Math.random() * pool.length) | 0]; tries++; }
+  while ((a === b || a.h === b.h || Math.abs(a.h - b.h) > (G.streak > 6 ? 2 : 6)) && tries < 400);
+  G.a = a; G.b = b; G.done = false;
+  $('gA').className = 'side'; $('gB').className = 'side'; gDraw(false); $('gNext').hidden = true;
+  $('gSub').textContent = current.length >= 2 && current.length < DATA.length ? `From the ${pool.length} on your chart. Pick the taller one.` : 'Pick the taller rapper.';
+}
+function gPick(which) {
+  if (G.done) return; G.done = true; G.played++;
+  const me = which === 'a' ? G.a : G.b, other = which === 'a' ? G.b : G.a, ok = me.h >= other.h;
+  G.streak = ok ? G.streak + 1 : 0; if (G.streak > G.best) { G.best = G.streak; store.set('rhl-best', G.best); }
+  gDraw(true); $(which === 'a' ? 'gA' : 'gB').classList.add(ok ? 'right' : 'wrong');
+  $('gSub').textContent = ok ? (G.streak >= 5 ? `${G.streak} in a row.` : `Right. ${me.n} has ${me.h - other.h}″ on ${other.n}.`) : `No. ${other.n} is ${other.h - me.h}″ taller.`;
+  $('gStreak').textContent = G.streak; $('gBest').textContent = G.best; $('gPlayed').textContent = G.played;
+  $('gNext').hidden = false; $('gNext').focus();
+}
+$('gLines').innerHTML = [48, 60, 72, 84].map(i => `<i style="top:${GH - i / GMAX * (GH - 60)}px"></i>`).join('');
+$('gA').onclick = () => gPick('a'); $('gB').onclick = () => gPick('b');
+$('gNext').onclick = gNew;
+$('playBtn').onclick = () => { closeCard(); $('game').classList.add('show'); $('gBest').textContent = G.best; gNew(); };
+$('gClose').onclick = () => $('game').classList.remove('show');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { $('game').classList.remove('show'); closeCard(); }
+  if ($('game').classList.contains('show')) { if (e.key === 'ArrowLeft') gPick('a'); if (e.key === 'ArrowRight') gPick('b'); if (e.key === 'Enter' && G.done) gNew(); }
+});
+
+if (DATA.some(d => d.p)) { $('looks').hidden = false; const lk = new URLSearchParams(location.hash.slice(1)).get('look'); if (lk === 'a' || lk === 'b') LOOK = lk;
+  const syncLook = () => $('looks').querySelectorAll('.opt').forEach(b => b.classList.toggle('on', b.dataset.look === LOOK));
+  $('looks').querySelectorAll('.opt').forEach(b => b.onclick = () => { LOOK = b.dataset.look; syncLook(); render(); }); syncLook(); }
+$('caseN').textContent = DATA.length;
+loadHash(); if (nFilters()) { $('drawer').hidden = false; $('filtersBtn').classList.add('on'); } render();
+</script>
+</body>
+</html>

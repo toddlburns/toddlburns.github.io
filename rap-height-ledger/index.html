@@ -78,6 +78,14 @@ input[type=search]::placeholder{color:var(--dim);font-style:italic}
 .col{position:relative;flex:0 0 auto;width:24px;cursor:pointer;outline:none}
 .col .bar{position:relative;width:100%;background:var(--c);transition:filter .15s}
 .col .bar:before{content:"";position:absolute;left:50%;top:-11px;width:9px;height:9px;border-radius:50%;background:var(--c);transform:translateX(-50%)}
+.col.ph{width:34px}
+.col .head{position:absolute;left:0;top:0;width:100%;aspect-ratio:1;border-radius:50%;background:var(--paper) center/cover no-repeat;box-shadow:0 0 0 2px var(--c);z-index:1}
+.col.ph .bar:before{display:none}
+.col.ph .nm{line-height:34px}
+.card .pic{float:right;width:112px;height:112px;border-radius:50%;margin:2px 26px 6px 12px;background:var(--paper2) center/cover no-repeat;box-shadow:0 0 0 2px var(--c)}
+.card .credit{clear:both;font-size:12px;color:var(--dim)}
+.card .credit a{color:var(--dim)}
+.looks{display:flex;gap:4px;align-items:center;font-size:14px;color:var(--dim)}
 .col .nm{position:absolute;left:0;right:0;bottom:6px;writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:13px;white-space:nowrap;line-height:24px}
 .col .nm small{opacity:.75;margin-inline-start:.45em;font-size:12px}
 .col:hover .bar,.col:focus-visible .bar{filter:brightness(1.25)}
@@ -166,6 +174,7 @@ footer p{max-width:60em;margin:0 0 6px}
     <input type="search" id="q" placeholder="Find a rapper…" autocomplete="off" list="names"><datalist id="names"></datalist>
     <select id="sort" aria-label="Order"></select>
     <button class="btn" id="filtersBtn" aria-expanded="false">Filters</button>
+    <span class="looks" id="looks" hidden>Look: <button class="opt" data-look="a">Photo</button><button class="opt" data-look="b">Print</button></span>
     <span class="spacer"></span>
     <button class="btn accent" id="playBtn">Play: Who’s taller?</button>
   </div>
@@ -240,6 +249,8 @@ const col = r => `var(--${r || 'International'})`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
 
+let LOOK = /*__LOOK__*/'b';
+const pic = (d, look) => `img/${d.p}-${look || LOOK}.webp`;
 const S = { sort: 'tall', region: new Set(), era: new Set(), city: '', crew: '', flags: new Set(), picks: new Set(), picksOnly: false, you: 69, youOn: false, seed: 1 };
 
 /* --- filtering + sorting --- */
@@ -283,8 +294,8 @@ function render() {
   $('scale').innerHTML = scale;
   stage.innerHTML = `<div class="lines">${lines}</div>` +
     (S.youOn ? `<div class="you-line" style="top:${(MAXIN - S.you) * P}px"><em>You, ${fmt(S.you)}</em></div>` : '') +
-    (list.map(d => `<div class="col${d.you ? ' you' : ''}${S.picks.has(d.id) ? ' pick' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--c:${d.you ? 'var(--accent)' : col(d.r)}">` +
-      `<div class="bar" style="height:${(d.h * P).toFixed(1)}px"></div><div class="nm">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>`).join('')
+    (list.map(d => `<div class="col${d.p ? ' ph' : ''}${d.you ? ' you' : ''}${S.picks.has(d.id) ? ' pick' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--c:${d.you ? 'var(--accent)' : col(d.r)}">` +
+      `<div class="bar" style="height:${(d.h * P).toFixed(1)}px">${d.p ? `<div class="head" style="background-image:url(${pic(d)})"></div>` : ''}</div><div class="nm">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>`).join('')
       || '<div class="empty">Nobody matches that. Loosen the filters.</div>');
   $('scrollHint').textContent = list.length > 30 ? `Scroll sideways for all ${current.length} →` : '';
   status(); panels(); syncControls(); saveHash();
@@ -347,7 +358,7 @@ function showCard(d) {
   else {
     const rank = DATA.filter(x => x.h > d.h).length + 1, same = DATA.filter(x => x.h === d.h && x !== d), pk = S.picks.has(d.id);
     $('card').innerHTML = `<button class="x" aria-label="Close">×</button>
-      <div class="reg sc"><i style="background:${col(d.r)}"></i>${d.r}${d.d ? ' · disputed' : ''}</div>
+      ${d.p ? `<div class="pic" style="--c:${col(d.r)};background-image:url(${pic(d)})"></div>` : ''}<div class="reg sc"><i style="background:${col(d.r)}"></i>${d.r}${d.d ? ' · disputed' : ''}</div>
       <h3>${esc(d.n)}</h3>
       <div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm · ${rank === 1 ? 'the tallest' : `no. ${rank} of ${DATA.length}`}</small></div>
       <p>${esc(d.c)}, debut ${d.y} (${d.e})${d.k ? ` · ${esc(d.k)}` : ''}</p>
@@ -355,7 +366,7 @@ function showCard(d) {
       <p class="note">${d.wd ? 'Source: Wikidata.' : 'Commonly reported figure.'}${d.a ? ' Better known as an athlete.' : ''}${d.s ? ' Better known for other things.' : ''}</p>
       <div class="acts"><button class="btn${pk ? ' on' : ''}" data-act="pick">${pk ? 'Picked ✓' : '+ Pick'}</button>
       <button class="btn" data-act="city">${esc(d.c)}</button>${d.k ? `<button class="btn" data-act="crew">${esc(d.k)}</button>` : ''}
-      <button class="btn" data-act="era">${d.e}</button><button class="btn" data-act="near">Within an inch</button></div>`;
+      <button class="btn" data-act="era">${d.e}</button><button class="btn" data-act="near">Within an inch</button></div>${d.cr ? `<p class="credit">Photo: ${esc(d.cr.a)}, <a href="${esc(d.cr.u)}" target="_blank" rel="noopener">${esc(d.cr.l)}, via Wikimedia Commons</a>${LOOK === 'b' ? ', halftone treatment by this site' : ', cropped'}</p>` : ''}`;
   }
   $('card').classList.add('show');
   $('card').querySelector('.x').onclick = closeCard;
@@ -423,7 +434,7 @@ function saveHash() {
   if (S.sort !== 'tall') p.set('sort', S.sort); if (S.region.size) p.set('region', [...S.region].join(','));
   if (S.era.size) p.set('era', [...S.era].join(',')); if (S.city) p.set('city', S.city); if (S.crew) p.set('crew', S.crew);
   if (S.flags.size) p.set('only', [...S.flags].join(',')); if (S.picks.size) p.set('picks', [...S.picks].map(i => DATA[i].n).join('|'));
-  if (S.picksOnly) p.set('mine', '1'); if (S.youOn) p.set('you', S.you);
+  if (S.picksOnly) p.set('mine', '1'); if (S.youOn) p.set('you', S.you); if (DATA.some(d => d.p) && LOOK !== 'b') p.set('look', LOOK);
   history.replaceState(null, '', p.toString() ? '#' + p.toString() : location.pathname);
 }
 function loadHash() {
@@ -476,6 +487,9 @@ document.addEventListener('keydown', e => {
   if ($('game').classList.contains('show')) { if (e.key === 'ArrowLeft') gPick('a'); if (e.key === 'ArrowRight') gPick('b'); if (e.key === 'Enter' && G.done) gNew(); }
 });
 
+if (DATA.some(d => d.p)) { $('looks').hidden = false; const lk = new URLSearchParams(location.hash.slice(1)).get('look'); if (lk === 'a' || lk === 'b') LOOK = lk;
+  const syncLook = () => $('looks').querySelectorAll('.opt').forEach(b => b.classList.toggle('on', b.dataset.look === LOOK));
+  $('looks').querySelectorAll('.opt').forEach(b => b.onclick = () => { LOOK = b.dataset.look; syncLook(); render(); }); syncLook(); }
 $('caseN').textContent = DATA.length;
 loadHash(); if (nFilters()) { $('drawer').hidden = false; $('filtersBtn').classList.add('on'); } render();
 </script>
