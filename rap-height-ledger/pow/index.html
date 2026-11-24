@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Who's taller? Rappers side by side at their reported heights: classic matchups, crews, cities, eras, every Lil, and you.">
+<title>The Rap Height Ledger</title>
+<style>
+/* Editorial interactive: cream stock, ink, halftone portraits standing at height. Times New Roman like the rest of toddlburns.com. */
+:root{--paper:#f6f1e6;--paper2:#ece4d3;--ink:#161616;--dim:#6b655a;--hair:rgba(22,22,22,.13);--accent:#ff48b0;--col:#2b2824;--hoop:#ff6c2f;--pink:#ff48b0;--blue:#0078bf;--yellow:#ffb511;--green:#00a95c;--site:"Times New Roman",Times,serif}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);font-family:var(--site);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip;font-size:17px;line-height:1.4}
+button,select,input{font:inherit;color:inherit}
+a{color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+.sc{font-variant:small-caps;letter-spacing:.06em;text-transform:lowercase}
+
+header{padding:22px 0 0}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:6px;font-size:13px}
+.top a{text-decoration:none}
+h1 em{font-style:italic;color:var(--pink)}
+h1{margin:14px 0 0;font-weight:400;font-size:clamp(40px,6.6vw,82px);line-height:.92;letter-spacing:-.035em}
+.dek{margin:8px 0 0;font-size:19px;color:var(--dim);font-style:italic}
+
+/* modes */
+.stripe{height:10px;margin-top:20px;background:linear-gradient(90deg,#ff48b0 0 12.5%,#0078bf 0 25%,#ffb511 0 37.5%,#00a95c 0 50%,#ff6c2f 0 62.5%,#765ba7 0 75%,#00838a 0 87.5%,#e45d50 0)}
+.modes{display:flex;flex-wrap:wrap;gap:2px 22px;margin-top:0;border-top:0;border-bottom:1px solid var(--ink);padding:8px 0}
+.mode{background:none;border:0;padding:2px 0;cursor:pointer;font-size:18px;border-bottom:2px solid transparent;white-space:nowrap}
+.mode:hover{border-bottom-color:var(--hair)}
+.mode.on{border-bottom-color:var(--pink);border-bottom-width:3px}
+.mode.play{margin-left:auto;color:var(--accent)}
+@media (max-width:700px){.modes{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.modes::-webkit-scrollbar{display:none}.mode.play{margin-left:0}}
+.pick{display:flex;flex-wrap:wrap;gap:6px 6px;align-items:center;padding:12px 0 4px;min-height:48px}
+.chip{border:1px solid var(--ink);background:none;padding:2px 11px;cursor:pointer;font-size:16px;white-space:nowrap;border-radius:999px}
+.chip:hover,.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip small{color:var(--dim)}
+.chip:hover small,.chip.on small{color:#cfc7b6}
+.pick select,.pick input[type=search]{border:0;border-bottom:1px solid var(--ink);background:transparent;padding:2px;font-size:17px;border-radius:0;max-width:260px}
+.pick input[type=search]{width:240px}
+.pick input::placeholder{color:var(--dim);font-style:italic}
+.pick label{font-size:15px;color:var(--dim);display:inline-flex;gap:5px;align-items:center;margin-left:8px}
+.pick .x{border:0;background:none;cursor:pointer;padding:0 0 0 4px;color:inherit}
+
+/* the stage */
+.stagehead{display:flex;justify-content:space-between;align-items:end;gap:16px;padding:16px 0 4px}
+.stagehead h2{color:var(--blue);margin:0;font-weight:400;font-size:clamp(30px,4.6vw,52px);line-height:1;letter-spacing:-.025em;font-style:italic}
+.stagehead p{margin:6px 0 0;font-size:19px;max-width:44em}
+.nav{display:flex;gap:14px;font-size:16px;white-space:nowrap}
+.nav button{background:none;border:0;cursor:pointer;padding:0;border-bottom:1px solid var(--ink)}
+@media (max-width:640px){.stagehead{flex-direction:column;align-items:flex-start}}
+.stagewrap{position:relative;margin-top:10px}
+.scale{position:absolute;left:0;top:0;width:42px;z-index:4;pointer-events:none}
+.scale span{position:absolute;left:14px;transform:translateY(-50%);font-size:14px;font-style:italic;background:var(--paper);padding:0 2px}
+.stagescroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.stage{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:var(--gap,14px);padding:0 30px 0 56px;min-width:100%;width:max-content;border-bottom:2px solid var(--ink)}
+.stage.thin{justify-content:flex-start}
+.lines{position:absolute;inset:0;pointer-events:none}
+.lines i{position:absolute;left:0;right:0;border-top:1px solid var(--hair)}
+.lines i.ft{border-top:1px solid rgba(22,22,22,.42)}
+.youline{position:absolute;left:0;right:0;border-top:1px dashed var(--ink);z-index:3;pointer-events:none}
+
+.fig{position:relative;flex:0 0 auto;width:var(--w,90px);cursor:pointer;outline:none;display:flex;flex-direction:column;align-items:center;transition:transform .2s}
+.fig:hover,.fig:focus-visible{transform:translateY(-4px)}
+.fig .body{position:relative;width:100%;background:var(--c,var(--col));border-radius:calc(var(--w,90px)/2) calc(var(--w,90px)/2) 0 0}
+.fig.hoop .body{background:repeating-linear-gradient(90deg,var(--c) 0 9px,rgba(255,255,255,.45) 9px 11px)}
+.fig.you .body{background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 8px);outline:1.5px solid var(--ink);outline-offset:-1.5px}
+.fig .face{position:absolute;left:0;top:0;width:100%;aspect-ratio:1;border-radius:50%;background:var(--paper2) center/cover no-repeat;box-shadow:0 0 0 3px var(--c,var(--col));display:flex;align-items:center;justify-content:center;font-size:calc(var(--w,90px)*.34);font-style:italic;color:var(--dim)}
+.fig.hoop .face{box-shadow:0 0 0 3px var(--c)}
+.fig.you .face{box-shadow:0 0 0 2px var(--ink);color:var(--ink)}
+.fig .lab{position:absolute;top:100%;margin-top:8px;width:max(100%,120px);text-align:center;font-size:16px;line-height:1.15}
+.stage.mid .fig .lab{font-size:13px;width:calc(100% + 8px)}
+.stage.mid .fig .lab b{font-size:19px}
+.fig .lab b{display:block;font-weight:400;font-size:26px;font-style:italic;line-height:1}
+.fig .lab span{display:block;font-size:13px;color:var(--dim)}
+.fig .lab .ast{display:inline}
+.stage.thin .fig .face{box-shadow:0 0 0 2px var(--c)}
+.stage.thin .fig.lite .vn{color:var(--ink)}
+.stage.thin .fig .lab{display:none}
+.fig .vn{display:none}
+.stage.thin .fig .vn{display:block;position:absolute;left:0;right:0;bottom:6px;writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:12px;white-space:nowrap;line-height:var(--w)}
+.stage.thin .fig .vn small{opacity:.7;margin-inline-start:.4em}
+.labspace{height:78px}
+.stage.thin + .labspace{height:10px}
+.ast{color:var(--hoop);font-style:normal;font-weight:700}
+.empty{position:absolute;left:0;right:0;top:40%;text-align:center;font-size:22px;font-style:italic}
+.note{font-size:13px;color:var(--dim);font-style:italic;padding-top:6px;min-height:24px}
+
+/* card */
+.card{position:fixed;z-index:40;left:50%;bottom:18px;transform:translateX(-50%) translateY(160%);transition:transform .25s ease;background:var(--paper);border:1px solid var(--ink);box-shadow:0 10px 30px rgba(22,22,22,.18);width:min(470px,calc(100vw - 32px));padding:16px 18px 14px}
+.card.show{transform:translateX(-50%) translateY(0)}
+.card{border-top:8px solid var(--c,var(--ink))}
+.card .pic{float:right;width:118px;height:118px;border-radius:50%;margin:0 26px 6px 12px;background:var(--paper2) center/cover no-repeat}
+.card h3{margin:0;font-size:30px;font-weight:400;line-height:1.05;letter-spacing:-.01em}
+.card .ht{font-size:46px;font-style:italic;line-height:1.05;margin:2px 0 4px}
+.card .ht small{font-size:15px;font-style:normal;color:var(--dim)}
+.card p{margin:3px 0;font-size:16px}
+.card .x{position:absolute;right:10px;top:6px;border:0;background:none;font-size:26px;cursor:pointer;line-height:1}
+.card .acts{clear:both;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;border-top:1px solid var(--hair);padding-top:10px}
+.card .acts .chip{font-size:15px}
+.card .credit,.card .small{font-size:12px;color:var(--dim)}
+
+/* lower */
+.lower{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px 44px;padding:90px 0 30px}
+.sec h3{margin:0;font-weight:400;font-size:26px;letter-spacing:-.01em;border-top:6px solid var(--c,var(--ink));padding-top:8px}
+.sec .sub{font-size:14px;color:var(--dim);font-style:italic;margin:0 0 8px;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;align-items:baseline;padding:6px 0 5px;border-bottom:1px solid var(--hair);cursor:pointer;font-size:16px}
+.row:hover{background:var(--paper2)}
+.row .v{font-style:italic;white-space:nowrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;background:var(--c)}
+.row span.d{color:var(--dim);font-size:14px}
+.you-box{display:flex;gap:14px;align-items:center;margin:10px 0 6px}
+.you-box input[type=range]{flex:1;accent-color:var(--accent)}
+.you-box output{font-size:44px;font-style:italic;min-width:96px;line-height:1}
+.twins span[data-id]{cursor:pointer;border-bottom:1px solid var(--dim)}
+.btn{border:1px solid var(--ink);background:none;padding:3px 12px;cursor:pointer;font-size:16px}
+.btn:hover,.btn.on{background:var(--ink);color:var(--paper)}
+footer{border-top:3px double var(--ink);padding:14px 0 50px;font-size:14px;line-height:1.55;color:var(--dim)}
+footer p{max-width:62em;margin:0 0 6px}
+
+/* game */
+.game{position:fixed;inset:0;z-index:60;background:rgba(243,238,227,.98);display:none;align-items:center;justify-content:center;padding:16px}
+.game.show{display:flex}
+.gbox{width:min(760px,100%);max-height:100%;overflow:auto;position:relative;text-align:center;padding:8px}
+.gbox h2{margin:0;font-size:clamp(34px,6vw,60px);font-weight:400;letter-spacing:-.03em;font-style:italic}
+.gbox .sub{margin:4px 0 14px;font-size:18px;min-height:27px}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-bottom:2px solid var(--ink);position:relative;height:360px;align-items:end}
+.duel .glines{position:absolute;inset:0;pointer-events:none}
+.duel .glines i{position:absolute;left:0;right:0;border-top:1px solid var(--hair)}
+.side{cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.side .gh{font-size:34px;font-style:italic;height:44px;margin-bottom:6px}
+.side .gbody{width:96px;background:var(--c,var(--col));border-radius:48px 48px 0 0;position:relative;transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.side .gface{position:absolute;left:0;top:0;width:96px;height:96px;border-radius:50%;background:var(--paper2) center/cover no-repeat;box-shadow:0 0 0 3px var(--c,var(--col));display:flex;align-items:center;justify-content:center;font-size:32px;font-style:italic;color:var(--dim)}
+.side.right .gh{color:#2e6a4f}.side.wrong .gh{color:var(--accent)}
+.gnames{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:8px}
+.gnames div{font-size:24px;line-height:1.1}
+.gnames small{display:block;font-size:14px;color:var(--dim);font-style:italic}
+.score{display:flex;justify-content:center;gap:26px;font-size:15px;margin-top:14px;color:var(--dim)}
+.score b{font-size:26px;font-weight:400;font-style:italic;color:var(--ink)}
+.gbox .x{position:absolute;right:0;top:0;border:0;background:none;font-size:32px;cursor:pointer}
+#gNext{margin-top:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"><style>
+/* ---- POW edition: dark page, logo colours, hand-cut edges ---- */
+:root{--paper:#171717;--paper2:#242424;--ink:#f2efe8;--dim:#a39e93;--hair:rgba(242,239,232,.10);--green:#66cc66;--mag:#c4369b;--orange:#ff6a2b;--mid:#3b3b3b;
+  --pink:#c4369b;--blue:#66cc66;--yellow:#ff6a2b;--hoop:#ff6a2b;--site:'Spectral',Georgia,serif;--disp:'Anton',Impact,sans-serif}
+html,body{background:var(--paper);color:var(--ink)}
+.top{border-bottom-color:var(--ink)}
+h1{display:inline-block;font-family:var(--disp);text-transform:uppercase;letter-spacing:.01em;font-weight:400;color:var(--green);background:var(--mag);
+  padding:.08em .22em .02em;margin-top:22px;font-size:clamp(40px,7.4vw,92px);line-height:1;box-shadow:0 0 0 7px var(--orange);transform:rotate(-1.6deg);filter:url(#rough)}
+h1 em{font-style:normal;color:var(--green)}
+.dek{color:var(--dim);margin-top:18px}
+.stripe{display:none}
+.modes{border-bottom-color:var(--ink);margin-top:18px;border-top:3px solid var(--ink)}
+.mode{font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-size:19px;padding:2px 8px;border-bottom:0}
+.mode:hover{color:var(--green)}
+.mode{position:relative}
+.mode.on{color:var(--ink)}
+.mode.on::before{content:"";position:absolute;inset:-1px -2px;background:var(--mag);z-index:-1;filter:url(#rough)}
+.modes{position:relative;z-index:0}
+.mode.play{color:var(--orange)}
+.chip{border-color:var(--ink);color:var(--ink)}
+.chip:hover,.chip.on{background:var(--green);border-color:var(--green);color:#171717}
+.pick select,.pick input[type=search]{color:var(--ink);border-bottom-color:var(--ink)}
+.pick select option{background:#242424;color:var(--ink)}
+.stagehead h2{font-family:var(--disp);text-transform:uppercase;font-style:normal;letter-spacing:.01em;color:var(--green);font-size:clamp(32px,5vw,58px)}
+.stagehead p{color:var(--ink)}
+.nav button{border-bottom-color:var(--ink)}
+.lines i.ft{border-top-color:rgba(242,239,232,.32)}
+.scale span{background:var(--paper);color:var(--dim)}
+.stage{border-bottom:4px solid var(--ink)}
+.fig .body{background:var(--c,var(--mid));box-shadow:0 0 0 4px var(--orange);filter:url(#rough)}
+.fig .body::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='90'%3E%3Cg fill='none' stroke='%23000' stroke-opacity='.32' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 14q4 -5 8 1'/%3E%3Cpath d='M38 30q3 4 9 0'/%3E%3Cpath d='M16 55q5 3 7 -3'/%3E%3Cpath d='M44 72q-4 -4 -8 1'/%3E%3Cpath d='M28 84q3 -3 6 0'/%3E%3C/g%3E%3C/svg%3E");border-radius:inherit;pointer-events:none}
+.fig.hoop .body{background:repeating-linear-gradient(90deg,var(--c,var(--mid)) 0 9px,rgba(255,255,255,.28) 9px 11px)}
+.fig .face,.fig.hoop .face{box-shadow:0 0 0 4px var(--orange)}
+.fig .lab{color:var(--ink)}
+.fig .lab b{display:table;margin:0 auto 5px;position:relative;z-index:0;font-family:var(--disp);font-style:normal;font-size:24px;color:#171717;padding:3px 8px 1px;transform:rotate(-2.5deg)}
+.fig .lab b::before{content:"";position:absolute;inset:0;background:var(--ink);z-index:-1;filter:url(#rough)}
+.fig:nth-child(odd) .lab b{transform:rotate(2deg)}
+.stage.mid .fig .lab b{font-size:17px}
+.fig.you .body{background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 8px);outline:2px solid var(--ink);box-shadow:none}
+.stage.thin .fig .vn{color:var(--ink)}
+.note,.card .credit,.card .small{color:var(--dim)}
+.card{background:#202020;color:var(--ink);border:2px solid var(--orange);border-top:8px solid var(--c,var(--orange))}
+.card h3{font-family:var(--disp);text-transform:uppercase;letter-spacing:.01em}
+.card .ht small{color:var(--dim)}
+.card .x{color:var(--ink)}
+.sec h3{font-family:var(--disp);text-transform:uppercase;letter-spacing:.02em}
+.sec .sub{color:var(--dim);border-bottom-color:var(--ink)}
+.row:hover{background:var(--paper2)}
+.row span.d{color:var(--dim)}
+.btn{border-color:var(--ink);color:var(--ink)}
+.btn:hover,.btn.on{background:var(--green);border-color:var(--green);color:#171717}
+footer{color:var(--dim);border-top-color:var(--ink)}
+.game{background:rgba(23,23,23,.98)}
+.gbox h2{font-family:var(--disp);text-transform:uppercase;font-style:normal;color:var(--green)}
+.duel{border-bottom:4px solid var(--ink)}
+.side .gbody{box-shadow:0 0 0 4px var(--orange);filter:url(#rough)}
+#gA{--c:var(--green)!important}#gB{--c:var(--mag)!important}
+.side .gface{box-shadow:0 0 0 4px var(--orange)}
+.score b{color:var(--ink)}
+.gnames small{color:var(--dim)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
+<header class="wrap">
+  <div class="top"><span class="sc">Prototype for Passion of the Weiss</span><span class="sc">Unlisted draft</span></div>
+  <h1>The Rap <em>Height</em> Ledger</h1>
+  <p class="dek">Who’s taller? <span id="nRap">265</span> rappers, side by side at their reported heights.</p>
+  <div class="stripe"></div>
+  <nav class="modes" id="modes"></nav>
+  <div class="pick" id="pick"></div>
+</header>
+
+<main class="wrap">
+  <div class="stagehead"><div><h2 id="title"></h2><p id="line"></p></div><div class="nav" id="nav"></div></div>
+  <div class="stagewrap">
+    <div class="scale" id="scale"></div>
+    <div class="stagescroll" id="scroll"><div class="stage" id="stage"></div><div class="labspace"></div></div>
+  </div>
+  <div class="note" id="note"></div>
+
+  <div class="lower">
+    <section class="sec" style="--c:var(--pink)">
+      <h3>How tall are you?</h3><p class="sub">See where you’d stand.</p>
+      <button class="btn" id="youToggle">Add yourself</button>
+      <div id="youPanel" hidden>
+        <div class="you-box"><input type="range" id="you" min="48" max="90" step="1" value="69" aria-label="Your height"><output id="youOut">5′9″</output></div>
+        <div class="twins" id="twins"></div>
+      </div>
+    </section>
+    <section class="sec" style="--c:var(--blue)"><h3>Odd couples</h3><p class="sub">The biggest height gaps inside one crew.</p><div id="gaps"></div></section>
+    <section class="sec" style="--c:var(--yellow)"><h3>Records</h3><p class="sub">Rappers only; athletes don’t count.</p><div id="records"></div></section>
+  </div>
+
+  <footer>
+    <p>Heights are as reported, not measured: shoes, posture and the odd generous lyric all play a part, so read every figure as ± an inch or two. Figures marked Wikidata come from <a href="https://www.wikidata.org/">Wikidata</a>; the rest are the commonly reported ones. Long-running arguments (Drake, 2Pac, Biggie, Lil Wayne, RZA) are marked disputed.</p>
+    <p><span class="ast">*</span> Athletes who put out rap records (Shaq, Kobe, Iverson and co.) wear pinstripes and an asterisk, and are left out of the records. Portraits are halftones made from freely licensed photos on Wikimedia Commons; each photographer is credited on the rapper’s card. City is roughly where they rep; era is set by debut year. Spotted a wrong one? <a href="/contact.html">Tell me.</a></p>
+  </footer>
+</main>
+
+<div class="card" id="card" role="dialog" aria-live="polite"></div>
+
+<div class="game" id="game" role="dialog" aria-label="Who's taller?">
+  <div class="gbox">
+    <button class="x" id="gClose" aria-label="Close">×</button>
+    <h2>Who’s taller?</h2>
+    <div class="sub" id="gSub">Pick the taller rapper.</div>
+    <div class="duel"><div class="glines" id="gLines"></div><div class="side" id="gA"></div><div class="side" id="gB"></div></div>
+    <div class="gnames"><div id="gAn"></div><div id="gBn"></div></div>
+    <div class="score"><span>Streak <b id="gStreak">0</b></span><span>Best <b id="gBest">0</b></span><span>Played <b id="gPlayed">0</b></span></div>
+    <button class="btn" id="gNext" hidden>Next pair →</button>
+  </div>
+</div>
+
+<script>
+const DATA = [{"n":"Jay-Z","h":74.0,"c":"Brooklyn","r":"East","y":1996,"e":"Jiggy Era","k":"Roc-A-Fella","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"The Notorious B.I.G.","h":74.0,"c":"Brooklyn","r":"East","y":1994,"e":"Jiggy Era","k":"Bad Boy","f":false,"a":false,"s":false,"wd":false,"d":true,"ci":3},{"n":"Lil' Kim","h":59.0,"c":"Brooklyn","r":"East","y":1995,"e":"Jiggy Era","k":"Junior M.A.F.I.A.","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Busta Rhymes","h":70.0,"c":"Brooklyn","r":"East","y":1991,"e":"Golden Age","k":"Leaders of the New School","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Yasiin Bey (Mos Def)","h":70.0,"c":"Brooklyn","r":"East","y":1998,"e":"Jiggy Era","k":"Black Star","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Talib Kweli","h":68.0,"c":"Brooklyn","r":"East","y":1998,"e":"Jiggy Era","k":"Black Star","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Big Daddy Kane","h":73.0,"c":"Brooklyn","r":"East","y":1988,"e":"Golden Age","k":"Juice Crew","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Fabolous","h":73.0,"c":"Brooklyn","r":"East","y":2001,"e":"Jiggy Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Joey Bada$$","h":70.0,"c":"Brooklyn","r":"East","y":2012,"e":"Blog Era","k":"Pro Era","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Pop Smoke","h":76.0,"c":"Brooklyn","r":"East","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Fivio Foreign","h":72.0,"c":"Brooklyn","r":"East","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Ol' Dirty Bastard","h":69.0,"c":"Brooklyn","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"GZA","h":72.0,"c":"Brooklyn","r":"East","y":1991,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"RZA","h":74.0,"c":"Staten Island","r":"East","y":1991,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":true,"d":true,"ci":1},{"n":"Masta Killa","h":68.0,"c":"Brooklyn","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Sean Price","h":68.0,"c":"Brooklyn","r":"East","y":1995,"e":"Jiggy Era","k":"Boot Camp Clik","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"6ix9ine","h":67.0,"c":"Brooklyn","r":"East","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Bizzy Banks","h":68.0,"c":"Brooklyn","r":"East","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Method Man","h":72.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Raekwon","h":68.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Ghostface Killah","h":73.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Inspectah Deck","h":70.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"U-God","h":72.0,"c":"Staten Island","r":"East","y":1993,"e":"Golden Age","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Cappadonna","h":72.0,"c":"Staten Island","r":"East","y":1995,"e":"Jiggy Era","k":"Wu-Tang Clan","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"DMX","h":70.0,"c":"Yonkers","r":"East","y":1998,"e":"Jiggy Era","k":"Ruff Ryders","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Jadakiss","h":69.0,"c":"Yonkers","r":"East","y":1997,"e":"Jiggy Era","k":"The LOX","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Styles P","h":70.0,"c":"Yonkers","r":"East","y":1997,"e":"Jiggy Era","k":"The LOX","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Sheek Louch","h":68.0,"c":"Yonkers","r":"East","y":1997,"e":"Jiggy Era","k":"The LOX","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"50 Cent","h":72.0,"c":"Queens","r":"East","y":2002,"e":"Mixtape Era","k":"G-Unit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lloyd Banks","h":72.0,"c":"Queens","r":"East","y":2002,"e":"Mixtape Era","k":"G-Unit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Tony Yayo","h":69.0,"c":"Queens","r":"East","y":2002,"e":"Mixtape Era","k":"G-Unit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"LL Cool J","h":74.0,"c":"Queens","r":"East","y":1985,"e":"Old School","k":"Def Jam","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Rev Run","h":68.0,"c":"Queens","r":"East","y":1984,"e":"Old School","k":"Run-DMC","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Prodigy","h":64.0,"c":"Queens","r":"East","y":1993,"e":"Golden Age","k":"Mobb Deep","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Havoc","h":69.0,"c":"Queens","r":"East","y":1993,"e":"Golden Age","k":"Mobb Deep","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Nas","h":68.0,"c":"Queens","r":"East","y":1994,"e":"Jiggy Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Nicki Minaj","h":62.0,"c":"Queens","r":"East","y":2010,"e":"Blog Era","k":"Young Money","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Kool G Rap","h":70.0,"c":"Queens","r":"East","y":1988,"e":"Golden Age","k":"Juice Crew","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Q-Tip","h":67.0,"c":"Queens","r":"East","y":1990,"e":"Golden Age","k":"A Tribe Called Quest","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Phife Dawg","h":63.0,"c":"Queens","r":"East","y":1990,"e":"Golden Age","k":"A Tribe Called Quest","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Action Bronson","h":68.0,"c":"Queens","r":"East","y":2011,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Ja Rule","h":67.0,"c":"Queens","r":"East","y":1999,"e":"Jiggy Era","k":"Murder Inc.","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Metta World Peace","h":79.0,"c":"Queens","r":"East","y":2006,"e":"Mixtape Era","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":1},{"n":"KRS-One","h":76.0,"c":"The Bronx","r":"East","y":1987,"e":"Golden Age","k":"Boogie Down Productions","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Big Pun","h":67.0,"c":"The Bronx","r":"East","y":1998,"e":"Jiggy Era","k":"Terror Squad","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Fat Joe","h":69.0,"c":"The Bronx","r":"East","y":1993,"e":"Golden Age","k":"Terror Squad","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Remy Ma","h":63.0,"c":"The Bronx","r":"East","y":2004,"e":"Mixtape Era","k":"Terror Squad","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"A Boogie wit da Hoodie","h":70.0,"c":"The Bronx","r":"East","y":2016,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"French Montana","h":73.0,"c":"The Bronx","r":"East","y":2012,"e":"Blog Era","k":"Coke Boys","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Cardi B","h":63.0,"c":"The Bronx","r":"East","y":2017,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Ice Spice","h":61.0,"c":"The Bronx","r":"East","y":2022,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Swizz Beatz","h":73.0,"c":"The Bronx","r":"East","y":1998,"e":"Jiggy Era","k":"Ruff Ryders","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Dougie B","h":68.0,"c":"The Bronx","r":"East","y":2021,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Sugarhill Ddot","h":61.0,"c":"The Bronx","r":"East","y":2022,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"A$AP Rocky","h":70.0,"c":"Harlem","r":"East","y":2011,"e":"Blog Era","k":"A$AP Mob","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"A$AP Ferg","h":69.0,"c":"Harlem","r":"East","y":2013,"e":"Blog Era","k":"A$AP Mob","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Cam'ron","h":72.0,"c":"Harlem","r":"East","y":1998,"e":"Jiggy Era","k":"Dipset","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Juelz Santana","h":70.0,"c":"Harlem","r":"East","y":2003,"e":"Mixtape Era","k":"Dipset","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Jim Jones","h":72.0,"c":"Harlem","r":"East","y":2004,"e":"Mixtape Era","k":"Dipset","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Ma$e","h":71.0,"c":"Harlem","r":"East","y":1997,"e":"Jiggy Era","k":"Bad Boy","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Diddy","h":70.0,"c":"Harlem","r":"East","y":1997,"e":"Jiggy Era","k":"Bad Boy","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Big L","h":66.0,"c":"Harlem","r":"East","y":1995,"e":"Jiggy Era","k":"D.I.T.C.","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Dave East","h":76.0,"c":"Harlem","r":"East","y":2014,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Sheck Wes","h":74.0,"c":"Harlem","r":"East","y":2017,"e":"Streaming Era","k":"Cactus Jack","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Rakim","h":71.0,"c":"Long Island","r":"East","y":1987,"e":"Golden Age","k":"Eric B. & Rakim","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Chuck D","h":74.0,"c":"Long Island","r":"East","y":1987,"e":"Golden Age","k":"Public Enemy","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Flavor Flav","h":68.0,"c":"Long Island","r":"East","y":1987,"e":"Golden Age","k":"Public Enemy","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Wonder Mike","h":77.0,"c":"Englewood","r":"East","y":1979,"e":"Old School","k":"Sugarhill Gang","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Queen Latifah","h":70.0,"c":"Newark","r":"East","y":1989,"e":"Golden Age","k":"Flavor Unit","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Redman","h":72.0,"c":"Newark","r":"East","y":1992,"e":"Golden Age","k":"Def Squad","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Lauryn Hill","h":64.0,"c":"South Orange","r":"East","y":1994,"e":"Jiggy Era","k":"Fugees","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Wyclef Jean","h":73.0,"c":"Newark","r":"East","y":1994,"e":"Jiggy Era","k":"Fugees","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Joe Budden","h":72.0,"c":"Jersey City","r":"East","y":2003,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Fetty Wap","h":70.0,"c":"Paterson","r":"East","y":2015,"e":"Blog Era","k":"Remy Boyz","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Meek Mill","h":67.0,"c":"Philadelphia","r":"East","y":2008,"e":"Mixtape Era","k":"Maybach Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Will Smith","h":74.0,"c":"Philadelphia","r":"East","y":1987,"e":"Golden Age","k":"DJ Jazzy Jeff & the Fresh Prince","f":false,"a":false,"s":true,"wd":true,"d":false,"ci":6},{"n":"Eve","h":67.0,"c":"Philadelphia","r":"East","y":1999,"e":"Jiggy Era","k":"Ruff Ryders","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Black Thought","h":68.0,"c":"Philadelphia","r":"East","y":1993,"e":"Golden Age","k":"The Roots","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Uzi Vert","h":64.0,"c":"Philadelphia","r":"East","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Wale","h":68.0,"c":"Washington, D.C.","r":"East","y":2006,"e":"Mixtape Era","k":"Maybach Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Logic","h":69.0,"c":"Gaithersburg","r":"East","y":2010,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Missy Elliott","h":62.0,"c":"Portsmouth","r":"East","y":1997,"e":"Jiggy Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Pharrell Williams","h":69.0,"c":"Virginia Beach","r":"East","y":1999,"e":"Jiggy Era","k":"The Neptunes","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Pusha T","h":71.0,"c":"Virginia Beach","r":"East","y":1999,"e":"Jiggy Era","k":"Clipse","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Foxy Brown","h":62.0,"c":"Brooklyn","r":"East","y":1996,"e":"Jiggy Era","k":"The Firm","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Young M.A","h":61.0,"c":"Brooklyn","r":"East","y":2016,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"André 3000","h":70.0,"c":"Atlanta","r":"South","y":1994,"e":"Jiggy Era","k":"OutKast","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Big Boi","h":66.0,"c":"Atlanta","r":"South","y":1994,"e":"Jiggy Era","k":"OutKast","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"CeeLo Green","h":60.0,"c":"Atlanta","r":"South","y":1995,"e":"Jiggy Era","k":"Goodie Mob","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Ludacris","h":72.0,"c":"Atlanta","r":"South","y":2000,"e":"Jiggy Era","k":"DTP","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"T.I.","h":68.0,"c":"Atlanta","r":"South","y":2001,"e":"Jiggy Era","k":"Grand Hustle","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Gucci Mane","h":74.0,"c":"Atlanta","r":"South","y":2005,"e":"Mixtape Era","k":"1017","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Jeezy","h":72.0,"c":"Atlanta","r":"South","y":2005,"e":"Mixtape Era","k":"CTE","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Future","h":70.0,"c":"Atlanta","r":"South","y":2010,"e":"Blog Era","k":"Freebandz","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Young Thug","h":70.0,"c":"Atlanta","r":"South","y":2011,"e":"Blog Era","k":"YSL","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Gunna","h":72.0,"c":"Atlanta","r":"South","y":2016,"e":"Streaming Era","k":"YSL","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Baby","h":66.0,"c":"Atlanta","r":"South","y":2017,"e":"Streaming Era","k":"Quality Control","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"21 Savage","h":74.0,"c":"Atlanta","r":"South","y":2015,"e":"Blog Era","k":"Slaughter Gang","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Quavo","h":70.0,"c":"Atlanta","r":"South","y":2011,"e":"Blog Era","k":"Migos","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Offset","h":70.0,"c":"Atlanta","r":"South","y":2011,"e":"Blog Era","k":"Migos","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Takeoff","h":69.0,"c":"Atlanta","r":"South","y":2011,"e":"Blog Era","k":"Migos","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"2 Chainz","h":77.0,"c":"College Park","r":"South","y":2007,"e":"Mixtape Era","k":"Playaz Circle","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Killer Mike","h":72.0,"c":"Atlanta","r":"South","y":2003,"e":"Mixtape Era","k":"Run the Jewels","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Soulja Boy","h":70.0,"c":"Atlanta","r":"South","y":2007,"e":"Mixtape Era","k":"SODMG","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Waka Flocka Flame","h":72.0,"c":"Atlanta","r":"South","y":2009,"e":"Mixtape Era","k":"Brick Squad","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Playboi Carti","h":67.0,"c":"Atlanta","r":"South","y":2017,"e":"Streaming Era","k":"Opium","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Lil Yachty","h":71.0,"c":"Atlanta","r":"South","y":2016,"e":"Streaming Era","k":"Quality Control","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Childish Gambino","h":69.0,"c":"Atlanta","r":"South","y":2008,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"JID","h":65.0,"c":"Atlanta","r":"South","y":2017,"e":"Streaming Era","k":"Dreamville","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"6lack","h":65.0,"c":"Atlanta","r":"South","y":2016,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Lil Nas X","h":73.0,"c":"Atlanta","r":"South","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Scarface","h":69.0,"c":"Houston","r":"South","y":1989,"e":"Golden Age","k":"Geto Boys","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Bushwick Bill","h":44.0,"c":"Houston","r":"South","y":1988,"e":"Golden Age","k":"Geto Boys","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Bun B","h":68.0,"c":"Port Arthur","r":"South","y":1992,"e":"Golden Age","k":"UGK","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Pimp C","h":68.0,"c":"Port Arthur","r":"South","y":1992,"e":"Golden Age","k":"UGK","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Stephen Jackson","h":80.0,"c":"Port Arthur","r":"South","y":2008,"e":"Mixtape Era","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":6},{"n":"Paul Wall","h":70.0,"c":"Houston","r":"South","y":2004,"e":"Mixtape Era","k":"Swishahouse","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Slim Thug","h":78.0,"c":"Houston","r":"South","y":2005,"e":"Mixtape Era","k":"Boss Hogg Outlawz","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Chamillionaire","h":72.0,"c":"Houston","r":"South","y":2005,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"RiFF RAFF","h":74.0,"c":"Houston","r":"South","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Travis Scott","h":68.0,"c":"Houston","r":"South","y":2013,"e":"Blog Era","k":"Cactus Jack","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Megan Thee Stallion","h":70.0,"c":"Houston","r":"South","y":2016,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Lil Wayne","h":65.0,"c":"New Orleans","r":"South","y":1997,"e":"Jiggy Era","k":"Cash Money","f":false,"a":false,"s":false,"wd":false,"d":true,"ci":6},{"n":"Birdman","h":68.0,"c":"New Orleans","r":"South","y":1993,"e":"Golden Age","k":"Cash Money","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Juvenile","h":72.0,"c":"New Orleans","r":"South","y":1995,"e":"Jiggy Era","k":"Hot Boys","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Master P","h":76.0,"c":"New Orleans","r":"South","y":1991,"e":"Golden Age","k":"No Limit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Mystikal","h":67.0,"c":"New Orleans","r":"South","y":1995,"e":"Jiggy Era","k":"No Limit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Boosie Badazz","h":66.0,"c":"Baton Rouge","r":"South","y":2000,"e":"Jiggy Era","k":"Trill Fam","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Kevin Gates","h":73.0,"c":"Baton Rouge","r":"South","y":2007,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"NBA YoungBoy","h":69.0,"c":"Baton Rouge","r":"South","y":2015,"e":"Blog Era","k":"Never Broke Again","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Juicy J","h":70.0,"c":"Memphis","r":"South","y":1995,"e":"Jiggy Era","k":"Three 6 Mafia","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Yo Gotti","h":69.0,"c":"Memphis","r":"South","y":2000,"e":"Jiggy Era","k":"CMG","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Rick Ross","h":69.0,"c":"Miami","r":"South","y":2006,"e":"Mixtape Era","k":"Maybach Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Trick Daddy","h":67.0,"c":"Miami","r":"South","y":1997,"e":"Jiggy Era","k":"Slip-n-Slide","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Trina","h":64.0,"c":"Miami","r":"South","y":2000,"e":"Jiggy Era","k":"Slip-n-Slide","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Flo Rida","h":75.0,"c":"Carol City","r":"South","y":2007,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Denzel Curry","h":69.0,"c":"Carol City","r":"South","y":2013,"e":"Blog Era","k":"C9","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Pitbull","h":67.0,"c":"Miami","r":"South","y":2004,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Kodak Black","h":68.0,"c":"Pompano Beach","r":"South","y":2014,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"XXXTentacion","h":65.0,"c":"Plantation","r":"South","y":2014,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"J. Cole","h":75.0,"c":"Fayetteville","r":"South","y":2007,"e":"Mixtape Era","k":"Dreamville","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"DaBaby","h":65.0,"c":"Charlotte","r":"South","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Swae Lee","h":68.0,"c":"Tupelo","r":"South","y":2014,"e":"Blog Era","k":"Rae Sremmurd","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Jack Harlow","h":75.0,"c":"Louisville","r":"South","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Deion Sanders","h":73.0,"c":"Fort Myers","r":"South","y":1994,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":0},{"n":"Roy Jones Jr.","h":71.0,"c":"Pensacola","r":"South","y":2001,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":7},{"n":"Kanye West","h":68.0,"c":"Chicago","r":"Midwest","y":2004,"e":"Mixtape Era","k":"G.O.O.D. Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Common","h":70.0,"c":"Chicago","r":"Midwest","y":1992,"e":"Golden Age","k":"Soulquarians","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Lupe Fiasco","h":70.0,"c":"Chicago","r":"Midwest","y":2006,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Chance the Rapper","h":69.0,"c":"Chicago","r":"Midwest","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Chief Keef","h":72.0,"c":"Chicago","r":"Midwest","y":2011,"e":"Blog Era","k":"Glo Gang","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Lil Durk","h":67.0,"c":"Chicago","r":"Midwest","y":2011,"e":"Blog Era","k":"OTF","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"G Herbo","h":68.0,"c":"Chicago","r":"Midwest","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"King Von","h":69.0,"c":"Chicago","r":"Midwest","y":2018,"e":"Streaming Era","k":"OTF","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Lil Reese","h":68.0,"c":"Chicago","r":"Midwest","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"Twista","h":66.0,"c":"Chicago","r":"Midwest","y":1992,"e":"Golden Age","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Da Brat","h":60.0,"c":"Chicago","r":"Midwest","y":1994,"e":"Jiggy Era","k":"So So Def","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Juice WRLD","h":69.0,"c":"Chicago","r":"Midwest","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Polo G","h":70.0,"c":"Chicago","r":"Midwest","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Eminem","h":68.0,"c":"Detroit","r":"Midwest","y":1996,"e":"Jiggy Era","k":"D12","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Royce da 5'9\"","h":69.0,"c":"Detroit","r":"Midwest","y":1998,"e":"Jiggy Era","k":"Slaughterhouse","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Big Sean","h":68.0,"c":"Detroit","r":"Midwest","y":2007,"e":"Mixtape Era","k":"G.O.O.D. Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Danny Brown","h":69.0,"c":"Detroit","r":"Midwest","y":2010,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Joe C.","h":45.0,"c":"Taylor","r":"Midwest","y":1998,"e":"Jiggy Era","k":"Twisted Brown Trucker","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"RMC Mike","h":69.0,"c":"Flint","r":"Midwest","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"Kid Cudi","h":73.0,"c":"Cleveland","r":"Midwest","y":2008,"e":"Mixtape Era","k":"G.O.O.D. Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Machine Gun Kelly","h":77.0,"c":"Cleveland","r":"Midwest","y":2010,"e":"Blog Era","k":"EST","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Trippie Redd","h":66.0,"c":"Canton","r":"Midwest","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Bow Wow","h":67.0,"c":"Columbus","r":"Midwest","y":2000,"e":"Jiggy Era","k":"So So Def","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Wiz Khalifa","h":76.0,"c":"Pittsburgh","r":"Midwest","y":2006,"e":"Mixtape Era","k":"Taylor Gang","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Mac Miller","h":67.0,"c":"Pittsburgh","r":"Midwest","y":2010,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Freddie Gibbs","h":69.0,"c":"Gary","r":"Midwest","y":2004,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Nelly","h":71.0,"c":"St. Louis","r":"Midwest","y":2000,"e":"Jiggy Era","k":"St. Lunatics","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Tech N9ne","h":69.0,"c":"Kansas City","r":"Midwest","y":1999,"e":"Jiggy Era","k":"Strange Music","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"DC The Don","h":79.0,"c":"Milwaukee","r":"Midwest","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Kendrick Lamar","h":66.0,"c":"Compton","r":"West","y":2004,"e":"Mixtape Era","k":"TDE","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Dr. Dre","h":73.0,"c":"Compton","r":"West","y":1986,"e":"Golden Age","k":"N.W.A","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Eazy-E","h":63.0,"c":"Compton","r":"West","y":1986,"e":"Golden Age","k":"N.W.A","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Ice Cube","h":68.0,"c":"South Central L.A.","r":"West","y":1986,"e":"Golden Age","k":"N.W.A","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"The Game","h":75.0,"c":"Compton","r":"West","y":2004,"e":"Mixtape Era","k":"G-Unit","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"YG","h":70.0,"c":"Compton","r":"West","y":2010,"e":"Blog Era","k":"4Hunnid","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Tyga","h":70.0,"c":"Compton","r":"West","y":2008,"e":"Mixtape Era","k":"Young Money","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Snoop Dogg","h":76.0,"c":"Long Beach","r":"West","y":1992,"e":"Golden Age","k":"Death Row","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Vince Staples","h":69.0,"c":"Long Beach","r":"West","y":2011,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Tyler, the Creator","h":74.0,"c":"Hawthorne","r":"West","y":2008,"e":"Mixtape Era","k":"Odd Future","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Earl Sweatshirt","h":69.0,"c":"Los Angeles","r":"West","y":2010,"e":"Blog Era","k":"Odd Future","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"ScHoolboy Q","h":72.0,"c":"South Central L.A.","r":"West","y":2008,"e":"Mixtape Era","k":"TDE","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Nipsey Hussle","h":72.0,"c":"Crenshaw","r":"West","y":2005,"e":"Mixtape Era","k":"All Money In","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Ice-T","h":70.0,"c":"South Central L.A.","r":"West","y":1987,"e":"Golden Age","k":"Rhyme Syndicate","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0},{"n":"Anderson .Paak","h":65.0,"c":"Oxnard","r":"West","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":3},{"n":"Doja Cat","h":63.0,"c":"Los Angeles","r":"West","y":2018,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Mr. Criminal","h":74.0,"c":"Los Angeles","r":"West","y":2003,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Chanel West Coast","h":63.0,"c":"Los Angeles","r":"West","y":2012,"e":"Blog Era","k":"","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Kobe Bryant","h":78.0,"c":"Los Angeles","r":"West","y":2000,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":5},{"n":"Shaquille O'Neal","h":85.0,"c":"Los Angeles","r":"West","y":1993,"e":"Golden Age","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":7},{"n":"2Pac","h":70.0,"c":"Oakland","r":"West","y":1991,"e":"Golden Age","k":"Death Row","f":false,"a":false,"s":false,"wd":false,"d":true,"ci":5},{"n":"Too $hort","h":74.0,"c":"Oakland","r":"West","y":1985,"e":"Old School","k":"Dangerous Crew","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"E-40","h":70.0,"c":"Vallejo","r":"West","y":1988,"e":"Golden Age","k":"The Click","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"G-Eazy","h":75.0,"c":"Oakland","r":"West","y":2011,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"Lil B","h":75.0,"c":"Berkeley","r":"West","y":2007,"e":"Mixtape Era","k":"The Pack","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Iamsu!","h":75.0,"c":"Richmond","r":"West","y":2012,"e":"Blog Era","k":"HBK Gang","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"Sage the Gemini","h":77.0,"c":"Fairfield","r":"West","y":2013,"e":"Blog Era","k":"HBK Gang","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"Saweetie","h":63.0,"c":"Hayward","r":"West","y":2017,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":1},{"n":"Damian Lillard","h":74.0,"c":"Oakland","r":"West","y":2015,"e":"Blog Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":1},{"n":"Gary Payton","h":76.0,"c":"Oakland","r":"West","y":1994,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":7},{"n":"Jason Kidd","h":76.0,"c":"Oakland","r":"West","y":1994,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":2},{"n":"Macklemore","h":70.0,"c":"Seattle","r":"West","y":2005,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Drake","h":72.0,"c":"Toronto","r":"International","y":2006,"e":"Mixtape Era","k":"OVO","f":false,"a":false,"s":false,"wd":false,"d":true,"ci":7},{"n":"Tory Lanez","h":67.0,"c":"Toronto","r":"International","y":2010,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Iggy Azalea","h":70.0,"c":"Mullumbimby","r":"International","y":2011,"e":"Blog Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Stormzy","h":77.0,"c":"London","r":"International","y":2014,"e":"Blog Era","k":"#Merky","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Skepta","h":73.0,"c":"London","r":"International","y":2006,"e":"Mixtape Era","k":"Boy Better Know","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"KSI","h":70.0,"c":"London","r":"International","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":true,"wd":true,"d":false,"ci":1},{"n":"Swarmz","h":72.0,"c":"London","r":"International","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Dutchavelli","h":78.0,"c":"Birmingham","r":"International","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Booba","h":76.0,"c":"Paris","r":"International","y":1996,"e":"Jiggy Era","k":"Lunatic","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Shurik'n","h":68.0,"c":"Marseille","r":"International","y":1991,"e":"Golden Age","k":"IAM","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"Peter Fox","h":72.0,"c":"Berlin","r":"International","y":1998,"e":"Jiggy Era","k":"Seeed","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"RM","h":71.0,"c":"Goyang","r":"International","y":2013,"e":"Blog Era","k":"BTS","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Suga","h":69.0,"c":"Daegu","r":"International","y":2013,"e":"Blog Era","k":"BTS","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"J-Hope","h":70.0,"c":"Gwangju","r":"International","y":2013,"e":"Blog Era","k":"BTS","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Lisa","h":66.0,"c":"Buriram","r":"International","y":2016,"e":"Streaming Era","k":"BLACKPINK","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"Rich Brian","h":68.0,"c":"Jakarta","r":"International","y":2016,"e":"Streaming Era","k":"88rising","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"C. Tangana","h":69.0,"c":"Madrid","r":"International","y":2011,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Trueno","h":66.0,"c":"Buenos Aires","r":"International","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Young Miko","h":65.0,"c":"Añasco","r":"International","y":2021,"e":"Streaming Era","k":"","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Bad Bunny","h":69.0,"c":"Vega Baja","r":"International","y":2016,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Babo","h":76.0,"c":"Monterrey","r":"International","y":1996,"e":"Jiggy Era","k":"Cartel de Santa","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"C-Kan","h":74.0,"c":"Guadalajara","r":"International","y":2010,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"John Cena","h":73.0,"c":"West Newbury","r":"East","y":2005,"e":"Mixtape Era","k":"","f":false,"a":false,"s":true,"wd":true,"d":false,"ci":5},{"n":"Jaden Smith","h":67.0,"c":"Malibu","r":"West","y":2012,"e":"Blog Era","k":"","f":false,"a":false,"s":true,"wd":true,"d":false,"ci":3},{"n":"Allen Iverson","h":72.0,"c":"Hampton","r":"East","y":2000,"e":"Jiggy Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":0},{"n":"Iman Shumpert","h":77.0,"c":"Oak Park","r":"Midwest","y":2014,"e":"Blog Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":3},{"n":"Marvin Bagley III","h":82.0,"c":"Tempe","r":"West","y":2018,"e":"Streaming Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":0},{"n":"Lonzo Ball","h":78.0,"c":"Chino Hills","r":"West","y":2018,"e":"Streaming Era","k":"","f":false,"a":true,"s":false,"wd":false,"d":false,"ci":3},{"n":"Konnan","h":71.0,"c":"Santiago de Cuba","r":"International","y":1990,"e":"Golden Age","k":"Psycho Realm","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":2},{"n":"Adrien Broner","h":67.0,"c":"Cincinnati","r":"Midwest","y":2014,"e":"Blog Era","k":"","f":false,"a":true,"s":false,"wd":true,"d":false,"ci":2},{"n":"B.o.B","h":72.0,"c":"Decatur","r":"South","y":2007,"e":"Mixtape Era","k":"Grand Hustle","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Big K.R.I.T.","h":72.0,"c":"Meridian","r":"South","y":2005,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":5},{"n":"Jay Rock","h":72.0,"c":"Watts","r":"West","y":2005,"e":"Mixtape Era","k":"TDE","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Vanilla Ice","h":71.0,"c":"Dallas","r":"South","y":1989,"e":"Golden Age","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"MC Hammer","h":70.0,"c":"Oakland","r":"West","y":1986,"e":"Golden Age","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":2},{"n":"Lizzo","h":70.0,"c":"Detroit","r":"Midwest","y":2013,"e":"Blog Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Kevin Abstract","h":68.0,"c":"Corpus Christi","r":"South","y":2014,"e":"Blog Era","k":"Brockhampton","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"MadeinTYO","h":64.0,"c":"Honolulu","r":"West","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Mr. Capone-E","h":70.0,"c":"Los Angeles","r":"West","y":1996,"e":"Jiggy Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Hasan Salaam","h":71.0,"c":"New York","r":"East","y":2002,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Mister V","h":70.0,"c":"Grenoble","r":"International","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Käärijä","h":67.0,"c":"Helsinki","r":"International","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Carl Brave","h":76.0,"c":"Rome","r":"International","y":2015,"e":"Blog Era","k":"Carl Brave x Franco126","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Bang Chan","h":68.0,"c":"Seoul","r":"International","y":2018,"e":"Streaming Era","k":"Stray Kids","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":2},{"n":"Lee Know","h":68.0,"c":"Gimpo","r":"International","y":2018,"e":"Streaming Era","k":"Stray Kids","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Hwasa","h":63.0,"c":"Jeonju","r":"International","y":2014,"e":"Blog Era","k":"Mamamoo","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Moonbyul","h":64.0,"c":"Bucheon","r":"International","y":2014,"e":"Blog Era","k":"Mamamoo","f":true,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Sho Sakurai","h":67.0,"c":"Tokyo","r":"International","y":1999,"e":"Jiggy Era","k":"Arashi","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":4},{"n":"Namewee","h":67.0,"c":"Muar","r":"International","y":2007,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Dharius","h":74.0,"c":"Monterrey","r":"International","y":2005,"e":"Mixtape Era","k":"Cartel de Santa","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Hungria Hip Hop","h":68.0,"c":"Brasília","r":"International","y":2011,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"Popek","h":72.0,"c":"Legnica","r":"International","y":2002,"e":"Mixtape Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":0},{"n":"Cheloo","h":74.0,"c":"Bucharest","r":"International","y":1996,"e":"Jiggy Era","k":"Paraziții","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":1},{"n":"Wegz","h":72.0,"c":"Alexandria","r":"International","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":3},{"n":"Mohamed Ramadan","h":71.0,"c":"Qena","r":"International","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":true,"wd":true,"d":false,"ci":7},{"n":"Zaramay","h":74.0,"c":"Buenos Aires","r":"International","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":7},{"n":"Jota Benz","h":76.0,"c":"Lima","r":"International","y":2016,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":6},{"n":"Rochy RD","h":70.0,"c":"Santo Domingo","r":"International","y":2015,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":true,"d":false,"ci":5},{"n":"Lil Jon","h":66.0,"c":"Atlanta","r":"South","y":1997,"e":"Jiggy Era","k":"East Side Boyz","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Pump","h":67.0,"c":"Miami","r":"South","y":2016,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Peep","h":73.0,"c":"Long Beach, N.Y.","r":"East","y":2015,"e":"Blog Era","k":"GothBoiClique","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Dicky","h":71.0,"c":"Philadelphia","r":"East","y":2013,"e":"Blog Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Lil Tecca","h":69.0,"c":"Queens","r":"East","y":2019,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":6},{"n":"Lil Tjay","h":70.0,"c":"The Bronx","r":"East","y":2018,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":7},{"n":"Lil Mama","h":61.0,"c":"Harlem","r":"East","y":2007,"e":"Mixtape Era","k":"","f":true,"a":false,"s":false,"wd":false,"d":false,"ci":4},{"n":"Lil Skies","h":69.0,"c":"Chambersburg","r":"East","y":2017,"e":"Streaming Era","k":"","f":false,"a":false,"s":false,"wd":false,"d":false,"ci":0}];
+DATA.forEach((d, i) => d.id = i);
+const BY = Object.fromEntries(DATA.map(d => [d.n, d]));
+const ERAS = ['Old School', 'Golden Age', 'Jiggy Era', 'Mixtape Era', 'Blog Era', 'Streaming Era'];
+const ERA_YEARS = {'Old School': 'to 1985', 'Golden Age': '1986–93', 'Jiggy Era': '1994–2001', 'Mixtape Era': '2002–09', 'Blog Era': '2010–15', 'Streaming Era': '2016 on'};
+// curated matchups: [title, names...]; '@crew:X' expands to a crew, '@name:regex' to every rapper whose name matches. The first is the front page.
+const MATCHUPS = [
+  ['Every Lil', '@name:^Lil\\b|^Bow Wow$'], ['Lil vs. Big', '@name:^(Lil|Big)\\b|^Bow Wow$'], ['Biggie vs. 2Pac', 'The Notorious B.I.G.', '2Pac'],
+  ['Jay-Z vs. Nas', 'Jay-Z', 'Nas'], ['Drake vs. Kendrick', 'Drake', 'Kendrick Lamar'],
+  ['Nicki vs. Cardi', 'Nicki Minaj', 'Cardi B'], ['N.W.A', 'Dr. Dre', 'Ice Cube', 'Eazy-E'], ['OutKast', 'André 3000', 'Big Boi'],
+  ['Eminem vs. Machine Gun Kelly', 'Eminem', 'Machine Gun Kelly'], ['Royce da 5′9″ vs. Eminem', 'Royce da 5\'9"', 'Eminem'], ['50 Cent vs. Ja Rule', '50 Cent', 'Ja Rule'],
+  ['Mobb Deep', 'Prodigy', 'Havoc'], ['A Tribe Called Quest', 'Q-Tip', 'Phife Dawg'], ['Migos', 'Quavo', 'Offset', 'Takeoff'],
+  ['Snoop & Dre', 'Snoop Dogg', 'Dr. Dre'], ['Watch the Throne', 'Jay-Z', 'Kanye West'], ['Lil’ Kim vs. Foxy Brown', 'Lil\' Kim', 'Foxy Brown'],
+  ['UGK', 'Bun B', 'Pimp C'], ['Fugees', 'Lauryn Hill', 'Wyclef Jean'], ['Black Star', 'Yasiin Bey (Mos Def)', 'Talib Kweli'],
+  ['Meek vs. Drake', 'Meek Mill', 'Drake'], ['Dipset', 'Cam\'ron', 'Juelz Santana', 'Jim Jones'], ['The LOX', 'Jadakiss', 'Styles P', 'Sheek Louch'],
+  ['Odd Future', 'Tyler, the Creator', 'Earl Sweatshirt'], ['Clipse & the Neptunes', 'Pusha T', 'Pharrell Williams'], ['Megan vs. Nicki', 'Megan Thee Stallion', 'Nicki Minaj'],
+  ['Geto Boys', 'Scarface', 'Bushwick Bill'], ['Shaq vs. Bushwick Bill', 'Shaquille O\'Neal', 'Bushwick Bill'], ['Wu-Tang Clan', '@crew:Wu-Tang Clan'],
+].map(([t, ...ns]) => [t, ns.flatMap(n => n.startsWith('@crew:') ? DATA.filter(d => d.k === n.slice(6)).map(d => d.n)
+  : n.startsWith('@name:') ? DATA.filter(d => !d.a && new RegExp(n.slice(6), 'i').test(d.n)).map(d => d.n) : [n]).filter(n => BY[n])]).filter(m => m[1].length > 1);
+const MODES = [['match', 'Matchups'], ['city', 'Same city'], ['crew', 'Same crew'], ['era', 'Same era'], ['find', 'Find anyone'], ['all', 'Everyone']];
+const $ = id => document.getElementById(id);
+const fmt = h => { const f = Math.floor(h / 12), i = h - f * 12; return `${f}′${i}″`; };
+const cm = h => Math.round(h * 2.54);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+const initials = n => n.replace(/\(.*\)/, '').replace(/^(The|Lil'?|Big|Young|DJ|MC|Dr\.)\s+/i, '').split(/[\s-]+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+const short = n => ({ 'The Notorious B.I.G.': 'Biggie', 'Yasiin Bey (Mos Def)': 'Yasiin', 'Shaquille O\'Neal': 'Shaq', 'Kendrick Lamar': 'Kendrick', 'Megan Thee Stallion': 'Megan', 'Tyler, the Creator': 'Tyler' })[n] || n;
+const rappers = () => DATA.filter(d => !d.a);
+const PAL = ['#ff48b0', '#0078bf', '#ffb511', '#00a95c', '#ff6c2f', '#765ba7', '#00838a', '#e45d50'];
+let TOP = -2, BOT = -2;
+const colr = d => d.you ? 'var(--ink)' : d.id === TOP ? 'var(--green)' : d.id === BOT ? 'var(--mag)' : 'var(--mid)';
+
+const S = { mode: 'match', m: 0, city: '', crew: '', era: '', find: [], hoops: false, you: 69, youOn: false };
+
+/* --- what's on stage --- */
+function lineup() {
+  let list = [], title = '', line = '';
+  if (S.mode === 'match') { const [t, ns] = MATCHUPS[S.m]; list = ns.map(n => BY[n]); title = t; }
+  else if (S.mode === 'city') { list = DATA.filter(d => d.c === S.city && (S.hoops || !d.a)); title = S.city ? `From ${S.city}` : ''; }
+  else if (S.mode === 'crew') { list = DATA.filter(d => d.k === S.crew); title = S.crew; }
+  else if (S.mode === 'era') { list = DATA.filter(d => d.e === S.era && (S.hoops || !d.a)); title = S.era ? `The ${S.era}, ${ERA_YEARS[S.era]}` : ''; }
+  else if (S.mode === 'find') { list = S.find.map(i => DATA[i]); title = list.length ? 'Your lineup' : 'Build your own'; }
+  else { list = DATA.filter(d => S.hoops || !d.a); title = 'Everyone, tallest to shortest'; }
+  list = list.slice().sort((a, b) => b.h - a.h || a.n.localeCompare(b.n));
+  if (S.mode === 'match' && title === 'Lil vs. Big') {
+    const lils = list.filter(d => /^Lil|^Bow Wow$/i.test(d.n)), bigs = list.filter(d => /^Big/i.test(d.n));
+    const tl = lils[0], sb = bigs[bigs.length - 1];
+    line = tl.h > sb.h ? `Not so little: ${tl.n} (${fmt(tl.h)}) stands over ${sb.n} (${fmt(sb.h)}).` : `The names hold: no Lil is taller than the shortest Big.`;
+  } else if (list.length >= 2) {
+    const t = list[0], s = list[list.length - 1], g = t.h - s.h;
+    line = list.length === 2 ? (g ? `${short(t.n)} has ${g}″ on ${short(s.n)}.` : `Dead level: both ${fmt(t.h)}.`)
+      : g ? `${short(t.n)} is the tallest at ${fmt(t.h)}; ${short(s.n)} the shortest at ${fmt(s.h)}. That’s a ${g}″ spread.` : `All ${fmt(t.h)}, every one of them.`;
+  } else if (S.mode === 'find') line = 'Search for anyone and add them, up to ten.';
+  else if (!list.length) line = 'Pick one above.';
+  else line = `${list[0].n} is the only one on file here.`;
+  return { list, title, line };
+}
+
+const MAXIN = 90;
+function render() {
+  const { list, title, line } = lineup();
+  TOP = list.length > 1 ? list[0].id : -2; BOT = list.length > 1 && list[0].h !== list[list.length - 1].h ? list[list.length - 1].id : -2;
+  $('title').textContent = title; $('line').textContent = line;
+  const shown = list.slice();
+  if (S.youOn) { const at = shown.findIndex(d => d.h <= S.you); shown.splice(at < 0 ? shown.length : at, 0, { n: 'You', h: S.you, id: -1, you: true }); }
+  const n = shown.length, avail = $('scroll').clientWidth - 90, thin = n > 24 || avail / n < 40;
+  const w = thin ? 26 : Math.max(46, Math.min(124, avail / Math.max(n, 2) - 12));
+  const P = Math.max(3.4, Math.min(5.4, (window.innerHeight - 300) / MAXIN));
+  const stage = $('stage'); stage.className = 'stage' + (thin ? ' thin' : w < 80 ? ' mid' : ''); stage.style.height = MAXIN * P + 'px';
+  stage.style.setProperty('--gap', thin ? '3px' : Math.max(8, Math.min(40, (avail - n * w) / Math.max(n, 1) * .6)) + 'px');
+  let lines = '', scale = '';
+  for (let i = 24; i < MAXIN; i += 2) { const y = (MAXIN - i) * P; lines += `<i class="${i % 12 === 0 ? 'ft' : ''}" style="top:${y}px"></i>`; if (i % 12 === 0) scale += `<span style="top:${y}px">${i / 12}′</span>`; }
+  $('scale').innerHTML = scale; $('scale').style.height = MAXIN * P + 'px';
+  stage.innerHTML = `<div class="lines">${lines}</div>` + (S.youOn ? `<div class="youline" style="top:${(MAXIN - S.you) * P}px"></div>` : '') +
+    (shown.map(d => {
+      const face = d.you ? '<div class="face">you</div>' : d.p ? `<div class="face" style="background-image:url(../img/${d.p}.webp)"></div>` : '';
+      return `<div class="fig${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}${d.ci === 2 ? ' lite' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--w:${w}px;--c:${colr(d)}">` +
+        `<div class="body" style="height:${(d.h * P).toFixed(1)}px">${face}<div class="vn">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>` +
+        `<div class="lab"><b>${fmt(d.h)}</b>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}${d.d ? '<span>disputed</span>' : ''}</div></div>`;
+    }).join('') || '<div class="empty">Nobody here yet.</div>');
+  $('note').textContent = thin ? 'Scroll sideways for everyone. Tap anyone for details.' : list.some(d => d.a) ? '* Athlete who released rap records.' : '';
+  $('nav').innerHTML = S.mode === 'match' ? `<button id="prev">← Previous</button><button id="next">Next matchup →</button>` : '';
+  if (S.mode === 'match') { $('prev').onclick = () => { S.m = (S.m - 1 + MATCHUPS.length) % MATCHUPS.length; render(); }; $('next').onclick = () => { S.m = (S.m + 1) % MATCHUPS.length; render(); }; }
+  $('scroll').scrollLeft = 0;
+  picker(); saveHash();
+}
+
+/* --- the one row of controls --- */
+function modes() {
+  $('modes').innerHTML = MODES.map(([k, l]) => `<button class="mode" data-k="${k}">${l}</button>`).join('') + '<button class="mode play" id="playBtn">Play: Who’s taller? →</button>';
+  $('modes').querySelectorAll('.mode[data-k]').forEach(b => b.onclick = () => { S.mode = b.dataset.k; seed(); render(); if (S.mode === 'find') setTimeout(() => $('q') && $('q').focus(), 0); });
+  $('playBtn').onclick = openGame;
+}
+function seed() {   // land each mode on something worth looking at
+  if (S.mode === 'city' && !S.city) S.city = 'Atlanta';
+  if (S.mode === 'crew' && !S.crew) S.crew = 'Wu-Tang Clan';
+  if (S.mode === 'era' && !S.era) S.era = 'Golden Age';
+}
+function counts(key, min, filt = d => !d.a) { const g = {}; DATA.filter(filt).forEach(d => { if (d[key]) g[d[key]] = (g[d[key]] || 0) + 1; }); return Object.entries(g).filter(([, n]) => n >= min).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])); }
+function picker() {
+  $('modes').querySelectorAll('.mode[data-k]').forEach(b => b.classList.toggle('on', b.dataset.k === S.mode));
+  const el = $('pick'), hoopBox = `<label><input type="checkbox" id="hoops"${S.hoops ? ' checked' : ''}> include athletes<span class="ast">*</span></label>`;
+  if (S.mode === 'match') el.innerHTML = `<select id="msel" aria-label="Matchup">${MATCHUPS.map(([t, ns], i) => `<option value="${i}"${i === S.m ? ' selected' : ''}>${esc(t)}${ns.length > 3 ? ` (${ns.length})` : ''}</option>`).join('')}</select><button class="chip" id="rnd">Surprise me</button>`;
+  else if (S.mode === 'city') el.innerHTML = `<select id="sel" aria-label="City">${counts('c', 2).map(([k, n]) => `<option value="${esc(k)}"${k === S.city ? ' selected' : ''}>${esc(k)} (${n})</option>`).join('')}</select>` + hoopBox;
+  else if (S.mode === 'crew') el.innerHTML = counts('k', 2, () => true).map(([k, n]) => `<button class="chip${k === S.crew ? ' on' : ''}" data-crew="${esc(k)}">${esc(k)} <small>${n}</small></button>`).join('');
+  else if (S.mode === 'era') el.innerHTML = ERAS.map(e => `<button class="chip${e === S.era ? ' on' : ''}" data-era="${e}">${e} <small>${ERA_YEARS[e]}</small></button>`).join('') + hoopBox;
+  else if (S.mode === 'find') el.innerHTML = `<input type="search" id="q" placeholder="Type a name, then Enter…" list="names" autocomplete="off"><datalist id="names">${DATA.map(d => `<option value="${esc(d.n)}">`).join('')}</datalist>` +
+    S.find.map(i => `<span class="chip on">${esc(DATA[i].n)}<button class="x" data-rm="${i}" aria-label="Remove">×</button></span>`).join('') + (S.find.length ? ' <button class="chip" id="clr">Clear</button>' : '');
+  else el.innerHTML = hoopBox;
+  el.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { S.m = +b.dataset.i; render(); });
+  el.querySelectorAll('[data-crew]').forEach(b => b.onclick = () => { S.crew = b.dataset.crew; render(); });
+  el.querySelectorAll('[data-era]').forEach(b => b.onclick = () => { S.era = b.dataset.era; render(); });
+  el.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { S.find = S.find.filter(i => i !== +b.dataset.rm); render(); });
+  if ($('sel')) $('sel').onchange = e => { S.city = e.target.value; render(); };
+  if ($('msel')) $('msel').onchange = e => { S.m = +e.target.value; render(); };
+  if ($('rnd')) $('rnd').onclick = () => { let i; do { i = (Math.random() * MATCHUPS.length) | 0; } while (i === S.m); S.m = i; render(); };
+  if ($('hoops')) $('hoops').onchange = e => { S.hoops = e.target.checked; render(); };
+  if ($('clr')) $('clr').onclick = () => { S.find = []; render(); };
+  if ($('q')) $('q').addEventListener('change', e => addFind(e.target.value));
+}
+function addFind(v) {
+  v = v.trim().toLowerCase(); if (!v) return;
+  const d = DATA.find(x => x.n.toLowerCase() === v) || DATA.find(x => x.n.toLowerCase().includes(v));
+  if (d && !S.find.includes(d.id)) S.find = [...S.find, d.id].slice(-10);
+  render(); setTimeout(() => $('q') && $('q').focus(), 0);
+}
+
+/* --- lower sections --- */
+function lower() {
+  const gaps = Object.values(DATA.reduce((g, d) => { if (d.k) (g[d.k] = g[d.k] || []).push(d); return g; }, {})).filter(a => a.length > 1)
+    .map(a => { const hi = a.reduce((x, d) => d.h > x.h ? d : x), lo = a.reduce((x, d) => d.h < x.h ? d : x); return [hi, lo, hi.h - lo.h]; }).sort((a, b) => b[2] - a[2]).slice(0, 8);
+  $('gaps').innerHTML = gaps.map(([hi, lo, g], i) => `<div class="row" data-i="${i}"><span><i class="dot" style="--c:${colr(hi)}"></i>${esc(short(hi.n))} &amp; ${esc(short(lo.n))} <span class="d">${esc(hi.k)}</span></span><span class="v">${g}″</span></div>`).join('');
+  $('gaps').querySelectorAll('.row').forEach(r => r.onclick = () => { const [hi, lo] = gaps[+r.dataset.i]; S.mode = 'find'; S.find = [hi.id, lo.id]; render(); toStage(); });
+  const R = rappers(), t = R.slice().sort((a, b) => b.h - a.h), s = R.slice().sort((a, b) => a.h - b.h);
+  const common = Object.entries(R.reduce((m, d) => (m[d.h] = (m[d.h] || 0) + 1, m), {})).sort((a, b) => b[1] - a[1])[0];
+  const rec = [['Tallest', t[0]], ['Shortest', s[0]], ['Tallest woman', t.find(d => d.f)], ['Shortest man', s.find(d => !d.f)]];
+  $('records').innerHTML = rec.map(([k, d]) => `<div class="row" data-id="${d.id}"><span><i class="dot" style="--c:${colr(d)}"></i>${k}: ${esc(d.n)}</span><span class="v">${fmt(d.h)}</span></div>`).join('') +
+    `<div class="row" id="common"><span>Most common height: ${common[1]} rappers</span><span class="v">${fmt(+common[0])}</span></div>`;
+  $('records').querySelectorAll('.row[data-id]').forEach(r => r.onclick = () => showCard(DATA[+r.dataset.id]));
+  $('common').onclick = () => { S.mode = 'find'; S.find = R.filter(d => d.h === +common[0]).slice(0, 10).map(d => d.id); render(); toStage(); };
+  twins();
+}
+function twins() {
+  const y = S.you, R = rappers(), same = R.filter(d => Math.abs(d.h - y) < .6), taller = R.filter(d => d.h > y).length;
+  $('youOut').textContent = fmt(y);
+  $('twins').innerHTML = `<p>Taller than <i>${R.length - taller - same.length}</i> rappers, shorter than <i>${taller}</i>.</p>` +
+    (same.length ? `<p>Eye to eye with ${same.slice(0, 10).map(d => `<span data-id="${d.id}">${esc(d.n)}</span>`).join(', ')}${same.length > 10 ? ` and ${same.length - 10} more` : ''}.</p>` : '<p>Nobody on file is exactly your height.</p>');
+  $('twins').querySelectorAll('span[data-id]').forEach(s => s.onclick = () => { S.mode = 'find'; S.find = same.slice(0, 9).map(d => d.id); setYou(true); render(); toStage(); });
+}
+function toStage() { window.scrollTo({ top: Math.max(0, $('title').getBoundingClientRect().top + scrollY - 20), behavior: 'smooth' }); }
+
+/* --- card --- */
+function closeCard() { $('card').classList.remove('show'); }
+function showCard(d) {
+  if (d.you) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>You</h3><div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm</small></div><p>Change it with the slider below.</p>`; }
+  else {
+    const R = rappers(), rank = R.filter(x => x.h > d.h).length + 1, tw = DATA.filter(x => Math.abs(x.h - d.h) < .6 && x !== d && !x.a);
+    const city = DATA.filter(x => x.c === d.c).length;
+    $('card').innerHTML = `<button class="x" aria-label="Close">×</button>${d.p ? `<div class="pic" style="background-image:url(../img/${d.p}.webp)"></div>` : ''}
+      <h3>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}</h3>
+      <div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm${d.a ? '' : ` · no. ${rank} of ${R.length}`}</small></div>
+      <p>${esc(d.c)} · debut ${d.y}${d.k ? ` · ${esc(d.k)}` : ''}</p>
+      <p class="small">${d.d ? 'Disputed. ' : ''}${d.wd ? 'Height from Wikidata.' : 'Commonly reported height.'}${d.a ? ' Athlete who released rap records.' : ''}</p>
+      <div class="acts">${city > 1 ? `<button class="chip" data-act="city">Same city</button>` : ''}${d.k ? `<button class="chip" data-act="crew">${esc(d.k)}</button>` : ''}
+      <button class="chip" data-act="era">${d.e}</button>${tw.length ? `<button class="chip" data-act="twins">Height twins (${tw.length})</button>` : ''}<button class="chip" data-act="add">Add to my lineup</button></div>
+      ${d.cr ? `<p class="credit">Portrait from a photo by ${esc(d.cr.a)}, <a href="${esc(d.cr.u)}" target="_blank" rel="noopener">${esc(d.cr.l)}, Wikimedia Commons</a>; halftone by this site.</p>` : ''}`;
+  }
+  $('card').style.setProperty('--c', colr(d));
+  $('card').classList.add('show');
+  $('card').querySelector('.x').onclick = closeCard;
+  $('card').querySelectorAll('[data-act]').forEach(b => b.onclick = () => {
+    const a = b.dataset.act;
+    if (a === 'city') { S.mode = 'city'; S.city = d.c; S.hoops = S.hoops || !!d.a; }
+    if (a === 'crew') { S.mode = 'crew'; S.crew = d.k; }
+    if (a === 'era') { S.mode = 'era'; S.era = d.e; S.hoops = S.hoops || !!d.a; }
+    if (a === 'twins') { S.mode = 'find'; S.find = [d.id, ...DATA.filter(x => Math.abs(x.h - d.h) < .6 && x !== d && !x.a).slice(0, 9).map(x => x.id)]; }
+    if (a === 'add') { const keep = S.mode === 'find' ? S.find : lineup().list.map(x => x.id); S.mode = 'find'; S.find = [...new Set([...keep, d.id])].slice(-10); }
+    closeCard(); render(); toStage();
+  });
+}
+$('stage').addEventListener('click', e => { const f = e.target.closest('.fig'); if (!f) return; const id = +f.dataset.id; showCard(id < 0 ? { you: true, h: S.you } : DATA[id]); });
+$('stage').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const f = e.target.closest('.fig'); if (f) { e.preventDefault(); f.click(); } } });
+function setYou(on) { S.youOn = on; $('youPanel').hidden = !on; $('youToggle').textContent = on ? 'Take me out' : 'Add yourself'; $('youToggle').classList.toggle('on', on); }
+$('you').oninput = e => { S.you = +e.target.value; twins(); if (S.youOn) render(); };
+$('youToggle').onclick = () => { setYou(!S.youOn); render(); if (S.youOn) toStage(); };
+let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(render, 150); });
+
+/* --- shareable URL --- */
+function saveHash() {
+  const p = new URLSearchParams();
+  if (S.mode === 'match') { if (S.m) p.set('m', MATCHUPS[S.m][0]); }
+  else { p.set('mode', S.mode); if (S.mode === 'city') p.set('city', S.city); if (S.mode === 'crew') p.set('crew', S.crew); if (S.mode === 'era') p.set('era', S.era);
+    if (S.mode === 'find' && S.find.length) p.set('who', S.find.map(i => DATA[i].n).join('|')); }
+  if (S.hoops) p.set('athletes', '1'); if (S.youOn) p.set('you', S.you);
+  history.replaceState(null, '', p.toString() ? '#' + p.toString() : location.pathname);
+}
+function loadHash() {
+  const p = new URLSearchParams(location.hash.slice(1));
+  const m = MATCHUPS.findIndex(x => x[0] === p.get('m')); if (m >= 0) S.m = m;
+  if (MODES.some(x => x[0] === p.get('mode'))) S.mode = p.get('mode');
+  S.city = p.get('city') || ''; S.crew = p.get('crew') || ''; S.era = ERAS.includes(p.get('era')) ? p.get('era') : '';
+  S.find = (p.get('who') || '').split('|').filter(n => BY[n]).map(n => BY[n].id);
+  S.hoops = p.get('athletes') === '1';
+  if (p.get('you')) { S.you = Math.min(90, Math.max(48, +p.get('you') || 69)); $('you').value = S.you; setYou(true); }
+  seed();
+}
+
+/* --- game --- */
+const G = { a: null, b: null, streak: 0, best: +(store.get('rhl-best') || 0), played: 0, done: false };
+const GH = 360, GMAX = 90, GP = (GH - 70) / GMAX;
+function gSide(id, d, reveal) {
+  $(id).style.setProperty('--c', colr(d));
+  $(id).innerHTML = `<div class="gh">${reveal ? fmt(d.h) : ''}</div><div class="gbody" style="height:${reveal ? d.h * GP : 66 * GP}px">` +
+    `<div class="gface" style="${d.p ? `background-image:url(../img/${d.p}.webp)` : ''}">${d.p ? '' : initials(d.n)}</div></div>`;
+}
+function gNew() {
+  const pool = rappers(), faces = pool.filter(d => d.p).length > 30;
+  let a, b, tries = 0;
+  do { a = pool[(Math.random() * pool.length) | 0]; b = pool[(Math.random() * pool.length) | 0]; tries++; }
+  while ((a === b || a.h === b.h || Math.abs(a.h - b.h) > (G.streak > 6 ? 2 : 5) || (faces && tries < 300 && !(a.p && b.p))) && tries < 600);
+  G.a = a; G.b = b; G.done = false;
+  $('gA').className = 'side'; $('gB').className = 'side'; gSide('gA', a, false); gSide('gB', b, false); $('gNext').hidden = true;
+  $('gAn').innerHTML = `${esc(a.n)}<small>${esc(a.c)}, ${a.y}</small>`; $('gBn').innerHTML = `${esc(b.n)}<small>${esc(b.c)}, ${b.y}</small>`;
+  $('gSub').textContent = 'Pick the taller rapper.';
+}
+function gPick(which) {
+  if (G.done) return; G.done = true; G.played++;
+  const me = which === 'a' ? G.a : G.b, other = which === 'a' ? G.b : G.a, ok = me.h >= other.h;
+  G.streak = ok ? G.streak + 1 : 0; if (G.streak > G.best) { G.best = G.streak; store.set('rhl-best', G.best); }
+  gSide('gA', G.a, true); gSide('gB', G.b, true); $(which === 'a' ? 'gA' : 'gB').classList.add(ok ? 'right' : 'wrong');
+  $('gSub').textContent = ok ? (G.streak >= 5 ? `${G.streak} in a row.` : `Right. ${short(me.n)} has ${me.h - other.h}″ on ${short(other.n)}.`) : `No. ${short(other.n)} is ${other.h - me.h}″ taller.`;
+  $('gStreak').textContent = G.streak; $('gBest').textContent = G.best; $('gPlayed').textContent = G.played;
+  $('gNext').hidden = false; $('gNext').focus();
+}
+function openGame() { closeCard(); $('game').classList.add('show'); $('gBest').textContent = G.best; gNew(); }
+$('gLines').innerHTML = [48, 60, 72, 84].map(i => `<i style="top:${GH - i * GP}px"></i>`).join('');
+$('gA').onclick = () => gPick('a'); $('gB').onclick = () => gPick('b'); $('gNext').onclick = gNew;
+$('gClose').onclick = () => $('game').classList.remove('show');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { $('game').classList.remove('show'); closeCard(); }
+  if ($('game').classList.contains('show')) { if (e.key === 'ArrowLeft') gPick('a'); if (e.key === 'ArrowRight') gPick('b'); if (e.key === 'Enter' && G.done) gNew(); }
+});
+
+$('nRap').textContent = rappers().length;
+modes(); loadHash(); lower(); render();
+</script>
+</body>
+</html>
