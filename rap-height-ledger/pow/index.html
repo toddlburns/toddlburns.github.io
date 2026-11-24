@@ -390,7 +390,7 @@ function picker() {
   else if (S.mode === 'city') el.innerHTML = `<select id="sel" aria-label="City">${counts('c', 5, d => general(d) && !d.a).map(([k, n]) => `<option value="${esc(k)}"${k === S.city ? ' selected' : ''}>${esc(k)} (${n})</option>`).join('')}</select>` + hoopBox;
   else if (S.mode === 'crew') el.innerHTML = counts('k', 4, () => true).filter(([k]) => worthIt(DATA.filter(d => d.k === k))).map(([k, n]) => `<button class="chip${k === S.crew ? ' on' : ''}" data-crew="${esc(k)}">${esc(k)} <small>${n}</small></button>`).join('');
   else if (S.mode === 'era') el.innerHTML = ERAS.map(e => `<button class="chip${e === S.era ? ' on' : ''}" data-era="${e}">${e} <small>${ERA_YEARS[e]}</small></button>`).join('') + hoopBox;
-  else if (S.mode === 'find') el.innerHTML = `<input type="search" id="q" placeholder="Type a name, then Enter…" list="names" autocomplete="off"><datalist id="names">${DATA.map(d => `<option value="${esc(d.n)}">`).join('')}</datalist>` +
+  else if (S.mode === 'find') el.innerHTML = `<input type="search" id="q" placeholder="Type a name, press Enter…" autocomplete="off" spellcheck="false"><span id="miss" class="note"></span>` +
     S.find.map(i => `<span class="chip on">${esc(DATA[i].n)}<button class="x" data-rm="${i}" aria-label="Remove">×</button></span>`).join('') + (S.find.length ? ' <button class="chip" id="clr">Clear</button>' : '');
   else el.innerHTML = hoopBox;
   el.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { S.m = +b.dataset.i; render(); });
@@ -402,13 +402,15 @@ function picker() {
   if ($('rnd')) $('rnd').onclick = () => { let i; do { i = (Math.random() * MATCHUPS.length) | 0; } while (i === S.m); S.m = i; render(); };
   if ($('hoops')) $('hoops').onchange = e => { S.hoops = e.target.checked; render(); };
   if ($('clr')) $('clr').onclick = () => { S.find = []; render(); };
-  if ($('q')) $('q').addEventListener('change', e => addFind(e.target.value));
+  if ($('q')) $('q').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addFind(e.target.value); } });
 }
 function addFind(v) {
-  v = v.trim().toLowerCase(); if (!v) return;
-  const d = DATA.find(x => x.n.toLowerCase() === v) || DATA.find(x => x.n.toLowerCase().includes(v));
+  const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\$/g, 's').replace(/[^a-z0-9]/g, '');
+  const q = norm(v); if (!q) return;
+  const d = DATA.find(x => norm(x.n) === q) || DATA.find(x => norm(x.n).startsWith(q)) || DATA.find(x => norm(x.n).includes(q)) || DATA.find(x => norm(short(x.n)).includes(q));
   if (d && !S.find.includes(d.id)) S.find = [...S.find, d.id].slice(-10);
-  render(); setTimeout(() => $('q') && $('q').focus(), 0);
+  render();
+  setTimeout(() => { if ($('q')) { $('q').focus(); if (!d) { $('q').value = v; $('miss').textContent = ` No one called “${v.trim()}” on file.`; } } }, 0);
 }
 
 /* --- lower sections --- */
