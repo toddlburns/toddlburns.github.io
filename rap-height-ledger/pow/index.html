@@ -107,7 +107,8 @@ h1{margin:14px 0 0;font-weight:400;font-size:clamp(40px,6.6vw,82px);line-height:
 .card .x{position:absolute;right:10px;top:6px;border:0;background:none;font-size:26px;cursor:pointer;line-height:1}
 .card .acts{clear:both;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;border-top:1px solid var(--hair);padding-top:10px}
 .card .acts .chip{font-size:15px}
-.card .credit,.card .small{font-size:12px;color:var(--dim)}
+.card .credit,.card .small{font-size:11px;color:var(--dim);clear:both;margin-top:8px}
+.card .why{font-size:15px;font-style:italic;border-left:3px solid var(--c,var(--ink));padding-left:10px;margin-top:8px}
 
 /* lower */
 .lower{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px 44px;padding:90px 0 30px}
@@ -443,18 +444,12 @@ function showCard(d) {
   if (!d.you && !known(d)) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>${esc(d.n)}</h3><div class="ht">? <small>height unknown</small></div><p>${esc(d.c)}${d.k ? ` · ${esc(d.k)}` : ''}</p><p class="small">Nobody has published a credible height for ${esc(short(d.n))}. Know it? <a href="/contact.html">Tell me.</a></p>`; }
   else if (d.you) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>You</h3><div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm</small></div><p>Change it with the slider below.</p>`; }
   else {
-    const R = rappers(), rank = R.filter(x => x.h > d.h).length + 1, tw = DATA.filter(x => Math.abs(x.h - d.h) < .6 && x !== d && !x.a);
-    const city = DATA.filter(x => x.c === d.c && general(x) && !x.a).length >= 5 ? 2 : 0;
-    const crewBtn = d.k && DATA.filter(x => x.k === d.k).length >= 4;
     $('card').innerHTML = `<button class="x" aria-label="Close">×</button>${d.p ? `<div class="pic" style="background-image:url(../img/${d.p}.webp)"></div>` : ''}
       <h3>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}</h3>
-      <div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm${d.a ? '' : ` · no. ${rank} of ${R.length}`}</small></div>
-      <p>${d.hood ? `${esc(d.hood)}, ` : ''}${esc(d.c)} · debut ${d.y}${d.k ? ` · ${esc(d.k)}` : ''}</p>
-      ${d.why ? `<p><b>Disputed: ${fmt(d.lo)} to ${fmt(d.hi)}.</b> ${esc(d.why)}</p>` : ''}
-      <p class="small">${d.d && !d.why ? 'Disputed. ' : ''}${d.wd ? 'Height from Wikidata.' : 'Commonly reported height.'}${d.a ? ' Athlete who released rap records.' : ''}</p>
-      <div class="acts">${city > 1 ? `<button class="chip" data-act="city">Same city</button>` : ''}${crewBtn ? `<button class="chip" data-act="crew">${esc(d.k)}</button>` : ''}
-      <button class="chip" data-act="era">${d.e}</button>${tw.length ? `<button class="chip" data-act="twins">Height twins (${tw.length})</button>` : ''}<button class="chip" data-act="add">Add to my lineup</button></div>
-      ${d.cr ? `<p class="credit">Portrait from a photo by ${esc(d.cr.a)}, <a href="${esc(d.cr.u)}" target="_blank" rel="noopener">${esc(d.cr.l)}, Wikimedia Commons</a>; halftone by this site.</p>` : ''}`;
+      <div class="ht">${fmt(d.h)}${d.lo ? '?' : ''}</div>
+      <p>${d.hood ? `${esc(d.hood)}, ` : ''}${esc(d.c)}</p>
+      ${d.why ? `<p class="why">${esc(d.why)}</p>` : ''}
+      ${d.cr ? `<p class="credit">Photo: ${esc(d.cr.a)}, <a href="${esc(d.cr.u)}" target="_blank" rel="noopener">${esc(d.cr.l)}</a></p>` : ''}`;
   }
   $('card').style.setProperty('--c', colr(d));
   $('card').classList.add('show');
