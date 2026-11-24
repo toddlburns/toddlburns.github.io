@@ -385,11 +385,11 @@ function lineup() {
   } else if (kl.length >= 2) {
     const t = kl[0], s = kl[kl.length - 1], g = t.h - s.h;
     line = kl.length === 2 ? (g ? `${short(t.n)} has ${g}″ on ${short(s.n)}.` : `Dead level: both ${fmt(t.h)}.`)
-      : g ? `${tops(kl, t)} the tallest at ${fmt(t.h)}; ${tops(kl.slice().reverse(), s, true)} the shortest at ${fmt(s.h)}. That’s ${/^(8|11|18)$/.test(String(g)) ? 'an' : 'a'} ${g}″ spread.` : `All ${fmt(t.h)}, every one of them.`;
+      : '';   // groups speak for themselves (Todd: no tallest/shortest/spread line)
   } else if (S.mode === 'find') line = 'Search for anyone and add them, up to ten.';
   else if (!list.length) line = 'Pick one above.';
   else line = `${list[0].n} is the only one on file here.`;
-  if (unk.length) line += ` Nobody has published a height for ${unk.map(d => short(d.n)).join(unk.length > 2 ? ', ' : ' or ').replace(/, ([^,]*)$/, ' or $1')}.`;
+  if (unk.length) line += `${line ? ' ' : ''}Nobody has published a height for ${unk.map(d => short(d.n)).join(unk.length > 2 ? ', ' : ' or ').replace(/, ([^,]*)$/, ' or $1')}.`;
   return { list, title, line };
 }
 
