@@ -304,8 +304,8 @@ const initials = n => n.replace(/\(.*\)/, '').replace(/^(The|Lil'?|Big|Young|DJ|
 const short = n => ({ 'The Notorious B.I.G.': 'Biggie', 'Yasiin Bey (Mos Def)': 'Yasiin', 'Shaquille O\'Neal': 'Shaq', 'Kendrick Lamar': 'Kendrick', 'Megan Thee Stallion': 'Megan', 'Tyler, the Creator': 'Tyler' })[n] || n;
 const rappers = () => DATA.filter(d => !d.a && !d.co && known(d));
 const PAL = ['#ff48b0', '#0078bf', '#ffb511', '#00a95c', '#ff6c2f', '#765ba7', '#00838a', '#e45d50'];
-let TOP = -2, BOT = -2;
-const colr = d => d.you ? 'var(--ink)' : d.id === TOP ? 'var(--green)' : d.id === BOT ? 'var(--mag)' : 'var(--mid)';
+let TOP = null, BOT = null;
+const colr = d => d.you ? 'var(--ink)' : TOP != null && d.h === TOP ? 'var(--green)' : BOT != null && d.h === BOT ? 'var(--mag)' : 'var(--mid)';
 
 const S = { mode: 'match', m: 0, city: '', crew: '', era: '', find: [], hoops: false, you: 69, youOn: false };
 
@@ -343,7 +343,7 @@ function tops(sorted, first, lower) {   // name ties: "Taco and Tyler are" / "Ta
 const MAXIN = 90;
 function render() {
   const { list, title, line } = lineup();
-  const KL = list.filter(x => x.h != null); TOP = KL.length > 1 ? KL[0].id : -2; BOT = KL.length > 1 && KL[0].h !== KL[KL.length - 1].h ? KL[KL.length - 1].id : -2;
+  const KL = list.filter(x => x.h != null); TOP = KL.length > 1 ? KL[0].h : null; BOT = KL.length > 1 && KL[0].h !== KL[KL.length - 1].h ? KL[KL.length - 1].h : null;
   $('title').textContent = title; $('line').textContent = line;
   const shown = list.slice();
   if (S.youOn) { const at = shown.findIndex(d => !known(d) || d.h <= S.you); shown.splice(at < 0 ? shown.length : at, 0, { n: 'You', h: S.you, id: -1, you: true }); }
