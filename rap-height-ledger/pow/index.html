@@ -178,6 +178,9 @@ footer p{max-width:62em;margin:0 0 6px}
   .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--ink)}
   .mbar button{flex:1;font-size:18px;padding:10px 8px;border:1px solid var(--ink);background:none;cursor:pointer}
   .mbar #mBrowse{flex:0 0 38%;background:var(--ink);color:var(--paper)}
+  .card{bottom:calc(84px + env(safe-area-inset-bottom));max-height:calc(100vh - 84px - env(safe-area-inset-bottom) - 24px);overflow-y:auto;z-index:46}
+  .card.show{transform:translateX(-50%) translateY(0)}
+  .card:not(.show){transform:translateX(-50%) translateY(calc(100% + 120px))}
   .sheet{display:block;position:fixed;inset:0;z-index:55;background:var(--paper);overflow-y:auto;padding:0 16px 40px}
   .sheet[hidden]{display:none}
   .sheethead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 0 10px;background:var(--paper);border-bottom:1px solid var(--ink);z-index:2}
