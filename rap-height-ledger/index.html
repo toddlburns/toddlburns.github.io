@@ -158,10 +158,12 @@ footer p{max-width:62em;margin:0 0 6px}
 
   <div class="lower">
     <section class="sec">
-      <h3>How tall are you?</h3><p class="sub">Drag to your height.</p>
-      <div class="you-box"><input type="range" id="you" min="48" max="90" step="1" value="69" aria-label="Your height"><output id="youOut">5′9″</output></div>
-      <button class="btn" id="youToggle">Stand me next to them</button>
-      <div class="twins" id="twins"></div>
+      <h3>How tall are you?</h3><p class="sub">See where you’d stand.</p>
+      <button class="btn" id="youToggle">Add yourself</button>
+      <div id="youPanel" hidden>
+        <div class="you-box"><input type="range" id="you" min="48" max="90" step="1" value="69" aria-label="Your height"><output id="youOut">5′9″</output></div>
+        <div class="twins" id="twins"></div>
+      </div>
     </section>
     <section class="sec"><h3>Odd couples</h3><p class="sub">The biggest height gaps inside one crew.</p><div id="gaps"></div></section>
     <section class="sec"><h3>Records</h3><p class="sub">Rappers only; athletes don’t count.</p><div id="records"></div></section>
@@ -195,7 +197,7 @@ const ERAS = ['Old School', 'Golden Age', 'Jiggy Era', 'Mixtape Era', 'Blog Era'
 const ERA_YEARS = {'Old School': 'to 1985', 'Golden Age': '1986–93', 'Jiggy Era': '1994–2001', 'Mixtape Era': '2002–09', 'Blog Era': '2010–15', 'Streaming Era': '2016 on'};
 // curated matchups: [title, names...]; '@crew:X' expands to a crew, '@name:regex' to every rapper whose name matches. The first is the front page.
 const MATCHUPS = [
-  ['Biggie vs. 2Pac', 'The Notorious B.I.G.', '2Pac'], ['Every Lil', '@name:^Lil\\b|^Bow Wow$'], ['Lil vs. Big', '@name:^(Lil|Big)\\b|^Bow Wow$'],
+  ['Every Lil', '@name:^Lil\\b|^Bow Wow$'], ['Lil vs. Big', '@name:^(Lil|Big)\\b|^Bow Wow$'], ['Biggie vs. 2Pac', 'The Notorious B.I.G.', '2Pac'],
   ['Jay-Z vs. Nas', 'Jay-Z', 'Nas'], ['Drake vs. Kendrick', 'Drake', 'Kendrick Lamar'],
   ['Nicki vs. Cardi', 'Nicki Minaj', 'Cardi B'], ['N.W.A', 'Dr. Dre', 'Ice Cube', 'Eazy-E'], ['OutKast', 'André 3000', 'Big Boi'],
   ['Eminem vs. Machine Gun Kelly', 'Eminem', 'Machine Gun Kelly'], ['Royce da 5′9″ vs. Eminem', 'Royce da 5\'9"', 'Eminem'], ['50 Cent vs. Ja Rule', '50 Cent', 'Ja Rule'],
@@ -365,7 +367,7 @@ function showCard(d) {
 }
 $('stage').addEventListener('click', e => { const f = e.target.closest('.fig'); if (!f) return; const id = +f.dataset.id; showCard(id < 0 ? { you: true, h: S.you } : DATA[id]); });
 $('stage').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const f = e.target.closest('.fig'); if (f) { e.preventDefault(); f.click(); } } });
-function setYou(on) { S.youOn = on; $('youToggle').textContent = on ? 'Step out of the lineup' : 'Stand me next to them'; $('youToggle').classList.toggle('on', on); }
+function setYou(on) { S.youOn = on; $('youPanel').hidden = !on; $('youToggle').textContent = on ? 'Take me out' : 'Add yourself'; $('youToggle').classList.toggle('on', on); }
 $('you').oninput = e => { S.you = +e.target.value; twins(); if (S.youOn) render(); };
 $('youToggle').onclick = () => { setYou(!S.youOn); render(); if (S.youOn) toStage(); };
 let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(render, 150); });
