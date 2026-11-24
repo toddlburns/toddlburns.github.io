@@ -33,7 +33,7 @@ h1{margin:14px 0 0;font-weight:400;font-size:clamp(40px,6.6vw,82px);line-height:
 .mode:hover{border-bottom-color:var(--hair)}
 .mode.on{border-bottom-color:var(--pink);border-bottom-width:3px}
 .mode.play{margin-left:auto;color:var(--accent)}
-@media (max-width:700px){.modes{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.modes::-webkit-scrollbar{display:none}.mode.play{margin-left:0}}
+@media (max-width:700px){.modes{gap:4px 14px}.mode{font-size:16px}.mode.play{margin-left:0;flex-basis:100%;text-align:left}}
 .pick{display:flex;flex-wrap:wrap;gap:6px 6px;align-items:center;padding:12px 0 4px;min-height:48px}
 .chip{border:1px solid var(--ink);background:none;padding:2px 11px;cursor:pointer;font-size:16px;white-space:nowrap;border-radius:999px}
 .chip:hover,.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
@@ -92,6 +92,21 @@ h1{margin:14px 0 0;font-weight:400;font-size:clamp(40px,6.6vw,82px);line-height:
 .labspace{height:100px}
 .stage.thin + .labspace{height:10px}
 .ast{color:var(--hoop);font-style:normal;font-weight:700}
+/* phone: the chart turns sideways, one row per rapper */
+.rows{margin-top:6px}
+.raxis{position:relative;height:18px;margin-left:56px;font-size:12px;font-style:italic;color:var(--dim)}
+.raxis span{position:absolute;transform:translateX(-50%)}
+.hrow{display:grid;grid-template-columns:46px minmax(0,1fr);gap:0 10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--hair);cursor:pointer}
+.hface{width:46px;height:46px;border-radius:50%;background:var(--paper2) center/cover no-repeat;box-shadow:0 0 0 3px var(--c,var(--col))}
+.hname{display:flex;align-items:baseline;gap:8px;font-size:16px;line-height:1.15;margin-bottom:4px}
+.hname b{font-weight:400;font-style:italic;font-size:19px;white-space:nowrap}
+.hname small{color:var(--dim);font-size:12px}
+.htrack{position:relative;height:16px;background:linear-gradient(90deg,transparent calc(22.2% - 1px),var(--hair) 0 22.2%,transparent 0 calc(44.4% - 1px),var(--hair) 0 44.4%,transparent 0 calc(66.6% - 1px),var(--hair) 0 66.6%,transparent 0 calc(88.8% - 1px),var(--hair) 0 88.8%,transparent 0)}
+.hbar{position:absolute;left:0;top:0;bottom:0;background:var(--c,var(--col));border-radius:0 8px 8px 0}
+.hrow.hoop .hbar{background:repeating-linear-gradient(90deg,var(--c) 0 6px,rgba(255,255,255,.4) 6px 8px)}
+.hrow.unk .hbar{background:none;border:2px dashed var(--dim);width:66%}
+.hrow.you .hbar{background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 7px)}
+.hghost{position:absolute;top:-4px;bottom:-4px;border:2px dashed var(--ink);border-radius:3px}
 .empty{position:absolute;left:0;right:0;top:40%;text-align:center;font-size:22px;font-style:italic}
 .note{font-size:13px;color:var(--dim);font-style:italic;padding-top:6px;min-height:24px}
 
@@ -192,6 +207,13 @@ h1 em{font-style:normal;color:var(--green)}
 .fig:nth-child(odd) .lab b{transform:rotate(2deg)}
 .stage.mid .fig .lab b{font-size:17px}
 .fig.unk .body{border-color:var(--dim)!important;filter:none}
+.hbar{box-shadow:0 0 0 3px var(--orange);filter:url(#rough)}
+.hface{box-shadow:0 0 0 3px var(--orange)}
+.hname b{font-family:var(--disp);font-style:normal;font-size:20px;color:#171717;background:var(--ink);padding:1px 6px 0;transform:rotate(-2deg);display:inline-block}
+.hrow.unk .hbar{box-shadow:none;filter:none}
+.hghost{border-color:var(--ink)}
+.raxis span{background:var(--paper)}
+@media (max-width:700px){h1{font-size:clamp(40px,14vw,92px)}.mode{font-size:17px;padding:2px 6px}}
 .fig.you .body{background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 8px);outline:2px solid var(--ink);box-shadow:none}
 .stage.thin .fig .vn{color:var(--ink)}
 .note,.card .credit,.card .small{color:var(--dim)}
@@ -233,6 +255,7 @@ footer{color:var(--dim);border-top-color:var(--ink)}
     <div class="scale" id="scale"></div>
     <div class="stagescroll" id="scroll"><div class="stage" id="stage"></div><div class="labspace"></div></div>
   </div>
+  <div class="rows" id="rows" hidden></div>
   <div class="note" id="note"></div>
 
   <div class="lower">
@@ -347,7 +370,10 @@ function render() {
   $('title').textContent = title; $('line').textContent = line;
   const shown = list.slice();
   if (S.youOn) { const at = shown.findIndex(d => !known(d) || d.h <= S.you); shown.splice(at < 0 ? shown.length : at, 0, { n: 'You', h: S.you, id: -1, you: true }); }
-  const n = shown.length, avail = $('scroll').clientWidth - 90, thin = n > 24 || avail / n < 40;
+  const n = shown.length, phone = window.innerWidth < 640 && n > 3;
+  $('rows').hidden = !phone; document.querySelector('.stagewrap').hidden = phone;
+  if (phone) { rows(shown, list); finish(list); return; }
+  const avail = $('scroll').clientWidth - 90, thin = n > 24 || avail / n < 40;
   const w = thin ? 26 : Math.max(46, Math.min(124, avail / Math.max(n, 2) - 12));
   const P = Math.max(3.4, Math.min(5.4, (window.innerHeight - 300) / MAXIN));
   const stage = $('stage'); stage.className = 'stage' + (thin ? ' thin' : w < 80 ? ' mid' : ''); stage.style.height = MAXIN * P + 'px';
@@ -366,9 +392,24 @@ function render() {
         `<div class="lab"><b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}${d.lo ? `<span class="rng">${fmt(d.lo)}–${fmt(d.hi)}</span>` : d.d ? '<span>disputed</span>' : ''}</div></div>`;
     }).join('') || '<div class="empty">Nobody here yet.</div>');
   $('note').textContent = thin ? 'Scroll sideways for everyone. Tap anyone for details.' : list.some(d => d.a) ? '* Athlete who released rap records.' : '';
+  $('scroll').scrollLeft = 0;
+  finish(list);
+}
+const AX0 = 36, AX1 = 90, pct = h => Math.max(2, (h - AX0) / (AX1 - AX0) * 100);   // phone rows run from 3′ to 7′6″
+function rows(shown, list) {
+  const axis = [48, 60, 72, 84].map(i => `<span style="left:${pct(i)}%">${i / 12}′</span>`).join('');
+  $('rows').innerHTML = `<div class="raxis">${axis}</div>` + shown.map(d => {
+    if (!known(d)) return `<div class="hrow unk" data-id="${d.id}"><div class="hface"></div><div><div class="hname">${esc(d.n)} <b>?</b><small>height unknown</small></div><div class="htrack"><div class="hbar"></div></div></div></div>`;
+    const face = d.you ? '' : d.p ? `background-image:url(../img/${d.p}.webp)` : '';
+    return `<div class="hrow${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}" data-id="${d.id}" style="--c:${colr(d)}"><div class="hface" style="${face}"></div><div>` +
+      `<div class="hname">${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''} <b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${d.lo ? `<small>${fmt(d.lo)}–${fmt(d.hi)}</small>` : ''}</div>` +
+      `<div class="htrack"><div class="hbar" style="width:${pct(d.h)}%"></div>${d.lo ? `<div class="hghost" style="left:${pct(d.lo)}%;width:${pct(d.hi) - pct(d.lo)}%"></div>` : ''}</div></div></div>`;
+  }).join('') || '<p class="note">Nobody here yet.</p>';
+  $('note').textContent = list.some(d => d.a) ? '* Athlete who released rap records. Tap anyone for details.' : 'Tap anyone for details.';
+}
+function finish(list) {
   $('nav').innerHTML = S.mode === 'match' ? `<button id="prev">← Previous</button><button id="next">Next matchup →</button>` : '';
   if (S.mode === 'match') { $('prev').onclick = () => { S.m = (S.m - 1 + MATCHUPS.length) % MATCHUPS.length; render(); }; $('next').onclick = () => { S.m = (S.m + 1) % MATCHUPS.length; render(); }; }
-  $('scroll').scrollLeft = 0;
   picker(); saveHash();
 }
 
@@ -464,6 +505,7 @@ function showCard(d) {
     closeCard(); render(); toStage();
   });
 }
+$('rows').addEventListener('click', e => { const r = e.target.closest('.hrow'); if (!r) return; const id = +r.dataset.id; showCard(id < 0 ? { you: true, h: S.you } : DATA[id]); });
 $('stage').addEventListener('click', e => { const f = e.target.closest('.fig'); if (!f) return; const id = +f.dataset.id; showCard(id < 0 ? { you: true, h: S.you } : DATA[id]); });
 $('stage').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const f = e.target.closest('.fig'); if (f) { e.preventDefault(); f.click(); } } });
 function setYou(on) { S.youOn = on; $('youPanel').hidden = !on; $('youToggle').textContent = on ? 'Take me out' : 'Add yourself'; $('youToggle').classList.toggle('on', on); }
