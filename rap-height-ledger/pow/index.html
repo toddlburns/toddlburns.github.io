@@ -164,6 +164,31 @@ footer p{max-width:62em;margin:0 0 6px}
 .score b{font-size:26px;font-weight:400;font-style:italic;color:var(--ink)}
 .gbox .x{position:absolute;right:0;top:0;border:0;background:none;font-size:32px;cursor:pointer}
 #gNext{margin-top:12px}
+/* phone: one pinned bar, everything else behind Browse */
+.mbar,.sheet{display:none}
+.about summary{cursor:pointer;color:var(--dim);font-style:italic;list-style:none}
+.about summary::-webkit-details-marker{display:none}
+.about[open] summary{display:none}
+@media (max-width:640px){
+  body{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  .top{font-size:11px}
+  .dek{font-size:16px;margin-top:6px}
+  .nav{display:none}
+  .stagehead{padding-top:10px}
+  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--ink)}
+  .mbar button{flex:1;font-size:18px;padding:10px 8px;border:1px solid var(--ink);background:none;cursor:pointer}
+  .mbar #mBrowse{flex:0 0 38%;background:var(--ink);color:var(--paper)}
+  .sheet{display:block;position:fixed;inset:0;z-index:55;background:var(--paper);overflow-y:auto;padding:0 16px 40px}
+  .sheet[hidden]{display:none}
+  .sheethead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 0 10px;background:var(--paper);border-bottom:1px solid var(--ink);z-index:2}
+  .sheethead b{font-size:22px;font-weight:400}
+  .sheethead button{border:0;background:none;font-size:18px;cursor:pointer;color:inherit;text-decoration:underline}
+  .sheet .modes{flex-direction:column;flex-wrap:nowrap;gap:0;border:0;margin:0;padding:6px 0}
+  .sheet .mode{text-align:left;font-size:22px;padding:10px 0;border-bottom:1px solid var(--hair)}
+  .sheet .mode.play{margin:0}
+  .sheet .pick{padding:10px 0 16px;border-bottom:1px solid var(--hair)}
+  .sheet .lower{padding:24px 0 0;grid-template-columns:1fr;gap:28px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"><style>
@@ -213,6 +238,12 @@ h1 em{font-style:normal;color:var(--green)}
 .hrow.unk .hbar{box-shadow:none;filter:none}
 .hghost{border-color:var(--ink)}
 .raxis span{background:var(--paper)}
+.mbar{border-top-color:var(--ink)}
+.mbar button{font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;color:var(--ink);border-color:var(--ink)}
+.mbar #mBrowse{background:var(--mag);border-color:var(--mag);color:var(--ink)}
+.sheethead b{font-family:var(--disp);text-transform:uppercase;color:var(--green)}
+.sheet .mode{font-size:24px}
+@media (max-width:640px){h1{font-size:clamp(38px,12vw,64px)!important;box-shadow:0 0 0 5px var(--orange)}.modes{border-top:0}}
 @media (max-width:700px){h1{font-size:clamp(40px,14vw,92px)}.mode{font-size:17px;padding:2px 6px}}
 .fig.you .body{background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 8px);outline:2px solid var(--ink);box-shadow:none}
 .stage.thin .fig .vn{color:var(--ink)}
@@ -259,6 +290,8 @@ footer{color:var(--dim);border-top-color:var(--ink)}
   <div class="note" id="note"></div>
 
   <div class="lower">
+    <section class="sec" style="--c:var(--blue)"><h3>Odd couples</h3><p class="sub">The biggest height gaps inside one crew.</p><div id="gaps"></div></section>
+    <section class="sec" style="--c:var(--yellow)"><h3>Records</h3><p class="sub">Rappers only; athletes don’t count.</p><div id="records"></div></section>
     <section class="sec" style="--c:var(--pink)">
       <h3>How tall are you?</h3><p class="sub">See where you’d stand.</p>
       <button class="btn" id="youToggle">Add yourself</button>
@@ -267,15 +300,18 @@ footer{color:var(--dim);border-top-color:var(--ink)}
         <div class="twins" id="twins"></div>
       </div>
     </section>
-    <section class="sec" style="--c:var(--blue)"><h3>Odd couples</h3><p class="sub">The biggest height gaps inside one crew.</p><div id="gaps"></div></section>
-    <section class="sec" style="--c:var(--yellow)"><h3>Records</h3><p class="sub">Rappers only; athletes don’t count.</p><div id="records"></div></section>
   </div>
 
   <footer>
+    <details class="about" open><summary>About these heights</summary>
     <p>Every height here is a tall tale until proven otherwise. They are as reported, not measured: shoes, posture and the odd generous lyric all play a part, so read every figure as ± an inch or two. Figures marked Wikidata come from <a href="https://www.wikidata.org/">Wikidata</a>; the rest are the commonly reported ones. Long-running arguments (Drake, 2Pac, Biggie, Lil Wayne, RZA) are marked disputed.</p>
     <p><span class="ast">*</span> Athletes who put out rap records (Shaq, Kobe, Iverson and co.) wear pinstripes and an asterisk, and are left out of the records. Portraits are halftones made from freely licensed photos on Wikimedia Commons; each photographer is credited on the rapper’s card. City is roughly where they rep; era is set by debut year. Spotted a wrong one? <a href="/contact.html">Tell me.</a></p>
+    </details>
   </footer>
 </main>
+
+<div class="mbar" id="mbar"><button id="mNext">Next matchup →</button><button id="mBrowse">Browse</button></div>
+<div class="sheet" id="sheet" hidden><div class="sheethead"><b>Browse</b><button id="sheetX">Done</button></div><div id="sheetBody"></div></div>
 
 <div class="card" id="card" role="dialog" aria-live="polite"></div>
 
@@ -363,6 +399,7 @@ function tops(sorted, first, lower) {   // name ties: "Taco and Tyler are" / "Ta
   const who = tied.length === 1 ? tied[0] : tied.length === 2 ? tied.join(' and ') : `${tied.slice(0, -1).join(', ')} and ${tied[tied.length - 1]}`;
   return `${who} ${tied.length > 1 ? 'are' : 'is'}`.replace(/ is$/, lower ? '' : ' is').replace(/ are$/, lower ? ' are' : ' are');
 }
+const MQ = matchMedia('(max-width:640px)');
 const MAXIN = 90;
 function render() {
   const { list, title, line } = lineup();
@@ -411,6 +448,8 @@ function finish(list) {
   $('nav').innerHTML = S.mode === 'match' ? `<button id="prev">← Previous</button><button id="next">Next matchup →</button>` : '';
   if (S.mode === 'match') { $('prev').onclick = () => { S.m = (S.m - 1 + MATCHUPS.length) % MATCHUPS.length; render(); }; $('next').onclick = () => { S.m = (S.m + 1) % MATCHUPS.length; render(); }; }
   picker(); saveHash();
+  $('mNext').textContent = S.mode === 'match' ? 'Next matchup →' : '← Matchups';
+  if (MQ.matches) { const on = $('modes').querySelector('.mode.on'); if (on) on.after($('pick')); }   // accordion: the control opens under its section
 }
 
 /* --- the one row of controls --- */
@@ -570,7 +609,24 @@ document.addEventListener('keydown', e => {
 });
 
 $('nRap').textContent = rappers().length;
-modes(); loadHash(); lower(); render();
+/* --- phone layout: move the controls into the Browse sheet --- */
+function layout() {
+  const lower = document.querySelector('.lower');
+  if (MQ.matches) { $('sheetBody').append($('modes'), lower); const on = $('modes').querySelector('.mode.on'); (on || $('modes')).after($('pick')); document.querySelector('.about').removeAttribute('open'); }
+  else { document.querySelector('header').append($('modes'), $('pick')); $('note').after(lower); document.querySelector('.about').setAttribute('open', ''); closeSheet(); }
+}
+function openSheet() { $('sheet').hidden = false; document.body.style.overflow = 'hidden'; }
+function closeSheet() { $('sheet').hidden = true; document.body.style.overflow = ''; }
+function closeSoon() { setTimeout(() => { closeSheet(); toStage(); }, 60); }
+$('mBrowse').onclick = openSheet; $('sheetX').onclick = closeSheet;
+$('mNext').onclick = () => { if (S.mode !== 'match') { S.mode = 'match'; } else S.m = (S.m + 1) % MATCHUPS.length; render(); toStage(); };
+$('sheet').addEventListener('click', e => {
+  if (e.target.closest('[data-crew],[data-era],#rnd,.mode[data-k="all"],#gaps .row,#records .row,#common,#playBtn')) closeSoon();
+  if (e.target.closest('#youToggle') && !S.youOn) closeSoon();
+});
+$('sheet').addEventListener('change', e => { if (e.target.matches('#msel,#sel')) closeSoon(); });
+MQ.addEventListener('change', layout);
+modes(); loadHash(); lower(); layout(); render();
 </script>
 </body>
 </html>
