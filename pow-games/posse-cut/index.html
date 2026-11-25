@@ -38,9 +38,8 @@
 <div class="wrap">
   <header class="mast">
     <div><h1><a href="./">Posse Cut</a></h1></div>
-    <nav aria-label="Pages"><a href="./" aria-current="page">Today</a><a href="archive.html">Archive</a><a href="about.html">About</a></nav>
   </header>
-  <div class="strip"><span id="pnum">Posse Cut</span><span id="pdate"></span></div>
+  <div class="strip"><span id="pnum">Posse Cut</span><nav class="pnav" aria-label="Pages"><a href="about.html">About</a><a href="archive.html">Archive</a><a href="./" class="today">Today</a></nav></div>
   <p class="lede" id="lede">Find four. Pick four. Four strikes and you’re out.</p>
 
   <div id="board" role="group" aria-label="Puzzle tiles"></div>
@@ -92,8 +91,7 @@
   const P = data.puzzles[n - 1];
   const groupOf = {}; P.groups.forEach(g => g.tiles.forEach(t => groupOf[t] = g));
 
-  $('pnum').innerHTML = `Posse Cut #${n} ${practice ? '<span class="tag practice">Practice · no streak</span>' : '<span class="tag">Daily</span>'}`;
-  $('pdate').textContent = practice ? label : Cy.dateFor(data.launch, n);
+  $('pnum').textContent = `Posse Cut #${String(n).padStart(3, '0')}`;
 
   const key = 'p' + n;
   const saved = Cy.store.get(key, null);
