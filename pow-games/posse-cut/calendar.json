@@ -2689,23 +2689,23 @@
   "big": false,
   "groups": [
    {
-    "name": "Kodak Black songs",
+    "name": "Royalty",
     "level": 1,
     "tiles": [
-     "Tunnel Vision",
-     "ZEZE",
-     "Super Gremlin",
-     "No Flockin"
+     "King Tee",
+     "Queen Pen",
+     "Prince Markie Dee",
+     "Count Bass D"
     ]
    },
    {
-    "name": "Pete Rock & CL Smooth songs",
+    "name": "Baltimore club",
     "level": 2,
     "tiles": [
-     "They Reminisce Over You (T.R.O.Y.)",
-     "Straighten It Out",
-     "Lots of Lovin",
-     "Mecca and the Soul Brother"
+     "Rod Lee",
+     "Blaqstarr",
+     "DJ Technics",
+     "Scottie B"
     ]
    },
    {
@@ -5369,7 +5369,7 @@
   ]
  },
  "04-22": {
-  "occasion": "Shock G died today in 2021. The Jacka's \"Drought Season\" came out today in 2008. It's Earth Day.",
+  "occasion": "Shock G died today in 2021. The Jacka's \"Drought Season\" (2008) and Dälek's \"Asphalt for Eden\" (2016) came out today. It's Earth Day.",
   "big": false,
   "groups": [
    {
@@ -5384,14 +5384,15 @@
     "today": true
    },
    {
-    "name": "Atmosphere albums",
+    "name": "Dälek albums",
     "level": 2,
     "tiles": [
-     "Lucy Ford",
-     "God Loves Ugly",
-     "Seven's Travels",
-     "You Can't Imagine How Much Fun We're Having"
-    ]
+     "From Filthy Tongue of Gods and Griots",
+     "Absence",
+     "Abandoned Language",
+     "Asphalt for Eden"
+    ],
+    "today": true
    },
    {
     "name": "The Jacka and the Mob Figaz",
@@ -7300,6 +7301,1464 @@
      "Jesus Price Supastar",
      "Mic Tyson",
      "Imperius Rex"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-01": {
+  "occasion": "Pride Month starts today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Queer rap",
+    "level": 1,
+    "tiles": [
+     "Mykki Blanco",
+     "Le1f",
+     "Cakes da Killa",
+     "Saucy Santana"
+    ],
+    "today": true
+   },
+   {
+    "name": "Footwork",
+    "level": 2,
+    "tiles": [
+     "DJ Rashad",
+     "DJ Spinn",
+     "RP Boo",
+     "Traxman"
+    ]
+   },
+   {
+    "name": "Antipop Consortium",
+    "level": 3,
+    "tiles": [
+     "Beans",
+     "High Priest",
+     "M. Sayyid",
+     "Earl Blaize"
+    ]
+   },
+   {
+    "name": "Old-school whips",
+    "level": 4,
+    "tiles": [
+     "Impala",
+     "Cutlass",
+     "Monte Carlo",
+     "Caprice"
+    ]
+   }
+  ]
+ },
+ "06-02": {
+  "occasion": "B-Real of Cypress Hill was born today in 1970. J Dilla's \"Jay Stay Paid\" came out today in 2009.",
+  "big": false,
+  "groups": [
+   {
+    "name": "B-Real was in it",
+    "level": 1,
+    "tiles": [
+     "Prophets of Rage",
+     "The Psycho Realm",
+     "Dr. Greenthumb",
+     "Serial Killers"
+    ],
+    "today": true
+   },
+   {
+    "name": "J Dilla, after he was gone",
+    "level": 2,
+    "tiles": [
+     "The Shining",
+     "Jay Stay Paid",
+     "Jay Love Japan",
+     "The Diary"
+    ],
+    "today": true
+   },
+   {
+    "name": "Go-go",
+    "level": 3,
+    "tiles": [
+     "Chuck Brown",
+     "Rare Essence",
+     "Trouble Funk",
+     "Backyard Band"
+    ]
+   },
+   {
+    "name": "Drummers on rap records",
+    "level": 4,
+    "tiles": [
+     "Questlove",
+     "Karriem Riggins",
+     "Travis Barker",
+     "Chris Dave"
+    ]
+   }
+  ]
+ },
+ "06-03": {
+  "occasion": "Wu-Tang Clan's \"Wu-Tang Forever\" and the Jungle Brothers' \"Raw Deluxe\" both came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Wu-Tang Forever\"",
+    "level": 1,
+    "tiles": [
+     "Reunited",
+     "It's Yourz",
+     "Impossible",
+     "Severe Punishment"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jungle Brothers albums",
+    "level": 2,
+    "tiles": [
+     "Straight Out the Jungle",
+     "Done by the Forces of Nature",
+     "J. Beez Wit the Remedy",
+     "Raw Deluxe"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jersey club",
+    "level": 3,
+    "tiles": [
+     "DJ Sliink",
+     "UNIIQU3",
+     "DJ Tameil",
+     "Bandmanrill"
+    ]
+   },
+   {
+    "name": "DMC champions",
+    "level": 4,
+    "tiles": [
+     "DJ Craze",
+     "A-Trak",
+     "DJ Noize",
+     "Roc Raida"
+    ]
+   }
+  ]
+ },
+ "06-04": {
+  "occasion": "All about 1992.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Albums of 1992",
+    "level": 1,
+    "tiles": [
+     "Bizarre Ride II the Pharcyde",
+     "Business Never Personal",
+     "Sex and Violence",
+     "Too Hard to Swallow"
+    ],
+    "today": true
+   },
+   {
+    "name": "Singles of 1992",
+    "level": 2,
+    "tiles": [
+     "Tennessee",
+     "Nuthin' but a \"G\" Thang",
+     "Rebirth of Slick (Cool Like Dat)",
+     "I Got a Man"
+    ],
+    "today": true
+   },
+   {
+    "name": "First albums in 1992",
+    "level": 3,
+    "tiles": [
+     "Redman",
+     "Das EFX",
+     "House of Pain",
+     "Diamond D"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap at the movies, 1992",
+    "level": 4,
+    "tiles": [
+     "Juice",
+     "Trespass",
+     "Deep Cover",
+     "Boomerang"
+    ],
+    "today": true
+   }
+  ],
+  "year": 1992
+ },
+ "06-05": {
+  "occasion": "Aesop Rock was born today in 1976.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Aesop Rock team-ups",
+    "level": 1,
+    "tiles": [
+     "Hail Mary Mallon",
+     "Lice",
+     "Malibu Ken",
+     "The Uncluded"
+    ],
+    "today": true
+   },
+   {
+    "name": "MC ___",
+    "level": 2,
+    "tiles": [
+     "MC Lyte",
+     "MC Breed",
+     "MC Serch",
+     "MC Trouble"
+    ]
+   },
+   {
+    "name": "Rap words for friends",
+    "level": 3,
+    "tiles": [
+     "Homie",
+     "Dawg",
+     "Fam",
+     "Slime"
+    ]
+   },
+   {
+    "name": "The L.A. beat scene",
+    "level": 4,
+    "tiles": [
+     "Ras G",
+     "Samiyam",
+     "Dibiase",
+     "Daedelus"
+    ]
+   }
+  ]
+ },
+ "06-06": {
+  "occasion": "Twista's first album, \"Runnin' Off at da Mouth,\" came out today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Twista songs",
+    "level": 1,
+    "tiles": [
+     "Overnight Celebrity",
+     "Hope",
+     "Wetter",
+     "Girl Tonite"
+    ],
+    "today": true
+   },
+   {
+    "name": "Chicago in the '90s",
+    "level": 2,
+    "tiles": [
+     "Do or Die",
+     "Crucial Conflict",
+     "Psychodrama",
+     "Common"
+    ],
+    "today": true
+   },
+   {
+    "name": "Named after a woman",
+    "level": 3,
+    "tiles": [
+     "Kim",
+     "Brenda's Got a Baby",
+     "Roxanne, Roxanne",
+     "Ms. Fat Booty"
+    ]
+   },
+   {
+    "name": "The Roots' Philly circle",
+    "level": 4,
+    "tiles": [
+     "Dice Raw",
+     "Truck North",
+     "P.O.R.N.",
+     "Kirby Dominant"
+    ]
+   }
+  ]
+ },
+ "06-07": {
+  "occasion": "Swae Lee (1993), Fetty Wap (1991) and Necro (1976) were born today. EPMD's \"Strictly Business\" came out today in 1988.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Rae Sremmurd songs",
+    "level": 1,
+    "tiles": [
+     "No Flex Zone",
+     "No Type",
+     "Throw Sum Mo",
+     "Powerglide"
+    ],
+    "today": true
+   },
+   {
+    "name": "EPMD albums",
+    "level": 2,
+    "tiles": [
+     "Strictly Business",
+     "Unfinished Business",
+     "Business as Usual",
+     "Back in Business"
+    ],
+    "today": true
+   },
+   {
+    "name": "Fetty Wap songs",
+    "level": 3,
+    "tiles": [
+     "Trap Queen",
+     "679",
+     "My Way",
+     "Again"
+    ],
+    "today": true
+   },
+   {
+    "name": "Psycho+Logical-Records",
+    "level": 4,
+    "tiles": [
+     "Necro",
+     "Ill Bill",
+     "Mr. Hyde",
+     "Goretex"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-08": {
+  "occasion": "Kanye West was born today in 1977. \"Beat Street\" opened in theaters today in 1984. Kids See Ghosts came out today in 2018.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kanye made the beat",
+    "level": 1,
+    "tiles": [
+     "Get By",
+     "This Can't Be Life",
+     "You Don't Know My Name",
+     "Selfish"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Kids See Ghosts\"",
+    "level": 2,
+    "tiles": [
+     "Reborn",
+     "Freee (Ghost Town, Pt. 2)",
+     "Feel the Love",
+     "4th Dimension"
+    ],
+    "today": true
+   },
+   {
+    "name": "In \"Beat Street\"",
+    "level": 3,
+    "tiles": [
+     "Rae Dawn Chong",
+     "Guy Davis",
+     "Jon Chardiet",
+     "Leon W. Grant"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap websites",
+    "level": 4,
+    "tiles": [
+     "HipHopDX",
+     "AllHipHop",
+     "Okayplayer",
+     "WorldStarHipHop"
+    ]
+   }
+  ]
+ },
+ "06-09": {
+  "occasion": "Pete Rock & CL Smooth's \"Mecca and the Soul Brother\" came out today in 1992. Bushwick Bill of the Geto Boys died today in 2019.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Mecca and the Soul Brother\"",
+    "level": 1,
+    "tiles": [
+     "They Reminisce Over You (T.R.O.Y.)",
+     "Straighten It Out",
+     "Lots of Lovin",
+     "Mecca and the Soul Brother"
+    ],
+    "today": true
+   },
+   {
+    "name": "Geto Boys songs",
+    "level": 2,
+    "tiles": [
+     "Mind Playing Tricks on Me",
+     "Damn It Feels Good to Be a Gangsta",
+     "Six Feet Deep",
+     "Do It Like a G.O."
+    ],
+    "today": true
+   },
+   {
+    "name": "Dilla's Detroit circle",
+    "level": 3,
+    "tiles": [
+     "Phat Kat",
+     "Guilty Simpson",
+     "Frank Nitt",
+     "Illa J"
+    ]
+   },
+   {
+    "name": "Rap words for a car",
+    "level": 4,
+    "tiles": [
+     "Whip",
+     "Drop",
+     "Ride",
+     "Hooptie"
+    ]
+   }
+  ]
+ },
+ "06-10": {
+  "occasion": "Lil Wayne's \"Tha Carter III\" came out today in 2008. Faith Evans was born today in 1973. Open Mike Eagle's \"Dark Comedy\" came out today in 2014.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Tha Carter III\"",
+    "level": 1,
+    "tiles": [
+     "A Milli",
+     "Mrs. Officer",
+     "Mr. Carter",
+     "Got Money"
+    ],
+    "today": true
+   },
+   {
+    "name": "Faith Evans songs",
+    "level": 2,
+    "tiles": [
+     "You Used to Love Me",
+     "Soon as I Get Home",
+     "Love Like This",
+     "Again"
+    ],
+    "today": true
+   },
+   {
+    "name": "Open Mike Eagle albums",
+    "level": 3,
+    "tiles": [
+     "Dark Comedy",
+     "Brick Body Kids Still Daydream",
+     "Anime, Trauma and Divorce",
+     "Component System with the Auto Reverse"
+    ],
+    "today": true
+   },
+   {
+    "name": "G-funk producers",
+    "level": 4,
+    "tiles": [
+     "DJ Quik",
+     "Battlecat",
+     "DJ Pooh",
+     "Sam Sneed"
+    ]
+   }
+  ]
+ },
+ "06-11": {
+  "occasion": "Atmosphere's \"God Loves Ugly\" and AZ's \"Aziatic\" both came out today in 2002. Kodak Black was born today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Atmosphere albums",
+    "level": 1,
+    "tiles": [
+     "Lucy Ford",
+     "God Loves Ugly",
+     "Seven's Travels",
+     "You Can't Imagine How Much Fun We're Having"
+    ],
+    "today": true
+   },
+   {
+    "name": "AZ albums",
+    "level": 2,
+    "tiles": [
+     "Doe or Die",
+     "Pieces of a Man",
+     "Aziatic",
+     "A.W.O.L."
+    ],
+    "today": true
+   },
+   {
+    "name": "Kodak Black songs",
+    "level": 3,
+    "tiles": [
+     "Tunnel Vision",
+     "ZEZE",
+     "Super Gremlin",
+     "No Flockin"
+    ],
+    "today": true
+   },
+   {
+    "name": "High Focus Records",
+    "level": 4,
+    "tiles": [
+     "Ocean Wisdom",
+     "Dirty Dike",
+     "Jam Baxter",
+     "Fliptrix"
+    ]
+   }
+  ]
+ },
+ "06-12": {
+  "occasion": "Fabolous's \"From Nothin' to Somethin'\" came out today in 2007. Ana Tijoux was born today in 1977.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Fabolous songs",
+    "level": 1,
+    "tiles": [
+     "Can't Deny It",
+     "Into You",
+     "Breathe",
+     "Make Me Better"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap en español",
+    "level": 2,
+    "tiles": [
+     "Ana Tijoux",
+     "Control Machete",
+     "Akapellah",
+     "Mala Rodríguez"
+    ],
+    "today": true
+   },
+   {
+    "name": "Miami bass",
+    "level": 3,
+    "tiles": [
+     "Uncle Luke",
+     "DJ Magic Mike",
+     "MC A.D.E.",
+     "Afro-Rican"
+    ]
+   },
+   {
+    "name": "Rap words for a girlfriend",
+    "level": 4,
+    "tiles": [
+     "Shorty",
+     "Wifey",
+     "Boo",
+     "Bae"
+    ]
+   }
+  ]
+ },
+ "06-13": {
+  "occasion": "Quasimoto's \"The Unseen\" came out today in 2000. 070 Shake was born today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Unseen\"",
+    "level": 1,
+    "tiles": [
+     "Low Class Conspiracy",
+     "Come On Feet",
+     "Microphone Mathematics",
+     "Return of the Loop Digga"
+    ],
+    "today": true
+   },
+   {
+    "name": "G.O.O.D. Music, second wave",
+    "level": 2,
+    "tiles": [
+     "070 Shake",
+     "Teyana Taylor",
+     "CyHi the Prynce",
+     "Valee"
+    ],
+    "today": true
+   },
+   {
+    "name": "Brockhampton",
+    "level": 3,
+    "tiles": [
+     "Kevin Abstract",
+     "Dom McLennon",
+     "Merlyn Wood",
+     "Matt Champion"
+    ]
+   },
+   {
+    "name": "Swedish rap",
+    "level": 4,
+    "tiles": [
+     "Yung Lean",
+     "Einár",
+     "Silvana Imam",
+     "Timbuktu"
+    ]
+   }
+  ]
+ },
+ "06-14": {
+  "occasion": "MC Ren of N.W.A was born today in 1969. Mac Miller's \"Watching Movies with the Sound Off\" (2013) and YG's \"Still Brazy\" (2016) came out today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "MC Ren albums",
+    "level": 1,
+    "tiles": [
+     "Kizz My Black Azz",
+     "Shock of the Hour",
+     "The Villain in Black",
+     "Ruthless for Life"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Watching Movies with the Sound Off\"",
+    "level": 2,
+    "tiles": [
+     "S.D.S.",
+     "Objects in the Mirror",
+     "Avian",
+     "Gees"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Still Brazy\"",
+    "level": 3,
+    "tiles": [
+     "Twist My Fingaz",
+     "Why You Always Hatin?",
+     "FDT",
+     "Word Is Bond"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Lonely Island",
+    "level": 4,
+    "tiles": [
+     "I'm on a Boat",
+     "Lazy Sunday",
+     "Like a Boss",
+     "Jack Sparrow"
+    ]
+   }
+  ]
+ },
+ "06-15": {
+  "occasion": "Ice Cube was born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ice Cube movies",
+    "level": 1,
+    "tiles": [
+     "Boyz n the Hood",
+     "Barbershop",
+     "Three Kings",
+     "Anaconda"
+    ],
+    "today": true
+   },
+   {
+    "name": "Songs about dads",
+    "level": 2,
+    "tiles": [
+     "Papa'z Song",
+     "Just the Two of Us",
+     "Father Stretch My Hands, Pt. 1",
+     "Mockingbird"
+    ]
+   },
+   {
+    "name": "Memphis tape legends",
+    "level": 3,
+    "tiles": [
+     "Tommy Wright III",
+     "Kingpin Skinny Pimp",
+     "DJ Squeeky",
+     "Playa Fly"
+    ]
+   },
+   {
+    "name": "Albums named after a place",
+    "level": 4,
+    "tiles": [
+     "Port of Miami",
+     "Detroit 2",
+     "Queens Reigns Supreme",
+     "Illadelph Halflife"
+    ]
+   }
+  ]
+ },
+ "06-16": {
+  "occasion": "Tupac Shakur was born today in 1971.",
+  "big": true,
+  "groups": [
+   {
+    "name": "2Pac movies",
+    "level": 1,
+    "tiles": [
+     "Poetic Justice",
+     "Above the Rim",
+     "Bullet",
+     "Gang Related"
+    ],
+    "today": true
+   },
+   {
+    "name": "After he was gone",
+    "level": 2,
+    "tiles": [
+     "R U Still Down? (Remember Me)",
+     "Until the End of Time",
+     "Better Dayz",
+     "Loyal to the Game"
+    ],
+    "today": true
+   },
+   {
+    "name": "Thug Life",
+    "level": 3,
+    "tiles": [
+     "Big Syke",
+     "Macadoshis",
+     "Mopreme Shakur",
+     "Rated R"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pac's Panther family",
+    "level": 4,
+    "tiles": [
+     "Afeni Shakur",
+     "Mutulu Shakur",
+     "Assata Shakur",
+     "Geronimo Pratt"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-17": {
+  "occasion": "Capone-N-Noreaga's \"The War Report\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The War Report\"",
+    "level": 1,
+    "tiles": [
+     "T.O.N.Y. (Top of New York)",
+     "L.A., L.A.",
+     "Bloody Money",
+     "Illegal Life"
+    ],
+    "today": true
+   },
+   {
+    "name": "N.O.R.E. songs",
+    "level": 2,
+    "tiles": [
+     "Superthug",
+     "Nothin'",
+     "Oye Mi Canto",
+     "Banned from T.V."
+    ],
+    "today": true
+   },
+   {
+    "name": "A kid on the cover",
+    "level": 3,
+    "tiles": [
+     "Illmatic",
+     "Ready to Die",
+     "good kid, m.A.A.d city",
+     "Nothing Was the Same"
+    ]
+   },
+   {
+    "name": "Re-Up Gang",
+    "level": 4,
+    "tiles": [
+     "Pusha T",
+     "Malice",
+     "Ab-Liva",
+     "Sandman"
+    ]
+   }
+  ]
+ },
+ "06-18": {
+  "occasion": "All about 2002.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Hits of 2002",
+    "level": 1,
+    "tiles": [
+     "Oh Boy",
+     "Luv U Better",
+     "Wanksta",
+     "Gimme the Light"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big albums of 2002",
+    "level": 2,
+    "tiles": [
+     "The Blueprint²",
+     "Under Construction",
+     "The Fix",
+     "Hood Rich"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground, 2002",
+    "level": 3,
+    "tiles": [
+     "Power in Numbers",
+     "Personal Journals",
+     "Blazing Arrow",
+     "Fantastic Damage"
+    ],
+    "today": true
+   },
+   {
+    "name": "At the movies, 2002",
+    "level": 4,
+    "tiles": [
+     "Paid in Full",
+     "Brown Sugar",
+     "Drumline",
+     "Like Mike"
+    ],
+    "today": true
+   }
+  ],
+  "year": 2002
+ },
+ "06-19": {
+  "occasion": "It's Juneteenth.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Freedom songs",
+    "level": 1,
+    "tiles": [
+     "Freedom",
+     "Be Free",
+     "Glory",
+     "This Is America"
+    ],
+    "today": true
+   },
+   {
+    "name": "dead prez songs",
+    "level": 2,
+    "tiles": [
+     "Hip-Hop",
+     "Mind Sex",
+     "Police State",
+     "Be Healthy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Political to the core",
+    "level": 3,
+    "tiles": [
+     "Paris",
+     "X Clan",
+     "Poor Righteous Teachers",
+     "KAM"
+    ],
+    "today": true
+   },
+   {
+    "name": "Voices sampled in rap",
+    "level": 4,
+    "tiles": [
+     "Malcolm X",
+     "Martin Luther King Jr.",
+     "Khalid Muhammad",
+     "Huey P. Newton"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-20": {
+  "occasion": "Prodigy of Mobb Deep died today in 2017.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Prodigy solo",
+    "level": 1,
+    "tiles": [
+     "H.N.I.C.",
+     "H.N.I.C. Pt. 2",
+     "The Bumpy Johnson Album",
+     "Hegelian Dialectic"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"The Infamous\"",
+    "level": 2,
+    "tiles": [
+     "Eye for an Eye (Your Beef Is Mines)",
+     "Temperature's Rising",
+     "Give Up the Goods (Just Step)",
+     "Up North Trip"
+    ],
+    "today": true
+   },
+   {
+    "name": "Infamous Mobb and friends",
+    "level": 3,
+    "tiles": [
+     "Big Noyd",
+     "Twin Gambino",
+     "Ty Nitty",
+     "G.O.D. Pt. III"
+    ],
+    "today": true
+   },
+   {
+    "name": "Women who ran rap labels",
+    "level": 4,
+    "tiles": [
+     "Sylvia Robinson",
+     "Debra Antney",
+     "Ethiopia Habtemariam",
+     "Monica Lynch"
+    ]
+   }
+  ]
+ },
+ "06-21": {
+  "occasion": "Pete Rock (1970) and DJ Scratch (1968) were born today. Stetsasonic's \"In Full Gear\" came out today in 1988.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Stetsasonic",
+    "level": 1,
+    "tiles": [
+     "Daddy-O",
+     "Delite",
+     "Wise",
+     "DBC"
+    ],
+    "today": true
+   },
+   {
+    "name": "Ran Def Jam",
+    "level": 2,
+    "tiles": [
+     "Lyor Cohen",
+     "Kevin Liles",
+     "Jay-Z",
+     "L.A. Reid"
+    ]
+   },
+   {
+    "name": "Freestyle competitions",
+    "level": 3,
+    "tiles": [
+     "Rap Olympics",
+     "Scribble Jam",
+     "Blaze Battle",
+     "End of the Weak"
+    ]
+   },
+   {
+    "name": "Mixtape sites",
+    "level": 4,
+    "tiles": [
+     "DatPiff",
+     "LiveMixtapes",
+     "Audiomack",
+     "SoundCloud"
+    ]
+   }
+  ]
+ },
+ "06-22": {
+  "occasion": "Schoolly D was born today in 1966. Westside Gunn's \"Supreme Blientele\" came out today in 2018.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Westside Gunn albums",
+    "level": 1,
+    "tiles": [
+     "FLYGOD",
+     "Supreme Blientele",
+     "Pray for Paris",
+     "Who Made the Sunshine"
+    ],
+    "today": true
+   },
+   {
+    "name": "Schoolly D songs",
+    "level": 2,
+    "tiles": [
+     "P.S.K. What Does It Mean?",
+     "Saturday Night",
+     "Gucci Time",
+     "Am I Black Enough for You?"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap awards shows",
+    "level": 3,
+    "tiles": [
+     "The Source Awards",
+     "BET Hip Hop Awards",
+     "VH1 Hip Hop Honors",
+     "Soul Train Music Awards"
+    ]
+   },
+   {
+    "name": "Rap biopics",
+    "level": 4,
+    "tiles": [
+     "Notorious",
+     "Straight Outta Compton",
+     "All Eyez on Me",
+     "Get Rich or Die Tryin'"
+    ]
+   }
+  ]
+ },
+ "06-23": {
+  "occasion": "Eric B. & Rakim's \"Don't Sweat the Technique\" came out today in 1992. Memphis Bleek was born today in 1978.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Don't Sweat the Technique\"",
+    "level": 1,
+    "tiles": [
+     "Know the Ledge",
+     "What's on Your Mind",
+     "Casualties of War",
+     "Relax with Pep"
+    ],
+    "today": true
+   },
+   {
+    "name": "Memphis Bleek albums",
+    "level": 2,
+    "tiles": [
+     "Coming of Age",
+     "The Understanding",
+     "M.A.D.E.",
+     "534"
+    ],
+    "today": true
+   },
+   {
+    "name": "Delicious Vinyl",
+    "level": 3,
+    "tiles": [
+     "Tone Lōc",
+     "Young MC",
+     "The Pharcyde",
+     "Brand New Heavies"
+    ]
+   },
+   {
+    "name": "Loud Records",
+    "level": 4,
+    "tiles": [
+     "Big Pun",
+     "Xzibit",
+     "dead prez",
+     "Tha Alkaholiks"
+    ]
+   }
+  ]
+ },
+ "06-24": {
+  "occasion": "The Beatnuts' \"Stone Crazy\" came out today in 1997. Duki was born today in 1996.",
+  "big": false,
+  "groups": [
+   {
+    "name": "The Beatnuts, and the hit",
+    "level": 1,
+    "tiles": [
+     "Psycho Les",
+     "JuJu Mad Money",
+     "Al' Tariq",
+     "Watch Out Now"
+    ],
+    "today": true
+   },
+   {
+    "name": "Argentine trap",
+    "level": 2,
+    "tiles": [
+     "Duki",
+     "Paulo Londra",
+     "Bizarrap",
+     "Trueno"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tommy Boy Records",
+    "level": 3,
+    "tiles": [
+     "Coolio",
+     "House of Pain",
+     "Digital Underground",
+     "Queen Latifah"
+    ]
+   },
+   {
+    "name": "Profile Records",
+    "level": 4,
+    "tiles": [
+     "Run-DMC",
+     "DJ Quik",
+     "Special Ed",
+     "Dana Dane"
+    ]
+   }
+  ]
+ },
+ "06-25": {
+  "occasion": "Cormega's \"The True Meaning\" came out today in 2002. Tyler, the Creator's \"Call Me If You Get Lost\" came out today in 2021.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Mass Appeal Records",
+    "level": 1,
+    "tiles": [
+     "Dave East",
+     "Fashawn",
+     "Boldy James",
+     "Run the Jewels"
+    ]
+   },
+   {
+    "name": "Cormega albums",
+    "level": 2,
+    "tiles": [
+     "The Realness",
+     "The True Meaning",
+     "Born and Raised",
+     "Mega Philosophy"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Call Me If You Get Lost\"",
+    "level": 3,
+    "tiles": [
+     "WusYaName",
+     "Lumberjack",
+     "Juggernaut",
+     "Corso"
+    ],
+    "today": true
+   },
+   {
+    "name": "Young Money",
+    "level": 4,
+    "tiles": [
+     "Tyga",
+     "Lil Twist",
+     "Jae Millz",
+     "Gudda Gudda"
+    ]
+   }
+  ]
+ },
+ "06-26": {
+  "occasion": "Pharoahe Monch's \"Desire\" came out today in 2007. Chali 2na (1971) and Camu Tao (1977) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Pharoahe Monch albums",
+    "level": 1,
+    "tiles": [
+     "Internal Affairs",
+     "Desire",
+     "W.A.R. (We Are Renegades)",
+     "PTSD"
+    ],
+    "today": true
+   },
+   {
+    "name": "Engineers and mixers",
+    "level": 2,
+    "tiles": [
+     "Young Guru",
+     "MixedByAli",
+     "Bob Power",
+     "Mike Dean"
+    ]
+   },
+   {
+    "name": "Rap writers",
+    "level": 3,
+    "tiles": [
+     "Nelson George",
+     "dream hampton",
+     "Greg Tate",
+     "Harry Allen"
+    ]
+   },
+   {
+    "name": "Regional rap magazines",
+    "level": 4,
+    "tiles": [
+     "Ozone",
+     "Murder Dog",
+     "Rap Pages",
+     "The Bomb"
+    ]
+   }
+  ]
+ },
+ "06-27": {
+  "occasion": "Rammellzee died today in 2010. Teriyaki Boyz's \"Tokyo Drift\" came out today in 2006.",
+  "big": false,
+  "groups": [
+   {
+    "name": "In \"Wild Style\"",
+    "level": 1,
+    "tiles": [
+     "Lee Quiñones",
+     "Lady Pink",
+     "Busy Bee",
+     "Patti Astor"
+    ],
+    "today": true
+   },
+   {
+    "name": "Production duos",
+    "level": 2,
+    "tiles": [
+     "Cool & Dre",
+     "Da Internz",
+     "Tha Bizness",
+     "The Smeezingtons"
+    ]
+   },
+   {
+    "name": "Teriyaki Boyz",
+    "level": 3,
+    "tiles": [
+     "Ilmari",
+     "Ryo-Z",
+     "Verbal",
+     "Nigo"
+    ],
+    "today": true
+   },
+   {
+    "name": "Afroswing",
+    "level": 4,
+    "tiles": [
+     "J Hus",
+     "Not3s",
+     "Kojo Funds",
+     "Yxng Bane"
+    ]
+   }
+  ]
+ },
+ "06-28": {
+  "occasion": "Public Enemy's \"It Takes a Nation of Millions to Hold Us Back\" came out today in 1988. Shabazz Palaces' \"Black Up\" came out today in 2011. Jay-Z headlined Glastonbury today in 2008. Freddie Gibbs's \"Bandana\" came out today in 2019.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"It Takes a Nation of Millions\"",
+    "level": 1,
+    "tiles": [
+     "Don't Believe the Hype",
+     "Bring the Noise",
+     "Black Steel in the Hour of Chaos",
+     "Night of the Living Baseheads"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shabazz Palaces albums",
+    "level": 2,
+    "tiles": [
+     "Black Up",
+     "Lese Majesty",
+     "Quazarz: Born on a Gangster Star",
+     "The Don of Diamond Dreams"
+    ],
+    "today": true
+   },
+   {
+    "name": "Headlined Glastonbury",
+    "level": 3,
+    "tiles": [
+     "Jay-Z",
+     "Kanye West",
+     "Stormzy",
+     "Kendrick Lamar"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Bandana\"",
+    "level": 4,
+    "tiles": [
+     "Crime Pays",
+     "Palmolive",
+     "Flat Tummy Tea",
+     "Giannis"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-29": {
+  "occasion": "DJ Shadow was born today in 1972. GZA's \"Beneath the Surface\" came out today in 1999.",
+  "big": true,
+  "groups": [
+   {
+    "name": "DJ Shadow albums",
+    "level": 1,
+    "tiles": [
+     "The Private Press",
+     "The Outsider",
+     "The Mountain Will Fall",
+     "Our Pathetic Age"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shadow was part of it",
+    "level": 2,
+    "tiles": [
+     "UNKLE",
+     "Solesides",
+     "Brainfreeze",
+     "Product Placement"
+    ],
+    "today": true
+   },
+   {
+    "name": "Famous crate diggers",
+    "level": 3,
+    "tiles": [
+     "Kenny Dope",
+     "Cut Chemist",
+     "Egon",
+     "Rich Medina"
+    ],
+    "today": true
+   },
+   {
+    "name": "GZA albums",
+    "level": 4,
+    "tiles": [
+     "Words from the Genius",
+     "Liquid Swords",
+     "Beneath the Surface",
+     "Pro Tools"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "06-30": {
+  "occasion": "JAY-Z's \"4:44\" came out today in 2017. \"Do the Right Thing\" opened in theaters today in 1989. Vince Staples's \"Summertime '06\" came out today in 2015.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"4:44\"",
+    "level": 1,
+    "tiles": [
+     "The Story of O.J.",
+     "Family Feud",
+     "Bam",
+     "Legacy"
+    ],
+    "today": true
+   },
+   {
+    "name": "In \"Do the Right Thing\"",
+    "level": 2,
+    "tiles": [
+     "Spike Lee",
+     "Rosie Perez",
+     "Giancarlo Esposito",
+     "Bill Nunn"
+    ],
+    "today": true
+   },
+   {
+    "name": "Vince Staples albums",
+    "level": 3,
+    "tiles": [
+     "Summertime '06",
+     "FM!",
+     "Ramona Park Broke My Heart",
+     "Dark Times"
+    ],
+    "today": true
+   },
+   {
+    "name": "Spike Lee joints",
+    "level": 4,
+    "tiles": [
+     "She's Gotta Have It",
+     "Mo' Better Blues",
+     "Jungle Fever",
+     "Clockers"
     ],
     "today": true
    }
