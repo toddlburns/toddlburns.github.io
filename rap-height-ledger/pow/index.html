@@ -274,10 +274,30 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 .side .gface{box-shadow:0 0 0 4px var(--orange)}
 .score b{color:var(--ink)}
 .gnames small{color:var(--dim)}
+</style><style>
+.powbar{background:#171717;color:#fff;font:16px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;border-bottom:1px solid #2e2e2e}
+.powbar .pb-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;max-width:1240px;margin:0 auto;padding:18px 24px 14px}
+.powbar .mark img{display:block;height:84px;width:auto}
+.powbar .cta{justify-self:end;background:#ff6719;color:#fff;font-weight:600;font-size:15px;text-decoration:none;padding:10px 16px;border-radius:8px}
+.powbar .cta:hover{background:#ff7d3b;color:#fff}
+.powbar nav{display:flex;justify-content:center;gap:24px;border-top:1px solid #2e2e2e;padding:0 16px;overflow-x:auto;scrollbar-width:none;margin:0}
+.powbar nav a{color:#d4d4d4;text-decoration:none;font-size:14.5px;font-weight:500;padding:13px 0 11px;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit;letter-spacing:0;text-transform:none}
+.powbar nav a:hover{color:#fff}
+.powbar nav a.on{color:#fff;font-weight:700;border-bottom-color:#fff}
+@media (max-width:620px){
+  .powbar .pb-top{grid-template-columns:auto 1fr auto;padding:12px 16px 10px;gap:10px}
+  .powbar .mark{order:-1}.powbar .mark img{height:46px}
+  .powbar .cta{font-size:13px;padding:8px 11px}
+  .powbar nav{justify-content:flex-start;gap:18px}
+}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
+<header class="powbar"><div class="pb-top"><div></div>
+  <a class="mark" href="https://www.powmag.net/" aria-label="POW MAG"><img src="pow-wordmark.png" alt="POW MAG"></a>
+  <a class="cta" href="https://www.powmag.net/subscribe?utm_source=play" target="_blank" rel="noopener">Subscribe</a></div>
+  <nav><a href="https://www.powmag.net/" target="_blank" rel="noopener">Home</a><a href="https://www.powmag.net/archive" target="_blank" rel="noopener">Archive</a><a href="https://www.powmag.net/s/podcast" target="_blank" rel="noopener">Podcast</a><a class="on" href="https://play.powmag.net/">Games</a><a href="https://www.powmag.net/about" target="_blank" rel="noopener">About</a></nav></header>
 <header class="wrap">
   <h1>Tall Tales</h1>
   <p class="dek">Which rapper is the tallest?<span id="nRap" hidden></span></p>
