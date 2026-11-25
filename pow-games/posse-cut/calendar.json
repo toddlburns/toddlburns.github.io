@@ -2689,13 +2689,13 @@
   "big": false,
   "groups": [
    {
-    "name": "DMX songs",
+    "name": "Kodak Black songs",
     "level": 1,
     "tiles": [
-     "Party Up (Up in Here)",
-     "Ruff Ryders' Anthem",
-     "X Gon' Give It to Ya",
-     "Where the Hood At"
+     "Tunnel Vision",
+     "ZEZE",
+     "Super Gremlin",
+     "No Flockin"
     ]
    },
    {
@@ -4337,6 +4337,1469 @@
      "I Missed the Bus",
      "Alright",
      "Tonite's tha Night"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-01": {
+  "occasion": "Gil Scott-Heron (1949), Boots Riley of The Coup (1971) and SpaceGhostPurrp (1991) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Raider Klan",
+    "level": 1,
+    "tiles": [
+     "SpaceGhostPurrp",
+     "Chris Travis",
+     "Yung Simmie",
+     "Amber London"
+    ],
+    "today": true
+   },
+   {
+    "name": "In \"Sorry to Bother You\"",
+    "level": 2,
+    "tiles": [
+     "Lakeith Stanfield",
+     "Tessa Thompson",
+     "Armie Hammer",
+     "Steven Yeun"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gil Scott-Heron songs",
+    "level": 3,
+    "tiles": [
+     "The Revolution Will Not Be Televised",
+     "The Bottle",
+     "Home Is Where the Hatred Is",
+     "We Almost Lost Detroit"
+    ],
+    "today": true
+   },
+   {
+    "name": "Awful Records",
+    "level": 4,
+    "tiles": [
+     "Father",
+     "Abra",
+     "Ethereal",
+     "Slug Christ"
+    ]
+   }
+  ]
+ },
+ "04-02": {
+  "occasion": "Prince Paul was born today in 1967.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Bone Thugs-n-Harmony songs",
+    "level": 1,
+    "tiles": [
+     "Tha Crossroads",
+     "1st of tha Month",
+     "Thuggish Ruggish Bone",
+     "Foe tha Love of $"
+    ]
+   },
+   {
+    "name": "Prince Paul produced it",
+    "level": 2,
+    "tiles": [
+     "3 Feet High and Rising",
+     "De La Soul Is Dead",
+     "A Prince Among Thieves",
+     "So... How's Your Girl?"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gravediggaz",
+    "level": 3,
+    "tiles": [
+     "Prince Paul",
+     "RZA",
+     "Frukwan",
+     "Poetic"
+    ],
+    "today": true
+   },
+   {
+    "name": "Young ___",
+    "level": 4,
+    "tiles": [
+     "Young M.A",
+     "Young Nudy",
+     "Young Chop",
+     "Young Dro"
+    ]
+   }
+  ]
+ },
+ "04-03": {
+  "occasion": "\"Mercy\" came out today in 2012. Baby Keem and Kendrick Lamar won a Grammy for \"Family Ties\" today in 2022.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Cruel Summer\"",
+    "level": 1,
+    "tiles": [
+     "Mercy",
+     "Clique",
+     "New God Flow",
+     "Cold"
+    ],
+    "today": true
+   },
+   {
+    "name": "Baby Keem songs",
+    "level": 2,
+    "tiles": [
+     "Family Ties",
+     "Orange Soda",
+     "Durag Activity",
+     "Range Brothers"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap magazines",
+    "level": 3,
+    "tiles": [
+     "The Source",
+     "XXL",
+     "Vibe",
+     "Ego Trip"
+    ]
+   },
+   {
+    "name": "Blog-era breakouts",
+    "level": 4,
+    "tiles": [
+     "The Cool Kids",
+     "Charles Hamilton",
+     "Asher Roth",
+     "Kid Sister"
+    ]
+   }
+  ]
+ },
+ "04-04": {
+  "occasion": "Curren$y was born today in 1981.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Curren$y tapes",
+    "level": 1,
+    "tiles": [
+     "Pilot Talk",
+     "Pilot Talk II",
+     "This Ain't No Mixtape",
+     "Weekend at Burnie's"
+    ],
+    "today": true
+   },
+   {
+    "name": "Anime in the bars",
+    "level": 2,
+    "tiles": [
+     "Dragon Ball Z",
+     "Naruto",
+     "Akira",
+     "Cowboy Bebop"
+    ]
+   },
+   {
+    "name": "Famous studios",
+    "level": 3,
+    "tiles": [
+     "Electric Lady",
+     "Chung King",
+     "D&D Studios",
+     "Patchwerk"
+    ]
+   },
+   {
+    "name": "CunninLynguists",
+    "level": 4,
+    "tiles": [
+     "Deacon the Villain",
+     "Kno",
+     "Natti",
+     "Mr. SOS"
+    ]
+   }
+  ]
+ },
+ "04-05": {
+  "occasion": "Pharrell was born today in 1973. Saba's \"CARE FOR ME\" came out today in 2018.",
+  "big": false,
+  "groups": [
+   {
+    "name": "N.E.R.D songs",
+    "level": 1,
+    "tiles": [
+     "Lapdance",
+     "She Wants to Move",
+     "Everyone Nose",
+     "Lemon"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pharrell's labels and brands",
+    "level": 2,
+    "tiles": [
+     "Star Trak",
+     "Humanrace",
+     "I Am Other",
+     "Ice Cream"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"CARE FOR ME\"",
+    "level": 3,
+    "tiles": [
+     "BUSY / SIRENS",
+     "LIFE",
+     "PROM / KING",
+     "LOGOUT"
+    ],
+    "today": true
+   },
+   {
+    "name": "Producer tags",
+    "level": 4,
+    "tiles": [
+     "Mustard on the beat",
+     "Metro Boomin want some more",
+     "Murda on the beat",
+     "It's Tay Keith"
+    ]
+   }
+  ]
+ },
+ "04-06": {
+  "occasion": "Nas released \"I Am...\" today in 1999. Dilated Peoples' \"Neighborhood Watch\" came out today in 2004.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"I Am...\"",
+    "level": 1,
+    "tiles": [
+     "Hate Me Now",
+     "Nas Is Like",
+     "We Will Survive",
+     "Undying Love"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dilated Peoples albums",
+    "level": 2,
+    "tiles": [
+     "The Platform",
+     "Expansion Team",
+     "Neighborhood Watch",
+     "20/20"
+    ],
+    "today": true
+   },
+   {
+    "name": "Bay Area producers",
+    "level": 3,
+    "tiles": [
+     "Traxamillion",
+     "Rick Rock",
+     "Mike Mosley",
+     "Studio Ton"
+    ]
+   },
+   {
+    "name": "From Long Island",
+    "level": 4,
+    "tiles": [
+     "Rakim",
+     "EPMD",
+     "Busta Rhymes",
+     "Keith Murray"
+    ]
+   }
+  ]
+ },
+ "04-07": {
+  "occasion": "Joey Bada$$'s \"All-Amerikkkan Bada$$\" came out today in 2017. Das EFX's \"Dead Serious\" came out today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "DJ Jazzy Jeff & The Fresh Prince songs",
+    "level": 1,
+    "tiles": [
+     "Parents Just Don't Understand",
+     "Summertime",
+     "Girls Ain't Nothing but Trouble",
+     "Boom! Shake the Room"
+    ]
+   },
+   {
+    "name": "Das EFX songs",
+    "level": 2,
+    "tiles": [
+     "They Want EFX",
+     "Mic Checka",
+     "Real Hip-Hop",
+     "Straight Out the Sewer"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"All-Amerikkkan Bada$$\"",
+    "level": 3,
+    "tiles": [
+     "Land of the Free",
+     "Devastated",
+     "Temptation",
+     "Rockabye Baby"
+    ],
+    "today": true
+   },
+   {
+    "name": "Grime crews",
+    "level": 4,
+    "tiles": [
+     "Roll Deep",
+     "Boy Better Know",
+     "Ruff Sqwad",
+     "More Fire Crew"
+    ]
+   }
+  ]
+ },
+ "04-08": {
+  "occasion": "Biz Markie (1964) and Chino XL (1974) were born today. Big K.R.I.T.'s \"Full Court Press\" came out today in 2022.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Biz Markie songs",
+    "level": 1,
+    "tiles": [
+     "Just a Friend",
+     "Vapors",
+     "Make the Music with Your Mouth, Biz",
+     "Pickin' Boogers"
+    ],
+    "today": true
+   },
+   {
+    "name": "Human beatboxes",
+    "level": 2,
+    "tiles": [
+     "Doug E. Fresh",
+     "Rahzel",
+     "Buffy",
+     "Kenny Muhammad"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big K.R.I.T. albums",
+    "level": 3,
+    "tiles": [
+     "K.R.I.T. Wuz Here",
+     "Live from the Underground",
+     "4eva Is a Mighty Long Time",
+     "Cadillactica"
+    ],
+    "today": true
+   },
+   {
+    "name": "Punchline kings of the '90s",
+    "level": 4,
+    "tiles": [
+     "Chino XL",
+     "Canibus",
+     "Ras Kass",
+     "Supernatural"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-09": {
+  "occasion": "DMX died today in 2021. Bladee was born today in 1994.",
+  "big": true,
+  "groups": [
+   {
+    "name": "DMX songs",
+    "level": 1,
+    "tiles": [
+     "Party Up (Up in Here)",
+     "Ruff Ryders' Anthem",
+     "X Gon' Give It to Ya",
+     "Where the Hood At"
+    ],
+    "today": true
+   },
+   {
+    "name": "DMX movies",
+    "level": 2,
+    "tiles": [
+     "Belly",
+     "Romeo Must Die",
+     "Exit Wounds",
+     "Cradle 2 the Grave"
+    ],
+    "today": true
+   },
+   {
+    "name": "Drain Gang",
+    "level": 3,
+    "tiles": [
+     "Bladee",
+     "Ecco2k",
+     "Thaiboy Digital",
+     "Whitearmor"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Yonkers",
+    "level": 4,
+    "tiles": [
+     "Jadakiss",
+     "Styles P",
+     "Sheek Louch",
+     "Mary J. Blige"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-10": {
+  "occasion": "Public Enemy's \"Fear of a Black Planet\" came out today in 1990. Q-Tip was born today in 1970. Brother Ali's \"The Undisputed Truth\" came out today in 2007.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Fear of a Black Planet\"",
+    "level": 1,
+    "tiles": [
+     "Fight the Power",
+     "911 Is a Joke",
+     "Welcome to the Terrordome",
+     "Brothers Gonna Work It Out"
+    ],
+    "today": true
+   },
+   {
+    "name": "Q-Tip songs",
+    "level": 2,
+    "tiles": [
+     "Vivrant Thing",
+     "Breathe and Stop",
+     "Let's Ride",
+     "Gettin' Up"
+    ],
+    "today": true
+   },
+   {
+    "name": "Brother Ali albums",
+    "level": 3,
+    "tiles": [
+     "Shadows on the Sun",
+     "The Undisputed Truth",
+     "Us",
+     "Mourning in America and Dreaming in Color"
+    ],
+    "today": true
+   },
+   {
+    "name": "Brand Nubian",
+    "level": 4,
+    "tiles": [
+     "Grand Puba",
+     "Sadat X",
+     "Lord Jamar",
+     "DJ Alamo"
+    ]
+   }
+  ]
+ },
+ "04-11": {
+  "occasion": "Proof of D12 died today in 2006. David Banner (1974) and Ken Carson (2000) were born today. Del's \"Both Sides of the Brain\" came out today in 2000.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Opium",
+    "level": 1,
+    "tiles": [
+     "Ken Carson",
+     "Destroy Lonely",
+     "Homixide Gang",
+     "Playboi Carti"
+    ],
+    "today": true
+   },
+   {
+    "name": "David Banner songs",
+    "level": 2,
+    "tiles": [
+     "Like a Pimp",
+     "Play",
+     "Get Like Me",
+     "Cadillac on 22's"
+    ],
+    "today": true
+   },
+   {
+    "name": "Del the Funky Homosapien albums",
+    "level": 3,
+    "tiles": [
+     "I Wish My Brother George Was Here",
+     "No Need for Alarm",
+     "Future Development",
+     "Both Sides of the Brain"
+    ],
+    "today": true
+   },
+   {
+    "name": "Strange Music",
+    "level": 4,
+    "tiles": [
+     "Tech N9ne",
+     "Krizz Kaliko",
+     "Brotha Lynch Hung",
+     "Kutt Calhoun"
+    ]
+   }
+  ]
+ },
+ "04-12": {
+  "occasion": "All about 2022.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Hits of 2022",
+    "level": 1,
+    "tiles": [
+     "Wait for U",
+     "Big Energy",
+     "F.N.F. (Let's Go)",
+     "Jimmy Cooks"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big albums of 2022",
+    "level": 2,
+    "tiles": [
+     "Mr. Morale & the Big Steppers",
+     "It's Almost Dry",
+     "Her Loss",
+     "Heroes & Villains"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground, 2022",
+    "level": 3,
+    "tiles": [
+     "Aethiopes",
+     "Cheat Codes",
+     "Burning Desire",
+     "God Don't Make Mistakes"
+    ],
+    "today": true
+   },
+   {
+    "name": "2022 XXL Freshmen",
+    "level": 4,
+    "tiles": [
+     "Babyface Ray",
+     "Cochise",
+     "Nardo Wick",
+     "Doechii"
+    ],
+    "today": true
+   }
+  ],
+  "year": 2022
+ },
+ "04-13": {
+  "occasion": "Ty Dolla $ign was born today in 1982. B.o.B's \"Airplanes\" came out today in 2010.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ty Dolla $ign songs",
+    "level": 1,
+    "tiles": [
+     "Paranoid",
+     "Or Nah",
+     "Blasé",
+     "Saved"
+    ],
+    "today": true
+   },
+   {
+    "name": "B.o.B songs",
+    "level": 2,
+    "tiles": [
+     "Nothin' on You",
+     "Airplanes",
+     "Magic",
+     "Strange Clouds"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Pack, before anyone was based",
+    "level": 3,
+    "tiles": [
+     "Lil B",
+     "Young L",
+     "Stunna Bam",
+     "Lil Uno"
+    ]
+   },
+   {
+    "name": "Fictional rappers",
+    "level": 4,
+    "tiles": [
+     "B-Rabbit",
+     "DJay",
+     "Paper Boi",
+     "Hakeem Lyon"
+    ]
+   }
+  ]
+ },
+ "04-14": {
+  "occasion": "Kendrick Lamar's \"DAMN.\" came out today in 2017. Da Brat was born today in 1974. Black Thought's \"Glorious Game\" came out today in 2023.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"DAMN.\"",
+    "level": 1,
+    "tiles": [
+     "DNA.",
+     "LOYALTY.",
+     "ELEMENT.",
+     "DUCKWORTH."
+    ],
+    "today": true
+   },
+   {
+    "name": "Da Brat songs",
+    "level": 2,
+    "tiles": [
+     "Funkdafied",
+     "Give It 2 You",
+     "Sittin' on Top of the World",
+     "What'chu Like"
+    ],
+    "today": true
+   },
+   {
+    "name": "Made beats for Kendrick",
+    "level": 3,
+    "tiles": [
+     "Sounwave",
+     "Terrace Martin",
+     "DJ Dahi",
+     "Tae Beast"
+    ],
+    "today": true
+   },
+   {
+    "name": "Black Thought, solo",
+    "level": 4,
+    "tiles": [
+     "Streams of Thought, Vol. 1",
+     "Streams of Thought, Vol. 2",
+     "Streams of Thought, Vol. 3",
+     "Glorious Game"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-15": {
+  "occasion": "A 2Pac hologram performed at Coachella today in 2012. Sexyy Red was born today in 1998.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Headlined Coachella",
+    "level": 1,
+    "tiles": [
+     "Dr. Dre",
+     "Kendrick Lamar",
+     "Drake",
+     "Tyler, the Creator"
+    ],
+    "today": true
+   },
+   {
+    "name": "Sexyy Red was on it",
+    "level": 2,
+    "tiles": [
+     "Pound Town",
+     "SkeeYee",
+     "Get It Sexyy",
+     "Rich Baby Daddy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Spillage Village",
+    "level": 3,
+    "tiles": [
+     "JID",
+     "EarthGang",
+     "Mereba",
+     "Hollywood JB"
+    ]
+   },
+   {
+    "name": "Came back as a hologram",
+    "level": 4,
+    "tiles": [
+     "2Pac",
+     "Eazy-E",
+     "Ol' Dirty Bastard",
+     "Michael Jackson"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-16": {
+  "occasion": "DJ Kool Herc (1955), Akon (1973) and Chance the Rapper (1993) were born today. Sage Francis's \"Personal Journals\" came out today in 2002.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Akon sang the hook",
+    "level": 1,
+    "tiles": [
+     "Soul Survivor",
+     "Sweetest Girl (Dollar Bill)",
+     "Dangerous",
+     "Hold My Hand"
+    ],
+    "today": true
+   },
+   {
+    "name": "Kool Herc's breaks",
+    "level": 2,
+    "tiles": [
+     "Apache",
+     "The Mexican",
+     "It's Just Begun",
+     "Give It Up or Turnit a Loose"
+    ],
+    "today": true
+   },
+   {
+    "name": "Poets on the mic",
+    "level": 3,
+    "tiles": [
+     "Sage Francis",
+     "Saul Williams",
+     "Mike Ladd",
+     "Ursula Rucker"
+    ],
+    "today": true
+   },
+   {
+    "name": "Chance the Rapper songs",
+    "level": 4,
+    "tiles": [
+     "No Problem",
+     "Cocoa Butter Kisses",
+     "Sunday Candy",
+     "All Night"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-17": {
+  "occasion": "Black Rob died today in 2021. DJ Kay Slay died today in 2022.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Bad Boy, 2000",
+    "level": 1,
+    "tiles": [
+     "Black Rob",
+     "Shyne",
+     "G. Dep",
+     "Loon"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mixtape DJs",
+    "level": 2,
+    "tiles": [
+     "DJ Kay Slay",
+     "DJ Clue",
+     "DJ Drama",
+     "Green Lantern"
+    ],
+    "today": true
+   },
+   {
+    "name": "Chopped and screwed",
+    "level": 3,
+    "tiles": [
+     "DJ Screw",
+     "OG Ron C",
+     "Michael Watts",
+     "Slim K"
+    ]
+   },
+   {
+    "name": "From St. Louis",
+    "level": 4,
+    "tiles": [
+     "Smino",
+     "J-Kwon",
+     "Murphy Lee",
+     "Ali"
+    ]
+   }
+  ]
+ },
+ "04-18": {
+  "occasion": "Fredro Starr (1971) and Ski Mask the Slump God (1996) were born today. People Under the Stairs' \"Stepfather\" came out today in 2006.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Onyx",
+    "level": 1,
+    "tiles": [
+     "Fredro Starr",
+     "Sticky Fingaz",
+     "Sonsee",
+     "Big DS"
+    ],
+    "today": true
+   },
+   {
+    "name": "Ski Mask the Slump God songs",
+    "level": 2,
+    "tiles": [
+     "Catch Me Outside",
+     "BabyWipe",
+     "Faucet Failure",
+     "Nuketown"
+    ],
+    "today": true
+   },
+   {
+    "name": "People Under the Stairs albums",
+    "level": 3,
+    "tiles": [
+     "Question in the Form of an Answer",
+     "O.S.T.",
+     "Stepfather",
+     "Fun DMC"
+    ],
+    "today": true
+   },
+   {
+    "name": "On the radio dial",
+    "level": 4,
+    "tiles": [
+     "Power 106",
+     "KMEL",
+     "WBLS",
+     "97.9 The Box"
+    ]
+   }
+  ]
+ },
+ "04-19": {
+  "occasion": "Nas released \"Illmatic\" today in 1994. Guru of Gang Starr died today in 2010.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Illmatic\"",
+    "level": 1,
+    "tiles": [
+     "The World Is Yours",
+     "Memory Lane (Sittin' in da Park)",
+     "One Love",
+     "Represent"
+    ],
+    "today": true
+   },
+   {
+    "name": "Made beats for \"Illmatic\"",
+    "level": 2,
+    "tiles": [
+     "DJ Premier",
+     "Pete Rock",
+     "Q-Tip",
+     "L.E.S."
+    ],
+    "today": true
+   },
+   {
+    "name": "On Guru's \"Jazzmatazz\"",
+    "level": 3,
+    "tiles": [
+     "Courtney Pine",
+     "Branford Marsalis",
+     "Ronny Jordan",
+     "N'Dea Davenport"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jazz that rap loves to sample",
+    "level": 4,
+    "tiles": [
+     "Bob James",
+     "Ahmad Jamal",
+     "Lonnie Liston Smith",
+     "Bobbi Humphrey"
+    ]
+   }
+  ]
+ },
+ "04-20": {
+  "occasion": "It's 4/20. Killer Mike was born today in 1975.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Stoner anthems",
+    "level": 1,
+    "tiles": [
+     "Hits from the Bong",
+     "Because I Got High",
+     "I Got 5 on It",
+     "Indo Smoke"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cypress Hill",
+    "level": 2,
+    "tiles": [
+     "B-Real",
+     "Sen Dog",
+     "DJ Muggs",
+     "Eric Bobo"
+    ],
+    "today": true
+   },
+   {
+    "name": "Run the Jewels albums",
+    "level": 3,
+    "tiles": [
+     "Run the Jewels",
+     "RTJ2",
+     "RTJ3",
+     "RTJ4"
+    ],
+    "today": true
+   },
+   {
+    "name": "Horrorcore",
+    "level": 4,
+    "tiles": [
+     "Esham",
+     "Insane Clown Posse",
+     "Flatlinerz",
+     "Twiztid"
+    ]
+   }
+  ]
+ },
+ "04-21": {
+  "occasion": "Beastie Boys' \"Check Your Head\" and Kid Frost's \"East Side Story\" both came out today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Check Your Head\"",
+    "level": 1,
+    "tiles": [
+     "So What'cha Want",
+     "Pass the Mic",
+     "Jimmy James",
+     "Gratitude"
+    ],
+    "today": true
+   },
+   {
+    "name": "Chicano rap",
+    "level": 2,
+    "tiles": [
+     "Kid Frost",
+     "A Lighter Shade of Brown",
+     "Proper Dos",
+     "Psycho Realm"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap reality TV",
+    "level": 3,
+    "tiles": [
+     "Love & Hip Hop",
+     "The Rap Game",
+     "Rhythm + Flow",
+     "Making the Band"
+    ]
+   },
+   {
+    "name": "Rap video games",
+    "level": 4,
+    "tiles": [
+     "Def Jam Vendetta",
+     "Wu-Tang: Shaolin Style",
+     "PaRappa the Rapper",
+     "50 Cent: Bulletproof"
+    ]
+   }
+  ]
+ },
+ "04-22": {
+  "occasion": "Shock G died today in 2021. The Jacka's \"Drought Season\" came out today in 2008. It's Earth Day.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Shock G made it",
+    "level": 1,
+    "tiles": [
+     "I Get Around",
+     "Kiss You Back",
+     "Same Song",
+     "The Humpty Dance"
+    ],
+    "today": true
+   },
+   {
+    "name": "Atmosphere albums",
+    "level": 2,
+    "tiles": [
+     "Lucy Ford",
+     "God Loves Ugly",
+     "Seven's Travels",
+     "You Can't Imagine How Much Fun We're Having"
+    ]
+   },
+   {
+    "name": "The Jacka and the Mob Figaz",
+    "level": 3,
+    "tiles": [
+     "The Jacka",
+     "Husalah",
+     "Rydah J. Klyde",
+     "AP.9"
+    ],
+    "today": true
+   },
+   {
+    "name": "Weather report",
+    "level": 4,
+    "tiles": [
+     "Stormzy",
+     "Snow",
+     "Hurricane Chris",
+     "Thundercat"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-23": {
+  "occasion": "All about 2012.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Hits of 2012",
+    "level": 1,
+    "tiles": [
+     "Birthday Song",
+     "Same Damn Time",
+     "Pop That",
+     "Bandz a Make Her Dance"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big albums of 2012",
+    "level": 2,
+    "tiles": [
+     "Life Is Good",
+     "Based on a T.R.U. Story",
+     "God Forgives, I Don't",
+     "Pink Friday: Roman Reloaded"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground, 2012",
+    "level": 3,
+    "tiles": [
+     "R.A.P. Music",
+     "Control System",
+     "Skelethon",
+     "Habits & Contradictions"
+    ],
+    "today": true
+   },
+   {
+    "name": "2012 XXL Freshmen",
+    "level": 4,
+    "tiles": [
+     "Hopsin",
+     "Kid Ink",
+     "Machine Gun Kelly",
+     "Don Trip"
+    ],
+    "today": true
+   }
+  ],
+  "year": 2012
+ },
+ "04-24": {
+  "occasion": "Death Grips' \"The Money Store\" came out today in 2012.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Death Grips albums",
+    "level": 1,
+    "tiles": [
+     "Exmilitary",
+     "The Money Store",
+     "No Love Deep Web",
+     "The Powers That B"
+    ],
+    "today": true
+   },
+   {
+    "name": "State Property",
+    "level": 2,
+    "tiles": [
+     "Peedi Crakk",
+     "Young Chris",
+     "Neef Buck",
+     "Omillio Sparks"
+    ]
+   },
+   {
+    "name": "Behind the camera",
+    "level": 3,
+    "tiles": [
+     "Jamel Shabazz",
+     "Ricky Powell",
+     "Ernie Paniccioli",
+     "Janette Beckman"
+    ]
+   },
+   {
+    "name": "French Montana songs",
+    "level": 4,
+    "tiles": [
+     "Unforgettable",
+     "Ain't Worried About Nothin'",
+     "No Stylist",
+     "Shot Caller"
+    ]
+   }
+  ]
+ },
+ "04-25": {
+  "occasion": "Lisa \"Left Eye\" Lopes of TLC died today in 2002. The Coup's \"Pick a Bigger Weapon\" came out today in 2006.",
+  "big": false,
+  "groups": [
+   {
+    "name": "TLC songs",
+    "level": 1,
+    "tiles": [
+     "Waterfalls",
+     "No Scrubs",
+     "Creep",
+     "Ain't 2 Proud 2 Beg"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Coup albums",
+    "level": 2,
+    "tiles": [
+     "Kill My Landlord",
+     "Genocide & Juice",
+     "Steal This Album",
+     "Party Music"
+    ],
+    "today": true
+   },
+   {
+    "name": "Nerdcore",
+    "level": 3,
+    "tiles": [
+     "MC Frontalot",
+     "MC Chris",
+     "Mega Ran",
+     "Dual Core"
+    ]
+   },
+   {
+    "name": "Lil Wayne's mixtapes",
+    "level": 4,
+    "tiles": [
+     "Dedication",
+     "Da Drought",
+     "Sorry 4 the Wait",
+     "No Ceilings"
+    ]
+   }
+  ]
+ },
+ "04-26": {
+  "occasion": "\"Friday\" opened in theaters today in 1995. OutKast's first album came out today in 1994.",
+  "big": false,
+  "groups": [
+   {
+    "name": "From \"Friday\"",
+    "level": 1,
+    "tiles": [
+     "Bye, Felicia",
+     "Puff, puff, give",
+     "Damn!",
+     "You ain't got no job"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Southernplayalisticadillacmuzik\"",
+    "level": 2,
+    "tiles": [
+     "Player's Ball",
+     "Git Up, Git Out",
+     "Crumblin' Erb",
+     "Southernplayalisticadillacmuzik"
+    ],
+    "today": true
+   },
+   {
+    "name": "Typical Cats",
+    "level": 3,
+    "tiles": [
+     "Qwazaar",
+     "Denizen Kane",
+     "Qwel",
+     "DJ Natural"
+    ]
+   },
+   {
+    "name": "GOOD Fridays",
+    "level": 4,
+    "tiles": [
+     "So Appalled",
+     "Monster",
+     "Devil in a New Dress",
+     "Christmas in Harlem"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "04-27": {
+  "occasion": "Logic's \"1-800-273-8255\" came out today in 2017.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Logic albums",
+    "level": 1,
+    "tiles": [
+     "Under Pressure",
+     "The Incredible True Story",
+     "Everybody",
+     "Bobby Tarantino"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lord ___",
+    "level": 2,
+    "tiles": [
+     "Lord Finesse",
+     "Lord Infamous",
+     "Lord Jamar",
+     "Lords of the Underground"
+    ]
+   },
+   {
+    "name": "Crowned themselves king",
+    "level": 3,
+    "tiles": [
+     "T.I.",
+     "Lil Jon",
+     "Young Dolph",
+     "The Notorious B.I.G."
+    ]
+   },
+   {
+    "name": "Low End Theory nights",
+    "level": 4,
+    "tiles": [
+     "Daddy Kev",
+     "Nobody",
+     "The Gaslamp Killer",
+     "D-Styles"
+    ]
+   }
+  ]
+ },
+ "04-28": {
+  "occasion": "Mac Dre's \"Stupid Doo Doo Dumb\" came out today in 1998. DJ Khaled's \"I'm the One\" came out today in 2017.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Mac Dre songs",
+    "level": 1,
+    "tiles": [
+     "Feelin' Myself",
+     "Thizzelle Dance",
+     "Genie of the Lamp",
+     "Since '84"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"I'm the One\"",
+    "level": 2,
+    "tiles": [
+     "Justin Bieber",
+     "Quavo",
+     "Chance the Rapper",
+     "Lil Wayne"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Sacramento",
+    "level": 3,
+    "tiles": [
+     "C-Bo",
+     "Mozzy",
+     "Brotha Lynch Hung",
+     "X-Raided"
+    ]
+   },
+   {
+    "name": "African rap",
+    "level": 4,
+    "tiles": [
+     "Sarkodie",
+     "M.anifest",
+     "Olamide",
+     "Reminisce"
+    ]
+   }
+  ]
+ },
+ "04-29": {
+  "occasion": "Master P was born today in 1970. Aesop Rock's \"The Impossible Kid\" came out today in 2016.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Beats by the Pound",
+    "level": 1,
+    "tiles": [
+     "KLC",
+     "Craig B",
+     "Mo B. Dick",
+     "O'Dell"
+    ],
+    "today": true
+   },
+   {
+    "name": "Aesop Rock albums",
+    "level": 2,
+    "tiles": [
+     "Float",
+     "Labor Days",
+     "Bazooka Tooth",
+     "The Impossible Kid"
+    ],
+    "today": true
+   },
+   {
+    "name": "Heavy D songs",
+    "level": 3,
+    "tiles": [
+     "Now That We Found Love",
+     "Is It Good to You",
+     "Somebody for Me",
+     "Nuttin' but Love"
+    ]
+   },
+   {
+    "name": "Scored a movie",
+    "level": 4,
+    "tiles": [
+     "RZA",
+     "Adrian Younge",
+     "Ludwig Göransson",
+     "Pharrell"
+    ]
+   }
+  ]
+ },
+ "04-30": {
+  "occasion": "Blackalicious's \"Blazing Arrow\" and Big Tymers' \"Hood Rich\" both came out today in 2002. Lloyd Banks (1982) and Lil Tjay (2001) were born today.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Quannum",
+    "level": 1,
+    "tiles": [
+     "Blackalicious",
+     "Lyrics Born",
+     "Lateef the Truthspeaker",
+     "Pigeon John"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lloyd Banks songs",
+    "level": 2,
+    "tiles": [
+     "On Fire",
+     "Karma",
+     "Hands Up",
+     "Beamer, Benz, or Bentley"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Tjay songs",
+    "level": 3,
+    "tiles": [
+     "Pop Out",
+     "Calling My Phone",
+     "F.N",
+     "Leaked"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big Tymers songs",
+    "level": 4,
+    "tiles": [
+     "Still Fly",
+     "Get Your Roll On",
+     "Oh Yeah!",
+     "Big Ballin'"
     ],
     "today": true
    }
