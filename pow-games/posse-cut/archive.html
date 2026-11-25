@@ -59,12 +59,15 @@ fetch('calendar.json', { cache: 'no-cache' }).then(r => r.json()).then(cal => {
       const day = new Date('2001-' + md + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       return `<li class="c${i % 4 + 1}${p.big ? ' big' : ''}"><a href="./?md=${md}"><span class="dt">${day}</span><span class="oc">${p.occasion}</span>${tag(Cy.store.get('cal' + md, null))}</a></li>`;
     }).join('');
-    return `<h2 class="arch-h"><span class="L${k % 4 + 1}">${name}</span> <small>calendar test</small></h2><ul class="archive">${rows}</ul>`;
+    return `<h2 class="arch-h"><span class="L${k % 4 + 1}">${name}</span></h2><ul class="archive">${rows}</ul>`;
   }).join('');
 }).catch(() => {});
 Cy.load().then(d => {
   const today = Cy.todayNum(d), rows = [];
-  for (let k = today; k >= 1; k--) rows.push(`<li class="c${k % 4 + 1}"><a href="./?n=${k}"><span class="dt">#${String(k).padStart(3, '0')}</span><span class="oc">${Cy.dateFor(d.launch, k)}${k === today ? ' · Today' : ''}</span>${tag(Cy.store.get('p' + k, null))}</a></li>`);
+  for (let k = today; k >= 1; k--) {
+    const date = Cy.dateFor(d.launch, k), p = Cy.puzzleFor(d, date);
+    rows.push(`<li class="c${k % 4 + 1}"><a href="./?n=${k}"><span class="dt">#${String(k).padStart(3, '0')}</span><span class="oc">${k === today ? 'Today · ' : ''}${p.occasion}</span>${tag(Cy.store.get('d' + date, null))}</a></li>`);
+  }
   document.getElementById('list').innerHTML = rows.join('');
 });
 </script>
