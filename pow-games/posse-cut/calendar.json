@@ -9102,17 +9102,17 @@
   ]
  },
  "07-08": {
-  "occasion": "Freeway was born today in 1979.",
+  "occasion": "Killer Mike's \"I Pledge Allegiance to the Grind II\" came out today in 2008.",
   "big": false,
   "groups": [
    {
-    "name": "Freeway songs",
+    "name": "Killer Mike, before Run the Jewels",
     "level": 1,
     "tiles": [
-     "What We Do",
-     "Flipside",
-     "Line 'Em Up",
-     "Roc-A-Fella Billionaires"
+     "The Whole World",
+     "Kryptonite (I'm on It)",
+     "Snappin' & Trappin'",
+     "A.D.I.D.A.S."
     ],
     "today": true
    },
@@ -9676,7 +9676,7 @@
   "big": false,
   "groups": [
    {
-    "name": "Kool G Rap & DJ Polo albums",
+    "name": "Kool G Rap albums",
     "level": 1,
     "tiles": [
      "Road to the Riches",
@@ -10496,7 +10496,7 @@
   ]
  },
  "08-06": {
-  "occasion": "\"Yo! MTV Raps\" premiered today in 1988. Dälek's first album came out today in 2002. Fatman Scoop was born today in 1971.",
+  "occasion": "\"Yo! MTV Raps\" premiered today in 1988. Dälek's first album came out today in 2002. Fatman Scoop (1971) and Freeway (1978) were born today.",
   "big": true,
   "groups": [
    {
@@ -10533,13 +10533,13 @@
     "today": true
    },
    {
-    "name": "Videos that ruled the show",
+    "name": "Freeway songs",
     "level": 4,
     "tiles": [
-     "Me Myself and I",
-     "Wild Thing",
-     "It Takes Two",
-     "Bust a Move"
+     "What We Do",
+     "Flipside",
+     "Line 'Em Up",
+     "Roc-A-Fella Billionaires"
     ],
     "today": true
    }
