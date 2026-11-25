@@ -71,7 +71,7 @@ header.mast{border-bottom:4px solid var(--ink);padding:14px 0 10px;display:flex;
 .stats span{font:600 10px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em}
 .next{font:600 15px var(--mono);text-transform:uppercase;letter-spacing:.06em;margin:12px 0}
 .next b{font:inherit;color:var(--red);margin-left:6px}
-.reading h3{font:400 22px var(--display);text-transform:uppercase;margin:22px 0 4px}
+.reading h3{font:400 clamp(34px,10vw,48px)/.9 var(--display);text-transform:uppercase;margin:28px 0 8px}
 .reading p.sub{margin:0 0 10px;font-size:14px;color:var(--mute)}
 .reading .grp{border-left:8px solid var(--ink);padding:2px 0 2px 10px;margin:12px 0}
 .reading .grp.g1{border-color:var(--l1)} .reading .grp.g2{border-color:var(--l2)} .reading .grp.g3{border-color:var(--l3)} .reading .grp.g4{border-color:var(--l4)}
