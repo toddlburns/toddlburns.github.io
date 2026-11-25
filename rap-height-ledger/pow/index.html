@@ -276,6 +276,21 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 .score b{color:var(--ink)}
 .gnames small{color:var(--dim)}
 </style><style>
+/* lists and controls in the same POW language as the chart (Todd 2026-11-24: "out of line with the rest") */
+.row .dot{display:none}
+.row{align-items:center;padding:9px 0 8px;font-size:18px}
+.row .v{position:relative;z-index:0;font-family:var(--disp);font-style:normal;font-size:19px;color:#171717;padding:3px 9px 1px;transform:rotate(-2deg)}
+.row:nth-child(even) .v{transform:rotate(1.5deg)}
+.row .v::before{content:"";position:absolute;inset:0;background:var(--ink);z-index:-1;filter:url(#rough)}
+.row span.d{font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-size:13px;color:var(--orange);margin-left:4px}
+.chip{font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;font-size:16px;border:2px solid var(--orange);border-radius:0;padding:4px 12px 3px;color:var(--ink)}
+.chip:hover,.chip.on{background:var(--green);border-color:var(--green);color:#171717}
+.chip small{color:inherit;opacity:.7}
+.pick select{font-family:var(--disp);text-transform:uppercase;letter-spacing:.02em;font-size:20px;border-bottom:3px solid var(--orange);padding:4px 2px}
+.pick input[type=search]{border-bottom:3px solid var(--orange);font-size:18px}
+#youToggle{font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;font-size:19px;background:var(--orange);border:0;border-radius:0;color:#171717;padding:8px 16px 6px;cursor:pointer}
+#youToggle.on{background:var(--green)}
+.sheethead button{font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:2px solid var(--ink);padding:5px 12px 3px;font-size:17px}
 .dek{color:#fff;font-style:normal;font-weight:500;font-size:21px;line-height:1.3;margin-top:18px}
 .stagehead{padding-top:36px}
 @media (max-width:640px){.dek{font-size:18px;margin-top:14px}.stagehead{padding-top:22px}}
