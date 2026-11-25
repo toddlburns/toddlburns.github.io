@@ -41,8 +41,7 @@
   </header>
   <div class="strip"><span>Archive</span><nav class="pnav" aria-label="Pages"><a href="about.html">About</a><a href="archive.html" aria-current="page">Archive</a><a href="./" class="today">Today</a></nav></div>
   <p class="lede">Missed a day? Play any of them. They don't count toward your streak.</p>
-  <h2 class="arch-h"><span class="L1">January</span> <small>calendar test</small></h2>
-  <ul class="archive" id="cal"></ul>
+  <div id="cal"></div>
   <h2 class="arch-h"><span class="L3">Past puzzles</span></h2>
   <ul class="archive" id="list"></ul>
 </div>
@@ -51,9 +50,16 @@
 const status = st => st && st.done ? (st.won ? ['Solved', 'won'] : ['Lost', 'lost']) : st ? ['In progress', 'mid'] : ['Unplayed', ''];
 const tag = st => { const [t, c] = status(st); return `<small class="st ${c}">${t}</small>`; };
 fetch('calendar.json', { cache: 'no-cache' }).then(r => r.json()).then(cal => {
-  document.getElementById('cal').innerHTML = Object.entries(cal).map(([md, p], i) => {
-    const day = new Date('2001-' + md + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    return `<li class="c${i % 4 + 1}${p.big ? ' big' : ''}"><a href="./?md=${md}"><span class="dt">${day}</span><span class="oc">${p.occasion}</span>${tag(Cy.store.get('cal' + md, null))}</a></li>`;
+  // one section per month, colours cycling like the puzzle levels
+  const months = {};
+  Object.entries(cal).forEach(([md, p]) => (months[md.slice(0, 2)] = months[md.slice(0, 2)] || []).push([md, p]));
+  document.getElementById('cal').innerHTML = Object.entries(months).map(([mm, days], k) => {
+    const name = new Date('2001-' + mm + '-01T12:00:00').toLocaleDateString('en-US', { month: 'long' });
+    const rows = days.map(([md, p], i) => {
+      const day = new Date('2001-' + md + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      return `<li class="c${i % 4 + 1}${p.big ? ' big' : ''}"><a href="./?md=${md}"><span class="dt">${day}</span><span class="oc">${p.occasion}</span>${tag(Cy.store.get('cal' + md, null))}</a></li>`;
+    }).join('');
+    return `<h2 class="arch-h"><span class="L${k % 4 + 1}">${name}</span> <small>calendar test</small></h2><ul class="archive">${rows}</ul>`;
   }).join('');
 }).catch(() => {});
 Cy.load().then(d => {

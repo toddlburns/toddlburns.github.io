@@ -1592,5 +1592,1357 @@
     "why": "Nas, OutKast, Kanye, Snoop."
    }
   ]
+ },
+ "02-01": {
+  "occasion": "Black History Month starts today. Big Boi was born today in 1975.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ludacris songs",
+    "level": 1,
+    "tiles": [
+     "Stand Up",
+     "What's Your Fantasy",
+     "Southern Hospitality",
+     "Act a Fool"
+    ]
+   },
+   {
+    "name": "From the Bronx",
+    "level": 2,
+    "tiles": [
+     "KRS-One",
+     "Fat Joe",
+     "Big Pun",
+     "A Boogie wit da Hoodie"
+    ]
+   },
+   {
+    "name": "Big Boi's albums (and his half)",
+    "level": 3,
+    "tiles": [
+     "Speakerboxxx",
+     "Sir Lucious Left Foot",
+     "Vicious Lies and Dangerous Rumors",
+     "Boomiverse"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dungeon Family",
+    "level": 4,
+    "tiles": [
+     "Goodie Mob",
+     "Sleepy Brown",
+     "Witchdoctor",
+     "Big Rube"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-02": {
+  "occasion": "\"Not Like Us\" won Record and Song of the Year today in 2025. Southside of 808 Mafia was born today in 1989.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Future albums",
+    "level": 1,
+    "tiles": [
+     "DS2",
+     "HNDRXX",
+     "Pluto",
+     "I Never Liked You"
+    ]
+   },
+   {
+    "name": "Kendrick's Drake records",
+    "level": 2,
+    "tiles": [
+     "Euphoria",
+     "Meet the Grahams",
+     "Not Like Us",
+     "6:16 in LA"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Philly",
+    "level": 3,
+    "tiles": [
+     "Meek Mill",
+     "Lil Uzi Vert",
+     "Beanie Sigel",
+     "Freeway"
+    ]
+   },
+   {
+    "name": "808 Mafia",
+    "level": 4,
+    "tiles": [
+     "Southside",
+     "Lex Luger",
+     "TM88",
+     "Tarentino"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-03": {
+  "occasion": "Fat Pat of the Screwed Up Click died today in 1998. WC was born today in 1970.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Big Sean albums",
+    "level": 1,
+    "tiles": [
+     "Finally Famous",
+     "Hall of Fame",
+     "Dark Sky Paradise",
+     "I Decided."
+    ]
+   },
+   {
+    "name": "From Detroit",
+    "level": 2,
+    "tiles": [
+     "Eminem",
+     "Danny Brown",
+     "Royce da 5'9\"",
+     "Tee Grizzley"
+    ]
+   },
+   {
+    "name": "Screwed Up Click",
+    "level": 3,
+    "tiles": [
+     "Fat Pat",
+     "Big Hawk",
+     "Lil' Keke",
+     "Big Moe"
+    ],
+    "today": true
+   },
+   {
+    "name": "What's in the cup",
+    "level": 4,
+    "tiles": [
+     "Lean",
+     "Purple drank",
+     "Syrup",
+     "Sizzurp"
+    ]
+   }
+  ]
+ },
+ "02-04": {
+  "occasion": "Cam'ron was born today in 1976.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Nicki Minaj songs",
+    "level": 1,
+    "tiles": [
+     "Super Bass",
+     "Starships",
+     "Anaconda",
+     "Super Freaky Girl"
+    ]
+   },
+   {
+    "name": "Cam'ron albums",
+    "level": 2,
+    "tiles": [
+     "Confessions of Fire",
+     "Come Home with Me",
+     "Purple Haze",
+     "Killa Season"
+    ],
+    "today": true
+   },
+   {
+    "name": "2Pac singles",
+    "level": 3,
+    "tiles": [
+     "Holler If Ya Hear Me",
+     "Keep Ya Head Up",
+     "Dear Mama",
+     "I Get Around"
+    ]
+   },
+   {
+    "name": "Chicago's new school",
+    "level": 4,
+    "tiles": [
+     "Saba",
+     "Noname",
+     "Mick Jenkins",
+     "Chance the Rapper"
+    ]
+   }
+  ]
+ },
+ "02-05": {
+  "occasion": "Irv Gotti died today in 2025. Kevin Gates was born today in 1986.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil Wayne albums",
+    "level": 1,
+    "tiles": [
+     "Tha Carter",
+     "Tha Carter II",
+     "Tha Carter III",
+     "I Am Not a Human Being"
+    ]
+   },
+   {
+    "name": "Murder Inc.",
+    "level": 2,
+    "tiles": [
+     "Ja Rule",
+     "Ashanti",
+     "Charli Baltimore",
+     "Black Child"
+    ],
+    "today": true
+   },
+   {
+    "name": "Baton Rouge",
+    "level": 3,
+    "tiles": [
+     "Kevin Gates",
+     "Boosie Badazz",
+     "NBA YoungBoy",
+     "Webbie"
+    ],
+    "today": true
+   },
+   {
+    "name": "Money in the name",
+    "level": 4,
+    "tiles": [
+     "50 Cent",
+     "Money Man",
+     "Moneybagg Yo",
+     "Too $hort"
+    ]
+   }
+  ]
+ },
+ "02-06": {
+  "occasion": "50 Cent released \"Get Rich or Die Tryin'\" today in 2003.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Get Rich or Die Tryin'\"",
+    "level": 1,
+    "tiles": [
+     "In da Club",
+     "21 Questions",
+     "P.I.M.P.",
+     "Many Men"
+    ],
+    "today": true
+   },
+   {
+    "name": "At the 2022 Super Bowl halftime show",
+    "level": 2,
+    "tiles": [
+     "Mary J. Blige",
+     "Anderson .Paak",
+     "Eminem",
+     "Snoop Dogg"
+    ]
+   },
+   {
+    "name": "'90s women on the mic",
+    "level": 3,
+    "tiles": [
+     "The Lady of Rage",
+     "Rah Digga",
+     "Bahamadia",
+     "Heather B"
+    ]
+   },
+   {
+    "name": "50 Cent's businesses",
+    "level": 4,
+    "tiles": [
+     "Vitaminwater",
+     "Effen",
+     "Branson",
+     "Le Chemin du Roi"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-07": {
+  "occasion": "J Dilla was born today in 1974. \"Donuts\" came out on his birthday in 2006.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Slum Village",
+    "level": 1,
+    "tiles": [
+     "T3",
+     "Baatin",
+     "Elzhi",
+     "Young RJ"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dilla made the beat",
+    "level": 2,
+    "tiles": [
+     "Runnin'",
+     "Find a Way",
+     "Stakes Is High",
+     "Fall in Love"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Donuts\"",
+    "level": 3,
+    "tiles": [
+     "Workinonit",
+     "Don't Cry",
+     "Last Donut of the Night",
+     "Waves"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Soulquarians",
+    "level": 4,
+    "tiles": [
+     "Questlove",
+     "D'Angelo",
+     "Erykah Badu",
+     "Common"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-08": {
+  "occasion": "Anderson .Paak, Project Pat, Drag-On and Turk were all born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil ___",
+    "level": 1,
+    "tiles": [
+     "Lil Tecca",
+     "Lil Mosey",
+     "Lil Tjay",
+     "Lil Skies"
+    ]
+   },
+   {
+    "name": "Silk Sonic songs",
+    "level": 2,
+    "tiles": [
+     "Leave the Door Open",
+     "Skate",
+     "Smokin Out the Window",
+     "Fly as Me"
+    ]
+   },
+   {
+    "name": "Born February 8",
+    "level": 3,
+    "tiles": [
+     "Anderson .Paak",
+     "Project Pat",
+     "Drag-On",
+     "Turk"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Wayne's other names",
+    "level": 4,
+    "tiles": [
+     "Weezy F. Baby",
+     "Tunechi",
+     "Birdman Jr.",
+     "Mr. Carter"
+    ]
+   }
+  ]
+ },
+ "02-09": {
+  "occasion": "Kendrick Lamar headlined the Super Bowl halftime show today in 2025.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Cars in the verse",
+    "level": 1,
+    "tiles": [
+     "Maybach",
+     "Bentley",
+     "Lamborghini",
+     "Rolls-Royce"
+    ]
+   },
+   {
+    "name": "On stage with Kendrick at the Super Bowl",
+    "level": 2,
+    "tiles": [
+     "SZA",
+     "Samuel L. Jackson",
+     "Mustard",
+     "Serena Williams"
+    ],
+    "today": true
+   },
+   {
+    "name": "UK drill",
+    "level": 3,
+    "tiles": [
+     "Headie One",
+     "Digga D",
+     "Central Cee",
+     "K-Trap"
+    ]
+   },
+   {
+    "name": "Ad-libs",
+    "level": 4,
+    "tiles": [
+     "Skrrt",
+     "Brrr",
+     "Okurrr",
+     "Yeah!"
+    ]
+   }
+  ]
+ },
+ "02-10": {
+  "occasion": "Kanye West released \"The College Dropout\" today in 2004.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The College Dropout\"",
+    "level": 1,
+    "tiles": [
+     "Jesus Walks",
+     "Through the Wire",
+     "All Falls Down",
+     "Slow Jamz"
+    ],
+    "today": true
+   },
+   {
+    "name": "Roc-A-Fella roster",
+    "level": 2,
+    "tiles": [
+     "Beanie Sigel",
+     "Memphis Bleek",
+     "Cam'ron",
+     "Young Gunz"
+    ]
+   },
+   {
+    "name": "Roc-A-Fella producers",
+    "level": 3,
+    "tiles": [
+     "Just Blaze",
+     "Bink!",
+     "Ski Beatz",
+     "The Heatmakerz"
+    ]
+   },
+   {
+    "name": "The rest of the school years",
+    "level": 4,
+    "tiles": [
+     "Late Registration",
+     "Graduation",
+     "Dropout Bear",
+     "Homecoming"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-11": {
+  "occasion": "Makaveli's \"Hail Mary\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Snoop Dogg albums",
+    "level": 1,
+    "tiles": [
+     "Tha Doggfather",
+     "Tha Last Meal",
+     "R&G: The Masterpiece",
+     "Ego Trippin'"
+    ]
+   },
+   {
+    "name": "On \"The Don Killuminati\"",
+    "level": 2,
+    "tiles": [
+     "Hail Mary",
+     "Toss It Up",
+     "To Live & Die in L.A.",
+     "Krazy"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Outlawz",
+    "level": 3,
+    "tiles": [
+     "Young Noble",
+     "E.D.I. Mean",
+     "Kastro",
+     "Napoleon"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap-rock",
+    "level": 4,
+    "tiles": [
+     "Linkin Park",
+     "Rage Against the Machine",
+     "Limp Bizkit",
+     "Kid Rock"
+    ]
+   }
+  ]
+ },
+ "02-12": {
+  "occasion": "Gucci Mane was born today in 1980.",
+  "big": true,
+  "groups": [
+   {
+    "name": "1017",
+    "level": 1,
+    "tiles": [
+     "Pooh Shiesty",
+     "Foogiano",
+     "Big Scarr",
+     "Waka Flocka Flame"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gucci Mane songs",
+    "level": 2,
+    "tiles": [
+     "Lemonade",
+     "Wasted",
+     "Icy",
+     "Freaky Gurl"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gucci's other names",
+    "level": 3,
+    "tiles": [
+     "Guwop",
+     "La Flare",
+     "East Atlanta Santa",
+     "Trap God"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gucci's producers",
+    "level": 4,
+    "tiles": [
+     "Zaytoven",
+     "Mike WiLL Made-It",
+     "Drumma Boy",
+     "Metro Boomin"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-13": {
+  "occasion": "2Pac released \"All Eyez on Me\" and the Fugees released \"The Score\" today in 1996. Drake put out \"So Far Gone\" today in 2009.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"The Score\"",
+    "level": 1,
+    "tiles": [
+     "Killing Me Softly",
+     "Fu-Gee-La",
+     "Ready or Not",
+     "How Many Mics"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"All Eyez on Me\"",
+    "level": 2,
+    "tiles": [
+     "Ambitionz Az a Ridah",
+     "I Ain't Mad at Cha",
+     "Life Goes On",
+     "2 of Amerikaz Most Wanted"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"So Far Gone\"",
+    "level": 3,
+    "tiles": [
+     "Best I Ever Had",
+     "Successful",
+     "Houstatlantavegas",
+     "Uptown"
+    ],
+    "today": true
+   },
+   {
+    "name": "Guests on \"All Eyez on Me\"",
+    "level": 4,
+    "tiles": [
+     "Snoop Dogg",
+     "Method Man",
+     "Redman",
+     "Nate Dogg"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-14": {
+  "occasion": "Happy Valentine's Day.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Love songs",
+    "level": 1,
+    "tiles": [
+     "Bonita Applebum",
+     "All I Need",
+     "Brown Skin Lady",
+     "Hey Ma"
+    ],
+    "today": true
+   },
+   {
+    "name": "Married to a rapper",
+    "level": 2,
+    "tiles": [
+     "Beyoncé",
+     "Kim Kardashian",
+     "Faith Evans",
+     "Cardi B"
+    ],
+    "today": true
+   },
+   {
+    "name": "Love in the title",
+    "level": 3,
+    "tiles": [
+     "Love Galore",
+     "LOVE.",
+     "Love Yourz",
+     "Love Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "Breakup records",
+    "level": 4,
+    "tiles": [
+     "Ms. Jackson",
+     "Marvin's Room",
+     "Same Drugs",
+     "Song Cry"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-15": {
+  "occasion": "Megan Thee Stallion was born today in 1995, and Birdman in 1969. Big L died today in 1999.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Megan Thee Stallion songs",
+    "level": 1,
+    "tiles": [
+     "Savage",
+     "Hot Girl Summer",
+     "Body",
+     "Thot Shit"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cardi B songs",
+    "level": 2,
+    "tiles": [
+     "Bodak Yellow",
+     "I Like It",
+     "Money",
+     "Up"
+    ]
+   },
+   {
+    "name": "Big L classics",
+    "level": 3,
+    "tiles": [
+     "Put It On",
+     "Ebonics",
+     "MVP",
+     "Flamboyant"
+    ],
+    "today": true
+   },
+   {
+    "name": "Birdman's other names",
+    "level": 4,
+    "tiles": [
+     "Baby",
+     "#1 Stunna",
+     "Bryan Williams",
+     "Big Tymer"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-16": {
+  "occasion": "Ice-T, Lupe Fiasco and Denzel Curry were all born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Travis Scott albums",
+    "level": 1,
+    "tiles": [
+     "Rodeo",
+     "Utopia",
+     "Birds in the Trap Sing McKnight",
+     "Days Before Rodeo"
+    ]
+   },
+   {
+    "name": "Lupe Fiasco songs",
+    "level": 2,
+    "tiles": [
+     "Kick, Push",
+     "Superstar",
+     "The Show Goes On",
+     "Daydreamin'"
+    ],
+    "today": true
+   },
+   {
+    "name": "Ice-T on screen",
+    "level": 3,
+    "tiles": [
+     "Law & Order: SVU",
+     "New Jack City",
+     "Breakin'",
+     "Tank Girl"
+    ],
+    "today": true
+   },
+   {
+    "name": "Denzel Curry albums",
+    "level": 4,
+    "tiles": [
+     "Imperial",
+     "Ta13oo",
+     "Zuu",
+     "Melt My Eyez See Your Future"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-17": {
+  "occasion": "Michael Jordan was born today in 1963. Rap never got over him.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Future songs",
+    "level": 1,
+    "tiles": [
+     "Mask Off",
+     "March Madness",
+     "Low Life",
+     "Life Is Good"
+    ]
+   },
+   {
+    "name": "Got their own Air Jordans",
+    "level": 2,
+    "tiles": [
+     "Travis Scott",
+     "Drake",
+     "DJ Khaled",
+     "Eminem"
+    ],
+    "today": true
+   },
+   {
+    "name": "Bounce",
+    "level": 3,
+    "tiles": [
+     "Big Freedia",
+     "Magnolia Shorty",
+     "DJ Jubilee",
+     "Katey Red"
+    ]
+   },
+   {
+    "name": "On \"Hit 'Em High\" from Space Jam",
+    "level": 4,
+    "tiles": [
+     "B-Real",
+     "Coolio",
+     "Method Man",
+     "Busta Rhymes"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-18": {
+  "occasion": "Dr. Dre was born today in 1965.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Dr. Dre albums (one never came out)",
+    "level": 1,
+    "tiles": [
+     "The Chronic",
+     "2001",
+     "Compton",
+     "Detox"
+    ],
+    "today": true
+   },
+   {
+    "name": "Signed to Aftermath",
+    "level": 2,
+    "tiles": [
+     "Eminem",
+     "50 Cent",
+     "Kendrick Lamar",
+     "Anderson .Paak"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"The Chronic\"",
+    "level": 3,
+    "tiles": [
+     "Snoop Dogg",
+     "Kurupt",
+     "Daz Dillinger",
+     "The Lady of Rage"
+    ],
+    "today": true
+   },
+   {
+    "name": "Beats by Dre",
+    "level": 4,
+    "tiles": [
+     "Studio",
+     "Solo",
+     "Powerbeats",
+     "Pill"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-19": {
+  "occasion": "Pop Smoke died today in 2020. Lord Finesse was born today in 1970.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Pop Smoke songs",
+    "level": 1,
+    "tiles": [
+     "Dior",
+     "Welcome to the Party",
+     "Mood Swings",
+     "For the Night"
+    ],
+    "today": true
+   },
+   {
+    "name": "Atlanta trap pioneers",
+    "level": 2,
+    "tiles": [
+     "T.I.",
+     "Young Jeezy",
+     "Shawty Lo",
+     "OJ da Juiceman"
+    ]
+   },
+   {
+    "name": "D.I.T.C.",
+    "level": 3,
+    "tiles": [
+     "Lord Finesse",
+     "Diamond D",
+     "O.C.",
+     "Showbiz"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jamaican roots",
+    "level": 4,
+    "tiles": [
+     "Busta Rhymes",
+     "Heavy D",
+     "Kool Herc",
+     "Slick Rick"
+    ]
+   }
+  ]
+ },
+ "02-20": {
+  "occasion": "T-Pain released \"Buy U a Drank\" today in 2007. K-os was born today in 1972.",
+  "big": false,
+  "groups": [
+   {
+    "name": "T-Pain was on it",
+    "level": 1,
+    "tiles": [
+     "Buy U a Drank",
+     "Bartender",
+     "Good Life",
+     "Low"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Toronto",
+    "level": 2,
+    "tiles": [
+     "Drake",
+     "K-os",
+     "Tory Lanez",
+     "Nav"
+    ],
+    "today": true
+   },
+   {
+    "name": "Kid ___",
+    "level": 3,
+    "tiles": [
+     "Kid Cudi",
+     "Kid Ink",
+     "Kid Rock",
+     "Kid 'n Play"
+    ]
+   },
+   {
+    "name": "Drinks in the title",
+    "level": 4,
+    "tiles": [
+     "Gin and Juice",
+     "Thug Passion",
+     "Champagne Poetry",
+     "Tequila Shots"
+    ]
+   }
+  ]
+ },
+ "02-21": {
+  "occasion": "Eminem and Elton John performed \"Stan\" at the Grammys today in 2001.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Eminem songs",
+    "level": 1,
+    "tiles": [
+     "Stan",
+     "Without Me",
+     "The Real Slim Shady",
+     "Lose Yourself"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rock stars who teamed up with rappers",
+    "level": 2,
+    "tiles": [
+     "Aerosmith",
+     "Elton John",
+     "Linkin Park",
+     "Ozzy Osbourne"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Virginia",
+    "level": 3,
+    "tiles": [
+     "Missy Elliott",
+     "Timbaland",
+     "Pharrell",
+     "Pusha T"
+    ]
+   },
+   {
+    "name": "Won Best New Artist",
+    "level": 4,
+    "tiles": [
+     "Lauryn Hill",
+     "Chance the Rapper",
+     "Megan Thee Stallion",
+     "Arrested Development"
+    ]
+   }
+  ]
+ },
+ "02-22": {
+  "occasion": "The first rap Grammy was handed out today in 1989, and the winners boycotted the show.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Fresh Prince of Bel-Air cast",
+    "level": 1,
+    "tiles": [
+     "Will Smith",
+     "Alfonso Ribeiro",
+     "Tatyana Ali",
+     "James Avery"
+    ]
+   },
+   {
+    "name": "Fresh dressed, 1980s",
+    "level": 2,
+    "tiles": [
+     "Kangol",
+     "Shell toes",
+     "Dookie chains",
+     "Cazals"
+    ]
+   },
+   {
+    "name": "Early rap Grammy winners",
+    "level": 3,
+    "tiles": [
+     "DJ Jazzy Jeff & The Fresh Prince",
+     "Young MC",
+     "MC Hammer",
+     "Naughty by Nature"
+    ],
+    "today": true
+   },
+   {
+    "name": "Named after real people",
+    "level": 4,
+    "tiles": [
+     "Rick Ross",
+     "Capone",
+     "Noreaga",
+     "Yo Gotti"
+    ]
+   }
+  ]
+ },
+ "02-23": {
+  "occasion": "The Roots released \"Things Fall Apart\" today in 1999. So did Eminem, with \"The Slim Shady LP.\" Ab-Soul and Little Simz were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Black Hippy",
+    "level": 1,
+    "tiles": [
+     "Kendrick Lamar",
+     "ScHoolboy Q",
+     "Ab-Soul",
+     "Jay Rock"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Things Fall Apart\"",
+    "level": 2,
+    "tiles": [
+     "You Got Me",
+     "The Next Movement",
+     "Act Too (The Love of My Life)",
+     "Adrenaline!"
+    ],
+    "today": true
+   },
+   {
+    "name": "UK women",
+    "level": 3,
+    "tiles": [
+     "Little Simz",
+     "Stefflon Don",
+     "Ms Banks",
+     "Shaybo"
+    ],
+    "today": true
+   },
+   {
+    "name": "Philly soul, Roots circle",
+    "level": 4,
+    "tiles": [
+     "Jill Scott",
+     "Musiq Soulchild",
+     "Bilal",
+     "Jaguar Wright"
+    ]
+   }
+  ]
+ },
+ "02-24": {
+  "occasion": "Lauryn Hill won Album of the Year today in 1999. Earl Sweatshirt and Chad Hugo were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Miseducation of Lauryn Hill\"",
+    "level": 1,
+    "tiles": [
+     "Doo Wop (That Thing)",
+     "To Zion",
+     "Everything Is Everything",
+     "Lost Ones"
+    ],
+    "today": true
+   },
+   {
+    "name": "Neptunes clients",
+    "level": 2,
+    "tiles": [
+     "Clipse",
+     "Kelis",
+     "N.E.R.D",
+     "Justin Timberlake"
+    ],
+    "today": true
+   },
+   {
+    "name": "Earl Sweatshirt albums",
+    "level": 3,
+    "tiles": [
+     "Doris",
+     "Some Rap Songs",
+     "Feet of Clay",
+     "SICK!"
+    ],
+    "today": true
+   },
+   {
+    "name": "Church music",
+    "level": 4,
+    "tiles": [
+     "Ultralight Beam",
+     "God's Plan",
+     "Blessings",
+     "Amen"
+    ]
+   }
+  ]
+ },
+ "02-25": {
+  "occasion": "ScHoolboy Q released \"Oxymoron\" today in 2014. Static Major died today in 2008.",
+  "big": false,
+  "groups": [
+   {
+    "name": "ScHoolboy Q songs",
+    "level": 1,
+    "tiles": [
+     "Collard Greens",
+     "Man of the Year",
+     "THat Part",
+     "Hell of a Night"
+    ],
+    "today": true
+   },
+   {
+    "name": "Griselda",
+    "level": 2,
+    "tiles": [
+     "Westside Gunn",
+     "Conway the Machine",
+     "Benny the Butcher",
+     "Boldy James"
+    ]
+   },
+   {
+    "name": "Written by Static Major",
+    "level": 3,
+    "tiles": [
+     "Try Again",
+     "Rock the Boat",
+     "More Than a Woman",
+     "Lollipop"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rappers with cooking shows",
+    "level": 4,
+    "tiles": [
+     "Action Bronson",
+     "Snoop Dogg",
+     "Coolio",
+     "2 Chainz"
+    ]
+   }
+  ]
+ },
+ "02-26": {
+  "occasion": "Nujabes died today in 2010.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Drake songs",
+    "level": 1,
+    "tiles": [
+     "Hotline Bling",
+     "In My Feelings",
+     "Started from the Bottom",
+     "One Dance"
+    ]
+   },
+   {
+    "name": "Pete Rock & CL Smooth songs",
+    "level": 2,
+    "tiles": [
+     "They Reminisce Over You (T.R.O.Y.)",
+     "Straighten It Out",
+     "Lots of Lovin",
+     "Mecca and the Soul Brother"
+    ]
+   },
+   {
+    "name": "Yeat songs",
+    "level": 3,
+    "tiles": [
+     "Gët Busy",
+     "Monëy so big",
+     "Sorry Bout That",
+     "Talk"
+    ]
+   },
+   {
+    "name": "Worked with Nujabes",
+    "level": 4,
+    "tiles": [
+     "Shing02",
+     "Uyama Hiroto",
+     "Fat Jon",
+     "Cise Starr"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "02-27": {
+  "occasion": "Hurricane Chris was born today in 1989. Project Pat released \"Mista Don't Play\" today in 2001.",
+  "big": false,
+  "groups": [
+   {
+    "name": "J. Cole albums",
+    "level": 1,
+    "tiles": [
+     "Cole World",
+     "Born Sinner",
+     "KOD",
+     "The Off-Season"
+    ]
+   },
+   {
+    "name": "Ringtone-era hits",
+    "level": 2,
+    "tiles": [
+     "A Bay Bay",
+     "Laffy Taffy",
+     "Chain Hang Low",
+     "Walk It Out"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hypnotize Minds",
+    "level": 3,
+    "tiles": [
+     "Project Pat",
+     "Lil Wyte",
+     "La Chat",
+     "Frayser Boy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Detroit producers",
+    "level": 4,
+    "tiles": [
+     "J Dilla",
+     "Black Milk",
+     "Apollo Brown",
+     "Karriem Riggins"
+    ]
+   }
+  ]
+ },
+ "02-28": {
+  "occasion": "Lil Baby released \"My Turn\" today in 2020. DreamDoll was born today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Young Thug songs",
+    "level": 1,
+    "tiles": [
+     "Lifestyle",
+     "Hot",
+     "Digits",
+     "Check"
+    ]
+   },
+   {
+    "name": "On \"My Turn\"",
+    "level": 2,
+    "tiles": [
+     "Woah",
+     "Sum 2 Prove",
+     "Heatin Up",
+     "Forever"
+    ],
+    "today": true
+   },
+   {
+    "name": "Bronx women",
+    "level": 3,
+    "tiles": [
+     "Cardi B",
+     "DreamDoll",
+     "Ice Spice",
+     "Remy Ma"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jumping",
+    "level": 4,
+    "tiles": [
+     "Jump",
+     "Jump Around",
+     "Jump On It",
+     "The Jump Off"
+    ]
+   }
+  ]
  }
 }
