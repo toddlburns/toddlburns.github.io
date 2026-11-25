@@ -7993,7 +7993,7 @@
     "name": "Ice Cube movies",
     "level": 1,
     "tiles": [
-     "Boyz n the Hood",
+     "Are We There Yet?",
      "Barbershop",
      "Three Kings",
      "Anaconda"
@@ -8761,6 +8761,1495 @@
      "Clockers"
     ],
     "today": true
+   }
+  ]
+ },
+ "07-01": {
+  "occasion": "Grandmaster Flash and the Furious Five released \"The Message\" today in 1982. Debbie Harry of Blondie was born today in 1945.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Grandmaster Flash and the Furious Five songs",
+    "level": 1,
+    "tiles": [
+     "The Message",
+     "White Lines",
+     "Freedom",
+     "The Adventures of Grandmaster Flash on the Wheels of Steel"
+    ],
+    "today": true
+   },
+   {
+    "name": "New wave goes rap",
+    "level": 2,
+    "tiles": [
+     "Blondie",
+     "Falco",
+     "The Clash",
+     "Tom Tom Club"
+    ],
+    "today": true
+   },
+   {
+    "name": "Ka albums",
+    "level": 3,
+    "tiles": [
+     "Grief Pedigree",
+     "The Night's Gambit",
+     "Honor Killed the Samurai",
+     "Descendants of Cain"
+    ]
+   },
+   {
+    "name": "Rap comedies",
+    "level": 4,
+    "tiles": [
+     "CB4",
+     "Fear of a Black Hat",
+     "Popstar: Never Stop Never Stopping",
+     "Malibu's Most Wanted"
+    ]
+   }
+  ]
+ },
+ "07-02": {
+  "occasion": "Nas released \"It Was Written\" today in 1996. Saweetie was born today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"It Was Written\"",
+    "level": 1,
+    "tiles": [
+     "If I Ruled the World",
+     "Street Dreams",
+     "I Gave You Power",
+     "Affirmative Action"
+    ],
+    "today": true
+   },
+   {
+    "name": "Saweetie songs",
+    "level": 2,
+    "tiles": [
+     "Icy Grl",
+     "My Type",
+     "Tap In",
+     "Fast (Motion)"
+    ],
+    "today": true
+   },
+   {
+    "name": "Music video directors",
+    "level": 3,
+    "tiles": [
+     "Director X",
+     "Dave Meyers",
+     "Benny Boom",
+     "Colin Tilley"
+    ]
+   },
+   {
+    "name": "Kool Keith albums",
+    "level": 4,
+    "tiles": [
+     "Dr. Octagonecologyst",
+     "Black Elvis/Lost in Space",
+     "Sex Style",
+     "Matthew"
+    ]
+   }
+  ]
+ },
+ "07-03": {
+  "occasion": "PartyNextDoor was born today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "OVO Sound",
+    "level": 1,
+    "tiles": [
+     "PartyNextDoor",
+     "Majid Jordan",
+     "dvsn",
+     "Roy Woods"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap on TV, scripted",
+    "level": 2,
+    "tiles": [
+     "Atlanta",
+     "Empire",
+     "Rap Sh!t",
+     "Wu-Tang: An American Saga"
+    ]
+   },
+   {
+    "name": "Grime MCs",
+    "level": 3,
+    "tiles": [
+     "JME",
+     "Ghetts",
+     "P Money",
+     "Frisco"
+    ]
+   },
+   {
+    "name": "Elzhi albums",
+    "level": 4,
+    "tiles": [
+     "The Preface",
+     "Elmatic",
+     "Lead Poison",
+     "Seven Times Down Eight Times Up"
+    ]
+   }
+  ]
+ },
+ "07-04": {
+  "occasion": "It's the Fourth of July. Post Malone was born today in 1995.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Post Malone songs",
+    "level": 1,
+    "tiles": [
+     "White Iverson",
+     "Congratulations",
+     "Circles",
+     "Psycho"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cookout line dances",
+    "level": 2,
+    "tiles": [
+     "Electric Slide",
+     "Cupid Shuffle",
+     "Wobble",
+     "Cha Cha Slide"
+    ],
+    "today": true
+   },
+   {
+    "name": "Signed to Jive",
+    "level": 3,
+    "tiles": [
+     "A Tribe Called Quest",
+     "Too $hort",
+     "UGK",
+     "KRS-One"
+    ]
+   },
+   {
+    "name": "Jewelers rap loves",
+    "level": 4,
+    "tiles": [
+     "Jacob the Jeweler",
+     "Ben Baller",
+     "Johnny Dang",
+     "Chris Aire"
+    ]
+   }
+  ]
+ },
+ "07-05": {
+  "occasion": "RZA (1969), Mac Dre (1970) and Royce da 5'9\" (1977) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "RZA as Bobby Digital",
+    "level": 1,
+    "tiles": [
+     "Bobby Digital in Stereo",
+     "Digital Bullet",
+     "Birth of a Prince",
+     "Digi Snacks"
+    ],
+    "today": true
+   },
+   {
+    "name": "Royce da 5'9\" albums",
+    "level": 2,
+    "tiles": [
+     "Rock City",
+     "Death Is Certain",
+     "The Allegory",
+     "Layers"
+    ],
+    "today": true
+   },
+   {
+    "name": "Slaughterhouse",
+    "level": 3,
+    "tiles": [
+     "Joe Budden",
+     "Joell Ortiz",
+     "KXNG Crooked",
+     "Royce da 5'9\""
+    ],
+    "today": true
+   },
+   {
+    "name": "Black Milk albums",
+    "level": 4,
+    "tiles": [
+     "Popular Demand",
+     "Tronic",
+     "Album of the Year",
+     "If There's a Hell Below"
+    ]
+   }
+  ]
+ },
+ "07-06": {
+  "occasion": "Inspectah Deck and 50 Cent were born today, in 1970 and 1975.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Inspectah Deck albums",
+    "level": 1,
+    "tiles": [
+     "Uncontrolled Substance",
+     "The Movement",
+     "Manifesto",
+     "Chamber No. 9"
+    ],
+    "today": true
+   },
+   {
+    "name": "50 Cent's TV",
+    "level": 2,
+    "tiles": [
+     "BMF",
+     "For Life",
+     "Raising Kanan",
+     "Power Book II: Ghost"
+    ],
+    "today": true
+   },
+   {
+    "name": "Designers rap loves",
+    "level": 3,
+    "tiles": [
+     "Dapper Dan",
+     "Virgil Abloh",
+     "Tommy Hilfiger",
+     "Ralph Lauren"
+    ]
+   },
+   {
+    "name": "Aceyalone albums",
+    "level": 4,
+    "tiles": [
+     "All Balls Don't Bounce",
+     "A Book of Human Language",
+     "Accepted Eclectic",
+     "Magnificent City"
+    ]
+   }
+  ]
+ },
+ "07-07": {
+  "occasion": "Eric B. & Rakim's \"Paid in Full\" came out today in 1987. Cage's \"Depart from Me\" came out today in 2009. Cassidy was born today in 1982.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Paid in Full\"",
+    "level": 1,
+    "tiles": [
+     "Eric B. Is President",
+     "I Ain't No Joke",
+     "Move the Crowd",
+     "As the Rhyme Goes On"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cassidy songs",
+    "level": 2,
+    "tiles": [
+     "Hotel",
+     "I'm a Hustla",
+     "B-Boy Stance",
+     "Get No Better"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cage albums",
+    "level": 3,
+    "tiles": [
+     "Movies for the Blind",
+     "Hell's Winter",
+     "Depart from Me",
+     "Kill the Architect"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rhymesayers, later on",
+    "level": 4,
+    "tiles": [
+     "Prof",
+     "Dem Atlas",
+     "Evidence",
+     "Sa-Roc"
+    ]
+   }
+  ]
+ },
+ "07-08": {
+  "occasion": "Freeway was born today in 1979.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Freeway songs",
+    "level": 1,
+    "tiles": [
+     "What We Do",
+     "Flipside",
+     "Line 'Em Up",
+     "Roc-A-Fella Billionaires"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mos Def albums",
+    "level": 2,
+    "tiles": [
+     "Black on Both Sides",
+     "The New Danger",
+     "The Ecstatic",
+     "True Magic"
+    ]
+   },
+   {
+    "name": "Old-school crews",
+    "level": 3,
+    "tiles": [
+     "The Treacherous Three",
+     "The Funky 4 + 1",
+     "The Fearless Four",
+     "The Crash Crew"
+    ]
+   },
+   {
+    "name": "Roc Marciano albums",
+    "level": 4,
+    "tiles": [
+     "Marcberg",
+     "Reloaded",
+     "Marciology",
+     "The Pimpire Strikes Back"
+    ]
+   }
+  ]
+ },
+ "07-09": {
+  "occasion": "Styles P's \"A Gangster and a Gentleman\" came out today in 2002.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Styles P albums",
+    "level": 1,
+    "tiles": [
+     "A Gangster and a Gentleman",
+     "Time Is Money",
+     "Super Gangster (Extraordinary Gentleman)",
+     "The World's Most Hardest MC Project"
+    ],
+    "today": true
+   },
+   {
+    "name": "Talib Kweli albums",
+    "level": 2,
+    "tiles": [
+     "Quality",
+     "The Beautiful Struggle",
+     "Eardrum",
+     "Gutter Rainbows"
+    ]
+   },
+   {
+    "name": "Jay Electronica songs",
+    "level": 3,
+    "tiles": [
+     "Exhibit C",
+     "Exhibit A",
+     "Better in Tune with the Infinite",
+     "The Blinding"
+    ]
+   },
+   {
+    "name": "Rap's big crews",
+    "level": 4,
+    "tiles": [
+     "Wu-Tang Clan",
+     "Odd Future",
+     "A$AP Mob",
+     "Brockhampton"
+    ]
+   }
+  ]
+ },
+ "07-10": {
+  "occasion": "Juice WRLD's \"Legends Never Die\" came out today in 2020. Angel Haze was born today in 1991.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Juice WRLD songs",
+    "level": 1,
+    "tiles": [
+     "Lucid Dreams",
+     "All Girls Are the Same",
+     "Robbery",
+     "Wishing Well"
+    ],
+    "today": true
+   },
+   {
+    "name": "Murs albums",
+    "level": 2,
+    "tiles": [
+     "End of the Beginning",
+     "Murray's Revenge",
+     "Sweet Lord",
+     "Have a Nice Life"
+    ]
+   },
+   {
+    "name": "Boldy James albums",
+    "level": 3,
+    "tiles": [
+     "Bo Jackson",
+     "Manger on McNichols",
+     "The Price of Tea in China",
+     "Killing Nothing"
+    ]
+   },
+   {
+    "name": "West Coast women",
+    "level": 4,
+    "tiles": [
+     "Yo-Yo",
+     "The Lady of Rage",
+     "Rocky Rivera",
+     "Kamaiyah"
+    ]
+   }
+  ]
+ },
+ "07-11": {
+  "occasion": "Lil' Kim was born today in 1974. Slum Village's \"Fan-Tas-Tic Vol. 1\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil' Kim was the guest",
+    "level": 1,
+    "tiles": [
+     "Lady Marmalade",
+     "Money, Power & Respect",
+     "Ladies Night (Not Tonight)",
+     "Quiet Storm (Remix)"
+    ],
+    "today": true
+   },
+   {
+    "name": "Evidence albums",
+    "level": 2,
+    "tiles": [
+     "Cats & Dogs",
+     "Weather or Not",
+     "Unlearning, Vol. 1",
+     "The Layover"
+    ]
+   },
+   {
+    "name": "Blackalicious albums",
+    "level": 3,
+    "tiles": [
+     "Nia",
+     "The Craft",
+     "Imani, Vol. 1",
+     "A2G"
+    ]
+   },
+   {
+    "name": "Joint albums",
+    "level": 4,
+    "tiles": [
+     "Watch the Throne",
+     "What a Time to Be Alive",
+     "Huncho Jack, Jack Huncho",
+     "Super Slimey"
+    ]
+   }
+  ]
+ },
+ "07-12": {
+  "occasion": "\"Boyz n the Hood\" opened in theaters today in 1991.",
+  "big": false,
+  "groups": [
+   {
+    "name": "In \"Boyz n the Hood\"",
+    "level": 1,
+    "tiles": [
+     "Cuba Gooding Jr.",
+     "Morris Chestnut",
+     "Nia Long",
+     "Laurence Fishburne"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hyphy anthems",
+    "level": 2,
+    "tiles": [
+     "Tell Me When to Go",
+     "Super Hyphy",
+     "Blow the Whistle",
+     "Gas Pedal"
+    ]
+   },
+   {
+    "name": "Funk Volume",
+    "level": 3,
+    "tiles": [
+     "Hopsin",
+     "SwizZz",
+     "Dizzy Wright",
+     "Jarren Benton"
+    ]
+   },
+   {
+    "name": "Sequel albums",
+    "level": 4,
+    "tiles": [
+     "Only Built 4 Cuban Linx... Pt. II",
+     "The Marshall Mathers LP 2",
+     "The Blueprint 3",
+     "Tha Carter V"
+    ]
+   }
+  ]
+ },
+ "07-13": {
+  "occasion": "MF DOOM was born today in 1971.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"MM..Food\"",
+    "level": 1,
+    "tiles": [
+     "Beef Rapp",
+     "Hoe Cakes",
+     "Rapp Snitch Knishes",
+     "Kon Karne"
+    ],
+    "today": true
+   },
+   {
+    "name": "DOOM team-ups",
+    "level": 2,
+    "tiles": [
+     "JJ DOOM",
+     "NehruvianDOOM",
+     "DOOMSTARKS",
+     "Czarface Meets Metal Face"
+    ],
+    "today": true
+   },
+   {
+    "name": "KMD",
+    "level": 3,
+    "tiles": [
+     "Subroc",
+     "Onyx the Birthstone Kid",
+     "Mr. Hood",
+     "Black Bastards"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rappers who wore masks",
+    "level": 4,
+    "tiles": [
+     "MF DOOM",
+     "Leikeli47",
+     "Ghostface Killah",
+     "Kanye West"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "07-14": {
+  "occasion": "Too $hort's \"Shorty the Pimp\" came out today in 1992. Ill Bill was born today in 1972.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ill Bill albums",
+    "level": 1,
+    "tiles": [
+     "What's Wrong with Bill?",
+     "The Hour of Reprisal",
+     "The Grimy Awards",
+     "Septagram"
+    ],
+    "today": true
+   },
+   {
+    "name": "Organized Konfusion",
+    "level": 2,
+    "tiles": [
+     "Pharoahe Monch",
+     "Prince Po",
+     "Stress: The Extinction Agenda",
+     "The Equinox"
+    ]
+   },
+   {
+    "name": "Philly, underground",
+    "level": 3,
+    "tiles": [
+     "Jedi Mind Tricks",
+     "Reef the Lost Cauze",
+     "Chief Kamachi",
+     "Outerspace"
+    ]
+   },
+   {
+    "name": "Columbus, Ohio",
+    "level": 4,
+    "tiles": [
+     "Camu Tao",
+     "RJD2",
+     "Blueprint",
+     "Copywrite"
+    ]
+   }
+  ]
+ },
+ "07-15": {
+  "occasion": "Missy Elliott's \"Supa Dupa Fly\" came out today in 1997. Jim Jones was born today in 1976.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Supa Dupa Fly\"",
+    "level": 1,
+    "tiles": [
+     "Sock It 2 Me",
+     "Beep Me 911",
+     "Hit Em wit da Hee",
+     "Pass da Blunt"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jim Jones songs",
+    "level": 2,
+    "tiles": [
+     "We Fly High",
+     "Pop Champagne",
+     "Summer Wit Miami",
+     "Certified Gangstas"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground Chicago",
+    "level": 3,
+    "tiles": [
+     "Rhymefest",
+     "All Natural",
+     "Psalm One",
+     "Juice"
+    ]
+   },
+   {
+    "name": "Rap's famous managers",
+    "level": 4,
+    "tiles": [
+     "Chris Lighty",
+     "Wendy Day",
+     "James Prince",
+     "Mona Scott-Young"
+    ]
+   }
+  ]
+ },
+ "07-16": {
+  "occasion": "Biz Markie died today in 2021.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Cold Chillin' Records",
+    "level": 1,
+    "tiles": [
+     "Biz Markie",
+     "Big Daddy Kane",
+     "Grand Daddy I.U.",
+     "Kool G Rap"
+    ],
+    "today": true
+   },
+   {
+    "name": "From Portland",
+    "level": 2,
+    "tiles": [
+     "Aminé",
+     "Lifesavas",
+     "Mic Capes",
+     "Cool Nutz"
+    ]
+   },
+   {
+    "name": "Oakland's '90s underground",
+    "level": 3,
+    "tiles": [
+     "Zion I",
+     "Mystik Journeymen",
+     "Saafir",
+     "Bored Stiff"
+    ]
+   },
+   {
+    "name": "Life in the title",
+    "level": 4,
+    "tiles": [
+     "The Life of Pablo",
+     "Life Is Good",
+     "Life After Death",
+     "Life Is... Too Short"
+    ]
+   }
+  ]
+ },
+ "07-17": {
+  "occasion": "Guru of Gang Starr was born today in 1961. Blu & Exile's \"Below the Heavens\" came out today in 2007.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Blu & Exile albums",
+    "level": 1,
+    "tiles": [
+     "Below the Heavens",
+     "Give Me My Flowers While I Can Still Smell Them",
+     "In the Beginning: Before the Heavens",
+     "Miles"
+    ],
+    "today": true
+   },
+   {
+    "name": "Guru, beyond Gang Starr",
+    "level": 2,
+    "tiles": [
+     "Jazzmatazz",
+     "Baldhead Slick & da Click",
+     "Version 7.0: The Street Scriptures",
+     "Guru 8.0: Lost and Found"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jazz-rap acts",
+    "level": 3,
+    "tiles": [
+     "Digable Planets",
+     "Us3",
+     "Buckshot LeFonque",
+     "Dream Warriors"
+    ]
+   },
+   {
+    "name": "Toronto producers",
+    "level": 4,
+    "tiles": [
+     "Boi-1da",
+     "Noah \"40\" Shebib",
+     "T-Minus",
+     "Frank Dukes"
+    ]
+   }
+  ]
+ },
+ "07-18": {
+  "occasion": "M.I.A. (1975), Yung Lean (1996) and Hopsin (1985) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "M.I.A. songs",
+    "level": 1,
+    "tiles": [
+     "Paper Planes",
+     "Galang",
+     "Bad Girls",
+     "Borders"
+    ],
+    "today": true
+   },
+   {
+    "name": "Grime producers",
+    "level": 2,
+    "tiles": [
+     "Rude Kid",
+     "Mr. Virgo",
+     "Footsie",
+     "Swifta Beater"
+    ]
+   },
+   {
+    "name": "Rap from Spain",
+    "level": 3,
+    "tiles": [
+     "Mala Rodríguez",
+     "SFDK",
+     "Kase.O",
+     "C. Tangana"
+    ]
+   },
+   {
+    "name": "Hip-hop festivals",
+    "level": 4,
+    "tiles": [
+     "Rolling Loud",
+     "Rock the Bells",
+     "Paid Dues",
+     "Smokin' Grooves"
+    ]
+   }
+  ]
+ },
+ "07-19": {
+  "occasion": "Run-DMC held up their Adidas at Madison Square Garden today in 1986. Coolio's \"It Takes a Thief\" came out today in 1994.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Coolio songs",
+    "level": 1,
+    "tiles": [
+     "Fantastic Voyage",
+     "1, 2, 3, 4 (Sumpin' New)",
+     "C U When U Get There",
+     "Too Hot"
+    ],
+    "today": true
+   },
+   {
+    "name": "Adidas partners",
+    "level": 2,
+    "tiles": [
+     "Run-DMC",
+     "Kanye West",
+     "Pharrell",
+     "Bad Bunny"
+    ],
+    "today": true
+   },
+   {
+    "name": "Went diamond",
+    "level": 3,
+    "tiles": [
+     "Please Hammer Don't Hurt 'Em",
+     "All Eyez on Me",
+     "The Marshall Mathers LP",
+     "Speakerboxxx/The Love Below"
+    ]
+   },
+   {
+    "name": "Rappers in a dress or skirt",
+    "level": 4,
+    "tiles": [
+     "Young Thug",
+     "Kid Cudi",
+     "Jaden Smith",
+     "A$AP Rocky"
+    ]
+   }
+  ]
+ },
+ "07-20": {
+  "occasion": "Kool G Rap was born today in 1968. DJ Quik's \"Way 2 Fonky\" came out today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kool G Rap & DJ Polo albums",
+    "level": 1,
+    "tiles": [
+     "Road to the Riches",
+     "Wanted: Dead or Alive",
+     "Live and Let Die",
+     "4,5,6"
+    ],
+    "today": true
+   },
+   {
+    "name": "DJ Quik albums",
+    "level": 2,
+    "tiles": [
+     "Quik Is the Name",
+     "Way 2 Fonky",
+     "Safe + Sound",
+     "Rhythm-al-ism"
+    ],
+    "today": true
+   },
+   {
+    "name": "Teen rap stars",
+    "level": 3,
+    "tiles": [
+     "Lil Romeo",
+     "Lil Mama",
+     "Lil Zane",
+     "Lil Bow Wow"
+    ]
+   },
+   {
+    "name": "Hip-hop books",
+    "level": 4,
+    "tiles": [
+     "Hip Hop America",
+     "Can't Stop Won't Stop",
+     "Ego Trip's Book of Rap Lists",
+     "The Big Payback"
+    ]
+   }
+  ]
+ },
+ "07-21": {
+  "occasion": "Tyler, the Creator's \"Flower Boy\" came out today in 2017. Damian Marley was born today in 1978. Jermaine Dupri's \"Life in 1472\" came out today in 1998.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Flower Boy\"",
+    "level": 1,
+    "tiles": [
+     "Who Dat Boy",
+     "911 / Mr. Lonely",
+     "Boredom",
+     "Garden Shed"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jermaine Dupri made it",
+    "level": 2,
+    "tiles": [
+     "Welcome to Atlanta",
+     "Always Be My Baby",
+     "Confessions Part II",
+     "We Belong Together"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dancehall stars on rap records",
+    "level": 3,
+    "tiles": [
+     "Shabba Ranks",
+     "Beenie Man",
+     "Bounty Killer",
+     "Mr. Vegas"
+    ],
+    "today": true
+   },
+   {
+    "name": "'90s hook singers",
+    "level": 4,
+    "tiles": [
+     "Aaliyah",
+     "Kelly Price",
+     "Total",
+     "Mýa"
+    ]
+   }
+  ]
+ },
+ "07-22": {
+  "occasion": "Puff Daddy's \"No Way Out\" and Company Flow's \"Funcrusher Plus\" both came out today in 1997. Mozzy's \"Survivor's Guilt\" came out today in 2022.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"No Way Out\"",
+    "level": 1,
+    "tiles": [
+     "Been Around the World",
+     "Victory",
+     "Young G's",
+     "Is This the End?"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Funcrusher Plus\"",
+    "level": 2,
+    "tiles": [
+     "8 Steps to Perfection",
+     "Vital Nerve",
+     "Collude/Intrude",
+     "Last Good Sleep"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mozzy albums",
+    "level": 3,
+    "tiles": [
+     "Beyond Bulletproof",
+     "Gangland Landlord",
+     "Survivor's Guilt",
+     "Occupational Hazard"
+    ],
+    "today": true
+   },
+   {
+    "name": "What \"No Way Out\" sampled",
+    "level": 4,
+    "tiles": [
+     "Every Breath You Take",
+     "Let's Dance",
+     "Going the Distance",
+     "The Message"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "07-23": {
+  "occasion": "Main Source's \"Breaking Atoms\" came out today in 1991. Jean Grae's \"Attack of the Attacking Things\" came out today in 2002.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Breaking Atoms\"",
+    "level": 1,
+    "tiles": [
+     "Just Hangin' Out",
+     "Fakin' the Funk",
+     "Peace Is Not the Word to Play",
+     "Snake Eyes"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jean Grae albums",
+    "level": 2,
+    "tiles": [
+     "Attack of the Attacking Things",
+     "This Week",
+     "Jeanius",
+     "Everything's Fine"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground women",
+    "level": 3,
+    "tiles": [
+     "Invincible",
+     "Eternia",
+     "Medusa",
+     "Sa-Roc"
+    ]
+   },
+   {
+    "name": "Savemoney",
+    "level": 4,
+    "tiles": [
+     "Vic Mensa",
+     "Towkio",
+     "Joey Purp",
+     "Kami"
+    ]
+   }
+  ]
+ },
+ "07-24": {
+  "occasion": "Jennifer Lopez was born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "J.Lo's rap partners",
+    "level": 1,
+    "tiles": [
+     "Ja Rule",
+     "Fat Joe",
+     "LL Cool J",
+     "Jadakiss"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dominican dembow",
+    "level": 2,
+    "tiles": [
+     "El Alfa",
+     "Rochy RD",
+     "Tokischa",
+     "Chimbala"
+    ]
+   },
+   {
+    "name": "The Firm",
+    "level": 3,
+    "tiles": [
+     "Nas",
+     "AZ",
+     "Foxy Brown",
+     "Nature"
+    ]
+   },
+   {
+    "name": "Visionaries",
+    "level": 4,
+    "tiles": [
+     "Key Kool",
+     "Rhettmatic",
+     "LMNO",
+     "Dannu"
+    ]
+   }
+  ]
+ },
+ "07-25": {
+  "occasion": "The 2 Live Crew's first album came out today in 1986.",
+  "big": false,
+  "groups": [
+   {
+    "name": "2 Live Crew songs",
+    "level": 1,
+    "tiles": [
+     "Me So Horny",
+     "Banned in the U.S.A.",
+     "Pop That Coochie",
+     "Throw the D"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap groups with \"Boyz\"",
+    "level": 2,
+    "tiles": [
+     "Lost Boyz",
+     "5th Ward Boyz",
+     "Hot Boys",
+     "Boyz n da Hood"
+    ]
+   },
+   {
+    "name": "Luke Records",
+    "level": 3,
+    "tiles": [
+     "Poison Clan",
+     "H-Town",
+     "Disco Rick",
+     "JT Money"
+    ],
+    "today": true
+   },
+   {
+    "name": "Censorship fights",
+    "level": 4,
+    "tiles": [
+     "As Nasty as They Wanna Be",
+     "Cop Killer",
+     "Tipper Gore",
+     "The FBI letter"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "07-26": {
+  "occasion": "03 Greedo (1987) and Stormzy (1993) were born today. Ice Spice's \"Y2K!\" came out today in 2024.",
+  "big": true,
+  "groups": [
+   {
+    "name": "03 Greedo albums",
+    "level": 1,
+    "tiles": [
+     "The Wolf of Grape Street",
+     "God Level",
+     "Still Summer in the Projects",
+     "Netflix & Dusse"
+    ],
+    "today": true
+   },
+   {
+    "name": "L.A. street rap, 2010s",
+    "level": 2,
+    "tiles": [
+     "Drakeo the Ruler",
+     "Blueface",
+     "Bluebucksclan",
+     "Mike Sherm"
+    ],
+    "today": true
+   },
+   {
+    "name": "Stormzy songs",
+    "level": 3,
+    "tiles": [
+     "Shut Up",
+     "Vossi Bop",
+     "Big for Your Boots",
+     "Crown"
+    ],
+    "today": true
+   },
+   {
+    "name": "Ice Spice songs",
+    "level": 4,
+    "tiles": [
+     "Munch (Feelin' U)",
+     "Princess Diana",
+     "Boy's a Liar Pt. 2",
+     "In Ha Mood"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "07-27": {
+  "occasion": "Young Dolph was born today in 1985. Terror Squad's \"True Story\" came out today in 2004.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Young Dolph songs",
+    "level": 1,
+    "tiles": [
+     "Preach",
+     "Major",
+     "Get Paid",
+     "100 Shots"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lean Back crew",
+    "level": 2,
+    "tiles": [
+     "Fat Joe",
+     "Remy Ma",
+     "Tony Sunshine",
+     "Armageddon"
+    ],
+    "today": true
+   },
+   {
+    "name": "Memphis, the new wave",
+    "level": 3,
+    "tiles": [
+     "Duke Deuce",
+     "Big30",
+     "Pooh Shiesty",
+     "Key Glock"
+    ]
+   },
+   {
+    "name": "Released while locked up",
+    "level": 4,
+    "tiles": [
+     "Me Against the World",
+     "I Am Not a Human Being",
+     "Incarcerated",
+     "Vigilante Season"
+    ]
+   }
+  ]
+ },
+ "07-28": {
+  "occasion": "Ice-T pulled \"Cop Killer\" from Body Count's album today in 1992. Travis Scott's \"UTOPIA\" came out today in 2023.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Body Count",
+    "level": 1,
+    "tiles": [
+     "Ice-T",
+     "Ernie C",
+     "Beatmaster V",
+     "Mooseman"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"UTOPIA\"",
+    "level": 2,
+    "tiles": [
+     "FE!N",
+     "MELTDOWN",
+     "TELEKINESIS",
+     "I KNOW ?"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rhyme Syndicate",
+    "level": 3,
+    "tiles": [
+     "Everlast",
+     "Donald D",
+     "Low Profile",
+     "Divine Styler"
+    ],
+    "today": true
+   },
+   {
+    "name": "Cactus Jack",
+    "level": 4,
+    "tiles": [
+     "Don Toliver",
+     "Sheck Wes",
+     "Chase B",
+     "SoFaygo"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "07-29": {
+  "occasion": "Danger Mouse was born today in 1977. Trick Daddy's \"Based on a True Story\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Danger Mouse made it",
+    "level": 1,
+    "tiles": [
+     "The Grey Album",
+     "St. Elsewhere",
+     "Broken Bells",
+     "Demon Days"
+    ],
+    "today": true
+   },
+   {
+    "name": "Trick Daddy songs",
+    "level": 2,
+    "tiles": [
+     "I'm a Thug",
+     "Take It to da House",
+     "Let's Go",
+     "Shut Up"
+    ],
+    "today": true
+   },
+   {
+    "name": "Killer names",
+    "level": 3,
+    "tiles": [
+     "Killah Priest",
+     "Killa Kyleon",
+     "Killer Mike",
+     "Killa Sin"
+    ]
+   },
+   {
+    "name": "Came up on Swishahouse",
+    "level": 4,
+    "tiles": [
+     "Mike Jones",
+     "Paul Wall",
+     "Chamillionaire",
+     "Archie Lee"
+    ]
+   }
+  ]
+ },
+ "07-30": {
+  "occasion": "A Tribe Called Quest's \"Beats, Rhymes and Life\" came out today in 1996.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Beats, Rhymes and Life\"",
+    "level": 1,
+    "tiles": [
+     "1nce Again",
+     "Stressed Out",
+     "Get a Hold",
+     "Phony Rappers"
+    ],
+    "today": true
+   },
+   {
+    "name": "After Tribe",
+    "level": 2,
+    "tiles": [
+     "Amplified",
+     "Ventilation: Da LP",
+     "Lucy Pearl",
+     "The Renaissance"
+    ],
+    "today": true
+   },
+   {
+    "name": "Artifacts",
+    "level": 3,
+    "tiles": [
+     "Tame One",
+     "El Da Sensei",
+     "DJ Kaos",
+     "Wrong Side of da Tracks"
+    ]
+   },
+   {
+    "name": "Hip-hop docuseries",
+    "level": 4,
+    "tiles": [
+     "Hip-Hop Evolution",
+     "The Defiant Ones",
+     "Wu-Tang Clan: Of Mics and Men",
+     "Rapture"
+    ]
+   }
+  ]
+ },
+ "07-31": {
+  "occasion": "Lil Uzi Vert was born today in 1995.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Rappers who went rock",
+    "level": 1,
+    "tiles": [
+     "Lil Wayne",
+     "Machine Gun Kelly",
+     "Kid Cudi",
+     "Lil Uzi Vert"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hairstyles",
+    "level": 2,
+    "tiles": [
+     "Hi-top fade",
+     "Jheri curl",
+     "Cornrows",
+     "Freeform locs"
+    ]
+   },
+   {
+    "name": "Face tattoos",
+    "level": 3,
+    "tiles": [
+     "Gucci Mane",
+     "The Game",
+     "Post Malone",
+     "Kodak Black"
+    ]
+   },
+   {
+    "name": "Announced retirement",
+    "level": 4,
+    "tiles": [
+     "Jay-Z",
+     "Mase",
+     "Lupe Fiasco",
+     "Too $hort"
+    ]
    }
   ]
  }
