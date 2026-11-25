@@ -275,6 +275,14 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 .score b{color:var(--ink)}
 .gnames small{color:var(--dim)}
 </style><style>
+@keyframes tt-up{from{height:0}}
+@keyframes tt-out{from{width:0}}
+@keyframes tt-fade{from{opacity:0}}
+.fig .body{animation:tt-up .55s cubic-bezier(.25,1.25,.5,1) both;animation-delay:calc(min(var(--i,0),16) * 28ms)}
+.fig .ghost,.fig .lab{animation:tt-fade .3s ease both;animation-delay:calc(min(var(--i,0),16) * 28ms + .35s)}
+.hbar{animation:tt-out .5s cubic-bezier(.25,1.2,.5,1) both;animation-delay:calc(min(var(--i,0),12) * 35ms)}
+.hghost{animation:tt-fade .3s ease both;animation-delay:calc(min(var(--i,0),12) * 35ms + .35s)}
+@media (prefers-reduced-motion:reduce){.fig .body,.fig .ghost,.fig .lab,.hbar,.hghost{animation:none}}
 .fig .face::after,.hface::after,.card .pic::after,.side .gface::after{content:"";position:absolute;inset:0;border-radius:50%;background:color-mix(in oklab,var(--c,var(--mid)) 42%,#fff);mix-blend-mode:multiply;pointer-events:none}
 .hface,.card .pic{position:relative}
 .fig.you .face::after{display:none}
@@ -449,11 +457,11 @@ function render() {
   for (let i = 24; i < MAXIN; i += 2) { const y = (MAXIN - i) * P; lines += `<i class="${i % 12 === 0 ? 'ft' : ''}" style="top:${y}px"></i>`; if (i % 12 === 0) scale += `<span style="top:${y}px">${i / 12}′</span>`; }
   $('scale').innerHTML = scale; $('scale').style.height = MAXIN * P + 'px';
   stage.innerHTML = `<div class="lines">${lines}</div>` + (S.youOn ? `<div class="youline" style="top:${(MAXIN - S.you) * P}px"></div>` : '') +
-    (shown.map(d => {
+    (shown.map((d, i) => {
       const face = d.you ? '<div class="face">you</div>' : d.p ? `<div class="face" style="background-image:url(../img/${d.p}.webp)"></div>` : '';
       if (!known(d)) { const ah = (list.filter(known).reduce((a, x) => a + x.h, 0) / Math.max(1, list.filter(known).length)) || 69;
-        return `<div class="fig unk" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, height unknown" style="--w:${w}px"><div class="body" style="height:${(ah * P).toFixed(1)}px"><span class="q">?</span></div><div class="lab"><b>?</b>${esc(d.n)}<span>height unknown</span></div></div>`; }
-      return `<div class="fig${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}${d.ci === 2 ? ' lite' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--w:${w}px;--c:${colr(d)}">` +
+        return `<div class="fig unk" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, height unknown" style="--w:${w}px;--i:${i}"><div class="body" style="height:${(ah * P).toFixed(1)}px"><span class="q">?</span></div><div class="lab"><b>?</b>${esc(d.n)}<span>height unknown</span></div></div>`; }
+      return `<div class="fig${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}${d.ci === 2 ? ' lite' : ''}" data-id="${d.id}" tabindex="0" role="button" aria-label="${esc(d.n)}, ${fmt(d.h)}" style="--w:${w}px;--c:${colr(d)};--i:${i}">` +
         (d.lo ? `<div class="ghost" style="bottom:${(d.lo * P).toFixed(1)}px;height:${((d.hi - d.lo) * P).toFixed(1)}px"><i style="height:${(Math.max(0, d.hi - d.h) * P).toFixed(1)}px"></i></div>` : '') +
         `<div class="body" style="height:${(d.h * P).toFixed(1)}px">${face}<div class="vn">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>` +
         `<div class="lab"><b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}${d.lo ? `<span class="rng">${fmt(d.lo)}–${fmt(d.hi)}</span>` : d.d ? '<span>disputed</span>' : ''}</div></div>`;
@@ -465,10 +473,10 @@ function render() {
 const AX0 = 36, AX1 = 90, pct = h => Math.max(2, (h - AX0) / (AX1 - AX0) * 100);   // phone rows run from 3′ to 7′6″
 function rows(shown, list) {
   const axis = [48, 60, 72, 84].map(i => `<span style="left:${pct(i)}%">${i / 12}′</span>`).join('');
-  $('rows').innerHTML = `<div class="raxis">${axis}</div>` + shown.map(d => {
-    if (!known(d)) return `<div class="hrow unk" data-id="${d.id}"><div class="hface"></div><div><div class="hname">${esc(d.n)} <b>?</b><small>height unknown</small></div><div class="htrack"><div class="hbar"></div></div></div></div>`;
+  $('rows').innerHTML = `<div class="raxis">${axis}</div>` + shown.map((d, i) => {
+    if (!known(d)) return `<div class="hrow unk" data-id="${d.id}" style="--i:${i}"><div class="hface"></div><div><div class="hname">${esc(d.n)} <b>?</b><small>height unknown</small></div><div class="htrack"><div class="hbar"></div></div></div></div>`;
     const face = d.you ? '' : d.p ? `background-image:url(../img/${d.p}.webp)` : '';
-    return `<div class="hrow${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}" data-id="${d.id}" style="--c:${colr(d)}"><div class="hface" style="${face}"></div><div>` +
+    return `<div class="hrow${d.a ? ' hoop' : ''}${d.you ? ' you' : ''}" data-id="${d.id}" style="--c:${colr(d)};--i:${i}"><div class="hface" style="${face}"></div><div>` +
       `<div class="hname">${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''} <b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${d.lo ? `<small>${fmt(d.lo)}–${fmt(d.hi)}</small>` : ''}</div>` +
       `<div class="htrack"><div class="hbar" style="width:${pct(d.h)}%"></div>${d.lo ? `<div class="hghost" style="left:${pct(d.lo)}%;width:${pct(d.hi) - pct(d.lo)}%"></div>` : ''}</div></div></div>`;
   }).join('') || '<p class="note">Nobody here yet.</p>';
