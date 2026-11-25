@@ -11809,7 +11809,7 @@
      "Make 'Em Say Uhh!",
      "I Miss My Homies",
      "Ghetto D",
-     "Throw 'Em Up"
+     "Let's Get 'Em"
     ],
     "today": true
    },
@@ -12095,7 +12095,7 @@
     "tiles": [
      "Like a Boss",
      "I Ain't Heard of That",
-     "Already Platinum",
+     "3 Kings",
      "Errbody"
     ],
     "today": true
@@ -12339,7 +12339,7 @@
      "Upgrade U",
      "On to the Next One",
      "Good Times",
-     "Who Ya Wit"
+     "Who's Real"
     ],
     "today": true
    },
@@ -12553,7 +12553,7 @@
      "Bucktown",
      "Wrekonize",
      "Sound Bwoy Bureill",
-     "Stand Strong"
+     "Wontime"
     ]
    },
    {
@@ -12717,13 +12717,13 @@
   "big": false,
   "groups": [
    {
-    "name": "Shawty Lo songs",
+    "name": "D4L",
     "level": 1,
     "tiles": [
-     "Dey Know",
-     "Dunn Dunn",
-     "Foolish",
-     "Supaman High"
+     "Shawty Lo",
+     "Fabo",
+     "Mook-B",
+     "Stoney"
     ],
     "today": true
    },
@@ -12907,7 +12907,7 @@
   ]
  },
  "09-25": {
-  "occasion": "Will Smith (1968) and T.I. (1980) were born today.",
+  "occasion": "Will Smith (1968), T.I. (1980) and Donald Glover (1983) were born today.",
   "big": false,
   "groups": [
    {
@@ -12933,14 +12933,15 @@
     "today": true
    },
    {
-    "name": "Murda Beatz made the beat",
+    "name": "Childish Gambino songs",
     "level": 3,
     "tiles": [
-     "Nice for What",
-     "MotorSport",
-     "No Complaints",
-     "Pick Up the Phone"
-    ]
+     "Bonfire",
+     "3005",
+     "Redbone",
+     "Freaks and Geeks"
+    ],
+    "today": true
    },
    {
     "name": "No I.D. made the beat",
@@ -12955,17 +12956,17 @@
   ]
  },
  "09-26": {
-  "occasion": "Donald Glover was born today in 1983.",
+  "occasion": "Ras Kass was born today in 1973.",
   "big": false,
   "groups": [
    {
-    "name": "Childish Gambino songs",
+    "name": "Ras Kass albums",
     "level": 1,
     "tiles": [
-     "Bonfire",
-     "3005",
-     "Redbone",
-     "Freaks and Geeks"
+     "Soul on Ice",
+     "Rasassination",
+     "Institutionalized",
+     "Barmageddon"
     ],
     "today": true
    },
@@ -12990,13 +12991,13 @@
     ]
    },
    {
-    "name": "Fat Boys songs",
+    "name": "Murda Beatz made the beat",
     "level": 4,
     "tiles": [
-     "Jailhouse Rap",
-     "Wipeout",
-     "The Twist (Yo, Twist!)",
-     "Can You Feel It?"
+     "Nice for What",
+     "MotorSport",
+     "No Complaints",
+     "Pick Up the Phone"
     ]
    }
   ]
