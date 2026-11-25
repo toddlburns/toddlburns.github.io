@@ -10252,5 +10252,1503 @@
     ]
    }
   ]
+ },
+ "08-01": {
+  "occasion": "Chuck D was born today in 1960. JPEGMAFIA's \"I Lay Down My Life for You\" came out today in 2024.",
+  "big": false,
+  "groups": [
+   {
+    "name": "JPEGMAFIA albums",
+    "level": 1,
+    "tiles": [
+     "Veteran",
+     "All My Heroes Are Cornballs",
+     "LP!",
+     "I Lay Down My Life for You"
+    ],
+    "today": true
+   },
+   {
+    "name": "Public Enemy albums",
+    "level": 2,
+    "tiles": [
+     "Apocalypse 91... The Enemy Strikes Black",
+     "Muse Sick-n-Hour Mess Age",
+     "He Got Game",
+     "There's a Poison Goin' On"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap words for leaving",
+    "level": 3,
+    "tiles": [
+     "Dip",
+     "Slide",
+     "Skate",
+     "Bounce"
+    ]
+   },
+   {
+    "name": "Named for their hood",
+    "level": 4,
+    "tiles": [
+     "Compton's Most Wanted",
+     "South Central Cartel",
+     "Philly's Most Wanted",
+     "Cali Swag District"
+    ]
+   }
+  ]
+ },
+ "08-02": {
+  "occasion": "DJ Toomp (1969) and Cold 187um of Above the Law (1967) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "DJ Toomp made the beat",
+    "level": 1,
+    "tiles": [
+     "What You Know",
+     "Big Things Poppin' (Do It)",
+     "Good Life",
+     "24's"
+    ],
+    "today": true
+   },
+   {
+    "name": "Above the Law",
+    "level": 2,
+    "tiles": [
+     "Cold 187um",
+     "KMG the Illustrator",
+     "Go Mack",
+     "Total K-Oss"
+    ],
+    "today": true
+   },
+   {
+    "name": "Killer Mike solo",
+    "level": 3,
+    "tiles": [
+     "Monster",
+     "I Pledge Allegiance to the Grind",
+     "Michael",
+     "PL3DGE"
+    ]
+   },
+   {
+    "name": "Wu-Tang's in-house producers",
+    "level": 4,
+    "tiles": [
+     "4th Disciple",
+     "True Master",
+     "Mathematics",
+     "Bronze Nazareth"
+    ]
+   }
+  ]
+ },
+ "08-03": {
+  "occasion": "The second Source Awards were held today in 1995. Mac Miller's \"Swimming\" and Travis Scott's \"Astroworld\" both came out today in 2018.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"Swimming\"",
+    "level": 1,
+    "tiles": [
+     "Self Care",
+     "Ladders",
+     "Small Worlds",
+     "What's the Use?"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Astroworld\"",
+    "level": 2,
+    "tiles": [
+     "Sicko Mode",
+     "Stargazing",
+     "Yosemite",
+     "Stop Trying to Be God"
+    ],
+    "today": true
+   },
+   {
+    "name": "At the 1995 Source Awards",
+    "level": 3,
+    "tiles": [
+     "Suge Knight",
+     "André 3000",
+     "Puff Daddy",
+     "Snoop Dogg"
+    ],
+    "today": true
+   },
+   {
+    "name": "In The Source",
+    "level": 4,
+    "tiles": [
+     "Five Mics",
+     "Unsigned Hype",
+     "Hip-Hop Quotable",
+     "Record Report"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-04": {
+  "occasion": "Yo-Yo (1971), Bobby Shmurda (1994) and Lil Skies (1998) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Yo-Yo songs",
+    "level": 1,
+    "tiles": [
+     "You Can't Play with My Yo-Yo",
+     "Stompin' to tha 90's",
+     "Bonnie & Clyde Theme",
+     "Ain't Nobody Better"
+    ],
+    "today": true
+   },
+   {
+    "name": "GS9",
+    "level": 2,
+    "tiles": [
+     "Bobby Shmurda",
+     "Rowdy Rebel",
+     "Fetty Luciano",
+     "Chase Fetti"
+    ],
+    "today": true
+   },
+   {
+    "name": "Soul rap samples the most",
+    "level": 3,
+    "tiles": [
+     "James Brown",
+     "Isaac Hayes",
+     "Curtis Mayfield",
+     "Bill Withers"
+    ]
+   },
+   {
+    "name": "Da Beatminerz",
+    "level": 4,
+    "tiles": [
+     "Mr. Walt",
+     "DJ Evil Dee",
+     "Baby Paul",
+     "Rich Blak"
+    ]
+   }
+  ]
+ },
+ "08-05": {
+  "occasion": "Adam \"MCA\" Yauch (1964) and Funkmaster Flex (1967) were born today. Atmosphere's \"Overcast!\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Grand Royal Records",
+    "level": 1,
+    "tiles": [
+     "Luscious Jackson",
+     "Bis",
+     "Ben Lee",
+     "Sean Lennon"
+    ],
+    "today": true
+   },
+   {
+    "name": "Funkmaster Flex's tapes",
+    "level": 2,
+    "tiles": [
+     "60 Minutes of Funk",
+     "The Mix Tape",
+     "Car Show Tour",
+     "Who You Mad At? Me or Yourself?"
+    ],
+    "today": true
+   },
+   {
+    "name": "Funk bands rap samples",
+    "level": 3,
+    "tiles": [
+     "Parliament",
+     "Zapp",
+     "The Meters",
+     "Ohio Players"
+    ]
+   },
+   {
+    "name": "Jazz labels diggers love",
+    "level": 4,
+    "tiles": [
+     "Blue Note",
+     "CTI",
+     "Impulse!",
+     "Strata-East"
+    ]
+   }
+  ]
+ },
+ "08-06": {
+  "occasion": "\"Yo! MTV Raps\" premiered today in 1988. Dälek's first album came out today in 2002. Fatman Scoop was born today in 1971.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Yo! MTV Raps hosts",
+    "level": 1,
+    "tiles": [
+     "Fab 5 Freddy",
+     "Ed Lover",
+     "Doctor Dré",
+     "T. Money"
+    ],
+    "today": true
+   },
+   {
+    "name": "Noise rap",
+    "level": 2,
+    "tiles": [
+     "clipping.",
+     "Ho99o9",
+     "B L A C K I E",
+     "Dälek"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hype men on club records",
+    "level": 3,
+    "tiles": [
+     "Fatman Scoop",
+     "Lil Jon",
+     "Pitbull",
+     "DJ Khaled"
+    ],
+    "today": true
+   },
+   {
+    "name": "Videos that ruled the show",
+    "level": 4,
+    "tiles": [
+     "Me Myself and I",
+     "Wild Thing",
+     "It Takes Two",
+     "Bust a Move"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-07": {
+  "occasion": "Gangsta Boo (1979) and Big Mello (1968) were born today. Big Pun's \"I'm Not a Player\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Big Pun songs",
+    "level": 1,
+    "tiles": [
+     "Still Not a Player",
+     "I'm Not a Player",
+     "Twinz (Deep Cover '98)",
+     "100%"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gangsta Boo songs",
+    "level": 2,
+    "tiles": [
+     "Where Dem Dollas At",
+     "Can I Get Paid (Get Your Money Right)",
+     "Love Don't Live Here No More",
+     "Who Run It"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Ummah",
+    "level": 3,
+    "tiles": [
+     "J Dilla",
+     "Q-Tip",
+     "Ali Shaheed Muhammad",
+     "Raphael Saadiq"
+    ]
+   },
+   {
+    "name": "Epic-length tracks",
+    "level": 4,
+    "tiles": [
+     "Last Call",
+     "Sing About Me, I'm Dying of Thirst",
+     "Runaway",
+     "Mortal Man"
+    ]
+   }
+  ]
+ },
+ "08-08": {
+  "occasion": "N.W.A's \"Straight Outta Compton\" came out today in 1988. Watch the Throne came out today in 2011. Kool Moe Dee was born today in 1962. Sean Price died today in 2015.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"Straight Outta Compton\"",
+    "level": 1,
+    "tiles": [
+     "Straight Outta Compton",
+     "Gangsta Gangsta",
+     "Express Yourself",
+     "Dopeman"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Watch the Throne\"",
+    "level": 2,
+    "tiles": [
+     "Otis",
+     "Gotta Have It",
+     "No Church in the Wild",
+     "Murder to Excellence"
+    ],
+    "today": true
+   },
+   {
+    "name": "Kool Moe Dee songs",
+    "level": 3,
+    "tiles": [
+     "Wild Wild West",
+     "How Ya Like Me Now",
+     "Go See the Doctor",
+     "I Go to Work"
+    ],
+    "today": true
+   },
+   {
+    "name": "Da Lench Mob and friends",
+    "level": 4,
+    "tiles": [
+     "J-Dee",
+     "T-Bone",
+     "Shorty",
+     "Kam"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-09": {
+  "occasion": "Kurtis Blow (1959), Mack 10 (1971) and King Von (1994) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kurtis Blow songs",
+    "level": 1,
+    "tiles": [
+     "The Breaks",
+     "Christmas Rappin'",
+     "Basketball",
+     "If I Ruled the World"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mack 10 songs",
+    "level": 2,
+    "tiles": [
+     "Foe Life",
+     "Backyard Boogie",
+     "Hoo-Bangin'",
+     "Only in California"
+    ],
+    "today": true
+   },
+   {
+    "name": "King Von songs",
+    "level": 3,
+    "tiles": [
+     "Crazy Story",
+     "Took Her to the O",
+     "Why He Told",
+     "Armed & Dangerous"
+    ],
+    "today": true
+   },
+   {
+    "name": "G-funk albums",
+    "level": 4,
+    "tiles": [
+     "Regulate... G Funk Era",
+     "Dogg Food",
+     "Black Mafia Life",
+     "Murder Was the Case"
+    ]
+   }
+  ]
+ },
+ "08-10": {
+  "occasion": "Westside Boogie was born today in 1989.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Nicki Minaj was the guest",
+    "level": 1,
+    "tiles": [
+     "Bottoms Up",
+     "My Chick Bad",
+     "Make Me Proud",
+     "Bedrock"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shady Records, second wave",
+    "level": 2,
+    "tiles": [
+     "Westside Boogie",
+     "Grip",
+     "Conway the Machine",
+     "Ez Mil"
+    ],
+    "today": true
+   },
+   {
+    "name": "Women on the decks",
+    "level": 3,
+    "tiles": [
+     "Spinderella",
+     "Jazzy Joyce",
+     "Pam the Funkstress",
+     "Beverly Bond"
+    ]
+   },
+   {
+    "name": "Bronx drill",
+    "level": 4,
+    "tiles": [
+     "Kay Flock",
+     "Dougie B",
+     "B-Lovee",
+     "Sha Ek"
+    ]
+   }
+  ]
+ },
+ "08-11": {
+  "occasion": "Hip-hop was born today in 1973, at a back-to-school party at 1520 Sedgwick Avenue in the Bronx.",
+  "big": true,
+  "groups": [
+   {
+    "name": "The first party",
+    "level": 1,
+    "tiles": [
+     "DJ Kool Herc",
+     "Cindy Campbell",
+     "Sedgwick Avenue",
+     "The Bronx"
+    ],
+    "today": true
+   },
+   {
+    "name": "The elements",
+    "level": 2,
+    "tiles": [
+     "MCing",
+     "DJing",
+     "Breaking",
+     "Graffiti"
+    ],
+    "today": true
+   },
+   {
+    "name": "Bronx pioneers",
+    "level": 3,
+    "tiles": [
+     "Grandmaster Flash",
+     "Grand Wizzard Theodore",
+     "Kurtis Blow",
+     "Coke La Rock"
+    ],
+    "today": true
+   },
+   {
+    "name": "DJ inventions",
+    "level": 4,
+    "tiles": [
+     "The scratch",
+     "The merry-go-round",
+     "Quick Mix Theory",
+     "Punch phasing"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-12": {
+  "occasion": "Del the Funky Homosapien (1972) and Sir Mix-a-Lot (1963) were born today. Kendrick Lamar's verse on \"Control\" came out today in 2013.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Named in Kendrick's \"Control\" verse",
+    "level": 1,
+    "tiles": [
+     "Big K.R.I.T.",
+     "Wale",
+     "Jay Electronica",
+     "Mac Miller"
+    ],
+    "today": true
+   },
+   {
+    "name": "Del the Funky Homosapien songs",
+    "level": 2,
+    "tiles": [
+     "Mistadobalina",
+     "Clint Eastwood",
+     "Catch a Bad One",
+     "Positive Contact"
+    ],
+    "today": true
+   },
+   {
+    "name": "LaFace Records",
+    "level": 3,
+    "tiles": [
+     "OutKast",
+     "Goodie Mob",
+     "TLC",
+     "Toni Braxton"
+    ]
+   },
+   {
+    "name": "Real name on the cover",
+    "level": 4,
+    "tiles": [
+     "Todd Smith",
+     "Curtis",
+     "Nasir",
+     "The Marshall Mathers LP"
+    ]
+   }
+  ]
+ },
+ "08-13": {
+  "occasion": "Slum Village's \"Trinity\" came out today in 2002. Ka's \"A Martyr's Reward\" came out today in 2021.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Slum Village albums",
+    "level": 1,
+    "tiles": [
+     "Fan-Tas-Tic, Vol. 1",
+     "Fantastic, Vol. 2",
+     "Trinity (Past, Present and Future)",
+     "Detroit Deli"
+    ],
+    "today": true
+   },
+   {
+    "name": "Roots Manuva albums",
+    "level": 2,
+    "tiles": [
+     "Brand New Second Hand",
+     "Run Come Save Me",
+     "Awfully Deep",
+     "Slime & Reason"
+    ],
+    "today": true
+   },
+   {
+    "name": "Southern mixtape DJs",
+    "level": 3,
+    "tiles": [
+     "DJ Smallz",
+     "Bigga Rankin",
+     "DJ Scream",
+     "Trap-A-Holics"
+    ]
+   },
+   {
+    "name": "Rap lyric sites",
+    "level": 4,
+    "tiles": [
+     "Rap Genius",
+     "OHHLA",
+     "AZLyrics",
+     "Musixmatch"
+    ]
+   }
+  ]
+ },
+ "08-14": {
+  "occasion": "Black Milk (1983), Doechii (1998) and DJ Kay Slay (1966) were born today. \"Straight Outta Compton\" the movie opened today in 2015.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Doechii songs",
+    "level": 1,
+    "tiles": [
+     "What It Is",
+     "Denial Is a River",
+     "Anxiety",
+     "Nissan Altima"
+    ],
+    "today": true
+   },
+   {
+    "name": "In \"Straight Outta Compton\"",
+    "level": 2,
+    "tiles": [
+     "O'Shea Jackson Jr.",
+     "Corey Hawkins",
+     "Jason Mitchell",
+     "Paul Giamatti"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pivot Gang",
+    "level": 3,
+    "tiles": [
+     "Saba",
+     "Joseph Chilliams",
+     "MFn Melo",
+     "John Walt"
+    ]
+   },
+   {
+    "name": "DJ crews",
+    "level": 4,
+    "tiles": [
+     "X-Ecutioners",
+     "Invisibl Skratch Piklz",
+     "Beat Junkies",
+     "The Allies"
+    ]
+   }
+  ]
+ },
+ "08-15": {
+  "occasion": "Nipsey Hussle (1985) and Chief Keef (1995) were born today. Lil Peep's \"Come Over When You're Sober, Pt. 1\" came out today in 2017.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Chief Keef albums",
+    "level": 1,
+    "tiles": [
+     "Finally Rich",
+     "Bang 3",
+     "Almighty So",
+     "Thot Breaker"
+    ],
+    "today": true
+   },
+   {
+    "name": "All Money In",
+    "level": 2,
+    "tiles": [
+     "J Stone",
+     "Pacman da Gunman",
+     "Cobby Supreme",
+     "BH"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Peep songs",
+    "level": 3,
+    "tiles": [
+     "Awful Things",
+     "Star Shopping",
+     "Crybaby",
+     "Benz Truck"
+    ],
+    "today": true
+   },
+   {
+    "name": "Glo Gang",
+    "level": 4,
+    "tiles": [
+     "Fredo Santana",
+     "Tadoe",
+     "Ballout",
+     "Capo"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-16": {
+  "occasion": "Young Thug (1991) and Killah Priest (1970) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Jeffery,\" songs named for people",
+    "level": 1,
+    "tiles": [
+     "Wyclef Jean",
+     "Floyd Mayweather",
+     "Harambe",
+     "RiRi"
+    ],
+    "today": true
+   },
+   {
+    "name": "Killah Priest albums",
+    "level": 2,
+    "tiles": [
+     "Heavy Mental",
+     "View from Masada",
+     "Priesthood",
+     "Elizabeth"
+    ],
+    "today": true
+   },
+   {
+    "name": "Stadium anthems",
+    "level": 3,
+    "tiles": [
+     "Swag Surfin'",
+     "All I Do Is Win",
+     "Mo Bamba",
+     "Tootsee Roll"
+    ]
+   },
+   {
+    "name": "2000s fits",
+    "level": 4,
+    "tiles": [
+     "Throwback jersey",
+     "Tall tee",
+     "Velour tracksuit",
+     "Wristband"
+    ]
+   }
+  ]
+ },
+ "08-17": {
+  "occasion": "Lil B (1989) and Lil Pump (2000) were born today. Scarface's \"The World Is Yours\" came out today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Scarface albums",
+    "level": 1,
+    "tiles": [
+     "Mr. Scarface Is Back",
+     "The World Is Yours",
+     "The Diary",
+     "My Homies"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil B mixtapes",
+    "level": 2,
+    "tiles": [
+     "6 Kiss",
+     "Rain in England",
+     "I'm Gay (I'm Happy)",
+     "Blue Flame"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Pump songs",
+    "level": 3,
+    "tiles": [
+     "D Rose",
+     "Boss",
+     "Esskeetit",
+     "i Shyne"
+    ],
+    "today": true
+   },
+   {
+    "name": "HBK Gang",
+    "level": 4,
+    "tiles": [
+     "Iamsu!",
+     "Sage the Gemini",
+     "Kool John",
+     "P-Lo"
+    ]
+   }
+  ]
+ },
+ "08-18": {
+  "occasion": "Masta Killa and Everlast were born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Masta Killa albums",
+    "level": 1,
+    "tiles": [
+     "No Said Date",
+     "Made in Brooklyn",
+     "Selling My Soul",
+     "Loyalty Is Royalty"
+    ],
+    "today": true
+   },
+   {
+    "name": "Everlast songs",
+    "level": 2,
+    "tiles": [
+     "What It's Like",
+     "Ends",
+     "Black Jesus",
+     "White Trash Beautiful"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mick Jenkins albums",
+    "level": 3,
+    "tiles": [
+     "The Waters",
+     "The Healing Component",
+     "Elephant in the Room",
+     "The Patience"
+    ]
+   },
+   {
+    "name": "Beast Coast",
+    "level": 4,
+    "tiles": [
+     "Flatbush Zombies",
+     "The Underachievers",
+     "Kirk Knight",
+     "Nyck Caution"
+    ]
+   }
+  ]
+ },
+ "08-19": {
+  "occasion": "Nate Dogg (1969) and Fat Joe (1970) were born today. O.C.'s \"Jewelz\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Nate Dogg solo songs",
+    "level": 1,
+    "tiles": [
+     "Never Leave Me Alone",
+     "I Got Love",
+     "Your Wife",
+     "Nobody Does It Better"
+    ],
+    "today": true
+   },
+   {
+    "name": "Fat Joe albums",
+    "level": 2,
+    "tiles": [
+     "Represent",
+     "Jealous One's Envy",
+     "Don Cartagena",
+     "J.O.S.E."
+    ],
+    "today": true
+   },
+   {
+    "name": "Slip-n-Slide Records",
+    "level": 3,
+    "tiles": [
+     "Trina",
+     "Trick Daddy",
+     "Plies",
+     "Rick Ross"
+    ]
+   },
+   {
+    "name": "The first rap labels",
+    "level": 4,
+    "tiles": [
+     "Enjoy Records",
+     "Winley Records",
+     "Sleeping Bag Records",
+     "Tuff City"
+    ]
+   }
+  ]
+ },
+ "08-20": {
+  "occasion": "KRS-One (1965), Lil' Cease (1977) and Big Moe (1974) were born today. Clipse's \"Lord Willin'\" came out today in 2002.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Lord Willin'\"",
+    "level": 1,
+    "tiles": [
+     "When the Last Time",
+     "Ma, I Don't Love Her",
+     "Virginia",
+     "Cot Damn"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big Moe songs",
+    "level": 2,
+    "tiles": [
+     "Barre Baby",
+     "Purple Stuff",
+     "Maan!",
+     "Confidential Playa"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shelved albums",
+    "level": 3,
+    "tiles": [
+     "Yandhi",
+     "Detox",
+     "Oh, My God",
+     "Kamaal the Abstract"
+    ]
+   },
+   {
+    "name": "'80s women on the mic",
+    "level": 4,
+    "tiles": [
+     "Sha-Rock",
+     "Lady B",
+     "Sparky D",
+     "The Real Roxanne"
+    ]
+   }
+  ]
+ },
+ "08-21": {
+  "occasion": "Kelis (1979) and Jehst (1979) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kelis songs",
+    "level": 1,
+    "tiles": [
+     "Caught Out There",
+     "Milkshake",
+     "Bossy",
+     "Trick Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "Priority Records",
+    "level": 2,
+    "tiles": [
+     "Ice Cube",
+     "Master P",
+     "Westside Connection",
+     "Snoop Dogg"
+    ]
+   },
+   {
+    "name": "UK radio DJs",
+    "level": 3,
+    "tiles": [
+     "Tim Westwood",
+     "Charlie Sloth",
+     "DJ Semtex",
+     "Logan Sama"
+    ]
+   },
+   {
+    "name": "Spanish-language pioneers",
+    "level": 4,
+    "tiles": [
+     "Vico C",
+     "Lisa M",
+     "DJ Playero",
+     "Ruben DJ"
+    ]
+   }
+  ]
+ },
+ "08-22": {
+  "occasion": "GZA (1966) and Dom Kennedy (1984) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Liquid Swords\"",
+    "level": 1,
+    "tiles": [
+     "Shadowboxin'",
+     "4th Chamber",
+     "Duel of the Iron Mic",
+     "Cold World"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dom Kennedy tapes",
+    "level": 2,
+    "tiles": [
+     "From the Westside with Love",
+     "Yellow Album",
+     "Get Home Safely",
+     "By Dom Kennedy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Free tapes that blew up",
+    "level": 3,
+    "tiles": [
+     "Acid Rap",
+     "Coloring Book",
+     "Live.Love.A$AP",
+     "1999"
+    ]
+   },
+   {
+    "name": "Jersey groups",
+    "level": 4,
+    "tiles": [
+     "Naughty by Nature",
+     "Fugees",
+     "Artifacts",
+     "Lords of the Underground"
+    ]
+   }
+  ]
+ },
+ "08-23": {
+  "occasion": "Lil Yachty (1997) and Bone Crusher (1971) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil Yachty albums",
+    "level": 1,
+    "tiles": [
+     "Lil Boat",
+     "Teenage Emotions",
+     "Nuthin' 2 Prove",
+     "Let's Start Here"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dream Chasers",
+    "level": 2,
+    "tiles": [
+     "Lil Snupe",
+     "Louie V Gutta",
+     "Omelly",
+     "Vory"
+    ]
+   },
+   {
+    "name": "Underground duos",
+    "level": 3,
+    "tiles": [
+     "Reflection Eternal",
+     "People Under the Stairs",
+     "Zion I",
+     "Lone Catalysts"
+    ]
+   },
+   {
+    "name": "Tha ___",
+    "level": 4,
+    "tiles": [
+     "Tha Dogg Pound",
+     "Tha Eastsidaz",
+     "Tha Alkaholiks",
+     "Tha Mexakinz"
+    ]
+   }
+  ]
+ },
+ "08-24": {
+  "occasion": "Jedi Mind Tricks' \"Legacy of Blood\" came out today in 2004.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Jedi Mind Tricks albums",
+    "level": 1,
+    "tiles": [
+     "The Psycho-Social, Chemical, Biological & Electro-Magnetic Manipulation of Human Consciousness",
+     "Violent by Design",
+     "Visions of Gandhi",
+     "Legacy of Blood"
+    ],
+    "today": true
+   },
+   {
+    "name": "Borough nicknames",
+    "level": 2,
+    "tiles": [
+     "Shaolin",
+     "Crooklyn",
+     "Boogie Down",
+     "Money-makin' Manhattan"
+    ]
+   },
+   {
+    "name": "Old phones in rap",
+    "level": 3,
+    "tiles": [
+     "Two-way pager",
+     "Sidekick",
+     "Nextel chirp",
+     "BlackBerry"
+    ]
+   },
+   {
+    "name": "Gospel guests",
+    "level": 4,
+    "tiles": [
+     "Kirk Franklin",
+     "The Clark Sisters",
+     "Tye Tribbett",
+     "Yolanda Adams"
+    ]
+   }
+  ]
+ },
+ "08-25": {
+  "occasion": "Aaliyah died today in 2001. Shock G (1963), Terminator X (1966) and Kaytranada (1992) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Aaliyah songs",
+    "level": 1,
+    "tiles": [
+     "One in a Million",
+     "Back & Forth",
+     "If Your Girl Only Knew",
+     "We Need a Resolution"
+    ],
+    "today": true
+   },
+   {
+    "name": "Kaytranada made it",
+    "level": 2,
+    "tiles": [
+     "Glowed Up",
+     "You're the One",
+     "10%",
+     "Lite Spots"
+    ],
+    "today": true
+   },
+   {
+    "name": "Afrobeats stars on rap records",
+    "level": 3,
+    "tiles": [
+     "Wizkid",
+     "Burna Boy",
+     "Davido",
+     "Tems"
+    ]
+   },
+   {
+    "name": "Where the videos played",
+    "level": 4,
+    "tiles": [
+     "BET",
+     "MTV",
+     "The Box",
+     "Fuse"
+    ]
+   }
+  ]
+ },
+ "08-26": {
+  "occasion": "Big K.R.I.T. (1986), Cordae (1997) and Lil Tecca (2002) were born today. Tha Alkaholiks' \"Likwidation\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil Tecca songs",
+    "level": 1,
+    "tiles": [
+     "Ransom",
+     "Did It Again",
+     "500lbs",
+     "Dark Thoughts"
+    ],
+    "today": true
+   },
+   {
+    "name": "Likwit Crew",
+    "level": 2,
+    "tiles": [
+     "Tash",
+     "J-Ro",
+     "E-Swift",
+     "King Tee"
+    ],
+    "today": true
+   },
+   {
+    "name": "Snap music",
+    "level": 3,
+    "tiles": [
+     "Lean wit It, Rock wit It",
+     "Snap Yo Fingers",
+     "It's Goin' Down",
+     "Shoulder Lean"
+    ]
+   },
+   {
+    "name": "Crunk anthems",
+    "level": 4,
+    "tiles": [
+     "Bia' Bia'",
+     "Get Crunk",
+     "Knuck If You Buck",
+     "Salt Shaker"
+    ]
+   }
+  ]
+ },
+ "08-27": {
+  "occasion": "OutKast's \"ATLiens\" came out today in 1996. Mase (1975) and Rod Wave (1998) were born today. Scott La Rock of BDP died today in 1987. Devin the Dude's \"Just Tryin' ta Live\" came out today in 2002.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"ATLiens\"",
+    "level": 1,
+    "tiles": [
+     "Elevators (Me & You)",
+     "ATLiens",
+     "Jazzy Belle",
+     "Wheelz of Steel"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mase songs",
+    "level": 2,
+    "tiles": [
+     "Lookin' at Me",
+     "What You Want",
+     "Welcome Back",
+     "Breathe, Stretch, Shake"
+    ],
+    "today": true
+   },
+   {
+    "name": "Devin the Dude albums",
+    "level": 3,
+    "tiles": [
+     "The Dude",
+     "Just Tryin' ta Live",
+     "To tha X-Treme",
+     "Waitin' to Inhale"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rod Wave songs",
+    "level": 4,
+    "tiles": [
+     "Heart on Ice",
+     "Rags2Riches",
+     "Street Runner",
+     "Fight the Feeling"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "08-28": {
+  "occasion": "Aesop Rock's \"None Shall Pass\" and Strong Arm Steady's \"Deep Hearted\" came out today in 2007. Johnny \"J,\" who made beats for 2Pac, was born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Strong Arm Steady",
+    "level": 1,
+    "tiles": [
+     "Krondon",
+     "Phil da Agony",
+     "Mitchy Slick",
+     "Xzibit"
+    ],
+    "today": true
+   },
+   {
+    "name": "Johnny \"J\" made the beat",
+    "level": 2,
+    "tiles": [
+     "How Do U Want It",
+     "All About U",
+     "Shorty Wanna Be a Thug",
+     "Picture Me Rollin'"
+    ],
+    "today": true
+   },
+   {
+    "name": "Spray paint",
+    "level": 3,
+    "tiles": [
+     "Krylon",
+     "Rust-Oleum",
+     "Montana",
+     "Belton"
+    ]
+   },
+   {
+    "name": "DJ gear",
+    "level": 4,
+    "tiles": [
+     "Vestax",
+     "Rane",
+     "Pioneer",
+     "Numark"
+    ]
+   }
+  ]
+ },
+ "08-29": {
+  "occasion": "Bizarrap was born today in 1998. Lil Wayne's \"Tha Carter IV\" came out today in 2011.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On a Bizarrap session",
+    "level": 1,
+    "tiles": [
+     "Quevedo",
+     "Shakira",
+     "Nicki Nicole",
+     "Residente"
+    ],
+    "today": true
+   },
+   {
+    "name": "Puerto Rico's producers",
+    "level": 2,
+    "tiles": [
+     "Tainy",
+     "DJ Nelson",
+     "Luny Tunes",
+     "Mambo Kingz"
+    ]
+   },
+   {
+    "name": "2000s rap brands",
+    "level": 3,
+    "tiles": [
+     "Ecko",
+     "Akademiks",
+     "Enyce",
+     "Pelle Pelle"
+    ]
+   },
+   {
+    "name": "'90s rap movies",
+    "level": 4,
+    "tiles": [
+     "Who's the Man?",
+     "Ride",
+     "Slam",
+     "Thicker Than Water"
+    ]
+   }
+  ]
+ },
+ "08-30": {
+  "occasion": "Kanye West's \"Late Registration\" came out today in 2005. Maino was born today in 1973.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Late Registration\"",
+    "level": 1,
+    "tiles": [
+     "Gold Digger",
+     "Touch the Sky",
+     "Diamonds from Sierra Leone",
+     "Drive Slow"
+    ],
+    "today": true
+   },
+   {
+    "name": "Def Jam South",
+    "level": 2,
+    "tiles": [
+     "Ludacris",
+     "Jeezy",
+     "Scarface",
+     "Rick Ross"
+    ]
+   },
+   {
+    "name": "'80s rap movies",
+    "level": 3,
+    "tiles": [
+     "Krush Groove",
+     "Rappin'",
+     "Tougher Than Leather",
+     "Disorderlies"
+    ]
+   },
+   {
+    "name": "UTFO",
+    "level": 4,
+    "tiles": [
+     "Kangol Kid",
+     "Doctor Ice",
+     "Educated Rapper",
+     "Mix Master Ice"
+    ]
+   }
+  ]
+ },
+ "08-31": {
+  "occasion": "Egyptian Lover (1963), Fab 5 Freddy (1959) and Joe Budden (1980) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "L.A. electro",
+    "level": 1,
+    "tiles": [
+     "Egyptian Lover",
+     "World Class Wreckin' Cru",
+     "Uncle Jamm's Army",
+     "The Arabian Prince"
+    ],
+    "today": true
+   },
+   {
+    "name": "Joe Budden albums",
+    "level": 2,
+    "tiles": [
+     "Joe Budden",
+     "Padded Room",
+     "Escape Route",
+     "All Love Lost"
+    ],
+    "today": true
+   },
+   {
+    "name": "Graffiti legends",
+    "level": 3,
+    "tiles": [
+     "Dondi",
+     "Seen",
+     "Blade",
+     "Phase 2"
+    ],
+    "today": true
+   },
+   {
+    "name": "Breaking battles",
+    "level": 4,
+    "tiles": [
+     "Red Bull BC One",
+     "Battle of the Year",
+     "Freestyle Session",
+     "UK B-Boy Championships"
+    ]
+   }
+  ]
  }
 }
