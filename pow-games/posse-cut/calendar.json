@@ -2324,13 +2324,13 @@
     "today": true
    },
    {
-    "name": "On \"The Chronic\"",
+    "name": "Dre made the beat for others",
     "level": 3,
     "tiles": [
-     "Snoop Dogg",
-     "Kurupt",
-     "Daz Dillinger",
-     "The Lady of Rage"
+     "Family Affair",
+     "No Diggity",
+     "Let Me Blow Ya Mind",
+     "Guilty Conscience"
     ],
     "today": true
    },
@@ -16101,6 +16101,1488 @@
      "Hook",
      "Verse",
      "Ad-lib"
+    ]
+   }
+  ]
+ },
+ "12-01": {
+  "occasion": "Drakeo the Ruler was born today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Drakeo the Ruler songs",
+    "level": 1,
+    "tiles": [
+     "Mr. Flamboyant",
+     "Flu Flamming",
+     "Impatient",
+     "Talk to Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "Drakeo's circle",
+    "level": 2,
+    "tiles": [
+     "Ketchy the Great",
+     "Ralfy the Plug",
+     "Bambino",
+     "Remble"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lose in the title",
+    "level": 3,
+    "tiles": [
+     "Lose Yourself",
+     "Lose Control",
+     "Lose My Mind",
+     "Losing Out"
+    ]
+   },
+   {
+    "name": "Beanie Sigel songs",
+    "level": 4,
+    "tiles": [
+     "The Truth",
+     "Feel It in the Air",
+     "Roc the Mic",
+     "Raw & Uncut"
+    ]
+   }
+  ]
+ },
+ "12-02": {
+  "occasion": "Metro Boomin's \"Heroes & Villains\" came out today in 2022.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Metro Boomin albums",
+    "level": 1,
+    "tiles": [
+     "Savage Mode",
+     "Not All Heroes Wear Capes",
+     "Heroes & Villains",
+     "Double or Nothing"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dreams in the title",
+    "level": 2,
+    "tiles": [
+     "Dreams",
+     "Street Dreams",
+     "Gasoline Dreams",
+     "Dreams and Nightmares"
+    ]
+   },
+   {
+    "name": "Studio mics",
+    "level": 3,
+    "tiles": [
+     "Neumann U87",
+     "Shure SM7B",
+     "Sony C-800G",
+     "Telefunken 251"
+    ]
+   },
+   {
+    "name": "Rap writing outlets",
+    "level": 4,
+    "tiles": [
+     "Complex",
+     "The FADER",
+     "Pitchfork",
+     "Passion of the Weiss"
+    ]
+   }
+  ]
+ },
+ "12-03": {
+  "occasion": "Lil Baby, Trina, JT and Chinx all have birthdays today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born December 3",
+    "level": 1,
+    "tiles": [
+     "Lil Baby",
+     "Trina",
+     "JT",
+     "Chinx"
+    ],
+    "today": true
+   },
+   {
+    "name": "Time in the title",
+    "level": 2,
+    "tiles": [
+     "Time 4 Sum Aksion",
+     "Time Today",
+     "This Time Around",
+     "Time's Up"
+    ]
+   },
+   {
+    "name": "Black Rob songs",
+    "level": 3,
+    "tiles": [
+     "Whoa!",
+     "Can I Live",
+     "Spanish Fly",
+     "Life Story"
+    ]
+   },
+   {
+    "name": "Dots in the name",
+    "level": 4,
+    "tiles": [
+     "T.I.",
+     "B.o.B",
+     "J. Cole",
+     "O.C."
+    ]
+   }
+  ]
+ },
+ "12-04": {
+  "occasion": "Jay-Z was born today in 1969. Nas released \"Ether\" today in 2001. Pimp C died today in 2007.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Jay-Z's other names",
+    "level": 1,
+    "tiles": [
+     "Hova",
+     "Jigga",
+     "Young Hov",
+     "S. Carter"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pimp C was on it",
+    "level": 2,
+    "tiles": [
+     "Big Pimpin'",
+     "Int'l Players Anthem",
+     "Get Throwed",
+     "Sippin' on Some Syrup"
+    ],
+    "today": true
+   },
+   {
+    "name": "Roc Nation",
+    "level": 3,
+    "tiles": [
+     "Rihanna",
+     "Rapsody",
+     "Vic Mensa",
+     "Belly"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born December 4",
+    "level": 4,
+    "tiles": [
+     "Jay-Z",
+     "Masta Ace",
+     "Fat Pat",
+     "Jelly Roll"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "12-05": {
+  "occasion": "Kid Koala was born today in 1974.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kid Koala albums",
+    "level": 1,
+    "tiles": [
+     "Carpal Tunnel Syndrome",
+     "Some of My Best Friends Are DJs",
+     "Your Mom's Favorite DJ",
+     "12 Bit Blues"
+    ],
+    "today": true
+   },
+   {
+    "name": "Paper in the title",
+    "level": 2,
+    "tiles": [
+     "Paper Planes",
+     "Paper Thin",
+     "Paper Chase",
+     "Paper Trail$"
+    ]
+   },
+   {
+    "name": "Rap terms for a hit",
+    "level": 3,
+    "tiles": [
+     "Banger",
+     "Slapper",
+     "Heater",
+     "Knocker"
+    ]
+   },
+   {
+    "name": "Consoles",
+    "level": 4,
+    "tiles": [
+     "SSL",
+     "Neve",
+     "API",
+     "Trident"
+    ]
+   }
+  ]
+ },
+ "12-06": {
+  "occasion": "Lil Wayne's \"Tha Carter II\" came out today in 2005.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Tha Carter II\"",
+    "level": 1,
+    "tiles": [
+     "Fireman",
+     "Hustler Musik",
+     "Shooter",
+     "Tha Mobb"
+    ],
+    "today": true
+   },
+   {
+    "name": "Girls in the title",
+    "level": 2,
+    "tiles": [
+     "Girls, Girls, Girls",
+     "Girl Tonite",
+     "Girls Ain't Nothing but Trouble",
+     "Girls Like You"
+    ]
+   },
+   {
+    "name": "Hip-hop landmarks",
+    "level": 3,
+    "tiles": [
+     "Rucker Park",
+     "The Apollo",
+     "Linden Boulevard",
+     "Crenshaw & Slauson"
+    ]
+   },
+   {
+    "name": "Monie Love songs",
+    "level": 4,
+    "tiles": [
+     "It's a Shame",
+     "Monie in the Middle",
+     "Born to B.R.E.E.D.",
+     "Down to Earth"
+    ]
+   }
+  ]
+ },
+ "12-07": {
+  "occasion": "Ice Cube's \"Lethal Injection\" (1993) and Cam'ron's \"Purple Haze\" (2004) came out today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Lethal Injection\"",
+    "level": 1,
+    "tiles": [
+     "Really Doe",
+     "You Know How We Do It",
+     "Bop Gun (One Nation)",
+     "What Can I Do?"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Purple Haze\"",
+    "level": 2,
+    "tiles": [
+     "Killa Cam",
+     "Down and Out",
+     "Get 'Em Daddy",
+     "Girls, Cash, Cars"
+    ],
+    "today": true
+   },
+   {
+    "name": "Party in the title",
+    "level": 3,
+    "tiles": [
+     "Party Up",
+     "Party Like a Rockstar",
+     "Party Groove",
+     "Welcome to the Party"
+    ]
+   },
+   {
+    "name": "Letter-hyphen names",
+    "level": 4,
+    "tiles": [
+     "T-Pain",
+     "G-Eazy",
+     "Q-Tip",
+     "B-Real"
+    ]
+   }
+  ]
+ },
+ "12-08": {
+  "occasion": "Juice WRLD died today in 2019. Nicki Minaj was born today in 1982.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Juice WRLD albums",
+    "level": 1,
+    "tiles": [
+     "Goodbye & Good Riddance",
+     "Death Race for Love",
+     "Legends Never Die",
+     "Fighting Demons"
+    ],
+    "today": true
+   },
+   {
+    "name": "Nicki's other names",
+    "level": 2,
+    "tiles": [
+     "Roman Zolanski",
+     "Harajuku Barbie",
+     "Nicki Lewinski",
+     "Martha Zolanski"
+    ],
+    "today": true
+   },
+   {
+    "name": "Fly in the title",
+    "level": 3,
+    "tiles": [
+     "Still Fly",
+     "We Fly High",
+     "Fly as Me",
+     "Stay Fly"
+    ]
+   },
+   {
+    "name": "Beat software",
+    "level": 4,
+    "tiles": [
+     "FL Studio",
+     "Ableton",
+     "Reason",
+     "Pro Tools"
+    ]
+   }
+  ]
+ },
+ "12-09": {
+  "occasion": "J. Cole's \"2014 Forest Hills Drive\" came out today in 2014.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"2014 Forest Hills Drive\"",
+    "level": 1,
+    "tiles": [
+     "No Role Modelz",
+     "Wet Dreamz",
+     "G.O.M.D.",
+     "Apparently"
+    ],
+    "today": true
+   },
+   {
+    "name": "Back in the title",
+    "level": 2,
+    "tiles": [
+     "Back That Azz Up",
+     "Back in Blood",
+     "Bounce Back",
+     "Back Like That"
+    ]
+   },
+   {
+    "name": "Wrestlers who rapped",
+    "level": 3,
+    "tiles": [
+     "John Cena",
+     "R-Truth",
+     "MVP",
+     "Road Dogg"
+    ]
+   },
+   {
+    "name": "Jurassic 5 songs",
+    "level": 4,
+    "tiles": [
+     "Concrete Schoolyard",
+     "Quality Control",
+     "What's Golden",
+     "Jayou"
+    ]
+   }
+  ]
+ },
+ "12-10": {
+  "occasion": "Childish Gambino's \"Because the Internet\" (2013) and Common's \"Electric Circus\" (2002) came out today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Because the Internet\"",
+    "level": 1,
+    "tiles": [
+     "Sweatpants",
+     "Telegraph Ave.",
+     "Crawl",
+     "Worldstar"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Electric Circus\"",
+    "level": 2,
+    "tiles": [
+     "Come Close",
+     "Electric Wire Hustler Flower",
+     "Soul Power",
+     "I Got a Right Ta"
+    ],
+    "today": true
+   },
+   {
+    "name": "Stars in the title",
+    "level": 3,
+    "tiles": [
+     "Stargazing",
+     "Superstar",
+     "Star Shopping",
+     "Written in the Stars"
+    ]
+   },
+   {
+    "name": "The ___ titles",
+    "level": 4,
+    "tiles": [
+     "Tyler, the Creator",
+     "Megan Thee Stallion",
+     "Conway the Machine",
+     "Benny the Butcher"
+    ]
+   }
+  ]
+ },
+ "12-11": {
+  "occasion": "Yasiin Bey, the artist formerly known as Mos Def, was born today in 1973.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Mos Def on screen",
+    "level": 1,
+    "tiles": [
+     "The Italian Job",
+     "16 Blocks",
+     "Be Kind Rewind",
+     "Dexter"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hot in the title",
+    "level": 2,
+    "tiles": [
+     "Hot in Herre",
+     "Hot Boyz",
+     "Hot Spot",
+     "Hot Girl Summer"
+    ]
+   },
+   {
+    "name": "Fan-base names",
+    "level": 3,
+    "tiles": [
+     "Barbz",
+     "Hotties",
+     "Bardi Gang",
+     "Navy"
+    ]
+   },
+   {
+    "name": "Vinyl words",
+    "level": 4,
+    "tiles": [
+     "B-side",
+     "Dubplate",
+     "White label",
+     "Test pressing"
+    ]
+   }
+  ]
+ },
+ "12-12": {
+  "occasion": "Little Simz's \"NO THANK YOU\" came out today in 2022.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Little Simz songs",
+    "level": 1,
+    "tiles": [
+     "Venom",
+     "Introvert",
+     "Woman",
+     "Gorilla"
+    ],
+    "today": true
+   },
+   {
+    "name": "One in the title",
+    "level": 2,
+    "tiles": [
+     "One Mic",
+     "One Love",
+     "One Day",
+     "One Minute Man"
+    ]
+   },
+   {
+    "name": "The Breakfast Club",
+    "level": 3,
+    "tiles": [
+     "Charlamagne tha God",
+     "Angela Yee",
+     "DJ Envy",
+     "Loren LoRosa"
+    ]
+   },
+   {
+    "name": "k-os songs",
+    "level": 4,
+    "tiles": [
+     "Crabbuckit",
+     "Man I Used to Be",
+     "Sunday Morning",
+     "Superstarr Pt. Zero"
+    ]
+   }
+  ]
+ },
+ "12-13": {
+  "occasion": "Nas's \"God's Son\" came out today in 2002. Jamie Foxx was born today in 1967.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"God's Son\"",
+    "level": 1,
+    "tiles": [
+     "I Can",
+     "Made You Look",
+     "Get Down",
+     "Heaven"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jamie Foxx sang the hook",
+    "level": 2,
+    "tiles": [
+     "Gold Digger",
+     "Slow Jamz",
+     "Blame It",
+     "Winner"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mind in the title",
+    "level": 3,
+    "tiles": [
+     "Mind Playing Tricks on Me",
+     "Blow Your Mind",
+     "Mind Sex",
+     "Empire State of Mind"
+    ]
+   },
+   {
+    "name": "DJ in the name",
+    "level": 4,
+    "tiles": [
+     "DJ Quik",
+     "DJ Paul",
+     "DJ Khaled",
+     "DJ Unk"
+    ]
+   }
+  ]
+ },
+ "12-14": {
+  "occasion": "Offset was born today in 1991.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Migos, solo",
+    "level": 1,
+    "tiles": [
+     "Quavo Huncho",
+     "Father of 4",
+     "The Last Rocket",
+     "Set It Off"
+    ],
+    "today": true
+   },
+   {
+    "name": "Way in the title",
+    "level": 2,
+    "tiles": [
+     "My Way",
+     "The Way I Am",
+     "The Way You Move",
+     "The Way We Ball"
+    ]
+   },
+   {
+    "name": "Rap playlists",
+    "level": 3,
+    "tiles": [
+     "RapCaviar",
+     "Rap Life",
+     "Most Necessary",
+     "Get Turnt"
+    ]
+   },
+   {
+    "name": "Things a DJ carries",
+    "level": 4,
+    "tiles": [
+     "Crates",
+     "Needles",
+     "Slipmats",
+     "Headphones"
+    ]
+   }
+  ]
+ },
+ "12-15": {
+  "occasion": "Dr. Dre's \"The Chronic\" came out today in 1992. Nicki Minaj's \"The Pinkprint\" came out today in 2014.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Chronic\"",
+    "level": 1,
+    "tiles": [
+     "Let Me Ride",
+     "Dre Day",
+     "Lil' Ghetto Boy",
+     "Stranded on Death Row"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"The Pinkprint\"",
+    "level": 2,
+    "tiles": [
+     "Only",
+     "Truffle Butter",
+     "Pills N Potions",
+     "Feeling Myself"
+    ],
+    "today": true
+   },
+   {
+    "name": "World in the title",
+    "level": 3,
+    "tiles": [
+     "The World Is Yours",
+     "Doggy Dogg World",
+     "World Famous",
+     "Worldstar"
+    ]
+   },
+   {
+    "name": "Hot Boys songs",
+    "level": 4,
+    "tiles": [
+     "I Need a Hot Girl",
+     "We on Fire",
+     "Neighborhood Superstar",
+     "Let 'Em Burn"
+    ]
+   }
+  ]
+ },
+ "12-16": {
+  "occasion": "Scott Storch was born today in 1973. A judge ruled against Biz Markie in the \"Alone Again\" sampling case today in 1991.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Scott Storch made the beat",
+    "level": 1,
+    "tiles": [
+     "Baby Boy",
+     "Naughty Girl",
+     "Let Me Love You",
+     "Lean Back"
+    ],
+    "today": true
+   },
+   {
+    "name": "The case that changed sampling",
+    "level": 2,
+    "tiles": [
+     "Biz Markie",
+     "Gilbert O'Sullivan",
+     "Alone Again (Naturally)",
+     "I Need a Haircut"
+    ],
+    "today": true
+   },
+   {
+    "name": "Gotti in the name",
+    "level": 3,
+    "tiles": [
+     "Yo Gotti",
+     "Irv Gotti",
+     "Young Gotti",
+     "Yak Gotti"
+    ]
+   },
+   {
+    "name": "Grammy categories",
+    "level": 4,
+    "tiles": [
+     "Best Rap Album",
+     "Best Rap Song",
+     "Best Rap Performance",
+     "Best Melodic Rap Performance"
+    ]
+   }
+  ]
+ },
+ "12-17": {
+  "occasion": "Young Nudy was born today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born December 17",
+    "level": 1,
+    "tiles": [
+     "Young Nudy",
+     "Trip Lee",
+     "Tkay Maidza",
+     "Ivorian Doll"
+    ],
+    "today": true
+   },
+   {
+    "name": "Music-biz jobs",
+    "level": 2,
+    "tiles": [
+     "A&R",
+     "Street team",
+     "Road manager",
+     "Publicist"
+    ]
+   },
+   {
+    "name": "Famous food spots in rap",
+    "level": 3,
+    "tiles": [
+     "Roscoe's",
+     "Junior's",
+     "Mr. Chow",
+     "Waffle House"
+    ]
+   },
+   {
+    "name": "Thug in the name",
+    "level": 4,
+    "tiles": [
+     "Young Thug",
+     "Slim Thug",
+     "Bone Thugs-n-Harmony",
+     "Thug Life"
+    ]
+   }
+  ]
+ },
+ "12-18": {
+  "occasion": "Nas's \"Stillmatic\" came out today in 2001. DMX (1970) and slowthai (1994) were born today. \"Lupe Fiasco's The Cool\" came out today in 2007.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"Stillmatic\"",
+    "level": 1,
+    "tiles": [
+     "Ether",
+     "Got Ur Self a Gun",
+     "One Mic",
+     "Rewind"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"The Cool\"",
+    "level": 2,
+    "tiles": [
+     "Hip-Hop Saved My Life",
+     "Paris, Tokyo",
+     "Dumb It Down",
+     "The Coolest"
+    ],
+    "today": true
+   },
+   {
+    "name": "slowthai songs",
+    "level": 3,
+    "tiles": [
+     "Doorman",
+     "Inglorious",
+     "Feel Away",
+     "Deal Wiv It"
+    ],
+    "today": true
+   },
+   {
+    "name": "DMX albums",
+    "level": 4,
+    "tiles": [
+     "It's Dark and Hell Is Hot",
+     "Flesh of My Flesh, Blood of My Blood",
+     "...And Then There Was X",
+     "Grand Champ"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "12-19": {
+  "occasion": "Nas's \"Hip Hop Is Dead\" came out today in 2006. Lady Sovereign (1985) and Wisin (1978) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Hip Hop Is Dead\"",
+    "level": 1,
+    "tiles": [
+     "Hip Hop Is Dead",
+     "Black Republican",
+     "Can't Forget About You",
+     "Still Dreaming"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lady Sovereign songs",
+    "level": 2,
+    "tiles": [
+     "Love Me or Hate Me",
+     "Random",
+     "9 to 5",
+     "Hoodie"
+    ],
+    "today": true
+   },
+   {
+    "name": "Wisin & Yandel songs",
+    "level": 3,
+    "tiles": [
+     "Rakata",
+     "Pam Pam",
+     "Algo Me Gusta de Ti",
+     "Sexy Movimiento"
+    ],
+    "today": true
+   },
+   {
+    "name": "Contract words",
+    "level": 4,
+    "tiles": [
+     "Advance",
+     "Masters",
+     "Publishing",
+     "360 deal"
+    ]
+   }
+  ]
+ },
+ "12-20": {
+  "occasion": "All about 2007, part two.",
+  "big": true,
+  "groups": [
+   {
+    "name": "More 2007 singles",
+    "level": 1,
+    "tiles": [
+     "Duffle Bag Boy",
+     "Pop, Lock & Drop It",
+     "Kiss Kiss",
+     "Get Buck"
+    ],
+    "today": true
+   },
+   {
+    "name": "More 2007 albums",
+    "level": 2,
+    "tiles": [
+     "The Big Doe Rehab",
+     "Back to the Traphouse",
+     "Hustlenomics",
+     "Buck the World"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap on reality TV, 2007",
+    "level": 3,
+    "tiles": [
+     "Flavor of Love",
+     "Run's House",
+     "Snoop Dogg's Father Hood",
+     "I Love New York"
+    ],
+    "today": true
+   },
+   {
+    "name": "In the \"American Gangster\" movie",
+    "level": 4,
+    "tiles": [
+     "T.I.",
+     "RZA",
+     "Common",
+     "Idris Elba"
+    ],
+    "today": true
+   }
+  ],
+  "year": 2007
+ },
+ "12-21": {
+  "occasion": "It's the first day of winter. 21 Savage's \"i am > i was\" came out today in 2018.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Cold in the title",
+    "level": 1,
+    "tiles": [
+     "Cold as Ice",
+     "Cold World",
+     "Cold Rock a Party",
+     "Cold"
+    ],
+    "today": true
+   },
+   {
+    "name": "Winter coats",
+    "level": 2,
+    "tiles": [
+     "Mink",
+     "Shearling",
+     "Canada Goose",
+     "Moncler"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"i am > i was\"",
+    "level": 3,
+    "tiles": [
+     "Ball w/o You",
+     "Can't Leave Without It",
+     "Out for the Night",
+     "Monster"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tours",
+    "level": 4,
+    "tiles": [
+     "Watch the Throne Tour",
+     "The Big Steppers Tour",
+     "Astroworld: Wish You Were Here Tour",
+     "The Yeezus Tour"
+    ]
+   }
+  ]
+ },
+ "12-22": {
+  "occasion": "Latto (1998) and DaBaby (1991) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Latto songs",
+    "level": 1,
+    "tiles": [
+     "Put It on da Floor",
+     "Lottery",
+     "Sunday Service",
+     "Big Energy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Boy or Boi",
+    "level": 2,
+    "tiles": [
+     "Soulja Boy",
+     "Big Boi",
+     "Rich Boy",
+     "Boi-1da"
+    ]
+   },
+   {
+    "name": "Release formats",
+    "level": 3,
+    "tiles": [
+     "Mixtape",
+     "EP",
+     "Single",
+     "Deluxe"
+    ]
+   },
+   {
+    "name": "Hosted SNL",
+    "level": 4,
+    "tiles": [
+     "Drake",
+     "Chance the Rapper",
+     "Jack Harlow",
+     "Megan Thee Stallion"
+    ]
+   }
+  ]
+ },
+ "12-23": {
+  "occasion": "Arcángel was born today in 1985.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born December 23",
+    "level": 1,
+    "tiles": [
+     "Arcángel",
+     "Quincy Jones III",
+     "Bonez MC",
+     "Skillibeng"
+    ],
+    "today": true
+   },
+   {
+    "name": "Drum sounds",
+    "level": 2,
+    "tiles": [
+     "808",
+     "Clap",
+     "Hi-hat",
+     "Snare"
+    ]
+   },
+   {
+    "name": "Comic-book names",
+    "level": 3,
+    "tiles": [
+     "Tony Starks",
+     "MF DOOM",
+     "Czarface",
+     "Bobby Digital"
+    ]
+   },
+   {
+    "name": "Fighters in Def Jam games",
+    "level": 4,
+    "tiles": [
+     "Method Man",
+     "DMX",
+     "Redman",
+     "Ice-T"
+    ]
+   }
+  ]
+ },
+ "12-24": {
+  "occasion": "It's Christmas Eve. Run the Jewels' \"RTJ3\" came out today in 2016.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Rap Christmas songs",
+    "level": 1,
+    "tiles": [
+     "Christmas in Hollis",
+     "Santa's Rap",
+     "Santa Claus Goes Straight to the Ghetto",
+     "Christmas in Harlem"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Run the Jewels 3\"",
+    "level": 2,
+    "tiles": [
+     "Legend Has It",
+     "Talk to Me",
+     "Call Ticketron",
+     "Down"
+    ],
+    "today": true
+   },
+   {
+    "name": "Album parts",
+    "level": 3,
+    "tiles": [
+     "Intro",
+     "Interlude",
+     "Skit",
+     "Outro"
+    ]
+   },
+   {
+    "name": "Baby in the name",
+    "level": 4,
+    "tiles": [
+     "Baby Keem",
+     "DaBaby",
+     "Lil Baby",
+     "Babyface Ray"
+    ]
+   }
+  ]
+ },
+ "12-25": {
+  "occasion": "It's Christmas. Tyler, the Creator's \"Bastard\" came out today in 2009.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Bastard\"",
+    "level": 1,
+    "tiles": [
+     "Seven",
+     "French!",
+     "Bastard",
+     "Inglorious"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born on Christmas",
+    "level": 2,
+    "tiles": [
+     "Guè",
+     "Keith Ape",
+     "Shystie",
+     "La Fouine"
+    ],
+    "today": true
+   },
+   {
+    "name": "Certifications",
+    "level": 3,
+    "tiles": [
+     "Gold",
+     "Platinum",
+     "Diamond",
+     "Silver"
+    ]
+   },
+   {
+    "name": "'80s dances",
+    "level": 4,
+    "tiles": [
+     "The Cabbage Patch",
+     "The Running Man",
+     "The Roger Rabbit",
+     "The Wop"
+    ]
+   }
+  ]
+ },
+ "12-26": {
+  "occasion": "Kwanzaa starts today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Kwanzaa principles",
+    "level": 1,
+    "tiles": [
+     "Umoja",
+     "Kujichagulia",
+     "Ujima",
+     "Ujamaa"
+    ],
+    "today": true
+   },
+   {
+    "name": "Yeezy models",
+    "level": 2,
+    "tiles": [
+     "350",
+     "700",
+     "500",
+     "Foam Runner"
+    ]
+   },
+   {
+    "name": "Rap terms for a flop",
+    "level": 3,
+    "tiles": [
+     "Trash",
+     "Mid",
+     "Garbage",
+     "Brick"
+    ]
+   },
+   {
+    "name": "Synths",
+    "level": 4,
+    "tiles": [
+     "Moog",
+     "Juno",
+     "DX7",
+     "Prophet-5"
+    ]
+   }
+  ]
+ },
+ "12-27": {
+  "occasion": "King Louie was born today in 1987.",
+  "big": false,
+  "groups": [
+   {
+    "name": "King in the name",
+    "level": 1,
+    "tiles": [
+     "King Louie",
+     "King Von",
+     "King Krule",
+     "King Tee"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap terms for haters",
+    "level": 2,
+    "tiles": [
+     "Opps",
+     "Lames",
+     "Clowns",
+     "Hatin'"
+    ]
+   },
+   {
+    "name": "Effects",
+    "level": 3,
+    "tiles": [
+     "Auto-Tune",
+     "Reverb",
+     "Chorus",
+     "Delay"
+    ]
+   },
+   {
+    "name": "Snitch words",
+    "level": 4,
+    "tiles": [
+     "Rat",
+     "Telling",
+     "Singing",
+     "Squealing"
+    ]
+   }
+  ]
+ },
+ "12-28": {
+  "occasion": "Jay-Z's \"Vol. 3... Life and Times of S. Carter\" came out today in 1999.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Vol. 3\"",
+    "level": 1,
+    "tiles": [
+     "Do It Again (Put Ya Hands Up)",
+     "Things That U Do",
+     "Snoopy Track",
+     "Watch Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "Swearing on it",
+    "level": 2,
+    "tiles": [
+     "Word",
+     "On my mama",
+     "On God",
+     "Word to mother"
+    ]
+   },
+   {
+    "name": "Ways to say yes",
+    "level": 3,
+    "tiles": [
+     "Bet",
+     "Say less",
+     "Facts",
+     "Fasho"
+    ]
+   },
+   {
+    "name": "Album art",
+    "level": 4,
+    "tiles": [
+     "Cey Adams",
+     "Eric Haze",
+     "Pen & Pixel",
+     "KAWS"
+    ]
+   }
+  ]
+ },
+ "12-29": {
+  "occasion": "Pimp C (1973) and Sadat X (1968) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born December 29",
+    "level": 1,
+    "tiles": [
+     "Pimp C",
+     "Sadat X",
+     "Slim Jxmmi",
+     "Mekhi Phifer"
+    ],
+    "today": true
+   },
+   {
+    "name": "Battle rap words",
+    "level": 2,
+    "tiles": [
+     "Bars",
+     "Punchline",
+     "Scheme",
+     "Rebuttal"
+    ]
+   },
+   {
+    "name": "Studio words",
+    "level": 3,
+    "tiles": [
+     "Stem",
+     "Bounce",
+     "Mixdown",
+     "Punch-in"
+    ]
+   },
+   {
+    "name": "Crowd chants",
+    "level": 4,
+    "tiles": [
+     "Say ho!",
+     "Where my dogs at?",
+     "Throw your hands up",
+     "Somebody scream!"
+    ]
+   }
+  ]
+ },
+ "12-30": {
+  "occasion": "Yelawolf was born today in 1979.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Yelawolf songs",
+    "level": 1,
+    "tiles": [
+     "Pop the Trunk",
+     "Daddy's Lambo",
+     "Till It's Gone",
+     "Box Chevy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Dollar signs in the name",
+    "level": 2,
+    "tiles": [
+     "Ma$e",
+     "Joey Bada$$",
+     "A$AP Rocky",
+     "Ty Dolla $ign"
+    ]
+   },
+   {
+    "name": "In the vocal booth",
+    "level": 3,
+    "tiles": [
+     "Pop filter",
+     "Mic stand",
+     "Reflection filter",
+     "Isolation booth"
+    ]
+   },
+   {
+    "name": "Chain styles",
+    "level": 4,
+    "tiles": [
+     "Rope",
+     "Herringbone",
+     "Franco",
+     "Figaro"
+    ]
+   }
+  ]
+ },
+ "12-31": {
+  "occasion": "It's New Year's Eve. MF DOOM's family announced his death today in 2020.",
+  "big": false,
+  "groups": [
+   {
+    "name": "DOOM's labels",
+    "level": 1,
+    "tiles": [
+     "Fondle 'Em",
+     "Metal Face Records",
+     "Rhymesayers",
+     "Lex Records"
+    ],
+    "today": true
+   },
+   {
+    "name": "New in the title",
+    "level": 2,
+    "tiles": [
+     "New Slaves",
+     "New God Flow",
+     "New Freezer",
+     "New Jack Hustle"
+    ],
+    "today": true
+   },
+   {
+    "name": "Last in the title",
+    "level": 3,
+    "tiles": [
+     "Last Call",
+     "Last Good Sleep",
+     "Last Time That I Checc'd",
+     "Last Donut of the Night"
+    ],
+    "today": true
+   },
+   {
+    "name": "Haircuts",
+    "level": 4,
+    "tiles": [
+     "Waves",
+     "Taper",
+     "Caesar",
+     "Flat-top"
     ]
    }
   ]
