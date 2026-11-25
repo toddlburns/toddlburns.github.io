@@ -88,12 +88,18 @@
   let n = Cy.todayNum(data), practice = false, label = 'Today';
   if (q.get('date') && /^\d{4}-\d{2}-\d{2}$/.test(q.get('date'))) { n = Cy.numFor(data, q.get('date')); practice = true; label = 'Preview ' + q.get('date'); }
   else if (q.get('n')) { const k = parseInt(q.get('n'), 10); if (k >= 1 && k <= data.puzzles.length && k <= Cy.todayNum(data)) { n = k; practice = k !== Cy.todayNum(data); label = practice ? 'Archive' : 'Today'; } }
-  const P = data.puzzles[n - 1];
+  let P = data.puzzles[n - 1], md = null;
+  // calendar preview: ?md=01-14 plays that date's puzzle from calendar.json, with its occasion line
+  if (/^\d{2}-\d{2}$/.test(q.get('md') || '')) {
+    const cal = await fetch('calendar.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}));
+    if (cal[q.get('md')]) { md = q.get('md'); P = cal[md]; practice = true; }
+  }
   const groupOf = {}; P.groups.forEach(g => g.tiles.forEach(t => groupOf[t] = g));
 
-  $('pnum').textContent = `Posse Cut #${String(n).padStart(3, '0')}`;
+  $('pnum').textContent = md ? `Posse Cut · ${new Date('2001-' + md + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}` : `Posse Cut #${String(n).padStart(3, '0')}`;
+  if (md && P.occasion) { const o = document.createElement('p'); o.className = 'occasion' + (P.big ? ' big' : ''); o.textContent = P.occasion; $('lede').before(o); }
 
-  const key = 'p' + n;
+  const key = md ? 'cal' + md : 'p' + n;
   const saved = Cy.store.get(key, null);
   const S = saved || { order: shuffle(P.groups.flatMap(g => g.tiles)), solved: [], guesses: [], lives: 4, done: false, won: false };
   let sel = [];
