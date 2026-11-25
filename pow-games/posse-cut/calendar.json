@@ -260,13 +260,13 @@
     "today": true
    },
    {
-    "name": "On Dr. Dre's '2001'",
+    "name": "Aitch songs",
     "level": 3,
     "tiles": [
-     "Xzibit",
-     "Hittman",
-     "Knoc-turn'al",
-     "Kurupt"
+     "Taste (Make It Shake)",
+     "Rain",
+     "Baby",
+     "Buss Down"
     ]
    },
    {
@@ -12605,13 +12605,13 @@
     ]
    },
    {
-    "name": "Ol' Dirty Bastard songs",
+    "name": "Pharrell sang the hook",
     "level": 4,
     "tiles": [
-     "Shimmy Shimmy Ya",
-     "Got Your Money",
-     "Brooklyn Zoo",
-     "Return to the 36 Chambers"
+     "Beautiful",
+     "Drop It Like It's Hot",
+     "Money Maker",
+     "Pass the Courvoisier, Part II"
     ]
    }
   ]
@@ -14673,6 +14673,1435 @@
      "JID"
     ],
     "today": true
+   }
+  ]
+ },
+ "11-01": {
+  "occasion": "Takeoff of Migos died today in 2022. NLE Choppa was born today in 2002.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Migos albums",
+    "level": 1,
+    "tiles": [
+     "Yung Rich Nation",
+     "Culture II",
+     "Culture III",
+     "Only Built for Infinity Links"
+    ],
+    "today": true
+   },
+   {
+    "name": "NLE Choppa songs",
+    "level": 2,
+    "tiles": [
+     "Shotta Flow",
+     "Camelot",
+     "Walk Em Down",
+     "Slut Me Out"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tha Carter, numbered",
+    "level": 3,
+    "tiles": [
+     "Tha Carter",
+     "Tha Carter II",
+     "Tha Carter IV",
+     "Tha Carter VI"
+    ]
+   },
+   {
+    "name": "Griselda, the next wave",
+    "level": 4,
+    "tiles": [
+     "Armani Caesar",
+     "Stove God Cooks",
+     "Rome Streetz",
+     "Keisha Plum"
+    ]
+   }
+  ]
+ },
+ "11-02": {
+  "occasion": "It's Día de los Muertos. Nelly and Prodigy were both born today in 1974.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Gone at 21 or younger",
+    "level": 1,
+    "tiles": [
+     "Juice WRLD",
+     "Pop Smoke",
+     "Lil Peep",
+     "Lil Snupe"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born November 2",
+    "level": 2,
+    "tiles": [
+     "Nelly",
+     "Prodigy",
+     "Ai",
+     "Yes-R"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rihanna sang the hook",
+    "level": 3,
+    "tiles": [
+     "Umbrella",
+     "The Monster",
+     "Love the Way You Lie",
+     "What's My Name?"
+    ]
+   },
+   {
+    "name": "Streets in the album title",
+    "level": 4,
+    "tiles": [
+     "Crenshaw",
+     "2014 Forest Hills Drive",
+     "Manger on McNichols",
+     "The Wolf of Grape Street"
+    ]
+   }
+  ]
+ },
+ "11-03": {
+  "occasion": "Juvenile's \"400 Degreez\" came out today in 1998.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"400 Degreez\"",
+    "level": 1,
+    "tiles": [
+     "Back That Azz Up",
+     "Follow Me Now",
+     "Juvenile on Fire",
+     "Gone Ride with Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "City Girls songs",
+    "level": 2,
+    "tiles": [
+     "Act Up",
+     "Twerk",
+     "Take Yo Man",
+     "Flewed Out"
+    ]
+   },
+   {
+    "name": "Professors",
+    "level": 3,
+    "tiles": [
+     "Professor Griff",
+     "Large Professor",
+     "Professor Green",
+     "Professor X"
+    ]
+   },
+   {
+    "name": "Rap podcasts, part two",
+    "level": 4,
+    "tiles": [
+     "Rap Radar",
+     "The Combat Jack Show",
+     "Questlove Supreme",
+     "Dissect"
+    ]
+   }
+  ]
+ },
+ "11-04": {
+  "occasion": "Jay-Z's \"In My Lifetime, Vol. 1\" and Rakim's \"The 18th Letter\" both came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"In My Lifetime, Vol. 1\"",
+    "level": 1,
+    "tiles": [
+     "The City Is Mine",
+     "Imaginary Player",
+     "Streets Is Watching",
+     "You Must Love Me"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big ___",
+    "level": 2,
+    "tiles": [
+     "Big L",
+     "Big Pun",
+     "Big Boi",
+     "Big Sean"
+    ]
+   },
+   {
+    "name": "TDE, third wave",
+    "level": 3,
+    "tiles": [
+     "Doechii",
+     "Ray Vaughn",
+     "Zacari",
+     "Lance Skiiiwalker"
+    ]
+   },
+   {
+    "name": "Five Percent words",
+    "level": 4,
+    "tiles": [
+     "Peace, God",
+     "Cipher",
+     "Build",
+     "Dropping science"
+    ]
+   }
+  ]
+ },
+ "11-05": {
+  "occasion": "Thaíde and Mr. Catra, Brazilian rap pioneers, were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Brazil's pioneers",
+    "level": 1,
+    "tiles": [
+     "Thaíde",
+     "Mr. Catra",
+     "Sabotage",
+     "MV Bill"
+    ],
+    "today": true
+   },
+   {
+    "name": "Beyoncé's rap moments",
+    "level": 2,
+    "tiles": [
+     "Crazy in Love",
+     "'03 Bonnie & Clyde",
+     "Drunk in Love",
+     "Savage (Remix)"
+    ]
+   },
+   {
+    "name": "Question marks in the album title",
+    "level": 3,
+    "tiles": [
+     "What's the 411?",
+     "Is He Real?",
+     "uknowhatimsayin¿",
+     "Can I Borrow a Dollar?"
+    ]
+   },
+   {
+    "name": "Flo Milli songs",
+    "level": 4,
+    "tiles": [
+     "In the Party",
+     "Never Lose Me",
+     "Conceited",
+     "Beef FloMix"
+    ]
+   }
+  ]
+ },
+ "11-06": {
+  "occasion": "Jay-Z's \"American Gangster\" came out today in 2007. N.W.A's first album came out today in 1987. Oh No was born today in 1979.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"American Gangster\"",
+    "level": 1,
+    "tiles": [
+     "Roc Boys (And the Winner Is)...",
+     "Blue Magic",
+     "Success",
+     "Pray"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"N.W.A. and the Posse\"",
+    "level": 2,
+    "tiles": [
+     "Panic Zone",
+     "8 Ball",
+     "L.A. Is the Place",
+     "Fat Girl"
+    ],
+    "today": true
+   },
+   {
+    "name": "Oh No albums",
+    "level": 3,
+    "tiles": [
+     "The Disrupt",
+     "Exodus into Unheard Rhythms",
+     "Dr. No's Oxperiment",
+     "Ohnomite"
+    ],
+    "today": true
+   },
+   {
+    "name": "Church titles",
+    "level": 4,
+    "tiles": [
+     "Rev Run",
+     "Pastor Troy",
+     "Bishop Lamont",
+     "Deacon the Villain"
+    ]
+   }
+  ]
+ },
+ "11-07": {
+  "occasion": "Tinie Tempah was born today in 1988.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Tinie Tempah songs",
+    "level": 1,
+    "tiles": [
+     "Pass Out",
+     "Frisky",
+     "Written in the Stars",
+     "Girls Like"
+    ],
+    "today": true
+   },
+   {
+    "name": "Freestyle stages",
+    "level": 2,
+    "tiles": [
+     "On the Radar",
+     "COLORS",
+     "Genius Verified",
+     "LA Leakers"
+    ]
+   },
+   {
+    "name": "Mafia in the name",
+    "level": 3,
+    "tiles": [
+     "Three 6 Mafia",
+     "Junior M.A.F.I.A.",
+     "Shoreline Mafia",
+     "808 Mafia"
+    ]
+   },
+   {
+    "name": "G-Eazy songs",
+    "level": 4,
+    "tiles": [
+     "Me, Myself & I",
+     "I Mean It",
+     "Him & I",
+     "Tumblr Girls"
+    ]
+   }
+  ]
+ },
+ "11-08": {
+  "occasion": "\"8 Mile\" opened in theaters today in 2002. Tech N9ne (1971), Shyne (1978) and Pooh Shiesty (1999) were born today.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Tech N9ne albums",
+    "level": 1,
+    "tiles": [
+     "Anghellic",
+     "Everready",
+     "K.O.D.",
+     "Something Else"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shyne songs",
+    "level": 2,
+    "tiles": [
+     "Bad Boyz",
+     "That's Gangsta",
+     "Bonnie & Shyne",
+     "More or Less"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pooh Shiesty songs",
+    "level": 3,
+    "tiles": [
+     "Back in Blood",
+     "Neighbors",
+     "Twerksum",
+     "Monday to Sunday"
+    ],
+    "today": true
+   },
+   {
+    "name": "Inside the \"8 Mile\" story",
+    "level": 4,
+    "tiles": [
+     "Papa Doc",
+     "Lyckety-Splyt",
+     "Free World",
+     "The Shelter"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "11-09": {
+  "occasion": "Wu-Tang Clan's \"Enter the Wu-Tang (36 Chambers)\" came out today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Enter the Wu-Tang\"",
+    "level": 1,
+    "tiles": [
+     "Protect Ya Neck",
+     "Method Man",
+     "Da Mystery of Chessboxin'",
+     "Bring da Ruckus"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born November 9",
+    "level": 2,
+    "tiles": [
+     "Big Pun",
+     "Scarface",
+     "French Montana",
+     "Roxanne Shanté"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap movies of the 2010s",
+    "level": 3,
+    "tiles": [
+     "Dope",
+     "Patti Cake$",
+     "Roxanne Roxanne",
+     "The Forty-Year-Old Version"
+    ]
+   },
+   {
+    "name": "Ice in the name",
+    "level": 4,
+    "tiles": [
+     "Ice Cube",
+     "Ice-T",
+     "Vanilla Ice",
+     "Ice Spice"
+    ]
+   }
+  ]
+ },
+ "11-10": {
+  "occasion": "Eve, Warren G, Diplo and Charles Hamilton all have birthdays today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born November 10",
+    "level": 1,
+    "tiles": [
+     "Eve",
+     "Warren G",
+     "Diplo",
+     "Charles Hamilton"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born in the album title",
+    "level": 2,
+    "tiles": [
+     "Born Sinner",
+     "Born to Mack",
+     "Born Again",
+     "Born Like This"
+    ]
+   },
+   {
+    "name": "GloRilla songs",
+    "level": 3,
+    "tiles": [
+     "Tomorrow 2",
+     "Yeah Glo!",
+     "TGIF",
+     "Wanna Be"
+    ]
+   },
+   {
+    "name": "Watches rap loves",
+    "level": 4,
+    "tiles": [
+     "Rolex",
+     "Audemars Piguet",
+     "Patek Philippe",
+     "Richard Mille"
+    ]
+   }
+  ]
+ },
+ "11-11": {
+  "occasion": "It's Veterans Day. A Tribe Called Quest's \"We Got It from Here... Thank You 4 Your Service\" came out today in 2016.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"We Got It from Here\"",
+    "level": 1,
+    "tiles": [
+     "We the People....",
+     "Dis Generation",
+     "The Space Program",
+     "Lost Somebody"
+    ],
+    "today": true
+   },
+   {
+    "name": "Served in the military",
+    "level": 2,
+    "tiles": [
+     "Ice-T",
+     "MC Hammer",
+     "Nate Dogg",
+     "Shaggy"
+    ],
+    "today": true
+   },
+   {
+    "name": "J. Cole was the guest",
+    "level": 3,
+    "tiles": [
+     "Pretty Little Fears",
+     "Johnny P's Caddy",
+     "My Life",
+     "Under the Sun"
+    ]
+   },
+   {
+    "name": "Hip-hop on Broadway",
+    "level": 4,
+    "tiles": [
+     "Hamilton",
+     "In the Heights",
+     "Freestyle Love Supreme",
+     "Holler If Ya Hear Me"
+    ]
+   }
+  ]
+ },
+ "11-12": {
+  "occasion": "2Pac's first album, \"2Pacalypse Now,\" came out today in 1991.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"2Pacalypse Now\"",
+    "level": 1,
+    "tiles": [
+     "Trapped",
+     "Soulja's Story",
+     "Young Black Male",
+     "If My Homie Calls"
+    ],
+    "today": true
+   },
+   {
+    "name": "Iggy Azalea songs",
+    "level": 2,
+    "tiles": [
+     "Fancy",
+     "Black Widow",
+     "Team",
+     "Change Your Life"
+    ]
+   },
+   {
+    "name": "Numbers in the name",
+    "level": 3,
+    "tiles": [
+     "03 Greedo",
+     "E-40",
+     "42 Dugg",
+     "Mack 10"
+    ]
+   },
+   {
+    "name": "New York words",
+    "level": 4,
+    "tiles": [
+     "Son",
+     "Deadass",
+     "Brick",
+     "Bodega"
+    ]
+   }
+  ]
+ },
+ "11-13": {
+  "occasion": "Ol' Dirty Bastard died today in 2004. Apollo Brown & Guilty Simpson's \"Dice Game\" came out today in 2012.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ol' Dirty Bastard songs",
+    "level": 1,
+    "tiles": [
+     "Shimmy Shimmy Ya",
+     "Got Your Money",
+     "Brooklyn Zoo",
+     "Return to the 36 Chambers"
+    ],
+    "today": true
+   },
+   {
+    "name": "Apollo Brown team-ups",
+    "level": 2,
+    "tiles": [
+     "Dice Game",
+     "Ugly Heroes",
+     "Trophies",
+     "Blasphemy"
+    ],
+    "today": true
+   },
+   {
+    "name": "Coi Leray songs",
+    "level": 3,
+    "tiles": [
+     "No More Parties",
+     "Players",
+     "Twinnem",
+     "Blick Blick"
+    ]
+   },
+   {
+    "name": "More rap documentaries",
+    "level": 4,
+    "tiles": [
+     "Something from Nothing",
+     "Tupac: Resurrection",
+     "Biggie & Tupac",
+     "Beats, Rhymes & Life"
+    ]
+   }
+  ]
+ },
+ "11-14": {
+  "occasion": "Jay-Z's \"The Black Album\" and G-Unit's \"Beg for Mercy\" both came out today in 2003.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Black Album\"",
+    "level": 1,
+    "tiles": [
+     "Encore",
+     "December 4th",
+     "What More Can I Say",
+     "Change Clothes"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Beg for Mercy\"",
+    "level": 2,
+    "tiles": [
+     "Stunt 101",
+     "Poppin' Them Thangs",
+     "Wanna Get to Know You",
+     "Smile"
+    ],
+    "today": true
+   },
+   {
+    "name": "Black in the name",
+    "level": 3,
+    "tiles": [
+     "Black Thought",
+     "Black Rob",
+     "Black Milk",
+     "Black Sheep"
+    ]
+   },
+   {
+    "name": "Machine Gun Kelly songs",
+    "level": 4,
+    "tiles": [
+     "Wild Boy",
+     "Bad Things",
+     "Till I Die",
+     "Invincible"
+    ]
+   }
+  ]
+ },
+ "11-15": {
+  "occasion": "E-40 (1967) and Ol' Dirty Bastard (1968) were born today. Method Man's \"Tical\" came out today in 1994. Lil Peep died today in 2017.",
+  "big": false,
+  "groups": [
+   {
+    "name": "E-40's words",
+    "level": 1,
+    "tiles": [
+     "Scrilla",
+     "Feddy",
+     "Broccoli",
+     "Fo' shizzle"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Tical\"",
+    "level": 2,
+    "tiles": [
+     "Bring the Pain",
+     "Release Yo' Delf",
+     "Biscuits",
+     "Meth vs. Chef"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Peep albums",
+    "level": 3,
+    "tiles": [
+     "Hellboy",
+     "Come Over When You're Sober, Pt. 2",
+     "Everybody's Everything",
+     "Feelz"
+    ],
+    "today": true
+   },
+   {
+    "name": "Return in the album title",
+    "level": 4,
+    "tiles": [
+     "Return of the Boom Bap",
+     "Return of the Mac",
+     "Return of 4Eva",
+     "Return of the Regulator"
+    ]
+   }
+  ]
+ },
+ "11-16": {
+  "occasion": "Dr. Dre's \"2001\" came out today in 1999.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"2001\"",
+    "level": 1,
+    "tiles": [
+     "Still D.R.E.",
+     "Forgot About Dre",
+     "What's the Difference",
+     "Xxplosive"
+    ],
+    "today": true
+   },
+   {
+    "name": "Name & name duos",
+    "level": 2,
+    "tiles": [
+     "Capone-N-Noreaga",
+     "Kid 'n Play",
+     "Salt-N-Pepa",
+     "Pete Rock & CL Smooth"
+    ]
+   },
+   {
+    "name": "Kid Ink songs",
+    "level": 3,
+    "tiles": [
+     "Show Me",
+     "Body Language",
+     "Main Chick",
+     "Iz U Down"
+    ]
+   },
+   {
+    "name": "Luxury name-checks",
+    "level": 4,
+    "tiles": [
+     "Louis Vuitton",
+     "Fendi",
+     "Prada",
+     "Balenciaga"
+    ]
+   }
+  ]
+ },
+ "11-17": {
+  "occasion": "Ice Cube's \"The Predator\" came out today in 1992. Young Dolph died today in 2021.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Predator\"",
+    "level": 1,
+    "tiles": [
+     "It Was a Good Day",
+     "Check Yo Self",
+     "Wicked",
+     "When Will They Shoot?"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rapper-backed liquor",
+    "level": 2,
+    "tiles": [
+     "Cîroc",
+     "D'Ussé",
+     "Belaire",
+     "Gin & Juice by Dre and Snoop"
+    ]
+   },
+   {
+    "name": "UK words",
+    "level": 3,
+    "tiles": [
+     "Peng",
+     "Innit",
+     "Bare",
+     "Mandem"
+    ]
+   },
+   {
+    "name": "God in the album title",
+    "level": 4,
+    "tiles": [
+     "God Did",
+     "God's Son",
+     "God Level",
+     "God Forgives, I Don't"
+    ]
+   }
+  ]
+ },
+ "11-18": {
+  "occasion": "Pastor Troy (1977), Fabolous (1977) and Mike Jones (1981) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Pastor Troy songs",
+    "level": 1,
+    "tiles": [
+     "No Mo Play in G.A.",
+     "Vica Versa",
+     "Are We Cuttin'",
+     "We Ready"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hopsin songs",
+    "level": 2,
+    "tiles": [
+     "Ill Mind of Hopsin 5",
+     "Sag My Pants",
+     "Nollie",
+     "Hop Is Back"
+    ]
+   },
+   {
+    "name": "Smoke in the name",
+    "level": 3,
+    "tiles": [
+     "Pop Smoke",
+     "Smoke DZA",
+     "Smokepurpp",
+     "Big Smoke"
+    ]
+   },
+   {
+    "name": "Dog in the album title",
+    "level": 4,
+    "tiles": [
+     "Beware of Dog",
+     "Dogg Food",
+     "Tha Doggfather",
+     "Doggumentary"
+    ]
+   }
+  ]
+ },
+ "11-19": {
+  "occasion": "Nicki Minaj's \"Pink Friday\" came out today in 2010. Tyga was born today in 1989.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Pink Friday\"",
+    "level": 1,
+    "tiles": [
+     "Moment 4 Life",
+     "Did It on 'Em",
+     "Right Thru Me",
+     "Your Love"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tyga songs",
+    "level": 2,
+    "tiles": [
+     "Rack City",
+     "Taste",
+     "Ayo",
+     "Faded"
+    ],
+    "today": true
+   },
+   {
+    "name": "Sneaker brands",
+    "level": 3,
+    "tiles": [
+     "Nike",
+     "Reebok",
+     "Puma",
+     "New Balance"
+    ]
+   },
+   {
+    "name": "Bodega run",
+    "level": 4,
+    "tiles": [
+     "Chopped cheese",
+     "Arizona",
+     "Dutch Masters",
+     "Lotto ticket"
+    ]
+   }
+  ]
+ },
+ "11-20": {
+  "occasion": "Future (1983), Phife Dawg (1970), Mike D (1965) and Sen Dog (1965) were born today.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Future's tapes",
+    "level": 1,
+    "tiles": [
+     "Dirty Sprite",
+     "Monster",
+     "Beast Mode",
+     "56 Nights"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born November 20",
+    "level": 2,
+    "tiles": [
+     "Future",
+     "Phife Dawg",
+     "Mike D",
+     "Sen Dog"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap's street names",
+    "level": 3,
+    "tiles": [
+     "Christopher Wallace Way",
+     "Wu-Tang Clan District",
+     "Nipsey Hussle Square",
+     "Phife Dawg Way"
+    ],
+    "today": true
+   },
+   {
+    "name": "Beastie Boys side projects",
+    "level": 4,
+    "tiles": [
+     "Country Mike",
+     "Brooklyn Dust Music",
+     "BS 2000",
+     "Grand Royal"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "11-21": {
+  "occasion": "Group Home's \"Livin' Proof\" came out today in 1995. Davido was born today in 1992.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Group Home",
+    "level": 1,
+    "tiles": [
+     "Lil' Dap",
+     "Melachi the Nutcracker",
+     "Livin' Proof",
+     "Supa Star"
+    ],
+    "today": true
+   },
+   {
+    "name": "Davido songs",
+    "level": 2,
+    "tiles": [
+     "Fall",
+     "If",
+     "Assurance",
+     "Unavailable"
+    ],
+    "today": true
+   },
+   {
+    "name": "Philly words",
+    "level": 3,
+    "tiles": [
+     "Jawn",
+     "Bul",
+     "Drawlin'",
+     "Ard"
+    ]
+   },
+   {
+    "name": "Patois in rap",
+    "level": 4,
+    "tiles": [
+     "Bredren",
+     "Wagwan",
+     "Riddim",
+     "Bless up"
+    ]
+   }
+  ]
+ },
+ "11-22": {
+  "occasion": "Kanye West's \"My Beautiful Dark Twisted Fantasy\" (2010) and Kendrick Lamar's \"GNX\" (2024) came out today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"My Beautiful Dark Twisted Fantasy\"",
+    "level": 1,
+    "tiles": [
+     "Power",
+     "All of the Lights",
+     "Gorgeous",
+     "Lost in the World"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"GNX\"",
+    "level": 2,
+    "tiles": [
+     "squabble up",
+     "luther",
+     "tv off",
+     "wacced out murals"
+    ],
+    "today": true
+   },
+   {
+    "name": "Southern words",
+    "level": 3,
+    "tiles": [
+     "Throwed",
+     "Trill",
+     "Twerk",
+     "Holla"
+    ]
+   },
+   {
+    "name": "Trippie Redd songs",
+    "level": 4,
+    "tiles": [
+     "Love Scars",
+     "Topanga",
+     "Dark Knight Dummo",
+     "Miss the Rage"
+    ]
+   }
+  ]
+ },
+ "11-23": {
+  "occasion": "Snoop Doggy Dogg's \"Doggystyle\" came out today in 1993.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Doggystyle\"",
+    "level": 1,
+    "tiles": [
+     "Gin and Juice",
+     "Who Am I (What's My Name)?",
+     "Lodi Dodi",
+     "Doggy Dogg World"
+    ],
+    "today": true
+   },
+   {
+    "name": "Self-titled albums",
+    "level": 2,
+    "tiles": [
+     "Run-D.M.C.",
+     "Fetty Wap",
+     "Lil Pump",
+     "Rich Boy"
+    ]
+   },
+   {
+    "name": "Roddy Ricch songs",
+    "level": 3,
+    "tiles": [
+     "The Box",
+     "Ballin'",
+     "High Fashion",
+     "Die Young"
+    ]
+   },
+   {
+    "name": "Famous studios, part two",
+    "level": 4,
+    "tiles": [
+     "The Hit Factory",
+     "Record Plant",
+     "Battery Studios",
+     "Baseline Studios"
+    ]
+   }
+  ]
+ },
+ "11-24": {
+  "occasion": "Kanye West's \"808s & Heartbreak\" came out today in 2008.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"808s & Heartbreak\"",
+    "level": 1,
+    "tiles": [
+     "Love Lockdown",
+     "Amazing",
+     "Street Lights",
+     "RoboCop"
+    ],
+    "today": true
+   },
+   {
+    "name": "Don Toliver songs",
+    "level": 2,
+    "tiles": [
+     "No Idea",
+     "After Party",
+     "Lose My Mind",
+     "Private Landing"
+    ]
+   },
+   {
+    "name": "Spoonie Gee songs",
+    "level": 3,
+    "tiles": [
+     "Spoonin' Rap",
+     "Love Rap",
+     "The Godfather",
+     "Monster Jam"
+    ]
+   },
+   {
+    "name": "Label chains",
+    "level": 4,
+    "tiles": [
+     "Roc-A-Fella chain",
+     "Death Row chain",
+     "Bad Boy chain",
+     "Cash Money chain"
+    ]
+   }
+  ]
+ },
+ "11-25": {
+  "occasion": "Jay-Z played his \"retirement\" show at Madison Square Garden today in 2003.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On stage at the \"Fade to Black\" show",
+    "level": 1,
+    "tiles": [
+     "Missy Elliott",
+     "Ghostface Killah",
+     "Mary J. Blige",
+     "Pharrell"
+    ],
+    "today": true
+   },
+   {
+    "name": "Fivio Foreign songs",
+    "level": 2,
+    "tiles": [
+     "Big Drip",
+     "City of Gods",
+     "Magic City",
+     "Slime Them"
+    ]
+   },
+   {
+    "name": "Won Best New Artist",
+    "level": 3,
+    "tiles": [
+     "Lauryn Hill",
+     "Chance the Rapper",
+     "Megan Thee Stallion",
+     "Arrested Development"
+    ]
+   },
+   {
+    "name": "Mantronix songs",
+    "level": 4,
+    "tiles": [
+     "King of the Beats",
+     "Bassline",
+     "Fresh Is the Word",
+     "Got to Have Your Love"
+    ]
+   }
+  ]
+ },
+ "11-26": {
+  "occasion": "DJ Khaled, Jean Grae, Anuel AA and OJ da Juiceman all have birthdays today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Born November 26",
+    "level": 1,
+    "tiles": [
+     "DJ Khaled",
+     "Jean Grae",
+     "Anuel AA",
+     "OJ da Juiceman"
+    ],
+    "today": true
+   },
+   {
+    "name": "Graffiti landmarks",
+    "level": 2,
+    "tiles": [
+     "5Pointz",
+     "Graffiti Hall of Fame",
+     "Wynwood Walls",
+     "Writer's Bench"
+    ]
+   },
+   {
+    "name": "Headie One songs",
+    "level": 3,
+    "tiles": [
+     "Know Better",
+     "Both",
+     "18HUNNA",
+     "Ain't It Different"
+    ]
+   },
+   {
+    "name": "Young MC songs",
+    "level": 4,
+    "tiles": [
+     "Bust a Move",
+     "Principal's Office",
+     "Know How",
+     "I Come Off"
+    ]
+   }
+  ]
+ },
+ "11-27": {
+  "occasion": "Mike Skinner of the Streets was born today in 1978.",
+  "big": false,
+  "groups": [
+   {
+    "name": "The Streets songs",
+    "level": 1,
+    "tiles": [
+     "Fit but You Know It",
+     "Dry Your Eyes",
+     "Blinded by the Lights",
+     "When You Wasn't Famous"
+    ],
+    "today": true
+   },
+   {
+    "name": "Visited the White House",
+    "level": 2,
+    "tiles": [
+     "Common",
+     "Chance the Rapper",
+     "Kanye West",
+     "Lil Wayne"
+    ]
+   },
+   {
+    "name": "Cash Cobain songs",
+    "level": 3,
+    "tiles": [
+     "Fisherrr",
+     "Act Bad",
+     "Dun Dun",
+     "Mamas"
+    ]
+   },
+   {
+    "name": "More rap books",
+    "level": 4,
+    "tiles": [
+     "My Infamous Life",
+     "Mo' Meta Blues",
+     "From Pieces to Weight",
+     "The Rose That Grew from Concrete"
+    ]
+   }
+  ]
+ },
+ "11-28": {
+  "occasion": "Styles P of the LOX was born today in 1974.",
+  "big": false,
+  "groups": [
+   {
+    "name": "The LOX albums",
+    "level": 1,
+    "tiles": [
+     "Money, Power & Respect",
+     "We Are the Streets",
+     "Filthy America... It's Beautiful",
+     "Living Off Xperience"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tone Lōc songs",
+    "level": 2,
+    "tiles": [
+     "Wild Thing",
+     "Funky Cold Medina",
+     "I Got It Goin' On",
+     "Cutting Rhythms"
+    ]
+   },
+   {
+    "name": "AJ Tracey songs",
+    "level": 3,
+    "tiles": [
+     "Ladbroke Grove",
+     "Thiago Silva",
+     "Butterflies",
+     "Rain"
+    ]
+   },
+   {
+    "name": "J Hus songs",
+    "level": 4,
+    "tiles": [
+     "Did You See",
+     "Dem Boy Paigon",
+     "Spirit",
+     "It's Crazy"
+    ]
+   }
+  ]
+ },
+ "11-29": {
+  "occasion": "The Game was born today in 1979.",
+  "big": false,
+  "groups": [
+   {
+    "name": "The Game albums",
+    "level": 1,
+    "tiles": [
+     "Doctor's Advocate",
+     "LAX",
+     "Jesus Piece",
+     "1992"
+    ],
+    "today": true
+   },
+   {
+    "name": "'90s R&B groups on rap remixes",
+    "level": 2,
+    "tiles": [
+     "112",
+     "Dru Hill",
+     "SWV",
+     "Blackstreet"
+    ]
+   },
+   {
+    "name": "New jack swing",
+    "level": 3,
+    "tiles": [
+     "Bell Biv DeVoe",
+     "Keith Sweat",
+     "Johnny Kemp",
+     "Wreckx-n-Effect"
+    ]
+   },
+   {
+    "name": "Scratches",
+    "level": 4,
+    "tiles": [
+     "Juggle",
+     "Transform",
+     "Chirp",
+     "Flare"
+    ]
+   }
+  ]
+ },
+ "11-30": {
+  "occasion": "Earl Sweatshirt's \"Some Rap Songs\" came out today in 2018.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Some Rap Songs\"",
+    "level": 1,
+    "tiles": [
+     "Nowhere2go",
+     "The Mint",
+     "Shattered Dreams",
+     "Riot!"
+    ],
+    "today": true
+   },
+   {
+    "name": "Graffiti styles",
+    "level": 2,
+    "tiles": [
+     "Wildstyle",
+     "Bubble letters",
+     "Blockbuster",
+     "3D"
+    ]
+   },
+   {
+    "name": "Beat-making words",
+    "level": 3,
+    "tiles": [
+     "Chop",
+     "Loop",
+     "Sample",
+     "Flip"
+    ]
+   },
+   {
+    "name": "Parts of a song",
+    "level": 4,
+    "tiles": [
+     "Bar",
+     "Hook",
+     "Verse",
+     "Ad-lib"
+    ]
    }
   ]
  }
