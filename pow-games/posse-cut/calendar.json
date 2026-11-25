@@ -1027,7 +1027,7 @@
     "today": true
    },
    {
-    "name": "Wale's tapes about nothing",
+    "name": "Wale projects",
     "level": 3,
     "tiles": [
      "The Mixtape About Nothing",
@@ -2328,7 +2328,7 @@
     "level": 3,
     "tiles": [
      "Family Affair",
-     "No Diggity",
+     "Bitch Please",
      "Let Me Blow Ya Mind",
      "Guilty Conscience"
     ],
@@ -3071,8 +3071,8 @@
   ]
  },
  "03-06": {
-  "occasion": "Tyler, the Creator (1991) and Sylvia Robinson, who founded Sugar Hill Records (1936), were born today. Lil Uzi Vert's \"Eternal Atake\" came out today in 2020.",
-  "big": true,
+  "occasion": "Tyler, the Creator was born today in 1991. Lil Uzi Vert's \"Eternal Atake\" came out today in 2020.",
+  "big": false,
   "groups": [
    {
     "name": "Odd Future",
@@ -3115,8 +3115,7 @@
      "Grandmaster Flash",
      "The Sequence",
      "Treacherous Three"
-    ],
-    "today": true
+    ]
    }
   ]
  },
@@ -4492,7 +4491,7 @@
   "big": false,
   "groups": [
    {
-    "name": "Curren$y tapes",
+    "name": "Curren$y albums",
     "level": 1,
     "tiles": [
      "Pilot Talk",
@@ -6095,8 +6094,8 @@
   ]
  },
  "05-07": {
-  "occasion": "Sir Mix-a-Lot's \"Baby Got Back\" and The Click's \"Down and Dirty\" came out today in 1992. Rico Nasty was born today in 1997.",
-  "big": false,
+  "occasion": "Sir Mix-a-Lot's \"Baby Got Back\" and The Click's \"Down and Dirty\" came out today in 1992. Rico Nasty was born today in 1997. Andre Harrell, who founded Uptown Records, died today in 2020.",
+  "big": true,
   "groups": [
    {
     "name": "Sir Mix-a-Lot songs",
@@ -6132,29 +6131,30 @@
     "today": true
    },
    {
-    "name": "The most-sampled drums",
-    "level": 4,
-    "tiles": [
-     "Amen, Brother",
-     "Impeach the President",
-     "Funky Drummer",
-     "Think (About It)"
-    ]
-   }
-  ]
- },
- "05-08": {
-  "occasion": "Andre Harrell, who founded Uptown Records, died today in 2020.",
-  "big": false,
-  "groups": [
-   {
     "name": "Uptown Records",
-    "level": 1,
+    "level": 4,
     "tiles": [
      "Heavy D & the Boyz",
      "Mary J. Blige",
      "Jodeci",
      "Guy"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "05-08": {
+  "occasion": "Z-Ro's \"King of tha Ghetto: Power\" and Sage Francis's \"Human the Death Dance\" both came out today in 2007.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Z-Ro calls himself",
+    "level": 1,
+    "tiles": [
+     "Mo City Don",
+     "Rother Vandross",
+     "Rohamad Ali",
+     "King of tha Ghetto"
     ],
     "today": true
    },
@@ -6385,7 +6385,7 @@
   ]
  },
  "05-13": {
-  "occasion": "Kendrick Lamar's \"Mr. Morale & the Big Steppers\" and Quelle Chris's \"DEATHFAME\" came out today in 2022. De La Soul's \"De La Soul Is Dead\" came out today in 1991. Masta Ace's \"The Falling Season\" came out today in 2016.",
+  "occasion": "Kendrick Lamar's \"Mr. Morale & the Big Steppers\" and Quelle Chris's \"DEATHFAME\" came out today in 2022. De La Soul's \"De La Soul Is Dead\" came out today in 1991. Pusha T was born today in 1977.",
   "big": true,
   "groups": [
    {
@@ -6411,13 +6411,13 @@
     "today": true
    },
    {
-    "name": "Masta Ace albums",
+    "name": "Pusha T solo",
     "level": 3,
     "tiles": [
-     "Take a Look Around",
-     "SlaughtaHouse",
-     "Disposable Arts",
-     "A Long Hot Summer"
+     "My Name Is My Name",
+     "Darkest Before Dawn",
+     "Daytona",
+     "Fear of God II"
     ],
     "today": true
    },
@@ -6435,17 +6435,17 @@
   ]
  },
  "05-14": {
-  "occasion": "Pusha T was born today in 1977.",
+  "occasion": "El-P's \"Fantastic Damage\" came out today in 2002.",
   "big": false,
   "groups": [
    {
-    "name": "Pusha T solo",
+    "name": "On \"Fantastic Damage\"",
     "level": 1,
     "tiles": [
-     "My Name Is My Name",
-     "Darkest Before Dawn",
-     "Daytona",
-     "Fear of God II"
+     "Deep Space 9mm",
+     "Stepfather Factory",
+     "Squeegee Man Shooting",
+     "Truancy"
     ],
     "today": true
    },
@@ -6944,9 +6944,9 @@
     "level": 3,
     "tiles": [
      "Pete Rock",
-     "CL Smooth",
      "Al B. Sure!",
-     "Eddie F"
+     "Eddie F",
+     "Trouble T Roy"
     ],
     "today": true
    },
