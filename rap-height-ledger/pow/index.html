@@ -278,6 +278,8 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 </style><style>
 .about[open] summary{display:block;margin-bottom:8px}   /* the label stays, so tapping it again closes it */
 .note:empty{display:none}
+.chip.go{display:none;background:var(--orange);border-color:var(--orange);color:#171717}
+@media (max-width:640px){.chip.go{display:block;width:100%;margin-top:14px;font-size:22px;padding:10px 12px 8px}}
 .lower{display:none}   /* Todd 2026-11-24: odd couples, records and add-yourself are out of the POW edition */
 /* lists and controls in the same POW language as the chart (Todd 2026-11-24: "out of line with the rest") */
 .row .dot{display:none}
@@ -531,7 +533,7 @@ function picker() {
   else if (S.mode === 'crew') el.innerHTML = counts('k', 4, () => true).filter(([k]) => worthIt(DATA.filter(d => d.k === k))).map(([k, n]) => `<button class="chip${k === S.crew ? ' on' : ''}" data-crew="${esc(k)}">${esc(k)} <small>${n}</small></button>`).join('');
   else if (S.mode === 'era') el.innerHTML = ERAS.map(e => `<button class="chip${e === S.era ? ' on' : ''}" data-era="${e}">${e} <small>${ERA_YEARS[e]}</small></button>`).join('') + hoopBox;
   else if (S.mode === 'find') el.innerHTML = `<input type="search" id="q" placeholder="Type a name, press Enter…" autocomplete="off" spellcheck="false"><span id="miss" class="note"></span>` +
-    S.find.map(i => `<span class="chip on">${esc(DATA[i].n)}<button class="x" data-rm="${i}" aria-label="Remove">×</button></span>`).join('') + (S.find.length ? ' <button class="chip" id="clr">Clear</button>' : '');
+    S.find.map(i => `<span class="chip on">${esc(DATA[i].n)}<button class="x" data-rm="${i}" aria-label="Remove">×</button></span>`).join('') + (S.find.length ? ' <button class="chip" id="clr">Clear</button> <button class="chip go" id="findGo">Show ' + (S.find.length > 1 ? 'them' : 'me') + ' →</button>' : '');
   else el.innerHTML = hoopBox;
   el.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { S.m = +b.dataset.i; render(); });
   el.querySelectorAll('[data-crew]').forEach(b => b.onclick = () => { S.crew = b.dataset.crew; render(); });
@@ -681,7 +683,7 @@ function closeSoon() { setTimeout(() => { closeSheet(); toStage(); }, 60); }
 $('mBrowse').onclick = openSheet; $('sheetX').onclick = closeSheet;
 $('mNext').onclick = () => ttPlay();
 $('sheet').addEventListener('click', e => {
-  if (e.target.closest('[data-crew],[data-era],#rnd,.mode[data-k="all"],#gaps .row,#records .row,#common,#playBtn')) closeSoon();
+  if (e.target.closest('[data-crew],[data-era],#rnd,.mode[data-k="all"],#gaps .row,#records .row,#common,#playBtn,#findGo')) closeSoon();
   if (e.target.closest('#youToggle') && !S.youOn) closeSoon();
 });
 $('sheet').addEventListener('change', e => { if (e.target.matches('#msel,#sel')) closeSoon(); });
