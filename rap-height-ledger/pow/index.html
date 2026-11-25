@@ -246,7 +246,8 @@ h1 em{font-style:normal;color:var(--green)}
 .raxis span{background:var(--paper)}
 .mbar{border-top-color:var(--ink)}
 .mbar button{font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;color:var(--ink);border-color:var(--ink)}
-.mbar #mBrowse{background:var(--mag);border-color:var(--mag);color:var(--ink)}
+.mbar #mBrowse{flex:1 1 0;background:var(--mag);border-color:var(--mag);color:var(--ink)}
+.mbar #mNext{flex:1 1 0}
 .mbar #mNext{background:var(--orange);border-color:var(--orange);color:#171717;font-size:22px}
 .sheethead b{font-family:var(--disp);text-transform:uppercase;color:var(--green)}
 .sheet .mode{font-size:24px}
@@ -371,7 +372,7 @@ footer{color:var(--dim);border-top-color:var(--ink)}
   </footer>
 </main>
 
-<div class="mbar" id="mbar"><button id="mNext">Play</button><button id="mBrowse">Browse</button></div>
+<div class="mbar" id="mbar"><button id="mBrowse">Browse more</button><button id="mNext">Play</button></div>
 <div class="sheet" id="sheet" hidden><div class="sheethead"><b>Browse</b><button id="sheetX">Done</button></div><div id="sheetBody"></div></div>
 
 <div class="card" id="card" role="dialog" aria-live="polite"></div>
