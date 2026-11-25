@@ -23,7 +23,6 @@
 <script src="shared/pow.js"></script>
 <script>
 const G = [
-  ['posse-cut/', 'Posse Cut', 'Sixteen names, four hidden groups.', 'L1', '16'],
   ['producer-credits/', 'Producer Credits', 'Five records, one producer. Fewer clues, more points.', 'L3', '5', 1],
   ['which-came-first/', 'Which Came First', 'Two classic albums. Tap the one that dropped first.', 'L4', 'VS', 1],
   ['tracklist/', 'Tracklist', 'Name the album from its songs.', 'L2', '#', 1],
@@ -39,6 +38,7 @@ const G3 = [
 ];
 const G4 = [
   ['https://play.powmag.net/memory-lane/', 'Memory Lane', 'Put five rap moments in order. How many rounds can you go?', 'L1', '1-5'],
+  ['posse-cut/', 'Posse Cut', 'Sixteen names, four hidden groups. A new one every day of the year.', 'L3', '16'],
   ['/rap-height-ledger/pow/', 'Tall Tales', 'Every rapper’s height. Maybe. Then: who’s taller?', 'L4', '↕', 1],
 ];
 const card = ([h, t, d, c, ic, nw]) => `<li><a href="${h}"><span class="ic ${c}">${ic}</span><span><h3>${t}${nw ? '<span class="new">NEW</span>' : ''}</h3><p>${d}</p></span></a></li>`;
