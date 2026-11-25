@@ -7548,30 +7548,29 @@
   ]
  },
  "06-06": {
-  "occasion": "Twista's first album, \"Runnin' Off at da Mouth,\" came out today in 1992.",
+  "occasion": "Ice Cube's \"Laugh Now, Cry Later\" came out today in 2006.",
   "big": false,
   "groups": [
    {
-    "name": "Twista songs",
+    "name": "On \"Laugh Now, Cry Later\"",
     "level": 1,
     "tiles": [
-     "Overnight Celebrity",
-     "Hope",
-     "Wetter",
-     "Girl Tonite"
+     "Why We Thugs",
+     "Go to Church",
+     "Smoke Some Weed",
+     "Child Support"
     ],
     "today": true
    },
    {
-    "name": "Chicago in the '90s",
+    "name": "Dilla's Detroit circle",
     "level": 2,
     "tiles": [
-     "Do or Die",
-     "Crucial Conflict",
-     "Psychodrama",
-     "Common"
-    ],
-    "today": true
+     "Phat Kat",
+     "Guilty Simpson",
+     "Frank Nitt",
+     "Illa J"
+    ]
    },
    {
     "name": "Named after a woman",
@@ -7695,8 +7694,8 @@
   ]
  },
  "06-09": {
-  "occasion": "Pete Rock & CL Smooth's \"Mecca and the Soul Brother\" came out today in 1992. Bushwick Bill of the Geto Boys died today in 2019.",
-  "big": false,
+  "occasion": "Pete Rock & CL Smooth's \"Mecca and the Soul Brother\" and Tung Twista's first album, \"Runnin' Off at da Mouth,\" both came out today in 1992. Bushwick Bill of the Geto Boys died today in 2019.",
+  "big": true,
   "groups": [
    {
     "name": "On \"Mecca and the Soul Brother\"",
@@ -7721,24 +7720,26 @@
     "today": true
    },
    {
-    "name": "Dilla's Detroit circle",
+    "name": "Twista songs",
     "level": 3,
     "tiles": [
-     "Phat Kat",
-     "Guilty Simpson",
-     "Frank Nitt",
-     "Illa J"
-    ]
+     "Overnight Celebrity",
+     "Hope",
+     "Wetter",
+     "Girl Tonite"
+    ],
+    "today": true
    },
    {
-    "name": "Rap words for a car",
+    "name": "Chicago in the '90s",
     "level": 4,
     "tiles": [
-     "Whip",
-     "Drop",
-     "Ride",
-     "Hooptie"
-    ]
+     "Do or Die",
+     "Crucial Conflict",
+     "Psychodrama",
+     "Common"
+    ],
+    "today": true
    }
   ]
  },
@@ -7937,7 +7938,7 @@
   ]
  },
  "06-14": {
-  "occasion": "MC Ren of N.W.A was born today in 1969. Mac Miller's \"Watching Movies with the Sound Off\" (2013) and YG's \"Still Brazy\" (2016) came out today.",
+  "occasion": "MC Ren of N.W.A was born today in 1969.",
   "big": false,
   "groups": [
    {
@@ -7952,26 +7953,24 @@
     "today": true
    },
    {
-    "name": "On \"Watching Movies with the Sound Off\"",
+    "name": "A kid on the cover",
     "level": 2,
     "tiles": [
-     "S.D.S.",
-     "Objects in the Mirror",
-     "Avian",
-     "Gees"
-    ],
-    "today": true
+     "Illmatic",
+     "Ready to Die",
+     "good kid, m.A.A.d city",
+     "Nothing Was the Same"
+    ]
    },
    {
-    "name": "On \"Still Brazy\"",
+    "name": "From Boston",
     "level": 3,
     "tiles": [
-     "Twist My Fingaz",
-     "Why You Always Hatin?",
-     "FDT",
-     "Word Is Bond"
-    ],
-    "today": true
+     "Ed O.G.",
+     "Mr. Lif",
+     "Akrobatik",
+     "Benzino"
+    ]
    },
    {
     "name": "The Lonely Island",
@@ -8083,7 +8082,7 @@
   ]
  },
  "06-17": {
-  "occasion": "Capone-N-Noreaga's \"The War Report\" came out today in 1997.",
+  "occasion": "Capone-N-Noreaga's \"The War Report\" (1997) and YG's \"Still Brazy\" (2016) came out today.",
   "big": false,
   "groups": [
    {
@@ -8109,14 +8108,15 @@
     "today": true
    },
    {
-    "name": "A kid on the cover",
+    "name": "On \"Still Brazy\"",
     "level": 3,
     "tiles": [
-     "Illmatic",
-     "Ready to Die",
-     "good kid, m.A.A.d city",
-     "Nothing Was the Same"
-    ]
+     "Twist My Fingaz",
+     "Why You Always Hatin?",
+     "FDT",
+     "Word Is Bond"
+    ],
+    "today": true
    },
    {
     "name": "Re-Up Gang",
@@ -8481,7 +8481,7 @@
     "tiles": [
      "Dave East",
      "Fashawn",
-     "Boldy James",
+     "Bishop Nehru",
      "Run the Jewels"
     ]
    },
