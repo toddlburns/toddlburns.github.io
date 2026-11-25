@@ -6,14 +6,13 @@
    {
     "name": "Grandmaster Flash's Furious Five",
     "level": 1,
-    "today": true,
     "tiles": [
      "Melle Mel",
      "Kid Creole",
      "Cowboy",
      "Rahiem"
     ],
-    "why": "Four of the Furious Five (Scorpio is the fifth)."
+    "today": true
    },
    {
     "name": "Bottles that get popped",
@@ -23,8 +22,7 @@
      "Ace of Spades",
      "Dom Pérignon",
      "Moët"
-    ],
-    "why": "Champagnes, as rapped about."
+    ]
    },
    {
     "name": "Harlem's own",
@@ -34,8 +32,7 @@
      "Cam'ron",
      "Mase",
      "A$AP Rocky"
-    ],
-    "why": "All from Harlem."
+    ]
    },
    {
     "name": "On 'Midnight Marauders'",
@@ -45,8 +42,7 @@
      "Electric Relaxation",
      "Oh My God",
      "Steve Biko (Stir It Up)"
-    ],
-    "why": "A Tribe Called Quest, 1993."
+    ]
    }
   ]
  },
@@ -55,18 +51,6 @@
   "big": false,
   "groups": [
    {
-    "name": "From Louisville",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "Bryson Tiller",
-     "Jack Harlow",
-     "EST Gee",
-     "Static Major"
-    ],
-    "why": "All from Louisville, Kentucky."
-   },
-   {
     "name": "Hot Boys",
     "level": 1,
     "tiles": [
@@ -74,8 +58,7 @@
      "B.G.",
      "Turk",
      "Lil Wayne"
-    ],
-    "why": "The four Hot Boys."
+    ]
    },
    {
     "name": "Drake albums",
@@ -85,8 +68,18 @@
      "Scorpion",
      "Take Care",
      "Nothing Was the Same"
+    ]
+   },
+   {
+    "name": "From Louisville",
+    "level": 3,
+    "tiles": [
+     "Bryson Tiller",
+     "Jack Harlow",
+     "EST Gee",
+     "Static Major"
     ],
-    "why": "Drake studio albums."
+    "today": true
    },
    {
     "name": "On 'The Blueprint'",
@@ -96,8 +89,7 @@
      "Izzo",
      "Renegade",
      "Song Cry"
-    ],
-    "why": "Jay-Z, 2001."
+    ]
    }
   ]
  },
@@ -106,18 +98,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Disturbing tha Peace",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Ludacris",
-     "Shawnna",
-     "Chingy",
-     "I-20"
-    ],
-    "why": "Ludacris's label roster."
-   },
-   {
     "name": "R&B singers, first names only",
     "level": 1,
     "tiles": [
@@ -125,8 +105,18 @@
      "Ciara",
      "Ashanti",
      "Monica"
+    ]
+   },
+   {
+    "name": "Disturbing tha Peace",
+    "level": 2,
+    "tiles": [
+     "Ludacris",
+     "Shawnna",
+     "Chingy",
+     "I-20"
     ],
-    "why": "One-name R&B singers who all sang rap hooks."
+    "today": true
    },
    {
     "name": "Atlanta duos",
@@ -136,19 +126,17 @@
      "Kris Kross",
      "Ying Yang Twins",
      "EarthGang"
-    ],
-    "why": "Two-person acts from Atlanta."
+    ]
    },
    {
-    "name": "The Neptunes made the beat",
+    "name": "Wu-Tang Killa Bees",
     "level": 4,
     "tiles": [
-     "Grindin'",
-     "Hot in Herre",
-     "Drop It Like It's Hot",
-     "Pass the Courvoisier"
-    ],
-    "why": "Neptunes productions (Clipse, Nelly, Snoop, Busta's Part II)."
+     "Killarmy",
+     "Sunz of Man",
+     "Cappadonna",
+     "Streetlife"
+    ]
    }
   ]
  },
@@ -157,18 +145,6 @@
   "big": false,
   "groups": [
    {
-    "name": "On 'Black Panther: The Album'",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "SZA",
-     "The Weeknd",
-     "Jay Rock",
-     "Vince Staples"
-    ],
-    "why": "All on the 2018 soundtrack Kendrick curated."
-   },
-   {
     "name": "N.W.A",
     "level": 1,
     "tiles": [
@@ -176,8 +152,18 @@
      "MC Ren",
      "DJ Yella",
      "Ice Cube"
+    ]
+   },
+   {
+    "name": "On 'Black Panther: The Album'",
+    "level": 2,
+    "tiles": [
+     "SZA",
+     "The Weeknd",
+     "Jay Rock",
+     "Vince Staples"
     ],
-    "why": "N.W.A members (Dr. Dre is the fifth)."
+    "today": true
    },
    {
     "name": "On 'good kid, m.A.A.d city'",
@@ -187,8 +173,7 @@
      "Backseat Freestyle",
      "Poetic Justice",
      "m.A.A.d city"
-    ],
-    "why": "Kendrick, 2012."
+    ]
    },
    {
     "name": "Star power",
@@ -198,8 +183,7 @@
      "Black Star",
      "Fredro Starr",
      "Starlito"
-    ],
-    "why": "Star in the name."
+    ]
    }
   ]
  },
@@ -208,18 +192,6 @@
   "big": false,
   "groups": [
    {
-    "name": "What they used to be called",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Mos Def",
-     "Puff Daddy",
-     "Snoop Lion",
-     "Lil' Bow Wow"
-    ],
-    "why": "Old names of Yasiin Bey, Diddy, Snoop Dogg and Bow Wow."
-   },
-   {
     "name": "OutKast albums",
     "level": 1,
     "tiles": [
@@ -227,8 +199,18 @@
      "Stankonia",
      "ATLiens",
      "Speakerboxxx/The Love Below"
+    ]
+   },
+   {
+    "name": "What they used to be called",
+    "level": 2,
+    "tiles": [
+     "Mos Def",
+     "Puff Daddy",
+     "Snoop Lion",
+     "Lil' Bow Wow"
     ],
-    "why": "OutKast albums."
+    "today": true
    },
    {
     "name": "Doctors in the house",
@@ -238,19 +220,17 @@
      "Dr. Octagon",
      "Doctor Ice",
      "Dr. Dooom"
-    ],
-    "why": "Doctor in the name (Doctor Ice was in UTFO; Octagon and Dooom are Kool Keith)."
+    ]
    },
    {
-    "name": "Drake's opponents",
+    "name": "Juice Crew",
     "level": 4,
     "tiles": [
-     "Pusha T",
-     "Meek Mill",
-     "Joe Budden",
-     "Kendrick Lamar"
-    ],
-    "why": "All went at Drake on record."
+     "MC Shan",
+     "Masta Ace",
+     "Roxanne Shanté",
+     "Kool G Rap"
+    ]
    }
   ]
  },
@@ -259,18 +239,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Chicago, 2010s",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Polo G",
-     "Lil Durk",
-     "King Von",
-     "G Herbo"
-    ],
-    "why": "Chicago rappers who broke through in the 2010s."
-   },
-   {
     "name": "Bad Boy in the '90s",
     "level": 1,
     "tiles": [
@@ -278,8 +246,18 @@
      "Mase",
      "The LOX",
      "Faith Evans"
+    ]
+   },
+   {
+    "name": "Chicago, 2010s",
+    "level": 2,
+    "tiles": [
+     "Polo G",
+     "Lil Durk",
+     "King Von",
+     "G Herbo"
     ],
-    "why": "Bad Boy Records signees."
+    "today": true
    },
    {
     "name": "On Dr. Dre's '2001'",
@@ -289,8 +267,7 @@
      "Hittman",
      "Knoc-turn'al",
      "Kurupt"
-    ],
-    "why": "Guests on 2001 (1999)."
+    ]
    },
    {
     "name": "Oscar nominees who rapped first",
@@ -300,8 +277,7 @@
      "Queen Latifah",
      "Mark Wahlberg",
      "Common"
-    ],
-    "why": "All rapped before an Oscar nomination (Common's was for 'Glory')."
+    ]
    }
   ]
  },
@@ -310,18 +286,6 @@
   "big": false,
   "groups": [
    {
-    "name": "YSL Records",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Gunna",
-     "Lil Keed",
-     "Lil Duke",
-     "Yak Gotti"
-    ],
-    "why": "Young Thug's YSL roster."
-   },
-   {
     "name": "Ye albums",
     "level": 1,
     "tiles": [
@@ -329,8 +293,18 @@
      "Yeezus",
      "Donda",
      "Jesus Is King"
+    ]
+   },
+   {
+    "name": "YSL Records",
+    "level": 2,
+    "tiles": [
+     "Gunna",
+     "Lil Keed",
+     "Lil Duke",
+     "Yak Gotti"
     ],
-    "why": "Kanye West albums."
+    "today": true
    },
    {
     "name": "Memphis producers",
@@ -340,8 +314,7 @@
      "Juicy J",
      "Tay Keith",
      "Drumma Boy"
-    ],
-    "why": "Producers from Memphis."
+    ]
    },
    {
     "name": "Footwear",
@@ -351,8 +324,7 @@
      "Air Force Ones",
      "Wallabee Champ",
      "Jumpman"
-    ],
-    "why": "Rap songs named after shoes (Run-DMC, Nelly, Ghostface, Drake & Future)."
+    ]
    }
   ]
  },
@@ -361,18 +333,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Each has a song called 'Best Friend'",
-    "level": 4,
-    "today": true,
-    "tiles": [
-     "Saweetie",
-     "Young Thug",
-     "50 Cent",
-     "Brandy"
-    ],
-    "why": "Saweetie (2021), Young Thug (2015), 50 Cent (2005), Brandy (1995)."
-   },
-   {
     "name": "A Tribe Called Quest",
     "level": 1,
     "tiles": [
@@ -380,8 +340,7 @@
      "Phife Dawg",
      "Ali Shaheed Muhammad",
      "Jarobi White"
-    ],
-    "why": "Tribe's four members."
+    ]
    },
    {
     "name": "Bay Area",
@@ -391,8 +350,7 @@
      "Too $hort",
      "Mac Dre",
      "Keak da Sneak"
-    ],
-    "why": "Bay Area rappers."
+    ]
    },
    {
     "name": "Doja Cat songs",
@@ -402,8 +360,18 @@
      "Kiss Me More",
      "Paint the Town Red",
      "Streets"
+    ]
+   },
+   {
+    "name": "Each has a song called 'Best Friend'",
+    "level": 4,
+    "tiles": [
+     "Saweetie",
+     "Young Thug",
+     "50 Cent",
+     "Brandy"
     ],
-    "why": "Doja Cat songs."
+    "today": true
    }
   ]
  },
@@ -412,18 +380,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Hot 97 voices, past and present",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Angie Martinez",
-     "Funkmaster Flex",
-     "Ebro Darden",
-     "Peter Rosenberg"
-    ],
-    "why": "All on Hot 97's air at some point."
-   },
-   {
     "name": "D12",
     "level": 1,
     "tiles": [
@@ -431,8 +387,18 @@
      "Proof",
      "Bizarre",
      "Kon Artis"
+    ]
+   },
+   {
+    "name": "Hot 97 voices, past and present",
+    "level": 2,
+    "tiles": [
+     "Angie Martinez",
+     "Funkmaster Flex",
+     "Ebro Darden",
+     "Peter Rosenberg"
     ],
-    "why": "D12 members."
+    "today": true
    },
    {
     "name": "Ruff Ryders",
@@ -442,8 +408,7 @@
      "Eve",
      "Drag-On",
      "Swizz Beatz"
-    ],
-    "why": "Ruff Ryders roster."
+    ]
    },
    {
     "name": "From Bed-Stuy",
@@ -453,8 +418,7 @@
      "Big Daddy Kane",
      "Mos Def",
      "Lil' Kim"
-    ],
-    "why": "All from Bedford-Stuyvesant, Brooklyn."
+    ]
    }
   ]
  },
@@ -463,18 +427,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Boot Camp Clik",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "Smif-n-Wessun",
-     "Heltah Skeltah",
-     "Black Moon",
-     "O.G.C."
-    ],
-    "why": "The four groups of the Boot Camp Clik."
-   },
-   {
     "name": "Nas albums",
     "level": 1,
     "tiles": [
@@ -482,8 +434,7 @@
      "It Was Written",
      "Stillmatic",
      "God's Son"
-    ],
-    "why": "Nas albums."
+    ]
    },
    {
     "name": "Timbaland made the beat",
@@ -493,8 +444,18 @@
      "Big Pimpin'",
      "Are You That Somebody?",
      "Dirt Off Your Shoulder"
+    ]
+   },
+   {
+    "name": "Boot Camp Clik",
+    "level": 3,
+    "tiles": [
+     "Smif-n-Wessun",
+     "Heltah Skeltah",
+     "Black Moon",
+     "O.G.C."
     ],
-    "why": "Timbaland productions."
+    "today": true
    },
    {
     "name": "Rap's words for weed",
@@ -504,8 +465,7 @@
      "Loud",
      "Kush",
      "Za"
-    ],
-    "why": "Slang for weed."
+    ]
    }
   ]
  },
@@ -514,18 +474,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Internet underground",
-    "level": 4,
-    "today": true,
-    "tiles": [
-     "Bones",
-     "Xavier Wulf",
-     "Night Lovell",
-     "Yung Lean"
-    ],
-    "why": "Cult internet-era rappers who built followings outside the industry."
-   },
-   {
     "name": "Cash Money",
     "level": 1,
     "tiles": [
@@ -533,8 +481,7 @@
      "Mannie Fresh",
      "Juvenile",
      "B.G."
-    ],
-    "why": "Cash Money Records, '90s core."
+    ]
    },
    {
     "name": "Missy Elliott songs",
@@ -544,8 +491,7 @@
      "Lose Control",
      "Get Ur Freak On",
      "One Minute Man"
-    ],
-    "why": "Missy Elliott singles."
+    ]
    },
    {
     "name": "From Florida",
@@ -555,8 +501,18 @@
      "Denzel Curry",
      "Kodak Black",
      "Plies"
+    ]
+   },
+   {
+    "name": "Internet underground",
+    "level": 4,
+    "tiles": [
+     "Bones",
+     "Xavier Wulf",
+     "Night Lovell",
+     "Yung Lean"
     ],
-    "why": "Florida rappers."
+    "today": true
    }
   ]
  },
@@ -567,103 +523,99 @@
    {
     "name": "Wu-Tang Clan",
     "level": 1,
-    "today": true,
     "tiles": [
      "Raekwon",
      "Ghostface Killah",
      "Method Man",
      "Inspectah Deck"
     ],
-    "why": "Wu-Tang members."
+    "today": true
    },
    {
     "name": "On 'Only Built 4 Cuban Linx…'",
     "level": 2,
-    "today": true,
     "tiles": [
      "Ice Cream",
      "Incarcerated Scarfaces",
      "Criminology",
      "Glaciers of Ice"
     ],
-    "why": "Raekwon's 1995 debut."
+    "today": true
    },
    {
     "name": "Three 6 Mafia",
     "level": 3,
-    "today": true,
     "tiles": [
      "DJ Paul",
      "Juicy J",
      "Lord Infamous",
      "Gangsta Boo"
     ],
-    "why": "Three 6 Mafia members."
+    "today": true
    },
    {
     "name": "Wu vocabulary",
     "level": 4,
-    "today": true,
     "tiles": [
      "Shaolin",
      "Killa Bees",
      "Wu Wear",
      "36 Chambers"
     ],
-    "why": "Wu-Tang terms: Staten Island, the fans, the clothing line, the debut."
+    "today": true
    }
   ]
  },
  "01-13": {
-  "occasion": "B-Legit of The Click was born today in 1968.",
-  "big": false,
+  "occasion": "All about 1997.",
+  "big": true,
   "groups": [
    {
-    "name": "The Click",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "E-40",
-     "B-Legit",
-     "D-Shot",
-     "Suga-T"
-    ],
-    "why": "The Vallejo family group."
-   },
-   {
-    "name": "Dipset",
+    "name": "Hits of 1997",
     "level": 1,
     "tiles": [
-     "Cam'ron",
-     "Juelz Santana",
-     "Jim Jones",
-     "Freekey Zekey"
+     "Can't Nobody Hold Me Down",
+     "Feel So Good",
+     "Not Tonight",
+     "It's All About the Benjamins"
     ],
-    "why": "The Diplomats."
+    "today": true
    },
    {
-    "name": "Grime MCs",
+    "name": "Big albums of 1997",
     "level": 2,
     "tiles": [
-     "Skepta",
-     "Wiley",
-     "Dizzee Rascal",
-     "Kano"
+     "Wu-Tang Forever",
+     "Harlem World",
+     "Supa Dupa Fly",
+     "In My Lifetime, Vol. 1"
     ],
-    "why": "London grime."
+    "today": true
    },
    {
-    "name": "Signed to Aftermath, then gone",
+    "name": "Underground, 1997",
+    "level": 3,
+    "tiles": [
+     "Funcrusher Plus",
+     "Uptown Saturday Night",
+     "Soundbombing",
+     "Jurassic 5 EP"
+    ],
+    "today": true
+   },
+   {
+    "name": "1997 soundtracks",
     "level": 4,
     "tiles": [
-     "Rakim",
-     "The Game",
-     "Busta Rhymes",
-     "Eve"
+     "Gridlock'd",
+     "Soul Food",
+     "Men in Black",
+     "Booty Call"
     ],
-    "why": "All signed to Dr. Dre's Aftermath and left."
+    "today": true
    }
-  ]
+  ],
+  "year": 1997
  },
  "01-14": {
   "occasion": "LL Cool J was born today in 1968. Slick Rick was born today in 1965.",
@@ -672,50 +624,46 @@
    {
     "name": "LL Cool J songs",
     "level": 1,
-    "today": true,
     "tiles": [
      "Mama Said Knock You Out",
      "I Need Love",
      "Going Back to Cali",
      "Rock the Bells"
     ],
-    "why": "LL Cool J singles."
+    "today": true
    },
    {
     "name": "Def Jam in the '80s",
     "level": 2,
-    "today": true,
     "tiles": [
      "Public Enemy",
      "Beastie Boys",
      "3rd Bass",
      "Oran \"Juice\" Jones"
     ],
-    "why": "Def Jam acts of the 1980s, LL and Rick's labelmates."
+    "today": true
    },
    {
     "name": "Slick Rick songs",
     "level": 3,
-    "today": true,
     "tiles": [
      "Children's Story",
      "La Di Da Di",
      "Mona Lisa",
      "Hey Young World"
     ],
-    "why": "Slick Rick songs."
+    "today": true
    },
    {
     "name": "LL on screen",
     "level": 4,
-    "today": true,
     "tiles": [
      "Deep Blue Sea",
      "In Too Deep",
      "Halloween H20",
      "NCIS: Los Angeles"
     ],
-    "why": "Films and shows LL Cool J acted in."
+    "today": true
    }
   ]
  },
@@ -724,18 +672,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Little Brother and family",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "Phonte",
-     "Rapper Big Pooh",
-     "9th Wonder",
-     "Rapsody"
-    ],
-    "why": "Little Brother's three, plus Rapsody of 9th's Jamla."
-   },
-   {
     "name": "Anderson .Paak's beach towns",
     "level": 1,
     "tiles": [
@@ -743,8 +679,7 @@
      "Malibu",
      "Oxnard",
      "Ventura"
-    ],
-    "why": ".Paak's album titles."
+    ]
    },
    {
     "name": "A$AP Mob",
@@ -754,8 +689,18 @@
      "A$AP Ferg",
      "A$AP Twelvyy",
      "A$AP Nast"
+    ]
+   },
+   {
+    "name": "Little Brother and family",
+    "level": 3,
+    "tiles": [
+     "Phonte",
+     "Rapper Big Pooh",
+     "9th Wonder",
+     "Rapsody"
     ],
-    "why": "A$AP Mob members."
+    "today": true
    },
    {
     "name": "On 'LONG.LIVE.A$AP'",
@@ -765,8 +710,7 @@
      "2 Chainz",
      "Skrillex",
      "ScHoolboy Q"
-    ],
-    "why": "Guests on Rocky's 2013 album, released Jan 15."
+    ]
    }
   ]
  },
@@ -775,16 +719,14 @@
   "big": false,
   "groups": [
    {
-    "name": "On 'Immigrants (We Get the Job Done)'",
-    "level": 4,
-    "today": true,
+    "name": "In the producer's room",
+    "level": 1,
     "tiles": [
-     "K'naan",
-     "Snow tha Product",
-     "Riz MC",
-     "Residente"
-    ],
-    "why": "The Hamilton Mixtape track."
+     "MPC",
+     "SP-1200",
+     "TR-808",
+     "Technics 1200"
+    ]
    },
    {
     "name": "The Roots",
@@ -794,19 +736,7 @@
      "Questlove",
      "Rahzel",
      "Malik B."
-    ],
-    "why": "Roots members past and present."
-   },
-   {
-    "name": "Bottles behind the bar",
-    "level": 1,
-    "tiles": [
-     "Hennessy",
-     "Cîroc",
-     "Patrón",
-     "Grey Goose"
-    ],
-    "why": "Liquor brands rappers sell and shout out."
+    ]
    },
    {
     "name": "Terror Squad",
@@ -816,37 +746,46 @@
      "Big Pun",
      "Remy Ma",
      "Cuban Link"
+    ]
+   },
+   {
+    "name": "On 'Immigrants (We Get the Job Done)'",
+    "level": 4,
+    "tiles": [
+     "K'naan",
+     "Snow tha Product",
+     "Riz MC",
+     "Residente"
     ],
-    "why": "Terror Squad members."
+    "today": true
    }
   ]
  },
  "01-17": {
-  "occasion": "Lil Jon was born today.",
+  "occasion": "Lil Jon was born today in 1971. \"Juice\" opened in theaters today in 1992.",
   "big": false,
   "groups": [
    {
     "name": "Lil Jon was on it",
     "level": 1,
-    "today": true,
     "tiles": [
      "Get Low",
      "Yeah!",
      "Turn Down for What",
      "Lovers and Friends"
     ],
-    "why": "Lil Jon songs and features."
+    "today": true
    },
    {
-    "name": "Labels founded by rappers and producers",
+    "name": "In \"Juice\"",
     "level": 2,
     "tiles": [
-     "Roc-A-Fella",
-     "Bad Boy",
-     "Death Row",
-     "No Limit"
+     "Omar Epps",
+     "2Pac",
+     "Jermaine Hopkins",
+     "Khalil Kain"
     ],
-    "why": "'90s rap labels."
+    "today": true
    },
    {
     "name": "Rap clothing lines",
@@ -856,8 +795,7 @@
      "Sean John",
      "Billionaire Boys Club",
      "Phat Farm"
-    ],
-    "why": "Hip-hop clothing brands."
+    ]
    },
    {
     "name": "Initials only",
@@ -867,8 +805,7 @@
      "BDP",
      "EPMD",
      "N.W.A"
-    ],
-    "why": "Groups known by initials."
+    ]
    }
   ]
  },
@@ -877,18 +814,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Singles from 'The Documentary'",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "How We Do",
-     "Hate It or Love It",
-     "Dreams",
-     "Westside Story"
-    ],
-    "why": "The album's four singles."
-   },
-   {
     "name": "G-Unit",
     "level": 1,
     "tiles": [
@@ -896,8 +821,18 @@
      "Lloyd Banks",
      "Tony Yayo",
      "Young Buck"
+    ]
+   },
+   {
+    "name": "Singles from 'The Documentary'",
+    "level": 2,
+    "tiles": [
+     "How We Do",
+     "Hate It or Love It",
+     "Dreams",
+     "Westside Story"
     ],
-    "why": "G-Unit (The Game was briefly a member too)."
+    "today": true
    },
    {
     "name": "From Compton",
@@ -907,8 +842,7 @@
      "YG",
      "Eazy-E",
      "DJ Quik"
-    ],
-    "why": "Compton rappers."
+    ]
    },
    {
     "name": "Diss records",
@@ -918,8 +852,7 @@
      "Ether",
      "Takeover",
      "Hit 'Em Up"
-    ],
-    "why": "Famous diss tracks (The Game, Nas, Jay-Z, 2Pac)."
+    ]
    }
   ]
  },
@@ -930,50 +863,46 @@
    {
     "name": "Mac Miller albums",
     "level": 1,
-    "today": true,
     "tiles": [
      "Swimming",
      "Circles",
      "Blue Slide Park",
      "The Divine Feminine"
     ],
-    "why": "Mac Miller albums."
+    "today": true
    },
    {
     "name": "Mac's collaborators",
     "level": 2,
-    "today": true,
     "tiles": [
      "Anderson .Paak",
      "Ariana Grande",
      "Thundercat",
      "Vince Staples"
     ],
-    "why": "Worked with Mac ('Dang!', 'The Way', Swimming, Stolen Youth)."
+    "today": true
    },
    {
     "name": "Mac's other names",
     "level": 3,
-    "today": true,
     "tiles": [
      "Larry Fisherman",
      "Delusional Thomas",
      "Larry Lovestein",
      "Easy Mac"
     ],
-    "why": "Mac Miller aliases."
+    "today": true
    },
    {
     "name": "Also born January 19",
     "level": 4,
-    "today": true,
     "tiles": [
      "Lil Scrappy",
      "Wiley",
      "Z-Ro",
      "D Double E"
     ],
-    "why": "Share Mac's birthday."
+    "today": true
    }
   ]
  },
@@ -982,27 +911,14 @@
   "big": false,
   "groups": [
    {
-    "name": "Pro Era",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "Joey Bada$$",
-     "Capital STEEZ",
-     "CJ Fly",
-     "Kirk Knight"
-    ],
-    "why": "Pro Era members."
-   },
-   {
-    "name": "Biggie songs",
+    "name": "Clipse albums",
     "level": 1,
     "tiles": [
-     "Juicy",
-     "Hypnotize",
-     "Big Poppa",
-     "Mo Money Mo Problems"
-    ],
-    "why": "Notorious B.I.G. singles."
+     "Lord Willin'",
+     "Hell Hath No Fury",
+     "Til the Casket Drops",
+     "Let God Sort Em Out"
+    ]
    },
    {
     "name": "Brooklyn drill",
@@ -1012,8 +928,18 @@
      "Fivio Foreign",
      "Sheff G",
      "22Gz"
+    ]
+   },
+   {
+    "name": "Pro Era",
+    "level": 3,
+    "tiles": [
+     "Joey Bada$$",
+     "Capital STEEZ",
+     "CJ Fly",
+     "Kirk Knight"
     ],
-    "why": "Brooklyn drill rappers."
+    "today": true
    },
    {
     "name": "Numbers in the album title",
@@ -1023,8 +949,7 @@
      "2001",
      "808s & Heartbreak",
      "2014 Forest Hills Drive"
-    ],
-    "why": "Jay-Z, Dr. Dre, Kanye, J. Cole."
+    ]
    }
   ]
  },
@@ -1033,28 +958,15 @@
   "big": false,
   "groups": [
    {
-    "name": "From Hollis, Queens",
-    "level": 3,
-    "today": true,
-    "tiles": [
-     "Jam Master Jay",
-     "Rev Run",
-     "Ja Rule",
-     "Russell Simmons"
-    ],
-    "why": "All from Hollis."
-   },
-   {
     "name": "Run-DMC songs",
     "level": 1,
-    "today": true,
     "tiles": [
      "King of Rock",
      "Walk This Way",
      "It's Tricky",
      "My Adidas"
     ],
-    "why": "Run-DMC singles."
+    "today": true
    },
    {
     "name": "Queensbridge",
@@ -1064,19 +976,28 @@
      "Prodigy",
      "Havoc",
      "Cormega"
-    ],
-    "why": "From the Queensbridge Houses."
+    ]
    },
    {
-    "name": "South Jamaica, Queens",
+    "name": "From Hollis, Queens",
+    "level": 3,
+    "tiles": [
+     "Jam Master Jay",
+     "Rev Run",
+     "Ja Rule",
+     "Russell Simmons"
+    ],
+    "today": true
+   },
+   {
+    "name": "Turntablists",
     "level": 4,
     "tiles": [
-     "50 Cent",
-     "Lloyd Banks",
-     "Tony Yayo",
-     "Nicki Minaj"
-    ],
-    "why": "Grew up in South Jamaica."
+     "Mix Master Mike",
+     "Q-Bert",
+     "Kid Koala",
+     "Rob Swift"
+    ]
    }
   ]
  },
@@ -1085,27 +1006,25 @@
   "big": false,
   "groups": [
    {
+    "name": "Mello Music Group",
+    "level": 1,
+    "tiles": [
+     "Oddisee",
+     "Apollo Brown",
+     "Open Mike Eagle",
+     "Quelle Chris"
+    ]
+   },
+   {
     "name": "The DMV",
     "level": 2,
-    "today": true,
     "tiles": [
      "Logic",
      "Wale",
      "Shy Glizzy",
      "Fat Trel"
     ],
-    "why": "From D.C., Maryland and Virginia."
-   },
-   {
-    "name": "Eminem albums",
-    "level": 1,
-    "tiles": [
-     "The Slim Shady LP",
-     "The Marshall Mathers LP",
-     "The Eminem Show",
-     "Recovery"
-    ],
-    "why": "Eminem albums."
+    "today": true
    },
    {
     "name": "Wale's tapes about nothing",
@@ -1115,19 +1034,17 @@
      "More About Nothing",
      "The Album About Nothing",
      "Attention Deficit"
-    ],
-    "why": "Wale releases."
+    ]
    },
    {
-    "name": "Numbers in the song title",
+    "name": "Rap podcasts",
     "level": 4,
     "tiles": [
-     "1-800-273-8255",
-     "6 Foot 7 Foot",
-     "99 Problems",
-     "21 Questions"
-    ],
-    "why": "Logic, Lil Wayne, Jay-Z, 50 Cent."
+     "Drink Champs",
+     "The Joe Budden Podcast",
+     "Million Dollaz Worth of Game",
+     "Caresha Please"
+    ]
    }
   ]
  },
@@ -1136,16 +1053,14 @@
   "big": false,
   "groups": [
    {
-    "name": "Brought in by Eazy-E",
-    "level": 3,
-    "today": true,
+    "name": "Jay-Z albums",
+    "level": 1,
     "tiles": [
-     "B.G. Knocc Out",
-     "Dresta",
-     "Kokane",
-     "Bone Thugs-n-Harmony"
-    ],
-    "why": "Ruthless Records signings by Eazy-E."
+     "Reasonable Doubt",
+     "The Black Album",
+     "Kingdom Come",
+     "American Gangster"
+    ]
    },
    {
     "name": "Hoopers with bars",
@@ -1155,19 +1070,18 @@
      "Dame D.O.L.L.A.",
      "Ron Artest",
      "Iman Shumpert"
-    ],
-    "why": "NBA players who released rap records."
+    ]
    },
    {
-    "name": "Jay-Z albums",
-    "level": 1,
+    "name": "Brought in by Eazy-E",
+    "level": 3,
     "tiles": [
-     "Reasonable Doubt",
-     "The Black Album",
-     "Kingdom Come",
-     "American Gangster"
+     "B.G. Knocc Out",
+     "Dresta",
+     "Kokane",
+     "Bone Thugs-n-Harmony"
     ],
-    "why": "Jay-Z albums."
+    "today": true
    },
    {
     "name": "Rap's hype men",
@@ -1177,8 +1091,7 @@
      "Spliff Star",
      "Fatman Scoop",
      "Proof"
-    ],
-    "why": "Hype men (Public Enemy, Busta Rhymes, everyone, Eminem)."
+    ]
    }
   ]
  },
@@ -1187,18 +1100,6 @@
   "big": false,
   "groups": [
    {
-    "name": "Too $hort albums",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Born to Mack",
-     "Life Is…Too Short",
-     "Short Dog's in the House",
-     "Cocktails"
-    ],
-    "why": "Too $hort albums."
-   },
-   {
     "name": "Death Row",
     "level": 1,
     "tiles": [
@@ -1206,8 +1107,18 @@
      "Tha Dogg Pound",
      "Nate Dogg",
      "Lady of Rage"
+    ]
+   },
+   {
+    "name": "Too $hort albums",
+    "level": 2,
+    "tiles": [
+     "Born to Mack",
+     "Life Is…Too Short",
+     "Short Dog's in the House",
+     "Cocktails"
     ],
-    "why": "Death Row Records, '90s."
+    "today": true
    },
    {
     "name": "Hyphy",
@@ -1217,19 +1128,17 @@
      "Go dumb",
      "Thizz",
      "Yadadamean"
-    ],
-    "why": "Bay Area hyphy slang."
+    ]
    },
    {
-    "name": "Pimp C was on it",
+    "name": "Souls of Mischief",
     "level": 4,
     "tiles": [
-     "Big Pimpin'",
-     "Int'l Players Anthem",
-     "Get Throwed",
-     "Sippin' on Some Syrup"
-    ],
-    "why": "Pimp C verses (Jay-Z, UGK, Bun B, Three 6 Mafia)."
+     "A-Plus",
+     "Opio",
+     "Phesto",
+     "Tajai"
+    ]
    }
   ]
  },
@@ -1238,16 +1147,25 @@
   "big": false,
   "groups": [
    {
+    "name": "No Limit Soldiers",
+    "level": 1,
+    "tiles": [
+     "Master P",
+     "Silkk the Shocker",
+     "C-Murder",
+     "Mystikal"
+    ]
+   },
+   {
     "name": "On 'The Slim Shady LP'",
     "level": 2,
-    "today": true,
     "tiles": [
      "My Name Is",
      "Guilty Conscience",
      "Role Model",
      "'97 Bonnie & Clyde"
     ],
-    "why": "Eminem's major-label debut."
+    "today": true
    },
    {
     "name": "Rawkus Records",
@@ -1257,19 +1175,7 @@
      "Pharoahe Monch",
      "Company Flow",
      "Mos Def"
-    ],
-    "why": "Rawkus artists."
-   },
-   {
-    "name": "No Limit Soldiers",
-    "level": 1,
-    "tiles": [
-     "Master P",
-     "Silkk the Shocker",
-     "C-Murder",
-     "Mystikal"
-    ],
-    "why": "No Limit Records."
+    ]
    },
    {
     "name": "Eminem's Slim Shady family",
@@ -1279,8 +1185,7 @@
      "Stat Quo",
      "Yelawolf",
      "Westside Gunn"
-    ],
-    "why": "Signed to Shady Records."
+    ]
    }
   ]
  },
@@ -1289,16 +1194,25 @@
   "big": false,
   "groups": [
    {
+    "name": "TDE",
+    "level": 1,
+    "tiles": [
+     "Kendrick Lamar",
+     "ScHoolboy Q",
+     "SZA",
+     "Isaiah Rashad"
+    ]
+   },
+   {
     "name": "Won Best Rap Album",
     "level": 2,
-    "today": true,
     "tiles": [
      "The Heist",
      "To Pimp a Butterfly",
      "DAMN.",
      "The Marshall Mathers LP"
     ],
-    "why": "All won the Grammy for Best Rap Album."
+    "today": true
    },
    {
     "name": "Seattle",
@@ -1308,19 +1222,7 @@
      "Sir Mix-a-Lot",
      "Shabazz Palaces",
      "Travis Thompson"
-    ],
-    "why": "Seattle rappers."
-   },
-   {
-    "name": "TDE",
-    "level": 1,
-    "tiles": [
-     "Kendrick Lamar",
-     "ScHoolboy Q",
-     "SZA",
-     "Isaiah Rashad"
-    ],
-    "why": "Top Dawg Entertainment."
+    ]
    },
    {
     "name": "On 'The Heist'",
@@ -1330,8 +1232,7 @@
      "Can't Hold Us",
      "Same Love",
      "White Walls"
-    ],
-    "why": "Macklemore & Ryan Lewis, 2012."
+    ]
    }
   ]
  },
@@ -1342,14 +1243,13 @@
    {
     "name": "Quality Control",
     "level": 1,
-    "today": true,
     "tiles": [
      "Lil Baby",
      "City Girls",
      "Lil Yachty",
      "Layton Greene"
     ],
-    "why": "QC signees."
+    "today": true
    },
    {
     "name": "Migos songs",
@@ -1359,8 +1259,7 @@
      "Bad and Boujee",
      "Walk It Talk It",
      "Stir Fry"
-    ],
-    "why": "Migos singles."
+    ]
    },
    {
     "name": "Atlanta producers",
@@ -1370,8 +1269,7 @@
      "DJ Toomp",
      "Organized Noize",
      "Shawty Redd"
-    ],
-    "why": "Atlanta beatmakers."
+    ]
    },
    {
     "name": "Dance crazes",
@@ -1381,8 +1279,7 @@
      "Nae Nae",
      "Stanky Legg",
      "Crank That"
-    ],
-    "why": "Rap dances (Migos helped make the dab)."
+    ]
    }
   ]
  },
@@ -1393,50 +1290,46 @@
    {
     "name": "Born January 28",
     "level": 1,
-    "today": true,
     "tiles": [
      "J. Cole",
      "Rick Ross",
      "Rakim",
      "DJ Muggs"
     ],
-    "why": "Cole 1985, Ross 1976, Rakim 1968, Muggs 1968."
+    "today": true
    },
    {
     "name": "Dreamville",
     "level": 2,
-    "today": true,
     "tiles": [
      "Bas",
      "J.I.D",
      "Cozz",
      "Ari Lennox"
     ],
-    "why": "J. Cole's label."
+    "today": true
    },
    {
     "name": "Maybach Music",
     "level": 3,
-    "today": true,
     "tiles": [
      "Meek Mill",
      "Gunplay",
      "Stalley",
      "Omarion"
     ],
-    "why": "Rick Ross's label."
+    "today": true
    },
    {
     "name": "Eric B. & Rakim albums",
     "level": 4,
-    "today": true,
     "tiles": [
      "Paid in Full",
      "Follow the Leader",
      "Let the Rhythm Hit 'Em",
      "Don't Sweat the Technique"
     ],
-    "why": "All four Eric B. & Rakim albums."
+    "today": true
    }
   ]
  },
@@ -1445,16 +1338,14 @@
   "big": false,
   "groups": [
    {
-    "name": "Madlib under another name",
-    "level": 3,
-    "today": true,
+    "name": "Jadakiss songs",
+    "level": 1,
     "tiles": [
-     "Quasimoto",
-     "Yesterdays New Quintet",
-     "Beat Konducta",
-     "Madvillain"
-    ],
-    "why": "Madlib projects and aliases."
+     "Why",
+     "Knock Yourself Out",
+     "We Gonna Make It",
+     "Put Ya Hands Up"
+    ]
    },
    {
     "name": "Stones Throw",
@@ -1464,19 +1355,18 @@
      "Dâm-Funk",
      "Aloe Blacc",
      "Peanut Butter Wolf"
-    ],
-    "why": "Stones Throw Records."
+    ]
    },
    {
-    "name": "Forgot about Dre",
-    "level": 1,
+    "name": "Madlib under another name",
+    "level": 3,
     "tiles": [
-     "Still D.R.E.",
-     "Nuthin' but a 'G' Thang",
-     "California Love",
-     "The Next Episode"
+     "Quasimoto",
+     "Yesterdays New Quintet",
+     "Beat Konducta",
+     "Madvillain"
     ],
-    "why": "Dr. Dre songs."
+    "today": true
    },
    {
     "name": "Producers who rap too",
@@ -1486,38 +1376,14 @@
      "Pharrell",
      "Q-Tip",
      "El-P"
-    ],
-    "why": "Producer-rappers."
+    ]
    }
   ]
  },
  "01-30": {
-  "occasion": "Kid Cudi was born today in 1984.",
+  "occasion": "Kid Cudi was born today in 1984. Busdriver released \"RoadKillOvercoat\" today in 2007.",
   "big": false,
   "groups": [
-   {
-    "name": "G.O.O.D. Music's first roster",
-    "level": 2,
-    "today": true,
-    "tiles": [
-     "Kid Cudi",
-     "John Legend",
-     "Common",
-     "Big Sean"
-    ],
-    "why": "Early G.O.O.D. Music signees."
-   },
-   {
-    "name": "From Cleveland",
-    "level": 3,
-    "tiles": [
-     "Bone Thugs-n-Harmony",
-     "Machine Gun Kelly",
-     "Chip tha Ripper",
-     "Ray Cash"
-    ],
-    "why": "Cleveland rappers."
-   },
    {
     "name": "Space travel",
     "level": 1,
@@ -1526,8 +1392,29 @@
      "ATLiens",
      "Astroworld",
      "Space Age Pimpin'"
+    ]
+   },
+   {
+    "name": "G.O.O.D. Music's first roster",
+    "level": 2,
+    "tiles": [
+     "Kid Cudi",
+     "John Legend",
+     "Common",
+     "Big Sean"
     ],
-    "why": "Space-themed album titles (Cudi, OutKast, Travis Scott, 8Ball & MJG)."
+    "today": true
+   },
+   {
+    "name": "Project Blowed",
+    "level": 3,
+    "tiles": [
+     "Busdriver",
+     "Abstract Rude",
+     "Ellay Khule",
+     "2Mex"
+    ],
+    "today": true
    },
    {
     "name": "Humming on the hook",
@@ -1537,8 +1424,7 @@
      "Pursuit of Happiness",
      "Soundtrack 2 My Life",
      "Mr. Rager"
-    ],
-    "why": "Kid Cudi songs."
+    ]
    }
   ]
  },
@@ -1547,16 +1433,14 @@
   "big": false,
   "groups": [
    {
-    "name": "Gang Starr Foundation",
-    "level": 3,
-    "today": true,
+    "name": "One-word album titles",
+    "level": 1,
     "tiles": [
-     "Afu-Ra",
-     "Jeru the Damaja",
-     "Group Home",
-     "Big Shug"
-    ],
-    "why": "The Gang Starr Foundation."
+     "Illmatic",
+     "Aquemini",
+     "Graduation",
+     "Doggystyle"
+    ]
    },
    {
     "name": "DJ Premier made the beat",
@@ -1566,8 +1450,18 @@
      "N.Y. State of Mind",
      "Unbelievable",
      "Come Clean"
+    ]
+   },
+   {
+    "name": "Gang Starr Foundation",
+    "level": 3,
+    "tiles": [
+     "Afu-Ra",
+     "Jeru the Damaja",
+     "Group Home",
+     "Big Shug"
     ],
-    "why": "Premier productions (Gang Starr, Nas, Biggie, Jeru)."
+    "today": true
    },
    {
     "name": "British rap before grime",
@@ -1577,19 +1471,7 @@
      "Ty",
      "Blak Twang",
      "Skinnyman"
-    ],
-    "why": "UK rap pioneers."
-   },
-   {
-    "name": "One-word album titles",
-    "level": 1,
-    "tiles": [
-     "Illmatic",
-     "Aquemini",
-     "Graduation",
-     "Doggystyle"
-    ],
-    "why": "Nas, OutKast, Kanye, Snoop."
+    ]
    }
   ]
  },
@@ -1737,7 +1619,7 @@
   ]
  },
  "02-04": {
-  "occasion": "Cam'ron was born today in 1976.",
+  "occasion": "Cam'ron was born today in 1976. Saba's \"Few Good Things\" came out today in 2022.",
   "big": false,
   "groups": [
    {
@@ -1762,13 +1644,13 @@
     "today": true
    },
    {
-    "name": "2Pac singles",
+    "name": "From New Jersey",
     "level": 3,
     "tiles": [
-     "Holler If Ya Hear Me",
-     "Keep Ya Head Up",
-     "Dear Mama",
-     "I Get Around"
+     "Redman",
+     "Fetty Wap",
+     "Joe Budden",
+     "Treach"
     ]
    },
    {
@@ -1779,7 +1661,8 @@
      "Noname",
      "Mick Jenkins",
      "Chance the Rapper"
-    ]
+    ],
+    "today": true
    }
   ]
  },
@@ -1788,13 +1671,13 @@
   "big": false,
   "groups": [
    {
-    "name": "Lil Wayne albums",
+    "name": "Mobb Deep songs",
     "level": 1,
     "tiles": [
-     "Tha Carter",
-     "Tha Carter II",
-     "Tha Carter III",
-     "I Am Not a Human Being"
+     "Shook Ones, Pt. II",
+     "Survival of the Fittest",
+     "Quiet Storm",
+     "Hell on Earth"
     ]
    },
    {
@@ -1965,13 +1848,13 @@
     "today": true
    },
    {
-    "name": "Lil Wayne's other names",
+    "name": "From Brownsville",
     "level": 4,
     "tiles": [
-     "Weezy F. Baby",
-     "Tunechi",
-     "Birdman Jr.",
-     "Mr. Carter"
+     "Ka",
+     "M.O.P.",
+     "Sean Price",
+     "Masta Ace"
     ]
    }
   ]
@@ -2270,7 +2153,7 @@
   ]
  },
  "02-15": {
-  "occasion": "Megan Thee Stallion was born today in 1995, and Birdman in 1969. Big L died today in 1999.",
+  "occasion": "Megan Thee Stallion was born today in 1995. Big L died today in 1999.",
   "big": false,
   "groups": [
    {
@@ -2306,15 +2189,14 @@
     "today": true
    },
    {
-    "name": "Birdman's other names",
+    "name": "Houston's new class",
     "level": 4,
     "tiles": [
-     "Baby",
-     "#1 Stunna",
-     "Bryan Williams",
-     "Big Tymer"
-    ],
-    "today": true
+     "Monaleo",
+     "Maxo Kream",
+     "That Mexican OT",
+     "Don Toliver"
+    ]
    }
   ]
  },
@@ -2372,13 +2254,13 @@
   "big": false,
   "groups": [
    {
-    "name": "Future songs",
+    "name": "21 Savage songs",
     "level": 1,
     "tiles": [
-     "Mask Off",
-     "March Madness",
-     "Low Life",
-     "Life Is Good"
+     "a lot",
+     "Bank Account",
+     "No Heart",
+     "Redrum"
     ]
    },
    {
@@ -2550,13 +2432,13 @@
     ]
    },
    {
-    "name": "Drinks in the title",
+    "name": "Battle leagues",
     "level": 4,
     "tiles": [
-     "Gin and Juice",
-     "Thug Passion",
-     "Champagne Poetry",
-     "Tequila Shots"
+     "URL",
+     "King of the Dot",
+     "Don't Flop",
+     "Grind Time"
     ]
    }
   ]
@@ -2598,13 +2480,13 @@
     ]
    },
    {
-    "name": "Won Best New Artist",
+    "name": "Built on a pop hit",
     "level": 4,
     "tiles": [
-     "Lauryn Hill",
-     "Chance the Rapper",
-     "Megan Thee Stallion",
-     "Arrested Development"
+     "Hard Knock Life",
+     "I'll Be Missing You",
+     "Ice Ice Baby",
+     "Gangsta's Paradise"
     ]
    }
   ]
@@ -2807,13 +2689,13 @@
   "big": false,
   "groups": [
    {
-    "name": "Drake songs",
+    "name": "DMX songs",
     "level": 1,
     "tiles": [
-     "Hotline Bling",
-     "In My Feelings",
-     "Started from the Bottom",
-     "One Dance"
+     "Party Up (Up in Here)",
+     "Ruff Ryders' Anthem",
+     "X Gon' Give It to Ya",
+     "Where the Hood At"
     ]
    },
    {
@@ -4119,7 +4001,7 @@
   ]
  },
  "03-25": {
-  "occasion": "The Notorious B.I.G.'s \"Life After Death\" came out today in 1997. The Streets' \"Original Pirate Material\" came out today in 2002. Big Sean was born today in 1988.",
+  "occasion": "The Notorious B.I.G.'s \"Life After Death\" came out today in 1997. The Streets' \"Original Pirate Material\" came out today in 2002.",
   "big": false,
   "groups": [
    {
@@ -4134,15 +4016,14 @@
     "today": true
    },
    {
-    "name": "Big Sean songs",
+    "name": "sLUms",
     "level": 2,
     "tiles": [
-     "Dance (A$$)",
-     "Bounce Back",
-     "Blessings",
-     "Marvin & Chardonnay"
-    ],
-    "today": true
+     "MIKE",
+     "Navy Blue",
+     "Medhane",
+     "King Carter"
+    ]
    },
    {
     "name": "On \"Original Pirate Material\"",
