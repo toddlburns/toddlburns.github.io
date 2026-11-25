@@ -1813,7 +1813,7 @@
   ]
  },
  "02-08": {
-  "occasion": "Anderson .Paak, Project Pat, Drag-On and Turk were all born today.",
+  "occasion": "Anderson .Paak, Project Pat and Turk were all born today.",
   "big": false,
   "groups": [
    {
@@ -1837,13 +1837,13 @@
     ]
    },
    {
-    "name": "Born February 8",
+    "name": "Project Pat albums",
     "level": 3,
     "tiles": [
-     "Anderson .Paak",
-     "Project Pat",
-     "Drag-On",
-     "Turk"
+     "Ghetty Green",
+     "Mista Don't Play: Everythangs Workin'",
+     "Layin' da Smack Down",
+     "Crook by da Book: The Fed Story"
     ],
     "today": true
    },
@@ -3022,7 +3022,7 @@
   ]
  },
  "03-05": {
-  "occasion": "Three 6 Mafia won an Oscar today in 2006. MC Solaar and Skee-Lo were both born today.",
+  "occasion": "Three 6 Mafia won an Oscar today in 2006. MC Solaar was born today in 1969.",
   "big": false,
   "groups": [
    {
@@ -3065,8 +3065,7 @@
      "Whoomp! (There It Is)",
      "Rump Shaker",
      "Informer"
-    ],
-    "today": true
+    ]
    }
   ]
  },
@@ -4318,13 +4317,13 @@
     "today": true
    },
    {
-    "name": "Also born March 31",
+    "name": "Guests on \"Victory Lap\"",
     "level": 3,
     "tiles": [
-     "Jay Rock",
-     "Tony Yayo",
-     "Immortal Technique",
-     "Shawty Lo"
+     "Kendrick Lamar",
+     "YG",
+     "Belly",
+     "Buddy"
     ],
     "today": true
    },
@@ -7938,17 +7937,17 @@
   ]
  },
  "06-14": {
-  "occasion": "MC Ren of N.W.A was born today in 1969.",
+  "occasion": "Jay Rock's \"Redemption\" came out today in 2018.",
   "big": false,
   "groups": [
    {
-    "name": "MC Ren albums",
+    "name": "On \"Redemption\"",
     "level": 1,
     "tiles": [
-     "Kizz My Black Azz",
-     "Shock of the Hour",
-     "The Villain in Black",
-     "Ruthless for Life"
+     "King's Dead",
+     "Win",
+     "OSOM",
+     "Redemption"
     ],
     "today": true
    },
@@ -7973,13 +7972,13 @@
     ]
    },
    {
-    "name": "The Lonely Island",
+    "name": "MC Ren albums",
     "level": 4,
     "tiles": [
-     "I'm on a Boat",
-     "Lazy Sunday",
-     "Like a Boss",
-     "Jack Sparrow"
+     "Kizz My Black Azz",
+     "Shock of the Hour",
+     "The Villain in Black",
+     "Ruthless for Life"
     ]
    }
   ]
@@ -10302,7 +10301,7 @@
   ]
  },
  "08-02": {
-  "occasion": "DJ Toomp (1969) and Cold 187um of Above the Law (1967) were born today.",
+  "occasion": "DJ Toomp was born today in 1969.",
   "big": false,
   "groups": [
    {
@@ -10324,8 +10323,7 @@
      "KMG the Illustrator",
      "Go Mack",
      "Total K-Oss"
-    ],
-    "today": true
+    ]
    },
    {
     "name": "Killer Mike solo",
@@ -10693,7 +10691,7 @@
   ]
  },
  "08-10": {
-  "occasion": "Westside Boogie was born today in 1989.",
+  "occasion": "The Beatnuts' \"A Musical Massacre\" came out today in 1999.",
   "big": false,
   "groups": [
    {
@@ -10704,8 +10702,7 @@
      "My Chick Bad",
      "Make Me Proud",
      "Bedrock"
-    ],
-    "today": true
+    ]
    },
    {
     "name": "Shady Records, second wave",
@@ -10715,27 +10712,27 @@
      "Grip",
      "Conway the Machine",
      "Ez Mil"
+    ]
+   },
+   {
+    "name": "Beatnuts songs",
+    "level": 3,
+    "tiles": [
+     "Watch Out Now",
+     "Off the Books",
+     "No Escapin' This",
+     "Reign of the Tec"
     ],
     "today": true
    },
    {
     "name": "Women on the decks",
-    "level": 3,
+    "level": 4,
     "tiles": [
      "Spinderella",
      "Jazzy Joyce",
      "Pam the Funkstress",
      "Beverly Bond"
-    ]
-   },
-   {
-    "name": "Bronx drill",
-    "level": 4,
-    "tiles": [
-     "Kay Flock",
-     "Dougie B",
-     "B-Lovee",
-     "Sha Ek"
     ]
    }
   ]
@@ -11656,7 +11653,7 @@
   ]
  },
  "08-30": {
-  "occasion": "Kanye West's \"Late Registration\" came out today in 2005. Maino was born today in 1973.",
+  "occasion": "Kanye West's \"Late Registration\" came out today in 2005. Maino (1973) and Westside Boogie (1989) were born today.",
   "big": false,
   "groups": [
    {
@@ -11988,7 +11985,7 @@
   ]
  },
  "09-06": {
-  "occasion": "Foxy Brown (1978) and Webbie (1985) were born today.",
+  "occasion": "Foxy Brown (1978), Webbie (1985) and MC Shan (1965) were born today.",
   "big": false,
   "groups": [
    {
@@ -12135,7 +12132,7 @@
   ]
  },
  "09-09": {
-  "occasion": "Dan the Automator (1967) and MC Shan (1965) were born today. clipping.'s \"Splendor & Misery\" came out today in 2016.",
+  "occasion": "clipping.'s \"Splendor & Misery\" came out today in 2016.",
   "big": false,
   "groups": [
    {
@@ -12146,8 +12143,7 @@
      "Lovage",
      "Handsome Boy Modeling School",
      "Dr. Octagonecologyst"
-    ],
-    "today": true
+    ]
    },
    {
     "name": "clipping. albums",
@@ -12168,8 +12164,7 @@
      "Down by Law",
      "Kill That Noise",
      "Jane, Stop This Crazy Thing"
-    ],
-    "today": true
+    ]
    },
    {
     "name": "Navy Blue albums",
@@ -14914,7 +14909,7 @@
   ]
  },
  "11-06": {
-  "occasion": "Jay-Z's \"American Gangster\" came out today in 2007. N.W.A's first album came out today in 1987. Oh No was born today in 1979.",
+  "occasion": "Jay-Z's \"American Gangster\" came out today in 2007. N.W.A's first album came out today in 1987. Oh No was born today in 1978.",
   "big": false,
   "groups": [
    {
@@ -15060,7 +15055,7 @@
   ]
  },
  "11-09": {
-  "occasion": "Wu-Tang Clan's \"Enter the Wu-Tang (36 Chambers)\" came out today in 1993.",
+  "occasion": "Wu-Tang Clan's \"Enter the Wu-Tang (36 Chambers)\" came out today in 1993. Scarface (1970) and French Montana (1984) were born today.",
   "big": false,
   "groups": [
    {
@@ -15075,13 +15070,13 @@
     "today": true
    },
    {
-    "name": "Born November 9",
+    "name": "Scarface songs",
     "level": 2,
     "tiles": [
-     "Big Pun",
-     "Scarface",
-     "French Montana",
-     "Roxanne Shanté"
+     "I Seen a Man Die",
+     "Guess Who's Back",
+     "Smile",
+     "My Block"
     ],
     "today": true
    },
@@ -15584,7 +15579,7 @@
   ]
  },
  "11-20": {
-  "occasion": "Future (1983), Phife Dawg (1970), Mike D (1965) and Sen Dog (1965) were born today.",
+  "occasion": "Future (1983), Phife Dawg (1970) and Mike D (1965) were born today.",
   "big": true,
   "groups": [
    {
@@ -15599,13 +15594,13 @@
     "today": true
    },
    {
-    "name": "Born November 20",
+    "name": "Future songs",
     "level": 2,
     "tiles": [
-     "Future",
-     "Phife Dawg",
-     "Mike D",
-     "Sen Dog"
+     "Mask Off",
+     "March Madness",
+     "Turn On the Lights",
+     "Same Damn Time"
     ],
     "today": true
    },
@@ -15871,17 +15866,17 @@
   ]
  },
  "11-26": {
-  "occasion": "DJ Khaled, Jean Grae, Anuel AA and OJ da Juiceman all have birthdays today.",
+  "occasion": "DJ Khaled, Jean Grae and Anuel AA all have birthdays today.",
   "big": false,
   "groups": [
    {
-    "name": "Born November 26",
+    "name": "DJ Khaled anthems",
     "level": 1,
     "tiles": [
-     "DJ Khaled",
-     "Jean Grae",
-     "Anuel AA",
-     "OJ da Juiceman"
+     "All I Do Is Win",
+     "I'm on One",
+     "We Takin' Over",
+     "No Brainer"
     ],
     "today": true
    },
@@ -16201,17 +16196,17 @@
   ]
  },
  "12-03": {
-  "occasion": "Lil Baby, Trina, JT and Chinx all have birthdays today.",
+  "occasion": "Lil Baby, Trina and JT all have birthdays today.",
   "big": false,
   "groups": [
    {
-    "name": "Born December 3",
+    "name": "Lil Baby albums",
     "level": 1,
     "tiles": [
-     "Lil Baby",
-     "Trina",
-     "JT",
-     "Chinx"
+     "Harder Than Ever",
+     "My Turn",
+     "It's Only Me",
+     "WHAM"
     ],
     "today": true
    },
