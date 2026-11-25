@@ -118,6 +118,7 @@
     miss:  () => ({ kick: 'Wrong crew', head: 'Do the reading', body: 'Twenty years of interviews, reviews and features on the rappers on this board. Get POW MAG in your inbox, free.' }),
   };
   function nag(kind) {
+    return; // all sign-up pop-ups off for now (Todd 2026-11-25)
     if (NAG_OFF || subbed() || Cy.store.get('nag-' + kind, '') === Cy.laDate()) return;
     if (!$('nag').hidden || popped) return;
     // once the board is finished the results card carries the sign-up, so no mid-game pop-up
