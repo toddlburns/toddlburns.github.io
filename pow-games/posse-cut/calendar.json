@@ -14685,9 +14685,9 @@
     "level": 1,
     "tiles": [
      "Yung Rich Nation",
+     "Culture",
      "Culture II",
-     "Culture III",
-     "Only Built for Infinity Links"
+     "Culture III"
     ],
     "today": true
    },
@@ -15621,11 +15621,11 @@
     "today": true
    },
    {
-    "name": "Beastie Boys side projects",
+    "name": "Beastie Boys side gigs",
     "level": 4,
     "tiles": [
      "Country Mike",
-     "Brooklyn Dust Music",
+     "Nathanial Hörnblowér",
      "BS 2000",
      "Grand Royal"
     ],
@@ -16115,7 +16115,7 @@
     "tiles": [
      "Mr. Flamboyant",
      "Flu Flamming",
-     "Impatient",
+     "Out the Slums",
      "Talk to Me"
     ],
     "today": true
@@ -16692,7 +16692,7 @@
     "today": true
    },
    {
-    "name": "Jamie Foxx sang the hook",
+    "name": "Jamie Foxx sang on it",
     "level": 2,
     "tiles": [
      "Gold Digger",
