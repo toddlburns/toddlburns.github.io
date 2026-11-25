@@ -2944,5 +2944,1521 @@
     ]
    }
   ]
+ },
+ "03-01": {
+  "occasion": "Little Simz released \"GREY Area\" today in 2019. Mike Dean, Rap-A-Lot's engineer, was born today in 1965.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Busta Rhymes songs",
+    "level": 1,
+    "tiles": [
+     "Woo Hah!! Got You All in Check",
+     "Put Your Hands Where My Eyes Could See",
+     "Dangerous",
+     "Touch It"
+    ]
+   },
+   {
+    "name": "Rap-A-Lot Records",
+    "level": 2,
+    "tiles": [
+     "Geto Boys",
+     "Devin the Dude",
+     "Z-Ro",
+     "Do or Die"
+    ],
+    "today": true
+   },
+   {
+    "name": "Little Simz albums",
+    "level": 3,
+    "tiles": [
+     "A Curious Tale of Trials + Persons",
+     "Stillness in Wonderland",
+     "GREY Area",
+     "Sometimes I Might Be Introvert"
+    ],
+    "today": true
+   },
+   {
+    "name": "Came up battling",
+    "level": 4,
+    "tiles": [
+     "Loaded Lux",
+     "Murda Mook",
+     "Hollow Da Don",
+     "Dizaster"
+    ]
+   }
+  ]
+ },
+ "03-02": {
+  "occasion": "Method Man was born today in 1971. Ja Rule's \"Holla Holla\" came out today in 1999.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ja Rule songs",
+    "level": 1,
+    "tiles": [
+     "Holla Holla",
+     "Always on Time",
+     "Put It on Me",
+     "Mesmerize"
+    ],
+    "today": true
+   },
+   {
+    "name": "Method Man albums",
+    "level": 2,
+    "tiles": [
+     "Tical",
+     "Tical 2000: Judgement Day",
+     "Tical 0: The Prequel",
+     "4:21... The Day After"
+    ],
+    "today": true
+   },
+   {
+    "name": "Redman albums (Meth's other half)",
+    "level": 3,
+    "tiles": [
+     "Whut? Thee Album",
+     "Dare Iz a Darkside",
+     "Muddy Waters",
+     "Doc's da Name 2000"
+    ],
+    "today": true
+   },
+   {
+    "name": "Up top",
+    "level": 4,
+    "tiles": [
+     "Kangol",
+     "Fitted",
+     "Bucket hat",
+     "Du-rag"
+    ]
+   }
+  ]
+ },
+ "03-03": {
+  "occasion": "Boogie Down Productions released \"Criminal Minded\" today in 1987. 50 Cent's \"The Massacre\" came out today in 2005.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"The Massacre\"",
+    "level": 1,
+    "tiles": [
+     "Candy Shop",
+     "Just a Lil Bit",
+     "Disco Inferno",
+     "Outta Control"
+    ],
+    "today": true
+   },
+   {
+    "name": "Boogie Down Productions",
+    "level": 2,
+    "tiles": [
+     "KRS-One",
+     "Scott La Rock",
+     "D-Nice",
+     "Ms. Melodie"
+    ],
+    "today": true
+   },
+   {
+    "name": "On Gorillaz's \"Plastic Beach\"",
+    "level": 3,
+    "tiles": [
+     "Snoop Dogg",
+     "Mos Def",
+     "De La Soul",
+     "Kano"
+    ]
+   },
+   {
+    "name": "Rap words for the police",
+    "level": 4,
+    "tiles": [
+     "Five-O",
+     "12",
+     "Jake",
+     "One-Time"
+    ]
+   }
+  ]
+ },
+ "03-04": {
+  "occasion": "Lil' Kim released \"La Bella Mafia\" today in 2003. Ivy Queen was born today in 1972. \"The Soul Assassins, Chapter I\" came out today in 1997.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Lil' Kim songs",
+    "level": 1,
+    "tiles": [
+     "Crush on You",
+     "How Many Licks?",
+     "The Jump Off",
+     "Magic Stick"
+    ],
+    "today": true
+   },
+   {
+    "name": "Puerto Rico's reggaetón",
+    "level": 2,
+    "tiles": [
+     "Ivy Queen",
+     "Daddy Yankee",
+     "Tego Calderón",
+     "Don Omar"
+    ],
+    "today": true
+   },
+   {
+    "name": "Soul Assassins",
+    "level": 3,
+    "tiles": [
+     "DJ Muggs",
+     "Funkdoobiest",
+     "Mr. Cartoon",
+     "Estevan Oriol"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap documentaries",
+    "level": 4,
+    "tiles": [
+     "Style Wars",
+     "Beef",
+     "Time Is Illmatic",
+     "Rhyme & Reason"
+    ]
+   }
+  ]
+ },
+ "03-05": {
+  "occasion": "Three 6 Mafia won an Oscar today in 2006. MC Solaar and Skee-Lo were both born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "In \"Hustle & Flow\"",
+    "level": 1,
+    "tiles": [
+     "Terrence Howard",
+     "Taraji P. Henson",
+     "Ludacris",
+     "Anthony Anderson"
+    ],
+    "today": true
+   },
+   {
+    "name": "Anticon",
+    "level": 2,
+    "tiles": [
+     "Doseone",
+     "Why?",
+     "Sole",
+     "Jel"
+    ]
+   },
+   {
+    "name": "French rap",
+    "level": 3,
+    "tiles": [
+     "MC Solaar",
+     "IAM",
+     "NTM",
+     "Booba"
+    ],
+    "today": true
+   },
+   {
+    "name": "One big hit, then gone",
+    "level": 4,
+    "tiles": [
+     "I Wish",
+     "Whoomp! (There It Is)",
+     "Rump Shaker",
+     "Informer"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-06": {
+  "occasion": "Tyler, the Creator (1991) and Sylvia Robinson, who founded Sugar Hill Records (1936), were born today. Lil Uzi Vert's \"Eternal Atake\" came out today in 2020.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Odd Future",
+    "level": 1,
+    "tiles": [
+     "Earl Sweatshirt",
+     "Domo Genesis",
+     "Hodgy",
+     "Left Brain"
+    ],
+    "today": true
+   },
+   {
+    "name": "Tyler albums",
+    "level": 2,
+    "tiles": [
+     "Goblin",
+     "Wolf",
+     "Flower Boy",
+     "IGOR"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Uzi Vert songs",
+    "level": 3,
+    "tiles": [
+     "XO Tour Llif3",
+     "Just Wanna Rock",
+     "Money Longer",
+     "20 Min"
+    ],
+    "today": true
+   },
+   {
+    "name": "Sugar Hill Records",
+    "level": 4,
+    "tiles": [
+     "The Sugarhill Gang",
+     "Grandmaster Flash",
+     "The Sequence",
+     "Treacherous Three"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-07": {
+  "occasion": "\"Licensed to Ill\" became the first rap album to hit No. 1 today in 1987.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Licensed to Ill\"",
+    "level": 1,
+    "tiles": [
+     "(You Gotta) Fight for Your Right (To Party!)",
+     "No Sleep till Brooklyn",
+     "Brass Monkey",
+     "Paul Revere"
+    ],
+    "today": true
+   },
+   {
+    "name": "Real name: Christopher",
+    "level": 2,
+    "tiles": [
+     "The Notorious B.I.G.",
+     "Big Pun",
+     "Ludacris",
+     "Kid (of Kid 'n Play)"
+    ]
+   },
+   {
+    "name": "Rhymesayers",
+    "level": 3,
+    "tiles": [
+     "Atmosphere",
+     "Brother Ali",
+     "Eyedea & Abilities",
+     "Grieves"
+    ]
+   },
+   {
+    "name": "Ultramagnetic MCs",
+    "level": 4,
+    "tiles": [
+     "Kool Keith",
+     "Ced Gee",
+     "TR Love",
+     "Moe Love"
+    ]
+   }
+  ]
+ },
+ "03-08": {
+  "occasion": "It's International Women's Day.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Salt-N-Pepa songs",
+    "level": 1,
+    "tiles": [
+     "Push It",
+     "Shoop",
+     "Whatta Man",
+     "Let's Talk About Sex"
+    ],
+    "today": true
+   },
+   {
+    "name": "Took a rap song to No. 1",
+    "level": 2,
+    "tiles": [
+     "Lauryn Hill",
+     "Cardi B",
+     "Iggy Azalea",
+     "Doja Cat"
+    ],
+    "today": true
+   },
+   {
+    "name": "First ladies of the crew",
+    "level": 3,
+    "tiles": [
+     "Lil' Kim",
+     "Eve",
+     "Remy Ma",
+     "Gangsta Boo"
+    ],
+    "today": true
+   },
+   {
+    "name": "All-women crews",
+    "level": 4,
+    "tiles": [
+     "J.J. Fad",
+     "City Girls",
+     "Oaktown's 3.5.7",
+     "Mercedes Ladies"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-09": {
+  "occasion": "The Notorious B.I.G. was killed today in 1997, in Los Angeles. He was 24.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Junior M.A.F.I.A.",
+    "level": 1,
+    "tiles": [
+     "Lil' Kim",
+     "Lil' Cease",
+     "Trife",
+     "Klepto"
+    ],
+    "today": true
+   },
+   {
+    "name": "Biggie was the guest",
+    "level": 2,
+    "tiles": [
+     "Only You",
+     "Can't You See",
+     "This Time Around",
+     "Brooklyn's Finest"
+    ],
+    "today": true
+   },
+   {
+    "name": "Made beats for Biggie",
+    "level": 3,
+    "tiles": [
+     "Easy Mo Bee",
+     "Clark Kent",
+     "Chucky Thompson",
+     "RZA"
+    ],
+    "today": true
+   },
+   {
+    "name": "Deep in \"Ready to Die\"",
+    "level": 4,
+    "tiles": [
+     "Things Done Changed",
+     "Gimme the Loot",
+     "Warning",
+     "Everyday Struggle"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-10": {
+  "occasion": "Bad Bunny (1994), Timbaland (1972) and Rick Rubin (1963) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Bow Wow songs",
+    "level": 1,
+    "tiles": [
+     "Bounce with Me",
+     "Let Me Hold You",
+     "Like You",
+     "Outta My System"
+    ]
+   },
+   {
+    "name": "Bad Bunny albums",
+    "level": 2,
+    "tiles": [
+     "X 100pre",
+     "YHLQMDLG",
+     "Un Verano Sin Ti",
+     "Debí Tirar Más Fotos"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rick Rubin made it",
+    "level": 3,
+    "tiles": [
+     "Radio",
+     "99 Problems",
+     "Licensed to Ill",
+     "Raising Hell"
+    ],
+    "today": true
+   },
+   {
+    "name": "Living Legends",
+    "level": 4,
+    "tiles": [
+     "Murs",
+     "The Grouch",
+     "Eligh",
+     "Luckyiam"
+    ]
+   }
+  ]
+ },
+ "03-11": {
+  "occasion": "Scarface released \"The Untouchable\" today in 1997. Paul Wall was born today in 1981.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Fat Joe songs",
+    "level": 1,
+    "tiles": [
+     "Lean Back",
+     "What's Luv?",
+     "All the Way Up",
+     "Make It Rain"
+    ]
+   },
+   {
+    "name": "Geto Boys, all eras",
+    "level": 2,
+    "tiles": [
+     "Scarface",
+     "Willie D",
+     "Bushwick Bill",
+     "Big Mike"
+    ],
+    "today": true
+   },
+   {
+    "name": "Slab spec sheet",
+    "level": 3,
+    "tiles": [
+     "Swangas",
+     "Candy paint",
+     "Fifth wheel",
+     "Pop trunk"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Pharcyde",
+    "level": 4,
+    "tiles": [
+     "Fatlip",
+     "Slimkid3",
+     "Imani",
+     "Bootie Brown"
+    ]
+   }
+  ]
+ },
+ "03-12": {
+  "occasion": "All about 2007.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Hits of 2007",
+    "level": 1,
+    "tiles": [
+     "Crank That",
+     "Party Like a Rockstar",
+     "Stronger",
+     "This Is Why I'm Hot"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big albums of 2007",
+    "level": 2,
+    "tiles": [
+     "American Gangster",
+     "Underground Kingz",
+     "T.I. vs. T.I.P.",
+     "Finding Forever"
+    ],
+    "today": true
+   },
+   {
+    "name": "Underground, 2007",
+    "level": 3,
+    "tiles": [
+     "None Shall Pass",
+     "Below the Heavens",
+     "The Weatherman LP",
+     "Getback"
+    ],
+    "today": true
+   },
+   {
+    "name": "First albums in 2007",
+    "level": 4,
+    "tiles": [
+     "Plies",
+     "Rich Boy",
+     "Hurricane Chris",
+     "Huey"
+    ],
+    "today": true
+   }
+  ],
+  "year": 2007
+ },
+ "03-13": {
+  "occasion": "Common (1972) and Jack Harlow (1998) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Jack Harlow songs",
+    "level": 1,
+    "tiles": [
+     "Whats Poppin",
+     "First Class",
+     "Lovin On Me",
+     "Tyler Herro"
+    ],
+    "today": true
+   },
+   {
+    "name": "Common albums",
+    "level": 2,
+    "tiles": [
+     "Resurrection",
+     "Like Water for Chocolate",
+     "Be",
+     "Finding Forever"
+    ],
+    "today": true
+   },
+   {
+    "name": "Brainfeeder",
+    "level": 3,
+    "tiles": [
+     "Flying Lotus",
+     "Thundercat",
+     "Teebs",
+     "Lapalux"
+    ]
+   },
+   {
+    "name": "Yo Gotti's CMG",
+    "level": 4,
+    "tiles": [
+     "Moneybagg Yo",
+     "42 Dugg",
+     "EST Gee",
+     "GloRilla"
+    ]
+   }
+  ]
+ },
+ "03-14": {
+  "occasion": "2Pac's \"Me Against the World\" and E-40's \"In a Major Way\" both came out today in 1995. Playboi Carti's \"MUSIC\" came out today in 2025.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Me Against the World\"",
+    "level": 1,
+    "tiles": [
+     "So Many Tears",
+     "Temptations",
+     "Old School",
+     "Lord Knows"
+    ],
+    "today": true
+   },
+   {
+    "name": "E-40 albums",
+    "level": 2,
+    "tiles": [
+     "Federal",
+     "In a Major Way",
+     "The Element of Surprise",
+     "My Ghetto Report Card"
+    ],
+    "today": true
+   },
+   {
+    "name": "Playboi Carti albums",
+    "level": 3,
+    "tiles": [
+     "Die Lit",
+     "Whole Lotta Red",
+     "MUSIC",
+     "Playboi Carti"
+    ],
+    "today": true
+   },
+   {
+    "name": "Shoreline Mafia, original lineup",
+    "level": 4,
+    "tiles": [
+     "OhGeesy",
+     "Fenix Flexin",
+     "Rob Vicious",
+     "Master Kato"
+    ]
+   }
+  ]
+ },
+ "03-15": {
+  "occasion": "Kendrick Lamar's \"To Pimp a Butterfly\" came out today in 2015. Nate Dogg died today in 2011. will.i.am was born today in 1975.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"To Pimp a Butterfly\"",
+    "level": 1,
+    "tiles": [
+     "Alright",
+     "King Kunta",
+     "The Blacker the Berry",
+     "i"
+    ],
+    "today": true
+   },
+   {
+    "name": "Nate Dogg sang the hook",
+    "level": 2,
+    "tiles": [
+     "Regulate",
+     "Shake That",
+     "21 Questions",
+     "The Next Episode"
+    ],
+    "today": true
+   },
+   {
+    "name": "Long Beach, not Snoop",
+    "level": 3,
+    "tiles": [
+     "Vince Staples",
+     "Warren G",
+     "RBX",
+     "Daz Dillinger"
+    ],
+    "today": true
+   },
+   {
+    "name": "Black Eyed Peas",
+    "level": 4,
+    "tiles": [
+     "will.i.am",
+     "apl.de.ap",
+     "Taboo",
+     "Fergie"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-16": {
+  "occasion": "Flavor Flav (1959) and Danny Brown (1981) were born today. P.O.S's \"Ipecac Neat\" came out today in 2004.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Public Enemy",
+    "level": 1,
+    "tiles": [
+     "Chuck D",
+     "Flavor Flav",
+     "Terminator X",
+     "Professor Griff"
+    ],
+    "today": true
+   },
+   {
+    "name": "Around the neck, in the mouth",
+    "level": 2,
+    "tiles": [
+     "Jesus piece",
+     "Grill",
+     "Cuban link",
+     "Tennis chain"
+    ]
+   },
+   {
+    "name": "Doomtree, not P.O.S",
+    "level": 3,
+    "tiles": [
+     "Dessa",
+     "Sims",
+     "Cecil Otter",
+     "Mike Mictlan"
+    ],
+    "today": true
+   },
+   {
+    "name": "Bruiser Brigade",
+    "level": 4,
+    "tiles": [
+     "Danny Brown",
+     "ZelooperZ",
+     "Bruiser Wolf",
+     "Dopehead"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-17": {
+  "occasion": "It's St. Patrick's Day. Pitbull's \"Climate Change\" came out today in 2017.",
+  "big": false,
+  "groups": [
+   {
+    "name": "House of Pain, and the hit",
+    "level": 1,
+    "tiles": [
+     "Everlast",
+     "Danny Boy",
+     "DJ Lethal",
+     "Jump Around"
+    ],
+    "today": true
+   },
+   {
+    "name": "Pitbull songs",
+    "level": 2,
+    "tiles": [
+     "Timber",
+     "Give Me Everything",
+     "I Know You Want Me",
+     "Hotel Room Service"
+    ],
+    "today": true
+   },
+   {
+    "name": "The Alchemist made the whole album",
+    "level": 3,
+    "tiles": [
+     "Return of the Mac",
+     "Covert Coup",
+     "Haram",
+     "Russian Roulette"
+    ]
+   },
+   {
+    "name": "First album in 1994",
+    "level": 4,
+    "tiles": [
+     "OutKast",
+     "Warren G",
+     "Da Brat",
+     "Bone Thugs-n-Harmony"
+    ]
+   }
+  ]
+ },
+ "03-18": {
+  "occasion": "Queen Latifah was born today in 1970. YG's \"My Krazy Life\" and Freddie Gibbs & Madlib's \"Piñata\" both came out today in 2014.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Queen Latifah albums",
+    "level": 1,
+    "tiles": [
+     "All Hail the Queen",
+     "Nature of a Sista'",
+     "Black Reign",
+     "Order in the Court"
+    ],
+    "today": true
+   },
+   {
+    "name": "Native Tongues",
+    "level": 2,
+    "tiles": [
+     "De La Soul",
+     "Jungle Brothers",
+     "Black Sheep",
+     "Chi-Ali"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"My Krazy Life\"",
+    "level": 3,
+    "tiles": [
+     "My Hitta",
+     "Who Do You Love?",
+     "Left, Right",
+     "Bicken Back Being Bool"
+    ],
+    "today": true
+   },
+   {
+    "name": "Freddie Gibbs albums",
+    "level": 4,
+    "tiles": [
+     "Piñata",
+     "Bandana",
+     "Alfredo",
+     "$oul $old $eparately"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-19": {
+  "occasion": "Bun B (1973) and Yung Gravy (1996) were born today.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Rappers you could order",
+    "level": 1,
+    "tiles": [
+     "Yung Gravy",
+     "Bun B",
+     "Salt-N-Pepa",
+     "Scallops Hotel"
+    ],
+    "today": true
+   },
+   {
+    "name": "UGK songs",
+    "level": 2,
+    "tiles": [
+     "Int'l Players Anthem",
+     "Pocket Full of Stones",
+     "One Day",
+     "Diamonds and Wood"
+    ],
+    "today": true
+   },
+   {
+    "name": "Jurassic 5",
+    "level": 3,
+    "tiles": [
+     "Chali 2na",
+     "Akil",
+     "Marc 7",
+     "Cut Chemist"
+    ]
+   },
+   {
+    "name": "Rap from down under",
+    "level": 4,
+    "tiles": [
+     "Hilltop Hoods",
+     "The Kid Laroi",
+     "Briggs",
+     "Baker Boy"
+    ]
+   }
+  ]
+ },
+ "03-20": {
+  "occasion": "El-P's \"I'll Sleep When You're Dead\" came out today in 2007. Mannie Fresh was born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Nelly songs",
+    "level": 1,
+    "tiles": [
+     "Hot in Herre",
+     "Country Grammar",
+     "Ride wit Me",
+     "Dilemma"
+    ]
+   },
+   {
+    "name": "El-P made it",
+    "level": 2,
+    "tiles": [
+     "Fantastic Damage",
+     "I'll Sleep When You're Dead",
+     "Cancer 4 Cure",
+     "The Cold Vein"
+    ],
+    "today": true
+   },
+   {
+    "name": "Freestyle Fellowship",
+    "level": 3,
+    "tiles": [
+     "Aceyalone",
+     "Myka 9",
+     "P.E.A.C.E.",
+     "Self Jupiter"
+    ]
+   },
+   {
+    "name": "Mannie Fresh made the album",
+    "level": 4,
+    "tiles": [
+     "400 Degreez",
+     "Tha Block Is Hot",
+     "Chopper City in the Ghetto",
+     "Guerrilla Warfare"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-21": {
+  "occasion": "DJ Premier (1966) and Large Professor (1973) were born today. Ice Cube's \"War & Peace Vol. 2\" came out today in 2000.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Ice Cube albums",
+    "level": 1,
+    "tiles": [
+     "AmeriKKKa's Most Wanted",
+     "Death Certificate",
+     "The Predator",
+     "War & Peace Vol. 1"
+    ],
+    "today": true
+   },
+   {
+    "name": "Large Professor made the beat",
+    "level": 2,
+    "tiles": [
+     "It Ain't Hard to Tell",
+     "Halftime",
+     "Live at the Barbeque",
+     "Looking at the Front Door"
+    ],
+    "today": true
+   },
+   {
+    "name": "Wrote on walls first",
+    "level": 3,
+    "tiles": [
+     "KRS-One",
+     "Rammellzee",
+     "Fab 5 Freddy",
+     "Futura"
+    ]
+   },
+   {
+    "name": "Skate and streetwear",
+    "level": 4,
+    "tiles": [
+     "Supreme",
+     "BAPE",
+     "Stüssy",
+     "Palace"
+    ]
+   }
+  ]
+ },
+ "03-22": {
+  "occasion": "Phife Dawg died today in 2016. Future & Metro Boomin's \"We Don't Trust You\" came out today in 2024.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Metro Boomin made the beat",
+    "level": 1,
+    "tiles": [
+     "Bad and Boujee",
+     "Mask Off",
+     "Jumpman",
+     "Like That"
+    ],
+    "today": true
+   },
+   {
+    "name": "Places in the title",
+    "level": 2,
+    "tiles": [
+     "New York, New York",
+     "Brooklyn Zoo",
+     "Detroit vs. Everybody",
+     "California Love"
+    ]
+   },
+   {
+    "name": "On \"The Low End Theory\"",
+    "level": 3,
+    "tiles": [
+     "Scenario",
+     "Check the Rhime",
+     "Jazz (We've Got)",
+     "Buggin' Out"
+    ],
+    "today": true
+   },
+   {
+    "name": "Born in London",
+    "level": 4,
+    "tiles": [
+     "Slick Rick",
+     "MF DOOM",
+     "21 Savage",
+     "Monie Love"
+    ]
+   }
+  ]
+ },
+ "03-23": {
+  "occasion": "MF DOOM and Madlib released \"Madvillainy\" today in 2004. Eminem's \"Lose Yourself\" won the Oscar today in 2003. Mike WiLL Made-It was born today in 1989.",
+  "big": true,
+  "groups": [
+   {
+    "name": "DOOM's other masks",
+    "level": 1,
+    "tiles": [
+     "Viktor Vaughn",
+     "King Geedorah",
+     "Zev Love X",
+     "Metal Face"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Madvillainy\"",
+    "level": 2,
+    "tiles": [
+     "Accordion",
+     "All Caps",
+     "Rhinestone Cowboy",
+     "Meat Grinder"
+    ],
+    "today": true
+   },
+   {
+    "name": "In \"8 Mile\"",
+    "level": 3,
+    "tiles": [
+     "Mekhi Phifer",
+     "Brittany Murphy",
+     "Kim Basinger",
+     "Anthony Mackie"
+    ],
+    "today": true
+   },
+   {
+    "name": "Mike WiLL Made-It made the beat",
+    "level": 4,
+    "tiles": [
+     "No Lie",
+     "Black Beatles",
+     "HUMBLE.",
+     "23"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-24": {
+  "occasion": "Hieroglyphics' \"3rd Eye Vision\" and Das EFX's \"Generation EFX\" came out today in 1998. Arrested Development's debut came out today in 1992. The first Verzuz was today in 2020.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Did a Verzuz",
+    "level": 1,
+    "tiles": [
+     "Swizz Beatz",
+     "Jeezy",
+     "Nelly",
+     "DMX"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hit Squad",
+    "level": 2,
+    "tiles": [
+     "Erick Sermon",
+     "Parrish Smith",
+     "K-Solo",
+     "Redman"
+    ],
+    "today": true
+   },
+   {
+    "name": "Hieroglyphics",
+    "level": 3,
+    "tiles": [
+     "Del the Funky Homosapien",
+     "Casual",
+     "Pep Love",
+     "Domino"
+    ],
+    "today": true
+   },
+   {
+    "name": "Arrested Development",
+    "level": 4,
+    "tiles": [
+     "Speech",
+     "Headliner",
+     "Baba Oje",
+     "Aerle Taree"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-25": {
+  "occasion": "The Notorious B.I.G.'s \"Life After Death\" came out today in 1997. The Streets' \"Original Pirate Material\" came out today in 2002. Big Sean was born today in 1988.",
+  "big": false,
+  "groups": [
+   {
+    "name": "On \"Life After Death\"",
+    "level": 1,
+    "tiles": [
+     "Hypnotize",
+     "Mo Money Mo Problems",
+     "Sky's the Limit",
+     "Notorious Thugs"
+    ],
+    "today": true
+   },
+   {
+    "name": "Big Sean songs",
+    "level": 2,
+    "tiles": [
+     "Dance (A$$)",
+     "Bounce Back",
+     "Blessings",
+     "Marvin & Chardonnay"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Original Pirate Material\"",
+    "level": 3,
+    "tiles": [
+     "Has It Come to This?",
+     "Let's Push Things Forward",
+     "Weak Become Heroes",
+     "Don't Mug Yourself"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap supergroups",
+    "level": 4,
+    "tiles": [
+     "Slaughterhouse",
+     "The Firm",
+     "Bad Meets Evil",
+     "PRhyme"
+    ]
+   }
+  ]
+ },
+ "03-26": {
+  "occasion": "Eazy-E died today in 1995. Juvenile was born today in 1975. Digital Underground's \"Sex Packets\" (1990) and Lil Nas X's \"Montero\" (2021) came out today.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Juvenile songs",
+    "level": 1,
+    "tiles": [
+     "Ha",
+     "Slow Motion",
+     "Set It Off",
+     "Rodeo"
+    ],
+    "today": true
+   },
+   {
+    "name": "Eazy-E solo songs",
+    "level": 2,
+    "tiles": [
+     "Boyz-n-the-Hood",
+     "We Want Eazy",
+     "Eazy-Er Said Than Dunn",
+     "Luv 4 Dem Gangsta'z"
+    ],
+    "today": true
+   },
+   {
+    "name": "Digital Underground",
+    "level": 3,
+    "tiles": [
+     "Shock G",
+     "Humpty Hump",
+     "Money-B",
+     "2Pac"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lil Nas X songs",
+    "level": 4,
+    "tiles": [
+     "Old Town Road",
+     "Panini",
+     "Montero (Call Me by Your Name)",
+     "Industry Baby"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-27": {
+  "occasion": "Run-DMC released their first album today in 1984. Mariah Carey was born today in 1969.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Rapped on a Mariah Carey song",
+    "level": 1,
+    "tiles": [
+     "Ol' Dirty Bastard",
+     "Jay-Z",
+     "Bone Thugs-n-Harmony",
+     "Mase"
+    ],
+    "today": true
+   },
+   {
+    "name": "Trios",
+    "level": 2,
+    "tiles": [
+     "Run-DMC",
+     "Migos",
+     "De La Soul",
+     "Naughty by Nature"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rap on TV",
+    "level": 3,
+    "tiles": [
+     "Yo! MTV Raps",
+     "Rap City",
+     "106 & Park",
+     "Video Music Box"
+    ]
+   },
+   {
+    "name": "Cold Crush Brothers",
+    "level": 4,
+    "tiles": [
+     "Grandmaster Caz",
+     "JDL",
+     "Almighty Kay Gee",
+     "Easy AD"
+    ]
+   }
+  ]
+ },
+ "03-28": {
+  "occasion": "Ghostface Killah's \"Fishscale,\" T.I.'s \"King\" (both 2006) and Common's \"Like Water for Chocolate\" (2000) came out today. Freaky Tah of the Lost Boyz died today in 1999.",
+  "big": true,
+  "groups": [
+   {
+    "name": "On \"Fishscale\"",
+    "level": 1,
+    "tiles": [
+     "Back Like That",
+     "Shakey Dog",
+     "Be Easy",
+     "The Champ"
+    ],
+    "today": true
+   },
+   {
+    "name": "T.I. songs",
+    "level": 2,
+    "tiles": [
+     "What You Know",
+     "Whatever You Like",
+     "Live Your Life",
+     "Rubber Band Man"
+    ],
+    "today": true
+   },
+   {
+    "name": "Lost Boyz",
+    "level": 3,
+    "tiles": [
+     "Mr. Cheeks",
+     "Freaky Tah",
+     "Pretty Lou",
+     "Spigg Nice"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Like Water for Chocolate\"",
+    "level": 4,
+    "tiles": [
+     "The Light",
+     "The 6th Sense",
+     "Geto Heaven Part Two",
+     "Thelonius"
+    ],
+    "today": true
+   }
+  ]
+ },
+ "03-29": {
+  "occasion": "Wiz Khalifa's \"Rolling Papers\" came out today in 2011. Mach-Hommy's \"Tuez-les tous\" came out today in 2019.",
+  "big": false,
+  "groups": [
+   {
+    "name": "Wiz Khalifa songs",
+    "level": 1,
+    "tiles": [
+     "Black and Yellow",
+     "See You Again",
+     "Young, Wild & Free",
+     "Roll Up"
+    ],
+    "today": true
+   },
+   {
+    "name": "Their parents rapped first",
+    "level": 2,
+    "tiles": [
+     "Diggy Simmons",
+     "King Combs",
+     "Coi Leray",
+     "Jaden Smith"
+    ]
+   },
+   {
+    "name": "Haitian roots",
+    "level": 3,
+    "tiles": [
+     "Mach-Hommy",
+     "Wyclef Jean",
+     "Pras",
+     "Kodak Black"
+    ],
+    "today": true
+   },
+   {
+    "name": "Comedians with rap records",
+    "level": 4,
+    "tiles": [
+     "Lil Dicky",
+     "Andy Samberg",
+     "Donald Glover",
+     "Kevin Hart"
+    ]
+   }
+  ]
+ },
+ "03-30": {
+  "occasion": "MC Hammer was born today in 1962.",
+  "big": false,
+  "groups": [
+   {
+    "name": "MC Hammer songs",
+    "level": 1,
+    "tiles": [
+     "U Can't Touch This",
+     "2 Legit 2 Quit",
+     "Pray",
+     "Turn This Mutha Out"
+    ],
+    "today": true
+   },
+   {
+    "name": "Rappers who became preachers",
+    "level": 2,
+    "tiles": [
+     "MC Hammer",
+     "Mase",
+     "Kurtis Blow",
+     "Rev Run"
+    ],
+    "today": true
+   },
+   {
+    "name": "Fastest on the mic",
+    "level": 3,
+    "tiles": [
+     "Twista",
+     "Tech N9ne",
+     "Krayzie Bone",
+     "Busta Rhymes"
+    ]
+   },
+   {
+    "name": "Hype Williams shot the video",
+    "level": 4,
+    "tiles": [
+     "Gimme Some More",
+     "Big Pimpin'",
+     "Mo Money Mo Problems",
+     "The Rain (Supa Dupa Fly)"
+    ]
+   }
+  ]
+ },
+ "03-31": {
+  "occasion": "Nipsey Hussle was killed today in 2019, outside his Marathon store on Crenshaw. Kris Kross's \"Totally Krossed Out\" came out today in 1992.",
+  "big": true,
+  "groups": [
+   {
+    "name": "Nipsey's mixtapes",
+    "level": 1,
+    "tiles": [
+     "The Marathon",
+     "The Marathon Continues",
+     "Crenshaw",
+     "Mailbox Money"
+    ],
+    "today": true
+   },
+   {
+    "name": "On \"Victory Lap\"",
+    "level": 2,
+    "tiles": [
+     "Dedication",
+     "Last Time That I Checc'd",
+     "Hussle & Motivate",
+     "Double Up"
+    ],
+    "today": true
+   },
+   {
+    "name": "Also born March 31",
+    "level": 3,
+    "tiles": [
+     "Jay Rock",
+     "Tony Yayo",
+     "Immortal Technique",
+     "Shawty Lo"
+    ],
+    "today": true
+   },
+   {
+    "name": "Kris Kross songs",
+    "level": 4,
+    "tiles": [
+     "Warm It Up",
+     "I Missed the Bus",
+     "Alright",
+     "Tonite's tha Night"
+    ],
+    "today": true
+   }
+  ]
  }
 }
