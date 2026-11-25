@@ -13671,7 +13671,7 @@
   ]
  },
  "10-11": {
-  "occasion": "Cardi B (1992), MC Lyte (1971) and U-God (1970) were born today.",
+  "occasion": "Cardi B (1992) and MC Lyte (1970) were born today.",
   "big": false,
   "groups": [
    {
@@ -13682,8 +13682,7 @@
      "Mr. Xcitement",
      "Dopium",
      "Venom"
-    ],
-    "today": true
+    ]
    },
    {
     "name": "Cardi B was the guest",
@@ -14305,7 +14304,7 @@
     "today": true
    },
    {
-    "name": "Madlib's duos",
+    "name": "Madlib's groups",
     "level": 2,
     "tiles": [
      "Jaylib",
