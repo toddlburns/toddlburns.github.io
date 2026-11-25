@@ -140,3 +140,14 @@ iframe.ss{display:block;width:100%;height:150px;border:0;background:#fff;border-
 
 .pnav{display:flex;gap:28px}@media (max-width:420px){.pnav{gap:20px}}.pnav a{text-decoration:none;color:var(--ink)}.pnav a:hover{text-decoration:underline}.pnav a.today{color:var(--red)}
 .occasion{margin:14px 0 0;font:700 15px/1.35 var(--mono);color:var(--red)}.occasion.big{font-size:17px}
+
+/* archive, with a bit of colour */
+.arch-h{margin:26px 0 4px;font:400 26px var(--display);text-transform:uppercase;display:flex;align-items:baseline;gap:10px}
+.arch-h span{padding:2px 10px;color:#111}.arch-h small{font:600 11px var(--mono);letter-spacing:.08em;color:var(--mute)}
+.archive li a{border-left:6px solid var(--cc);gap:12px;justify-content:flex-start}
+.archive li.c1{--cc:var(--l1)}.archive li.c2{--cc:var(--l2)}.archive li.c3{--cc:var(--l3)}.archive li.c4{--cc:#4b6bff}
+.archive .dt{color:var(--cc);min-width:76px}
+.archive .oc{font:400 14px/1.35 var(--sans,'IBM Plex Sans',system-ui);text-transform:none;color:var(--ink);flex:1}
+.archive li.big .oc{font-weight:600}.archive li.big a{background:linear-gradient(90deg,rgba(200,53,155,.18),transparent 70%)}
+.archive .st{white-space:nowrap;padding:2px 7px;border:1px solid #404040}
+.archive .st.won{background:var(--l2);color:#111;border-color:var(--l2)}.archive .st.lost{background:var(--l3);color:#fff;border-color:var(--l3)}.archive .st.mid{background:var(--l1);color:#111;border-color:var(--l1)}

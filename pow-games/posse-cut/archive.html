@@ -38,23 +38,28 @@
 <div class="wrap">
   <header class="mast">
     <div><h1><a href="./">Posse Cut</a></h1></div>
-    <nav aria-label="Pages"><a href="./">Today</a><a href="archive.html" aria-current="page">Archive</a><a href="about.html">About</a></nav>
   </header>
-  <div class="strip"><span>Archive</span><span>Practice rounds · no streak</span></div>
-  <p class="lede">Missed a day? Every past Posse Cut, playable any time. These don't count toward your streak, so nobody has to know.</p>
+  <div class="strip"><span>Archive</span><nav class="pnav" aria-label="Pages"><a href="about.html">About</a><a href="archive.html" aria-current="page">Archive</a><a href="./" class="today">Today</a></nav></div>
+  <p class="lede">Missed a day? Play any of them. They don't count toward your streak.</p>
+  <h2 class="arch-h"><span class="L1">January</span> <small>calendar test</small></h2>
+  <ul class="archive" id="cal"></ul>
+  <h2 class="arch-h"><span class="L3">Past puzzles</span></h2>
   <ul class="archive" id="list"></ul>
 </div>
 <script src="cypher.js"></script>
 <script>
+const status = st => st && st.done ? (st.won ? ['Solved', 'won'] : ['Lost', 'lost']) : st ? ['In progress', 'mid'] : ['Unplayed', ''];
+const tag = st => { const [t, c] = status(st); return `<small class="st ${c}">${t}</small>`; };
+fetch('calendar.json', { cache: 'no-cache' }).then(r => r.json()).then(cal => {
+  document.getElementById('cal').innerHTML = Object.entries(cal).map(([md, p], i) => {
+    const day = new Date('2001-' + md + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return `<li class="c${i % 4 + 1}${p.big ? ' big' : ''}"><a href="./?md=${md}"><span class="dt">${day}</span><span class="oc">${p.occasion}</span>${tag(Cy.store.get('cal' + md, null))}</a></li>`;
+  }).join('');
+}).catch(() => {});
 Cy.load().then(d => {
-  const today = Cy.todayNum(d), L = document.getElementById('list');
-  const rows = [];
-  for (let k = today; k >= 1; k--) {
-    const st = Cy.store.get('p' + k, null);
-    const mark = st && st.done ? (st.won ? 'Solved' : 'Lost') : st ? 'In progress' : 'Unplayed';
-    rows.push(`<li><a href="./?n=${k}"><span>#${k}${k === today ? ' · Today' : ''}</span><small>${Cy.dateFor(d.launch, k)} · ${mark}</small></a></li>`);
-  }
-  L.innerHTML = rows.join('');
+  const today = Cy.todayNum(d), rows = [];
+  for (let k = today; k >= 1; k--) rows.push(`<li class="c${k % 4 + 1}"><a href="./?n=${k}"><span class="dt">#${String(k).padStart(3, '0')}</span><span class="oc">${Cy.dateFor(d.launch, k)}${k === today ? ' · Today' : ''}</span>${tag(Cy.store.get('p' + k, null))}</a></li>`);
+  document.getElementById('list').innerHTML = rows.join('');
 });
 </script>
 </body>
