@@ -276,6 +276,8 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 .score b{color:var(--ink)}
 .gnames small{color:var(--dim)}
 </style><style>
+.about[open] summary{display:block;margin-bottom:8px}   /* the label stays, so tapping it again closes it */
+.note:empty{display:none}
 /* lists and controls in the same POW language as the chart (Todd 2026-11-24: "out of line with the rest") */
 .row .dot{display:none}
 .row{align-items:center;padding:9px 0 8px;font-size:18px}
@@ -360,8 +362,8 @@ footer{color:var(--dim);border-top-color:var(--ink)}
 
   <footer>
     <details class="about" open><summary>About these heights</summary>
-    <p>Every height here is a tall tale until proven otherwise. They are as reported, not measured: shoes, posture and the odd generous lyric all play a part, so read every figure as ± an inch or two. Figures marked Wikidata come from <a href="https://www.wikidata.org/">Wikidata</a>; the rest are the commonly reported ones. Long-running arguments (Drake, 2Pac, Biggie, Lil Wayne, RZA) are marked disputed.</p>
-    <p><span class="ast">*</span> Athletes who put out rap records (Shaq, Kobe, Iverson and co.) wear pinstripes and an asterisk, and are left out of the records. Portraits are halftones made from freely licensed photos on Wikimedia Commons; each photographer is credited on the rapper’s card. City is roughly where they rep; era is set by debut year. Spotted a wrong one? <a href="/contact.html">Tell me.</a></p>
+    <p>Every height here is a tall tale until proven otherwise. They are as reported, not measured: shoes, posture and the odd generous lyric all play a part, so read every figure as ± an inch or two. When a rapper has said their own height on record, that’s the figure here. Long-running arguments (Drake, 2Pac, Biggie, RZA) are marked disputed, and heights that only height-tracking sites list are marked unconfirmed.</p>
+    <p><span class="ast">*</span> Athletes who put out rap records (Shaq, Kobe, Iverson and co.) wear pinstripes and an asterisk, and are left out of the records. Portraits are halftones made from freely licensed photos on Wikimedia Commons; each photographer is credited on the rapper’s card. City is roughly where they rep; era is set by debut year. Spotted a wrong one? <a href="mailto:passionweiss@gmail.com?subject=Tall%20Tales">Let us know.</a></p>
     </details>
   </footer>
 </main>
@@ -485,7 +487,7 @@ function render() {
         `<div class="body" style="height:${(d.h * P).toFixed(1)}px">${face}<div class="vn">${esc(d.n)}<small>${fmt(d.h)}</small></div></div>` +
         `<div class="lab"><b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''}${d.lo ? `<span class="rng">${fmt(d.lo)}–${fmt(d.hi)}</span>` : d.d ? '<span>disputed</span>' : d.u ? '<span>unconfirmed</span>' : ''}</div></div>`;
     }).join('') || '<div class="empty">Nobody here yet.</div>');
-  $('note').textContent = thin ? 'Scroll sideways for everyone. Tap anyone for details.' : list.some(d => d.a) ? '* Athlete who released rap records.' : '';
+  $('note').textContent = thin ? 'Scroll sideways for everyone.' : list.some(d => d.a) ? '* Athlete who released rap records.' : '';
   $('scroll').scrollLeft = 0;
   finish(list);
 }
@@ -499,7 +501,7 @@ function rows(shown, list) {
       `<div class="hname">${esc(d.n)}${d.a ? '<span class="ast">*</span>' : ''} <b>${fmt(d.h)}${d.lo ? '?' : ''}</b>${d.lo ? `<small>${fmt(d.lo)}–${fmt(d.hi)}</small>` : d.u ? '<small>unconfirmed</small>' : ''}</div>` +
       `<div class="htrack"><div class="hbar" style="width:${pct(d.h)}%"></div>${d.lo ? `<div class="hghost" style="left:${pct(d.lo)}%;width:${pct(d.hi) - pct(d.lo)}%"></div>` : ''}</div></div></div>`;
   }).join('') || '<p class="note">Nobody here yet.</p>';
-  $('note').textContent = list.some(d => d.a) ? '* Athlete who released rap records. Tap anyone for details.' : 'Tap anyone for details.';
+  $('note').textContent = list.some(d => d.a) ? '* Athlete who released rap records.' : '';
 }
 function finish(list) {
   $('nav').innerHTML = S.mode === 'match' ? `<button id="prev">← Previous</button><button id="next">Next matchup →</button>` : '';
@@ -577,7 +579,7 @@ function toStage() { window.scrollTo({ top: Math.max(0, $('title').getBoundingCl
 /* --- card --- */
 function closeCard() { $('card').classList.remove('show'); }
 function showCard(d) {
-  if (!d.you && !known(d)) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>${esc(d.n)}</h3><div class="ht">? <small>height unknown</small></div><p>${esc(d.c)}${d.k ? ` · ${esc(d.k)}` : ''}</p><p class="small">Nobody has published a credible height for ${esc(short(d.n))}. Know it? <a href="/contact.html">Tell me.</a></p>`; }
+  if (!d.you && !known(d)) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>${esc(d.n)}</h3><div class="ht">? <small>height unknown</small></div><p>${esc(d.c)}${d.k ? ` · ${esc(d.k)}` : ''}</p><p class="small">Nobody has published a credible height for ${esc(short(d.n))}. Know it? <a href="mailto:passionweiss@gmail.com?subject=Tall%20Tales">Let us know.</a></p>`; }
   else if (d.you) { $('card').innerHTML = `<button class="x" aria-label="Close">×</button><h3>You</h3><div class="ht">${fmt(d.h)} <small>${cm(d.h)} cm</small></div><p>Change it with the slider below.</p>`; }
   else {
     $('card').innerHTML = `<button class="x" aria-label="Close">×</button>${d.p ? `<div class="pic" style="background-image:url(../img/${d.p}.webp)"></div>` : ''}
