@@ -417,7 +417,7 @@ const MATCHUPS = [
 ].map(([t, ...ns]) => [t, ns.flatMap(n => n.startsWith('@crew:') ? DATA.filter(d => d.k === n.slice(6)).map(d => d.n)
   : n.startsWith('@flag:') ? DATA.filter(d => d[n.slice(6)] && general(d)).map(d => d.n)
   : n.startsWith('@name:') ? DATA.filter(d => !d.a && general(d) && new RegExp(n.slice(6), 'i').test(d.n)).map(d => d.n) : [n]).filter(n => BY[n])]).filter(m => worthIt(m[1].map(n => BY[n])));
-const MODES = [['match', 'Matchups'], ['city', 'Same city'], ['crew', 'Same crew'], ['era', 'Same era'], ['find', 'Find anyone'], ['all', 'Everyone']];
+const MODES = [['match', 'Matchups'], ['city', 'City'], ['crew', 'Crew'], ['era', 'Era'], ['find', 'Find anyone'], ['all', 'Everyone']];
 const $ = id => document.getElementById(id);
 const fmt = h => { if (h == null) return '?'; const f = Math.floor(h / 12), i = h - f * 12; return `${f}′${i}″`; };
 const cm = h => Math.round(h * 2.54);
