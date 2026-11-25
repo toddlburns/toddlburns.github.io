@@ -263,8 +263,7 @@
       .map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('');
     $('reading').innerHTML = P.groups.slice().sort((a, b) => a.level - b.level).map(g =>
       `<div class="grp g${g.level}"><h4>${g.level} · ${g.name}</h4><ul>${g.tiles.map(t => `<li><a href="${Cy.search(t)}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>`).join('');
-    $('signup').innerHTML = subbed() ? '' : `<div class="signup"><h3>Get tomorrow's Posse Cut in your inbox</h3><p>POW MAG, free. Rap writing since 2005.</p>${EMBED}<button class="btn" id="su-on" type="button">I'm on the list</button></div>`;
-    if ($('su-on')) $('su-on').onclick = markSubbed;
+    // no sign-up on the scorecard: the game may be for paid subscribers only (Todd 2026-11-24)
     $('results').hidden = false;
     tick(); clearInterval(finish.iv); finish.iv = setInterval(tick, 1000);
     if (fresh && wide()) setTimeout(popResults, 250);
