@@ -151,3 +151,12 @@ iframe.ss{display:block;width:100%;height:150px;border:0;background:#fff;border-
 .archive li.big .oc{font-weight:600}.archive li.big a{background:linear-gradient(90deg,rgba(200,53,155,.18),transparent 70%)}
 .archive .st{white-space:nowrap;padding:2px 7px;border:1px solid #404040}
 .archive .st.won{background:var(--l2);color:#111;border-color:var(--l2)}.archive .st.lost{background:var(--l3);color:#fff;border-color:var(--l3)}.archive .st.mid{background:var(--l1);color:#111;border-color:var(--l1)}
+/* archive, tightened (Todd 2026-11-24: "text is way too big") */
+.archive{gap:4px}
+.archive li a{padding:8px 12px;border-radius:0;font-size:17px;align-items:baseline;border-top-color:#2e2e2e;border-right-color:#2e2e2e;border-bottom-color:#2e2e2e}
+.archive .dt{min-width:58px}
+.archive .oc{font-size:13px;color:#cfcfcf}
+.archive li.big .oc{color:#fff}
+.archive .st{font-size:10px;padding:1px 6px;border:0;color:var(--mute)}
+.arch-h{font-size:19px;margin:22px 0 6px}.arch-h span{padding:1px 8px}
+.archive li a{align-items:center}.archive .dt{line-height:1}
