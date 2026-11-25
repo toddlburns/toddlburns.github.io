@@ -756,7 +756,9 @@ modes(); loadHash(); lower(); layout(); render();
 </div></div>
 <script>
 (() => {
-  const API = 'https://pow-games-api.todd-burns.workers.dev/tt/', SUB = 'pow-sub';
+  // porting to play.powmag.net: copy POW Games/api/tt.js + tt_pool.json into play/, route /api/tt/* to it in play/worker.js,
+  // create tt_runs in Jeff's D1 (api/schema.sql), and this picks the same-origin API there automatically
+  const API = location.hostname === 'play.powmag.net' ? '/api/tt/' : 'https://pow-games-api.todd-burns.workers.dev/tt/', SUB = 'pow-sub';
   const call = (p, body) => fetch(API + p, body ? { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) } : {}).then(r => r.ok ? r.json() : Promise.reject(r.status));
   const T = { run: null, pair: null, streak: 0, busy: false, board: null, posted: null };
   const toast = (m, ms = 1600) => { const t = $('ttToast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('on'), ms); };
