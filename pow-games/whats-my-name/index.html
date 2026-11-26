@@ -37,14 +37,16 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .brand .name{font-weight:700;font-size:28px;letter-spacing:.04em;color:var(--print)}
 .brand .name b{color:var(--red);font-weight:700}
 .brand .sub{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--print-soft);font-weight:600}
+.pslot.quiet{visibility:hidden}
+@media (max-width:1100px){.pslot.quiet{display:none}}
 .led{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5a1a10;margin-left:8px;vertical-align:middle;box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
 .led.on{background:#ff3b1f;box-shadow:0 0 8px #ff3b1f}
-.top{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch}
+.top{display:grid;grid-template-columns:1fr;gap:16px;align-items:stretch}
 .bezel{background:var(--panel);border-radius:8px;padding:10px;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
 .lcd{background:linear-gradient(180deg,var(--lcd),var(--lcd-dark));border-radius:3px;padding:8px 12px 6px;font-family:'VT323',monospace;color:var(--lcd-ink);
   font-size:25px;line-height:1.05;min-height:96px;box-shadow:inset 0 0 12px rgba(0,0,0,.25);position:relative;overflow:hidden}
 .lcd::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px);pointer-events:none}
-.lcd .row{display:flex;justify-content:space-between;white-space:nowrap}
+.lcd .row{display:flex;justify-content:space-between;gap:12px;white-space:nowrap}
 .lcd .msg{margin-top:6px;font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .blink{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
 .meter{display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-width:92px}
@@ -186,7 +188,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
   .stage{padding:16px 10px 40px;gap:22px}
   .unit{padding:18px 14px 16px;border-radius:12px}
   .brand .name{font-size:23px}.brand .sub{font-size:11px;letter-spacing:.14em}
-  .top{grid-template-columns:1fr auto;gap:10px}
+  .top{grid-template-columns:1fr;gap:10px}
   .lcd{font-size:20px;min-height:80px;padding:6px 9px}.lcd .msg{font-size:22px}
   .seg{font-size:36px;min-width:72px;padding:5px 8px}.meter{min-width:72px}
   .entry{gap:6px}.entry .pass{padding:11px 9px}.foot .grille{display:none}
@@ -216,17 +218,12 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 <div class="stage">
   <div class="unit">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
-    <div class="brand"><div class="name">What’s My Name<b>?</b><span class="led" id="pwr"></span></div><div class="sub">Daily crate · 10 pads</div></div>
+    <div class="brand"><div class="name">What’s My Name<b>?</b></div><a class="sub" href="/mc-guesser/about.html">About</a></div>
     <div class="top">
       <div class="bezel"><div class="lcd" id="lcd">
-        <div class="row"><span id="l-round">ROUND -/5</span><span id="l-pot">POT --</span></div>
+        <div class="row"><span id="l-round">ROUND -/5</span><span id="l-pot">POT --</span><span id="l-total"></span></div>
         <div class="msg" id="l-msg">LOADING CRATE<span class="blink">_</span></div>
       </div></div>
-      <div class="meter">
-        <div class="lab">TOTAL</div>
-        <div class="seg" id="seg"><span class="ghost">888</span></div>
-        <div class="rounds" id="rounds"><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
     </div>
     <div class="entry">
       <div class="slot"><input id="guess" placeholder="WHO IS IT?" autocomplete="off" autocapitalize="characters" spellcheck="false" disabled></div>
@@ -236,9 +233,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
     </div>
     <div class="padzone">
       <div class="pads" id="pads"></div>
-      <div class="legend"><span>◀ Harder · cheaper</span><span>Easier · dearer ▶</span></div>
     </div>
-    <div class="foot"><div class="grille"><i></i><i></i><i></i><i></i></div><span>New crate daily · midnight PT</span><a href="/mc-guesser/about.html">About</a></div>
   </div>
   <div class="pslot" id="pslot"><div class="printer" id="printer">
     <div class="head"><span>PR-2 · LINER NOTES</span><span class="led on"></span><button class="x" id="px">Close ✕</button><div class="slotline"></div></div>
@@ -264,16 +259,9 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
 // ---------- display ----------
-function seg(n){ const s = String(n).padStart(3,' '); $('seg').innerHTML = s.split('').map(c => c===' ' ? '<span class="ghost">8</span>' : c).join(''); }
+function seg(n){ $('l-total').textContent = n == null ? '' : `TOTAL ${n}`; }
 function lcd(round, pot, msg){ $('l-round').textContent = round; $('l-pot').textContent = pot; $('l-msg').innerHTML = msg; }
-function lights(){
-  [...$('rounds').children].forEach((el,i) => {
-    el.className = '';
-    if (!S) return;
-    if (i < S.results.length) el.className = S.results[i].pts > 0 ? 'done' : 'zero';
-    else if (i === S.r) el.className = 'cur';
-  });
-}
+function lights(){}
 function printOut(html){ const p = $('paper'); p.classList.remove('feed'); void p.offsetWidth; p.innerHTML = html; p.classList.add('feed'); }
 function pot(){ return ROUND_PTS - S.spent; }
 function status(msg){ lcd(`ROUND ${S.r+1}/${ROUNDS}`, `POT ${String(pot()).padStart(2,' ')}`, msg); }
@@ -285,13 +273,14 @@ function drawPads(){
     const clip = mc && mc.clips[i];
     const tape = reveal && clip
       ? `<span class="tape song" style="--rot:${ROT[i]*.5}deg">${esc(clip.t)}<span>${clip.y}</span></span>`
-      : `<span class="tape" style="--rot:${ROT[i]}deg">${c ? '−'+c : 'Free'}</span>`;
+      : `<span class="tape" style="--rot:${ROT[i]}deg">${S && S.bought.has(i) ? 'Paid' : c ? '−'+c : 'Free'}</span>`;
     const cls = ['pad', S && S.bought.has(i) ? 'bought' : '', S && S.dead.has(i) ? 'dead' : ''].join(' ');
-    return `<button class="${cls}" data-i="${i}" ${!S || !mc ? 'disabled' : ''}><span class="num">PAD ${String(i+1).padStart(2,'0')}</span><span class="paid"></span><span class="bar"><i></i></span>${tape}</button>`;
+    return `<button class="${cls}" data-i="${i}" ${(!S || !mc) && access() !== 'open' ? 'disabled' : ''}><span class="bar"><i></i></span>${tape}</button>`;
   }).join('');
 }
 $('pads').addEventListener('click', e => {
   const b = e.target.closest('.pad'); if (!b || b.disabled) return;
+  if (!S || !S.mc) { if (!ytReady || !MCS.length || access() !== 'open') return; newGame(); }  // the first pad hit starts the crate
   hitPad(+b.dataset.i);
 });
 document.addEventListener('keydown', e => {
@@ -305,7 +294,7 @@ function hitPad(i){
   el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 90);
   if (!S.revealed && !S.bought.has(i)) {
     if (COST[i] > pot()) { status(`NOT ENOUGH IN POT`); return; }
-    S.bought.add(i); S.spent += COST[i]; el.classList.add('bought');
+    S.bought.add(i); S.spent += COST[i]; el.classList.add('bought'); el.querySelector('.tape').textContent = 'Paid';
   }
   play(i);
 }
@@ -470,14 +459,15 @@ $('nag').addEventListener('click', e => { if (e.target === $('nag')) closeNag();
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('nag').hidden) closeNag(); });
 
 function render(){
+  $('pslot').classList.remove('quiet');
   S = null; stopClip(); drawPads(); lights();
   $('guess').disabled = true; $('pass').disabled = true;
   const d = today(), a = access(), st = streak();
-  seg(a === 'done' ? plays()[d].score : 0);
+  seg(null);
   $('enter').disabled = a !== 'open';
   $('enter').textContent = a === 'open' ? 'Start' : 'Done';
   if (a === 'open') {
-    lcd(`CRATE #${crateNo(d)}`, '5 x 20', 'PRESS START<span class="blink">_</span>');
+    lcd(`CRATE #${crateNo(d)}`, '5 x 20', 'HIT A PAD TO START<span class="blink">_</span>');
     printOut(`<p class="kick">Daily crate #${crateNo(d)}${st ? ` · ${st}-day streak` : ''}</p><p class="big">Today's five MCs</p>
       <p>The same five voices for everyone today, drawn from the corners of rap Passion of the Weiss has covered since 2005. Name each one from the voice alone.</p>
       <p><span class="kick">Ten pads.</span><br>Each holds an ${CLIP}-second verse from the same MC. The hardest clip is free; the easier the clip, the more it costs.</p>
@@ -512,7 +502,7 @@ function startRound(){
   drawPads(); lights(); seg(total());
   $('guess').value = ''; $('guess').disabled = false; $('pass').disabled = false;
   $('enter').disabled = false; $('enter').textContent = 'Enter';
-  status('HIT A PAD<span class="blink">_</span>');
+  status('HIT A PAD<span class="blink">_</span>'); $('pslot').classList.add('quiet');
   printOut(`<p class="kick">Crate #${crateNo(S.day)} · round ${S.r+1} of ${ROUNDS}</p>
     <p class="big">Who's on the mic?</p>
     <p>Ten clips of one MC, ${CLIP} seconds each. The price is on the tape.</p>
@@ -553,7 +543,7 @@ function finishRound(choice){
   const right = choice === S.mc.mc;
   const pts = right ? pot() : 0;
   S.results.push({ mc: S.mc.mc, guess: choice, pts, pads: S.bought.size });
-  S.revealed = true;
+  S.revealed = true; $('pslot').classList.remove('quiet');
   drawPads(); lights(); seg(total());
   $('guess').disabled = true; $('pass').disabled = true; $('guess').value = S.mc.mc;
   $('enter').textContent = S.r === ROUNDS-1 ? 'Score' : 'Next';
@@ -616,7 +606,6 @@ window.onYouTubeIframeAPIReady = () => {
 const tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
 function maybeReady(){
   if (!(ytReady && MCS.length)) return;
-  $('pwr').classList.add('on');
   render();
   setTimeout(() => nag('land'), 1200);
 }
