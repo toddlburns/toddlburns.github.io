@@ -481,11 +481,9 @@ function render(){
   $('enter').textContent = a === 'open' ? 'Start' : 'Done';
   if (a === 'open') {
     lcd('TODAY’S 5 MCS', '20 PTS EACH', 'HIT A PAD<span class="blink">_</span>');
-    printOut(`<p class="kick">Today${st ? ` · ${st}-day streak` : ''}</p><p class="big">Today's five MCs</p>
-      <p>The same five voices for everyone today, drawn from the corners of rap Passion of the Weiss has covered since 2005. Name each one from the voice alone.</p>
-      <p><span class="kick">Ten pads.</span><br>Each holds an ${CLIP}-second verse from the same MC. The hardest clip is free; the easier the clip, the more it costs.</p>
-      <p><span class="kick">20 points an MC.</span><br>Every pad you hit lowers what you can win; the price is on its tape. Then type your guess. Right: you win what's left. Wrong: zero. One guess.</p>
-      <p><span class="kick">After each round</span><br>Who it was, and the best POW piece on them.</p>`);
+    printOut(`<p class="kick">Same five for everyone today${st ? ` · ${st}-day streak` : ''}</p><p class="big">Name five MCs by voice</p>
+      <p>Hit a pad to hear an ${CLIP}-second verse. Each MC is worth 20 points, and every pad costs what's on its tape.</p>
+      <p>One guess. Right, you win what's left. Wrong, zero.</p>`);
   } else if (a === 'done') {
     const r = plays()[d];
     lcd(r.results.map(x => x.pts).join(' · '), `BACK IN ${untilNext().toUpperCase()}`, `SCORE ${r.score}/100`);
