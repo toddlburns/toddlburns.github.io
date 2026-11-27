@@ -36,6 +36,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .brand{display:flex;justify-content:space-between;align-items:baseline;margin:0 4px 14px}
 .brand .name{font-weight:700;font-size:28px;letter-spacing:.04em;color:var(--print)}
 .brand .name b{color:var(--red);font-weight:700}
+.brand .links{display:flex;gap:16px}
 .brand .sub{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--print-soft);font-weight:600}
 .pslot.quiet{visibility:hidden}
 @media (max-width:1100px){.pslot.quiet{display:none}}
@@ -222,7 +223,7 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 <div class="stage">
   <div class="unit">
     <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
-    <div class="brand"><div class="name">What’s My Name<b>?</b></div><a class="sub" href="about.html">About</a></div>
+    <div class="brand"><div class="name">What’s My Name<b>?</b></div><span class="links"><a class="sub" href="archive.html">Archive</a><a class="sub" href="about.html">About</a></span></div>
     <div class="top">
       <div class="bezel"><div class="lcd" id="lcd">
         <div class="row"><span id="l-round"></span><span id="l-pot"></span></div>
@@ -432,7 +433,14 @@ function crate(day){
   return Array.from({length: ROUNDS}, (_, k) => MCS[ORDER[(((day*ROUNDS + k) % n) + n) % n]]);
 }
 const crateNo = d => d + 1;
-function access(){ return plays()[today()] ? 'done' : 'open'; }
+// archive: ?crate=N replays a past crate. It's saved apart from the dailies and never counts toward the streak.
+const ARCH = (() => { const n = parseInt(new URLSearchParams(location.search).get('crate'), 10); return n >= 1 ? n - 1 : null; })();
+const isArch = () => ARCH != null && ARCH < today();
+const dayNow = () => isArch() ? ARCH : today();
+const aplays = () => store.get('aplays', MEM.aplays || {});
+function saveA(p){ MEM.aplays = p; store.set('aplays', p); }
+const record = d => isArch() ? aplays()[d] : plays()[d];
+function access(){ return record(dayNow()) ? 'done' : 'open'; }
 function streak(){
   const p = plays(); let d = today(), n = 0;
   if (!p[d]) d--;
@@ -475,36 +483,36 @@ function render(){
   $('pslot').classList.remove('quiet');
   S = null; stopClip(); drawPads(); lights();
   $('guess').disabled = true; $('pass').disabled = true;
-  const d = today(), a = access(), st = streak();
+  const d = dayNow(), a = access(), st = streak();
   seg(null);
   $('enter').disabled = a !== 'open';
   $('enter').textContent = a === 'open' ? 'Start' : 'Done';
   if (a === 'open') {
-    lcd('TODAY’S 5 MCS', '20 PTS EACH', 'HIT A PAD<span class="blink">_</span>');
-    printOut(`${st ? `<p class="kick">${st}-day streak</p>` : ''}<p class="big">Name five MCs by voice</p>
+    lcd(isArch() ? `CRATE #${crateNo(d)}` : 'TODAY’S 5 MCS', '20 PTS EACH', 'HIT A PAD<span class="blink">_</span>');
+    printOut(`${isArch() ? `<p class="kick">Crate #${crateNo(d)} · from the archive</p>` : st ? `<p class="kick">${st}-day streak</p>` : ''}<p class="big">Name five MCs by voice</p>
       <p>Hit a pad to hear an ${CLIP}-second verse. Each MC is worth 20 points, and every pad costs what's on its tape.</p>
       <p>One guess. Right, you win what's left. Wrong, zero.</p>
       <p>Drawn from the corners of rap Passion of the Weiss has covered since 2005.</p>`);
   } else if (a === 'done') {
-    const r = plays()[d];
-    lcd(r.results.map(x => x.pts).join(' · '), `BACK IN ${untilNext().toUpperCase()}`, `SCORE ${r.score}/100`);
+    const r = record(d);
+    lcd(r.results.map(x => x.pts).join(' · '), isArch() ? `CRATE #${crateNo(d)}` : `BACK IN ${untilNext().toUpperCase()}`, `SCORE ${r.score}/100`);
     S = { share: shareText(d, r) };
-    printOut(`<p class="kick">Done for today${st ? ` · ${st}-day streak` : ''}</p>
+    printOut(`<p class="kick">${isArch() ? `Crate #${crateNo(d)} · from the archive` : `Done for today${st ? ` · ${st}-day streak` : ''}`}</p>
       <p class="score">${r.score}<small>/100</small></p>
       <p class="squares">${squares(r.results)}</p>
       <table>${r.results.map((x,i) => `<tr><td>${i+1}. ${esc(x.mc)}${x.pts ? '' : ` <span class="meta">${x.guess ? '✗' : 'pass'}</span>`}</td><td>${x.pts}</td></tr>`).join('')}</table>
       <button class="btn" id="share">Share</button>
-      <p class="meta" style="margin-top:12px">Next crate in ${untilNext()}.</p>
+      <p class="meta" style="margin-top:12px">${isArch() ? '<a href="archive.html">Back to the archive</a> · <a href="./">Today’s crate</a>' : `Next crate in ${untilNext()}. <a href="archive.html">Play the archive</a>`}</p>
       ${subbed() ? '' : signupBlock('Get tomorrow\'s crate in your inbox')}`);
     $('share').onclick = doShare; wireSignup();
   }
   demoBar();
 }
-function shareText(d, r){ return `What’s My Name? #${crateNo(d)} · ${r.score}/100\n${squares(r.results)}${streak() > 1 ? `\n${streak()}-day streak` : ''}\ntoddlburns.com/pow-games/whats-my-name`; }
+function shareText(d, r){ return `What’s My Name? #${crateNo(d)}${isArch() ? ' (archive)' : ''} · ${r.score}/100\n${squares(r.results)}${!isArch() && streak() > 1 ? `\n${streak()}-day streak` : ''}\ntoddlburns.com/pow-games/whats-my-name`; }
 
 function newGame(){
   if (access() !== 'open') return render();
-  S = { day: today(), order: crate(today()), r: 0, results: [] };
+  S = { day: dayNow(), order: crate(dayNow()), r: 0, results: [] };
   startRound();
 }
 function startRound(){
@@ -583,7 +591,8 @@ function next(){
   else endGame();
 }
 function endGame(){
-  const p = plays(); p[S.day] = { score: total(), results: S.results }; savePlays(p);
+  const rec = { score: total(), results: S.results };
+  if (isArch()) { const p = aplays(); p[S.day] = rec; saveA(p); } else { const p = plays(); p[S.day] = rec; savePlays(p); }
   render(); setTimeout(popPrint, 60);
   if (innerWidth <= 1100) setTimeout(() => document.querySelector('.printer').scrollIntoView({behavior:'smooth', block:'start'}), 250);
 }
@@ -603,7 +612,7 @@ function demoBar(){
   const go = k => { unpop(); afterPop = null; MEM.offset = offset() + k; store.set('offset', MEM.offset); render(); };
   $('d-next').onclick = () => go(1);
   $('d-prev').onclick = () => go(-1);
-  $('d-replay').onclick = () => { const p = plays(); delete p[today()]; savePlays(p); unpop(); afterPop = null; render(); };   // testing: play this crate again
+  $('d-replay').onclick = () => { if (isArch()) { const p = aplays(); delete p[dayNow()]; saveA(p); } else { const p = plays(); delete p[today()]; savePlays(p); } unpop(); afterPop = null; render(); };   // testing: play this crate again
   $('d-reset').onclick = () => { unpop(); afterPop = null; store.clear(); MEM = { plays:{}, sub:false, offset:0 }; render(); };
 }
 
