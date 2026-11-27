@@ -12,11 +12,9 @@
 <body data-game="hub">
 <div class="wrap" id="wrap">
   <header class="mast"><div><h1>POW Games</h1></div></header>
-  <ul class="hub" id="hub"></ul>
-  <h2 class="kick" style="margin-top:34px;padding-top:14px;border-top:1px solid var(--rule)">More games</h2>
-  <ul class="hub" id="hub2"></ul>
-  <h2 class="kick" style="margin-top:34px;padding-top:14px;border-top:1px solid var(--rule)">Needs further work</h2>
-  <ul class="hub" id="hub3"></ul>
+  <h2 class="kick" style="margin-top:22px">Launching December 7</h2>
+  <ul class="hub" id="hub0"></ul>
+  <ul class="hub" id="hub" style="margin-top:34px;padding-top:14px;border-top:1px solid var(--rule)"></ul>
   <h2 class="kick" style="margin-top:34px;padding-top:14px;border-top:1px solid var(--rule)">In production</h2>
   <ul class="hub" id="hub4"></ul>
 </div>
@@ -28,23 +26,20 @@ const G = [
   ['tracklist/', 'Tracklist', 'Name the album from its songs.', 'L2', '#', 1],
   ['blind-review/', 'Blind Review', 'Guess the album from POW\'s own review.', 'L3', '“', 1],
   ['area-codes/', 'Area Codes', 'Drop a pin on the MC\'s hometown.', 'L4', '📍', 1],
-  ['whats-my-name/', 'What’s My Name?', 'Name the rapper by the sound of their voice.', 'L3', '🎤'],
-];
-const G2 = [
   ['rap-grid/', 'Rap Grid', 'Nine squares. Name an MC who fits both clues.', 'L2', '3×3', 1],
-];
-const G3 = [
   ['feature-path/', 'Feature Path', 'Get from one rapper to another through guest verses.', 'L2', '→', 1],
 ];
-const G4 = [
+const G0 = [
   ['https://play.powmag.net/memory-lane/', 'Memory Lane', 'Put five rap moments in order. How many rounds can you go?', 'L1', '1-5'],
+];
+const G4 = [
+  ['whats-my-name/', 'What’s My Name?', 'Name the rapper by the sound of their voice.', 'L3', '🎤'],
   ['posse-cut/', 'Posse Cut', 'Sixteen names, four hidden groups. A new one every day of the year.', 'L3', '16'],
   ['/rap-height-ledger/pow/', 'Tall Tales', 'Every rapper’s height. Maybe. Then: who’s taller?', 'L4', '↕', 1],
 ];
 const card = ([h, t, d, c, ic, nw]) => `<li><a href="${h}"><span class="ic ${c}">${ic}</span><span><h3>${t}${nw ? '<span class="new">NEW</span>' : ''}</h3><p>${d}</p></span></a></li>`;
+document.getElementById('hub0').innerHTML = G0.map(card).join('');
 document.getElementById('hub').innerHTML = G.map(card).join('');
-document.getElementById('hub2').innerHTML = G2.map(card).join('');
-document.getElementById('hub3').innerHTML = G3.map(card).join('');
 document.getElementById('hub4').innerHTML = G4.map(card).join('');
 </script>
 </body>
