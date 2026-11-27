@@ -481,7 +481,7 @@ function render(){
   $('enter').textContent = a === 'open' ? 'Start' : 'Done';
   if (a === 'open') {
     lcd('TODAY’S 5 MCS', '20 PTS EACH', 'HIT A PAD<span class="blink">_</span>');
-    printOut(`<p class="kick">Same five for everyone today${st ? ` · ${st}-day streak` : ''}</p><p class="big">Name five MCs by voice</p>
+    printOut(`${st ? `<p class="kick">${st}-day streak</p>` : ''}<p class="big">Name five MCs by voice</p>
       <p>Hit a pad to hear an ${CLIP}-second verse. Each MC is worth 20 points, and every pad costs what's on its tape.</p>
       <p>One guess. Right, you win what's left. Wrong, zero.</p>
       <p>Drawn from the corners of rap Passion of the Weiss has covered since 2005.</p>`);
