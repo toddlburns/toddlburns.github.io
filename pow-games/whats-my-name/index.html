@@ -569,9 +569,6 @@ function finishRound(choice){
     <p>${esc(m.note)}</p>
     ${powBlock(m)}
     <div class="rule"></div>
-    <p class="kick t">On the pads</p>
-    <ol>${m.clips.map(c => `<li><a href="https://www.youtube.com/watch?v=${c.id}&t=${Math.floor(c.s)}s" target="_blank" rel="noopener">${esc(c.t)}</a> <span class="meta">${c.y}</span></li>`).join('')}</ol>
-    <p class="meta" style="margin-top:12px">All pads are free now. Hit any to hear it.</p>
     <button class="btn go-on" id="go-on">${S.r === ROUNDS-1 ? 'See your score' : 'Next round'} →</button>`);
   $('go-on').onclick = () => { unpop(); next(); };
   popPrint();
