@@ -93,6 +93,9 @@ body{background:var(--room);color:var(--print);font-family:'Barlow Condensed',sa
 .pad .bar i{display:block;height:100%;width:0;background:#ffd2b8}
 .pad .paid{position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:50%;background:#2a2826;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
 .pad.bought .paid{background:#f0c040;box-shadow:0 0 6px rgba(240,192,64,.8)}
+/* a played pad keeps its price, struck through in marker, and stays faintly lit: spent once, replays free */
+.pad .tape.spent::after{content:"";position:absolute;left:4%;right:4%;top:50%;height:3px;margin-top:-1px;background:var(--red);border-radius:2px;transform:rotate(-9deg);opacity:.9}
+.pad.bought:not(.playing):not(.hit){box-shadow:0 4px 0 #1f1e1b,0 5px 8px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,120,60,.55),0 0 10px rgba(255,120,60,.25)}
 .pad.playing{background:radial-gradient(circle at 50% 40%,#ff9b6a,var(--pad-lit) 55%,#c94612);box-shadow:0 1px 0 #1f1e1b,0 0 22px var(--pad-glow)}
 .pad.playing .num{color:#5a1e06}
 .pad.playing .bar{opacity:1}
@@ -273,7 +276,7 @@ function drawPads(){
     const clip = mc && mc.clips[i];
     const tape = reveal && clip
       ? `<span class="tape song" style="--rot:${ROT[i]*.5}deg">${esc(clip.t)}<span>${clip.y}</span></span>`
-      : `<span class="tape" style="--rot:${ROT[i]}deg">${S && S.bought.has(i) ? 'Paid' : c ? '−'+c : 'Free'}</span>`;
+      : `<span class="tape${S && S.bought.has(i) && c ? ' spent' : ''}" style="--rot:${ROT[i]}deg">${c ? '−'+c : 'Free'}</span>`;
     const cls = ['pad', S && S.bought.has(i) ? 'bought' : '', S && S.dead.has(i) ? 'dead' : ''].join(' ');
     return `<button class="${cls}" data-i="${i}" ${(!S || !mc) && access() !== 'open' ? 'disabled' : ''}><span class="bar"><i></i></span>${tape}</button>`;
   }).join('');
@@ -294,7 +297,7 @@ function hitPad(i){
   el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 90);
   if (!S.revealed && !S.bought.has(i)) {
     if (COST[i] > pot()) { status(`NOT ENOUGH IN POT`); return; }
-    S.bought.add(i); S.spent += COST[i]; el.classList.add('bought'); el.querySelector('.tape').textContent = 'Paid';
+    S.bought.add(i); S.spent += COST[i]; el.classList.add('bought'); if (COST[i]) el.querySelector('.tape').classList.add('spent');
   }
   play(i);
 }
