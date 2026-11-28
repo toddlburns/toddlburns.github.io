@@ -248,7 +248,7 @@ function draw() {
     if (i === 0 || pct !== shown[i - 1].t[t.id][0]) k = i + 1;
     const big = k <= 3 && !S.all, tt = shown.length > 1 ? i / (Math.max(shown.length, 12) - 1) : 0;
     return `<li class="row${big ? ' top' : ''}" data-n="${esc(r.n)}" style="--i:${i};--c:${ramp(Math.min(tt, 1))};--w:${Math.max(1.5, pct / max * 100).toFixed(1)}%">
-      <span class="k">${k}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}, on ${top[1]} song${top[1] === 1 ? '' : 's'}` : ''}</small>${big && top && top[2] ? line(top[2], top[3]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
+      <span class="k">${k}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}` : ''}</small>${big && top && top[2] ? line(top[2]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
   }).join('') : '<li class="empty">Nobody here yet.</li>';
   $('more').hidden = S.all || pool.length <= 25;
   $('more').textContent = `Show all ${pool.length}`;
@@ -264,7 +264,7 @@ function drawVs() {
   const pa = a.t[t.id] ? a.t[t.id][0] : 0, pb = b.t[t.id] ? b.t[t.id][0] : 0;
   const side = (r, p, win) => { const fav = r.t[t.id] ? r.t[t.id][1][0] : null;
     return `<div class="side${win ? ' win' : ''}" data-n="${esc(r.n)}">${face(r)}<h4>${esc(r.n)}</h4><div class="pct">${Math.round(p)}%</div>
-      <p>${fav ? `Favourite: ${esc(fav[0])} (${fav[1]} songs)` : 'Never mentions it'}</p>${fav && fav[2] ? line(fav[2], fav[3]) : ''}</div>`; };
+      <p>${fav ? `Favourite: ${esc(fav[0])}` : 'Never mentions it'}</p>${fav && fav[2] ? line(fav[2]) : ''}</div>`; };
   $('vs').innerHTML = side(a, pa, pa > pb) + '<div class="mid">vs</div>' + side(b, pb, pb > pa);
 }
 $('list').onclick = e => { const li = e.target.closest('.row'); if (li) open(D.find(r => r.n === li.dataset.n)); };
