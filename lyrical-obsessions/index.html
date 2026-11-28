@@ -248,11 +248,11 @@ function draw() {
     const [pct, fav] = r.t[t.id], top = fav[0], k = rankOf(r), at = pool.indexOf(r);
     const big = k <= 3, tt = N > 1 ? at / (N - 1) : 0;
     return `<li class="row${big ? ' top' : ''}" data-n="${esc(r.n)}" style="--i:${i};--c:${ramp(Math.min(tt, 1))};--w:${Math.max(1.5, pct / max * 100).toFixed(1)}%">
-      <span class="k">${k}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}` : `Never mentions ${t.what}`}</small>${big && top && top[2] ? line(top[2]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
+      <span class="k">${at < 15 ? k : ""}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}` : `Never mentions ${t.what}`}</small>${big && top && top[2] ? line(top[2]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
   }).join('');
   const f = FIELD[t.id] || [], fm = f.length ? f[0][1] : 1;
   $('fieldh').textContent = `Everybody’s favourite`;
-  $('fields').textContent = `Across all ${D.length} rappers, songs that mention each one.`;
+  $('fields').textContent = `How many songs mention each one.`;
   $('field').innerHTML = f.map(([k, n]) => `<li><b>${esc(k)}</b><i style="--w:${(n / fm * 100).toFixed(1)}%"></i><span>${n.toLocaleString('en-US')} songs</span></li>`).join('');
   drawVs();
 }
@@ -272,12 +272,12 @@ function open(r) {
   const rk = RANK[r.n] || {}, ids = TH.map(t => t.id).filter(id => rk[id]);
   const best = ids.slice().sort((a, b) => rk[a].k / rk[a].of - rk[b].k / rk[b].of)[0];
   const rows = TH.filter(t => r.t[t.id]).sort((x, y) => rk[x.id].k / rk[x.id].of - rk[y.id].k / rk[y.id].of).map(t => {   // biggest obsession first const [p, fav] = r.t[t.id];
-    return `<li class="${t.id === best ? 'best' : ''}" data-t="${t.id}"><b>${t.id}</b><span class="p">${Math.round(p)}%</span><span>#${rk[t.id].k} of ${rk[t.id].of}${fav[0] ? ` <small>· ${esc(fav[0][0])}, ${fav[0][1]} song${fav[0][1] === 1 ? '' : 's'}</small>` : ''}</span></li>`; }).join('');
+    return `<li class="${t.id === best ? 'best' : ''}" data-t="${t.id}"><b>${t.id}</b><span class="p">${Math.round(p)}%</span><span>${fav[0] ? `Favourite: ${esc(fav[0][0])}` : ''}</span></li>`; }).join('');
   const odd = r.o.length ? `<h4>Only them</h4><ul class="odd">${r.o.map(([w, n, p, fp, ex]) => { const [q, c] = ex.split(' — ');
       return `<li><b>${esc(w)}</b><span>${n} songs · ${p}% of theirs vs ${fp}% of everyone else’s</span>${line(q, c)}</li>`; }).join('')}</ul>` : '';
   $('card').innerHTML = `<button class="x" type="button" aria-label="Close">×</button>
     <div class="chead">${face(r)}<div><h3 id="cname">${esc(r.n)}</h3><p class="where">${esc(r.c)}${r.c ? ' · ' : ''}${r.s} songs read</p></div></div>
-    ${best ? `<p class="crown">Biggest obsession: ${best}, #${rk[best].k} of ${rk[best].of}</p>` : ''}
+    ${best ? `<p class="crown">Biggest obsession: ${best}</p>` : ''}
     <h4>Their obsessions</h4><ul class="tlist">${rows}</ul>${odd}
     ${r.cr ? `<p class="credit">Photo: <a href="${esc(r.cr.u)}" target="_blank" rel="noopener">${esc(r.cr.a)}</a>, ${esc(r.cr.l)}</p>` : ''}`;
   $('veil').hidden = false; $('card').querySelector('.x').focus();
