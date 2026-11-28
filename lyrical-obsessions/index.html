@@ -38,17 +38,20 @@ h1{display:inline-block;font:400 clamp(40px,7.4vw,92px)/1 var(--disp);text-trans
 
 /* theme menu */
 .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:30px 0 0;padding:0;list-style:none}
-.menu button{width:100%;height:100%;text-align:left;background:none;border:2px solid var(--hair);padding:12px 12px 10px 34px;cursor:pointer;position:relative}
-.menu button b{display:block;font:400 26px/1.05 var(--disp);text-transform:uppercase;letter-spacing:.02em}
+.menu button{width:100%;height:100%;display:flex;align-items:center;gap:16px;text-align:left;background:none;border:2px solid var(--hair);padding:12px 14px 12px 34px;cursor:pointer;position:relative}
+.menu button img{flex:none;width:92px;height:92px;border-radius:50%;box-shadow:0 0 0 3px var(--orange);transition:transform .2s}
+.menu button:hover img{transform:rotate(-6deg) scale(1.04)}
+.menu button[aria-pressed=true] img{transform:rotate(-4deg);box-shadow:0 0 0 4px var(--green)}
+.menu button b{display:block;font:400 30px/1.05 var(--disp);text-transform:uppercase;letter-spacing:.02em}
 .menu button span{display:block;font-size:14px;line-height:1.3;color:var(--dim);margin-top:5px}
-.menu button::before{content:"▶";position:absolute;left:11px;top:15px;font-size:15px;color:var(--orange);opacity:0;transform:translateX(-6px);transition:.18s}
+.menu button::before{content:"▶";position:absolute;left:11px;top:calc(50% - 10px);font-size:15px;color:var(--orange);opacity:0;transform:translateX(-6px);transition:.18s}
 .menu button:hover{border-color:var(--ink)}
 .menu button:hover::before{opacity:.5;transform:none}
 .menu button[aria-pressed=true]{border-color:var(--orange)}
 .menu button[aria-pressed=true]::before{opacity:1;transform:none;animation:blink 1.1s steps(1) infinite}
 .menu button[aria-pressed=true] b{color:var(--green)}
 @keyframes blink{50%{opacity:.25}}
-@media (max-width:760px){.menu{grid-template-columns:1fr 1fr}.menu button b{font-size:21px}}
+@media (max-width:760px){.menu{grid-template-columns:1fr 1fr}.menu button{padding:10px 10px 10px 28px;gap:10px}.menu button img{width:58px;height:58px}.menu button b{font-size:21px}}
 
 .bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:22px 0 0;padding:12px 0;border-top:3px solid var(--ink);border-bottom:1px solid var(--hair)}
 .bar input{background:transparent;border:0;border-bottom:3px solid var(--orange);font:16px var(--site);padding:4px 2px;border-radius:0;flex:1 1 180px;min-width:0}
@@ -168,7 +171,6 @@ footer p{margin:10px 0 0}
 <main class="wrap">
   <ul class="menu" id="menu"></ul>
   <div class="bar">
-    <button class="chip" id="women" type="button" aria-pressed="false">Women</button>
     <input id="find" type="search" placeholder="Find a rapper" list="names" aria-label="Find a rapper" autocomplete="off"><datalist id="names"></datalist>
   </div>
   <div class="head"><h2 id="title"></h2><p id="sub"></p></div>
@@ -185,6 +187,7 @@ footer p{margin:10px 0 0}
   <footer><details><summary>About these numbers</summary>
     <p>Lyrics for every song on each rapper’s studio albums, as listed on MusicBrainz, from the open lyrics database LRCLIB. Mixtapes and group albums aren’t included, and guest verses on a rapper’s own albums count toward them. Only rappers with lyrics for at least 40 songs are ranked.</p>
     <p>The numbers are songs, not mentions: a song that says “Maybach” twenty times counts once. Slang got read by hand and left out where it means something else. A “chicken” that costs a verse is not dinner, Killa Bees are not bees, a crown is not Crown Royal, and Gucci Mane saying his own name is not a Gucci mention.</p>
+    <p>Theme pictures: cars, <a href="https://commons.wikimedia.org/wiki/File:Maybach_62_Moskau_-20070704-RM-213832.jpg" target="_blank" rel="noopener">Ermell</a> (CC BY-SA 4.0); food, <a href="https://commons.wikimedia.org/wiki/File:Fried-Chicken-Leg.jpg" target="_blank" rel="noopener">Evan-Amos</a> (CC0); drinks, <a href="https://commons.wikimedia.org/wiki/File:2023_Hennessy_V.S._Cognac.jpg" target="_blank" rel="noopener">Jacek Halicki</a> (CC BY-SA 4.0); jewelry, <a href="https://commons.wikimedia.org/wiki/File:Rolex-Submariner.jpg" target="_blank" rel="noopener">FrankWilliams</a> (Public domain); animals, <a href="https://commons.wikimedia.org/wiki/File:Great_White_Shark_(14730796397).jpg" target="_blank" rel="noopener">Elias Levy</a> (CC BY 2.0); fashion, <a href="https://commons.wikimedia.org/wiki/File:Clarks_Wallabee_in_Cola_Suede.jpg" target="_blank" rel="noopener">C & J Clark archive</a> (CC BY-SA 3.0).</p>
     <p>Only Them lists the words a rapper uses on far more of their songs than the other rappers here do, found on at least three of their albums.</p>
   </details></footer>
 </main>
@@ -215,7 +218,7 @@ const PAIRS = [['The Notorious B.I.G.', '2Pac'], ['Jay-Z', 'Nas'], ['Kanye West'
   ['Eminem', '50 Cent'], ['Skepta', 'Stormzy'], ['Quavo', 'Offset'], ['Gunna', 'Lil Baby'], ['Pusha T', 'Rick Ross'], ['Action Bronson', 'Ghostface Killah'],
   ['Ice Cube', 'Eazy-E'], ['Missy Elliott', 'Lil\' Kim'], ['A$AP Rocky', 'A$AP Ferg'], ['Nicki Minaj', 'Lil Wayne'], ['Big Boi', 'Killer Mike']]
   .filter(([a, b]) => D.some(r => r.n === a) && D.some(r => r.n === b));
-const S = { th: 'Cars', women: false, all: false, pair: 0 };
+const S = { th: 'Cars', all: false, pair: 0 };
 try { const k = localStorage.getItem('lo-theme'); if (TH.some(t => t.id === k)) S.th = k; } catch (e) {}
 
 const RANK = {};
@@ -226,9 +229,8 @@ TH.forEach(t => {
 const ramp = t => t < .5 ? `color-mix(in oklch, var(--green) ${Math.round((1 - t * 2) * 100)}%, var(--blue))` : `color-mix(in oklch, var(--blue) ${Math.round((2 - t * 2) * 100)}%, var(--mag))`;
 const $ = id => document.getElementById(id);
 const lead = t => D.filter(r => r.t[t.id]).sort((a, b) => b.t[t.id][0] - a.t[t.id][0])[0];
-$('menu').innerHTML = TH.map(t => { const l = lead(t); return `<li><button type="button" data-t="${t.id}"><b>${t.id}</b><span>${l ? `${esc(l.n)}: ${Math.round(l.t[t.id][0])}% of songs` : esc(t.line)}</span></button></li>`; }).join('');
+$('menu').innerHTML = TH.map(t => `<li><button type="button" data-t="${t.id}"><img src="img/${t.id.toLowerCase()}.webp" alt=""><b>${t.id}</b></button></li>`).join('');
 $('menu').onclick = e => { const b = e.target.closest('button'); if (!b) return; S.th = b.dataset.t; S.all = false; try { localStorage.setItem('lo-theme', S.th); } catch (e) {} draw(); };
-$('women').onclick = () => { S.women = !S.women; S.all = false; draw(); };
 $('more').onclick = () => { S.all = true; draw(); };
 $('names').innerHTML = D.map(r => `<option value="${esc(r.n)}">`).join('');
 $('find').onchange = e => { const r = D.find(x => x.n.toLowerCase() === e.target.value.trim().toLowerCase()); if (r) { open(r); e.target.value = ''; } };
@@ -239,8 +241,7 @@ $('shuffle').onclick = () => { S.pair = (S.pair + 1 + Math.floor(Math.random() *
 function draw() {
   const t = TH.find(x => x.id === S.th);
   document.querySelectorAll('#menu button').forEach(b => b.setAttribute('aria-pressed', b.dataset.t === t.id));
-  $('women').setAttribute('aria-pressed', S.women);
-  const pool = D.filter(r => r.t[t.id] && (!S.women || r.f)).sort((a, b) => b.t[t.id][0] - a.t[t.id][0] || a.n.localeCompare(b.n));
+  const pool = D.filter(r => r.t[t.id]).sort((a, b) => b.t[t.id][0] - a.t[t.id][0] || a.n.localeCompare(b.n));
   const shown = S.all ? pool : pool.slice(0, 25), max = pool.length ? pool[0].t[t.id][0] : 1;
   $('title').textContent = t.h;
   $('sub').textContent = `The share of each rapper’s songs that mention ${t.what} at least once.`;
