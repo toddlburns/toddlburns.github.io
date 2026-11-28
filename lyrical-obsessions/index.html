@@ -106,7 +106,8 @@ p.secsub{margin:4px 0 10px;color:var(--dim);font-size:16px}
 .vsbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .vsbar select{background:transparent;border:0;border-bottom:3px solid var(--orange);font:400 18px var(--disp);text-transform:uppercase;letter-spacing:.02em;padding:4px 2px;border-radius:0;max-width:100%}
 .vsbar select option{background:#242424;text-transform:none}
-.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start;margin-top:16px}
+.why{margin:26px 0 0;font:400 18px var(--disp);text-transform:uppercase;letter-spacing:.04em;color:var(--dim)}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start;margin-top:8px}
 .vs .side{border:2px solid var(--hair);padding:14px;text-align:center;cursor:pointer}
 .vs .side.win{border-color:var(--green)}
 .vs .side .face{width:96px;height:96px;margin:0 auto;font-size:30px}
@@ -177,8 +178,7 @@ footer p{margin:10px 0 0}
   <ul class="field" id="field"></ul>
 
   <h3 class="sec">Head to head</h3><p class="secsub" id="vssub"></p>
-  <div class="vsbar"><select id="pair" aria-label="Pick a matchup"></select><button class="chip" id="shuffle" type="button">Surprise me</button></div>
-  <div class="vs" id="vs"></div>
+  <div id="vs"></div>
 
   <footer><details><summary>About these numbers</summary>
     <p>Lyrics for every song on each rapper’s studio albums, as listed on MusicBrainz, from the open lyrics database LRCLIB. Mixtapes and group albums aren’t included, and guest verses on a rapper’s own albums count toward them. Only rappers with lyrics for at least 40 songs are ranked.</p>
@@ -212,13 +212,8 @@ const TH = [
   { id: 'Family', h: 'Who’s calling home', line: '', what: 'their family' },
   { id: 'Movies', h: 'Who’s quoting movies', line: '', what: 'a movie or TV show' },
 ];
-// friendly pairings: classics, partners, same crew
-const PAIRS = [['The Notorious B.I.G.', '2Pac'], ['Jay-Z', 'Nas'], ['Kanye West', 'Jay-Z'], ['Ghostface Killah', 'Raekwon'], ['Method Man', 'Redman'],
-  ['Snoop Dogg', 'Dr. Dre'], ['Lil Wayne', 'Drake'], ['Future', 'Young Thug'], ['Kendrick Lamar', 'J. Cole'], ['Rick Ross', '2 Chainz'], ['E-40', 'Too $hort'],
-  ['Eminem', '50 Cent'], ['Skepta', 'Stormzy'], ['Quavo', 'Offset'], ['Gunna', 'Lil Baby'], ['Pusha T', 'Rick Ross'], ['Action Bronson', 'Ghostface Killah'],
-  ['Ice Cube', 'Eazy-E'], ['Missy Elliott', 'Lil\' Kim'], ['A$AP Rocky', 'A$AP Ferg'], ['Nicki Minaj', 'Lil Wayne'], ['Big Boi', 'Killer Mike']]
-  .filter(([a, b]) => D.some(r => r.n === a) && D.some(r => r.n === b));
-const S = { th: 'Cars', all: false, pair: 0 };
+const MATCH = {"Food": [["E-40", "Too $hort", "Classic matchup"], ["Eminem", "50 Cent", "Classic matchup"], ["Lil Wayne", "Drake", "Classic matchup"]], "Drinks": [["The Notorious B.I.G.", "Ma$e", "Bad Boy"], ["Kendrick Lamar", "J. Cole", "Classic matchup"], ["Nas", "Nicki Minaj", "Both from Queens"]], "Jewelry": [["Rick Ross", "Pitbull", "Both from Miami"], ["Lil Uzi Vert", "Eve", "Both from Philadelphia"], ["A$AP Rocky", "Juelz Santana", "Both from Harlem"]], "Cars": [["Rick Ross", "Pitbull", "Both from Miami"], ["Meek Mill", "Eve", "Both from Philadelphia"], ["Young Thug", "Playboi Carti", "Both from Atlanta"]], "Animals": [["Lil' Kim", "Missy Elliott", "Classic matchup"], ["E-40", "Too $hort", "Classic matchup"], ["Twista", "Da Brat", "Both from Chicago"]], "Weed": [["Da Brat", "Kanye West", "Both from Chicago"], ["Dr. Dre", "Roddy Ricch", "Both from Compton"], ["Lil Wayne", "Drake", "Classic matchup"]], "Space": [["Future", "21 Savage", "Both from Atlanta"], ["Lil Uzi Vert", "Meek Mill", "Both from Philadelphia"], ["Kid Cudi", "Krayzie Bone", "Both from Cleveland"]], "Family": [["Young Thug", "Future", "Classic matchup"], ["Lil Durk", "Da Brat", "Both from Chicago"], ["Kendrick Lamar", "Tyga", "Both from Compton"]], "Movies": [["Juelz Santana", "Diddy", "Both from Harlem"], ["Krayzie Bone", "Kid Cudi", "Both from Cleveland"], ["Nas", "Ja Rule", "Both from Queens"]], "Fashion": [["Roddy Ricch", "Dr. Dre", "Both from Compton"], ["Offset", "T.I.", "Both from Atlanta"], ["Gunna", "Ludacris", "Both from Atlanta"]]};
+const S = { th: 'Cars', all: false,  };
 try { const k = localStorage.getItem('lo-theme'); if (TH.some(t => t.id === k)) S.th = k; } catch (e) {}
 
 const RANK = {};
@@ -233,9 +228,6 @@ $('menu').innerHTML = TH.map(t => `<li><button type="button" data-t="${t.id}"><i
 $('menu').onclick = e => { const b = e.target.closest('button'); if (!b) return; S.th = b.dataset.t; S.all = false; try { localStorage.setItem('lo-theme', S.th); } catch (e) {} draw(); };
 $('names').innerHTML = D.map(r => `<option value="${esc(r.n)}">`).join('');
 $('find').onchange = e => { const r = D.find(x => x.n.toLowerCase() === e.target.value.trim().toLowerCase()); if (r) { open(r); e.target.value = ''; } };
-$('pair').innerHTML = PAIRS.map(([a, b], i) => `<option value="${i}">${esc(a)} vs ${esc(b)}</option>`).join('');
-$('pair').onchange = e => { S.pair = +e.target.value; drawVs(); };
-$('shuffle').onclick = () => { S.pair = (S.pair + 1 + Math.floor(Math.random() * (PAIRS.length - 1))) % PAIRS.length; $('pair').value = S.pair; drawVs(); };
 
 function draw() {
   const t = TH.find(x => x.id === S.th);
@@ -261,13 +253,13 @@ function draw() {
   drawVs();
 }
 function drawVs() {
-  const t = TH.find(x => x.id === S.th), [a, b] = PAIRS[S.pair].map(n => D.find(r => r.n === n));
+  const t = TH.find(x => x.id === S.th);
   $('vssub').textContent = `Who mentions ${t.what} on more of their songs?`;
-  const pa = a.t[t.id] ? a.t[t.id][0] : 0, pb = b.t[t.id] ? b.t[t.id][0] : 0;
-  const side = (r, p, win) => { const fav = r.t[t.id] ? r.t[t.id][1][0] : null;
+  const side = (r, win) => { const [p, fav] = r.t[t.id] || [0, []], g = fav[0];
     return `<div class="side${win ? ' win' : ''}" data-n="${esc(r.n)}">${face(r)}<h4>${esc(r.n)}</h4><div class="pct">${Math.round(p)}%</div>
-      <p>${fav ? `Go-to: ${esc(fav[0])}` : 'Never mentions it'}</p>${fav && fav[2] ? line(fav[2]) : ''}</div>`; };
-  $('vs').innerHTML = side(a, pa, pa > pb) + '<div class="mid">vs</div>' + side(b, pb, pb > pa);
+      <p>${g ? `Go-to: ${esc(g[0])}` : 'Never mentions it'}</p>${g && g[2] ? line(g[2]) : ''}</div>`; };
+  $('vs').innerHTML = (MATCH[t.id] || []).map(([a, b, why]) => { const A = D.find(r => r.n === a), B = D.find(r => r.n === b);
+    return `<p class="why">${esc(why)}</p><div class="vs">${side(A, true)}<div class="mid">vs</div>${side(B, false)}</div>`; }).join('');
 }
 $('list').onclick = e => { const li = e.target.closest('.row'); if (li) open(D.find(r => r.n === li.dataset.n)); };
 $('vs').onclick = e => { const s = e.target.closest('.side'); if (s) open(D.find(r => r.n === s.dataset.n)); };
