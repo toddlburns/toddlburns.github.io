@@ -92,7 +92,7 @@ p.secsub{margin:4px 0 10px;color:var(--dim);font-size:16px}
 @keyframes grow{from{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.row .b i{animation:none}}
 .more{display:block;margin:18px auto 0;background:var(--orange);border:0;color:#171717;font:400 20px var(--disp);text-transform:uppercase;letter-spacing:.03em;padding:9px 22px 7px;cursor:pointer}
-.empty{color:var(--dim);padding:24px 0}
+.gap{list-style:none;padding:22px 0 10px;font:400 22px var(--disp);text-transform:uppercase;letter-spacing:.03em;color:var(--orange);border-bottom:1px solid var(--hair)}
 
 /* everybody's favourites */
 .field{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -172,7 +172,6 @@ footer p{margin:10px 0 0}
   </div>
   <div class="head"><h2 id="title"></h2><p id="sub"></p></div>
   <ol id="list"></ol>
-  <button class="more" id="more" type="button" hidden></button>
 
   <h3 class="sec" id="fieldh"></h3><p class="secsub" id="fields"></p>
   <ul class="field" id="field"></ul>
@@ -228,7 +227,6 @@ const $ = id => document.getElementById(id);
 const lead = t => D.filter(r => r.t[t.id]).sort((a, b) => b.t[t.id][0] - a.t[t.id][0])[0];
 $('menu').innerHTML = TH.map(t => `<li><button type="button" data-t="${t.id}"><img src="img/${t.id.toLowerCase()}.webp" alt=""><b>${t.id}</b></button></li>`).join('');
 $('menu').onclick = e => { const b = e.target.closest('button'); if (!b) return; S.th = b.dataset.t; S.all = false; try { localStorage.setItem('lo-theme', S.th); } catch (e) {} draw(); };
-$('more').onclick = () => { S.all = true; draw(); };
 $('names').innerHTML = D.map(r => `<option value="${esc(r.n)}">`).join('');
 $('find').onchange = e => { const r = D.find(x => x.n.toLowerCase() === e.target.value.trim().toLowerCase()); if (r) { open(r); e.target.value = ''; } };
 $('pair').innerHTML = PAIRS.map(([a, b], i) => `<option value="${i}">${esc(a)} vs ${esc(b)}</option>`).join('');
@@ -239,19 +237,19 @@ function draw() {
   const t = TH.find(x => x.id === S.th);
   document.querySelectorAll('#menu button').forEach(b => b.setAttribute('aria-pressed', b.dataset.t === t.id));
   const pool = D.filter(r => r.t[t.id]).sort((a, b) => b.t[t.id][0] - a.t[t.id][0] || a.n.localeCompare(b.n));
-  const shown = S.all ? pool : pool.slice(0, 25), max = pool.length ? pool[0].t[t.id][0] : 1;
+  // top 15, then the bottom 5; ranks are over the whole field, ties share a rank
+  const max = pool.length ? pool[0].t[t.id][0] : 1, N = pool.length;
+  const rankOf = r => 1 + pool.filter(x => x.t[t.id][0] > r.t[t.id][0]).length;
+  const shown = N > 20 ? [...pool.slice(0, 15), null, ...pool.slice(-5)] : pool;
   $('title').textContent = t.h;
   $('sub').textContent = `The share of each rapper’s songs that mention ${t.what} at least once.`;
-  let k = 0;
-  $('list').innerHTML = shown.length ? shown.map((r, i) => {
-    const [pct, fav] = r.t[t.id], top = fav[0];
-    if (i === 0 || pct !== shown[i - 1].t[t.id][0]) k = i + 1;
-    const big = k <= 3 && !S.all, tt = shown.length > 1 ? i / (Math.max(shown.length, 12) - 1) : 0;
+  $('list').innerHTML = shown.map((r, i) => {
+    if (!r) return `<li class="gap">…and at the very bottom</li>`;
+    const [pct, fav] = r.t[t.id], top = fav[0], k = rankOf(r), at = pool.indexOf(r);
+    const big = k <= 3, tt = N > 1 ? at / (N - 1) : 0;
     return `<li class="row${big ? ' top' : ''}" data-n="${esc(r.n)}" style="--i:${i};--c:${ramp(Math.min(tt, 1))};--w:${Math.max(1.5, pct / max * 100).toFixed(1)}%">
-      <span class="k">${k}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}` : ''}</small>${big && top && top[2] ? line(top[2]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
-  }).join('') : '<li class="empty">Nobody here yet.</li>';
-  $('more').hidden = S.all || pool.length <= 25;
-  $('more').textContent = `Show all ${pool.length}`;
+      <span class="k">${k}</span>${face(r)}<span class="n">${esc(r.n)}<small>${top ? `Favourite: ${esc(top[0])}` : `Never mentions ${t.what}`}</small>${big && top && top[2] ? line(top[2]) : ''}</span><b class="v">${Math.round(pct)}%</b><span class="b"><i></i></span></li>`;
+  }).join('');
   const f = FIELD[t.id] || [], fm = f.length ? f[0][1] : 1;
   $('fieldh').textContent = `Everybody’s favourite`;
   $('fields').textContent = `Across all ${D.length} rappers, songs that mention each one.`;
